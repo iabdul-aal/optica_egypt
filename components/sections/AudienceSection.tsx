@@ -3,32 +3,32 @@
 import React from "react"
 import { useTranslations, useLocale } from "next-intl"
 import Link from "next/link"
-import { GraduationCap, Microscope, Building2, Rocket, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
 const SEGMENTS = [
   {
     key: "students",
-    icon: GraduationCap,
-    accent: "#00B4FF",
-    tag: "TALENT and ACADEMY",
+    id: "01",
+    tag: "TALENT AND ACADEMY",
+    focus: "Undergraduate and Graduate Students",
   },
   {
     key: "researchers",
-    icon: Microscope,
-    accent: "#D4AF37",
-    tag: "R and D LABS",
+    id: "02",
+    tag: "R AND D LABS",
+    focus: "Faculty and Principal Investigators",
   },
   {
     key: "industry",
-    icon: Building2,
-    accent: "#00B4FF",
-    tag: "TELECOM and INDUSTRY",
+    id: "03",
+    tag: "TELECOM AND INDUSTRY",
+    focus: "Fiber Optics and Semiconductor Engineers",
   },
   {
     key: "startups",
-    icon: Rocket,
-    accent: "#D4AF37",
+    id: "04",
     tag: "DEEPTECH VENTURES",
+    focus: "Hardware Prototyping and Spinouts",
   },
 ] as const
 
@@ -37,65 +37,83 @@ export function AudienceSection() {
   const locale = useLocale()
 
   return (
-    <section className="py-20 bg-[#000000] border-b border-white/10 relative overflow-hidden">
-      <div className="container-page relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/10 mb-3">
-              <span className="w-1.5 h-1.5 bg-[#fa8716]" />
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#fa8716]">
-                {locale === "en" ? "National Ecosystem" : "المنظومة الوطنية"}
+    <section className="py-24 bg-[#000000] border-b border-white/10 relative">
+      <div className="container-page">
+        {/* Asymmetric Editorial Grid */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Authoritative Editorial Manifesto */}
+          <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#fa8716]" />
+              <span className="editorial-label text-[#fa8716]">
+                {locale === "en" ? "NATIONAL ECOSYSTEM" : "المنظومة الوطنية"}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+
+            <h2 className="editorial-headline text-white">
               {t("heading")}
             </h2>
-          </div>
-          <p className="text-slate-400 text-sm max-w-md font-light leading-relaxed font-mono">
-            {locale === "en"
-              ? "Bridging Egypt’s scientific potential with real-world optical engineering opportunities."
-              : "تمكين الكفاءات المصرية وربط الأبحاث الأكاديمية بالصناعات المتقدمة."}
-          </p>
-        </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {SEGMENTS.map(({ key, icon: Icon, tag }, idx) => (
-            <div
-              key={key}
-              className="reticle-box p-6 border border-white/10 hover:border-[#fa8716] bg-[#02060B] flex flex-col justify-between transition-colors duration-150"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/5">
-                  <div className="tech-icon-box">
-                    <Icon size={16} strokeWidth={1.5} />
-                  </div>
-                  <span className="text-[10px] font-mono tracking-wider text-slate-500">
-                    {"//"} 0{idx + 1}
-                  </span>
-                </div>
+            <p className="editorial-lead text-slate-400">
+              {locale === "en"
+                ? "Connecting Egypt's scientific capacity directly to the global photonics frontier. Four specialized pathways designed to eliminate research silos and accelerate industrial innovation."
+                : "ربط الكفاءات العلمية المصرية مباشرة بالمنظومة العالمية لعلوم الضوئيات. أربعة مسارات متخصصة لإلغاء العزلة البحثية وتسريع الابتكار الصناعي."}
+            </p>
 
-                <p className="text-[10px] font-mono uppercase tracking-widest text-[#fa8716] mb-2">
-                  {tag}
-                </p>
-
-                <h3 className="text-lg font-bold text-white mb-3">
-                  {t(`${key}.title`)}
-                </h3>
-
-                <p className="text-slate-400 text-xs leading-relaxed font-light mb-6">
-                  {t(`${key}.body`)}
-                </p>
-              </div>
-
-              <Link
-                href={`/${locale}/community`}
-                className="inline-flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-[#fa8716] pt-3 border-t border-white/10 transition-colors"
-              >
-                <span>{locale === "en" ? "Explore Pathway" : "استكشف المسار"}</span>
-                <ArrowUpRight size={14} className="text-[#fa8716]" />
-              </Link>
+            <div className="pt-6 border-t border-white/10 flex items-center gap-4 text-[10px] font-mono text-slate-500">
+              <span>STATUS: OPEN ACCESS</span>
+              <span>{"//"}</span>
+              <span>100% SUBSIDIZED</span>
             </div>
-          ))}
+          </div>
+
+          {/* Right Column: Architectural Cohort Ledger (No boxed cards) */}
+          <div className="lg:col-span-8 divide-y divide-white/10 border-y border-white/10">
+            {SEGMENTS.map(({ key, id, tag, focus }) => (
+              <div
+                key={key}
+                className="py-8 sm:py-10 group hover:bg-white/[0.015] transition-colors"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
+                  {/* Left Metadata Indicator */}
+                  <div className="shrink-0 space-y-1">
+                    <span className="editorial-label text-[#fa8716] font-bold">
+                      {"//"} {id}
+                    </span>
+                    <p className="editorial-label text-[10px] text-slate-500">
+                      {tag}
+                    </p>
+                  </div>
+
+                  {/* Center Content */}
+                  <div className="flex-1 max-w-xl space-y-2">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#fa8716] transition-colors">
+                        {t(`${key}.title`)}
+                      </h3>
+                    </div>
+                    <p className="text-xs font-mono text-slate-500">
+                      {focus}
+                    </p>
+                    <p className="text-sm text-slate-300 leading-relaxed font-light pt-2">
+                      {t(`${key}.body`)}
+                    </p>
+                  </div>
+
+                  {/* Right Action */}
+                  <div className="shrink-0 sm:self-center">
+                    <Link
+                      href={`/${locale}/community`}
+                      className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 group-hover:text-white py-2 px-3 border border-white/10 group-hover:border-[#fa8716] transition-all"
+                    >
+                      <span>{locale === "en" ? "Explore" : "استكشف"}</span>
+                      <ArrowUpRight size={14} className="text-[#fa8716]" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import { getActiveMembers } from "@/lib/members"
 import { MemberCard } from "@/components/sections/MemberCard"
-import { Shield, Users } from "lucide-react"
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ar" }]
@@ -32,69 +31,83 @@ export default async function LeadershipPage({
   const t = await getTranslations({ locale, namespace: "leadership" })
   const members = getActiveMembers()
 
-  // Executive Committee (Order 1-4) vs Operational and Technical Chairs (Order 5+)
   const execMembers = members.filter((m) => m.order <= 4)
   const operationalMembers = members.filter((m) => m.order > 4)
 
   return (
-    <div className="section container-page py-16 md:py-24">
-      {/* Header Eyebrow */}
-      <div className="max-w-4xl mb-14">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-4">
-          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
-            {locale === "en" ? "SECTION GOVERNANCE AND OFFICERS" : "الهيئة القيادية والتنظيمية"}
-          </span>
+    <div className="bg-[#000000] text-white">
+      {/* Editorial Header */}
+      <section className="border-b border-white/10 py-20 md:py-28">
+        <div className="container-page">
+          <div className="max-w-4xl space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#fa8716]" />
+              <span className="editorial-label text-[#fa8716]">
+                {locale === "en" ? "SECTION GOVERNANCE AND OFFICERS // ROSTER" : "الهيئة القيادية والتنظيمية // السجل الرسمي"}
+              </span>
+            </div>
+
+            <h1 className="editorial-headline text-white">
+              {t("heading")}
+            </h1>
+
+            <p className="editorial-lead text-slate-300 max-w-3xl">
+              {locale === "en"
+                ? "Elected officers and technical leaders directing Optica Egypt Local Section initiatives, university alliances, and international outreach."
+                : "الهيئة الإدارية والضباط المتخصصون في قيادة مبادرات قسم أوبتيكا مصر والتحالفات الجامعية والأنشطة الدولية."}
+            </p>
+          </div>
         </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-white">
-          {t("heading")}
-        </h1>
-        <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed max-w-3xl">
-          {locale === "en"
-            ? "Elected officers and technical leaders directing Optica Egypt Local Section initiatives, university alliances, and international outreach."
-            : "الهيئة الإدارية والضباط المتخصصون في قيادة مبادرات قسم أوبتيكا مصر والتحالفات الجامعية والأنشطة الدولية."}
-        </p>
-      </div>
+      </section>
 
       {/* Tier 1: Executive Committee */}
-      <div className="mb-16">
-        <div className="flex items-center justify-between mb-8 pb-3 border-b border-white/10">
-          <div className="flex items-center gap-2.5">
-            <Shield size={18} className="text-[#fa8716]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              {locale === "en" ? "Executive Committee" : "المكتب التنفيذي"}
-            </h2>
+      <section className="py-20 md:py-24 border-b border-white/10">
+        <div className="container-page">
+          <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
+            <div>
+              <span className="editorial-label text-[#fa8716] block mb-2">
+                {locale === "en" ? "PRIMARY EXECUTIVE" : "الهيئة التنفيذية الأولى"}
+              </span>
+              <h2 className="editorial-headline text-white">
+                {locale === "en" ? "Executive Committee" : "المكتب التنفيذي"}
+              </h2>
+            </div>
+            <span className="editorial-label text-slate-400">4 OFFICERS</span>
           </div>
-          <span className="text-xs font-mono text-[#fa8716]">4 OFFICERS</span>
-        </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {execMembers.map((m) => (
-            <MemberCard key={m.id} member={m} />
-          ))}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {execMembers.map((m) => (
+              <MemberCard key={m.id} member={m} />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Tier 2: Operational Chairs and Technical Officers */}
-      <div>
-        <div className="flex items-center justify-between mb-8 pb-3 border-b border-white/10">
-          <div className="flex items-center gap-2.5">
-            <Users size={18} className="text-[#5CB1A2]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              {locale === "en" ? "Operational Officers and Technical Chairs" : "الضباط واللجان التخصصية"}
-            </h2>
+      <section className="py-20 md:py-24">
+        <div className="container-page">
+          <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
+            <div>
+              <span className="editorial-label text-[#5CB1A2] block mb-2">
+                {locale === "en" ? "FUNCTIONAL DIRECTORS" : "المكاتب التخصصية"}
+              </span>
+              <h2 className="editorial-headline text-white">
+                {locale === "en" ? "Operational Officers and Technical Chairs" : "الضباط واللجان التخصصية"}
+              </h2>
+            </div>
+            <span className="editorial-label text-slate-400">
+              {operationalMembers.length} {locale === "en" ? "OFFICERS" : "ضباط"}
+            </span>
           </div>
-          <span className="text-xs font-mono text-[#5CB1A2]">
-            {operationalMembers.length} {locale === "en" ? "OFFICERS" : "ضباط"}
-          </span>
-        </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {operationalMembers.map((m) => (
-            <MemberCard key={m.id} member={m} />
-          ))}
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {operationalMembers.map((m) => (
+              <MemberCard key={m.id} member={m} />
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
+

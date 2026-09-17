@@ -11,28 +11,28 @@ export function NewsSection({ news }: { news: NewsItem[] }) {
   const locale = useLocale()
 
   return (
-    <section className="py-24 bg-[#000000] border-t border-white/10 relative overflow-hidden">
+    <section className="py-24 bg-[#000000] border-t border-white/10 relative">
       <div className="container-page">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        {/* Editorial Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 pb-8 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/10 mb-3">
+            <div className="flex items-center gap-3 mb-3">
               <Radio size={12} className="text-[#fa8716]" />
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#fa8716]">
-                {locale === "en" ? "DISPATCHES and BULLETINS" : "النشرات والبيانات الرسمية"}
+              <span className="editorial-label text-[#fa8716]">
+                {locale === "en" ? "DISPATCHES AND BULLETINS" : "النشرات والبيانات الرسمية"}
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            <h2 className="editorial-headline text-white">
               {t("heading")}
             </h2>
           </div>
-          <span className="text-xs font-mono text-slate-500">
-            DISPATCH FREQUENCY: WEEKLY
+          <span className="editorial-label text-slate-500">
+            DISPATCH FREQUENCY: BI-WEEKLY // ARCHIVE: LIVE
           </span>
         </div>
 
-        {/* 3-Column Akhetonics Technical Grid */}
-        <div className="grid gap-4 md:grid-cols-3">
+        {/* 3-Column Editorial Gazette Ledger */}
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10 border-y border-white/10">
           {news.map((item) => {
             const title = item.title[locale as "en" | "ar"] || item.title.en
             const summary = item.summary[locale as "en" | "ar"] || item.summary.en
@@ -40,31 +40,30 @@ export function NewsSection({ news }: { news: NewsItem[] }) {
             return (
               <div
                 key={item.id}
-                className="reticle-box p-6 border border-white/10 hover:border-[#fa8716] bg-[#02060B] flex flex-col justify-between h-full transition-colors duration-150"
+                className="py-8 px-6 md:px-8 flex flex-col justify-between group hover:bg-white/[0.015] transition-colors"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider bg-[#fa8716]/10 text-[#fa8716] border border-[#fa8716]/30">
-                      [ {item.category.toUpperCase()} ]
+                  <div className="flex items-center justify-between mb-6 font-mono text-[10px]">
+                    <span className="editorial-label text-[#fa8716] font-bold">
+                      [{item.category.toUpperCase()}]
                     </span>
-                    <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-                      <span className="text-[#5CB1A2] font-mono">{"//"}</span>
-                      <span>{item.date}</span>
-                    </div>
+                    <span className="text-slate-400">
+                      {item.date}
+                    </span>
                   </div>
 
-                  <h3 className="font-bold text-base md:text-lg mb-2 leading-snug text-white">
+                  <h3 className="font-bold text-lg sm:text-xl mb-3 leading-snug text-white group-hover:text-[#fa8716] transition-colors">
                     {title}
                   </h3>
-                  <p className="text-slate-400 text-xs leading-relaxed mb-6 font-light">
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-8 font-light">
                     {summary}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-300 hover:text-[#fa8716] transition-colors">
-                  <Link href={`/${locale}/events`} className="inline-flex items-center gap-1.5 uppercase tracking-wider text-[11px]">
-                    <span>{locale === "en" ? "Read Details" : "تفاصيل الإعلان"}</span>
-                    <ArrowRight size={12} className={locale === "ar" ? "rotate-180" : ""} />
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-white transition-colors">
+                  <Link href={`/${locale}/events`} className="inline-flex items-center gap-2 uppercase tracking-wider text-[11px]">
+                    <span>{locale === "en" ? "Read Dispatch" : "تفاصيل الإعلان"}</span>
+                    <ArrowRight size={13} className={locale === "ar" ? "rotate-180" : ""} />
                   </Link>
                 </div>
               </div>

@@ -8,13 +8,12 @@ import { Mail, Linkedin } from "lucide-react"
 
 export function MemberCard({ member }: { member: Member }) {
   const locale = useLocale()
-  const [imageError, setImageError] = useState(true) // Default to true until photo assets are uploaded by user
+  const [imageError, setImageError] = useState(true)
 
   const name = member.name[locale as "en" | "ar"] || member.name.en
   const role = member.role[locale as "en" | "ar"] || member.role.en
   const institution = member.institution[locale as "en" | "ar"] || member.institution.en
 
-  // Initials for holographic photonic avatar
   const initials = member.name.en
     .split(" ")
     .map((n) => n[0])
@@ -25,39 +24,32 @@ export function MemberCard({ member }: { member: Member }) {
   const photoSrc = `/people/leadership/${member.photo}`
 
   return (
-    <div className="reticle-box p-5 border border-white/10 hover:border-[#fa8716] bg-[#02060B] flex flex-col justify-between h-full transition-colors duration-150">
+    <div className="p-6 bg-[#02060B] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
       <div>
-        {/* Holographic Photonic Reticle Avatar */}
-        <div className="relative aspect-square w-full mb-4 bg-[#000000] border border-white/10 flex items-center justify-center overflow-hidden">
+        {/* Officer Portrait / Monogram Frame */}
+        <div className="relative aspect-[4/5] w-full mb-5 bg-[#000000] border border-white/10 flex items-center justify-center overflow-hidden">
           {!imageError && member.photo ? (
             <Image
               src={photoSrc}
               alt={name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
               onError={() => setImageError(true)}
             />
           ) : (
-            <div className="relative w-full h-full flex flex-col items-center justify-center p-4">
-              {/* Precision Square Target Reticle */}
-              <div className="absolute w-36 h-36 border border-white/5" />
-              <div className="absolute w-28 h-28 border border-[#fa8716]/20" />
-              <div className="absolute w-20 h-20 border border-[#5CB1A2]/25" />
+            <div className="relative w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#02060B] to-[#000000]">
+              {/* Subtle architectural hairline cross */}
+              <div className="absolute inset-x-8 top-1/2 h-px bg-white/5" />
+              <div className="absolute inset-y-8 left-1/2 w-px bg-white/5" />
 
-              {/* Crosshair Alignment Lines */}
-              <div className="absolute inset-x-2 top-1/2 h-px bg-white/10" />
-              <div className="absolute inset-y-2 left-1/2 w-px bg-white/10" />
-
-              {/* Monogram Center */}
-              <div className="relative z-10 w-14 h-14 border border-[#fa8716] bg-[#000000] flex items-center justify-center">
-                <span className="text-base font-bold font-mono text-[#fa8716] tracking-wider">
+              <div className="relative z-10 w-16 h-16 border border-[#fa8716]/40 group-hover:border-[#fa8716] bg-[#02060B] flex items-center justify-center transition-colors">
+                <span className="text-xl font-bold font-mono text-[#fa8716] tracking-wider">
                   {initials}
                 </span>
               </div>
 
-              {/* Officer Tech Tag */}
-              <span className="relative z-10 text-[9px] font-mono uppercase tracking-widest text-[#5CB1A2] mt-3 bg-black px-2 py-0.5 border border-white/10">
+              <span className="relative z-10 editorial-label text-[9px] text-slate-500 mt-4">
                 OFFICER_{member.order.toString().padStart(2, "0")}
               </span>
             </div>
@@ -66,29 +58,28 @@ export function MemberCard({ member }: { member: Member }) {
 
         {/* Info */}
         <div className="flex items-center justify-between mb-2">
-          <span className="text-[10px] font-mono px-2 py-0.5 bg-[#fa8716]/10 text-[#fa8716] border border-[#fa8716]/30 font-bold uppercase tracking-wider">
+          <span className="editorial-label text-[#fa8716] font-bold">
             {role}
           </span>
-          <span className="text-[10px] font-mono text-slate-500">{member.term}</span>
+          <span className="editorial-label text-slate-500">{member.term}</span>
         </div>
 
-        <h3 className="text-base font-bold text-white mb-1.5 leading-snug">
+        <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-[#fa8716] transition-colors">
           {name}
         </h3>
 
         {institution && (
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-4 font-mono">
-            <span className="text-[#5CB1A2] font-mono text-xs">{"//"}</span>
-            <span className="truncate">{institution}</span>
-          </div>
+          <p className="text-xs text-slate-400 font-mono mb-4">
+            {institution}
+          </p>
         )}
       </div>
 
-      <div className="flex items-center justify-between pt-3 border-t border-white/10 mt-auto">
-        <span className="text-[10px] font-mono text-slate-500 uppercase">
-          {locale === "en" ? "ACTIVE OFFICER" : "عضو قيادي"}
+      <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
+        <span className="editorial-label text-[9px] text-slate-500">
+          {locale === "en" ? "ACTIVE TENURE" : "عضوية سارية"}
         </span>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           {member.email && (
             <a
               href={`mailto:${member.email}`}

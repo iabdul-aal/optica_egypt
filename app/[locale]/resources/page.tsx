@@ -32,77 +32,102 @@ export default async function ResourcesPage({
   const resources = getAllResources()
 
   return (
-    <div className="section container-page py-16 md:py-24">
-      {/* Header Eyebrow */}
-      <div className="max-w-4xl mb-14">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-4">
-          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
-            {locale === "en" ? "TECHNICAL REPOSITORY AND TOOLS" : "المستودع المعرفي والبرمجي"}
-          </span>
+    <div className="bg-[#000000] text-white">
+      {/* Editorial Header */}
+      <section className="border-b border-white/10 py-20 md:py-28">
+        <div className="container-page">
+          <div className="max-w-4xl space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#fa8716]" />
+              <span className="editorial-label text-[#fa8716]">
+                {locale === "en" ? "TECHNICAL REPOSITORY AND SOFTWARE KITS" : "المستودع المعرفي والبرمجي"}
+              </span>
+            </div>
+
+            <h1 className="editorial-headline text-white">
+              {t("heading")}
+            </h1>
+
+            <p className="editorial-lead text-slate-300 max-w-3xl">
+              {locale === "en"
+                ? "Curated open-source photonic design kits, simulation software, Optica peer-reviewed journals, and international student fellowship programs."
+                : "حزم تصميم الدوائر الضوئية مفتوحة المصدر وبرمجيات المحاكاة الكهرومغناطيسية ودوريات أوبتيكا المحكمة ومنح السفر والزمالات."}
+            </p>
+          </div>
         </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-white">
-          {t("heading")}
-        </h1>
-        <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed max-w-3xl">
-          {locale === "en"
-            ? "Curated open-source photonic design kits, simulation software, Optica peer-reviewed journals, and international student fellowship programs."
-            : "حزم تصميم الدوائر الضوئية مفتوحة المصدر وبرمجيات المحاكاة الكهرومغناطيسية ودوريات أوبتيكا المحكمة ومنح السفر والزمالات."}
-        </p>
-      </div>
+      </section>
 
-      {/* Resource Cards Grid (Akhetonics & Entor Tech Standard) */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {resources.map((r) => {
-          const title = r.title[locale as "en" | "ar"] || r.title.en
-          const description = r.description[locale as "en" | "ar"] || r.description.en
+      {/* Clearinghouse Directory Ledger */}
+      <section className="py-20 md:py-24">
+        <div className="container-page">
+          <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
+            <div>
+              <span className="editorial-label text-[#fa8716] block mb-2">
+                {locale === "en" ? "INDEXED ENTRIES" : "السجلات المفهرسة"}
+              </span>
+              <h2 className="editorial-headline text-white">
+                {locale === "en" ? "Curated Scientific Archives" : "المستودع العلمي المختار"}
+              </h2>
+            </div>
+            <span className="editorial-label text-slate-400">
+              {resources.length} {locale === "en" ? "TOOLS AND REPOSITORIES" : "أدوات ومصادر"}
+            </span>
+          </div>
 
-          return (
-            <a
-              key={r.id}
-              href={r.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="reticle-box p-7 bg-[#010E17] flex flex-col justify-between group hover:border-[#fa8716] transition-all"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 bg-white/5 border border-white/10 text-slate-400">
-                    {r.category}
-                  </span>
-                  {r.free && (
-                    <span className="text-[10px] font-mono font-bold text-[#00e660] px-2 py-0.5 bg-[#00e660]/10 border border-[#00e660]/30">
-                      {t("free_badge")}
-                    </span>
-                  )}
-                </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {resources.map((r) => {
+              const title = r.title[locale as "en" | "ar"] || r.title.en
+              const description = r.description[locale as "en" | "ar"] || r.description.en
 
-                <h3 className="font-bold text-lg mb-2.5 leading-snug text-white group-hover:text-[#fa8716] transition-colors">
-                  {title}
-                </h3>
-                <p className="text-slate-300 text-xs md:text-sm leading-relaxed mb-6 font-light">
-                  {description}
-                </p>
-
-                {r.tags && r.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {r.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-mono text-slate-400 bg-black/60 px-2 py-0.5 border border-white/10">
-                        #{tag}
+              return (
+                <a
+                  key={r.id}
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-8 bg-[#02060B] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between group transition-all"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10 font-mono text-[10px]">
+                      <span className="editorial-label text-[#fa8716] font-bold">
+                        [{r.category.toUpperCase()}]
                       </span>
-                    ))}
-                  </div>
-                )}
-              </div>
+                      {r.free && (
+                        <span className="text-[#00e660] border border-[#00e660]/30 px-2 py-0.5">
+                          {t("free_badge")}
+                        </span>
+                      )}
+                    </div>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#fa8716] group-hover:text-white transition-colors">
-                <span>{t("visit")}</span>
-                <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </div>
-            </a>
-          )
-        })}
-      </div>
+                    <h3 className="font-bold text-lg sm:text-xl mb-3 leading-snug text-white group-hover:text-[#fa8716] transition-colors">
+                      {title}
+                    </h3>
+                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-light">
+                      {description}
+                    </p>
+
+                    {r.tags && r.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {r.tags.map((tag) => (
+                          <span key={tag} className="editorial-label text-[9px] text-slate-400 bg-white/[0.02] px-2 py-0.5 border border-white/10">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#fa8716] group-hover:text-white transition-colors">
+                    <span>{t("visit")}</span>
+                    <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </a>
+              )
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
+
