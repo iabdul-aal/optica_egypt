@@ -3,15 +3,18 @@
 /* ─── Akhetonics, Entor Tech and PhysicsX Deep-Tech Identity ─────────────── */
 :root {
   /* Exact StyleDNA Extracted Colors */
-  --color-primary-orange: #fa8716;       /* Akhetonics Accent */
-  --color-primary-teal:   #5CB1A2;       /* Entor Tech Teal Accent */
-  --color-signal-green:   #00e660;       /* PhysicsX Neon Signal */
+  --color-primary-orange: #fa8716;       /* Akhetonics Accent / 589nm */
+  --color-primary-teal:   #5CB1A2;       /* Entor Tech Teal Accent / 1550nm */
+  --color-signal-green:   #00e660;       /* PhysicsX Neon Signal / 510nm */
+  --color-optica-green:   #4caf50;       /* Optica Global Science Green / 532nm (Report 5) */
+  --color-laser-violet:   #7e58f5;       /* PsiQuantum Laser Violet / 405nm (Report 3) */
   --color-primary-gold:   #D4AF37;       /* Optica Egypt Gold */
   --color-navy:           #1F2E69;       /* Entor Tech Navy */
   --color-slate:          #5D5F6D;       /* Entor Tech Slate */
   --color-neutral-mid:    #8B8EA1;       /* Entor Tech Mid Neutral */
   --color-neutral-light:  #CCCCCC;       /* Entor Tech Light Neutral */
-  --color-ink-black:      #000000;       /* Akhetonics Pure Black */
+  --color-ink-black:      #000000;       /* Akhetonics & Nover Pure Black */
+  --color-near-black:     #121212;       /* PsiQuantum Deep Matte Surface */
   --color-deep-surface:   #02060B;       /* Engineering Card Surface */
   --color-white:          #FFFFFF;
 
@@ -48,7 +51,16 @@
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
-  border-radius: 0px !important; /* Strict 0px rule across all primitives */
+  border-radius: 0px; /* Strict 0px rule across primitives (Akhetonics/Nover/Entor Tech) */
+}
+
+/* PsiQuantum Tokenized Pill & Indicator Exceptions */
+.badge-pill,
+.rounded-pill {
+  border-radius: 300px !important;
+}
+.status-pip {
+  border-radius: 50% !important;
 }
 
 html {
@@ -248,10 +260,18 @@ h1, h2, h3, h4, h5, h6 {
 .text-beam-gradient {
   color: var(--color-primary-teal);
 }
-.text-orange { color: var(--color-primary-orange); }
-.text-teal   { color: var(--color-primary-teal); }
-.text-signal { color: var(--color-signal-green); }
-.text-muted  { color: var(--color-neutral-mid); }
+.text-orange  { color: var(--color-primary-orange); }
+.text-teal    { color: var(--color-primary-teal); }
+.text-signal  { color: var(--color-signal-green); }
+.text-science { color: var(--color-optica-green); }
+.text-violet  { color: var(--color-laser-violet); }
+.text-muted   { color: var(--color-neutral-mid); }
+
+.border-orange  { border-color: var(--color-primary-orange); }
+.border-teal    { border-color: var(--color-primary-teal); }
+.border-signal  { border-color: var(--color-signal-green); }
+.border-science { border-color: var(--color-optica-green); }
+.border-violet  { border-color: var(--color-laser-violet); }
 
 /* ─── Clean Engineering Grid Background ──────────────────────────────────── */
 .bg-tech-grid {
