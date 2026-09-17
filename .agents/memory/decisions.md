@@ -214,3 +214,38 @@ Outreach Director, Media Director, Technical Director.
 **Consequences**: Any future PR adding a Faculty Advisor field to members.json
 or the Leadership page must be rejected. Role order constant in lib/members.ts
 contains exactly eight entries.
+
+---
+
+## ADL-011 — Hosting: Vercel free tier (not GitHub Pages)
+
+**Date:** 2026-09-17
+**Decision:** Deploy to Vercel free hobby plan, not GitHub Pages static export.
+**Rationale:** Vercel supports full Next.js 15 features (Server Components, ISR, middleware, image optimization). GitHub Pages requires static export which disables these. Vercel auto-deploys on push, creates preview per PR, provides CDN and SSL free.
+**Consequence:** No `output: export` in next.config.ts. Full Next.js features available now and as we scale.
+
+---
+
+## ADL-012 — npm legacy-peer-deps locked in .npmrc
+
+**Date:** 2026-09-17
+**Decision:** Added `.npmrc` with `legacy-peer-deps=true`.
+**Rationale:** @react-three/fiber 8.x pulls optional Expo peer dependencies that conflict with React 19. Legacy peer deps flag resolves this without downgrading.
+**Consequence:** All future `npm install` calls in this repo use legacy resolution automatically.
+
+---
+
+## ADL-013 — Start-small data model: empty arrays are valid
+
+**Date:** 2026-09-17
+**Decision:** events.json and outreach.json start as empty arrays `[]`. All pages handle this with graceful empty states.
+**Rationale:** Section launched this week with zero portfolio. Fake data is worse than honest empty states. Every page checks length and renders a human-readable "coming soon" message.
+**Consequence:** No placeholder or lorem ipsum data anywhere. Content grows by appending JSON objects.
+
+---
+
+## ADL-014 — line endings locked to LF via .gitattributes
+
+**Date:** 2026-09-17
+**Decision:** `.gitattributes` forces LF for all text files.
+**Rationale:** Eliminates CRLF warnings on Windows dev machines and ensures consistent diffs across OS.
