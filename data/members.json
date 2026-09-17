@@ -1,158 +1,302 @@
 ﻿[
-  {
-    "id": "abdulaziz-albadawi",
-    "name": { "en": "Abdulaziz Albadawi", "ar": "عبدالعزيز البداوي" },
-    "role": { "en": "President", "ar": "الرئيس" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "albadawiabdulaziz@gmail.com",
-    "linkedin": "",
-    "photo": "abdulaziz-albadawi.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 1,
-    "active": true
-  },
-  {
-    "id": "khaled-ramadan",
-    "name": { "en": "Khaled Ramadan", "ar": "خالد رمضان" },
-    "role": { "en": "Vice President", "ar": "نائب الرئيس" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "khaledismail1842004kh24@gmail.com",
-    "linkedin": "",
-    "photo": "khaled-ramadan.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 2,
-    "active": true
-  },
-  {
-    "id": "mohammed-elsherbiny",
-    "name": { "en": "Mohammed Elsherbiny", "ar": "محمد الشربيني" },
-    "role": { "en": "Secretary", "ar": "الأمين" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "mohammed.nader.200519@gmail.com",
-    "linkedin": "",
-    "photo": "mohammed-elsherbiny.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 3,
-    "active": true
-  },
-  {
-    "id": "arwa-elsherbiny",
-    "name": { "en": "Arwa Elsherbiny", "ar": "أروى الشربيني" },
-    "role": { "en": "Treasurer", "ar": "أمين الصندوق" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "2300183@eng.asu.edu.eg",
-    "linkedin": "",
-    "photo": "arwa-elsherbiny.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 4,
-    "active": true
-  },
-  {
-    "id": "mariam-hussein",
-    "name": { "en": "Mariam Hussein", "ar": "مريم حسين" },
-    "role": { "en": "Growth Officer", "ar": "مسؤولة النمو" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "mariamawadd61@gmail.com",
-    "linkedin": "",
-    "photo": "mariam-hussein.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 5,
-    "active": true
-  },
-  {
-    "id": "mohammed-khedr",
-    "name": { "en": "Mohammed Khedr", "ar": "محمد خضر" },
-    "role": { "en": "Outreach Officer", "ar": "مسؤول التوعية" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "mmh.khedre@gmail.com",
-    "linkedin": "",
-    "photo": "mohammed-khedr.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 6,
-    "active": true
-  },
-  {
-    "id": "yahia-ghadiry",
-    "name": { "en": "Yahia Ghadiry", "ar": "يحيى الغديري" },
-    "role": { "en": "Activities Officer", "ar": "مسؤول الأنشطة" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "YahiaGhadiry@gmail.com",
-    "linkedin": "",
-    "photo": "yahia-ghadiry.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 7,
-    "active": true
-  },
-  {
-    "id": "ahmed-magdy",
-    "name": { "en": "Ahmed Magdy", "ar": "أحمد مجدي" },
-    "role": { "en": "Logistics Officer", "ar": "مسؤول اللوجستيات" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "am2289148@gmail.com",
-    "linkedin": "",
-    "photo": "ahmed-magdy.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 8,
-    "active": true
-  },
-  {
-    "id": "omar-ayoub",
-    "name": { "en": "Omar Ayoub", "ar": "عمر أيوب" },
-    "role": { "en": "QA Officer", "ar": "مسؤول الجودة" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "omarnmayoub@gmail.com",
-    "linkedin": "",
-    "photo": "omar-ayoub.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 9,
-    "active": true
-  },
-  {
-    "id": "abdelrhman-hassan",
-    "name": { "en": "Abdelrhman Hassan", "ar": "عبدالرحمن حسن" },
-    "role": { "en": "Volunteers Officer", "ar": "مسؤول المتطوعين" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "abderhman0009@gmail.com",
-    "linkedin": "",
-    "photo": "abdelrhman-hassan.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 10,
-    "active": true
-  },
-  {
-    "id": "islam-abduaal",
-    "name": { "en": "Islam Abduaal", "ar": "إسلام عبدالعال" },
-    "role": { "en": "Webmaster", "ar": "مسؤول الموقع" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "islamibr29@outlook.com",
-    "linkedin": "",
-    "photo": "islam-abduaal.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 11,
-    "active": true
-  },
-  {
-    "id": "abdlrhman-hamza",
-    "name": { "en": "Abdlrhman Hamza", "ar": "عبدالرحمن حمزة" },
-    "role": { "en": "Member", "ar": "عضو" },
-    "term": "2024-2025",
-    "institution": { "en": "", "ar": "" },
-    "email": "abdrhmanhamzaa@gmail.com",
-    "linkedin": "",
-    "photo": "abdlrhman-hamza.jpg",
-    "bio": { "en": "", "ar": "" },
-    "order": 12,
-    "active": true
-  }
+    {
+        "id":  "abdulaziz-albadawi",
+        "name":  {
+                     "en":  "Abdulaziz Albadawi",
+                     "ar":  "عبدالعزيز البداوي"
+                 },
+        "role":  {
+                     "en":  "President",
+                     "ar":  "الرئيس"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "abdulaziz-albadawi.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  1,
+        "active":  true
+    },
+    {
+        "id":  "khaled-ramadan",
+        "name":  {
+                     "en":  "Khaled Ramadan",
+                     "ar":  "خالد رمضان"
+                 },
+        "role":  {
+                     "en":  "Vice President",
+                     "ar":  "نائب الرئيس"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "khaled-ramadan.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  2,
+        "active":  true
+    },
+    {
+        "id":  "mohammed-elsherbiny",
+        "name":  {
+                     "en":  "Mohammed Elsherbiny",
+                     "ar":  "محمد الشربيني"
+                 },
+        "role":  {
+                     "en":  "Secretary",
+                     "ar":  "الأمين"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "mohammed-elsherbiny.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  3,
+        "active":  true
+    },
+    {
+        "id":  "arwa-elsherbiny",
+        "name":  {
+                     "en":  "Arwa Elsherbiny",
+                     "ar":  "أروى الشربيني"
+                 },
+        "role":  {
+                     "en":  "Treasurer",
+                     "ar":  "أمين الصندوق"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "arwa-elsherbiny.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  4,
+        "active":  true
+    },
+    {
+        "id":  "mariam-hussein",
+        "name":  {
+                     "en":  "Mariam Hussein",
+                     "ar":  "مريم حسين"
+                 },
+        "role":  {
+                     "en":  "Growth Officer",
+                     "ar":  "مسؤولة النمو"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "mariam-hussein.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  5,
+        "active":  true
+    },
+    {
+        "id":  "mohammed-khedr",
+        "name":  {
+                     "en":  "Mohammed Khedr",
+                     "ar":  "محمد خضر"
+                 },
+        "role":  {
+                     "en":  "Outreach Officer",
+                     "ar":  "مسؤول التوعية"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "mohammed-khedr.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  6,
+        "active":  true
+    },
+    {
+        "id":  "yahia-ghadiry",
+        "name":  {
+                     "en":  "Yahia Ghadiry",
+                     "ar":  "يحيى الغديري"
+                 },
+        "role":  {
+                     "en":  "Activities Officer",
+                     "ar":  "مسؤول الأنشطة"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "yahia-ghadiry.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  7,
+        "active":  true
+    },
+    {
+        "id":  "ahmed-magdy",
+        "name":  {
+                     "en":  "Ahmed Magdy",
+                     "ar":  "أحمد مجدي"
+                 },
+        "role":  {
+                     "en":  "Logistics Officer",
+                     "ar":  "مسؤول اللوجستيات"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "ahmed-magdy.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  8,
+        "active":  true
+    },
+    {
+        "id":  "omar-ayoub",
+        "name":  {
+                     "en":  "Omar Ayoub",
+                     "ar":  "عمر أيوب"
+                 },
+        "role":  {
+                     "en":  "QA Officer",
+                     "ar":  "مسؤول الجودة"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "omar-ayoub.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  9,
+        "active":  true
+    },
+    {
+        "id":  "abdelrhman-hassan",
+        "name":  {
+                     "en":  "Abdelrhman Hassan",
+                     "ar":  "عبدالرحمن حسن"
+                 },
+        "role":  {
+                     "en":  "Volunteers Officer",
+                     "ar":  "مسؤول المتطوعين"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "abdelrhman-hassan.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  10,
+        "active":  true
+    },
+    {
+        "id":  "islam-abduaal",
+        "name":  {
+                     "en":  "Islam Abduaal",
+                     "ar":  "إسلام عبدالعال"
+                 },
+        "role":  {
+                     "en":  "Webmaster",
+                     "ar":  "مسؤول الموقع"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "islam-abduaal.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  11,
+        "active":  true
+    },
+    {
+        "id":  "abdlrhman-hamza",
+        "name":  {
+                     "en":  "Abdlrhman Hamza",
+                     "ar":  "عبدالرحمن حمزة"
+                 },
+        "role":  {
+                     "en":  "Member",
+                     "ar":  "عضو"
+                 },
+        "term":  "2024-2025",
+        "institution":  {
+                            "en":  "",
+                            "ar":  ""
+                        },
+        "email":  "",
+        "linkedin":  "",
+        "photo":  "abdlrhman-hamza.jpg",
+        "bio":  {
+                    "en":  "",
+                    "ar":  ""
+                },
+        "order":  12,
+        "active":  true
+    }
 ]

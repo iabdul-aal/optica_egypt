@@ -1,4 +1,4 @@
-# Dependencies
+﻿# Dependencies
 node_modules/
 .pnp
 .pnp.js
@@ -44,3 +44,13 @@ yarn-error.log*
 # Misc
 *.tsbuildinfo
 next-env.d.ts
+
+# ─── Private / Internal (never commit) ──────────────────────────────────────
+.agents/
+data/members-private.json
+docs/MEMBER_MESSAGE.md
+docs/MEMBER_PHOTO_COLLECTION.md
+docs/PHOTO_EDIT_PROMPT.md
+docs/LEADERSHIP_PHOTOS.md
+docs/ASSET_PROMPTS.md
+data/members-roles.md
