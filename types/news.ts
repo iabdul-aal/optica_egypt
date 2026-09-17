@@ -1,4 +1,4 @@
-﻿export interface NewsItem {
+export interface NewsItem {
   id: string
   title: { en: string; ar: string }
   summary: { en: string; ar: string }

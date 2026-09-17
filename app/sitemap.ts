@@ -1,4 +1,4 @@
-﻿import type { MetadataRoute } from "next"
+import type { MetadataRoute } from "next"
 
 const BASE_URL = "https://optica-egypt.vercel.app"
 const LOCALES = ["en", "ar"]

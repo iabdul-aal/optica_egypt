@@ -1,7 +1,7 @@
-﻿import { test, expect } from "@playwright/test"
+import { test, expect } from "@playwright/test"
 
 const LOCALES = ["en", "ar"]
-const ROUTES = ["", "/about", "/events", "/leadership", "/outreach", "/resources", "/join"]
+const ROUTES = ["", "/about", "/events", "/community", "/leadership", "/outreach", "/resources", "/join"]
 
 for (const locale of LOCALES) {
   for (const route of ROUTES) {

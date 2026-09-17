@@ -1,4 +1,4 @@
-﻿import rawResources from "@/data/resources.json"
+import rawResources from "@/data/resources.json"
 import type { Resource } from "@/types/resource"
 
 const resources: Resource[] = rawResources as Resource[]

@@ -1,4 +1,4 @@
-﻿import rawEvents from "@/data/events.json"
+import rawEvents from "@/data/events.json"
 import type { Event } from "@/types/event"
 
 const events: Event[] = rawEvents as Event[]

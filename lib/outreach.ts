@@ -1,4 +1,4 @@
-﻿import rawOutreach from "@/data/outreach.json"
+import rawOutreach from "@/data/outreach.json"
 import type { OutreachItem } from "@/types/outreach"
 
 const outreach: OutreachItem[] = rawOutreach as OutreachItem[]

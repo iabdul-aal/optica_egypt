@@ -1,4 +1,4 @@
-﻿import config from "@/data/site_config.json"
+import config from "@/data/site_config.json"
 
 export const siteConfig = config
 

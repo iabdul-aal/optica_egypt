@@ -1,4 +1,4 @@
-﻿export interface OutreachItem {
+export interface OutreachItem {
   id: string
   title: { en: string; ar: string }
   description: { en: string; ar: string }

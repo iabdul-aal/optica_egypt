@@ -1,4 +1,4 @@
-﻿export interface Resource {
+export interface Resource {
   id: string
   title: { en: string; ar: string }
   description: { en: string; ar: string }

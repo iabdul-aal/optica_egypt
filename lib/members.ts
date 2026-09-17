@@ -1,4 +1,4 @@
-﻿import rawMembers from "@/data/members.json"
+import rawMembers from "@/data/members.json"
 import type { Member } from "@/types/member"
 
 const ROLE_ORDER = [

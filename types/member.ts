@@ -1,4 +1,4 @@
-﻿export interface Member {
+export interface Member {
   id: string
   name: { en: string; ar: string }
   role: { en: string; ar: string }

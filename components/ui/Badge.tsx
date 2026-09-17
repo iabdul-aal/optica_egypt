@@ -1,4 +1,4 @@
-﻿import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 export function Badge({ children, variant = "gold", className }: {
   children: React.ReactNode

@@ -1,4 +1,4 @@
-﻿import rawNews from "@/data/news.json"
+import rawNews from "@/data/news.json"
 import type { NewsItem } from "@/types/news"
 
 const news: NewsItem[] = rawNews as NewsItem[]
