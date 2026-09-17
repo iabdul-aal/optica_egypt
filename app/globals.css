@@ -1,0 +1,165 @@
+﻿@import "tailwindcss";
+
+/* ─── Egypt Local Design Tokens ─────────────────────────────────────────── */
+:root {
+  --background:        #09131F;
+  --surface:           #111827;
+  --surface-raised:    #1A2234;
+  --foreground:        #F1F5F9;
+  --foreground-muted:  #94A3B8;
+  --accent:            #00ADEF;
+  --accent-hover:      #33BEFF;
+  --accent-secondary:  #D4AF37;
+  --accent-gold-muted: rgba(212,175,55,0.15);
+  --border:            rgba(212,175,55,0.12);
+  --border-accent:     rgba(0,173,239,0.25);
+  --radius:            0.5rem;
+  --font-en:           var(--font-inter);
+  --font-ar:           var(--font-noto-arabic);
+  --font-display:      var(--font-montserrat);
+}
+
+[data-theme="light"] {
+  --background:        #FFFFFF;
+  --surface:           #F8FAFC;
+  --surface-raised:    #F1F5F9;
+  --foreground:        #1E293B;
+  --foreground-muted:  #64748B;
+  --border:            rgba(30,41,59,0.1);
+  --border-accent:     rgba(0,173,239,0.2);
+  --accent-gold-muted: rgba(212,175,55,0.08);
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-en), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+[dir="rtl"] body,
+[dir="rtl"] * {
+  font-family: var(--font-ar), system-ui, sans-serif;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display), var(--font-en), sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4 {
+  font-family: var(--font-ar), sans-serif;
+  letter-spacing: 0;
+}
+
+/* ─── Layout Utilities ───────────────────────────────────────────────────── */
+.container-page   { max-width: 80rem; margin-inline: auto; padding-inline: 1.5rem; }
+.container-narrow { max-width: 56rem; margin-inline: auto; padding-inline: 1.5rem; }
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  text-decoration: none;
+}
+.btn-primary:hover  { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,173,239,0.3); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: transparent;
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+  text-decoration: none;
+}
+.btn-secondary:hover { border-color: var(--accent-secondary); color: var(--accent-secondary); background: var(--accent-gold-muted); }
+
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.card:hover { border-color: var(--accent-secondary); box-shadow: 0 0 0 1px var(--accent-gold-muted); transform: translateY(-2px); }
+
+/* ─── Gold Accent Text ───────────────────────────────────────────────────── */
+.text-gold   { color: var(--accent-secondary); }
+.text-teal   { color: var(--accent); }
+.text-muted  { color: var(--foreground-muted); }
+
+/* ─── Gold Divider ───────────────────────────────────────────────────────── */
+.divider-gold {
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-secondary), transparent);
+  border: none;
+}
+
+/* ─── Section Spacing ────────────────────────────────────────────────────── */
+.section { padding-block: 5rem; }
+.section-sm { padding-block: 3rem; }
+
+/* ─── Empty State ────────────────────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  color: var(--foreground-muted);
+}
+.empty-state svg { opacity: 0.25; margin-inline: auto; margin-bottom: 1rem; }
+
+/* ─── Focus Styles ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection { background: rgba(0,173,239,0.25); color: var(--foreground); }

@@ -1,0 +1,25 @@
+﻿{
+  "name": { "en": "Optica Egypt Local Section", "ar": "قسم أوبتيكا مصر المحلي" },
+  "shortName": { "en": "Optica Egypt", "ar": "أوبتيكا مصر" },
+  "tagline": { "en": "Connecting Talent. Advancing Photonics.", "ar": "نربط المواهب. نقدّم الفوتونيات." },
+  "founded": "2026",
+  "email": "opticaegypt@gmail.com",
+  "joinFormUrl": "https://forms.gle/placeholder",
+  "driveUrl": "https://drive.google.com/drive/folders/1_pzdKToj0i_mPpY1oVYkbYakw0-xxfPc",
+  "social": {
+    "linkedin": "optica-egypt-local-section",
+    "instagram": "opticaegypt",
+    "twitter": "opticaegypt",
+    "youtube": ""
+  },
+  "parentOrg": {
+    "name": "Optica",
+    "url": "https://www.optica.org"
+  },
+  "seo": {
+    "defaultTitle": "Optica Egypt Local Section",
+    "titleTemplate": "%s | Optica Egypt",
+    "defaultDescription": "Optica Egypt Local Section connects Egypt's photonics community — students, researchers, universities, industry, and startups — to the global photonics ecosystem.",
+    "siteUrl": "https://optica-egypt.vercel.app"
+  }
+}

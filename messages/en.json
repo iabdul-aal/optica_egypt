@@ -1,0 +1,107 @@
+﻿{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "events": "Events",
+    "community": "Community",
+    "leadership": "Leadership",
+    "outreach": "Outreach",
+    "resources": "Resources",
+    "join": "Join Us"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Optica Egypt Local Section",
+      "title": "Connecting Talent.\nAdvancing Photonics.",
+      "subtitle": "We bring together students, researchers, universities, industry, and startups across Egypt to the global photonics community.",
+      "cta_primary": "Join the Section",
+      "cta_secondary": "View Events"
+    },
+    "events_preview": {
+      "heading": "Upcoming Events",
+      "empty": "Our first events are being planned. Check back soon.",
+      "view_all": "View all events"
+    },
+    "news": {
+      "heading": "Latest News",
+      "view_all": "View all news"
+    },
+    "audience": {
+      "heading": "Who We Serve",
+      "students": { "title": "Students", "body": "Access mentorship, workshops, and a network of photonics professionals from day one." },
+      "researchers": { "title": "Researchers", "body": "Connect with peers, share work, and collaborate across Egyptian universities and institutions." },
+      "industry": { "title": "Industry", "body": "Engage with emerging talent, present at our events, and shape the next generation of photonics engineers." },
+      "startups": { "title": "Startups", "body": "Tap into technical expertise, academic partnerships, and a growing photonics ecosystem in Egypt." }
+    }
+  },
+  "about": {
+    "heading": "About Us",
+    "mission_label": "Our Mission",
+    "mission": "To nurture photonics talent, foster collaboration and innovation, and create stronger pathways between Egypt and the global photonics community through knowledge exchange, professional engagement, and meaningful opportunities.",
+    "vision_label": "Our Vision",
+    "vision": "A thriving, connected photonics community in Egypt that contributes to global science and drives local innovation.",
+    "founded_label": "Founded",
+    "affiliation_label": "Global Affiliation",
+    "affiliation": "Optica — The society for optics and photonics"
+  },
+  "events": {
+    "heading": "Events",
+    "subheading": "Seminars, workshops, and community gatherings",
+    "filter_all": "All",
+    "filter_upcoming": "Upcoming",
+    "filter_past": "Past",
+    "empty_upcoming": "No upcoming events yet. Our first event is being planned — follow us to be the first to know.",
+    "empty_past": "No past events yet. We are just getting started.",
+    "register": "Register",
+    "free": "Free"
+  },
+  "community": {
+    "heading": "Our Community",
+    "subheading": "Students, researchers, and professionals united by photonics",
+    "join_cta": "Become a Member"
+  },
+  "leadership": {
+    "heading": "Leadership Team",
+    "subheading": "The officers running Optica Egypt Local Section",
+    "term_label": "Term",
+    "email_label": "Email",
+    "linkedin_label": "LinkedIn"
+  },
+  "outreach": {
+    "heading": "Outreach",
+    "subheading": "Taking photonics beyond the lab",
+    "empty": "Our outreach programme is launching soon. We are planning activities across Egyptian universities and schools.",
+    "reach_label": "People reached"
+  },
+  "resources": {
+    "heading": "Resources",
+    "subheading": "Curated tools, journals, and opportunities for the photonics community",
+    "free_badge": "Free",
+    "visit": "Visit"
+  },
+  "join": {
+    "heading": "Join Optica Egypt",
+    "subheading": "Be part of Egypt's photonics community",
+    "body": "Whether you are a student discovering photonics for the first time or an experienced researcher, there is a place for you here. Membership is open to all.",
+    "cta": "Apply to Join",
+    "contact_heading": "Contact Us",
+    "contact_body": "Have a question or want to collaborate?"
+  },
+  "footer": {
+    "tagline": "Connecting Talent. Advancing Photonics.",
+    "affiliation": "A Local Section of Optica",
+    "copyright": "Optica Egypt Local Section. All rights reserved.",
+    "links": "Quick Links"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "back": "Back",
+    "read_more": "Read more",
+    "learn_more": "Learn more",
+    "coming_soon": "Coming soon",
+    "new": "New",
+    "toggle_theme": "Toggle theme",
+    "toggle_language": "العربية"
+  }
+}

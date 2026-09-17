@@ -1,0 +1,47 @@
+﻿[
+  {
+    "id": "optica-home",
+    "title": { "en": "Optica — Global Hub for Optics and Photonics", "ar": "أوبتيكا — المحور العالمي للبصريات والفوتونيات" },
+    "description": { "en": "Access journals, conferences, career tools, and the global photonics community.", "ar": "الوصول إلى المجلات والمؤتمرات وأدوات المهنة ومجتمع الفوتونيات العالمي." },
+    "url": "https://www.optica.org",
+    "category": "community",
+    "tags": ["optica", "global", "membership"],
+    "free": false
+  },
+  {
+    "id": "optica-open-access",
+    "title": { "en": "Optica Open — Open Access Journals", "ar": "أوبتيكا أوبن — مجلات الوصول المفتوح" },
+    "description": { "en": "Free open-access journals covering all areas of optics and photonics research.", "ar": "مجلات مفتوحة المصدر تغطي جميع مجالات بحوث البصريات والفوتونيات." },
+    "url": "https://opg.optica.org",
+    "category": "journal",
+    "tags": ["journal", "open-access", "research"],
+    "free": true
+  },
+  {
+    "id": "spie",
+    "title": { "en": "SPIE — The International Society for Optics and Photonics", "ar": "SPIE — الجمعية الدولية للبصريات والفوتونيات" },
+    "description": { "en": "Conferences, publications, and education in optics, photonics, and imaging.", "ar": "مؤتمرات ومنشورات وتعليم في البصريات والفوتونيات والتصوير." },
+    "url": "https://www.spie.org",
+    "category": "community",
+    "tags": ["spie", "conference", "research"],
+    "free": false
+  },
+  {
+    "id": "arxiv-physics-optics",
+    "title": { "en": "arXiv Physics — Optics Preprints", "ar": "أرXiv — البصريات — ما قبل الطباعة" },
+    "description": { "en": "Free preprint server for optics and photonics research papers before peer review.", "ar": "خادم مجاني لأوراق البحث في البصريات قبل المراجعة العلمية." },
+    "url": "https://arxiv.org/list/physics.optics/recent",
+    "category": "journal",
+    "tags": ["preprint", "free", "research"],
+    "free": true
+  },
+  {
+    "id": "photonics-spectra",
+    "title": { "en": "Photonics Spectra", "ar": "فوتونيكس سبيكترا" },
+    "description": { "en": "Industry news and technical articles covering photonics, lasers, and imaging.", "ar": "أخبار الصناعة ومقالات تقنية تغطي الفوتونيات والليزر والتصوير." },
+    "url": "https://www.photonics.com",
+    "category": "learning",
+    "tags": ["news", "industry", "learning"],
+    "free": true
+  }
+]
