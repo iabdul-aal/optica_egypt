@@ -1,47 +1,120 @@
 [
   {
-    "id": "optica-home",
-    "title": { "en": "Optica — Global Hub for Optics and Photonics", "ar": "أوبتيكا — المحور العالمي للبصريات والفوتونيات" },
-    "description": { "en": "Access journals, conferences, career tools, and the global photonics community.", "ar": "الوصول إلى المجلات والمؤتمرات وأدوات المهنة ومجتمع الفوتونيات العالمي." },
-    "url": "https://www.optica.org",
-    "category": "community",
-    "tags": ["optica", "global", "membership"],
-    "free": false
-  },
-  {
-    "id": "optica-open-access",
-    "title": { "en": "Optica Open — Open Access Journals", "ar": "أوبتيكا أوبن — مجلات الوصول المفتوح" },
-    "description": { "en": "Free open-access journals covering all areas of optics and photonics research.", "ar": "مجلات مفتوحة المصدر تغطي جميع مجالات بحوث البصريات والفوتونيات." },
+    "id": "optica-publishing-group",
+    "title": {
+      "en": "Optica Publishing Group, Peer-Reviewed Journals",
+      "ar": "مجموعة أوبتيكا للنشر, دوريات علمية محكمة"
+    },
+    "description": {
+      "en": "Access Optica, Optics Express, Applied Optics, and the largest peer-reviewed digital library in optics and photonics.",
+      "ar": "الوصول إلى مجلات أوبتيكا وأوبتيكس إكسبريس وأكبر مكتبة رقمية محكمة عالمياً في علوم الضوئيات."
+    },
     "url": "https://opg.optica.org",
     "category": "journal",
-    "tags": ["journal", "open-access", "research"],
+    "tags": [
+      "optica",
+      "peer-reviewed",
+      "research"
+    ],
     "free": true
   },
   {
-    "id": "spie",
-    "title": { "en": "SPIE — The International Society for Optics and Photonics", "ar": "SPIE — الجمعية الدولية للبصريات والفوتونيات" },
-    "description": { "en": "Conferences, publications, and education in optics, photonics, and imaging.", "ar": "مؤتمرات ومنشورات وتعليم في البصريات والفوتونيات والتصوير." },
-    "url": "https://www.spie.org",
-    "category": "community",
-    "tags": ["spie", "conference", "research"],
-    "free": false
+    "id": "gdsfactory-pic-design",
+    "title": {
+      "en": "gdsfactory, Open-Source Silicon Photonics Design",
+      "ar": "جي دي إس فاكتوري, تصميم الدوائر الضوئية مفتوحة المصدر"
+    },
+    "description": {
+      "en": "Python framework for layout, design rule checking, and tapeout verification of Photonic Integrated Circuits (PICs).",
+      "ar": "إطار عمل بلغة بايثون لتصميم وتخطيط ومراجعة رقائق السيليكون الضوئية والدوائر المتكاملة."
+    },
+    "url": "https://gdsfactory.github.io/gdsfactory/",
+    "category": "software",
+    "tags": [
+      "pic",
+      "python",
+      "eda",
+      "open-source"
+    ],
+    "free": true
+  },
+  {
+    "id": "meep-fdtd-simulation",
+    "title": {
+      "en": "Meep FDTD, Electromagnetic Wave Solver",
+      "ar": "مييب, محاكي الموجات الكهرومغناطيسية بتقنية FDTD"
+    },
+    "description": {
+      "en": "MIT open-source finite-difference time-domain (FDTD) simulation software package for electrodynamics and optical physics.",
+      "ar": "حزمة محاكاة متقدمة من معهد MIT مفتوحة المصدر لحل معادلات ماكسويل ودراسة انتشار الضوء."
+    },
+    "url": "https://meep.readthedocs.io",
+    "category": "software",
+    "tags": [
+      "simulation",
+      "fdtd",
+      "mit",
+      "physics"
+    ],
+    "free": true
+  },
+  {
+    "id": "optica-foundation-grants",
+    "title": {
+      "en": "Optica Foundation Student Travel Grants and Fellowships",
+      "ar": "منح السفر والزمالات البحثية من مؤسسة أوبتيكا"
+    },
+    "description": {
+      "en": "International travel funding, Amplify scholarships, and career advancement awards for optical science students and researchers.",
+      "ar": "تمويل السفر الدولي لحضور المؤتمرات ومنح الدعم المالي والزمالات لطلاب وباحثي علوم البصريات."
+    },
+    "url": "https://www.optica.org/foundation/opportunities/",
+    "category": "grants",
+    "tags": [
+      "scholarship",
+      "travel-grant",
+      "funding",
+      "students"
+    ],
+    "free": true
   },
   {
     "id": "arxiv-physics-optics",
-    "title": { "en": "arXiv Physics — Optics Preprints", "ar": "أرXiv — البصريات — ما قبل الطباعة" },
-    "description": { "en": "Free preprint server for optics and photonics research papers before peer review.", "ar": "خادم مجاني لأوراق البحث في البصريات قبل المراجعة العلمية." },
+    "title": {
+      "en": "arXiv Physics, Optics and Quantum Preprints",
+      "ar": "أرشيف الفيزياء, أحدث الأوراق البحثية في البصريات"
+    },
+    "description": {
+      "en": "Free repository of open-access preprint research manuscripts covering fundamental and applied optical physics.",
+      "ar": "مستودع عالمي مجاني للأوراق البحثية الحديثة في فيزياء البصريات والضوئيات قبل النشر النهائي."
+    },
     "url": "https://arxiv.org/list/physics.optics/recent",
     "category": "journal",
-    "tags": ["preprint", "free", "research"],
+    "tags": [
+      "preprint",
+      "free",
+      "research",
+      "arxiv"
+    ],
     "free": true
   },
   {
-    "id": "photonics-spectra",
-    "title": { "en": "Photonics Spectra", "ar": "فوتونيكس سبيكترا" },
-    "description": { "en": "Industry news and technical articles covering photonics, lasers, and imaging.", "ar": "أخبار الصناعة ومقالات تقنية تغطي الفوتونيات والليزر والتصوير." },
+    "id": "photonics-spectra-tech",
+    "title": {
+      "en": "Photonics Spectra, DeepTech Industry Analysis",
+      "ar": "فوتونيكس سبيكترا, تحليلات صناعة الضوئيات"
+    },
+    "description": {
+      "en": "Leading industry analysis covering lasers, fiber optics, sensors, imaging, and photonics manufacturing breakthroughs.",
+      "ar": "المجلة الرائدة في رصد التطورات الصناعية في مجالات الليزر والألياف الضوئية والحساسات."
+    },
     "url": "https://www.photonics.com",
     "category": "learning",
-    "tags": ["news", "industry", "learning"],
+    "tags": [
+      "industry",
+      "lasers",
+      "technology"
+    ],
     "free": true
   }
 ]

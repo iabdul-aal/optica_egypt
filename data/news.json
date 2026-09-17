@@ -7,10 +7,38 @@
     },
     "summary": {
       "en": "We are proud to announce the establishment of the Optica Egypt Local Section, connecting Egypt's photonics and optics community to the global Optica network.",
-      "ar": "يسعدنا الإعلان عن تأسيس قسم أوبتيكا مصر المحلي، الذي يربط مجتمع الفوتونيات والبصريات في مصر بالشبكة العالمية لأوبتيكا."
+      "ar": "يسعدنا الإعلان عن تأسيس قسم أوبتيكا مصر المحلي، الذي يربط مجتمع الضوئيات والبصريات في مصر بالشبكة العالمية لأوبتيكا."
     },
     "date": "2026-09-17",
     "category": "announcement",
+    "published": true
+  },
+  {
+    "id": "symposium-cfp-2026",
+    "title": {
+      "en": "Call for Abstracts Open: 2026 Egyptian Photonics Symposium",
+      "ar": "فتح باب تقديم الملخصات البحثية للمؤتمر السنوي 2026"
+    },
+    "summary": {
+      "en": "Researchers and graduate investigators are invited to submit original abstracts in silicon photonics, laser physics, and optical telecommunications.",
+      "ar": "دعوة للباحثين والأكاديميين لتقديم ملخصاتهم البحثية في مجالات رقائق السيليكون الضوئية وتطبيقات الليزر والاتصالات."
+    },
+    "date": "2026-09-20",
+    "category": "symposium",
+    "published": true
+  },
+  {
+    "id": "optica-foundation-grants-round1",
+    "title": {
+      "en": "Optica Foundation Announces International Travel Awards",
+      "ar": "مؤسسة أوبتيكا تعلن عن منح السفر والمؤتمرات الدولية"
+    },
+    "summary": {
+      "en": "Egyptian undergraduate and postgraduate researchers can apply for direct international travel support to present at global Optica technical congresses.",
+      "ar": "يمكن للباحثين والطلاب في مصر التقديم لنيل دعم مالي كامل للسفر والمشاركة في مؤتمرات أوبتيكا التخصصية الدولية."
+    },
+    "date": "2026-09-25",
+    "category": "scholarship",
     "published": true
   }
 ]

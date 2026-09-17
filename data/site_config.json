@@ -19,7 +19,7 @@
   "seo": {
     "defaultTitle": "Optica Egypt Local Section",
     "titleTemplate": "%s | Optica Egypt",
-    "defaultDescription": "Optica Egypt Local Section connects Egypt's photonics community — students, researchers, universities, industry, and startups — to the global photonics ecosystem.",
+    "defaultDescription": "Optica Egypt Local Section connects Egypt's photonics community, including students, researchers, universities, industry, and startups, to the global photonics ecosystem.",
     "siteUrl": "https://optica-egypt.vercel.app"
   }
 }

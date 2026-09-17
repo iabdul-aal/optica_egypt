@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* ─── Optica Egypt Brand Identity Design System ───────────────────────────── */
+/* ─── Optica Egypt Modern Tech Identity Design System ─────────────────────── */
 :root {
-  /* Exact Colors from Brand Sheet */
+  /* Brand Sheet Core Palette */
   --color-primary-gold: #D4AF37;
   --color-dark-navy:    #010F14;
   --color-charcoal:     #1A1F26;
@@ -10,37 +10,42 @@
   --color-white:        #FFFFFF;
   --color-accent-blue:  #00B4FF;
 
-  /* Semantic Theme Tokens (Dark by default) */
-  --background:        #010F14;
-  --surface:           #1A1F26;
-  --surface-raised:    #222933;
+  /* Theme Tokens (Dark by default - Akhetonics / Tech style) */
+  --background:        #010E17;
+  --background-alt:    #051522;
+  --surface:           rgba(26, 31, 38, 0.7);
+  --surface-raised:    rgba(34, 41, 51, 0.85);
   --foreground:        #FFFFFF;
   --foreground-muted:  #94A3B8;
   --accent:            #00B4FF;
-  --accent-hover:      #33C5FF;
+  --accent-hover:      #38BDF8;
   --accent-secondary:  #D4AF37;
-  --accent-gold-muted: rgba(212, 175, 55, 0.15);
+  --accent-gold-muted: rgba(212, 175, 55, 0.12);
   --border:            rgba(212, 175, 55, 0.18);
-  --border-accent:     rgba(0, 180, 255, 0.3);
-  --radius:            1rem;
+  --border-subtle:     rgba(255, 255, 255, 0.08);
+  --border-glow:       rgba(212, 175, 55, 0.45);
+  --radius:            1.25rem;
   --font-en:           var(--font-inter);
   --font-ar:           var(--font-noto-arabic);
   --font-display:      var(--font-montserrat);
 
-  /* Brand Gradients */
-  --gold-gradient:      linear-gradient(90deg, #D4AF37 0%, #F7E7A1 50%, #D4AF37 100%);
-  --light-beam-gradient: linear-gradient(90deg, #00B4FF 0%, #00E5FF 40%, #D4AF37 100%);
+  /* Gradients */
+  --gold-gradient:       linear-gradient(135deg, #F7E7A1 0%, #D4AF37 50%, #AA820A 100%);
+  --light-beam-gradient: linear-gradient(90deg, #00B4FF 0%, #00F0FF 40%, #D4AF37 100%);
+  --glass-gradient:      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
 }
 
 [data-theme="light"] {
-  --background:        #FFFFFF;
-  --surface:           #F8FAFC;
-  --surface-raised:    #F1F5F9;
-  --foreground:        #010F14;
+  --background:        #FAFAFA;
+  --background-alt:    #F1F5F9;
+  --surface:           rgba(255, 255, 255, 0.85);
+  --surface-raised:    #FFFFFF;
+  --foreground:        #0F172A;
   --foreground-muted:  #475569;
-  --border:            rgba(212, 175, 55, 0.25);
-  --border-accent:     rgba(0, 180, 255, 0.25);
+  --border:            rgba(212, 175, 55, 0.3);
+  --border-subtle:     rgba(0, 0, 0, 0.06);
   --accent-gold-muted: rgba(212, 175, 55, 0.1);
+  --glass-gradient:    linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.005) 100%);
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
@@ -59,6 +64,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 300ms ease, color 300ms ease;
+  overflow-x: hidden;
 }
 
 [dir="rtl"] body,
@@ -66,12 +72,12 @@ body {
   font-family: var(--font-ar), system-ui, sans-serif;
 }
 
-/* ─── Typography (Montserrat Headings, Inter Body) ────────────────────────── */
+/* ─── Typography (Montserrat & Inter) ────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display), var(--font-en), sans-serif;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
 [dir="rtl"] h1,
@@ -84,33 +90,58 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
 }
 
-/* ─── Layout Utilities ───────────────────────────────────────────────────── */
-.container-page   { max-width: 80rem; margin-inline: auto; padding-inline: 1.5rem; }
-.container-narrow { max-width: 56rem; margin-inline: auto; padding-inline: 1.5rem; }
+/* ─── Modern Glassmorphism & Tech Cards ──────────────────────────────────── */
+.glass-panel {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel:hover {
+  border-color: var(--border);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(212, 175, 55, 0.15);
+}
 
-/* ─── UI Components: Pill Buttons (from Brand Sheet) ─────────────────────── */
+.glass-panel-gold {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-gold:hover {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px -5px rgba(212, 175, 55, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ─── Pill Buttons (Akhetonics & Brand Sheet Style) ───────────────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  background: var(--accent-secondary);
-  color: #010F14 !important;
+  gap: 0.625rem;
+  padding: 0.85rem 2rem;
+  background: var(--gold-gradient);
+  color: #010E17 !important;
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
-  border-radius: 9999px; /* Pill */
+  border-radius: 9999px;
   border: none;
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 .btn-primary:hover {
-  background: var(--color-light-gold);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  filter: brightness(1.05);
 }
 .btn-primary:active { transform: translateY(0); }
 
@@ -118,43 +149,58 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.75rem;
-  background: rgba(26, 31, 38, 0.6);
+  gap: 0.625rem;
+  padding: 0.85rem 2rem;
+  background: rgba(26, 31, 38, 0.5);
   color: var(--foreground) !important;
   font-weight: 600;
   font-size: 0.95rem;
-  border-radius: 9999px; /* Pill */
-  border: 1px solid var(--accent-secondary);
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  backdrop-blur: 4px;
 }
 .btn-secondary:hover {
-  border-color: var(--color-light-gold);
-  background: rgba(212, 175, 55, 0.15);
-  color: var(--accent-secondary) !important;
-  transform: translateY(-1px);
+  border-color: var(--accent-secondary);
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--color-light-gold) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -5px rgba(212, 175, 55, 0.2);
 }
 
-/* ─── Cards (from Brand Sheet) ───────────────────────────────────────────── */
+.btn-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: var(--accent-secondary);
+}
+
+/* ─── Cards ──────────────────────────────────────────────────────────────── */
 .card {
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  transition: all 250ms ease;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card:hover {
-  border-color: var(--accent-secondary);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-secondary);
+  border-color: var(--border);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(212, 175, 55, 0.2);
   transform: translateY(-3px);
 }
 
-/* ─── Brand Gradient Accent Text ─────────────────────────────────────────── */
-.text-gold {
-  color: var(--accent-secondary);
-}
+/* ─── Gradients & Text Effects ───────────────────────────────────────────── */
 .text-gold-gradient {
   background: var(--gold-gradient);
   -webkit-background-clip: text;
@@ -165,16 +211,28 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.text-teal {
-  color: var(--accent);
-}
-.text-muted {
-  color: var(--foreground-muted);
+.text-gold  { color: var(--accent-secondary); }
+.text-teal  { color: var(--accent); }
+.text-muted { color: var(--foreground-muted); }
+
+/* ─── High-Tech Grid Lines Background ────────────────────────────────────── */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-/* ─── Gold Divider ───────────────────────────────────────────────────────── */
+/* ─── Optical Glowing Line ───────────────────────────────────────────────── */
+.optical-glow-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-secondary) 50%, transparent 100%);
+  opacity: 0.4;
+}
+
 .divider-gold {
-  width: 4rem;
+  width: 5rem;
   height: 2px;
   background: var(--gold-gradient);
   border: none;
@@ -182,36 +240,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Section Spacing ────────────────────────────────────────────────────── */
-.section { padding-block: 5rem; }
-.section-sm { padding-block: 3rem; }
+.section { padding-block: 6rem; }
+.section-sm { padding-block: 3.5rem; }
 
-/* ─── Empty State ────────────────────────────────────────────────────────── */
-.empty-state {
-  text-align: center;
-  padding: 4rem 1.5rem;
-  color: var(--foreground-muted);
-}
-.empty-state svg { opacity: 0.3; margin-inline: auto; margin-bottom: 1rem; }
-
-/* ─── Focus Styles ───────────────────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid var(--accent-secondary);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* ─── Reduced Motion ─────────────────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+/* ─── Containers ─────────────────────────────────────────────────────────── */
+.container-page   { max-width: 82rem; margin-inline: auto; padding-inline: 1.5rem; }
+.container-narrow { max-width: 58rem; margin-inline: auto; padding-inline: 1.5rem; }
 
 /* ─── Selection ──────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(212, 175, 55, 0.3);
+  background: rgba(212, 175, 55, 0.35);
   color: #FFFFFF;
 }

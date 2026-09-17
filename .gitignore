@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 .pnp
 .pnp.js
@@ -54,3 +54,4 @@ docs/PHOTO_EDIT_PROMPT.md
 docs/LEADERSHIP_PHOTOS.md
 docs/ASSET_PROMPTS.md
 data/members-roles.md
+scratch/

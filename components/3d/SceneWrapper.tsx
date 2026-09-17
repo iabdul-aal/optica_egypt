@@ -15,7 +15,7 @@ interface SceneWrapperProps {
 
 export function SceneWrapper({
   fallbackSrc,
-  fallbackAlt = { en: "Optics visualization", ar: "ØªØµÙˆØ± Ø¨ØµØ±ÙŠ" },
+  fallbackAlt = { en: "Optics visualization", ar: "تصور بصري متقدم" },
   fallbackPlaceholder,
   children,
   className = "",
@@ -36,7 +36,10 @@ export function SceneWrapper({
     let webglSupported = false
     try {
       const canvas = document.createElement("canvas")
-      webglSupported = !!(window.WebGLRenderingContext && (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")))
+      webglSupported = !!(
+        window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+      )
     } catch {
       webglSupported = false
     }
@@ -46,15 +49,10 @@ export function SceneWrapper({
     }
   }, [])
 
-  if (!mounted) {
-    return (
-      <div className={`relative w-full ${height} overflow-hidden ${className} flex items-center justify-center bg-[#09131F]`}>
-        <div className="w-8 h-8 rounded-full border-2 border-[var(--accent-secondary)] border-t-transparent animate-spin" />
-      </div>
-    )
-  }
-
   const renderFallback = () => {
+    if (fallbackPlaceholder) {
+      return fallbackPlaceholder
+    }
     if (fallbackSrc) {
       return (
         <div className="relative w-full h-full">
@@ -69,9 +67,6 @@ export function SceneWrapper({
         </div>
       )
     }
-    if (fallbackPlaceholder) {
-      return fallbackPlaceholder
-    }
     return (
       <div className="relative w-full h-full flex items-center justify-center bg-[#09131F] overflow-hidden">
         {/* Optical grid lines */}
@@ -80,8 +75,16 @@ export function SceneWrapper({
           <div className="w-12 h-12 rounded-full border border-[var(--accent-secondary)] flex items-center justify-center">
             <div className="w-4 h-4 rounded-full bg-[var(--accent)] animate-pulse" />
           </div>
-          <p className="text-xs uppercase tracking-widest text-[var(--accent-secondary)]">Optica Egypt Photonics</p>
+          <p className="text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-mono">Optica Egypt Photonics</p>
         </div>
+      </div>
+    )
+  }
+
+  if (!mounted) {
+    return (
+      <div className={`relative w-full ${height} overflow-hidden ${className}`}>
+        {renderFallback()}
       </div>
     )
   }

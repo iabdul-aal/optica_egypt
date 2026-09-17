@@ -3,8 +3,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { getUpcomingEvents } from "@/lib/events"
 import { getLatestNews } from "@/lib/news"
 import { HeroSection } from "@/components/sections/HeroSection"
+import { ImpactMetrics } from "@/components/sections/ImpactMetrics"
+import { DomainsShowcase } from "@/components/sections/DomainsShowcase"
 import { AudienceSection } from "@/components/sections/AudienceSection"
 import { EventsPreview } from "@/components/sections/EventsPreview"
+import { OpticaHeritage } from "@/components/sections/OpticaHeritage"
 import { NewsSection } from "@/components/sections/NewsSection"
 import { WaveSection } from "@/components/sections/WaveSection"
 
@@ -39,10 +42,12 @@ export default async function HomePage({
   return (
     <>
       <HeroSection />
-      <AudienceSection />
-      {/* 3D Scene B: Wave Interference Strip */}
+      <ImpactMetrics />
+      <DomainsShowcase />
       <WaveSection />
+      <AudienceSection />
       <EventsPreview events={upcomingEvents} />
+      <OpticaHeritage />
       <NewsSection news={latestNews} />
     </>
   )

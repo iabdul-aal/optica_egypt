@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation"
 import { useTranslations, useLocale } from "next-intl"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
 import { cn } from "@/lib/utils"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowRight } from "lucide-react"
 
 const ROUTES = [
   { key: "home",       path: "" },
@@ -17,7 +17,6 @@ const ROUTES = [
   { key: "leadership", path: "/leadership" },
   { key: "outreach",   path: "/outreach" },
   { key: "resources",  path: "/resources" },
-  { key: "join",       path: "/join" },
 ] as const
 
 export function Header() {
@@ -30,51 +29,35 @@ export function Header() {
   const otherLocale = locale === "en" ? "ar" : "en"
   const otherPath = pathname.replace(`/${locale}`, `/${otherLocale}`)
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [pathname])
 
-  // Prevent scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [mobileMenuOpen])
-
   return (
     <>
-      {/* Skip to Content Accessible Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-[var(--accent-secondary)] text-[#09131F] font-bold rounded-md shadow-lg outline-none focus:ring-2 focus:ring-[#00ADEF]"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-[var(--accent-secondary)] text-[#010E17] font-bold rounded-full shadow-xl"
       >
         {tc("skip_to_content")}
       </a>
 
-      <header
-        style={{ borderBottom: "1px solid var(--border)", background: "var(--background)" }}
-        className="sticky top-0 z-50 backdrop-blur-md bg-opacity-95"
-      >
-        <div className="container-page flex items-center justify-between py-3 gap-4">
-          {/* Brand Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-3 shrink-0" aria-label="Optica Egypt Home">
+      {/* Modern Floating Header Bar (Entor Tech & Akhetonics inspired) */}
+      <header className="sticky top-0 z-50 w-full pt-3 pb-2 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 py-2.5 rounded-full bg-[#010E17]/85 dark:bg-[#010E17]/85 backdrop-blur-xl border border-[#D4AF37]/25 shadow-2xl transition-all">
+          {/* Logo */}
+          <Link href={`/${locale}`} className="flex items-center shrink-0 pr-4" aria-label="Optica Egypt Home">
             <Image
               src="/assets/brand/egypt/logo/optica-egypt-logo.png"
               alt="Optica Egypt Local Section"
-              width={140}
-              height={44}
+              width={160}
+              height={48}
               className="h-9 md:h-10 w-auto object-contain"
               priority
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Centered Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
             {ROUTES.map(({ key, path }) => {
               const href = `/${locale}${path}`
@@ -84,76 +67,76 @@ export function Header() {
                   key={key}
                   href={href}
                   className={cn(
-                    "px-3 py-2 rounded-lg text-sm font-medium transition-colors relative group",
+                    "px-3.5 py-1.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all duration-200",
                     active
-                      ? "text-[var(--accent-secondary)] bg-[var(--accent-gold-muted)] font-semibold"
-                      : "text-[var(--foreground-muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)]"
+                      ? "text-[#D4AF37] bg-[rgba(212,175,55,0.15)] shadow-inner"
+                      : "text-slate-300 hover:text-white hover:bg-white/5"
                   )}
                   aria-current={active ? "page" : undefined}
                 >
                   {t(key)}
-                  <span
-                    className={cn(
-                      "absolute bottom-0 left-3 right-3 h-[2px] bg-[var(--accent-secondary)] transition-transform duration-200 origin-left scale-x-0 group-hover:scale-x-100",
-                      active && "scale-x-100",
-                      locale === "ar" && "origin-right"
-                    )}
-                  />
                 </Link>
               )
             })}
           </nav>
 
-          {/* Desktop Right Actions */}
+          {/* Right Actions */}
           <div className="hidden sm:flex items-center gap-3 shrink-0">
+            {/* Language Switch Pill */}
             <Link
               href={otherPath}
-              className="text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--accent-secondary)] transition-colors px-2 py-1.5 rounded-md hover:bg-[var(--surface)]"
-              aria-label="Toggle language"
+              className="px-3 py-1 rounded-full text-xs font-bold text-slate-300 hover:text-[#D4AF37] hover:bg-white/5 border border-white/10 transition-colors"
             >
               {tc("toggle_language")}
             </Link>
+
             <ThemeToggle />
-            <Link href={`/${locale}/join`} className="btn-primary text-sm py-2 px-4 shadow-sm">
-              {t("join")}
+
+            {/* Join CTA Pill Button */}
+            <Link
+              href={`/${locale}/join`}
+              className="btn-primary text-xs py-2 px-5"
+            >
+              <span>{t("join")}</span>
+              <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
             </Link>
           </div>
 
-          {/* Mobile Right Controls */}
+          {/* Mobile Hamburger */}
           <div className="flex sm:hidden items-center gap-2">
             <ThemeToggle />
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[var(--foreground-muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+              className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none"
               aria-label={mobileMenuOpen ? tc("close_menu") : tc("open_menu")}
-              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
 
-          {/* Tablet Hamburger (hidden on lg and sm) */}
+          {/* Tablet Hamburger (hidden on lg & sm) */}
           <div className="hidden sm:flex lg:hidden items-center gap-2">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[var(--foreground-muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+              className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none"
               aria-label={mobileMenuOpen ? tc("close_menu") : tc("open_menu")}
-              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
+        {/* Akhetonics-inspired Hairline Glow Line */}
+        <div className="max-w-7xl mx-auto mt-2 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
+
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div
-            className="lg:hidden fixed inset-x-0 top-[61px] bottom-0 z-40 bg-[var(--background)]/98 backdrop-blur-lg border-b border-[var(--border)] overflow-y-auto p-6 flex flex-col justify-between animate-in fade-in slide-in-from-top-4 duration-200"
+            className="lg:hidden fixed inset-x-4 top-20 z-50 p-6 rounded-3xl bg-[#010E17]/95 backdrop-blur-2xl border border-[#D4AF37]/30 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200"
             role="dialog"
             aria-modal="true"
-            aria-label="Mobile navigation"
           >
             <nav className="flex flex-col gap-2" aria-label="Mobile navigation links">
               {ROUTES.map(({ key, path }) => {
@@ -165,27 +148,26 @@ export function Header() {
                     href={href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "px-4 py-3 rounded-lg text-base font-medium transition-colors flex items-center justify-between",
+                      "px-4 py-3 rounded-2xl text-sm font-semibold transition-colors flex items-center justify-between",
                       active
-                        ? "text-[var(--accent-secondary)] bg-[var(--accent-gold-muted)] font-semibold"
-                        : "text-[var(--foreground-muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)]"
+                        ? "text-[#D4AF37] bg-[rgba(212,175,55,0.15)]"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
                     )}
-                    aria-current={active ? "page" : undefined}
                   >
                     <span>{t(key)}</span>
-                    {active && <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-secondary)]" />}
+                    {active && <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />}
                   </Link>
                 )
               })}
             </nav>
 
-            <div className="pt-6 border-t border-[var(--border)] flex flex-col gap-4 mt-6">
+            <div className="pt-5 border-t border-white/10 flex flex-col gap-3 mt-4">
               <div className="flex items-center justify-between px-2">
-                <span className="text-sm text-[var(--foreground-muted)]">{locale === "en" ? "Language" : "اللغة"}</span>
+                <span className="text-xs text-slate-400">{locale === "en" ? "Language" : "اللغة"}</span>
                 <Link
                   href={otherPath}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-semibold text-[var(--accent-secondary)] px-3 py-1.5 rounded-md bg-[var(--surface)]"
+                  className="text-xs font-bold text-[#D4AF37] px-3 py-1.5 rounded-full bg-white/5 border border-[#D4AF37]/30"
                 >
                   {tc("toggle_language")}
                 </Link>
@@ -194,9 +176,10 @@ export function Header() {
               <Link
                 href={`/${locale}/join`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="btn-primary text-center py-3 w-full justify-center text-base"
+                className="btn-primary text-center py-3 w-full justify-center text-sm"
               >
-                {t("join")}
+                <span>{t("join")}</span>
+                <ArrowRight size={16} className={locale === "ar" ? "rotate-180" : ""} />
               </Link>
             </div>
           </div>
