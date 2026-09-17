@@ -1,33 +1,46 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
-/* ─── Egypt Local Design Tokens ─────────────────────────────────────────── */
+/* ─── Optica Egypt Brand Identity Design System ───────────────────────────── */
 :root {
-  --background:        #09131F;
-  --surface:           #111827;
-  --surface-raised:    #1A2234;
-  --foreground:        #F1F5F9;
+  /* Exact Colors from Brand Sheet */
+  --color-primary-gold: #D4AF37;
+  --color-dark-navy:    #010F14;
+  --color-charcoal:     #1A1F26;
+  --color-light-gold:   #F7E7A1;
+  --color-white:        #FFFFFF;
+  --color-accent-blue:  #00B4FF;
+
+  /* Semantic Theme Tokens (Dark by default) */
+  --background:        #010F14;
+  --surface:           #1A1F26;
+  --surface-raised:    #222933;
+  --foreground:        #FFFFFF;
   --foreground-muted:  #94A3B8;
-  --accent:            #00ADEF;
-  --accent-hover:      #33BEFF;
+  --accent:            #00B4FF;
+  --accent-hover:      #33C5FF;
   --accent-secondary:  #D4AF37;
-  --accent-gold-muted: rgba(212,175,55,0.15);
-  --border:            rgba(212,175,55,0.12);
-  --border-accent:     rgba(0,173,239,0.25);
-  --radius:            0.5rem;
+  --accent-gold-muted: rgba(212, 175, 55, 0.15);
+  --border:            rgba(212, 175, 55, 0.18);
+  --border-accent:     rgba(0, 180, 255, 0.3);
+  --radius:            1rem;
   --font-en:           var(--font-inter);
   --font-ar:           var(--font-noto-arabic);
   --font-display:      var(--font-montserrat);
+
+  /* Brand Gradients */
+  --gold-gradient:      linear-gradient(90deg, #D4AF37 0%, #F7E7A1 50%, #D4AF37 100%);
+  --light-beam-gradient: linear-gradient(90deg, #00B4FF 0%, #00E5FF 40%, #D4AF37 100%);
 }
 
 [data-theme="light"] {
   --background:        #FFFFFF;
   --surface:           #F8FAFC;
   --surface-raised:    #F1F5F9;
-  --foreground:        #1E293B;
-  --foreground-muted:  #64748B;
-  --border:            rgba(30,41,59,0.1);
-  --border-accent:     rgba(0,173,239,0.2);
-  --accent-gold-muted: rgba(212,175,55,0.08);
+  --foreground:        #010F14;
+  --foreground-muted:  #475569;
+  --border:            rgba(212, 175, 55, 0.25);
+  --border-accent:     rgba(0, 180, 255, 0.25);
+  --accent-gold-muted: rgba(212, 175, 55, 0.1);
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
@@ -53,8 +66,8 @@ body {
   font-family: var(--font-ar), system-ui, sans-serif;
 }
 
-/* ─── Typography ─────────────────────────────────────────────────────────── */
-h1, h2, h3, h4 {
+/* ─── Typography (Montserrat Headings, Inter Body) ────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display), var(--font-en), sans-serif;
   font-weight: 700;
   line-height: 1.2;
@@ -64,7 +77,9 @@ h1, h2, h3, h4 {
 [dir="rtl"] h1,
 [dir="rtl"] h2,
 [dir="rtl"] h3,
-[dir="rtl"] h4 {
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
   font-family: var(--font-ar), sans-serif;
   letter-spacing: 0;
 }
@@ -73,63 +88,97 @@ h1, h2, h3, h4 {
 .container-page   { max-width: 80rem; margin-inline: auto; padding-inline: 1.5rem; }
 .container-narrow { max-width: 56rem; margin-inline: auto; padding-inline: 1.5rem; }
 
-/* ─── Buttons ────────────────────────────────────────────────────────────── */
+/* ─── UI Components: Pill Buttons (from Brand Sheet) ─────────────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.5rem;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  border-radius: var(--radius);
+  padding: 0.75rem 1.75rem;
+  background: var(--accent-secondary);
+  color: #010F14 !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border-radius: 9999px; /* Pill */
   border: none;
   cursor: pointer;
-  transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  transition: all 200ms ease;
   text-decoration: none;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
 }
-.btn-primary:hover  { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,173,239,0.3); }
+.btn-primary:hover {
+  background: var(--color-light-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
 .btn-primary:active { transform: translateY(0); }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.5rem;
-  background: transparent;
-  color: var(--foreground);
-  font-weight: 500;
-  font-size: 0.9rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
+  padding: 0.75rem 1.75rem;
+  background: rgba(26, 31, 38, 0.6);
+  color: var(--foreground) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 9999px; /* Pill */
+  border: 1px solid var(--accent-secondary);
   cursor: pointer;
-  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+  transition: all 200ms ease;
   text-decoration: none;
+  backdrop-blur: 4px;
 }
-.btn-secondary:hover { border-color: var(--accent-secondary); color: var(--accent-secondary); background: var(--accent-gold-muted); }
+.btn-secondary:hover {
+  border-color: var(--color-light-gold);
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--accent-secondary) !important;
+  transform: translateY(-1px);
+}
 
-/* ─── Cards ──────────────────────────────────────────────────────────────── */
+/* ─── Cards (from Brand Sheet) ───────────────────────────────────────────── */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  border-radius: 1rem;
+  transition: all 250ms ease;
 }
-.card:hover { border-color: var(--accent-secondary); box-shadow: 0 0 0 1px var(--accent-gold-muted); transform: translateY(-2px); }
+.card:hover {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent-secondary);
+  transform: translateY(-3px);
+}
 
-/* ─── Gold Accent Text ───────────────────────────────────────────────────── */
-.text-gold   { color: var(--accent-secondary); }
-.text-teal   { color: var(--accent); }
-.text-muted  { color: var(--foreground-muted); }
+/* ─── Brand Gradient Accent Text ─────────────────────────────────────────── */
+.text-gold {
+  color: var(--accent-secondary);
+}
+.text-gold-gradient {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-beam-gradient {
+  background: var(--light-beam-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-teal {
+  color: var(--accent);
+}
+.text-muted {
+  color: var(--foreground-muted);
+}
 
 /* ─── Gold Divider ───────────────────────────────────────────────────────── */
 .divider-gold {
-  width: 3rem;
+  width: 4rem;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-secondary), transparent);
+  background: var(--gold-gradient);
   border: none;
+  border-radius: 9999px;
 }
 
 /* ─── Section Spacing ────────────────────────────────────────────────────── */
@@ -142,13 +191,13 @@ h1, h2, h3, h4 {
   padding: 4rem 1.5rem;
   color: var(--foreground-muted);
 }
-.empty-state svg { opacity: 0.25; margin-inline: auto; margin-bottom: 1rem; }
+.empty-state svg { opacity: 0.3; margin-inline: auto; margin-bottom: 1rem; }
 
 /* ─── Focus Styles ───────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-secondary);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 /* ─── Reduced Motion ─────────────────────────────────────────────────────── */
@@ -162,4 +211,7 @@ h1, h2, h3, h4 {
 }
 
 /* ─── Selection ──────────────────────────────────────────────────────────── */
-::selection { background: rgba(0,173,239,0.25); color: var(--foreground); }
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: #FFFFFF;
+}
