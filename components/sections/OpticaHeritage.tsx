@@ -9,13 +9,13 @@ export function OpticaHeritage() {
   const locale = useLocale()
 
   return (
-    <section className="py-24 bg-[#02121C] border-b border-[#D4AF37]/20 relative overflow-hidden">
+    <section className="py-24 bg-[#000000] border-b border-white/10 relative">
       <div className="container-page">
-        <div className="max-w-5xl mx-auto glass-panel-gold p-8 md:p-14 relative overflow-hidden bg-[#010E17]/90">
+        <div className="max-w-5xl mx-auto reticle-box p-8 md:p-14 bg-[#010E17]">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             {/* Left Col: Global Optica Heritage */}
             <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4 text-[#D4AF37] text-xs font-mono">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-4 text-[#fa8716] text-xs font-mono">
                 <Globe size={13} />
                 <span>WASHINGTON D.C. · EST. 1916</span>
               </div>
@@ -28,8 +28,8 @@ export function OpticaHeritage() {
 
               <p className="text-slate-300 text-base leading-relaxed mb-8 font-light">
                 {locale === "en"
-                  ? "Optica (formerly OSA) is dedicated to promoting the generation, application, and archiving of knowledge in optics and photonics. As the official local section in Egypt, we provide our members with direct access to Optica's technical groups, student travel grants, and peer-reviewed scientific journals."
-                  : "تُعنى منظمة أوبتيكا (المعروفة سابقاً بـ OSA) بتطوير ونشر وتوثيق المعرفة في علوم الضوئيات والبصريات. كقسم محلي رسمي في مصر، نتيح لأعضائنا الوصول المباشر للمجموعات التخصصية، ومنح السفر للطلاب، والمجلات العلمية العالمية المحكمة."}
+                  ? "Optica is dedicated to promoting the generation, application, and archiving of knowledge in optics and photonics. As the official local section in Egypt, we provide our members with direct access to Optica technical groups, student travel grants, and peer-reviewed scientific journals."
+                  : "تُعنى جمعية أوبتيكا العالمية بتطوير ونشر وتوثيق المعرفة في علوم الضوئيات والبصريات. كقسم محلي رسمي في مصر، نتيح لأعضائنا الوصول المباشر للمجموعات التخصصية، ومنح السفر للطلاب، والمجلات العلمية العالمية المحكمة."}
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -53,34 +53,34 @@ export function OpticaHeritage() {
               </div>
             </div>
 
-            {/* Right Col: Prestigious Badges */}
+            {/* Right Col: Prestigious Badges (Technical modular panels) */}
             <div className="lg:col-span-4 flex flex-col gap-4">
-              <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
-                  <Award size={24} />
+              <div className="p-5 border border-white/10 bg-black/60 flex items-center gap-4 hover:border-[#fa8716] transition-colors">
+                <div className="tech-icon-box text-[#fa8716]">
+                  <Award size={22} />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400 font-mono">AFFILIATION</p>
+                  <p className="text-[10px] text-slate-400 font-mono tracking-wider">AFFILIATION</p>
                   <p className="text-sm font-bold text-white">Official Local Section</p>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#00B4FF]/15 text-[#00B4FF] flex items-center justify-center shrink-0">
-                  <BookOpen size={24} />
+              <div className="p-5 border border-white/10 bg-black/60 flex items-center gap-4 hover:border-[#5CB1A2] transition-colors">
+                <div className="tech-icon-box text-[#5CB1A2]">
+                  <BookOpen size={22} />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400 font-mono">PUBLICATIONS</p>
+                  <p className="text-[10px] text-slate-400 font-mono tracking-wider">PUBLICATIONS</p>
                   <p className="text-sm font-bold text-white">Optica Publishing Group</p>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
-                  <Globe size={24} />
+              <div className="p-5 border border-white/10 bg-black/60 flex items-center gap-4 hover:border-[#00e660] transition-colors">
+                <div className="tech-icon-box text-[#00e660]">
+                  <Globe size={22} />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400 font-mono">FELLOWSHIP</p>
+                  <p className="text-[10px] text-slate-400 font-mono tracking-wider">FELLOWSHIP</p>
                   <p className="text-sm font-bold text-white">180+ Countries Network</p>
                 </div>
               </div>

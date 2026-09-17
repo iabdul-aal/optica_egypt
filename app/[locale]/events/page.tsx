@@ -1,4 +1,4 @@
-import { Calendar, Compass, MapPin, CheckCircle2, ArrowRight } from "lucide-react"
+import { Calendar, Compass, MapPin, ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import { getAllEvents } from "@/lib/events"
@@ -42,16 +42,16 @@ export default async function EventsPage({
     <div className="section container-page py-16 md:py-24">
       {/* Header Eyebrow */}
       <div className="max-w-4xl mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#fa8716]" />
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
-            {locale === "en" ? "TECHNICAL SESSIONS & WORKSHOPS" : "الجلسات التقنية والمؤتمرات"}
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/10 mb-4">
+          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
+          <span className="text-[10px] font-mono uppercase tracking-widest text-[#fa8716]">
+            {locale === "en" ? "TECHNICAL SESSIONS and WORKSHOPS" : "الجلسات التقنية والمؤتمرات"}
           </span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-white">
           {t("heading")}
         </h1>
-        <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed max-w-3xl">
+        <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-3xl">
           {locale === "en"
             ? "Bridging Egyptian researchers, students, and engineers through technical workshops, symposiums, and international Optica colloquia."
             : "ربط الباحثين والطلاب والمهندسين في مصر عبر ورش العمل التقنية والمؤتمرات والندوات العلمية الدولية."}
@@ -61,32 +61,29 @@ export default async function EventsPage({
       {/* 3D Scene C: Laser Beamsplitter & Prism Dispersion */}
       <BeamSection />
 
-      {/* Flagship Spotlight Symposium Banner (Entor Tech & Akhetonics inspired) */}
-      <div className="relative p-8 md:p-12 mb-16 rounded-none border border-[#fa8716]/30 bg-[#010E17] overflow-hidden shadow-2xl">
-        <span className="absolute -top-1.5 -left-1.5 text-[10px] text-[#fa8716] font-mono">+</span>
-        <span className="absolute -bottom-1.5 -right-1.5 text-[10px] text-[#fa8716] font-mono">+</span>
-
+      {/* Flagship Spotlight Symposium Banner (Akhetonics & Entor Tech Standard) */}
+      <div className="reticle-box p-6 md:p-10 mb-14 border border-white/15 bg-[#02060B]">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8">
-            <div className="flex flex-wrap items-center gap-2.5 mb-4">
-              <span className="px-3 py-1 text-[11px] font-mono font-bold bg-[#fa8716]/20 text-[#fa8716] border border-[#fa8716]/40">
-                {locale === "en" ? "FLAGSHIP SYMPOSIUM 2026" : "المؤتمر العلمي السنوي 2026"}
+          <div className="lg:col-span-7">
+            <div className="flex flex-wrap items-center gap-2 mb-4 font-mono text-[10px]">
+              <span className="px-2 py-0.5 font-bold bg-[#fa8716]/10 text-[#fa8716] border border-[#fa8716]/30">
+                {locale === "en" ? "[ FLAGSHIP SYMPOSIUM 2026 ]" : "[ المؤتمر العلمي السنوي 2026 ]"}
               </span>
-              <span className="px-3 py-1 text-[11px] font-mono bg-white/10 text-slate-300 border border-white/10">
-                {locale === "en" ? "HYBRID · CAIRO & ONLINE" : "حضور شخصي وعبر الإنترنت"}
+              <span className="px-2 py-0.5 bg-white/[0.03] text-slate-300 border border-white/10">
+                {locale === "en" ? "HYBRID · CAIRO and ONLINE" : "حضور شخصي وعبر الإنترنت"}
               </span>
-              <span className="px-3 py-1 text-[11px] font-mono bg-[#00B4FF]/15 text-[#00B4FF] border border-[#00B4FF]/30">
+              <span className="px-2 py-0.5 bg-[#5CB1A2]/10 text-[#5CB1A2] border border-[#5CB1A2]/30">
                 {locale === "en" ? "CALL FOR ABSTRACTS OPEN" : "باب تقديم الملخصات البحثية مفتوح"}
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 leading-snug">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 leading-snug">
               {locale === "en"
                 ? "Inaugural Egyptian Photonics Workshop and Scientific Symposium 2026"
                 : "المؤتمر العلمي وورشة العمل الافتتاحية لعلوم الضوئيات بمصر 2026"}
             </h2>
 
-            <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6 font-light">
+            <p className="text-slate-400 text-xs md:text-sm leading-relaxed mb-6 font-light">
               {locale === "en"
                 ? "A landmark national gathering uniting university students, optical engineering faculty, telecom operators, and laser industry experts. Featuring technical keynotes, lab demonstrations, and publication tracks."
                 : "ملتقى علمي وطني يجمع طلاب الجامعات وأعضاء هيئة التدريس وشركات الاتصالات وخبراء صناعة الليزر، يتضمن محاضرات تقنية وتجارب معملية وعروضاً بحثية."}
@@ -94,34 +91,37 @@ export default async function EventsPage({
 
             <div className="flex flex-wrap items-center gap-6 text-xs text-slate-300 mb-8 font-mono">
               <div className="flex items-center gap-2">
-                <Calendar size={16} className="text-[#fa8716]" />
+                <Calendar size={14} className="text-[#fa8716]" />
                 <span>{locale === "en" ? "15 Nov 2026 · 09:30 - 17:00" : "15 نوفمبر 2026 · 09:30 - 17:00"}</span>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin size={16} className="text-[#00B4FF]" />
+                <MapPin size={14} className="text-[#5CB1A2]" />
                 <span>{locale === "en" ? "Cairo University Faculty of Engineering" : "كلية الهندسة جامعة القاهرة"}</span>
               </div>
             </div>
 
-            <Link href={`/${locale}/join`} className="btn-primary text-xs py-3 px-8">
+            <Link href={`/${locale}/join`} className="btn-primary text-xs py-2.5 px-6">
               <span>{locale === "en" ? "Register for Symposium" : "التسجيل لحضور المؤتمر"}</span>
-              <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
+              <ArrowRight size={13} className={locale === "ar" ? "rotate-180" : ""} />
             </Link>
           </div>
 
-          <div className="lg:col-span-4 p-6 bg-black/60 border border-white/10 flex flex-col gap-3">
-            <p className="text-xs uppercase font-mono font-bold text-[#fa8716] mb-1">
-              {locale === "en" ? "SESSION TRACKS" : "محاور الجلسات"}
+          <div className="lg:col-span-5 p-5 bg-[#000000] border border-white/10 flex flex-col">
+            <p className="text-[10px] uppercase font-mono font-bold tracking-widest text-[#fa8716] mb-3 pb-2 border-b border-white/10">
+              {"//"} {locale === "en" ? "SESSION TRACKS" : "محاور الجلسات"}
             </p>
             {[
-              locale === "en" ? "Silicon Photonics & PIC Design" : "تصميم رقائق السيليكون الضوئية",
-              locale === "en" ? "Laser Processing & Ultrafast Optics" : "معالجة المواد بالليزر والبصريات فائقة السرعة",
-              locale === "en" ? "Quantum Optics & Cryptography" : "البصريات الكمية والتشفير الآمن",
-              locale === "en" ? "Student Poster Session & Awards" : "جلسة ملصقات الطلاب وجوائز التميز",
+              locale === "en" ? "Silicon Photonics and PIC Design" : "تصميم رقائق السيليكون الضوئية",
+              locale === "en" ? "Laser Processing and Ultrafast Optics" : "معالجة المواد بالليزر والبصريات فائقة السرعة",
+              locale === "en" ? "Quantum Optics and Cryptography" : "البصريات الكمية والتشفير الآمن",
+              locale === "en" ? "Student Poster Session and Awards" : "جلسة ملصقات الطلاب وجوائز التميز",
             ].map((track, i) => (
-              <div key={i} className="flex items-center gap-2.5 text-xs text-slate-300">
-                <CheckCircle2 size={14} className="text-[#00B4FF] shrink-0" />
-                <span>{track}</span>
+              <div key={i} className="tech-list-row py-2 text-xs">
+                <div className="flex items-center gap-2 text-slate-300">
+                  <span className="text-[#fa8716] font-mono text-[10px]">0{i + 1} {"//"}</span>
+                  <span>{track}</span>
+                </div>
+                <span className="text-[#5CB1A2] font-mono text-[10px]">[TRACK]</span>
               </div>
             ))}
           </div>
@@ -144,7 +144,7 @@ export default async function EventsPage({
 
         {upcoming.length === 0 ? (
           <div className="empty-state p-12 text-center rounded-none border border-white/10 bg-[#010E17]">
-            <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4 text-[#fa8716]">
+            <div className="tech-icon-box mx-auto mb-4 text-[#fa8716] w-12 h-12">
               <Compass size={22} />
             </div>
             <p className="text-slate-300 max-w-md mx-auto text-base leading-relaxed font-light">

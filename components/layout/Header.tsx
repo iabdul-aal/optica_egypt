@@ -37,28 +37,28 @@ export function Header() {
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-[var(--accent-secondary)] text-[#010E17] font-bold rounded-full shadow-xl"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-[#fa8716] text-black font-mono font-bold text-xs uppercase tracking-wider"
       >
         {tc("skip_to_content")}
       </a>
 
-      {/* Modern Floating Header Bar (Entor Tech & Akhetonics inspired) */}
-      <header className="sticky top-0 z-50 w-full pt-3 pb-2 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 py-2.5 rounded-full bg-[#010E17]/85 dark:bg-[#010E17]/85 backdrop-blur-xl border border-[#D4AF37]/25 shadow-2xl transition-all">
+      {/* Sleek Precision Engineering Top Bar (Akhetonics & Entor Tech Standard) */}
+      <header className="sticky top-0 z-50 w-full bg-[#000000]/95 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center shrink-0 pr-4" aria-label="Optica Egypt Home">
+          <Link href={`/${locale}`} className="flex items-center shrink-0 pr-6" aria-label="Optica Egypt Home">
             <Image
               src="/assets/brand/egypt/logo/optica-egypt-logo.png"
               alt="Optica Egypt Local Section"
-              width={160}
-              height={48}
-              className="h-9 md:h-10 w-auto object-contain"
+              width={150}
+              height={42}
+              className="h-8 md:h-9 w-auto object-contain"
               priority
             />
           </Link>
 
           {/* Centered Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-6" aria-label="Main navigation">
             {ROUTES.map(({ key, path }) => {
               const href = `/${locale}${path}`
               const active = pathname === href || (path !== "" && pathname.startsWith(href))
@@ -67,14 +67,17 @@ export function Header() {
                   key={key}
                   href={href}
                   className={cn(
-                    "px-3.5 py-1.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all duration-200",
+                    "py-5 text-[11px] font-mono uppercase tracking-widest transition-colors relative",
                     active
-                      ? "text-[#D4AF37] bg-[rgba(212,175,55,0.15)] shadow-inner"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
+                      ? "text-[#fa8716] font-bold"
+                      : "text-slate-400 hover:text-white font-medium"
                   )}
                   aria-current={active ? "page" : undefined}
                 >
                   {t(key)}
+                  {active && (
+                    <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#fa8716]" />
+                  )}
                 </Link>
               )
             })}
@@ -82,23 +85,23 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="hidden sm:flex items-center gap-3 shrink-0">
-            {/* Language Switch Pill */}
+            {/* Language Switch */}
             <Link
               href={otherPath}
-              className="px-3 py-1 rounded-full text-xs font-bold text-slate-300 hover:text-[#D4AF37] hover:bg-white/5 border border-white/10 transition-colors"
+              className="px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider text-slate-300 hover:text-[#fa8716] hover:border-[#fa8716] border border-white/10 transition-colors"
             >
               {tc("toggle_language")}
             </Link>
 
             <ThemeToggle />
 
-            {/* Join CTA Pill Button */}
+            {/* Join CTA Button */}
             <Link
               href={`/${locale}/join`}
-              className="btn-primary text-xs py-2 px-5"
+              className="btn-primary text-xs py-2 px-4"
             >
               <span>{t("join")}</span>
-              <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
+              <ArrowRight size={13} className={locale === "ar" ? "rotate-180" : ""} />
             </Link>
           </div>
 
@@ -108,10 +111,10 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none"
+              className="p-2 border border-white/10 text-slate-300 hover:text-white hover:border-white/30 focus:outline-none"
               aria-label={mobileMenuOpen ? tc("close_menu") : tc("open_menu")}
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
 
@@ -120,25 +123,22 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none"
+              className="p-2 border border-white/10 text-slate-300 hover:text-white hover:border-white/30 focus:outline-none"
               aria-label={mobileMenuOpen ? tc("close_menu") : tc("open_menu")}
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
 
-        {/* Akhetonics-inspired Hairline Glow Line */}
-        <div className="max-w-7xl mx-auto mt-2 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent" />
-
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div
-            className="lg:hidden fixed inset-x-4 top-20 z-50 p-6 rounded-3xl bg-[#010E17]/95 backdrop-blur-2xl border border-[#D4AF37]/30 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200"
+            className="lg:hidden w-full bg-[#000000] border-b border-white/10 p-6 shadow-2xl animate-in fade-in duration-150"
             role="dialog"
             aria-modal="true"
           >
-            <nav className="flex flex-col gap-2" aria-label="Mobile navigation links">
+            <nav className="flex flex-col gap-1" aria-label="Mobile navigation links">
               {ROUTES.map(({ key, path }) => {
                 const href = `/${locale}${path}`
                 const active = pathname === href || (path !== "" && pathname.startsWith(href))
@@ -148,26 +148,26 @@ export function Header() {
                     href={href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "px-4 py-3 rounded-2xl text-sm font-semibold transition-colors flex items-center justify-between",
+                      "px-3 py-2.5 text-xs font-mono uppercase tracking-wider transition-colors flex items-center justify-between border-b border-white/5",
                       active
-                        ? "text-[#D4AF37] bg-[rgba(212,175,55,0.15)]"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                        ? "text-[#fa8716] font-bold bg-white/[0.03]"
+                        : "text-slate-300 hover:text-white hover:bg-white/[0.02]"
                     )}
                   >
                     <span>{t(key)}</span>
-                    {active && <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />}
+                    {active && <span className="text-[#fa8716] font-mono text-xs">{"//"} ACTIVE</span>}
                   </Link>
                 )
               })}
             </nav>
 
-            <div className="pt-5 border-t border-white/10 flex flex-col gap-3 mt-4">
-              <div className="flex items-center justify-between px-2">
-                <span className="text-xs text-slate-400">{locale === "en" ? "Language" : "اللغة"}</span>
+            <div className="pt-4 border-t border-white/10 flex flex-col gap-3 mt-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono text-slate-400">{locale === "en" ? "LOCALE" : "اللغة"}</span>
                 <Link
                   href={otherPath}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs font-bold text-[#D4AF37] px-3 py-1.5 rounded-full bg-white/5 border border-[#D4AF37]/30"
+                  className="text-xs font-mono uppercase tracking-wider text-[#fa8716] px-3 py-1 border border-[#fa8716]/40"
                 >
                   {tc("toggle_language")}
                 </Link>
@@ -176,10 +176,10 @@ export function Header() {
               <Link
                 href={`/${locale}/join`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="btn-primary text-center py-3 w-full justify-center text-sm"
+                className="btn-primary text-center py-2.5 w-full justify-center text-xs"
               >
                 <span>{t("join")}</span>
-                <ArrowRight size={16} className={locale === "ar" ? "rotate-180" : ""} />
+                <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
               </Link>
             </div>
           </div>

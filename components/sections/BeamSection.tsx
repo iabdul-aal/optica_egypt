@@ -45,20 +45,20 @@ export function BeamSection() {
   const locale = useLocale()
 
   return (
-    <div className="w-full mb-14 rounded-2xl overflow-hidden border border-white/10 bg-[#010E17] shadow-2xl relative">
+    <div className="reticle-box w-full mb-12 border border-white/15 bg-[#000000] relative">
       {/* Instrumentation Header Bar */}
-      <div className="flex flex-wrap items-center justify-between px-6 py-3 border-b border-white/10 bg-black/40 backdrop-blur">
-        <div className="flex items-center gap-2.5">
-          <span className="w-2 h-2 rounded-full bg-[#fa8716] animate-pulse" />
-          <span className="text-[11px] font-mono font-bold tracking-wider text-slate-300">
-            {locale === "en" ? "OPTICAL BENCH · SCENE C : EQUILATERAL PRISM DISPERSION" : "منصة التجارب البصرية · تفريق الضوء عبر موشور زجاجي"}
+      <div className="flex flex-wrap items-center justify-between px-5 py-2.5 border-b border-white/10 bg-[#02060B]">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
+          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#fa8716]">
+            {locale === "en" ? "OPTICAL BENCH // SCENE C : EQUILATERAL PRISM DISPERSION" : "منصة التجارب البصرية · تفريق الضوء عبر موشور زجاجي"}
           </span>
         </div>
 
         <div className="flex items-center gap-4 text-[10px] font-mono text-slate-400">
           <span>INCIDENCE: 45.0°</span>
-          <span className="text-[#00B4FF]">INDEX n: 1.517 (BK7)</span>
-          <span className="hidden sm:inline text-emerald-400">SPECTRUM: 380-750 nm</span>
+          <span className="text-[#5CB1A2]">INDEX n: 1.517 (BK7)</span>
+          <span className="hidden sm:inline text-[#00e660]">SPECTRUM: 380-750 nm</span>
         </div>
       </div>
 

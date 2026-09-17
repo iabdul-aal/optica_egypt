@@ -10,7 +10,7 @@ export function ImpactMetrics() {
     {
       value: "430K+",
       label: locale === "en" ? "Global Optica Network" : "عضو بشبكة أوبتيكا العالمية",
-      subtext: locale === "en" ? "Scientists & engineers across 180 countries" : "علماء ومهندسون في أكثر من 180 دولة",
+      subtext: locale === "en" ? "Scientists and engineers across 180 countries" : "علماء ومهندسون في أكثر من 180 دولة",
     },
     {
       value: "100+",
@@ -30,20 +30,29 @@ export function ImpactMetrics() {
   ]
 
   return (
-    <section className="relative py-20 bg-[#02121C] border-b border-[#D4AF37]/20">
+    <section className="py-20 bg-[#000000] border-b border-white/10">
       <div className="container-page">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="reticle-box grid grid-cols-2 lg:grid-cols-4 border-t border-l border-white/10">
           {metrics.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center group">
-              <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gold-gradient font-heading tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
-                {item.value}
-              </h3>
-              <p className="text-sm font-bold text-white uppercase tracking-wider mb-1">
-                {item.label}
-              </p>
-              <p className="text-xs text-slate-400 font-light leading-relaxed max-w-[200px]">
-                {item.subtext}
-              </p>
+            <div
+              key={idx}
+              className="p-8 sm:p-10 border-r border-b border-white/10 bg-[#02060B] flex flex-col justify-between"
+            >
+              <div className="flex items-center justify-between mb-6 font-mono text-[10px] text-slate-500">
+                <span>{"//"} METRIC_0{idx + 1}</span>
+                <span className="w-1.5 h-1.5 bg-[#fa8716]" />
+              </div>
+              <div>
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-mono tracking-tight mb-3">
+                  {item.value}
+                </div>
+                <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#fa8716] mb-2">
+                  {item.label}
+                </p>
+                <p className="text-xs text-slate-400 font-light leading-relaxed">
+                  {item.subtext}
+                </p>
+              </div>
             </div>
           ))}
         </div>

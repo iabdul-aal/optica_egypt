@@ -54,14 +54,14 @@ export function DomainsShowcase() {
   const active = domains[activeTab]
 
   return (
-    <section className="py-24 bg-[#010E17] border-b border-[#D4AF37]/20 relative overflow-hidden">
+    <section className="py-20 bg-[#000000] border-b border-white/10 relative overflow-hidden">
       <div className="container-page">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-[#D4AF37]/30 mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#D4AF37]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/10 mb-3">
+              <span className="w-1.5 h-1.5 bg-[#fa8716]" />
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#fa8716]">
                 {locale === "en" ? "Technological Pillars" : "المحاور التقنية والعلمية"}
               </span>
             </div>
@@ -69,7 +69,7 @@ export function DomainsShowcase() {
               {locale === "en" ? "Our Photonic Domains" : "مجالات علوم الضوئيات"}
             </h2>
           </div>
-          <p className="text-slate-400 text-sm max-w-md font-light leading-relaxed">
+          <p className="text-slate-400 text-xs font-mono max-w-md leading-relaxed">
             {locale === "en"
               ? "Bridging fundamental optical physics with industrial photonic engineering across Egyptian research centers."
               : "ربط الفيزياء البصرية الأساسية بالهندسة التطبيقية عبر المراكز البحثية والجامعية المصرية."}
@@ -77,26 +77,26 @@ export function DomainsShowcase() {
         </div>
 
         {/* Tab Buttons Row (Akhetonics-inspired 01, 02, 03, 04) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-6">
           {domains.map((d, index) => (
             <button
               key={d.id}
               onClick={() => setActiveTab(index)}
-              className={`p-5 rounded-2xl text-start transition-all duration-300 border flex flex-col justify-between ${
+              className={`p-4 text-start transition-colors border flex flex-col justify-between ${
                 activeTab === index
-                  ? "bg-[rgba(212,175,55,0.12)] border-[#D4AF37] shadow-lg shadow-black/40"
-                  : "bg-[#051522]/60 border-white/10 hover:border-white/20 hover:bg-white/5"
+                  ? "bg-[#02060B] border-[#fa8716]"
+                  : "bg-[#000000] border-white/10 hover:border-white/20 hover:bg-white/[0.02]"
               }`}
             >
-              <div className="flex items-center justify-between mb-4 w-full">
-                <span className={`font-mono text-sm font-bold ${activeTab === index ? "text-[#D4AF37]" : "text-slate-500"}`}>
-                  {d.id}
+              <div className="flex items-center justify-between mb-3 w-full font-mono text-[10px]">
+                <span className={activeTab === index ? "text-[#fa8716] font-bold" : "text-slate-500"}>
+                  {"//"} {d.id}
                 </span>
-                <span className={`text-[10px] uppercase font-mono px-2 py-0.5 rounded-full ${activeTab === index ? "bg-[#D4AF37]/20 text-[#D4AF37]" : "bg-white/5 text-slate-400"}`}>
+                <span className={`px-1.5 py-0.5 border ${activeTab === index ? "border-[#fa8716]/40 text-[#fa8716]" : "border-white/10 text-slate-500"}`}>
                   {d.badge}
                 </span>
               </div>
-              <h4 className={`font-bold text-sm leading-snug ${activeTab === index ? "text-white" : "text-slate-400"}`}>
+              <h4 className={`text-xs font-mono uppercase tracking-wider ${activeTab === index ? "text-white font-bold" : "text-slate-400"}`}>
                 {d.name}
               </h4>
             </button>
@@ -104,28 +104,28 @@ export function DomainsShowcase() {
         </div>
 
         {/* Interactive Detailed Panel */}
-        <div className="glass-panel-gold p-8 md:p-12 relative overflow-hidden bg-[#02121C]">
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00B4FF]/10 text-[#00B4FF] text-xs font-mono mb-4 border border-[#00B4FF]/25">
-                <span>{active.badge}</span>
+        <div className="reticle-box p-6 md:p-8 bg-[#02060B] border border-white/10">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7">
+              <div className="tech-tag mb-3">
+                <span>[ {active.badge.toUpperCase()} ]</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
                 {active.name}
               </h3>
-              <p className="text-slate-300 text-base leading-relaxed mb-8 font-light">
+              <p className="text-slate-300 text-sm leading-relaxed mb-6 font-light">
                 {active.desc}
               </p>
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-xs text-[#D4AF37] font-mono flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
+              <div className="p-3 bg-white/[0.02] border border-white/10 text-xs text-[#fa8716] font-mono flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-[#fa8716]" />
                 <span>{active.highlight}</span>
               </div>
             </div>
 
             {/* Right Column: Deep-Tech Engineering Schematic (Akhetonics Style) */}
-            <div className="lg:col-span-5 rounded-2xl bg-[#010E17] border border-white/10 p-6 relative overflow-hidden shadow-2xl">
+            <div className="lg:col-span-5 bg-[#000000] border border-white/10 p-5 relative">
               {/* Schematic Header Bar */}
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-[10px] font-mono">
+              <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-white/10 text-[10px] font-mono">
                 <span className="text-[#fa8716] font-bold">SCHEMATIC // SYS_ID: {active.id}</span>
                 <span className="text-slate-400">STATUS: VERIFIED</span>
               </div>
@@ -150,8 +150,8 @@ export function DomainsShowcase() {
                     <text x="290" y="145" fill="#fa8716" fontSize="8" fontFamily="monospace">P_DROP (Resonant)</text>
                   </svg>
                   <div className="grid grid-cols-2 gap-2 text-[10px] font-mono pt-2 border-t border-white/5">
-                    <div className="p-2 rounded bg-white/5 text-slate-300">CORE LOSS: &lt; 0.2 dB/cm</div>
-                    <div className="p-2 rounded bg-white/5 text-[#00B4FF]">PDK: 220nm SOI Global Foundry</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-slate-300">CORE LOSS: &lt; 0.2 dB/cm</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-[#5CB1A2]">PDK: 220nm SOI Global Foundry</div>
                   </div>
                 </div>
               )}
@@ -170,16 +170,16 @@ export function DomainsShowcase() {
                     <polygon points="140,70 180,70 170,110 130,110" fill="#991B1B" stroke="#F87171" strokeWidth="1.5" />
                     <text x="132" y="125" fill="#FCA5A5" fontSize="8" fontFamily="monospace">Ti:Sapphire</text>
                     {/* Dispersion Prism Pair */}
-                    <polygon points="220,120 240,150 200,150" stroke="#00B4FF" strokeWidth="1" fill="#0C4A6E" />
-                    <polygon points="260,120 280,150 240,150" stroke="#00B4FF" strokeWidth="1" fill="#0C4A6E" />
+                    <polygon points="220,120 240,150 200,150" stroke="#5CB1A2" strokeWidth="1" fill="#0C4A6E" />
+                    <polygon points="260,120 280,150 240,150" stroke="#5CB1A2" strokeWidth="1" fill="#0C4A6E" />
                     {/* Output Pulse Train */}
                     <path d="M 333 90 Q 340 70 345 90 Q 350 110 355 90" stroke="#F87171" strokeWidth="2" />
                     <text x="25" y="48" fill="#94A3B8" fontSize="8" fontFamily="monospace">HR Mirror (99.9%)</text>
                     <text x="270" y="48" fill="#fa8716" fontSize="8" fontFamily="monospace">Output Coupler (T=5%)</text>
                   </svg>
                   <div className="grid grid-cols-2 gap-2 text-[10px] font-mono pt-2 border-t border-white/5">
-                    <div className="p-2 rounded bg-white/5 text-slate-300">PULSE: &lt; 20 fs FWHM</div>
-                    <div className="p-2 rounded bg-white/5 text-[#fa8716]">PEAK POWER: 2.5 MW</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-slate-300">PULSE: &lt; 20 fs FWHM</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-[#fa8716]">PEAK POWER: 2.5 MW</div>
                   </div>
                 </div>
               )}
@@ -190,14 +190,14 @@ export function DomainsShowcase() {
                   <svg className="w-full h-44" viewBox="0 0 360 180" fill="none">
                     {/* Fiber Core Cross-Section */}
                     <circle cx="90" cy="90" r="55" stroke="#334155" strokeWidth="1.5" fill="#0F172A" />
-                    <circle cx="90" cy="90" r="18" stroke="#00B4FF" strokeWidth="2" fill="#0284C7" fillOpacity="0.4" />
+                    <circle cx="90" cy="90" r="18" stroke="#5CB1A2" strokeWidth="2" fill="#0284C7" fillOpacity="0.4" />
                     <circle cx="90" cy="90" r="4" fill="#38BDF8" />
                     <text x="50" y="160" fill="#94A3B8" fontSize="8" fontFamily="monospace">Core: 9µm / Cladding: 125µm</text>
                     {/* DWDM Multi-Wavelength Spectrum */}
                     <g transform="translate(180, 40)">
                       <line x1="0" y1="80" x2="160" y2="80" stroke="#475569" strokeWidth="1" />
                       <line x1="20" y1="80" x2="20" y2="20" stroke="#38BDF8" strokeWidth="2" />
-                      <line x1="40" y1="80" x2="40" y2="15" stroke="#00B4FF" strokeWidth="2" />
+                      <line x1="40" y1="80" x2="40" y2="15" stroke="#5CB1A2" strokeWidth="2" />
                       <line x1="60" y1="80" x2="60" y2="10" stroke="#fa8716" strokeWidth="2" />
                       <line x1="80" y1="80" x2="80" y2="12" stroke="#F59E0B" strokeWidth="2" />
                       <line x1="100" y1="80" x2="100" y2="25" stroke="#D4AF37" strokeWidth="2" />
@@ -207,8 +207,8 @@ export function DomainsShowcase() {
                     </g>
                   </svg>
                   <div className="grid grid-cols-2 gap-2 text-[10px] font-mono pt-2 border-t border-white/5">
-                    <div className="p-2 rounded bg-white/5 text-slate-300">GRID: 50 GHz ITU Channels</div>
-                    <div className="p-2 rounded bg-white/5 text-[#00B4FF]">SUBSEA LINK: Red Sea 17+</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-slate-300">GRID: 50 GHz ITU Channels</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-[#5CB1A2]">SUBSEA LINK: Red Sea 17+</div>
                   </div>
                 </div>
               )}
@@ -223,18 +223,18 @@ export function DomainsShowcase() {
                     {/* Non-Linear SPDC BBO Crystal */}
                     <polygon points="120,60 160,75 160,105 120,120" fill="#1E1B4B" stroke="#818CF8" strokeWidth="1.5" />
                     <text x="122" y="140" fill="#A5B4FC" fontSize="8" fontFamily="monospace">BBO Crystal</text>
-                    {/* Entangled Photon Cones (Signal & Idler) */}
+                    {/* Entangled Photon Cones (Signal and Idler) */}
                     <line x1="160" y1="85" x2="310" y2="45" stroke="#fa8716" strokeWidth="2" />
-                    <line x1="160" y1="95" x2="310" y2="135" stroke="#00B4FF" strokeWidth="2" />
+                    <line x1="160" y1="95" x2="310" y2="135" stroke="#5CB1A2" strokeWidth="2" />
                     {/* Avalanche Photodiode Detectors */}
-                    <rect x="310" y="35" width="30" height="20" rx="3" fill="#0A2234" stroke="#fa8716" />
-                    <rect x="310" y="125" width="30" height="20" rx="3" fill="#0A2234" stroke="#00B4FF" />
+                    <rect x="310" y="35" width="30" height="20" fill="#0A2234" stroke="#fa8716" />
+                    <rect x="310" y="125" width="30" height="20" fill="#0A2234" stroke="#5CB1A2" />
                     <text x="260" y="32" fill="#fa8716" fontSize="8" fontFamily="monospace">|H⟩ Signal (810 nm)</text>
-                    <text x="260" y="155" fill="#00B4FF" fontSize="8" fontFamily="monospace">|V⟩ Idler (810 nm)</text>
+                    <text x="260" y="155" fill="#5CB1A2" fontSize="8" fontFamily="monospace">|V⟩ Idler (810 nm)</text>
                   </svg>
                   <div className="grid grid-cols-2 gap-2 text-[10px] font-mono pt-2 border-t border-white/5">
-                    <div className="p-2 rounded bg-white/5 text-slate-300">STATE: |Ψ+⟩ Bell Singlet</div>
-                    <div className="p-2 rounded bg-white/5 text-emerald-400">FIDELITY: 99.4% Verified</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-slate-300">STATE: |Ψ+⟩ Bell Singlet</div>
+                    <div className="p-2 border border-white/10 bg-white/[0.02] text-[#00e660]">FIDELITY: 99.4% Verified</div>
                   </div>
                 </div>
               )}

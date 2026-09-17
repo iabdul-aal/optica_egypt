@@ -113,8 +113,8 @@ export default async function AboutPage({
     <div className="section container-page py-16 md:py-24">
       <div className="max-w-5xl mx-auto">
         {/* Header Eyebrow */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#fa8716]" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-4">
+          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
             {locale === "en" ? "CHARTER AND STRATEGIC MISSION · EST. 2026" : "الميثاق والرسالة الاستراتيجية · تأسس 2026"}
           </span>
@@ -131,11 +131,12 @@ export default async function AboutPage({
 
         {/* Mission and Vision (Akhetonics Technical Panels) */}
         <div className="grid gap-6 md:grid-cols-2 mb-16">
-          <div className="relative p-8 rounded-none border border-white/10 bg-[#010E17] group hover:border-[#fa8716] transition-all duration-300">
-            <span className="absolute -top-1.5 -left-1.5 text-[10px] text-[#fa8716] font-mono">+</span>
-            <span className="absolute -bottom-1.5 -right-1.5 text-[10px] text-[#fa8716] font-mono">+</span>
-            <div className="w-12 h-12 flex items-center justify-center bg-[#fa8716]/10 border border-[#fa8716]/30 text-[#fa8716] mb-6">
+          <div className="reticle-box p-8 bg-[#010E17] group hover:border-[#fa8716] transition-all duration-300">
+            <div className="tech-icon-box text-[#fa8716] mb-6">
               <Target size={22} />
+            </div>
+            <div className="text-[10px] font-mono text-slate-500 uppercase mb-1">
+              SYS_DIRECTIVE // 01
             </div>
             <h2 className="text-xl font-bold text-white mb-3">
               {t("mission_label")}
@@ -145,11 +146,12 @@ export default async function AboutPage({
             </p>
           </div>
 
-          <div className="relative p-8 rounded-none border border-white/10 bg-[#010E17] group hover:border-[#00B4FF] transition-all duration-300">
-            <span className="absolute -top-1.5 -left-1.5 text-[10px] text-[#00B4FF] font-mono">+</span>
-            <span className="absolute -bottom-1.5 -right-1.5 text-[10px] text-[#00B4FF] font-mono">+</span>
-            <div className="w-12 h-12 flex items-center justify-center bg-[#00B4FF]/10 border border-[#00B4FF]/30 text-[#00B4FF] mb-6">
+          <div className="reticle-box p-8 bg-[#010E17] group hover:border-[#5CB1A2] transition-all duration-300">
+            <div className="tech-icon-box text-[#5CB1A2] mb-6">
               <Eye size={22} />
+            </div>
+            <div className="text-[10px] font-mono text-slate-500 uppercase mb-1">
+              SYS_DIRECTIVE // 02
             </div>
             <h2 className="text-xl font-bold text-white mb-3">
               {t("vision_label")}
@@ -177,13 +179,10 @@ export default async function AboutPage({
               return (
                 <div
                   key={p.id}
-                  className="p-6 rounded-none border border-white/10 bg-[#010E17] hover:border-white/25 transition-all"
+                  className="reticle-box p-6 bg-[#010E17] hover:border-white/25 transition-all"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <div
-                      className="w-10 h-10 flex items-center justify-center"
-                      style={{ background: `${p.accent}15`, border: `1px solid ${p.accent}30`, color: p.accent }}
-                    >
+                    <div className="tech-icon-box" style={{ color: p.accent }}>
                       <IconComp size={20} />
                     </div>
                     <span className="font-mono text-xs font-bold text-slate-500">
@@ -199,10 +198,10 @@ export default async function AboutPage({
         </div>
 
         {/* Egyptian University and Research Coalition */}
-        <div className="mb-20 p-8 md:p-10 border border-white/10 bg-[#010E17]">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div className="mb-20 reticle-box p-8 md:p-10 bg-[#010E17]">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 pb-4 border-b border-white/10">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#00B4FF] mb-2 uppercase">
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#5CB1A2] mb-2 uppercase">
                 <Building2 size={14} />
                 <span>{locale === "en" ? "ACADEMIC NETWORK" : "الشبكة الأكاديمية"}</span>
               </div>
@@ -217,7 +216,11 @@ export default async function AboutPage({
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {UNIVERSITIES.map((u, i) => (
-              <div key={i} className="p-4 bg-white/5 border border-white/10 hover:border-[#D4AF37] transition-all">
+              <div key={i} className="p-4 bg-black/60 border border-white/10 hover:border-[#fa8716] transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-mono text-[#fa8716]">NODE_0{i + 1}</span>
+                  <span className="w-1.5 h-1.5 bg-[#00e660]" />
+                </div>
                 <p className="font-bold text-sm text-white mb-1">{u.name}</p>
                 <p className="text-xs text-slate-400 font-mono">{u.lab}</p>
               </div>
@@ -233,7 +236,7 @@ export default async function AboutPage({
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {ROADMAP.map((r, i) => (
-              <div key={i} className="p-6 border border-white/10 bg-[#010E17] flex flex-col justify-between">
+              <div key={i} className="reticle-box p-6 bg-[#010E17] flex flex-col justify-between">
                 <div>
                   <span className="inline-block px-2.5 py-1 mb-4 text-[10px] font-mono font-bold bg-[#fa8716]/10 text-[#fa8716] border border-[#fa8716]/30">
                     {r.period}
@@ -247,9 +250,9 @@ export default async function AboutPage({
         </div>
 
         {/* Section Profile and Global Affiliation Panel */}
-        <div className="rounded-none border border-white/15 bg-black/60 p-8 md:p-10 grid sm:grid-cols-3 gap-8">
+        <div className="reticle-box bg-black/60 p-8 md:p-10 grid sm:grid-cols-3 gap-8">
           <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-white/5 border border-white/10 text-[#fa8716]">
+            <div className="tech-icon-box text-[#fa8716]">
               <Calendar size={20} />
             </div>
             <div>
@@ -261,7 +264,7 @@ export default async function AboutPage({
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-white/5 border border-white/10 text-[#00B4FF]">
+            <div className="tech-icon-box text-[#5CB1A2]">
               <Globe size={20} />
             </div>
             <div>
@@ -273,14 +276,14 @@ export default async function AboutPage({
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="p-2.5 bg-white/5 border border-white/10 text-emerald-400">
+            <div className="tech-icon-box text-[#00e660]">
               <ShieldCheck size={20} />
             </div>
             <div>
               <p className="text-xs uppercase font-mono text-slate-400 mb-1">
                 {locale === "en" ? "STATUS" : "الحالة"}
               </p>
-              <p className="text-sm font-semibold text-emerald-400">
+              <p className="text-sm font-semibold text-[#00e660]">
                 {locale === "en" ? "Officially Recognized Local Section" : "قسم محلي معتمد رسمياً"}
               </p>
             </div>

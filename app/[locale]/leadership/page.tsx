@@ -32,7 +32,7 @@ export default async function LeadershipPage({
   const t = await getTranslations({ locale, namespace: "leadership" })
   const members = getActiveMembers()
 
-  // Executive Committee (Order 1-4) vs Operational & Technical Chairs (Order 5+)
+  // Executive Committee (Order 1-4) vs Operational and Technical Chairs (Order 5+)
   const execMembers = members.filter((m) => m.order <= 4)
   const operationalMembers = members.filter((m) => m.order > 4)
 
@@ -40,10 +40,10 @@ export default async function LeadershipPage({
     <div className="section container-page py-16 md:py-24">
       {/* Header Eyebrow */}
       <div className="max-w-4xl mb-14">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#fa8716]" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-4">
+          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
-            {locale === "en" ? "SECTION GOVERNANCE & OFFICERS" : "الهيئة القيادية والتنظيمية"}
+            {locale === "en" ? "SECTION GOVERNANCE AND OFFICERS" : "الهيئة القيادية والتنظيمية"}
           </span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-white">
@@ -75,16 +75,16 @@ export default async function LeadershipPage({
         </div>
       </div>
 
-      {/* Tier 2: Operational Chairs & Technical Officers */}
+      {/* Tier 2: Operational Chairs and Technical Officers */}
       <div>
         <div className="flex items-center justify-between mb-8 pb-3 border-b border-white/10">
           <div className="flex items-center gap-2.5">
-            <Users size={18} className="text-[#00B4FF]" />
+            <Users size={18} className="text-[#5CB1A2]" />
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              {locale === "en" ? "Operational Officers & Technical Chairs" : "الضباط واللجان التخصصية"}
+              {locale === "en" ? "Operational Officers and Technical Chairs" : "الضباط واللجان التخصصية"}
             </h2>
           </div>
-          <span className="text-xs font-mono text-[#00B4FF]">
+          <span className="text-xs font-mono text-[#5CB1A2]">
             {operationalMembers.length} {locale === "en" ? "OFFICERS" : "ضباط"}
           </span>
         </div>

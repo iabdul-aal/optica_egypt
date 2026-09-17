@@ -35,10 +35,10 @@ export default async function ResourcesPage({
     <div className="section container-page py-16 md:py-24">
       {/* Header Eyebrow */}
       <div className="max-w-4xl mb-14">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#fa8716]" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-4">
+          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
-            {locale === "en" ? "TECHNICAL REPOSITORY and TOOLS" : "المستودع المعرفي والبرمجي"}
+            {locale === "en" ? "TECHNICAL REPOSITORY AND TOOLS" : "المستودع المعرفي والبرمجي"}
           </span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-white">
@@ -51,7 +51,7 @@ export default async function ResourcesPage({
         </p>
       </div>
 
-      {/* Resource Cards Grid (Akhetonics Technical Panels) */}
+      {/* Resource Cards Grid (Akhetonics & Entor Tech Standard) */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {resources.map((r) => {
           const title = r.title[locale as "en" | "ar"] || r.title.en
@@ -63,19 +63,15 @@ export default async function ResourcesPage({
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative group p-7 rounded-none border border-white/10 hover:border-[#fa8716] bg-[#010E17] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_0_25px_rgba(250,135,22,0.15)]"
+              className="reticle-box p-7 bg-[#010E17] flex flex-col justify-between group hover:border-[#fa8716] transition-all"
             >
-              {/* Corner crosshairs */}
-              <span className="absolute -top-1.5 -left-1.5 text-[10px] text-[#fa8716] font-mono opacity-30 group-hover:opacity-100 transition-opacity">+</span>
-              <span className="absolute -bottom-1.5 -right-1.5 text-[10px] text-[#fa8716] font-mono opacity-30 group-hover:opacity-100 transition-opacity">+</span>
-
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 bg-white/5 border border-white/10 text-slate-400">
                     {r.category}
                   </span>
                   {r.free && (
-                    <span className="text-[10px] font-mono font-bold text-[#00B4FF] px-2 py-0.5 rounded-full bg-[#00B4FF]/10 border border-[#00B4FF]/25">
+                    <span className="text-[10px] font-mono font-bold text-[#00e660] px-2 py-0.5 bg-[#00e660]/10 border border-[#00e660]/30">
                       {t("free_badge")}
                     </span>
                   )}
@@ -91,7 +87,7 @@ export default async function ResourcesPage({
                 {r.tags && r.tags.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 mb-6">
                     {r.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-mono text-slate-400 bg-black/40 px-2 py-0.5 border border-white/5">
+                      <span key={tag} className="text-[10px] font-mono text-slate-400 bg-black/60 px-2 py-0.5 border border-white/10">
                         #{tag}
                       </span>
                     ))}

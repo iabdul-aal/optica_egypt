@@ -40,18 +40,18 @@ export function WaveSection() {
       <div className="container-page mb-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/10 mb-2">
               <Activity size={12} className="text-[#fa8716]" />
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#fa8716]">
                 {locale === "en" ? "PHYSICAL SIMULATION · SCENE B" : "المحاكاة الفيزيائية · المشهد الثاني"}
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              {locale === "en" ? "Coherent Wave Interference & Superposition Dynamics" : "تراكب الموجات الضوئية وأنماط التداخل المتشاكه"}
+              {locale === "en" ? "Coherent Wave Interference and Superposition Dynamics" : "تراكب الموجات الضوئية وأنماط التداخل المتشاكه"}
             </h3>
           </div>
 
-          {/* Interactive band selectors (Akhetonics & Entor Tech pill style) */}
+          {/* Interactive band selectors (Akhetonics & Entor Tech flat style) */}
           <div className="flex items-center gap-2">
             {[
               { id: "cband", label: "1550 nm (C-Band)", freq: "193.4 THz" },
@@ -61,10 +61,10 @@ export function WaveSection() {
               <button
                 key={band.id}
                 onClick={() => setActiveBand(band.id as "cband" | "visible" | "quantum")}
-                className={`text-[11px] font-mono px-3 py-1.5 rounded-full transition-all border ${
+                className={`text-[10px] font-mono uppercase tracking-wider px-3 py-1.5 transition-colors border ${
                   activeBand === band.id
-                    ? "bg-[#fa8716]/20 border-[#fa8716] text-white shadow-[0_0_12px_rgba(250,135,22,0.3)]"
-                    : "bg-white/5 border-white/10 text-slate-400 hover:text-white"
+                    ? "bg-[#fa8716] border-[#fa8716] text-black font-bold"
+                    : "bg-black border-white/15 text-slate-400 hover:border-white/40 hover:text-white"
                 }`}
               >
                 {band.label}
@@ -78,17 +78,17 @@ export function WaveSection() {
         <WaveScene />
         {/* Real-time schematic overlay tags */}
         <div className="absolute top-4 left-6 z-10 hidden sm:flex items-center gap-3">
-          <span className="px-2.5 py-1 rounded text-[10px] font-mono bg-black/70 border border-white/10 text-slate-300 backdrop-blur">
+          <span className="px-2 py-0.5 text-[10px] font-mono bg-black border border-white/15 text-slate-300">
             SLIT SEPARATION: 250 µm
           </span>
-          <span className="px-2.5 py-1 rounded text-[10px] font-mono bg-black/70 border border-white/10 text-slate-300 backdrop-blur">
+          <span className="px-2 py-0.5 text-[10px] font-mono bg-black border border-white/15 text-slate-300">
             COHERENCE LENGTH: &gt; 10 km
           </span>
         </div>
         <div className="absolute bottom-4 right-6 z-10 hidden sm:flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-          <span className="text-[11px] font-mono text-emerald-400 bg-black/80 px-2.5 py-1 rounded border border-emerald-500/30">
-            PHASE-LOCKED
+          <span className="w-1.5 h-1.5 bg-[#00e660]" />
+          <span className="text-[10px] font-mono text-[#00e660] bg-black px-2 py-0.5 border border-[#00e660]/30">
+            PHASE-LOCKED // VERIFIED
           </span>
         </div>
       </div>

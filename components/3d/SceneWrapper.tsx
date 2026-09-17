@@ -72,10 +72,12 @@ export function SceneWrapper({
         {/* Optical grid lines */}
         <div className="absolute inset-0 bg-[radial-gradient(#00ADEF_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
         <div className="relative z-10 flex flex-col items-center gap-3">
-          <div className="w-12 h-12 rounded-full border border-[var(--accent-secondary)] flex items-center justify-center">
-            <div className="w-4 h-4 rounded-full bg-[var(--accent)] animate-pulse" />
+          <div className="w-12 h-12 border border-[#fa8716]/40 flex items-center justify-center bg-black/60 relative">
+            <span className="absolute -top-1 -left-1 text-[9px] text-[#fa8716] font-mono">+</span>
+            <span className="absolute -bottom-1 -right-1 text-[9px] text-[#fa8716] font-mono">+</span>
+            <div className="w-3 h-3 bg-[#fa8716] animate-pulse" />
           </div>
-          <p className="text-xs uppercase tracking-widest text-[var(--accent-secondary)] font-mono">Optica Egypt Photonics</p>
+          <p className="text-[10px] uppercase tracking-widest text-[#fa8716] font-mono">OPTICA EGYPT PHOTONICS</p>
         </div>
       </div>
     )

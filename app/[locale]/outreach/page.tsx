@@ -65,8 +65,8 @@ export default async function OutreachPage({
     <div className="section container-page py-16 md:py-24">
       {/* Header Eyebrow */}
       <div className="max-w-4xl mb-14">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#fa8716]" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 mb-4">
+          <span className="w-1.5 h-1.5 bg-[#fa8716]" />
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#fa8716]">
             {locale === "en" ? "COMMUNITY ENGAGEMENT AND STEM ROADSHOW" : "المشاركة العامة والتعليم العلمي"}
           </span>
@@ -81,24 +81,18 @@ export default async function OutreachPage({
         </p>
       </div>
 
-      {/* Season 1 Strategic Initiatives (Akhetonics Technical Panels) */}
+      {/* Season 1 Strategic Initiatives (Akhetonics & Entor Tech Standard) */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-16">
         {initiatives.map((item) => {
           const Icon = item.icon
           return (
             <div
               key={item.id}
-              className="relative p-7 rounded-none border border-white/10 hover:border-[#fa8716] bg-[#010E17] flex flex-col justify-between transition-all duration-300 group hover:shadow-[0_0_20px_rgba(250,135,22,0.15)]"
+              className="reticle-box p-7 bg-[#010E17] flex flex-col justify-between group hover:border-[#fa8716] transition-all"
             >
-              <span className="absolute -top-1.5 -left-1.5 text-[10px] text-[#fa8716] font-mono opacity-30 group-hover:opacity-100 transition-opacity">+</span>
-              <span className="absolute -bottom-1.5 -right-1.5 text-[10px] text-[#fa8716] font-mono opacity-30 group-hover:opacity-100 transition-opacity">+</span>
-
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div
-                    className="w-11 h-11 flex items-center justify-center transition-transform group-hover:scale-110"
-                    style={{ background: `${item.accent}15`, border: `1px solid ${item.accent}35`, color: item.accent }}
-                  >
+                  <div className="tech-icon-box" style={{ color: item.accent }}>
                     <Icon size={22} />
                   </div>
                   <span className="text-[10px] font-mono text-slate-500 font-bold">
@@ -121,13 +115,10 @@ export default async function OutreachPage({
         })}
       </div>
 
-      {/* School & University Partnership Callout */}
-      <div className="relative p-8 md:p-12 border border-[#fa8716]/30 bg-[#010E17] overflow-hidden shadow-2xl">
-        <span className="absolute -top-1.5 -left-1.5 text-[10px] text-[#fa8716] font-mono">+</span>
-        <span className="absolute -bottom-1.5 -right-1.5 text-[10px] text-[#fa8716] font-mono">+</span>
-
+      {/* School and University Partnership Callout */}
+      <div className="reticle-box p-8 md:p-12 bg-[#010E17]">
         <div className="max-w-2xl relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fa8716]/15 text-[#fa8716] text-xs font-mono mb-4 border border-[#fa8716]/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#fa8716]/15 text-[#fa8716] text-xs font-mono mb-4 border border-[#fa8716]/30">
             <HeartHandshake size={14} />
             <span>{locale === "en" ? "HOST A WORKSHOP ON YOUR CAMPUS" : "استضف ورشة عمل في جامعتك أو مدرستك"}</span>
           </div>
