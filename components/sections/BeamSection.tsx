@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from "react"
 import dynamic from "next/dynamic"
@@ -12,7 +12,7 @@ function BeamFallbackVector() {
         <circle cx="250" cy="120" r="4" fill="#fa8716" />
 
         {/* Precision Prism with subtle internal refraction */}
-        <polygon points="250,50 340,190 160,190" stroke="#D4AF37" strokeWidth="1.5" fill="#051827" fillOpacity="0.8" />
+        <polygon points="250,50 340,190 160,190" stroke="#fa8716" strokeWidth="1.5" fill="#000000" fillOpacity="0.8" />
         <line x1="250" y1="120" x2="285" y2="120" stroke="#ffffff" strokeWidth="2" strokeDasharray="3 3" opacity="0.6" />
 
         {/* Dispersed Spectral Beams (Snell's law) */}
@@ -44,7 +44,7 @@ export function BeamSection() {
   return (
     <div className="reticle-box w-full mb-12 border border-white/15 bg-[#000000] relative">
       {/* Instrumentation Header Bar */}
-      <div className="flex flex-wrap items-center justify-between px-5 py-2.5 border-b border-white/10 bg-[#02060B]">
+      <div className="flex flex-wrap items-center justify-between px-5 py-2.5 border-b border-white/10 bg-[#000000]">
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 bg-[#fa8716]" />
           <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#fa8716]">

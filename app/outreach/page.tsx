@@ -26,7 +26,7 @@ export default async function OutreachPage() {
       id: "02",
       code: "OUTREACH_02",
       title: "University Campus Roadshows",
-      desc: "Connecting engineering and physics departments across Egyptian governorates with Optica student chapters and research grants.",
+      desc: "Connecting engineering and physics departments across Egyptian governorates with Optica student sections and research grants.",
       phase: "Governorate Tours",
     },
     {
@@ -121,7 +121,7 @@ export default async function OutreachPage() {
       </section>
 
       {/* School and University Partnership Callout Spread */}
-      <section className="py-20 md:py-24 bg-[#02060B]">
+      <section className="py-20 md:py-24 bg-[#000000]">
         <div className="container-page">
           <div className="max-w-3xl space-y-6">
             <div className="flex items-center gap-3 font-mono text-[10px] text-[#fa8716]">

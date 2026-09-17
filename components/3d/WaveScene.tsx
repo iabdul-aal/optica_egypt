@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
@@ -11,8 +11,8 @@ const WaveShaderMaterial = {
     uTime: { value: 0 },
     uSource1: { value: new THREE.Vector2(0.35, 0.5) },
     uSource2: { value: new THREE.Vector2(0.65, 0.5) },
-    uColorDark: { value: new THREE.Color("#09131F") },
-    uColorGold: { value: new THREE.Color("#D4AF37") },
+    uColorDark: { value: new THREE.Color("#000000") },
+    uColorGold: { value: new THREE.Color("#fa8716") },
     uColorTeal: { value: new THREE.Color("#00ADEF") },
   },
   vertexShader: `
@@ -59,8 +59,8 @@ function WaveMesh() {
       uTime: { value: 0 },
       uSource1: { value: new THREE.Vector2(0.35, 0.5) },
       uSource2: { value: new THREE.Vector2(0.65, 0.5) },
-      uColorDark: { value: new THREE.Color("#09131F") },
-      uColorGold: { value: new THREE.Color("#D4AF37") },
+      uColorDark: { value: new THREE.Color("#000000") },
+      uColorGold: { value: new THREE.Color("#fa8716") },
       uColorTeal: { value: new THREE.Color("#00ADEF") },
     }),
     []
@@ -86,17 +86,17 @@ function WaveMesh() {
 
 function WaveFallback() {
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-[#09131F] overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center bg-[#000000] overflow-hidden">
       <svg className="w-full h-full opacity-35" viewBox="0 0 1000 400" preserveAspectRatio="none">
         {/* Concentric interference rings from two slit sources */}
         {[30, 60, 90, 120, 150, 180, 210, 240].map((r, i) => (
           <g key={i}>
-            <circle cx="350" cy="200" r={r} fill="none" stroke="#D4AF37" strokeWidth="1" strokeDasharray="6 6" opacity={1 - i * 0.1} />
+            <circle cx="350" cy="200" r={r} fill="none" stroke="#fa8716" strokeWidth="1" strokeDasharray="6 6" opacity={1 - i * 0.1} />
             <circle cx="650" cy="200" r={r} fill="none" stroke="#00ADEF" strokeWidth="1" strokeDasharray="6 6" opacity={1 - i * 0.1} />
           </g>
         ))}
       </svg>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#09131F] via-transparent to-[#09131F]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000000] via-transparent to-[#000000]" />
     </div>
   )
 }

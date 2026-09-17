@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useRef, useState, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
@@ -59,7 +59,7 @@ function Beams({ isDispersed }: { isDispersed: boolean }) {
   const inputLine = useMemo(() => {
     const points = [new THREE.Vector3(-6, -0.2, 0), new THREE.Vector3(-0.5, 0.1, 0)]
     const geo = new THREE.BufferGeometry().setFromPoints(points)
-    const mat = new THREE.LineBasicMaterial({ color: 0xD4AF37, linewidth: 3 })
+    const mat = new THREE.LineBasicMaterial({ color: 0xfa8716, linewidth: 3 })
     return new THREE.Line(geo, mat)
   }, [])
 
@@ -81,7 +81,7 @@ function Beams({ isDispersed }: { isDispersed: boolean }) {
   const straightLine = useMemo(() => {
     const points = [new THREE.Vector3(0.5, 0.1, 0), new THREE.Vector3(6, 0.1, 0)]
     const geo = new THREE.BufferGeometry().setFromPoints(points)
-    const mat = new THREE.LineBasicMaterial({ color: 0xD4AF37, transparent: true, opacity: 0.6 })
+    const mat = new THREE.LineBasicMaterial({ color: 0xfa8716, transparent: true, opacity: 0.6 })
     return new THREE.Line(geo, mat)
   }, [])
 
@@ -114,10 +114,10 @@ function BeamInteractiveScene() {
 
 function BeamFallback() {
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-[#09131F] overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center bg-[#000000] overflow-hidden">
       <svg className="w-full max-w-2xl h-auto" viewBox="0 0 600 240" fill="none">
-        <line x1="0" y1="120" x2="250" y2="120" stroke="#D4AF37" strokeWidth="3" />
-        <polygon points="250,60 330,180 170,180" stroke="#D4AF37" strokeWidth="2" fill="#111827" fillOpacity="0.7" />
+        <line x1="0" y1="120" x2="250" y2="120" stroke="#fa8716" strokeWidth="3" />
+        <polygon points="250,60 330,180 170,180" stroke="#fa8716" strokeWidth="2" fill="#111111" fillOpacity="0.7" />
         <line x1="290" y1="120" x2="600" y2="70" stroke="#FF0000" strokeWidth="2" />
         <line x1="290" y1="120" x2="600" y2="85" stroke="#FF7F00" strokeWidth="2" />
         <line x1="290" y1="120" x2="600" y2="100" stroke="#FFFF00" strokeWidth="2" />

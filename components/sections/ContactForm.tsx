@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -46,7 +46,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="p-8 sm:p-10 bg-[#02060B] border border-white/10">
+    <div className="p-8 sm:p-10 bg-[#000000] border border-white/10">
       <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
         <div>
           <span className="editorial-label text-[#fa8716] block mb-1">INTAKE REGISTRY</span>

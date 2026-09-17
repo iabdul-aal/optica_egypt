@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
@@ -6,7 +6,7 @@ import * as THREE from "three"
 import { SceneWrapper } from "./SceneWrapper"
 
 // Single fiber optic light tube
-function LightTube({ curve, color = "#D4AF37", speed = 1, offset = 0 }: { curve: THREE.CatmullRomCurve3; color?: string; speed?: number; offset?: number }) {
+function LightTube({ curve, color = "#fa8716", speed = 1, offset = 0 }: { curve: THREE.CatmullRomCurve3; color?: string; speed?: number; offset?: number }) {
   const tubeGeo = useMemo(() => new THREE.TubeGeometry(curve, 64, 0.04, 8, false), [curve])
   const photonRef = useRef<THREE.Mesh>(null)
 
@@ -39,7 +39,7 @@ function PyramidBase() {
   const geom = useMemo(() => new THREE.ConeGeometry(3.5, 2.5, 4), [])
   return (
     <mesh geometry={geom} position={[0, -4, -2]} rotation={[0, Math.PI / 4, 0]}>
-      <meshBasicMaterial color="#D4AF37" wireframe transparent opacity={0.2} />
+      <meshBasicMaterial color="#fa8716" wireframe transparent opacity={0.2} />
     </mesh>
   )
 }
@@ -135,7 +135,7 @@ function FiberCluster() {
         <LightTube
           key={idx}
           curve={curve}
-          color={idx % 2 === 0 ? "#D4AF37" : "#00ADEF"}
+          color={idx % 2 === 0 ? "#fa8716" : "#00ADEF"}
           speed={1 + idx * 0.2}
           offset={idx * 0.2}
         />
@@ -147,7 +147,7 @@ function FiberCluster() {
 // Fallback Graphic when 3D is disabled or loading
 function FiberFallback() {
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-[#09131F] overflow-hidden">
+    <div className="relative w-full h-full flex items-center justify-center bg-[#000000] overflow-hidden">
       {/* Geometric laser / optical river SVG illustration */}
       <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M 100 600 Q 300 350 400 300 T 700 0" stroke="url(#laserGold)" strokeWidth="3" fill="none" />
@@ -156,24 +156,24 @@ function FiberFallback() {
         <path d="M 700 600 Q 500 400 400 300 T 100 0" stroke="url(#laserTeal)" strokeWidth="3" fill="none" />
         
         {/* Pyramid Silhouette */}
-        <polygon points="400,280 480,480 320,480" stroke="#D4AF37" strokeWidth="1.5" fill="none" opacity="0.5" />
-        <polygon points="340,340 400,480 280,480" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.3" />
-        <polygon points="460,340 520,480 400,480" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.3" />
+        <polygon points="400,280 480,480 320,480" stroke="#fa8716" strokeWidth="1.5" fill="none" opacity="0.5" />
+        <polygon points="340,340 400,480 280,480" stroke="#fa8716" strokeWidth="1" fill="none" opacity="0.3" />
+        <polygon points="460,340 520,480 400,480" stroke="#fa8716" strokeWidth="1" fill="none" opacity="0.3" />
 
         <defs>
           <linearGradient id="laserGold" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#09131F" stopOpacity="0" />
-            <stop offset="50%" stopColor="#D4AF37" stopOpacity="1" />
+            <stop offset="0%" stopColor="#000000" stopOpacity="0" />
+            <stop offset="50%" stopColor="#fa8716" stopOpacity="1" />
             <stop offset="100%" stopColor="#00ADEF" stopOpacity="0.8" />
           </linearGradient>
           <linearGradient id="laserTeal" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#09131F" stopOpacity="0" />
+            <stop offset="0%" stopColor="#000000" stopOpacity="0" />
             <stop offset="50%" stopColor="#00ADEF" stopOpacity="1" />
-            <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#fa8716" stopOpacity="0.8" />
           </linearGradient>
         </defs>
       </svg>
-      <div className="absolute inset-0 bg-gradient-to-t from-[#09131F] via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent" />
     </div>
   )
 }
@@ -194,7 +194,7 @@ export function FiberScene({ className = "" }: { className?: string }) {
         className="w-full h-full"
       >
         <ambientLight intensity={0.4} />
-        <pointLight position={[5, 5, 5]} intensity={1.5} color="#D4AF37" />
+        <pointLight position={[5, 5, 5]} intensity={1.5} color="#fa8716" />
         <pointLight position={[-5, -5, 5]} intensity={1.5} color="#00ADEF" />
         <FiberCluster />
       </Canvas>

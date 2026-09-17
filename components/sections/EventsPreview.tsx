@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from "react"
 import { useTranslations } from "next-intl"
@@ -36,7 +36,7 @@ export function EventsPreview({ events }: { events: Event[] }) {
         </div>
 
         {/* Flagship Event Spotlight: Architectural Symposium Spread */}
-        <div className="p-8 sm:p-12 md:p-14 mb-16 bg-[#02060B] border border-white/10 relative">
+        <div className="p-8 sm:p-12 md:p-14 mb-16 bg-[#000000] border border-white/10 relative">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-8 space-y-6">
               <div className="flex flex-wrap items-center gap-3 font-mono text-[10px]">

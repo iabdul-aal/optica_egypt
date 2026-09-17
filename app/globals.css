@@ -8,21 +8,21 @@
   --color-signal-green:   #00e660;       /* PhysicsX Neon Signal / 510nm */
   --color-optica-green:   #4caf50;       /* Optica Global Science Green / 532nm (Report 5) */
   --color-laser-violet:   #7e58f5;       /* PsiQuantum Laser Violet / 405nm (Report 3) */
-  --color-primary-gold:   #D4AF37;       /* Optica Egypt Gold */
+  --color-primary-gold:   #fa8716;       /* Flat amber accent — same as primary orange, no metallic */
   --color-navy:           #1F2E69;       /* Entor Tech Navy */
   --color-slate:          #5D5F6D;       /* Entor Tech Slate */
   --color-neutral-mid:    #8B8EA1;       /* Entor Tech Mid Neutral */
   --color-neutral-light:  #CCCCCC;       /* Entor Tech Light Neutral */
   --color-ink-black:      #000000;       /* Akhetonics & Nover Pure Black */
   --color-near-black:     #121212;       /* PsiQuantum Deep Matte Surface */
-  --color-deep-surface:   #02060B;       /* Engineering Card Surface */
+  --color-deep-surface:   #000000;       /* Engineering Card Surface */
   --color-white:          #FFFFFF;
 
   /* Theme Tokens */
   --background:        #000000;
-  --background-alt:    #03070D;
-  --surface:           #02060B;
-  --surface-raised:    #060B12;
+  --background-alt:    #0A0A0A;
+  --surface:           #000000;
+  --surface-raised:    #111111;
   --foreground:        #FFFFFF;
   --foreground-muted:  #8B8EA1;
   --accent:            #fa8716;

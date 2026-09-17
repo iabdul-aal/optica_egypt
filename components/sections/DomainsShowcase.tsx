@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useState } from "react"
 
@@ -142,7 +142,7 @@ export function DomainsShowcase() {
           </div>
 
           {/* Right Column: Optical Bench Oscilloscope Display */}
-          <div className="lg:col-span-7 bg-[#02060B] border border-white/10 p-6 relative">
+          <div className="lg:col-span-7 bg-[#000000] border border-white/10 p-6 relative">
             {/* Laboratory Test-Bench Header Telemetry */}
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10 font-mono text-[10px]">
               <div className="flex items-center gap-2">
@@ -163,8 +163,8 @@ export function DomainsShowcase() {
                     <circle cx="260" cy="90" r="30" stroke="#fa8716" strokeWidth="2" fill="none" />
                     <circle cx="260" cy="90" r="2" fill="#fa8716" />
                     <line x1="260" y1="60" x2="260" y2="120" stroke="rgba(250,135,22,0.3)" strokeDasharray="2 2" />
-                    <rect x="70" y="38" width="40" height="24" rx="1" fill="#0A2234" stroke="#D4AF37" strokeWidth="1" />
-                    <text x="75" y="53" fill="#D4AF37" fontSize="9" fontFamily="monospace">Δφ (1550)</text>
+                    <rect x="70" y="38" width="40" height="24" rx="1" fill="#000000" stroke="#fa8716" strokeWidth="1" />
+                    <text x="75" y="53" fill="#fa8716" fontSize="9" fontFamily="monospace">Δφ (1550)</text>
                     <text x="15" y="42" fill="#94A3B8" fontSize="8" fontFamily="monospace">P_IN (Laser)</text>
                     <text x="280" y="42" fill="#00B4FF" fontSize="8" fontFamily="monospace">P_THROUGH</text>
                     <text x="260" y="150" fill="#fa8716" fontSize="8" fontFamily="monospace">P_DROP (Resonant)</text>
@@ -203,7 +203,7 @@ export function DomainsShowcase() {
                       <line x1="40" y1="80" x2="40" y2="15" stroke="#5CB1A2" strokeWidth="2" />
                       <line x1="60" y1="80" x2="60" y2="10" stroke="#fa8716" strokeWidth="2" />
                       <line x1="80" y1="80" x2="80" y2="12" stroke="#F59E0B" strokeWidth="2" />
-                      <line x1="100" y1="80" x2="100" y2="25" stroke="#D4AF37" strokeWidth="2" />
+                      <line x1="100" y1="80" x2="100" y2="25" stroke="#fa8716" strokeWidth="2" />
                       <line x1="120" y1="80" x2="120" y2="30" stroke="#10B981" strokeWidth="2" />
                       <line x1="140" y1="80" x2="140" y2="40" stroke="#6366F1" strokeWidth="2" />
                       <text x="20" y="95" fill="#94A3B8" fontSize="8" fontFamily="monospace">1530nm (C-BAND) 1565nm</text>
@@ -221,8 +221,8 @@ export function DomainsShowcase() {
                     <text x="122" y="140" fill="#A5B4FC" fontSize="8" fontFamily="monospace">BBO Crystal</text>
                     <line x1="160" y1="85" x2="310" y2="45" stroke="#fa8716" strokeWidth="2" />
                     <line x1="160" y1="95" x2="310" y2="135" stroke="#5CB1A2" strokeWidth="2" />
-                    <rect x="310" y="35" width="30" height="20" fill="#0A2234" stroke="#fa8716" />
-                    <rect x="310" y="125" width="30" height="20" fill="#0A2234" stroke="#5CB1A2" />
+                    <rect x="310" y="35" width="30" height="20" fill="#000000" stroke="#fa8716" />
+                    <rect x="310" y="125" width="30" height="20" fill="#000000" stroke="#5CB1A2" />
                     <text x="250" y="30" fill="#fa8716" fontSize="8" fontFamily="monospace">|H⟩ Signal (810 nm)</text>
                     <text x="250" y="160" fill="#5CB1A2" fontSize="8" fontFamily="monospace">|V⟩ Idler (810 nm)</text>
                   </svg>

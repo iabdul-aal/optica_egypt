@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from "react"
 import type { Event } from "@/types/event"
@@ -14,7 +14,7 @@ export function EventCard({ event }: { event: Event }) {
   const location = event.location.en
 
   return (
-    <div className="p-6 sm:p-8 bg-[#02060B] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
+    <div className="p-6 sm:p-8 bg-[#000000] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
       <div>
         {/* Top Telemetry Row */}
         <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10 font-mono text-[10px]">

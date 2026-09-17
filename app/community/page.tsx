@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 import { ArrowRight, Terminal } from "lucide-react"
@@ -208,7 +208,7 @@ export default async function CommunityPage() {
       </section>
 
       {/* Community Membership Callout Spread */}
-      <section className="py-20 md:py-24 bg-[#02060B]">
+      <section className="py-20 md:py-24 bg-[#000000]">
         <div className="container-page">
           <div className="max-w-3xl space-y-6">
             <div className="flex items-center gap-3 font-mono text-[10px] text-[#fa8716]">

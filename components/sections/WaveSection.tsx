@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useState } from "react"
 import dynamic from "next/dynamic"
@@ -9,7 +9,7 @@ function WaveFallbackVector() {
       <svg className="w-full h-full opacity-40" viewBox="0 0 1000 400" preserveAspectRatio="none">
         {[40, 80, 120, 160, 200, 240, 280].map((r, i) => (
           <g key={i}>
-            <circle cx="360" cy="200" r={r} fill="none" stroke="#D4AF37" strokeWidth="1.2" strokeDasharray="6 6" opacity={0.9 - i * 0.1} />
+            <circle cx="360" cy="200" r={r} fill="none" stroke="#fa8716" strokeWidth="1.2" strokeDasharray="6 6" opacity={0.9 - i * 0.1} />
             <circle cx="640" cy="200" r={r} fill="none" stroke="#00B4FF" strokeWidth="1.2" strokeDasharray="6 6" opacity={0.9 - i * 0.1} />
           </g>
         ))}

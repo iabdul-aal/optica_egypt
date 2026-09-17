@@ -40,7 +40,7 @@ export default async function AboutPage() {
       id: "04",
       code: "PILLAR_04",
       title: "Global Optica Gateway",
-      desc: "Direct conduits for Egyptian students and investigators to Optica Global travel grants, technical division working groups, international student chapters, and publishing archives.",
+      desc: "Direct conduits for Egyptian students and investigators to Optica Global travel grants, technical division working groups, international student sections, and publishing archives.",
       focus: "International Travel Grants and Publishing",
     },
   ]
@@ -263,7 +263,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Section Registry and Global Charter */}
-      <section className="py-16 bg-[#02060B]">
+      <section className="py-16 bg-[#000000]">
         <div className="container-page">
           <div className="grid sm:grid-cols-3 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
             <div className="px-6 py-4 flex items-start gap-4">

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useState } from "react"
 import Image from "next/image"
@@ -22,7 +22,7 @@ export function MemberCard({ member }: { member: Member }) {
   const photoSrc = `/people/leadership/${member.photo}`
 
   return (
-    <div className="p-6 bg-[#02060B] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
+    <div className="p-6 bg-[#000000] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
       <div>
         {/* Officer Portrait / Monogram Frame */}
         <div className="relative aspect-[4/5] w-full mb-5 bg-[#000000] border border-white/10 flex items-center justify-center overflow-hidden">
@@ -36,12 +36,12 @@ export function MemberCard({ member }: { member: Member }) {
               onError={() => setImageError(true)}
             />
           ) : (
-            <div className="relative w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#02060B] to-[#000000]">
+            <div className="relative w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#000000] to-[#000000]">
               {/* Subtle architectural hairline cross */}
               <div className="absolute inset-x-8 top-1/2 h-px bg-white/5" />
               <div className="absolute inset-y-8 left-1/2 w-px bg-white/5" />
 
-              <div className="relative z-10 w-16 h-16 border border-[#fa8716]/40 group-hover:border-[#fa8716] bg-[#02060B] flex items-center justify-center transition-colors">
+              <div className="relative z-10 w-16 h-16 border border-[#fa8716]/40 group-hover:border-[#fa8716] bg-[#000000] flex items-center justify-center transition-colors">
                 <span className="text-xl font-bold font-mono text-[#fa8716] tracking-wider">
                   {initials}
                 </span>

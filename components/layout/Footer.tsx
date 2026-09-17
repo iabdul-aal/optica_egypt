@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React from "react"
 import Link from "next/link"
@@ -102,7 +102,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="reticle-box p-5 bg-[#02060B] border border-white/10">
+          <div className="reticle-box p-5 bg-[#000000] border border-white/10">
             <p className="text-xs font-mono font-bold uppercase tracking-wider text-white mb-1">
               Join the Section
             </p>

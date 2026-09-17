@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import React, { useState, useEffect, Suspense, ReactNode } from "react"
 import Image from "next/image"
@@ -63,12 +63,12 @@ export function SceneWrapper({
             className="object-cover"
             priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#09131F] via-transparent to-transparent opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent opacity-80" />
         </div>
       )
     }
     return (
-      <div className="relative w-full h-full flex items-center justify-center bg-[#09131F] overflow-hidden">
+      <div className="relative w-full h-full flex items-center justify-center bg-[#000000] overflow-hidden">
         {/* Optical grid lines */}
         <div className="absolute inset-0 bg-[radial-gradient(#00ADEF_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
         <div className="relative z-10 flex flex-col items-center gap-3">

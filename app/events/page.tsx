@@ -1,4 +1,4 @@
-import { Calendar, Compass, MapPin, ArrowRight } from "lucide-react"
+﻿import { Calendar, Compass, MapPin, ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { getAllEvents } from "@/lib/events"
@@ -52,7 +52,7 @@ export default async function EventsPage() {
       {/* Flagship Spotlight Symposium Banner */}
       <section className="py-20 md:py-24 border-b border-white/10">
         <div className="container-page">
-          <div className="p-8 sm:p-12 md:p-14 bg-[#02060B] border border-white/10 relative">
+          <div className="p-8 sm:p-12 md:p-14 bg-[#000000] border border-white/10 relative">
             <div className="grid lg:grid-cols-12 gap-10 items-start">
               <div className="lg:col-span-8 space-y-6">
                 <div className="flex flex-wrap items-center gap-3 font-mono text-[10px]">
@@ -144,7 +144,7 @@ export default async function EventsPage() {
           </div>
 
           {upcoming.length === 0 ? (
-            <div className="p-16 text-center border border-white/10 bg-[#02060B]">
+            <div className="p-16 text-center border border-white/10 bg-[#000000]">
               <div className="w-12 h-12 border border-white/10 flex items-center justify-center mx-auto mb-4 text-[#fa8716]">
                 <Compass size={22} />
               </div>

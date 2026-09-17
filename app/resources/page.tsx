@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { getAllResources } from "@/lib/resources"
 import { ArrowUpRight } from "lucide-react"
@@ -67,7 +67,7 @@ export default async function ResourcesPage() {
                   href={r.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-8 bg-[#02060B] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between group transition-all"
+                  className="p-8 bg-[#000000] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between group transition-all"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10 font-mono text-[10px]">
