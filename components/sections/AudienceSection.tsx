@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { useTranslations, useLocale } from "next-intl"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
@@ -34,7 +34,6 @@ const SEGMENTS = [
 
 export function AudienceSection() {
   const t = useTranslations("home.audience")
-  const locale = useLocale()
 
   return (
     <section className="py-24 bg-[#000000] border-b border-white/10 relative">
@@ -46,7 +45,7 @@ export function AudienceSection() {
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "NATIONAL ECOSYSTEM" : "المنظومة الوطنية"}
+                NATIONAL ECOSYSTEM
               </span>
             </div>
 
@@ -55,9 +54,7 @@ export function AudienceSection() {
             </h2>
 
             <p className="editorial-lead text-slate-400">
-              {locale === "en"
-                ? "Connecting Egypt's scientific capacity directly to the global photonics frontier. Four specialized pathways designed to eliminate research silos and accelerate industrial innovation."
-                : "ربط الكفاءات العلمية المصرية مباشرة بالمنظومة العالمية لعلوم الضوئيات. أربعة مسارات متخصصة لإلغاء العزلة البحثية وتسريع الابتكار الصناعي."}
+              Connecting Egypt&apos;s scientific capacity directly to the global photonics frontier. Four specialized pathways designed to eliminate research silos and accelerate industrial innovation.
             </p>
 
             <div className="pt-6 border-t border-white/10 flex items-center gap-4 text-[10px] font-mono text-slate-500">
@@ -67,7 +64,7 @@ export function AudienceSection() {
             </div>
           </div>
 
-          {/* Right Column: Architectural Cohort Ledger (No boxed cards) */}
+          {/* Right Column: Architectural Cohort Ledger */}
           <div className="lg:col-span-8 divide-y divide-white/10 border-y border-white/10">
             {SEGMENTS.map(({ key, id, tag, focus }) => (
               <div
@@ -103,10 +100,10 @@ export function AudienceSection() {
                   {/* Right Action */}
                   <div className="shrink-0 sm:self-center">
                     <Link
-                      href={`/${locale}/community`}
+                      href="/community"
                       className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 group-hover:text-white py-2 px-3 border border-white/10 group-hover:border-[#fa8716] transition-all"
                     >
-                      <span>{locale === "en" ? "Explore" : "استكشف"}</span>
+                      <span>Explore</span>
                       <ArrowUpRight size={14} className="text-[#fa8716]" />
                     </Link>
                   </div>

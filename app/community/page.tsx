@@ -1,111 +1,87 @@
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import Link from "next/link"
 import { ArrowRight, Terminal } from "lucide-react"
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ar" }]
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "community" })
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("community")
   return {
     title: `${t("heading")} | Optica Egypt Local Section`,
     description: t("subheading"),
   }
 }
 
-export default async function CommunityPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
-  const { locale } = await params
-  setRequestLocale(locale)
-
-  const t = await getTranslations({ locale, namespace: "community" })
-  const j = await getTranslations({ locale, namespace: "join" })
+export default async function CommunityPage() {
+  const t = await getTranslations("community")
+  const j = await getTranslations("join")
 
   const TRACKS = [
     {
       id: "01",
       code: "TRACK_01",
-      title: locale === "en" ? "Undergraduates and Graduates" : "طلاب الجامعات والخريجون",
-      desc: locale === "en"
-        ? "Gain hands-on optical design training, lab mentorship, and international competition support."
-        : "الحصول على تدريب عملي في التصميم البصري، وإشراف معملي، ودعم للمسابقات الدولية.",
-      status: locale === "en" ? "Active Mentorship Cohort" : "برنامج الإرشاد الأكاديمي",
+      title: "Undergraduates and Graduates",
+      desc: "Gain hands-on optical design training, lab mentorship, and international competition support.",
+      status: "Active Mentorship Cohort",
     },
     {
       id: "02",
       code: "TRACK_02",
-      title: locale === "en" ? "Academic Researchers" : "الباحثون الأكاديميون",
-      desc: locale === "en"
-        ? "Facilitate inter-university research, share specialized laser and spectroscopy facilities, and publish jointly."
-        : "تسهيل الأبحاث المشتركة بين الجامعات، ومشاركة التجهيزات المعملية المتقدمة لليزر والتحليل الطيفي.",
-      status: locale === "en" ? "Shared Lab Network" : "شبكة المختبرات المشتركة",
+      title: "Academic Researchers",
+      desc: "Facilitate inter-university research, share specialized laser and spectroscopy facilities, and publish jointly.",
+      status: "Shared Lab Network",
     },
     {
       id: "03",
       code: "TRACK_03",
-      title: locale === "en" ? "Industry and Telecom" : "قطاع الصناعة والاتصالات",
-      desc: locale === "en"
-        ? "Connect optical fiber, telecom, and sensor manufacturers with top engineering talent and applied research and development."
-        : "ربط قطاعات الألياف الضوئية والاتصالات ومصنعي الحساسات بأفضل الكفاءات والبحوث التطبيقية.",
-      status: locale === "en" ? "Applied Testbeds" : "منصات البحوث التطبيقية",
+      title: "Industry and Telecom",
+      desc: "Connect optical fiber, telecom, and sensor manufacturers with top engineering talent and applied research and development.",
+      status: "Applied Testbeds",
     },
     {
       id: "04",
       code: "TRACK_04",
-      title: locale === "en" ? "DeepTech Startups" : "الشركات التكنولوجية الناشئة",
-      desc: locale === "en"
-        ? "Incubate photonics hardware concepts, access academic prototyping labs, and scale technical ventures."
-        : "احتضان أفكار العتاد البصري، والوصول إلى معامل النمذجة الأولية وتوسيع الشركات التقنية.",
-      status: locale === "en" ? "Hardware Prototyping" : "النماذج الأولية للأجهزة",
+      title: "DeepTech Startups",
+      desc: "Incubate photonics hardware concepts, access academic prototyping labs, and scale technical ventures.",
+      status: "Hardware Prototyping",
     },
   ]
 
   const LABS_DIRECTORY = [
     {
       node: "LAB_01",
-      institution: locale === "en" ? "Cairo University" : "جامعة القاهرة",
-      lab: locale === "en" ? "Nanophotonics and Metamaterials Lab" : "مختبر الفوتونيات النانوية والمواد الميتامية",
+      institution: "Cairo University",
+      lab: "Nanophotonics and Metamaterials Lab",
       focus: "Silicon Photonics, Plasmonics, PICs",
       contact: "cairo.photonics@eng.cu.edu.eg",
     },
     {
       node: "LAB_02",
-      institution: locale === "en" ? "Ain Shams University" : "جامعة عين شمس",
-      lab: locale === "en" ? "Optical Telecom and Wireless Lab" : "مختبر الاتصالات الضوئية والشبكات اللاسلكية",
+      institution: "Ain Shams University",
+      lab: "Optical Telecom and Wireless Lab",
       focus: "DWDM Systems, Free Space Optics (FSO)",
       contact: "optics@eng.asu.edu.eg",
     },
     {
       node: "LAB_03",
-      institution: locale === "en" ? "Zewail City of Science and Tech" : "مدينة زويل للعلوم والتكنولوجيا",
-      lab: locale === "en" ? "Center for Photonics and Smart Materials" : "مركز علوم الضوئيات والمواد الذكية",
+      institution: "Zewail City of Science and Tech",
+      lab: "Center for Photonics and Smart Materials",
       focus: "Ultrafast Spectroscopy, Quantum Optics",
       contact: "cpsm@zewailcity.edu.eg",
     },
     {
       node: "LAB_04",
-      institution: locale === "en" ? "American University in Cairo" : "الجامعة الأمريكية بالقاهرة",
-      lab: locale === "en" ? "Nanotechnology Research Center" : "مركز أبحاث تكنولوجيا النانو",
+      institution: "American University in Cairo",
+      lab: "Nanotechnology Research Center",
       focus: "Biophotonics, Optical Microcavities",
       contact: "nano@aucegypt.edu",
     },
   ]
 
   const benefits = [
-    locale === "en" ? "Direct access to technical workshops and specialized seminars" : "وصول حصري ومباشر إلى ورش العمل التقنية والندوات التخصصية",
-    locale === "en" ? "Network with international Optica fellows and senior engineers" : "بناء شبكة علاقات مع علماء وباحثي جمعية أوبتيكا العالمية",
-    locale === "en" ? "Eligibility for international student travel grants and publication awards" : "الأهلية للتقديم على منح السفر وجوائز النشر العلمي للطلاب",
-    locale === "en" ? "Joint research and equipment sharing across Egyptian university labs" : "التعاون البحثي ومشاركة التجهيزات المعملية عبر الجامعات المصرية",
+    "Direct access to technical workshops and specialized seminars",
+    "Network with international Optica fellows and senior engineers",
+    "Eligibility for international student travel grants and publication awards",
+    "Joint research and equipment sharing across Egyptian university labs",
   ]
 
   return (
@@ -117,7 +93,7 @@ export default async function CommunityPage({
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "NATIONAL PHOTONICS ECOSYSTEM // EGYPT ROSTER" : "المنظومة الوطنية لعلوم الضوئيات // سجل مصر"}
+                NATIONAL PHOTONICS ECOSYSTEM // EGYPT ROSTER
               </span>
             </div>
 
@@ -126,9 +102,7 @@ export default async function CommunityPage({
             </h1>
 
             <p className="editorial-lead text-slate-300 max-w-3xl">
-              {locale === "en"
-                ? "Connecting university researchers, telecom engineering professionals, students, and photonics hardware innovators across Egypt."
-                : "ربط الباحثين الأكاديميين ومهندسي الاتصالات والطلاب ومبتكري عتاد الضوئيات في جميع أنحاء مصر."}
+              Connecting university researchers, telecom engineering professionals, students, and photonics hardware innovators across Egypt.
             </p>
           </div>
         </div>
@@ -140,10 +114,10 @@ export default async function CommunityPage({
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 pb-6 border-b border-white/10">
             <div>
               <span className="editorial-label text-[#fa8716] block mb-2">
-                {locale === "en" ? "COHORT PATHWAYS" : "مسارات المنظومة"}
+                COHORT PATHWAYS
               </span>
               <h2 className="editorial-headline text-white">
-                {locale === "en" ? "Four Pillars of Collaboration" : "محاور التعاون الأربعة"}
+                Four Pillars of Collaboration
               </h2>
             </div>
             <span className="editorial-label text-slate-500">
@@ -192,10 +166,10 @@ export default async function CommunityPage({
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-[#5CB1A2] mb-2 uppercase">
                 <Terminal size={14} />
-                <span>{locale === "en" ? "LABORATORY DIRECTORY" : "دليل المختبرات"}</span>
+                <span>LABORATORY DIRECTORY</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-                {locale === "en" ? "Specialized Photonics Labs in Egypt" : "المعامل والمراكز البحثية المتخصصة بمصر"}
+                Specialized Photonics Labs in Egypt
               </h2>
             </div>
             <span className="editorial-label text-slate-400">
@@ -240,7 +214,7 @@ export default async function CommunityPage({
             <div className="flex items-center gap-3 font-mono text-[10px] text-[#fa8716]">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "ZERO MEMBERSHIP FEES FOR STUDENTS" : "عضوية مجانية ومتاحة للجميع"}
+                ZERO MEMBERSHIP FEES FOR STUDENTS
               </span>
             </div>
 
@@ -263,17 +237,17 @@ export default async function CommunityPage({
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <Link
-                href={`/${locale}/join`}
+                href="/join"
                 className="px-8 py-3.5 bg-[#fa8716] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors"
               >
                 <span>{t("join_cta")}</span>
               </Link>
               <Link
-                href={`/${locale}/events`}
+                href="/events"
                 className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-wider transition-colors"
               >
-                <span>{locale === "en" ? "Explore Upcoming Events" : "استكشف الفعاليات القادمة"}</span>
-                <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
+                <span>Explore Upcoming Events</span>
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>
@@ -282,4 +256,3 @@ export default async function CommunityPage({
     </div>
   )
 }
-

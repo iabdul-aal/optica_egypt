@@ -1,111 +1,79 @@
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import { siteConfig } from "@/lib/site-config"
 import { ShieldCheck, Calendar, Globe, Building2 } from "lucide-react"
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ar" }]
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "about" })
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("about")
   return {
     title: `${t("heading")} | Optica Egypt Local Section`,
     description: t("mission"),
   }
 }
 
-export default async function AboutPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
-  const { locale } = await params
-  setRequestLocale(locale)
-
-  const t = await getTranslations({ locale, namespace: "about" })
+export default async function AboutPage() {
+  const t = await getTranslations("about")
 
   const PILLARS = [
     {
       id: "01",
       code: "PILLAR_01",
-      title: locale === "en" ? "Knowledge Transmission" : "نقل وتوطين المعرفة البصرية",
-      desc: locale === "en"
-        ? "Delivering state-of-the-art technical workshops, peer-reviewed colloquia, and hands-on lab masterclasses in silicon photonics, ultrafast lasers, and optical telecommunications."
-        : "تنظيم ورش عمل تقنية متقدمة وندوات علمية محكمة وبرامج تدريب معملي مكثف في مجالات الفوتونيات المتكاملة والليزر والاتصالات الضوئية.",
-      focus: locale === "en" ? "Workshops, Masterclasses, and Technical Groups" : "ورش العمل والماستر كلاس والمجموعات التخصصية",
+      title: "Knowledge Transmission",
+      desc: "Delivering state-of-the-art technical workshops, peer-reviewed colloquia, and hands-on lab masterclasses in silicon photonics, ultrafast lasers, and optical telecommunications.",
+      focus: "Workshops, Masterclasses, and Technical Groups",
     },
     {
       id: "02",
       code: "PILLAR_02",
-      title: locale === "en" ? "National Research Synergy" : "تكامل المراكز البحثية المصرية",
-      desc: locale === "en"
-        ? "Connecting faculty, graduate investigators, and laboratory facilities across Egyptian universities to eliminate research silos and enable shared access to spectroscopy equipment."
-        : "ربط أعضاء هيئة التدريس وباحثي الدراسات العليا والمختبرات المتخصصة عبر الجامعات المصرية لإتاحة التجهيزات المعملية المتقدمة لجميع الباحثين.",
-      focus: locale === "en" ? "Shared Spectroscopy and Lab Conduits" : "المعامل المشتركة والتجهيزات الطيفية المتقدمة",
+      title: "National Research Synergy",
+      desc: "Connecting faculty, graduate investigators, and laboratory facilities across Egyptian universities to eliminate research silos and enable shared access to spectroscopy equipment.",
+      focus: "Shared Spectroscopy and Lab Conduits",
     },
     {
       id: "03",
       code: "PILLAR_03",
-      title: locale === "en" ? "Industrial Co-Design" : "الشراكة والتطوير الصناعي",
-      desc: locale === "en"
-        ? "Bridging telecom operators, fiber cable providers, and semiconductor startups with cutting-edge optical engineering talent and applied prototyping testbeds."
-        : "بناء جسور تعاون مع مشغلي الاتصالات وشركات كوابل الألياف الضوئية والشركات الناشئة لتبني الكفاءات الهندسية وتطوير النماذج الأولية.",
-      focus: locale === "en" ? "Subsea Telecommunications and Photonic Hardware" : "الاتصالات البحرية وعتاد الضوئيات المتطور",
+      title: "Industrial Co-Design",
+      desc: "Bridging telecom operators, fiber cable providers, and semiconductor startups with cutting-edge optical engineering talent and applied prototyping testbeds.",
+      focus: "Subsea Telecommunications and Photonic Hardware",
     },
     {
       id: "04",
       code: "PILLAR_04",
-      title: locale === "en" ? "Global Optica Gateway" : "بوابة أوبتيكا العالمية",
-      desc: locale === "en"
-        ? "Direct conduits for Egyptian students and investigators to Optica Global travel grants, technical division working groups, international student chapters, and publishing archives."
-        : "توفير مسارات مباشرة للطلاب والباحثين المصريين للاستفادة من منح السفر الدولية ومجموعات العمل التقنية ودوريات النشر التابعة لجمعية أوبتيكا.",
-      focus: locale === "en" ? "International Travel Grants and Publishing" : "منح السفر الدولية والنشر العلمي المحكم",
+      title: "Global Optica Gateway",
+      desc: "Direct conduits for Egyptian students and investigators to Optica Global travel grants, technical division working groups, international student chapters, and publishing archives.",
+      focus: "International Travel Grants and Publishing",
     },
   ]
 
   const UNIVERSITIES = [
-    { node: "NODE_01", name: locale === "en" ? "Cairo University" : "جامعة القاهرة", lab: "Nanophotonics and Devices Group", focus: "Silicon Photonics and Plasmonics" },
-    { node: "NODE_02", name: locale === "en" ? "Ain Shams University" : "جامعة عين شمس", lab: "Optical Communications and Photonic Systems", focus: "DWDM Systems and FSO" },
-    { node: "NODE_03", name: locale === "en" ? "Zewail City of Science and Technology" : "مدينة زويل للعلوم والتكنولوجيا", lab: "Center for Photonics and Smart Materials", focus: "Ultrafast Laser Spectroscopy" },
-    { node: "NODE_04", name: locale === "en" ? "American University in Cairo" : "الجامعة الأمريكية بالقاهرة", lab: "Nanotechnology and Materials Research Center", focus: "Biophotonics and Optical Sensors" },
-    { node: "NODE_05", name: locale === "en" ? "Egypt-Japan University (E-JUST)" : "الجامعة المصرية اليابانية", lab: "Optical Networks and Applied Physics", focus: "Nonlinear Fiber Optics" },
-    { node: "NODE_06", name: locale === "en" ? "Alexandria University" : "جامعة الإسكندرية", lab: "Microwave and Photonic Sensors Lab", focus: "Fiber Bragg Gratings" },
+    { node: "NODE_01", name: "Cairo University", lab: "Nanophotonics and Devices Group", focus: "Silicon Photonics and Plasmonics" },
+    { node: "NODE_02", name: "Ain Shams University", lab: "Optical Communications and Photonic Systems", focus: "DWDM Systems and FSO" },
+    { node: "NODE_03", name: "Zewail City of Science and Technology", lab: "Center for Photonics and Smart Materials", focus: "Ultrafast Laser Spectroscopy" },
+    { node: "NODE_04", name: "American University in Cairo", lab: "Nanotechnology and Materials Research Center", focus: "Biophotonics and Optical Sensors" },
+    { node: "NODE_05", name: "Egypt-Japan University (E-JUST)", lab: "Optical Networks and Applied Physics", focus: "Nonlinear Fiber Optics" },
+    { node: "NODE_06", name: "Alexandria University", lab: "Microwave and Photonic Sensors Lab", focus: "Fiber Bragg Gratings" },
   ]
 
   const ROADMAP = [
     {
       period: "Q1 2026",
-      phase: locale === "en" ? "Phase 01: Charter Ratification" : "المرحلة الأولى: الاعتماد التأسيسي",
-      detail: locale === "en"
-        ? "Official recognition by Optica Global headquarters, constitution approval, and founding board appointment."
-        : "الاعتماد الرسمي من المقر الرئيسي لجمعية أوبتيكا العالمية وإقرار اللائحة التأسيسية وتعيين الهيئة الإدارية.",
+      phase: "Phase 01: Charter Ratification",
+      detail: "Official recognition by Optica Global headquarters, constitution approval, and founding board appointment.",
     },
     {
       period: "Q3 2026",
-      phase: locale === "en" ? "Phase 02: Flagship National Symposium" : "المرحلة الثانية: المؤتمر السنوي الافتتاحي",
-      detail: locale === "en"
-        ? "Inaugural Egyptian Photonics Workshop uniting researchers, students, and industry partners in Cairo."
-        : "انعقاد المؤتمر الوطني الأول لعلوم الضوئيات بالقاهرة بمشاركة واسعة من الجامعات والجهات الصناعية.",
+      phase: "Phase 02: Flagship National Symposium",
+      detail: "Inaugural Egyptian Photonics Workshop uniting researchers, students, and industry partners in Cairo.",
     },
     {
       period: "Q4 2026",
-      phase: locale === "en" ? "Phase 03: Shared Lab Grants and Training" : "المرحلة الثالثة: مسارات التدريب ومنح المختبرات",
-      detail: locale === "en"
-        ? "Launch of Photonic Integrated Circuit (PIC) design masterclasses and national student travel sponsorship."
-        : "إطلاق الدورات التخصصية لتصميم الرقائق الضوئية وتفعيل برامج دعم سفر الطلاب للمؤتمرات الدولية.",
+      phase: "Phase 03: Shared Lab Grants and Training",
+      detail: "Launch of Photonic Integrated Circuit (PIC) design masterclasses and national student travel sponsorship.",
     },
     {
       period: "2027+",
-      phase: locale === "en" ? "Phase 04: Regional MENA Photonics Hub" : "المرحلة الرابعة: المركز الإقليمي للشرق الأوسط",
-      detail: locale === "en"
-        ? "Expanding cross-border research networks and co-hosting international Optica technical conferences in Egypt."
-        : "توسيع شبكات التعاون البحثي عبر الحدود واستضافة مؤتمرات أوبتيكا التخصصية الدولية في مصر.",
+      phase: "Phase 04: Regional MENA Photonics Hub",
+      detail: "Expanding cross-border research networks and co-hosting international Optica technical conferences in Egypt.",
     },
   ]
 
@@ -118,7 +86,7 @@ export default async function AboutPage({
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "CHARTER AND STRATEGIC FOUNDATION // EST. 2026" : "الميثاق والرسالة الاستراتيجية // تأسس 2026"}
+                CHARTER AND STRATEGIC FOUNDATION // EST. 2026
               </span>
             </div>
 
@@ -127,9 +95,7 @@ export default async function AboutPage({
             </h1>
 
             <p className="editorial-lead text-slate-300 max-w-3xl">
-              {locale === "en"
-                ? "Empowering Egypt's photonics scientists, students, and engineers with direct access to the global photonics ecosystem, advanced research infrastructure, and industrial innovation."
-                : "تمكين علماء ومهندسي وطلاب علوم الضوئيات بمصر من خلال الربط المباشر مع المنظومة العالمية والبنية التحتية البحثية المتقدمة."}
+              Empowering Egypt&apos;s photonics scientists, students, and engineers with direct access to the global photonics ecosystem, advanced research infrastructure, and industrial innovation.
             </p>
           </div>
         </div>
@@ -168,10 +134,10 @@ export default async function AboutPage({
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 pb-6 border-b border-white/10">
             <div>
               <span className="editorial-label text-[#fa8716] block mb-2">
-                {locale === "en" ? "STRATEGIC PILLARS" : "الأركان الاستراتيجية"}
+                STRATEGIC PILLARS
               </span>
               <h2 className="editorial-headline text-white">
-                {locale === "en" ? "How We Advance the Ecosystem" : "كيف نبني منظومة الضوئيات الوطنية"}
+                How We Advance the Ecosystem
               </h2>
             </div>
             <span className="editorial-label text-slate-500">
@@ -220,10 +186,10 @@ export default async function AboutPage({
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-[#5CB1A2] mb-2 uppercase">
                 <Building2 size={14} />
-                <span>{locale === "en" ? "INSTITUTIONAL DIRECTORY" : "دليل الجامعات الشريكة"}</span>
+                <span>INSTITUTIONAL DIRECTORY</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-                {locale === "en" ? "Egyptian Photonics Laboratory Coalition" : "المراكز والمعامل البحثية الشريكة في مصر"}
+                Egyptian Photonics Laboratory Coalition
               </h2>
             </div>
             <span className="editorial-label text-slate-400">
@@ -263,10 +229,10 @@ export default async function AboutPage({
         <div className="container-page">
           <div className="mb-14 pb-6 border-b border-white/10">
             <span className="editorial-label text-[#fa8716] block mb-2">
-              {locale === "en" ? "MILESTONE TRACKER" : "تتبع المراحل"}
+              MILESTONE TRACKER
             </span>
             <h2 className="editorial-headline text-white">
-              {locale === "en" ? "2026-2027 Strategic Roadmap" : "خارطة الطريق الاستراتيجية 2026-2027"}
+              2026-2027 Strategic Roadmap
             </h2>
           </div>
 
@@ -320,10 +286,10 @@ export default async function AboutPage({
               <ShieldCheck size={20} className="text-[#00e660] mt-1 shrink-0" />
               <div>
                 <p className="editorial-label text-slate-500 mb-1">
-                  {locale === "en" ? "STATUS" : "الحالة"}
+                  STATUS
                 </p>
                 <p className="text-sm font-semibold text-[#00e660]">
-                  {locale === "en" ? "Officially Recognized Local Section" : "قسم محلي معتمد رسمياً"}
+                  Officially Recognized Local Section
                 </p>
               </div>
             </div>
@@ -333,4 +299,3 @@ export default async function AboutPage({
     </div>
   )
 }
-

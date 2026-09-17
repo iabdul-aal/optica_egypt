@@ -1,35 +1,32 @@
 "use client"
 
 import React from "react"
-import { useLocale } from "next-intl"
 
 export function ImpactMetrics() {
-  const locale = useLocale()
-
   const metrics = [
     {
       value: "430K+",
       id: "METRIC_01",
-      label: locale === "en" ? "Global Optica Network" : "عضو بشبكة أوبتيكا العالمية",
-      subtext: locale === "en" ? "Scientists and engineers across 180 countries" : "علماء ومهندسون في أكثر من 180 دولة",
+      label: "Global Optica Network",
+      subtext: "Scientists and engineers across 180 countries",
     },
     {
       value: "100+",
       id: "METRIC_02",
-      label: locale === "en" ? "Years of Scientific Heritage" : "عاماً من الريادة والتميز العلمي",
-      subtext: locale === "en" ? "Advancing optics worldwide since 1916" : "تطوير علوم الضوئيات منذ عام 1916",
+      label: "Years of Scientific Heritage",
+      subtext: "Advancing optics worldwide since 1916",
     },
     {
       value: "12",
       id: "METRIC_03",
-      label: locale === "en" ? "Founding Board Officers" : "ضباط الهيئة التأسيسية بمصر",
-      subtext: locale === "en" ? "Driving activities across Egyptian universities" : "يقودون الأنشطة بالجامعات المصرية",
+      label: "Founding Board Officers",
+      subtext: "Driving activities across Egyptian universities",
     },
     {
       value: "100%",
       id: "METRIC_04",
-      label: locale === "en" ? "Open Community Access" : "مجتمع مفتوح ومجاني بالكامل",
-      subtext: locale === "en" ? "Zero membership barrier for local students" : "فرص متساوية لجميع الطلاب والباحثين",
+      label: "Open Community Access",
+      subtext: "Zero membership barrier for local students",
     },
   ]
 

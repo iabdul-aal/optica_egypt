@@ -3,24 +3,23 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { useTranslations, useLocale } from "next-intl"
+import { useTranslations } from "next-intl"
 import { siteConfig } from "@/lib/site-config"
 import { Linkedin, Mail, Globe, ArrowRight } from "lucide-react"
 
 export function Footer() {
   const t = useTranslations("footer")
   const tn = useTranslations("nav")
-  const locale = useLocale()
 
   const links = [
-    { key: "home", href: `/${locale}` },
-    { key: "about", href: `/${locale}/about` },
-    { key: "events", href: `/${locale}/events` },
-    { key: "community", href: `/${locale}/community` },
-    { key: "leadership", href: `/${locale}/leadership` },
-    { key: "outreach", href: `/${locale}/outreach` },
-    { key: "resources", href: `/${locale}/resources` },
-    { key: "join", href: `/${locale}/join` },
+    { key: "home", href: "/" },
+    { key: "about", href: "/about" },
+    { key: "events", href: "/events" },
+    { key: "community", href: "/community" },
+    { key: "leadership", href: "/leadership" },
+    { key: "outreach", href: "/outreach" },
+    { key: "resources", href: "/resources" },
+    { key: "join", href: "/join" },
   ]
 
   return (
@@ -28,7 +27,7 @@ export function Footer() {
       <div className="container-page grid gap-12 lg:grid-cols-12 mb-14">
         {/* Brand Column (5 Cols) */}
         <div className="lg:col-span-5 flex flex-col items-start">
-          <Link href={`/${locale}`} className="mb-5 block" aria-label="Optica Egypt">
+          <Link href="/" className="mb-5 block" aria-label="Optica Egypt">
             <Image
               src="/assets/brand/egypt/logo/optica-egypt-logo.png"
               alt="Optica Egypt Local Section"
@@ -39,9 +38,7 @@ export function Footer() {
           </Link>
 
           <p className="text-slate-400 text-xs leading-relaxed max-w-sm font-light mb-6">
-            {locale === "en"
-              ? "The official Optica Local Section connecting students, researchers, universities, and industry in Egypt to the global photonics ecosystem."
-              : "القسم المحلي الرسمي لمنظمة أوبتيكا، يربط الطلاب والباحثين والجامعات وقطاع الصناعة في مصر بالمنظومة العالمية لعلوم الضوئيات."}
+            The official Optica Local Section connecting students, researchers, universities, and industry in Egypt to the global photonics ecosystem.
           </p>
 
           <div className="flex items-center gap-2">
@@ -94,7 +91,7 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Global Affiliation and Newsletter (4 Cols) */}
+        {/* Global Affiliation and Callout (4 Cols) */}
         <div className="lg:col-span-4 flex flex-col justify-between">
           <div>
             <p className="text-[10px] uppercase font-mono font-bold tracking-widest text-[#5CB1A2] mb-3">
@@ -107,14 +104,14 @@ export function Footer() {
 
           <div className="reticle-box p-5 bg-[#02060B] border border-white/10">
             <p className="text-xs font-mono font-bold uppercase tracking-wider text-white mb-1">
-              {locale === "en" ? "Join the Section" : "انضم إلى القسم المحلي"}
+              Join the Section
             </p>
             <p className="text-xs text-slate-400 mb-4 font-light">
-              {locale === "en" ? "Become part of Egypt's photonics future." : "كن جزءاً من مستقبل الضوئيات في مصر."}
+              Become part of Egypt&apos;s photonics future.
             </p>
-            <Link href={`/${locale}/join`} className="btn-primary text-xs py-2 w-full justify-center">
-              <span>{locale === "en" ? "Apply Now" : "قدّم الآن"}</span>
-              <ArrowRight size={13} className={locale === "ar" ? "rotate-180" : ""} />
+            <Link href="/join" className="btn-primary text-xs py-2 w-full justify-center">
+              <span>Apply Now</span>
+              <ArrowRight size={13} />
             </Link>
           </div>
         </div>

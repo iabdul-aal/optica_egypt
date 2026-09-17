@@ -2,17 +2,15 @@
 
 import React, { useState } from "react"
 import Image from "next/image"
-import { useLocale } from "next-intl"
 import type { Member } from "@/types/member"
 import { Mail, Linkedin } from "lucide-react"
 
 export function MemberCard({ member }: { member: Member }) {
-  const locale = useLocale()
   const [imageError, setImageError] = useState(true)
 
-  const name = member.name[locale as "en" | "ar"] || member.name.en
-  const role = member.role[locale as "en" | "ar"] || member.role.en
-  const institution = member.institution[locale as "en" | "ar"] || member.institution.en
+  const name = member.name.en
+  const role = member.role.en
+  const institution = member.institution.en
 
   const initials = member.name.en
     .split(" ")
@@ -77,7 +75,7 @@ export function MemberCard({ member }: { member: Member }) {
 
       <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
         <span className="editorial-label text-[9px] text-slate-500">
-          {locale === "en" ? "ACTIVE TENURE" : "عضوية سارية"}
+          ACTIVE TENURE
         </span>
         <div className="flex items-center gap-2">
           {member.email && (

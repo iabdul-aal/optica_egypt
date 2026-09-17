@@ -2,7 +2,6 @@
 
 import React from "react"
 import dynamic from "next/dynamic"
-import { useLocale } from "next-intl"
 
 function BeamFallbackVector() {
   return (
@@ -42,8 +41,6 @@ const BeamScene = dynamic(
 )
 
 export function BeamSection() {
-  const locale = useLocale()
-
   return (
     <div className="reticle-box w-full mb-12 border border-white/15 bg-[#000000] relative">
       {/* Instrumentation Header Bar */}
@@ -51,7 +48,7 @@ export function BeamSection() {
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 bg-[#fa8716]" />
           <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#fa8716]">
-            {locale === "en" ? "OPTICAL BENCH // SCENE C : EQUILATERAL PRISM DISPERSION" : "منصة التجارب البصرية · تفريق الضوء عبر موشور زجاجي"}
+            OPTICAL BENCH // SCENE C : EQUILATERAL PRISM DISPERSION
           </span>
         </div>
 

@@ -1,34 +1,18 @@
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import { getAllResources } from "@/lib/resources"
 import { ArrowUpRight } from "lucide-react"
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ar" }]
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "resources" })
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("resources")
   return {
     title: `${t("heading")} | Optica Egypt Local Section`,
     description: t("subheading"),
   }
 }
 
-export default async function ResourcesPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
-  const { locale } = await params
-  setRequestLocale(locale)
-
-  const t = await getTranslations({ locale, namespace: "resources" })
+export default async function ResourcesPage() {
+  const t = await getTranslations("resources")
   const resources = getAllResources()
 
   return (
@@ -40,7 +24,7 @@ export default async function ResourcesPage({
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "TECHNICAL REPOSITORY AND SOFTWARE KITS" : "المستودع المعرفي والبرمجي"}
+                TECHNICAL REPOSITORY AND SOFTWARE KITS
               </span>
             </div>
 
@@ -49,9 +33,7 @@ export default async function ResourcesPage({
             </h1>
 
             <p className="editorial-lead text-slate-300 max-w-3xl">
-              {locale === "en"
-                ? "Curated open-source photonic design kits, simulation software, Optica peer-reviewed journals, and international student fellowship programs."
-                : "حزم تصميم الدوائر الضوئية مفتوحة المصدر وبرمجيات المحاكاة الكهرومغناطيسية ودوريات أوبتيكا المحكمة ومنح السفر والزمالات."}
+              Curated open-source photonic design kits, simulation software, Optica peer-reviewed journals, and international student fellowship programs.
             </p>
           </div>
         </div>
@@ -63,21 +45,21 @@ export default async function ResourcesPage({
           <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
             <div>
               <span className="editorial-label text-[#fa8716] block mb-2">
-                {locale === "en" ? "INDEXED ENTRIES" : "السجلات المفهرسة"}
+                INDEXED ENTRIES
               </span>
               <h2 className="editorial-headline text-white">
-                {locale === "en" ? "Curated Scientific Archives" : "المستودع العلمي المختار"}
+                Curated Scientific Archives
               </h2>
             </div>
             <span className="editorial-label text-slate-400">
-              {resources.length} {locale === "en" ? "TOOLS AND REPOSITORIES" : "أدوات ومصادر"}
+              {resources.length} TOOLS AND REPOSITORIES
             </span>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {resources.map((r) => {
-              const title = r.title[locale as "en" | "ar"] || r.title.en
-              const description = r.description[locale as "en" | "ar"] || r.description.en
+              const title = r.title.en
+              const description = r.description.en
 
               return (
                 <a
@@ -130,4 +112,3 @@ export default async function ResourcesPage({
     </div>
   )
 }
-

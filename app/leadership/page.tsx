@@ -1,34 +1,18 @@
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import { getActiveMembers } from "@/lib/members"
 import { MemberCard } from "@/components/sections/MemberCard"
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ar" }]
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "leadership" })
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("leadership")
   return {
     title: `${t("heading")} | Optica Egypt Local Section`,
     description: t("subheading"),
   }
 }
 
-export default async function LeadershipPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
-  const { locale } = await params
-  setRequestLocale(locale)
-
-  const t = await getTranslations({ locale, namespace: "leadership" })
+export default async function LeadershipPage() {
+  const t = await getTranslations("leadership")
   const members = getActiveMembers()
 
   const execMembers = members.filter((m) => m.order <= 4)
@@ -43,7 +27,7 @@ export default async function LeadershipPage({
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "SECTION GOVERNANCE AND OFFICERS // ROSTER" : "الهيئة القيادية والتنظيمية // السجل الرسمي"}
+                SECTION GOVERNANCE AND OFFICERS // ROSTER
               </span>
             </div>
 
@@ -52,9 +36,7 @@ export default async function LeadershipPage({
             </h1>
 
             <p className="editorial-lead text-slate-300 max-w-3xl">
-              {locale === "en"
-                ? "Elected officers and technical leaders directing Optica Egypt Local Section initiatives, university alliances, and international outreach."
-                : "الهيئة الإدارية والضباط المتخصصون في قيادة مبادرات قسم أوبتيكا مصر والتحالفات الجامعية والأنشطة الدولية."}
+              Elected officers and technical leaders directing Optica Egypt Local Section initiatives, university alliances, and international outreach.
             </p>
           </div>
         </div>
@@ -66,10 +48,10 @@ export default async function LeadershipPage({
           <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
             <div>
               <span className="editorial-label text-[#fa8716] block mb-2">
-                {locale === "en" ? "PRIMARY EXECUTIVE" : "الهيئة التنفيذية الأولى"}
+                PRIMARY EXECUTIVE
               </span>
               <h2 className="editorial-headline text-white">
-                {locale === "en" ? "Executive Committee" : "المكتب التنفيذي"}
+                Executive Committee
               </h2>
             </div>
             <span className="editorial-label text-slate-400">4 OFFICERS</span>
@@ -89,14 +71,14 @@ export default async function LeadershipPage({
           <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
             <div>
               <span className="editorial-label text-[#5CB1A2] block mb-2">
-                {locale === "en" ? "FUNCTIONAL DIRECTORS" : "المكاتب التخصصية"}
+                FUNCTIONAL DIRECTORS
               </span>
               <h2 className="editorial-headline text-white">
-                {locale === "en" ? "Operational Officers and Technical Chairs" : "الضباط واللجان التخصصية"}
+                Operational Officers and Technical Chairs
               </h2>
             </div>
             <span className="editorial-label text-slate-400">
-              {operationalMembers.length} {locale === "en" ? "OFFICERS" : "ضباط"}
+              {operationalMembers.length} OFFICERS
             </span>
           </div>
 
@@ -110,4 +92,3 @@ export default async function LeadershipPage({
     </div>
   )
 }
-

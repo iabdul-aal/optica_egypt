@@ -1,21 +1,17 @@
 "use client"
 
 import React, { useState } from "react"
-import { useLocale } from "next-intl"
 
 export function DomainsShowcase() {
-  const locale = useLocale()
   const [activeTab, setActiveTab] = useState(0)
 
   const domains = [
     {
       id: "01",
       code: "PIC_SYS",
-      name: locale === "en" ? "Integrated Photonics and PICs" : "الضوئيات المتكاملة والدوائر البصرية",
-      desc: locale === "en"
-        ? "Photonic Integrated Circuits (PICs) replace electronic copper wires with microscopic silicon and indium phosphide waveguides, transmitting data at the speed of light with near-zero heat dissipation."
-        : "تستبدل الدوائر المتكاملة الضوئية الأسلاك النحاسية الإلكترونية بأدلة موجية ميكروسكوبية من السيليكون، لنقل البيانات بسرعة الضوء مع انعدام الفقد الحراري تقريباً.",
-      highlight: locale === "en" ? "Silicon Photonics Prototyping and Layout" : "نمذجة رقائق السيليكون الضوئية وتصميمها",
+      name: "Integrated Photonics and PICs",
+      desc: "Photonic Integrated Circuits (PICs) replace electronic copper wires with microscopic silicon and indium phosphide waveguides, transmitting data at the speed of light with near-zero heat dissipation.",
+      highlight: "Silicon Photonics Prototyping and Layout",
       badge: "Optical Compute",
       specs: [
         { label: "CORE LOSS", val: "< 0.2 dB/cm" },
@@ -26,11 +22,9 @@ export function DomainsShowcase() {
     {
       id: "02",
       code: "LASER_CAV",
-      name: locale === "en" ? "Laser Physics and Ultrafast Optics" : "فيزياء الليزر والبصريات الفائقة السرعة",
-      desc: locale === "en"
-        ? "From femtosecond pulsed lasers to industrial diode systems, we explore beam conditioning, nonlinear harmonic generation, and precision spectroscopy used in material processing and biomedical diagnostics."
-        : "من ليزرات الفيمتوثانية النبضية إلى الأنظمة الصناعية، نستكشف توجيه الحزم الضوئية وتوليد التوافقيات غير الخطية والتحليل الطيفي الدقيق للتشخيص الطبي والصناعي.",
-      highlight: locale === "en" ? "Femtosecond Spectroscopy and Diagnostics" : "التحليل الطيفي بالفيمتوثانية والتشخيص المتقدم",
+      name: "Laser Physics and Ultrafast Optics",
+      desc: "From femtosecond pulsed lasers to industrial diode systems, we explore beam conditioning, nonlinear harmonic generation, and precision spectroscopy used in material processing and biomedical diagnostics.",
+      highlight: "Femtosecond Spectroscopy and Diagnostics",
       badge: "Laser Systems",
       specs: [
         { label: "PULSE DURATION", val: "< 20 fs FWHM" },
@@ -41,11 +35,9 @@ export function DomainsShowcase() {
     {
       id: "03",
       code: "FIBER_GRID",
-      name: locale === "en" ? "Fiber Communications and Sensors" : "الاتصالات بالألياف الضوئية والحساسات",
-      desc: locale === "en"
-        ? "Egypt connects 17+ submarine optical fiber cables bridging the East and West. We provide advanced workshops on wavelength division multiplexing (WDM), optical amplifiers, and distributed fiber sensors."
-        : "تربط مصر أكثر من 17 كابلاً بحرياً للألياف الضوئية بين الشرق والغرب. نقدم تدريباً متقدماً على مضاعفة تقسيم الأطوال الموجية ومكبرات الإشارة البصرية.",
-      highlight: locale === "en" ? "WDM Telecom Networks and Subsea Links" : "شبكات الاتصالات عالية السعة والكوابل البحرية",
+      name: "Fiber Communications and Sensors",
+      desc: "Egypt connects 17+ submarine optical fiber cables bridging the East and West. We provide advanced workshops on wavelength division multiplexing (WDM), optical amplifiers, and distributed fiber sensors.",
+      highlight: "WDM Telecom Networks and Subsea Links",
       badge: "Telecom and Sensing",
       specs: [
         { label: "ITU GRID", val: "50 GHz C-Band" },
@@ -56,11 +48,9 @@ export function DomainsShowcase() {
     {
       id: "04",
       code: "QUANTUM_OPT",
-      name: locale === "en" ? "Quantum Optics and Photonic AI" : "البصريات الكمية والذكاء الاصطناعي الضوئي",
-      desc: locale === "en"
-        ? "Exploiting entangled photon pairs for quantum key distribution (QKD) and optical tensor processing units (TPUs) capable of running deep neural networks at teraflops per watt."
-        : "استغلال أزواج الفوتونات المتشابكة لتوزيع المفاتيح الكمية الآمنة، وبناء معالجات مصفوفية ضوئية لتشغيل الشبكات العصبية بسرعة خيالية وكفاءة طاقة قصوى.",
-      highlight: locale === "en" ? "Optical Neural Networks and QKD" : "الشبكات العصبية الضوئية والتشفير الكمي",
+      name: "Quantum Optics and Photonic AI",
+      desc: "Exploiting entangled photon pairs for quantum key distribution (QKD) and optical tensor processing units (TPUs) capable of running deep neural networks at teraflops per watt.",
+      highlight: "Optical Neural Networks and QKD",
       badge: "DeepTech Frontier",
       specs: [
         { label: "BELL STATE", val: "|Ψ+⟩ Singlet" },
@@ -81,17 +71,15 @@ export function DomainsShowcase() {
             <div className="flex items-center gap-3 mb-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "CORE SCIENTIFIC DOMAINS" : "المحاور العلمية الأساسية"}
+                CORE SCIENTIFIC DOMAINS
               </span>
             </div>
             <h2 className="editorial-headline text-white">
-              {locale === "en" ? "The Photonic Disciplines" : "مجالات علوم الضوئيات"}
+              The Photonic Disciplines
             </h2>
           </div>
           <p className="editorial-lead text-slate-400 max-w-md">
-            {locale === "en"
-              ? "Bridging fundamental optical physics with industrial photonic engineering across Egyptian research universities."
-              : "ربط الفيزياء البصرية الأساسية بالهندسة التطبيقية عبر المراكز البحثية والجامعية المصرية."}
+            Bridging fundamental optical physics with industrial photonic engineering across Egyptian research universities.
           </p>
         </div>
 

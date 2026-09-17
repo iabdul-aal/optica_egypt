@@ -2,7 +2,6 @@
 
 import React, { useState } from "react"
 import dynamic from "next/dynamic"
-import { useLocale } from "next-intl"
 
 function WaveFallbackVector() {
   return (
@@ -30,7 +29,6 @@ const WaveScene = dynamic(
 )
 
 export function WaveSection() {
-  const locale = useLocale()
   const [activeBand, setActiveBand] = useState<"cband" | "visible" | "quantum">("cband")
 
   return (
@@ -41,11 +39,11 @@ export function WaveSection() {
             <div className="flex items-center gap-3 mb-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "SCENE B // COHERENT INTERFERENCE EXPERIMENT" : "المشهد الثاني // تجربة التداخل المتشاكه"}
+                SCENE B // COHERENT INTERFERENCE EXPERIMENT
               </span>
             </div>
             <h2 className="editorial-headline text-white">
-              {locale === "en" ? "Wave Interference and Superposition Dynamics" : "تراكب الموجات الضوئية وأنماط التداخل المتشاكه"}
+              Wave Interference and Superposition Dynamics
             </h2>
           </div>
 

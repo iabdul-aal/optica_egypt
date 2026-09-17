@@ -32,7 +32,6 @@
   --border-active:     rgba(250, 135, 22, 0.6);
   --radius:            0px;           /* Strict 0px geometry */
   --font-en:           var(--font-inter);
-  --font-ar:           var(--font-noto-arabic);
   --font-display:      var(--font-montserrat);
 }
 
@@ -78,27 +77,12 @@ body {
   overflow-x: hidden;
 }
 
-[dir="rtl"] body,
-[dir="rtl"] * {
-  font-family: var(--font-ar), sans-serif;
-}
-
 /* ─── Typography ─────────────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display), var(--font-en), sans-serif;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
-}
-
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3,
-[dir="rtl"] h4,
-[dir="rtl"] h5,
-[dir="rtl"] h6 {
-  font-family: var(--font-ar), sans-serif;
-  letter-spacing: 0;
 }
 
 /* ─── Strict Flat Buttons (Akhetonics & Entor Tech Standard) ─────────────── */
@@ -287,12 +271,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 0.98;
-}
-
-[dir="rtl"] .editorial-headline {
-  font-family: var(--font-ar), sans-serif;
-  letter-spacing: 0;
-  line-height: 1.15;
 }
 
 .editorial-lead {

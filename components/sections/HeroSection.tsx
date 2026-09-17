@@ -1,14 +1,13 @@
 "use client"
 
 import React from "react"
-import { useTranslations, useLocale } from "next-intl"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { ArrowRight, Terminal } from "lucide-react"
 import { FiberScene } from "@/components/3d/FiberScene"
 
 export function HeroSection() {
   const t = useTranslations("home.hero")
-  const locale = useLocale()
 
   return (
     <section className="relative min-h-[92vh] flex flex-col justify-between bg-[#000000] border-b border-white/10 overflow-hidden pt-8">
@@ -41,12 +40,8 @@ export function HeroSection() {
           </div>
 
           <h1 className="editorial-headline text-5xl sm:text-7xl md:text-8xl xl:text-[6.5rem] tracking-tight text-white mb-8">
-            <span className="block">
-              {locale === "en" ? "Connecting Talent." : "ربط الكفاءات."}
-            </span>
-            <span className="block text-[#fa8716] mt-1">
-              {locale === "en" ? "Advancing Photonics." : "وتطوير علوم الضوئيات."}
-            </span>
+            <span className="block">Connecting Talent.</span>
+            <span className="block text-[#fa8716] mt-1">Advancing Photonics.</span>
           </h1>
 
           <p className="editorial-lead max-w-xl mb-10 font-light">
@@ -54,13 +49,13 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
-            <Link href={`/${locale}/join`} className="btn-primary py-3.5 px-8 text-xs">
+            <Link href="/join" className="btn-primary py-3.5 px-8 text-xs">
               <span>{t("cta_primary")}</span>
-              <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
+              <ArrowRight size={14} />
             </Link>
-            <Link href={`/${locale}/events`} className="btn-secondary py-3.5 px-8 text-xs">
+            <Link href="/events" className="btn-secondary py-3.5 px-8 text-xs">
               <span>{t("cta_secondary")}</span>
-              <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
+              <ArrowRight size={14} />
             </Link>
           </div>
         </div>

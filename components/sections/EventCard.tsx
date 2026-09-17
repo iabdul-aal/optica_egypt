@@ -2,17 +2,16 @@
 
 import React from "react"
 import type { Event } from "@/types/event"
-import { useTranslations, useLocale } from "next-intl"
+import { useTranslations } from "next-intl"
 import { MapPin, ExternalLink, User } from "lucide-react"
 import Link from "next/link"
 
 export function EventCard({ event }: { event: Event }) {
   const t = useTranslations("events")
-  const locale = useLocale()
 
-  const title = event.title[locale as "en" | "ar"] || event.title.en
-  const description = event.description[locale as "en" | "ar"] || event.description.en
-  const location = event.location[locale as "en" | "ar"] || event.location.en
+  const title = event.title.en
+  const description = event.description.en
+  const location = event.location.en
 
   return (
     <div className="p-6 sm:p-8 bg-[#02060B] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
@@ -53,7 +52,7 @@ export function EventCard({ event }: { event: Event }) {
         {event.registrationUrl && (
           <div className="pt-3">
             <Link
-              href={`/${locale}${event.registrationUrl}`}
+              href={event.registrationUrl}
               className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 text-xs font-mono uppercase tracking-wider bg-white/[0.03] hover:bg-[#fa8716] text-white hover:text-black border border-white/10 hover:border-[#fa8716] transition-all"
             >
               <span>{t("register")}</span>

@@ -1,13 +1,10 @@
 "use client"
 
 import React from "react"
-import { useLocale } from "next-intl"
 import Link from "next/link"
 import { Globe, Award, BookOpen, ExternalLink, ArrowRight } from "lucide-react"
 
 export function OpticaHeritage() {
-  const locale = useLocale()
-
   return (
     <section className="py-24 bg-[#000000] border-b border-white/10 relative">
       <div className="container-page">
@@ -20,15 +17,11 @@ export function OpticaHeritage() {
             </div>
 
             <h2 className="editorial-headline text-white">
-              {locale === "en"
-                ? "Backed by the World's Leading Optics Society"
-                : "مدعوم من الجمعية العالمية الرائدة للبصريات والضوئيات"}
+              Backed by the World&apos;s Leading Optics Society
             </h2>
 
             <p className="editorial-lead text-slate-300 max-w-2xl">
-              {locale === "en"
-                ? "Optica is dedicated to promoting the generation, application, and archiving of knowledge in optics and photonics. As the official local section in Egypt, we provide our members with direct access to Optica technical groups, student travel grants, and peer-reviewed scientific journals."
-                : "تُعنى جمعية أوبتيكا العالمية بتطوير ونشر وتوثيق المعرفة في علوم الضوئيات والبصريات. كقسم محلي رسمي في مصر، نتيح لأعضائنا الوصول المباشر للمجموعات التخصصية، ومنح السفر للطلاب، والمجلات العلمية العالمية المحكمة."}
+              Optica is dedicated to promoting the generation, application, and archiving of knowledge in optics and photonics. As the official local section in Egypt, we provide our members with direct access to Optica technical groups, student travel grants, and peer-reviewed scientific journals.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -38,16 +31,16 @@ export function OpticaHeritage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#fa8716] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors"
               >
-                <span>{locale === "en" ? "Visit Optica Global" : "زيارة موقع أوبتيكا العالمي"}</span>
+                <span>Visit Optica Global</span>
                 <ExternalLink size={14} />
               </a>
 
               <Link
-                href={`/${locale}/about`}
+                href="/about"
                 className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-wider transition-colors"
               >
-                <span>{locale === "en" ? "About Egypt Section" : "عن قسم مصر المحلي"}</span>
-                <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
+                <span>About Egypt Section</span>
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>

@@ -1,37 +1,21 @@
 import { Calendar, Compass, MapPin, ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import { getAllEvents } from "@/lib/events"
 import { EventCard } from "@/components/sections/EventCard"
 import { BeamSection } from "@/components/sections/BeamSection"
 import Link from "next/link"
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ar" }]
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "events" })
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("events")
   return {
     title: `${t("heading")} | Optica Egypt Local Section`,
     description: t("subheading"),
   }
 }
 
-export default async function EventsPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
-  const { locale } = await params
-  setRequestLocale(locale)
-
-  const t = await getTranslations({ locale, namespace: "events" })
+export default async function EventsPage() {
+  const t = await getTranslations("events")
   const events = getAllEvents()
 
   const now = new Date()
@@ -47,7 +31,7 @@ export default async function EventsPage({
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "TECHNICAL SESSIONS AND SYMPOSIUMS // CALENDAR 2026" : "الجلسات التقنية والمؤتمرات // الأجندة 2026"}
+                TECHNICAL SESSIONS AND SYMPOSIUMS // CALENDAR 2026
               </span>
             </div>
 
@@ -56,9 +40,7 @@ export default async function EventsPage({
             </h1>
 
             <p className="editorial-lead text-slate-300 max-w-3xl">
-              {locale === "en"
-                ? "Bridging Egyptian researchers, students, and engineers through technical workshops, symposiums, and international Optica colloquia."
-                : "ربط الباحثين والطلاب والمهندسين في مصر عبر ورش العمل التقنية والمؤتمرات والندوات العلمية الدولية."}
+              Bridging Egyptian researchers, students, and engineers through technical workshops, symposiums, and international Optica colloquia.
             </p>
           </div>
         </div>
@@ -75,46 +57,42 @@ export default async function EventsPage({
               <div className="lg:col-span-8 space-y-6">
                 <div className="flex flex-wrap items-center gap-3 font-mono text-[10px]">
                   <span className="px-2.5 py-1 font-bold bg-[#fa8716] text-black uppercase tracking-wider">
-                    {locale === "en" ? "FLAGSHIP SYMPOSIUM 2026" : "المؤتمر العلمي السنوي 2026"}
+                    FLAGSHIP SYMPOSIUM 2026
                   </span>
                   <span className="px-2.5 py-1 text-slate-300 border border-white/10">
-                    {locale === "en" ? "HYBRID · CAIRO AND ONLINE" : "حضور شخصي وعبر الإنترنت"}
+                    HYBRID · CAIRO AND ONLINE
                   </span>
                   <span className="px-2.5 py-1 text-[#5CB1A2] border border-[#5CB1A2]/30">
-                    {locale === "en" ? "CALL FOR ABSTRACTS OPEN" : "باب تقديم الملخصات البحثية مفتوح"}
+                    CALL FOR ABSTRACTS OPEN
                   </span>
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight">
-                  {locale === "en"
-                    ? "Inaugural Egyptian Photonics Workshop and Scientific Symposium 2026"
-                    : "المؤتمر العلمي وورشة العمل الافتتاحية لعلوم الضوئيات بمصر 2026"}
+                  Inaugural Egyptian Photonics Workshop and Scientific Symposium 2026
                 </h2>
 
                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light max-w-2xl">
-                  {locale === "en"
-                    ? "A landmark national gathering uniting university students, optical engineering faculty, telecom operators, and laser industry experts. Featuring technical keynotes, lab demonstrations, and publication tracks."
-                    : "ملتقى علمي وطني يجمع طلاب الجامعات وأعضاء هيئة التدريس وشركات الاتصالات وخبراء صناعة الليزر، يتضمن محاضرات تقنية وتجارب معملية وعروضاً بحثية."}
+                  A landmark national gathering uniting university students, optical engineering faculty, telecom operators, and laser industry experts. Featuring technical keynotes, lab demonstrations, and publication tracks.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-6 text-xs font-mono text-slate-300 pt-2">
                   <div className="flex items-center gap-2">
                     <Calendar size={15} className="text-[#fa8716]" />
-                    <span>{locale === "en" ? "15 Nov 2026 · 09:30 - 17:00" : "15 نوفمبر 2026 · 09:30 - 17:00"}</span>
+                    <span>15 Nov 2026 · 09:30 - 17:00</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin size={15} className="text-[#5CB1A2]" />
-                    <span>{locale === "en" ? "Cairo University Faculty of Engineering" : "كلية الهندسة جامعة القاهرة"}</span>
+                    <span>Cairo University Faculty of Engineering</span>
                   </div>
                 </div>
 
                 <div className="pt-4">
                   <Link
-                    href={`/${locale}/join`}
+                    href="/join"
                     className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#fa8716] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors"
                   >
-                    <span>{locale === "en" ? "Register for Symposium" : "التسجيل لحضور المؤتمر"}</span>
-                    <ArrowRight size={14} className={locale === "ar" ? "rotate-180" : ""} />
+                    <span>Register for Symposium</span>
+                    <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>
@@ -123,16 +101,16 @@ export default async function EventsPage({
               <div className="lg:col-span-4 p-6 bg-[#000000] border border-white/10 space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-[10px]">
                   <span className="text-[#fa8716] font-bold tracking-wider uppercase">
-                    {locale === "en" ? "SESSION TRACKS" : "محاور الجلسات"}
+                    SESSION TRACKS
                   </span>
                   <span className="text-slate-500">4 TRACKS</span>
                 </div>
                 <div className="divide-y divide-white/5">
                   {[
-                    locale === "en" ? "Silicon Photonics and PIC Design" : "تصميم رقائق السيليكون الضوئية",
-                    locale === "en" ? "Laser Processing and Ultrafast Optics" : "معالجة المواد بالليزر والبصريات فائقة السرعة",
-                    locale === "en" ? "Quantum Optics and Cryptography" : "البصريات الكمية والتشفير الآمن",
-                    locale === "en" ? "Student Poster Session and Awards" : "جلسة ملصقات الطلاب وجوائز التميز",
+                    "Silicon Photonics and PIC Design",
+                    "Laser Processing and Ultrafast Optics",
+                    "Quantum Optics and Cryptography",
+                    "Student Poster Session and Awards",
                   ].map((track, i) => (
                     <div key={i} className="py-3 flex items-start gap-3 text-xs">
                       <span className="editorial-label text-[#5CB1A2] text-[10px] mt-0.5">
@@ -154,14 +132,14 @@ export default async function EventsPage({
           <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
             <div>
               <span className="editorial-label text-[#fa8716] block mb-2">
-                {locale === "en" ? "ACTIVE SESSIONS" : "الجلسات النشطة"}
+                ACTIVE SESSIONS
               </span>
               <h2 className="editorial-headline text-white">
                 {t("filter_upcoming")}
               </h2>
             </div>
             <span className="editorial-label text-slate-400">
-              {upcoming.length} {locale === "en" ? "EVENTS SCHEDULED" : "فعاليات مسجلة"}
+              {upcoming.length} EVENTS SCHEDULED
             </span>
           </div>
 
@@ -204,4 +182,3 @@ export default async function EventsPage({
     </div>
   )
 }
-

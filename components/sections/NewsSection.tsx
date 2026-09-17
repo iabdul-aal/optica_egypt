@@ -1,14 +1,13 @@
 "use client"
 
 import React from "react"
-import { useTranslations, useLocale } from "next-intl"
+import { useTranslations } from "next-intl"
 import type { NewsItem } from "@/types/news"
 import { ArrowRight, Radio } from "lucide-react"
 import Link from "next/link"
 
 export function NewsSection({ news }: { news: NewsItem[] }) {
   const t = useTranslations("home.news")
-  const locale = useLocale()
 
   return (
     <section className="py-24 bg-[#000000] border-t border-white/10 relative">
@@ -19,7 +18,7 @@ export function NewsSection({ news }: { news: NewsItem[] }) {
             <div className="flex items-center gap-3 mb-3">
               <Radio size={12} className="text-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "DISPATCHES AND BULLETINS" : "النشرات والبيانات الرسمية"}
+                DISPATCHES AND BULLETINS
               </span>
             </div>
             <h2 className="editorial-headline text-white">
@@ -34,8 +33,8 @@ export function NewsSection({ news }: { news: NewsItem[] }) {
         {/* 3-Column Editorial Gazette Ledger */}
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10 border-y border-white/10">
           {news.map((item) => {
-            const title = item.title[locale as "en" | "ar"] || item.title.en
-            const summary = item.summary[locale as "en" | "ar"] || item.summary.en
+            const title = item.title.en
+            const summary = item.summary.en
 
             return (
               <div
@@ -61,9 +60,9 @@ export function NewsSection({ news }: { news: NewsItem[] }) {
                 </div>
 
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400 group-hover:text-white transition-colors">
-                  <Link href={`/${locale}/events`} className="inline-flex items-center gap-2 uppercase tracking-wider text-[11px]">
-                    <span>{locale === "en" ? "Read Dispatch" : "تفاصيل الإعلان"}</span>
-                    <ArrowRight size={13} className={locale === "ar" ? "rotate-180" : ""} />
+                  <Link href="/events" className="inline-flex items-center gap-2 uppercase tracking-wider text-[11px]">
+                    <span>Read Dispatch</span>
+                    <ArrowRight size={13} />
                   </Link>
                 </div>
               </div>

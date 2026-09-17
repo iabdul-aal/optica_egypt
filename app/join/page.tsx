@@ -1,68 +1,44 @@
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { getTranslations } from "next-intl/server"
 import { siteConfig } from "@/lib/site-config"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { Mail, ExternalLink } from "lucide-react"
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "ar" }]
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "join" })
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("join")
   return {
     title: `${t("heading")} | Optica Egypt Local Section`,
     description: t("subheading"),
   }
 }
 
-export default async function JoinPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}) {
-  const { locale } = await params
-  setRequestLocale(locale)
-
-  const t = await getTranslations({ locale, namespace: "join" })
+export default async function JoinPage() {
+  const t = await getTranslations("join")
 
   const TRACKS = [
     {
       id: "STUDENT",
-      title: locale === "en" ? "Undergraduate Student" : "طالب جامعي",
-      benefits: locale === "en"
-        ? "Access free optics kits, technical lab seminars, and student travel grant briefings."
-        : "حضور ورش العمل التقنية المعملية وجلسات التقديم على منح السفر الدولية.",
-      status: locale === "en" ? "100% Subsidized" : "مجاني بالكامل",
+      title: "Undergraduate Student",
+      benefits: "Access free optics kits, technical lab seminars, and student travel grant briefings.",
+      status: "100% Subsidized",
     },
     {
       id: "RESEARCHER",
-      title: locale === "en" ? "Graduate Researcher / PhD" : "باحث دراسات عليا / دكتوراه",
-      benefits: locale === "en"
-        ? "Shared equipment access across Egyptian universities and publication collaboration."
-        : "الاستفادة من التجهيزات المعملية المشتركة وشبكات النشر العلمي بالدوريات الدولية.",
-      status: locale === "en" ? "Lab Conduits" : "معامل مشتركة",
+      title: "Graduate Researcher / PhD",
+      benefits: "Shared equipment access across Egyptian universities and publication collaboration.",
+      status: "Lab Conduits",
     },
     {
       id: "FACULTY",
-      title: locale === "en" ? "Faculty and Academic Investigator" : "عضو هيئة تدريس وباحث رئيسي",
-      benefits: locale === "en"
-        ? "Represent your institution, lead technical working groups, and mentor rising scholars."
-        : "تمثيل جامعتك وقيادة مجموعات العمل التقنية والإشراف على الكوادر الشابة.",
-      status: locale === "en" ? "Working Groups" : "مجموعات عمل",
+      title: "Faculty and Academic Investigator",
+      benefits: "Represent your institution, lead technical working groups, and mentor rising scholars.",
+      status: "Working Groups",
     },
     {
       id: "INDUSTRY",
-      title: locale === "en" ? "Telecom and Industry Engineer" : "مهندس اتصالات وتصنيع بصري",
-      benefits: locale === "en"
-        ? "Connect with engineering talent, test hardware prototypes, and sponsor events."
-        : "استقطاب الكفاءات الهندسية واختبار النماذج الأولية ورعاية الفعاليات الوطنية.",
-      status: locale === "en" ? "Talent Bridge" : "شراكة صناعية",
+      title: "Telecom and Industry Engineer",
+      benefits: "Connect with engineering talent, test hardware prototypes, and sponsor events.",
+      status: "Talent Bridge",
     },
   ]
 
@@ -75,7 +51,7 @@ export default async function JoinPage({
             <div className="flex items-center gap-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                {locale === "en" ? "NATIONAL OPTICS REGISTRY // INTAKE" : "السجل الوطني للبصريات // الانضمام"}
+                NATIONAL OPTICS REGISTRY // INTAKE
               </span>
             </div>
 
@@ -98,10 +74,10 @@ export default async function JoinPage({
             <div className="lg:col-span-5 space-y-10">
               <div className="space-y-4">
                 <span className="editorial-label text-[#00e660] block font-bold">
-                  {locale === "en" ? "OPEN REGISTRATION · ZERO FEES" : "عضوية مجانية ومفتوحة لجميع الباحثين والطلاب"}
+                  OPEN REGISTRATION · ZERO FEES
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-                  {locale === "en" ? "Join the National Optics and Photonics Roster" : "سجل عضويتك في قسم أوبتيكا مصر المحلي"}
+                  Join the National Optics and Photonics Roster
                 </h2>
                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
                   {t("body")}
@@ -132,7 +108,7 @@ export default async function JoinPage({
               {/* Pathways Directory Ledger */}
               <div className="pt-6 border-t border-white/10 space-y-4">
                 <span className="editorial-label text-slate-500 block">
-                  {locale === "en" ? "ELIGIBILITY TIERS" : "المسارات المعتمدة"}
+                  ELIGIBILITY TIERS
                 </span>
 
                 <div className="divide-y divide-white/10 border-y border-white/10">
@@ -164,4 +140,3 @@ export default async function JoinPage({
     </div>
   )
 }
-
