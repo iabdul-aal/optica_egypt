@@ -100,6 +100,31 @@
     "active": true
   },
   {
+    "id": "islam-abduaal",
+    "name": {
+      "en": "Islam Abduaal",
+      "ar": "إسلام عبدالعال"
+    },
+    "role": {
+      "en": "Webmaster",
+      "ar": "مسؤول الموقع والتقنية"
+    },
+    "term": "2024-2025",
+    "institution": {
+      "en": "Cairo University",
+      "ar": "جامعة القاهرة"
+    },
+    "email": "webmaster@opticaegypt.org",
+    "linkedin": "islam-abduaal",
+    "photo": "islam-abduaal.jpg",
+    "bio": {
+      "en": "Architecting and maintaining the official Optica Egypt web infrastructure and digital platforms.",
+      "ar": "تطوير وإدارة المنصة الرقمية والبنية البرمجية للقسم."
+    },
+    "order": 5,
+    "active": true
+  },
+  {
     "id": "mariam-hussein",
     "name": {
       "en": "Mariam Hussein",
@@ -121,7 +146,7 @@
       "en": "Driving student engagement and professional recruitment nationwide.",
       "ar": "توسيع قاعدة الأعضاء وتفعيل المشاركة الطلابية."
     },
-    "order": 5,
+    "order": 6,
     "active": true
   },
   {
@@ -146,7 +171,7 @@
       "en": "Leading STEM roadshows and public optics demonstrations across Egyptian schools.",
       "ar": "قيادة مبادرات التوعية بالمدارس والجامعات المصرية."
     },
-    "order": 6,
+    "order": 7,
     "active": true
   },
   {
@@ -171,7 +196,7 @@
       "en": "Organizing technical seminars, laser workshops, and student networking sessions.",
       "ar": "تنظيم ورش العمل والندوات والأنشطة العلمية."
     },
-    "order": 7,
+    "order": 8,
     "active": true
   },
   {
@@ -196,7 +221,7 @@
       "en": "Overseeing venue management, event equipment, and technical audio-visual setups.",
       "ar": "إدارة العمليات اللوجستية وتجهيزات الفعاليات."
     },
-    "order": 8,
+    "order": 9,
     "active": true
   },
   {
@@ -221,7 +246,7 @@
       "en": "Ensuring strict compliance with Optica global section standards and governance quality.",
       "ar": "متابعة معايير الجودة والالتزام بلوائح أوبتيكا الدولية."
     },
-    "order": 9,
+    "order": 10,
     "active": true
   },
   {
@@ -246,31 +271,6 @@
       "en": "Recruiting, onboarding, and coordinating student volunteer committees.",
       "ar": "استقطاب وتدريب وتنسيق فرق المتطوعين."
     },
-    "order": 10,
-    "active": true
-  },
-  {
-    "id": "islam-abduaal",
-    "name": {
-      "en": "Islam Abduaal",
-      "ar": "إسلام عبدالعال"
-    },
-    "role": {
-      "en": "Webmaster",
-      "ar": "مسؤول الموقع والتقنية"
-    },
-    "term": "2024-2025",
-    "institution": {
-      "en": "Cairo University",
-      "ar": "جامعة القاهرة"
-    },
-    "email": "webmaster@opticaegypt.org",
-    "linkedin": "islam-abduaal",
-    "photo": "islam-abduaal.jpg",
-    "bio": {
-      "en": "Architecting and maintaining the official Optica Egypt web infrastructure and digital platforms.",
-      "ar": "تطوير وإدارة المنصة الرقمية والبنية البرمجية للقسم."
-    },
     "order": 11,
     "active": true
   },
@@ -281,8 +281,8 @@
       "ar": "عبدالرحمن حمزة"
     },
     "role": {
-      "en": "Technical Member",
-      "ar": "عضو تقني"
+      "en": "Founding Member",
+      "ar": "عضو مؤسس"
     },
     "term": "2024-2025",
     "institution": {
@@ -293,8 +293,8 @@
     "linkedin": "abdlrhman-hamza",
     "photo": "abdlrhman-hamza.jpg",
     "bio": {
-      "en": "Contributing to optics research workshops and community technical initiatives.",
-      "ar": "المساهمة في المبادرات البحثية وورش العمل التقنية."
+      "en": "Founding member contributing to optics research workshops and community technical initiatives.",
+      "ar": "عضو مؤسس يساهم في المبادرات البحثية وورش العمل التقنية."
     },
     "order": 12,
     "active": true

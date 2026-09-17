@@ -6,13 +6,14 @@ const ROLE_ORDER = [
   "Vice President",
   "Secretary",
   "Treasurer",
+  "Webmaster",
   "Growth Officer",
   "Outreach Officer",
   "Activities Officer",
   "Logistics Officer",
   "QA Officer",
   "Volunteers Officer",
-  "Webmaster",
+  "Founding Member",
   "Member",
 ]
 

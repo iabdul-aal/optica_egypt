@@ -15,8 +15,8 @@ export default async function LeadershipPage() {
   const t = await getTranslations("leadership")
   const members = getActiveMembers()
 
-  const execMembers = members.filter((m) => m.order <= 4)
-  const operationalMembers = members.filter((m) => m.order > 4)
+  const execMembers = members.filter((m) => m.order <= 5)
+  const operationalMembers = members.filter((m) => m.order > 5)
 
   return (
     <div className="bg-[#000000] text-white">
@@ -54,10 +54,10 @@ export default async function LeadershipPage() {
                 Executive Committee
               </h2>
             </div>
-            <span className="editorial-label text-slate-400">4 OFFICERS</span>
+            <span className="editorial-label text-slate-400">5 OFFICERS</span>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {execMembers.map((m) => (
               <MemberCard key={m.id} member={m} />
             ))}
@@ -71,14 +71,14 @@ export default async function LeadershipPage() {
           <div className="flex items-center justify-between mb-12 pb-6 border-b border-white/10">
             <div>
               <span className="editorial-label text-[#5CB1A2] block mb-2">
-                FUNCTIONAL DIRECTORS
+                FUNCTIONAL DIRECTORS AND FOUNDING MEMBERS
               </span>
               <h2 className="editorial-headline text-white">
-                Operational Officers and Technical Chairs
+                Operational Officers and Founding Members
               </h2>
             </div>
             <span className="editorial-label text-slate-400">
-              {operationalMembers.length} OFFICERS
+              {operationalMembers.length} MEMBERS
             </span>
           </div>
 
