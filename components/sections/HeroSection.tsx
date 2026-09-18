@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 import Link from "next/link"
-import { ArrowDownRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
 const PhotonicsChipScene = dynamic(
   () => import("@/components/3d/PhotonicsChipScene").then((module) => module.PhotonicsChipScene),
@@ -29,9 +29,9 @@ export function HeroSection() {
           </div>
           <h1 className="display-title mt-7 max-w-xl">The community shaping the future of light in Egypt.</h1>
           <p className="lede mt-7 max-w-lg">A meeting point for students, researchers, educators, industry professionals, and founders working across optics and photonics.</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/events" className="btn-primary">Upcoming events <ArrowUpRight size={15} /></Link>
-            <Link href="/community" className="btn-secondary">Explore community <ArrowDownRight size={15} /></Link>
+          <div className="mt-9 flex flex-wrap items-center gap-7 sm:gap-9">
+            <Link href="/events" className="btn-primary">Upcoming events <ArrowUpRight size={14} /></Link>
+            <Link href="/community" className="btn-secondary">Explore community <ArrowUpRight size={14} /></Link>
           </div>
         </div>
       </div>

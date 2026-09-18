@@ -37,7 +37,7 @@ export function EventRegistrationForm({ eventTitle, eventDate, email }: EventReg
       <label className="grid gap-2 text-sm font-semibold text-[var(--ink)]">Email address<input name="email" type="email" required autoComplete="email" className={fieldClass} /></label>
       <label className="grid gap-2 text-sm font-semibold text-[var(--ink)]">Institution or organisation<input name="institution" required className={fieldClass} /></label>
       <label className="grid gap-2 text-sm font-semibold text-[var(--ink)]">Role or study level <span className="font-normal text-[var(--ink-soft)]">optional</span><input name="role" className={fieldClass} /></label>
-      <button type="submit" className="btn-primary w-fit">Prepare registration email <ArrowUpRight size={15} /></button>
+      <button type="submit" className="btn-primary w-fit">Prepare registration email <ArrowUpRight size={14} /></button>
       {prepared && <p className="flex items-start gap-2 text-sm leading-6 text-[var(--ink-soft)]" role="status"><CheckCircle2 className="mt-0.5 shrink-0 text-[var(--gold)]" size={17} />Your registration email has been prepared. Review it and send it from your mail app.</p>}
     </form>
   )

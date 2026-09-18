@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowDownRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { getLatestNews } from "@/lib/news"
 import { getUpcomingEvents } from "@/lib/events"
 import { HeroSection } from "@/components/sections/HeroSection"
@@ -70,7 +70,7 @@ export default function HomePage() {
               <p className="relative mt-3 border-t border-white/10 pt-3 font-mono text-[0.65rem] tracking-[0.08em] text-[var(--gold)]">CONCEPTUAL NETWORK / KNOWLEDGE FLOWS BOTH WAYS</p>
             </div>
           </div>
-          <Link href="/community" className="text-link mt-10">Explore the community <ArrowDownRight size={14} /></Link>
+          <Link href="/community" className="text-link mt-10">Explore the community <ArrowUpRight size={14} /></Link>
         </div>
       </section>
 
@@ -105,7 +105,7 @@ export default function HomePage() {
             <p className="eyebrow">A wider field of view</p>
             <h2 className="section-title mt-3 max-w-2xl">Local work, connected to the global optics and photonics community.</h2>
             <p className="lede mt-5 max-w-2xl">The Local Section is a place to discover opportunities, exchange knowledge, and make connections that extend beyond Egypt.</p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-7 sm:gap-9">
               <a className="btn-secondary" href="https://www.optica.org" target="_blank" rel="noreferrer">Visit Optica <ArrowUpRight size={14} /></a>
               <Link className="btn-primary" href="/join">Join the community <ArrowUpRight size={14} /></Link>
             </div>

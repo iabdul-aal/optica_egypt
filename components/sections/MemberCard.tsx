@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Linkedin, Mail, X } from "lucide-react"
+import { ArrowUpRight, Linkedin, Mail, X } from "lucide-react"
 import type { Member } from "@/types/member"
 
 export function MemberCard({ member }: { member: Member }) {
@@ -53,15 +53,15 @@ export function MemberCard({ member }: { member: Member }) {
         </div>
         <div className="mt-5 flex items-start justify-between gap-4">
           <div><p className="eyebrow">{member.role.en}</p><h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{member.name.en}</h3><p className="mt-1 text-sm text-[var(--ink-soft)]">{member.institution.en}</p></div>
-          <div className="flex shrink-0 gap-2 text-[var(--gold)]">{member.email && <a href={`mailto:${member.email}`} aria-label={`Email ${member.name.en}`} className="grid size-8 place-items-center border border-white/15 transition-colors hover:border-[var(--gold)]"><Mail size={14} /></a>}{member.linkedin && member.linkedin !== "none" && <a href={`https://linkedin.com/in/${member.linkedin}`} target="_blank" rel="noreferrer" aria-label={`${member.name.en} LinkedIn`} className="grid size-8 place-items-center border border-white/15 transition-colors hover:border-[var(--gold)]"><Linkedin size={14} /></a>}</div>
+          <div className="flex shrink-0 gap-3 text-[var(--gold)]">{member.email && <a href={`mailto:${member.email}`} aria-label={`Email ${member.name.en}`} className="grid size-7 place-items-center transition-colors hover:text-[var(--ink)]"><Mail size={15} /></a>}{member.linkedin && member.linkedin !== "none" && <a href={`https://linkedin.com/in/${member.linkedin}`} target="_blank" rel="noreferrer" aria-label={`${member.name.en} LinkedIn`} className="grid size-7 place-items-center transition-colors hover:text-[var(--ink)]"><Linkedin size={15} /></a>}</div>
         </div>
-        {hasBio && <button onClick={() => setBioOpen(true)} className="text-link mt-5">Read bio</button>}
+        {hasBio && <button onClick={() => setBioOpen(true)} className="text-link mt-5">Read bio <ArrowUpRight size={14} /></button>}
       </article>
 
       {bioOpen && (
         <div className="fixed inset-0 z-[70] grid place-items-center bg-black/75 p-5" role="presentation" onMouseDown={() => setBioOpen(false)}>
           <section className="relative w-full max-w-lg border border-white/20 bg-[#101416] p-7 shadow-2xl" role="dialog" aria-modal="true" aria-labelledby={`bio-title-${member.id}`} onMouseDown={(event) => event.stopPropagation()}>
-            <button onClick={() => setBioOpen(false)} className="absolute right-4 top-4 grid size-9 place-items-center border border-white/15 text-[var(--ink)] hover:border-[var(--gold)]" aria-label={`Close ${member.name.en}'s biography`}><X size={17} /></button>
+            <button onClick={() => setBioOpen(false)} className="absolute right-4 top-4 grid size-8 place-items-center text-[var(--ink)] transition-colors hover:text-[var(--gold)]" aria-label={`Close ${member.name.en}'s biography`}><X size={18} /></button>
             <p className="eyebrow">{member.role.en}</p>
             <h3 id={`bio-title-${member.id}`} className="mt-3 pr-10 text-2xl font-semibold tracking-tight text-[var(--ink)]">{member.name.en}</h3>
             <p className="mt-1 text-sm text-[var(--ink-soft)]">{member.institution.en}</p>

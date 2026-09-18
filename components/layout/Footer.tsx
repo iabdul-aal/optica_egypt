@@ -18,9 +18,9 @@ export function Footer() {
           <p className="text-lg font-black tracking-[0.13em]">OPTICA EGYPT</p>
           <p className="mt-1 text-[0.65rem] font-bold tracking-[0.18em] text-[var(--gold)]">LOCAL SECTION</p>
           <p className="mt-6 max-w-sm text-sm leading-7 text-[var(--ink-soft)]">A gathering point for people advancing optics and photonics across Egypt.</p>
-          <div className="mt-6 flex gap-3">
-            <a aria-label="Email Optica Egypt" className="grid size-9 place-items-center border border-white/15 text-[var(--gold)] transition-colors hover:border-[var(--gold)]" href={`mailto:${siteConfig.email}`}><Mail size={16} /></a>
-            <a aria-label="Optica Egypt on LinkedIn" className="grid size-9 place-items-center border border-white/15 text-[var(--gold)] transition-colors hover:border-[var(--gold)]" href={`https://linkedin.com/company/${siteConfig.social.linkedin}`} target="_blank" rel="noreferrer"><Linkedin size={16} /></a>
+          <div className="mt-6 flex gap-4">
+            <a aria-label="Email Optica Egypt" className="grid size-8 place-items-center text-[var(--gold)] transition-colors hover:text-[var(--ink)]" href={`mailto:${siteConfig.email}`}><Mail size={18} /></a>
+            <a aria-label="Optica Egypt on LinkedIn" className="grid size-8 place-items-center text-[var(--gold)] transition-colors hover:text-[var(--ink)]" href={`https://linkedin.com/company/${siteConfig.social.linkedin}`} target="_blank" rel="noreferrer"><Linkedin size={18} /></a>
           </div>
         </div>
         <div>

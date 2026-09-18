@@ -14,7 +14,7 @@ export function EventBanner({ event }: { event: Event }) {
   return (
     <div className="scientific-grid relative overflow-hidden bg-[#101416] py-7 sm:py-10">
       <svg viewBox="0 0 720 420" className="relative mx-auto h-auto w-full max-w-4xl" fill="none" role="img" aria-label={`Scientific visual for ${event.title.en}`}>
-        <rect x="23" y="24" width="674" height="372" fill="#111619" stroke="#3f4743" />
+        <rect x="23" y="24" width="674" height="372" fill="#111619" />
         {eventVisual(event)}
         <text x="48" y="53" fill="#b8b1a4" fontSize="12" fontFamily="monospace">OPTICA EGYPT / EVENT SIGNAL</text>
         <text x="675" y="53" fill="#d1a247" textAnchor="end" fontSize="12" fontFamily="monospace">{event.type.toUpperCase()}</text>
