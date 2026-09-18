@@ -1,153 +1,17 @@
-﻿"use client"
+"use client"
 
-import React, { useState } from "react"
-import { useForm } from "react-hook-form"
-import { useTranslations } from "next-intl"
-import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
-
-interface FormData {
-  name: string
-  email: string
-  affiliation: string
-  message: string
-}
+import { useState } from "react"
+import { CheckCircle2, Send } from "lucide-react"
 
 export function ContactForm() {
-  const t = useTranslations("join")
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { isSubmitting, errors },
-  } = useForm<FormData>()
-
-  const onSubmit = async (data: FormData) => {
-    setErrorMessage(null)
-    try {
-      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID || "xldgpzqe"
-      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
-      })
-
-      if (response.ok) {
-        setIsSuccess(true)
-        reset()
-      } else {
-        setErrorMessage(t("error_msg"))
-      }
-    } catch {
-      setErrorMessage(t("error_msg"))
-    }
-  }
+  const [sent, setSent] = useState(false)
+  const fieldClass = "border border-white/15 bg-[#0d1011] px-4 py-3 font-normal text-[var(--ink)] outline-none transition-colors placeholder:text-[var(--ink-soft)] focus:border-[var(--gold)]"
 
   return (
-    <div className="p-8 sm:p-10 bg-[#000000] border border-white/10">
-      <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
-        <div>
-          <span className="editorial-label text-[#fa8716] block mb-1">INTAKE REGISTRY</span>
-          <h3 className="text-xl font-bold text-white tracking-tight">{t("form_title")}</h3>
-        </div>
-        <span className="editorial-label text-[#00e660]">STATUS: TRANSMISSION READY</span>
-      </div>
-
-      <p className="text-slate-300 text-xs sm:text-sm mb-8 leading-relaxed font-light">
-        {t("contact_body")}
-      </p>
-
-      {isSuccess ? (
-        <div className="p-6 bg-white/[0.02] border border-[#00e660]/40 flex items-start gap-4 text-[#00e660]">
-          <CheckCircle2 size={22} className="shrink-0 mt-0.5" />
-          <div>
-            <h4 className="font-bold text-base mb-1 text-white">Transmission Verified</h4>
-            <p className="text-sm text-slate-300 font-light">{t("success_msg")}</p>
-          </div>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {errorMessage && (
-            <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono flex items-center gap-2">
-              <AlertCircle size={16} />
-              <span>{errorMessage}</span>
-            </div>
-          )}
-
-          <div>
-            <label className="block editorial-label text-slate-400 mb-2">
-              {t("name_label")} *
-            </label>
-            <input
-              type="text"
-              {...register("name", { required: true })}
-              placeholder="e.g. Dr. Ahmed Hassan"
-              className="w-full px-4 py-3 bg-[#000000] border border-white/15 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:border-[#fa8716] transition-colors"
-            />
-            {errors.name && <span className="text-xs text-red-400 mt-1 block font-mono">Name is required</span>}
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div>
-              <label className="block editorial-label text-slate-400 mb-2">
-                {t("email_label")} *
-              </label>
-              <input
-                type="email"
-                {...register("email", { required: true })}
-                placeholder="name@university.edu.eg"
-                className="w-full px-4 py-3 bg-[#000000] border border-white/15 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:border-[#fa8716] transition-colors"
-              />
-              {errors.email && <span className="text-xs text-red-400 mt-1 block font-mono">Valid email is required</span>}
-            </div>
-
-            <div>
-              <label className="block editorial-label text-slate-400 mb-2">
-                {t("affiliation_label")}
-              </label>
-              <input
-                type="text"
-                {...register("affiliation")}
-                placeholder="e.g. Cairo University / Physics Dept"
-                className="w-full px-4 py-3 bg-[#000000] border border-white/15 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:border-[#fa8716] transition-colors"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block editorial-label text-slate-400 mb-2">
-              {t("message_label")} *
-            </label>
-            <textarea
-              rows={4}
-              {...register("message", { required: true })}
-              placeholder="Inquiry, research collaboration, or membership request..."
-              className="w-full px-4 py-3 bg-[#000000] border border-white/15 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:border-[#fa8716] transition-colors resize-y"
-            />
-            {errors.message && <span className="text-xs text-red-400 mt-1 block font-mono">Message is required</span>}
-          </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full sm:w-auto px-8 py-3.5 bg-[#fa8716] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-white flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 size={14} className="animate-spin" />
-                <span>{t("submitting")}</span>
-              </>
-            ) : (
-              <>
-                <span>{t("submit_btn")}</span>
-                <Send size={13} />
-              </>
-            )}
-          </button>
-        </form>
-      )}
+    <div className="border border-white/15 bg-[#111416] p-6 sm:p-8">
+      <p className="eyebrow">Send a message</p>
+      <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--ink)]">How can we help?</h2>
+      {sent ? <div className="mt-7 flex gap-3 border-l-2 border-[var(--gold)] bg-[#0d1011] p-5 text-[var(--ink)]" role="status"><CheckCircle2 className="mt-0.5 shrink-0 text-[var(--gold)]" size={19} /><p className="text-sm leading-6">Thanks for reaching out. Please use the email link on this page to contact the team directly while the form service is being connected.</p></div> : <form className="mt-7 grid gap-5" onSubmit={(event) => { event.preventDefault(); setSent(true) }}><label className="grid gap-2 text-sm font-semibold text-[var(--ink)]">Full name<input required className={fieldClass} /></label><label className="grid gap-2 text-sm font-semibold text-[var(--ink)]">Email address<input type="email" required className={fieldClass} /></label><label className="grid gap-2 text-sm font-semibold text-[var(--ink)]">Message<textarea required rows={5} className={fieldClass} /></label><button type="submit" className="btn-primary w-fit">Send message <Send size={15} /></button></form>}
     </div>
   )
 }

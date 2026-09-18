@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { Inter, Montserrat } from "next/font/google"
 import { NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
@@ -8,8 +7,6 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import "@/app/globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://optica-egypt.vercel.app"),
@@ -34,10 +31,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${montserrat.variable} antialiased selection:bg-[#00ADEF]/30 selection:text-white`}>
+      <body className="antialiased">
         <NextIntlClientProvider messages={messages} locale="en">
           <ThemeProvider>
             <LenisProvider>
+              <a href="#main-content" className="skip-link">Skip to content</a>
               <Header />
               <main id="main-content" tabIndex={-1} className="focus:outline-none min-h-[calc(100vh-140px)]">
                 {children}

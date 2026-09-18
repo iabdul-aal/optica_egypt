@@ -1,322 +1,157 @@
 @import "tailwindcss";
 
-/* ─── Akhetonics, Entor Tech and PhysicsX Deep-Tech Identity ─────────────── */
 :root {
-  /* Exact StyleDNA Extracted Colors */
-  --color-primary-orange: #fa8716;       /* Akhetonics Accent / 589nm */
-  --color-primary-teal:   #5CB1A2;       /* Entor Tech Teal Accent / 1550nm */
-  --color-signal-green:   #00e660;       /* PhysicsX Neon Signal / 510nm */
-  --color-optica-green:   #4caf50;       /* Optica Global Science Green / 532nm (Report 5) */
-  --color-laser-violet:   #7e58f5;       /* PsiQuantum Laser Violet / 405nm (Report 3) */
-  --color-primary-gold:   #fa8716;       /* Flat amber accent — same as primary orange, no metallic */
-  --color-navy:           #1F2E69;       /* Entor Tech Navy */
-  --color-slate:          #5D5F6D;       /* Entor Tech Slate */
-  --color-neutral-mid:    #8B8EA1;       /* Entor Tech Mid Neutral */
-  --color-neutral-light:  #CCCCCC;       /* Entor Tech Light Neutral */
-  --color-ink-black:      #000000;       /* Akhetonics & Nover Pure Black */
-  --color-near-black:     #121212;       /* PsiQuantum Deep Matte Surface */
-  --color-deep-surface:   #000000;       /* Engineering Card Surface */
-  --color-white:          #FFFFFF;
-
-  /* Theme Tokens */
-  --background:        #000000;
-  --background-alt:    #0A0A0A;
-  --surface:           #000000;
-  --surface-raised:    #111111;
-  --foreground:        #FFFFFF;
-  --foreground-muted:  #8B8EA1;
-  --accent:            #fa8716;
-  --accent-secondary:  #5CB1A2;
-  --border:            rgba(255, 255, 255, 0.1);
-  --border-subtle:     rgba(255, 255, 255, 0.06);
-  --border-active:     rgba(250, 135, 22, 0.6);
-  --radius:            0px;           /* Strict 0px geometry */
-  --font-en:           var(--font-inter);
-  --font-display:      var(--font-montserrat);
+  --ink: #f3efe7;
+  --ink-soft: #b8b1a4;
+  --gold: #d1a247;
+  --gold-deep: #a87a2e;
+  --canvas: #080a0b;
+  --paper: #111416;
+  --line: #303437;
+  --mist: #1a1d1f;
+  --blue: var(--gold);
+  --blue-dark: #e0b75f;
+  --cyan: #d1a247;
+  --radius: 0.18rem;
+  --font-en: "Aptos", "Segoe UI", Arial, sans-serif;
+  --font-display: "Aptos Display", "Aptos", "Segoe UI", Arial, sans-serif;
 }
 
-[data-theme="light"] {
-  --background:        #FFFFFF;
-  --background-alt:    #F8F9FA;
-  --surface:           #FFFFFF;
-  --surface-raised:    #F1F3F5;
-  --foreground:        #1A1D20;
-  --foreground-muted:  #5D5F6D;
-  --border:            rgba(0, 0, 0, 0.15);
-  --border-subtle:     rgba(0, 0, 0, 0.08);
-  --border-active:     #fa8716;
+[data-theme="dark"] {
+  --ink: #f3efe7;
+  --ink-soft: #b8b1a4;
+  --gold: #d1a247;
+  --gold-deep: #a87a2e;
+  --canvas: #080a0b;
+  --paper: #111416;
+  --line: #303437;
+  --mist: #1a1d1f;
+  --blue: var(--gold);
+  --blue-dark: #e0b75f;
+  --cyan: #d1a247;
 }
 
-/* ─── Base ───────────────────────────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-  border-radius: 0px; /* Strict 0px rule across primitives (Akhetonics/Nover/Entor Tech) */
-}
-
-/* PsiQuantum Tokenized Pill & Indicator Exceptions */
-.badge-pill,
-.rounded-pill {
-  border-radius: 300px !important;
-}
-.status-pip {
-  border-radius: 50% !important;
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-en), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.5;
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-en);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 
-/* ─── Typography ─────────────────────────────────────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display), var(--font-en), sans-serif;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+::selection { background: color-mix(in srgb, var(--gold) 44%, transparent); color: #0a0b0b; }
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
-/* ─── Strict Flat Buttons (Akhetonics & Entor Tech Standard) ─────────────── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.4rem;
-  background: #000000;
-  color: var(--color-primary-orange) !important;
-  border: 1px solid var(--color-primary-orange);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 120ms ease;
-  box-shadow: none !important;
-}
-
-.btn-primary:hover {
-  background: var(--color-primary-orange) !important;
-  color: #000000 !important;
-}
-
-.btn-primary:active {
-  transform: translateY(1px);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.4rem;
-  background: transparent;
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 120ms ease;
-  box-shadow: none !important;
-}
-
-.btn-secondary:hover {
-  border-color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.06);
-  color: #FFFFFF !important;
-}
-
-.btn-secondary:active {
-  transform: translateY(1px);
-}
-
-.btn-pill-tag,
-.tech-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #8B8EA1;
-}
-
-/* ─── Rectangular Cards & Panels (Akhetonics Standard) ───────────────────── */
-.card,
-.glass-panel,
-.glass-panel-gold {
-  background: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: none !important;
-  transition: border-color 150ms ease;
-  position: relative;
-}
-
-.card:hover,
-.glass-panel:hover,
-.glass-panel-gold:hover {
-  border-color: var(--color-primary-orange);
-}
-
-/* ─── Corner Crosshair Marks (+) ─────────────────────────────────────────── */
-.reticle-box {
-  position: relative;
-}
-.reticle-box::before {
-  content: "+";
-  position: absolute;
-  top: -6px;
-  left: -5px;
-  font-family: ui-monospace, monospace;
-  font-size: 10px;
-  line-height: 1;
-  color: var(--color-primary-orange);
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 20;
-}
-.reticle-box::after {
-  content: "+";
-  position: absolute;
-  bottom: -6px;
-  right: -5px;
-  font-family: ui-monospace, monospace;
-  font-size: 10px;
-  line-height: 1;
-  color: var(--color-primary-orange);
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 20;
-}
-
-/* ─── Technical Icon Box ─────────────────────────────────────────────────── */
-.tech-icon-box {
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--color-primary-orange);
-  flex-shrink: 0;
-}
-
-/* ─── Deep-Tech List Items (Key-Value / Telemetry Rows) ──────────────────── */
-.tech-list-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 0.65rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.75rem;
-}
-
-.tech-list-row:last-child {
-  border-bottom: none;
-}
-
-/* ─── Color Classes (Solid, High-Contrast — No Tacky Gradients) ──────────── */
-.text-gold-gradient {
-  color: var(--color-primary-orange);
-}
-.text-beam-gradient {
-  color: var(--color-primary-teal);
-}
-.text-orange  { color: var(--color-primary-orange); }
-.text-teal    { color: var(--color-primary-teal); }
-.text-signal  { color: var(--color-signal-green); }
-.text-science { color: var(--color-optica-green); }
-.text-violet  { color: var(--color-laser-violet); }
-.text-muted   { color: var(--color-neutral-mid); }
-
-.border-orange  { border-color: var(--color-primary-orange); }
-.border-teal    { border-color: var(--color-primary-teal); }
-.border-signal  { border-color: var(--color-signal-green); }
-.border-science { border-color: var(--color-optica-green); }
-.border-violet  { border-color: var(--color-laser-violet); }
-
-/* ─── Clean Engineering Grid Background ──────────────────────────────────── */
-.bg-tech-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-}
-
-/* ─── Editorial Typography & Architectural Primitives ──────────────────── */
-.editorial-headline {
-  font-family: var(--font-display), var(--font-en), sans-serif;
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-180%);
+  background: var(--gold);
+  color: #090a0a;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8rem;
   font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
+  transition: transform 0.15s ease;
 }
+.skip-link:focus { transform: translateY(0); }
 
-.editorial-lead {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #94A3B8;
-  font-weight: 300;
-}
+.container-page { width: min(100% - 2.5rem, 74rem); margin-inline: auto; }
+.container-layout { width: min(100% - 2.5rem, 82rem); margin-inline: auto; }
+.section-space { padding-block: clamp(4.75rem, 8vw, 8rem); }
 
-@media (min-width: 768px) {
-  .editorial-lead {
-    font-size: 1.25rem;
-  }
-}
-
-.editorial-label {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.6875rem;
-  font-weight: 700;
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  line-height: 1.4;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-primary-orange);
 }
 
-.datum-line {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.display-title {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 5.45vw, 5.35rem);
+  font-weight: 650;
+  letter-spacing: -0.06em;
+  line-height: 0.96;
 }
 
-.editorial-ledger-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding-block: 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: border-color 150ms ease, background 150ms ease;
+.section-title {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.7vw, 3.4rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.03;
 }
 
-.editorial-ledger-row:hover {
-  border-color: var(--color-primary-orange);
-  background: rgba(255, 255, 255, 0.015);
+.lede { color: var(--ink-soft); font-size: 1.04rem; line-height: 1.75; }
+
+.btn-primary,
+.btn-secondary {
+  align-items: center;
+  display: inline-flex;
+  font-size: 0.76rem;
+  font-weight: 800;
+  gap: 0.55rem;
+  justify-content: center;
+  letter-spacing: 0.055em;
+  line-height: 1.1;
+  padding: 0.86rem 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+.btn-primary { background: var(--gold); border: 1px solid var(--gold); color: #0b0c0c !important; }
+.btn-primary:hover { background: #e1b95f; border-color: #e1b95f; }
+.btn-secondary { background: transparent; border: 1px solid color-mix(in srgb, var(--ink) 56%, transparent); color: var(--ink) !important; }
+.btn-secondary:hover { background: var(--ink); border-color: var(--ink); color: #0b0c0c !important; }
+
+.text-link {
+  align-items: center;
+  border-bottom: 1px solid currentColor;
+  color: var(--gold);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 800;
+  gap: 0.45rem;
+  letter-spacing: 0.045em;
+  padding-bottom: 0.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.16s ease;
+}
+.text-link:hover { color: var(--ink); }
+
+.site-card { background: var(--paper); border: 1px solid var(--line); border-radius: 0; }
+.surface-glow { background: var(--paper); }
+.wave-grid { background: none; }
+.text-muted { color: var(--ink-soft); }
+.event-row + .event-row { border-top: 1px solid var(--line); }
+
+.scientific-grid {
+  background-image: linear-gradient(to right, rgb(243 239 231 / 0.045) 1px, transparent 1px), linear-gradient(to bottom, rgb(243 239 231 / 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-/* ─── Selection ──────────────────────────────────────────────────────────── */
-::selection {
-  background: var(--color-primary-orange);
-  color: #000000;
+@media (max-width: 640px) {
+  .container-page, .container-layout { width: min(100% - 2rem, 74rem); }
+  .section-space { padding-block: 4.25rem; }
+  .display-title { letter-spacing: -0.052em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }

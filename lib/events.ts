@@ -4,7 +4,11 @@ import type { Event } from "@/types/event"
 const events: Event[] = rawEvents as Event[]
 
 export function getAllEvents(): Event[] {
-  return events.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  return [...events].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+}
+
+export function getEventById(id: string): Event | undefined {
+  return events.find((event) => event.id === id)
 }
 
 export function getUpcomingEvents(limit?: number): Event[] {

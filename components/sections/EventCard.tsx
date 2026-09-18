@@ -1,66 +1,25 @@
-﻿"use client"
-
-import React from "react"
-import type { Event } from "@/types/event"
-import { useTranslations } from "next-intl"
-import { MapPin, ExternalLink, User } from "lucide-react"
 import Link from "next/link"
+import { ArrowUpRight, MapPin } from "lucide-react"
+import type { Event } from "@/types/event"
+
+function eventDate(date: string) {
+  return new Intl.DateTimeFormat("en", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(`${date}T12:00:00`))
+}
 
 export function EventCard({ event }: { event: Event }) {
-  const t = useTranslations("events")
-
-  const title = event.title.en
-  const description = event.description.en
-  const location = event.location.en
-
   return (
-    <div className="p-6 sm:p-8 bg-[#000000] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
+    <article className="event-row grid gap-5 py-7 sm:grid-cols-[8.5rem_1fr_auto] sm:items-start sm:gap-7">
+      <time dateTime={event.date} className="font-mono text-sm font-bold tracking-tight text-[var(--gold)]">{eventDate(event.date)}</time>
       <div>
-        {/* Top Telemetry Row */}
-        <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10 font-mono text-[10px]">
-          <span className="editorial-label text-[#fa8716] font-bold">
-            [{event.type.toUpperCase()}]
-          </span>
-          <span className="text-slate-400">
-            {event.date}
-          </span>
+        <p className="eyebrow">{event.type}</p>
+        <h3 className="mt-3 max-w-2xl text-xl font-semibold leading-snug tracking-tight text-[var(--ink)]"><Link href={`/events/${event.id}`} className="transition-colors hover:text-[var(--gold)]">{event.title.en}</Link></h3>
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-[var(--ink-soft)]">{event.description.en}</p>
+        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs leading-5 text-[var(--ink-soft)]">
+          {event.time && <span>{event.time}</span>}
+          <span className="inline-flex items-center gap-1.5"><MapPin size={13} className="text-[var(--gold)]" /> {event.location.en}</span>
         </div>
-
-        {/* Title & Description */}
-        <h3 className="font-bold text-lg sm:text-xl mb-3 leading-snug text-white group-hover:text-[#fa8716] transition-colors">
-          {title}
-        </h3>
-        <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-light">
-          {description}
-        </p>
       </div>
-
-      {/* Speaker and Venue Metadata */}
-      <div className="pt-4 border-t border-white/10 mt-auto space-y-3 text-xs font-mono">
-        {event.speaker && (
-          <div className="flex items-center gap-2 text-slate-300">
-            <User size={13} className="text-[#fa8716] shrink-0" />
-            <span className="truncate">{event.speaker.name} · {event.speaker.institution}</span>
-          </div>
-        )}
-
-        <div className="flex items-center gap-2 text-slate-400">
-          <MapPin size={13} className="text-[#5CB1A2] shrink-0" />
-          <span className="truncate">{location}</span>
-        </div>
-
-        {event.registrationUrl && (
-          <div className="pt-3">
-            <Link
-              href={event.registrationUrl}
-              className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 text-xs font-mono uppercase tracking-wider bg-white/[0.03] hover:bg-[#fa8716] text-white hover:text-black border border-white/10 hover:border-[#fa8716] transition-all"
-            >
-              <span>{t("register")}</span>
-              <ExternalLink size={12} />
-            </Link>
-          </div>
-        )}
-      </div>
-    </div>
+      <Link href={`/events/${event.id}`} className="text-link w-fit sm:mt-1">View event <ArrowUpRight size={14} /></Link>
+    </article>
   )
 }

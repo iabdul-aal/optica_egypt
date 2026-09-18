@@ -1,105 +1,74 @@
-﻿"use client"
+"use client"
 
-import React, { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+import { Linkedin, Mail, X } from "lucide-react"
 import type { Member } from "@/types/member"
-import { Mail, Linkedin } from "lucide-react"
 
 export function MemberCard({ member }: { member: Member }) {
-  const [imageError, setImageError] = useState(true)
+  const [photoAvailable, setPhotoAvailable] = useState(false)
+  const [bioOpen, setBioOpen] = useState(false)
+  const initials = member.name.en.split(" ").map((word) => word[0]).join("").slice(0, 2)
+  const hasBio = Boolean(member.bio?.en?.trim())
 
-  const name = member.name.en
-  const role = member.role.en
-  const institution = member.institution.en
+  useEffect(() => {
+    let current = true
+    const portrait = new window.Image()
+    portrait.onload = () => {
+      if (current) setPhotoAvailable(true)
+    }
+    portrait.src = `/people/leadership/${member.photo}`
+    return () => {
+      current = false
+    }
+  }, [member.photo])
 
-  const initials = member.name.en
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase()
-
-  const photoSrc = `/people/leadership/${member.photo}`
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setBioOpen(false)
+    }
+    if (bioOpen) window.addEventListener("keydown", closeOnEscape)
+    return () => window.removeEventListener("keydown", closeOnEscape)
+  }, [bioOpen])
 
   return (
-    <div className="p-6 bg-[#000000] border border-white/10 hover:border-[#fa8716] flex flex-col justify-between h-full transition-all group">
-      <div>
-        {/* Officer Portrait / Monogram Frame */}
-        <div className="relative aspect-[4/5] w-full mb-5 bg-[#000000] border border-white/10 flex items-center justify-center overflow-hidden">
-          {!imageError && member.photo ? (
+    <>
+      <article className="group border-t border-white/15 pt-5">
+        <div className="relative aspect-[4/5] overflow-hidden bg-[#171b1c]">
+          {photoAvailable ? (
             <Image
-              src={photoSrc}
-              alt={name}
+              src={`/people/leadership/${member.photo}`}
+              alt={`Portrait of ${member.name.en}`}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              onError={() => setImageError(true)}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover grayscale transition duration-500 ease-out group-hover:scale-[1.025] group-hover:grayscale-0"
             />
           ) : (
-            <div className="relative w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#000000] to-[#000000]">
-              {/* Subtle architectural hairline cross */}
-              <div className="absolute inset-x-8 top-1/2 h-px bg-white/5" />
-              <div className="absolute inset-y-8 left-1/2 w-px bg-white/5" />
-
-              <div className="relative z-10 w-16 h-16 border border-[#fa8716]/40 group-hover:border-[#fa8716] bg-[#000000] flex items-center justify-center transition-colors">
-                <span className="text-xl font-bold font-mono text-[#fa8716] tracking-wider">
-                  {initials}
-                </span>
-              </div>
-
-              <span className="relative z-10 editorial-label text-[9px] text-slate-500 mt-4">
-                OFFICER_{member.order.toString().padStart(2, "0")}
-              </span>
+            <div className="scientific-grid flex h-full items-end justify-between p-5 text-[var(--gold)]" aria-label={`Portrait placeholder for ${member.name.en}`}>
+              <span className="text-5xl font-semibold tracking-[-0.1em]">{initials}</span>
+              <span className="font-mono text-[0.62rem] tracking-[0.12em]">OPTICA EGYPT</span>
             </div>
           )}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#070808]/70 to-transparent" aria-hidden="true" />
         </div>
-
-        {/* Info */}
-        <div className="flex items-center justify-between mb-2">
-          <span className="editorial-label text-[#fa8716] font-bold">
-            {role}
-          </span>
-          <span className="editorial-label text-slate-500">{member.term}</span>
+        <div className="mt-5 flex items-start justify-between gap-4">
+          <div><p className="eyebrow">{member.role.en}</p><h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{member.name.en}</h3><p className="mt-1 text-sm text-[var(--ink-soft)]">{member.institution.en}</p></div>
+          <div className="flex shrink-0 gap-2 text-[var(--gold)]">{member.email && <a href={`mailto:${member.email}`} aria-label={`Email ${member.name.en}`} className="grid size-8 place-items-center border border-white/15 transition-colors hover:border-[var(--gold)]"><Mail size={14} /></a>}{member.linkedin && member.linkedin !== "none" && <a href={`https://linkedin.com/in/${member.linkedin}`} target="_blank" rel="noreferrer" aria-label={`${member.name.en} LinkedIn`} className="grid size-8 place-items-center border border-white/15 transition-colors hover:border-[var(--gold)]"><Linkedin size={14} /></a>}</div>
         </div>
+        {hasBio && <button onClick={() => setBioOpen(true)} className="text-link mt-5">Read bio</button>}
+      </article>
 
-        <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-[#fa8716] transition-colors">
-          {name}
-        </h3>
-
-        {institution && (
-          <p className="text-xs text-slate-400 font-mono mb-4">
-            {institution}
-          </p>
-        )}
-      </div>
-
-      <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
-        <span className="editorial-label text-[9px] text-slate-500">
-          ACTIVE TENURE
-        </span>
-        <div className="flex items-center gap-2">
-          {member.email && (
-            <a
-              href={`mailto:${member.email}`}
-              aria-label={`Email ${name}`}
-              className="w-7 h-7 flex items-center justify-center border border-white/10 text-slate-400 hover:text-[#fa8716] hover:border-[#fa8716] transition-colors"
-            >
-              <Mail size={13} />
-            </a>
-          )}
-          {member.linkedin && member.linkedin !== "none" && (
-            <a
-              href={`https://linkedin.com/in/${member.linkedin}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${name} LinkedIn`}
-              className="w-7 h-7 flex items-center justify-center border border-white/10 text-slate-400 hover:text-[#fa8716] hover:border-[#fa8716] transition-colors"
-            >
-              <Linkedin size={13} />
-            </a>
-          )}
+      {bioOpen && (
+        <div className="fixed inset-0 z-[70] grid place-items-center bg-black/75 p-5" role="presentation" onMouseDown={() => setBioOpen(false)}>
+          <section className="relative w-full max-w-lg border border-white/20 bg-[#101416] p-7 shadow-2xl" role="dialog" aria-modal="true" aria-labelledby={`bio-title-${member.id}`} onMouseDown={(event) => event.stopPropagation()}>
+            <button onClick={() => setBioOpen(false)} className="absolute right-4 top-4 grid size-9 place-items-center border border-white/15 text-[var(--ink)] hover:border-[var(--gold)]" aria-label={`Close ${member.name.en}'s biography`}><X size={17} /></button>
+            <p className="eyebrow">{member.role.en}</p>
+            <h3 id={`bio-title-${member.id}`} className="mt-3 pr-10 text-2xl font-semibold tracking-tight text-[var(--ink)]">{member.name.en}</h3>
+            <p className="mt-1 text-sm text-[var(--ink-soft)]">{member.institution.en}</p>
+            <p className="mt-7 border-t border-white/10 pt-6 text-sm leading-7 text-[var(--ink-soft)]">{member.bio.en}</p>
+          </section>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   )
 }
