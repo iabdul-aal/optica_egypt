@@ -4,9 +4,7 @@ export interface Member {
   role: { en: string; ar: string }
   term: string
   institution: { en: string; ar: string }
-  email: string
-  linkedin: string
-  photo: string
+  linkedin?: string
   bio: { en: string; ar: string }
   order: number
   active: boolean

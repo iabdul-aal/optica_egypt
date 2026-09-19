@@ -1,58 +1,105 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowUpRight, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { localizedHref, type Dictionary, type Locale } from "@/lib/locales"
 import { cn } from "@/lib/utils"
 
-const routes = [
-  ["About", "/about"],
-  ["Community", "/community"],
-  ["Events", "/events"],
-  ["Leadership", "/leadership"],
-  ["Resources", "/resources"],
+type HeaderProps = {
+  locale: Locale
+  dictionary: Dictionary
+}
+
+const navigation = [
+  ["about", "/about"],
+  ["community", "/community"],
+  ["events", "/events"],
+  ["leadership", "/leadership"],
+  ["outreach", "/outreach"],
+  ["resources", "/resources"],
 ] as const
 
-export function Header() {
+export function Header({ locale, dictionary }: HeaderProps) {
   const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const nextLocale: Locale = locale === "en" ? "ar" : "en"
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") setIsOpen(false)
+    }
+
+    window.addEventListener("keydown", closeOnEscape)
+    return () => window.removeEventListener("keydown", closeOnEscape)
+  }, [])
+
+  function isCurrent(path: string) {
+    const href = localizedHref(locale, path)
+    return pathname === href || (path !== "/" && pathname.startsWith(`${href}/`))
+  }
+
+  const unlocalizedPath = pathname.replace(/^\/(en|ar)(?=\/|$)/, "") || "/"
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#080a0b]">
-      <div className="container-layout flex h-[4.9rem] items-center justify-between gap-5">
-        <Link href="/" className="group flex items-center gap-3" aria-label="Optica Egypt home">
-          <span className="grid size-8 place-items-center border border-[var(--gold)] text-[11px] font-black tracking-[-0.16em] text-[var(--gold)] transition-colors group-hover:bg-[var(--gold)] group-hover:text-[#080a0b]">OE</span>
-          <span className="leading-none">
-            <span className="block text-[0.88rem] font-black tracking-[0.14em] text-[var(--ink)]">OPTICA EGYPT</span>
-            <span className="mt-1 block text-[0.55rem] font-bold tracking-[0.18em] text-[var(--ink-soft)]">LOCAL SECTION</span>
+    <header className="site-header">
+      <div className="container-layout header-inner">
+        <Link href={localizedHref(locale)} className="brand-mark" aria-label={dictionary.site.name}>
+          <span className="brand-marker" aria-hidden="true" />
+          <span className="brand-copy">
+            <span className="brand-optica">Optica Egypt</span>
+            <span className="brand-section">{locale === "ar" ? "قسم محلي" : "LOCAL SECTION"}</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
-          {routes.map(([label, href]) => (
-            <Link key={href} href={href} className={cn("border-b border-transparent py-1 text-[0.7rem] font-bold tracking-[0.09em] text-[var(--ink-soft)] transition-colors hover:text-[var(--ink)]", pathname === href && "border-[var(--gold)] text-[var(--ink)]")}>
-              {label.toUpperCase()}
+        <nav className="desktop-navigation" aria-label={locale === "ar" ? "التنقل الرئيسي" : "Main navigation"}>
+          {navigation.map(([key, path]) => (
+            <Link
+              key={path}
+              href={localizedHref(locale, path)}
+              aria-current={isCurrent(path) ? "page" : undefined}
+              className={cn("nav-link", isCurrent(path) && "nav-link-current")}
+            >
+              {dictionary.nav[key]}
             </Link>
           ))}
         </nav>
 
-        <Link href="/join" className="btn-primary hidden sm:inline-flex">Join <ArrowUpRight size={14} /></Link>
-        <button onClick={() => setOpen((value) => !value)} className="grid size-10 place-items-center border border-white/20 text-[var(--ink)] lg:hidden" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"}>
-          {open ? <X size={19} /> : <Menu size={20} />}
-        </button>
+        <div className="header-actions">
+          <Link className="language-link" href={localizedHref(nextLocale, unlocalizedPath)} lang={nextLocale}>
+            {dictionary.nav.language}
+          </Link>
+          <Link href={localizedHref(locale, "/join")} className="btn-primary desktop-join">
+            {dictionary.nav.join}
+          </Link>
+          <button
+            type="button"
+            onClick={() => setIsOpen((open) => !open)}
+            className="menu-toggle"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isOpen ? dictionary.common.closeMenu : dictionary.common.openMenu}
+          >
+            {isOpen ? <X size={20} aria-hidden="true" /> : <Menu size={21} aria-hidden="true" />}
+          </button>
+        </div>
       </div>
 
-      {open && (
-        <div id="mobile-navigation" className="border-t border-white/10 bg-[#0c0f10] lg:hidden">
-          <nav className="container-layout grid py-3 sm:grid-cols-2" aria-label="Mobile navigation">
-            <Link href="/" onClick={() => setOpen(false)} className="border-b border-white/10 py-3 text-xs font-bold tracking-[0.1em] text-[var(--ink)]">HOME</Link>
-            {routes.map(([label, href]) => (
-              <Link key={href} href={href} onClick={() => setOpen(false)} className="border-b border-white/10 py-3 text-xs font-bold tracking-[0.1em] text-[var(--ink)]">
-                {label.toUpperCase()}
+      {isOpen && (
+        <div id="mobile-navigation" className="mobile-navigation">
+          <nav className="container-layout mobile-navigation-list" aria-label={locale === "ar" ? "التنقل على الهاتف" : "Mobile navigation"}>
+            <Link href={localizedHref(locale)} className="mobile-nav-link" aria-current={isCurrent("/") ? "page" : undefined}>{dictionary.nav.home}</Link>
+            {navigation.map(([key, path]) => (
+              <Link key={path} href={localizedHref(locale, path)} className="mobile-nav-link" aria-current={isCurrent(path) ? "page" : undefined}>
+                {dictionary.nav[key]}
               </Link>
             ))}
-            <Link href="/join" onClick={() => setOpen(false)} className="mt-4 btn-primary sm:hidden">Join Optica Egypt <ArrowUpRight size={14} /></Link>
+            <Link href={localizedHref(locale, "/join")} className="btn-primary mobile-join">{dictionary.nav.join}</Link>
           </nav>
         </div>
       )}

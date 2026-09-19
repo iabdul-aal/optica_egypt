@@ -1,14 +1,17 @@
-﻿"use client"
+"use client"
 
 import React from "react"
-import { useTranslations } from "next-intl"
+import { useLocale } from "next-intl"
 import Link from "next/link"
 import type { Event } from "@/types/event"
 import { EventCard } from "./EventCard"
 import { Calendar, MapPin, ArrowRight } from "lucide-react"
+import { getDictionary, type Locale } from "@/lib/locales"
 
 export function EventsPreview({ events }: { events: Event[] }) {
-  const t = useTranslations("home.events_preview")
+  const locale = useLocale() as Locale
+  const dictionary = getDictionary(locale)
+
 
   return (
     <section className="py-24 bg-[#000000] border-b border-white/10 relative">
@@ -19,21 +22,22 @@ export function EventsPreview({ events }: { events: Event[] }) {
             <div className="flex items-center gap-3 mb-3">
               <span className="w-2 h-2 bg-[#fa8716]" />
               <span className="editorial-label text-[#fa8716]">
-                CALENDAR AND SYMPOSIUMS
+                Upcoming events
               </span>
             </div>
             <h2 className="editorial-headline text-white">
-              {t("heading")}
+              Events and Symposiums
             </h2>
           </div>
           <Link
             href="/events"
             className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-white pb-1 border-b border-white/20 hover:border-[#fa8716] transition-all self-start sm:self-auto"
           >
-            <span>{t("view_all")}</span>
+            <span>View all events</span>
             <ArrowRight size={14} />
           </Link>
         </div>
+
 
         {/* Flagship Event Spotlight: Architectural Symposium Spread */}
         <div className="p-8 sm:p-12 md:p-14 mb-16 bg-[#000000] border border-white/10 relative">
@@ -112,7 +116,7 @@ export function EventsPreview({ events }: { events: Event[] }) {
         {events.length > 0 && (
           <div className="grid gap-6 md:grid-cols-3">
             {events.map((e) => (
-              <EventCard key={e.id} event={e} />
+              <EventCard key={e.id} event={e} locale={locale} dictionary={dictionary} />
             ))}
           </div>
         )}

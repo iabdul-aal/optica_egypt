@@ -3,37 +3,41 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { localizedHref, type Dictionary, type Locale } from "@/lib/locales"
 
 const PhotonicsChipScene = dynamic(
   () => import("@/components/3d/PhotonicsChipScene").then((module) => module.PhotonicsChipScene),
   {
     ssr: false,
-    loading: () => <div className="h-full w-full scientific-grid bg-[#080a0b]" aria-hidden="true" />,
+    loading: () => <div className="viewer-loading" aria-hidden="true"><span>Loading conceptual model</span></div>,
   }
 )
 
-export function HeroSection() {
-  return (
-    <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#080a0b]">
-      <div className="scientific-grid absolute inset-0 opacity-75" aria-hidden="true" />
-      <div className="absolute inset-y-0 right-0 w-[76%] border-l border-white/[0.06]" aria-hidden="true" />
-      <div className="absolute inset-y-0 -right-[15%] w-full opacity-35 md:w-[74%] md:opacity-100" aria-hidden="true">
-        <PhotonicsChipScene />
-      </div>
+type HeroSectionProps = {
+  locale: Locale
+  dictionary: Dictionary
+}
 
-      <div className="container-layout relative z-10 flex min-h-[calc(100svh-4.9rem)] items-end py-14 sm:py-18 lg:py-20">
-        <div className="max-w-2xl">
-          <div className="flex items-center gap-3 text-[0.68rem] font-bold tracking-[0.16em] text-[var(--gold)]">
-            <span className="block size-2 bg-[var(--gold)]" />
-            <span>Optica Egypt / Local Section</span>
-          </div>
-          <h1 className="display-title mt-7 max-w-xl">The community shaping the future of light in Egypt.</h1>
-          <p className="lede mt-7 max-w-lg">A meeting point for students, researchers, educators, industry professionals, and founders working across optics and photonics.</p>
-          <div className="mt-9 flex flex-wrap items-center gap-7 sm:gap-9">
-            <Link href="/events" className="btn-primary">Upcoming events <ArrowUpRight size={14} /></Link>
-            <Link href="/community" className="btn-secondary">Explore community <ArrowUpRight size={14} /></Link>
+export function HeroSection({ locale, dictionary }: HeroSectionProps) {
+  return (
+    <section className="hero-shell">
+      <div className="hero-copy-wrap container-layout">
+        <div className="hero-copy">
+          <p className="eyebrow">{dictionary.home.eyebrow}</p>
+          <h1 className="display-title">{dictionary.home.title}</h1>
+          <p className="lede">{dictionary.home.intro}</p>
+          <div className="hero-actions">
+            <Link href={localizedHref(locale, "/events")} className="btn-primary">
+              {dictionary.home.primaryAction} <ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
+            <Link href={localizedHref(locale, "/community")} className="btn-secondary">
+              {dictionary.home.secondaryAction}
+            </Link>
           </div>
         </div>
+      </div>
+      <div className="hero-model-wrap">
+        <PhotonicsChipScene locale={locale} dictionary={dictionary} />
       </div>
     </section>
   )

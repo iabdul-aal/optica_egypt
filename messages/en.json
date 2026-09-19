@@ -1,4 +1,10 @@
 {
+  "site": {
+    "name": "Optica Egypt Local Section",
+    "shortName": "Optica Egypt",
+    "affiliation": "Part of Optica, Advancing Optics and Photonics Worldwide.",
+    "description": "A meeting point for Egypt's optics and photonics community."
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -7,125 +13,237 @@
     "leadership": "Leadership",
     "outreach": "Outreach",
     "resources": "Resources",
-    "join": "Join Us"
+    "join": "Get involved",
+    "language": "العربية"
+  },
+  "common": {
+    "allEvents": "All events",
+    "back": "Back",
+    "close": "Close",
+    "emailUs": "Email the section",
+    "external": "Opens an external website",
+    "learnMore": "Learn more",
+    "openMenu": "Open navigation",
+    "closeMenu": "Close navigation",
+    "skipToContent": "Skip to content",
+    "viewDetails": "View details",
+    "visitOptica": "Visit Optica",
+    "viewAll": "View all",
+    "pending": "To be confirmed"
   },
   "home": {
-    "hero": {
-      "eyebrow": "Optica Egypt Local Section",
-      "title": "Connecting Talent.\nAdvancing Photonics.",
-      "subtitle": "We bring together students, researchers, universities, industry, and startups across Egypt to the global photonics community.",
-      "cta_primary": "Join the Section",
-      "cta_secondary": "View Events"
+    "eyebrow": "Optica Egypt Local Section",
+    "title": "A shared field of view for Egypt's optics and photonics community.",
+    "intro": "Meet people, exchange knowledge, and find a practical route into the science and application of light.",
+    "primaryAction": "Explore upcoming events",
+    "secondaryAction": "Meet the community",
+    "pathways": {
+      "learn": { "label": "01", "title": "Learn", "body": "Workshops and practical starting points for curious minds." },
+      "exchange": { "label": "02", "title": "Exchange", "body": "Conversations across labs, campuses, and industry." },
+      "build": { "label": "03", "title": "Build", "body": "Connections that carry research toward opportunity." }
     },
-    "events_preview": {
-      "heading": "Upcoming Events",
-      "empty": "Our first events are being planned. Check back soon.",
-      "view_all": "View all events"
+    "community": {
+      "eyebrow": "Community system",
+      "title": "Knowledge moves when the right people can meet.",
+      "intro": "The Local Section brings different parts of a scientific ecosystem into conversation without flattening their perspectives.",
+      "action": "Explore the community",
+      "diagramLabel": "A conceptual network linking five parts of the Optica Egypt community.",
+      "nodes": {
+        "students": { "title": "Students", "detail": "Emerging questions" },
+        "researchers": { "title": "Researchers", "detail": "Ideas in motion" },
+        "academia": { "title": "Academia", "detail": "Learning environments" },
+        "industry": { "title": "Industry", "detail": "Applied perspective" },
+        "startups": { "title": "Startups", "detail": "New pathways" }
+      }
+    },
+    "events": {
+      "eyebrow": "Calendar",
+      "title": "The next places to connect.",
+      "action": "View all events",
+      "emptyTitle": "No confirmed events are listed yet.",
+      "emptyBody": "When the programme is ready, dates, formats, and registration information will appear here."
+    },
+    "research": {
+      "eyebrow": "Research explorer",
+      "title": "A shared language for light-based research.",
+      "intro": "Explore concise conceptual models. They explain the science and do not claim local projects or facilities.",
+      "model": "Conceptual model"
     },
     "news": {
-      "heading": "Latest News",
-      "view_all": "View all news"
+      "eyebrow": "Updates",
+      "title": "News and opportunities",
+      "intro": "Updates from the Local Section and the wider photonics field.",
+      "emptyTitle": "Updates will appear here.",
+      "emptyBody": "The section will publish confirmed announcements and opportunities as they become available."
     },
-    "audience": {
-      "heading": "Who We Serve",
-      "students": {
-        "title": "Students",
-        "body": "Access mentorship, workshops, and a network of photonics professionals from day one."
-      },
-      "researchers": {
-        "title": "Researchers",
-        "body": "Connect with peers, share work, and collaborate across Egyptian universities and institutions."
-      },
-      "industry": {
-        "title": "Industry",
-        "body": "Engage with emerging talent, present at our events, and shape the next generation of photonics engineers."
-      },
-      "startups": {
-        "title": "Startups",
-        "body": "Tap into technical expertise, academic partnerships, and a growing photonics ecosystem in Egypt."
-      }
+    "global": {
+      "eyebrow": "A wider field of view",
+      "title": "Local work, connected to the global optics and photonics community.",
+      "intro": "The Local Section is a place to discover opportunities, exchange knowledge, and make connections that extend beyond Egypt.",
+      "primaryAction": "Get involved"
     }
   },
   "about": {
-    "heading": "About Us",
-    "mission_label": "Our Mission",
-    "mission": "To nurture photonics talent, foster collaboration and innovation, and create stronger pathways between Egypt and the global photonics community through knowledge exchange, professional engagement, and meaningful opportunities.",
-    "vision_label": "Our Vision",
-    "vision": "A thriving, connected photonics community in Egypt that contributes to global science and drives local innovation.",
-    "founded_label": "Founded",
-    "affiliation_label": "Global Affiliation",
-    "affiliation": "Optica, The society for optics and photonics"
-  },
-  "events": {
-    "heading": "Events",
-    "subheading": "Seminars, workshops, and community gatherings",
-    "filter_all": "All",
-    "filter_upcoming": "Upcoming",
-    "filter_past": "Past",
-    "empty_upcoming": "No upcoming events yet. Our first event is being planned, follow us to be the first to know.",
-    "empty_past": "No past events yet. We are just getting started.",
-    "register": "Register",
-    "free": "Free"
+    "eyebrow": "About the section",
+    "title": "A shared home for people who work with light.",
+    "intro": "Optica Egypt Local Section supports an open, connected photonics community across Egypt, in dialogue with the wider Optica network.",
+    "purposeEyebrow": "Our purpose",
+    "purposeTitle": "Curiosity becomes capability when a community stands behind it.",
+    "purposeBody": "The section creates welcoming entry points to optics and photonics, then cultivates the relationships that help students, researchers, and professionals keep moving forward.",
+    "pillars": {
+      "learn": { "number": "01", "title": "Learn together", "body": "Practical learning, technical exchange, and mentorship for every stage of an optics journey." },
+      "collaborate": { "number": "02", "title": "Collaborate openly", "body": "Stronger links between Egyptian universities, research groups, and industry partners." },
+      "apply": { "number": "03", "title": "Make ideas matter", "body": "A supportive route from curiosity and research to real-world application." },
+      "connect": { "number": "04", "title": "Connect globally", "body": "A local gateway to knowledge and opportunities across the wider Optica community." }
+    }
   },
   "community": {
-    "heading": "Our Community",
-    "subheading": "Students, researchers, and professionals united by photonics",
-    "join_cta": "Become a Member"
+    "eyebrow": "Our community",
+    "title": "Different paths. One shared wavelength.",
+    "intro": "Optica Egypt is a place to learn with people who care about the possibilities of light.",
+    "systemEyebrow": "The ecosystem",
+    "systemTitle": "A community is more than an audience.",
+    "systemBody": "Each group brings a different kind of knowledge. The section exists to make those perspectives more visible to one another.",
+    "action": "Get involved",
+    "statement": "The aim is simple: make it easier for people working with light to find each other.",
+    "groups": {
+      "students": { "title": "Students", "body": "Discover a field, meet mentors, and make the next question easier to ask." },
+      "researchers": { "title": "Researchers", "body": "Exchange ideas, find collaborators, and connect work to a broader technical community." },
+      "academia": { "title": "Academia", "body": "Create stronger links between learning environments, laboratories, and future careers." },
+      "industry": { "title": "Industry", "body": "Share practical perspective and help connect research with real-world application." },
+      "startups": { "title": "Startups", "body": "Explore a growing network of people building with light, from sensing to communications." }
+    }
+  },
+  "events": {
+    "eyebrow": "Events and workshops",
+    "title": "Find a room for your next question.",
+    "intro": "From first conversations to specialist sessions, the calendar brings Egypt's photonics community into the same room.",
+    "programmeEyebrow": "Programme",
+    "programmeTitle": "The calendar ahead.",
+    "programmeIntro": "Dates, formats, and locations are organised for fast scanning.",
+    "emptyTitle": "No confirmed events are available right now.",
+    "emptyBody": "The calendar will show confirmed details, attendance format, and registration status when they are ready.",
+    "viewEvent": "View event",
+    "type": "Event type",
+    "location": "Location",
+    "time": "Time",
+    "registration": "Registration",
+    "status": "Status",
+    "registrationUnavailable": "Registration details will be published with the confirmed programme."
+  },
+  "eventDetail": {
+    "eyebrow": "Event detail",
+    "aboutEyebrow": "About this event",
+    "informationEyebrow": "Event information",
+    "when": "When",
+    "where": "Where",
+    "speaker": "Speaker",
+    "speakerPending": "Speaker details will be confirmed with the programme.",
+    "register": "Register for this event",
+    "backToEvents": "All events",
+    "contactAbout": "Contact the section about this event",
+    "tags": "Topics"
+  },
+  "registration": {
+    "eyebrow": "Event registration",
+    "back": "Event details",
+    "title": "Register your interest",
+    "intro": "Submit the details below to prepare an email to the Local Section. The team can then confirm availability and next steps.",
+    "name": "Full name",
+    "email": "Email address",
+    "institution": "Institution or organisation",
+    "role": "Role or study level",
+    "optional": "optional",
+    "submit": "Prepare registration email",
+    "prepared": "Your mail application should now contain a pre-filled registration request. Review it and send it when ready."
   },
   "leadership": {
-    "heading": "Leadership Team",
-    "subheading": "The officers running Optica Egypt Local Section",
-    "term_label": "Term",
-    "email_label": "Email",
-    "linkedin_label": "LinkedIn"
+    "eyebrow": "Leadership",
+    "title": "People building a brighter community.",
+    "intro": "Meet the volunteers and officers helping the Local Section become a welcoming, practical community.",
+    "teamEyebrow": "The team",
+    "teamTitle": "Leadership and volunteers",
+    "portraitPlaceholder": "Portrait placeholder for {name}",
+    "readBio": "Read biography",
+    "closeBio": "Close {name}'s biography",
+    "email": "Email {name}",
+    "linkedin": "{name} on LinkedIn"
   },
   "outreach": {
-    "heading": "Outreach",
-    "subheading": "Taking photonics beyond the lab",
-    "empty": "Our outreach programme is launching soon. We are planning activities across Egyptian universities and schools.",
-    "reach_label": "People reached"
+    "eyebrow": "Outreach",
+    "title": "Make the wonder of light easy to reach.",
+    "intro": "Outreach programmes are designed to turn a first moment of curiosity into a practical starting point for the next generation.",
+    "programmesEyebrow": "Programmes",
+    "programmesTitle": "Science works best when it is shared.",
+    "programmesIntro": "Starting points for schools, campuses, and communities around Egypt.",
+    "hostEyebrow": "Host a workshop",
+    "hostTitle": "Bring a hands-on photonics experience to your campus or school.",
+    "hostBody": "Tell the team about your group and start a conversation about what could be useful.",
+    "hostAction": "Request an outreach visit",
+    "programmes": {
+      "schools": { "number": "01", "title": "Optics in schools", "body": "Accessible demonstrations that make the behaviour of light memorable and real." },
+      "campus": { "number": "02", "title": "Campus workshops", "body": "Practical sessions and conversations for students who want to go further." },
+      "public": { "number": "03", "title": "Public demonstrations", "body": "A more visible, more approachable story about technologies that use light." },
+      "mentorship": { "number": "04", "title": "Mentorship", "body": "Relationships that help early-career people imagine their next step in photonics." }
+    }
   },
   "resources": {
-    "heading": "Resources",
-    "subheading": "Curated tools, journals, and opportunities for the photonics community",
-    "free_badge": "Free",
-    "visit": "Visit"
+    "eyebrow": "Resources",
+    "title": "A practical shelf for learning and research.",
+    "intro": "A curated collection of tools, journals, opportunities, and starting points for the optics and photonics community.",
+    "free": "Free",
+    "visit": "Visit resource"
   },
   "join": {
-    "heading": "Join Optica Egypt",
-    "subheading": "Be part of Egypt's photonics community",
-    "body": "Whether you are a student discovering photonics for the first time or an experienced researcher, there is a place for you here. Membership is open to all.",
-    "cta": "Apply to Join",
-    "contact_heading": "Contact Us",
-    "contact_body": "Have a question or want to collaborate?",
-    "form_title": "Send us a Message",
-    "name_label": "Full Name",
-    "email_label": "Email Address",
-    "affiliation_label": "University or Organization",
-    "message_label": "Message",
-    "submit_btn": "Send Message",
-    "submitting": "Sending...",
-    "success_msg": "Thank you! Your message has been sent. We will respond shortly.",
-    "error_msg": "Failed to send message. Please try again or email us directly."
+    "eyebrow": "Get involved",
+    "title": "Your next connection could change your trajectory.",
+    "intro": "Participation is open to students, researchers, faculty, professionals, and anyone interested in the science and application of light.",
+    "whyEyebrow": "Why take part",
+    "whyTitle": "Come as you are. Grow from there.",
+    "reasons": [
+      "Meet people who care about the same questions.",
+      "Find talks, resources, and learning opportunities.",
+      "Build relationships across Egypt's photonics community."
+    ],
+    "contactEyebrow": "Send a message",
+    "contactTitle": "How can the section help?",
+    "contactIntro": "Use the form to prepare an email to the Local Section. It does not submit personal information to this website.",
+    "name": "Full name",
+    "email": "Email address",
+    "message": "Message",
+    "submit": "Prepare email",
+    "prepared": "Your mail application should now contain a pre-filled message. Review it and send it when ready.",
+    "openMembership": "Open membership form",
+    "membershipPending": "A membership form will be linked here when it is ready. Until then, contact the section directly."
   },
-  "footer": {
-    "tagline": "Connecting Talent. Advancing Photonics.",
-    "affiliation": "A Local Section of Optica",
-    "copyright": "Optica Egypt Local Section. All rights reserved.",
-    "links": "Quick Links"
+  "involvement": {
+    "eyebrow": "Participate with purpose",
+    "title": "Choose the way you want to contribute.",
+    "intro": "Start with the path that fits your current role. The team reviews every volunteering and partnership enquiry before making a commitment.",
+    "membershipTitle": "Optica membership",
+    "membershipBody": "Explore individual or corporate membership directly with Optica, including the wider professional network and member benefits.",
+    "membershipAction": "Explore Optica membership",
+    "volunteerTitle": "Volunteer with the section",
+    "volunteerBody": "Help shape events, outreach, community operations, or digital work. Availability and responsibilities are agreed with a human coordinator.",
+    "volunteerAction": "Volunteer or collaborate",
+    "partnerTitle": "Partner with the ecosystem",
+    "partnerBody": "Universities, research groups, companies, and institutions can start a scoped conversation with the Local Section.",
+    "partnerAction": "Discuss a partnership"
   },
-  "common": {
-    "loading": "Loading...",
-    "error": "Something went wrong.",
-    "back": "Back",
-    "read_more": "Read more",
-    "learn_more": "Learn more",
-    "coming_soon": "Coming soon",
-    "new": "New",
-    "toggle_theme": "Toggle theme",
-    "toggle_language": "العربية",
-    "skip_to_content": "Skip to main content",
-    "open_menu": "Open navigation menu",
-    "close_menu": "Close navigation menu"
+  "viewer": {
+    "label": "Interactive conceptual integrated photonics chip model",
+    "summary": "A conceptual photonic integrated circuit: gold paths represent guided optical routes, rings represent resonators, and grating couplers connect light into and out of the chip. It illustrates component relationships, not a fabrication-ready design.",
+    "hint": "Drag to orbit. Use a scroll wheel or pinch gesture to zoom.",
+    "fallback": "A concise text model is shown because interactive graphics are unavailable on this device.",
+    "reset": "Reset view",
+    "pause": "Pause light motion",
+    "resume": "Resume light motion",
+    "fullscreen": "View fullscreen",
+    "exitFullscreen": "Exit fullscreen"
+  },
+  "notFound": {
+    "title": "This optical path does not exist.",
+    "body": "Return to the Optica Egypt Local Section homepage.",
+    "action": "Go home"
   }
 }
