@@ -1,278 +1,171 @@
 [
   {
     "id": "abdulaziz-albadawi",
-    "name": {
-      "en": "Abdulaziz Albadawi",
-      "ar": "عبدالعزيز البداوي"
-    },
-    "role": {
-      "en": "President",
-      "ar": "الرئيس"
-    },
+    "name": { "en": "Abdulaziz Albadawi" },
+    "role": { "en": "President" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Cairo University",
-      "ar": "جامعة القاهرة"
-    },
+    "institution": { "en": "Cairo University" },
     "linkedin": "abdulaziz-albadawi",
-    "bio": {
-      "en": "Leading the establishment of Optica Egypt and fostering local photonics community development.",
-      "ar": "يقود تأسيس قسم أوبتيكا مصر وتطوير مجتمع الضوئيات المحلي."
-    },
+    "email": "",
+    "photo": "",
+    "bio": { "en": "Leading the establishment of Optica Egypt and fostering local photonics community development." },
     "order": 1,
     "active": true
   },
   {
     "id": "khaled-ramadan",
-    "name": {
-      "en": "Khaled Ramadan",
-      "ar": "خالد رمضان"
-    },
-    "role": {
-      "en": "Vice President",
-      "ar": "نائب الرئيس"
-    },
+    "name": { "en": "Khaled Ramadan" },
+    "role": { "en": "Vice President" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Ain Shams University",
-      "ar": "جامعة عين شمس"
-    },
-    "linkedin": "khaled-ramadan",
-    "bio": {
-      "en": "Specializing in integrated optical circuits and academic partnership development.",
-      "ar": "متخصص في الدوائر الضوئية المتكاملة وتطوير الشراكات الأكاديمية."
-    },
+    "institution": { "en": "Ain Shams University" },
+    "linkedin": "khaled-ismail-ece",
+    "email": "khaledismail1842004kh24@gmail.com",
+    "photo": "/people/leadership/khaled-ramadan.png",
+    "bio": { "en": "Specializing in integrated optical circuits and academic partnership development." },
     "order": 2,
     "active": true
   },
   {
     "id": "mohammed-elsherbiny",
-    "name": {
-      "en": "Mohammed Elsherbiny",
-      "ar": "محمد الشربيني"
-    },
-    "role": {
-      "en": "Secretary",
-      "ar": "الأمين العام"
-    },
+    "name": { "en": "Mohammed Elsherbiny" },
+    "role": { "en": "Secretary" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Zewail City of Science and Technology",
-      "ar": "مدينة زويل للعلوم والتكنولوجيا"
-    },
+    "institution": { "en": "Zewail City of Science and Technology" },
     "linkedin": "mohammed-elsherbiny",
-    "bio": {
-      "en": "Managing section governance, member documentation, and official correspondence.",
-      "ar": "إدارة السجلات التنظيمية والتنسيق بين اللجان المختلفة."
-    },
+    "email": "",
+    "photo": "",
+    "bio": { "en": "Managing section governance, member documentation, and official correspondence." },
     "order": 3,
     "active": true
   },
   {
     "id": "arwa-elsherbiny",
-    "name": {
-      "en": "Arwa Elsherbiny",
-      "ar": "أروى الشربيني"
-    },
-    "role": {
-      "en": "Treasurer",
-      "ar": "أمين الصندوق"
-    },
+    "name": { "en": "Arwa Elsherbiny" },
+    "role": { "en": "Treasurer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Cairo University",
-      "ar": "جامعة القاهرة"
-    },
+    "institution": { "en": "Cairo University" },
     "linkedin": "arwa-elsherbiny",
-    "bio": {
-      "en": "Directing section financial allocation, sponsorship budgets, and grant accounting.",
-      "ar": "إدارة الميزانيات المالية والمنح والرعايات."
-    },
+    "email": "",
+    "photo": "",
+    "bio": { "en": "Directing section financial allocation, sponsorship budgets, and grant accounting." },
     "order": 4,
     "active": true
   },
   {
     "id": "islam-abduaal",
-    "name": {
-      "en": "Islam Abduaal",
-      "ar": "إسلام عبدالعال"
-    },
-    "role": {
-      "en": "Webmaster",
-      "ar": "مسؤول الموقع والتقنية"
-    },
+    "name": { "en": "Islam Abduaal" },
+    "role": { "en": "Webmaster" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Cairo University",
-      "ar": "جامعة القاهرة"
-    },
+    "institution": { "en": "Cairo University" },
     "linkedin": "islam-abduaal",
-    "bio": {
-      "en": "Architecting and maintaining the official Optica Egypt web infrastructure and digital platforms.",
-      "ar": "تطوير وإدارة المنصة الرقمية والبنية البرمجية للقسم."
-    },
+    "email": "",
+    "photo": "",
+    "bio": { "en": "Architecting and maintaining the official Optica Egypt web infrastructure and digital platforms." },
     "order": 5,
     "active": true
   },
   {
-    "id": "mariam-hussein",
-    "name": {
-      "en": "Mariam Hussein",
-      "ar": "مريم حسين"
-    },
-    "role": {
-      "en": "Growth Officer",
-      "ar": "مسؤولة النمو والتوسع"
-    },
+    "id": "mariam-awd",
+    "name": { "en": "Mariam Awd" },
+    "role": { "en": "Growth Officer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "American University in Cairo (AUC)",
-      "ar": "الجامعة الأمريكية بالقاهرة"
-    },
-    "linkedin": "mariam-hussein",
-    "bio": {
-      "en": "Driving student engagement and professional recruitment nationwide.",
-      "ar": "توسيع قاعدة الأعضاء وتفعيل المشاركة الطلابية."
-    },
+    "institution": { "en": "German University in Cairo (GUC)" },
+    "linkedin": "mariam-awd-10a269244",
+    "email": "mariam.hussin@guc.edu.eg",
+    "photo": "/people/leadership/mariam-awd.png",
+    "bio": { "en": "Driving student engagement and professional recruitment nationwide." },
     "order": 6,
     "active": true
   },
   {
     "id": "mohammed-khedr",
-    "name": {
-      "en": "Mohammed Khedr",
-      "ar": "محمد خضر"
-    },
-    "role": {
-      "en": "Outreach Officer",
-      "ar": "مسؤول التوعية المجتمعية"
-    },
+    "name": { "en": "Mohammed Khedr" },
+    "role": { "en": "Outreach Officer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Egypt-Japan University (E-JUST)",
-      "ar": "الجامعة المصرية اليابانية"
-    },
-    "linkedin": "mohammed-khedr",
-    "bio": {
-      "en": "Leading STEM roadshows and public optics demonstrations across Egyptian schools.",
-      "ar": "قيادة مبادرات التوعية بالمدارس والجامعات المصرية."
-    },
+    "institution": { "en": "Egypt-Japan University (E-JUST)" },
+    "linkedin": "mohamed-khedr-636a06267",
+    "email": "mmh.khedre@gmail.com",
+    "photo": "/people/leadership/mohammed-khedr.png",
+    "bio": { "en": "Leading STEM roadshows and public optics demonstrations across Egyptian schools." },
     "order": 7,
     "active": true
   },
   {
-    "id": "yahia-ghadiry",
-    "name": {
-      "en": "Yahia Ghadiry",
-      "ar": "يحيى الغديري"
-    },
-    "role": {
-      "en": "Activities Officer",
-      "ar": "مسؤول الأنشطة والفعاليات"
-    },
+    "id": "jannah-ahmed",
+    "name": { "en": "Jannah Ahmed" },
+    "role": { "en": "Branding Officer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Ain Shams University",
-      "ar": "جامعة عين شمس"
-    },
-    "linkedin": "yahia-ghadiry",
-    "bio": {
-      "en": "Organizing technical seminars, laser workshops, and student networking sessions.",
-      "ar": "تنظيم ورش العمل والندوات والأنشطة العلمية."
-    },
+    "institution": { "en": "" },
+    "linkedin": "jannah-abdelmawla",
+    "email": "jannahahmedsaber18@gmail.com",
+    "photo": "/people/leadership/jannah-ahmed.png",
+    "bio": { "en": "Shaping the visual identity and brand communications of Optica Egypt." },
     "order": 8,
     "active": true
   },
   {
-    "id": "ahmed-magdy",
-    "name": {
-      "en": "Ahmed Magdy",
-      "ar": "أحمد مجدي"
-    },
-    "role": {
-      "en": "Logistics Officer",
-      "ar": "مسؤول اللوجستيات"
-    },
+    "id": "yahia-ghadiry",
+    "name": { "en": "Yahia Ghadiry" },
+    "role": { "en": "Activities Officer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Helwan University",
-      "ar": "جامعة حلوان"
-    },
-    "linkedin": "ahmed-magdy",
-    "bio": {
-      "en": "Overseeing venue management, event equipment, and technical audio-visual setups.",
-      "ar": "إدارة العمليات اللوجستية وتجهيزات الفعاليات."
-    },
+    "institution": { "en": "Ain Shams University" },
+    "linkedin": "yahia-ghadiry",
+    "email": "",
+    "photo": "",
+    "bio": { "en": "Organizing technical seminars, laser workshops, and student networking sessions." },
     "order": 9,
     "active": true
   },
   {
-    "id": "omar-ayoub",
-    "name": {
-      "en": "Omar Ayoub",
-      "ar": "عمر أيوب"
-    },
-    "role": {
-      "en": "QA Officer",
-      "ar": "مسؤول الجودة والمعايير"
-    },
+    "id": "ahmed-magdy",
+    "name": { "en": "Ahmed Magdy" },
+    "role": { "en": "Logistics Officer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Cairo University",
-      "ar": "جامعة القاهرة"
-    },
-    "linkedin": "omar-ayoub",
-    "bio": {
-      "en": "Ensuring strict compliance with Optica global section standards and governance quality.",
-      "ar": "متابعة معايير الجودة والالتزام بلوائح أوبتيكا الدولية."
-    },
+    "institution": { "en": "Helwan University" },
+    "linkedin": "ahmed-magdy",
+    "email": "",
+    "photo": "",
+    "bio": { "en": "Overseeing venue management, event equipment, and technical audio-visual setups." },
     "order": 10,
     "active": true
   },
   {
-    "id": "abdelrhman-hassan",
-    "name": {
-      "en": "Abdelrhman Hassan",
-      "ar": "عبدالرحمن حسن"
-    },
-    "role": {
-      "en": "Volunteers Officer",
-      "ar": "مسؤول المتطوعين"
-    },
+    "id": "omar-ayoub",
+    "name": { "en": "Omar Ayoub" },
+    "role": { "en": "QA Officer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Al-Azhar University",
-      "ar": "جامعة الأزهر"
-    },
-    "linkedin": "abdelrhman-hassan",
-    "bio": {
-      "en": "Recruiting, onboarding, and coordinating student volunteer committees.",
-      "ar": "استقطاب وتدريب وتنسيق فرق المتطوعين."
-    },
+    "institution": { "en": "Cairo University" },
+    "linkedin": "omar-ayoub",
+    "email": "",
+    "photo": "",
+    "bio": { "en": "Ensuring strict compliance with Optica global section standards and governance quality." },
     "order": 11,
     "active": true
   },
   {
-    "id": "abdlrhman-hamza",
-    "name": {
-      "en": "Abdlrhman Hamza",
-      "ar": "عبدالرحمن حمزة"
-    },
-    "role": {
-      "en": "Founding Member",
-      "ar": "عضو مؤسس"
-    },
+    "id": "abdelrhman-hassan",
+    "name": { "en": "Abdelrhman Hassan" },
+    "role": { "en": "Volunteers Officer" },
     "term": "2024-2025",
-    "institution": {
-      "en": "Alexandria University",
-      "ar": "جامعة الإسكندرية"
-    },
-    "linkedin": "abdlrhman-hamza",
-    "bio": {
-      "en": "Founding member contributing to optics research workshops and community technical initiatives.",
-      "ar": "عضو مؤسس يساهم في المبادرات البحثية وورش العمل التقنية."
-    },
+    "institution": { "en": "Al-Azhar University" },
+    "linkedin": "abderhmanhassan77",
+    "email": "abderhman0009@gmail.com",
+    "photo": "/people/leadership/abdelrhman-hassan.png",
+    "bio": { "en": "Recruiting, onboarding, and coordinating student volunteer committees." },
     "order": 12,
+    "active": true
+  },
+  {
+    "id": "abdlrhman-hamza",
+    "name": { "en": "Abdlrhman Hamza" },
+    "role": { "en": "Founding Member" },
+    "term": "2024-2025",
+    "institution": { "en": "Alexandria University" },
+    "linkedin": "abdlrhman-amr-611897353",
+    "email": "abdrhmanhamzaa@gmail.com",
+    "photo": "/people/leadership/abdlrhman-hamza.png",
+    "bio": { "en": "Founding member contributing to optics research workshops and community technical initiatives." },
+    "order": 13,
     "active": true
   }
 ]

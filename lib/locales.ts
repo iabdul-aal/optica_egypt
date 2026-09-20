@@ -4,7 +4,7 @@ export const locales = ["en"] as const
 
 export type Locale = (typeof locales)[number]
 export type Dictionary = typeof en
-export type LocalizedText = { en: string; ar: string }
+export type LocalizedText = { en: string; ar?: string }
 
 const dictionaries: Record<Locale, Dictionary> = { en }
 
@@ -16,8 +16,8 @@ export function getDictionary(locale: Locale): Dictionary {
   return dictionaries[locale] ?? en
 }
 
-export function getLocalizedText(value: LocalizedText, locale: Locale): string {
-  return value[locale] || value.en
+export function getLocalizedText(value: LocalizedText, _locale: Locale): string {
+  return value.en
 }
 
 export function getLocaleTag(): string {
