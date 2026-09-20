@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, Suspense, ReactNode } from "react"
 import Image from "next/image"
-import { useLocale } from "next-intl"
 import { getAssetPath } from "@/lib/utils"
 
 interface SceneWrapperProps {
@@ -22,7 +21,6 @@ export function SceneWrapper({
   className = "",
   height = "h-[400px] md:h-[500px]",
 }: SceneWrapperProps) {
-  const locale = useLocale()
   const [canRender3D, setCanRender3D] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [hasError, setHasError] = useState(false)
@@ -59,7 +57,7 @@ export function SceneWrapper({
         <div className="relative w-full h-full">
           <Image
             src={getAssetPath(fallbackSrc)}
-            alt={fallbackAlt[locale as "en" | "ar"] || fallbackAlt.en}
+            alt={fallbackAlt.en}
             fill
             className="object-cover"
             priority={false}

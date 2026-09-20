@@ -1,15 +1,13 @@
 "use client"
 
 import React from "react"
-import { useLocale } from "next-intl"
 import Link from "next/link"
 import type { Event } from "@/types/event"
 import { EventCard } from "./EventCard"
 import { Calendar, MapPin, ArrowRight } from "lucide-react"
 import { getDictionary, type Locale } from "@/lib/locales"
 
-export function EventsPreview({ events }: { events: Event[] }) {
-  const locale = useLocale() as Locale
+export function EventsPreview({ events, locale = "en" }: { events: Event[]; locale?: Locale }) {
   const dictionary = getDictionary(locale)
 
 

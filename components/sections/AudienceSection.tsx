@@ -1,7 +1,4 @@
-"use client"
-
 import React from "react"
-import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
@@ -11,30 +8,36 @@ const SEGMENTS = [
     id: "01",
     tag: "TALENT AND ACADEMY",
     focus: "Undergraduate and Graduate Students",
+    title: "Students and Early Career",
+    body: "Build practical skills, connect with research labs, and access Optica international travel grants and conference sponsorships.",
   },
   {
     key: "researchers",
     id: "02",
     tag: "R AND D LABS",
     focus: "Faculty and Principal Investigators",
+    title: "Researchers and Academics",
+    body: "Showcase findings, collaborate across universities, and connect with global leaders visiting Egypt.",
   },
   {
     key: "industry",
     id: "03",
     tag: "TELECOM AND INDUSTRY",
     focus: "Fiber Optics and Semiconductor Engineers",
+    title: "Industry and Engineering",
+    body: "Bridge the gap between academia and practical applications in telecom, photonics sensors, and optical manufacturing.",
   },
   {
     key: "startups",
     id: "04",
     tag: "DEEPTECH VENTURES",
     focus: "Hardware Prototyping and Spinouts",
+    title: "Startups and Innovators",
+    body: "Turn deeptech optics prototypes into viable ventures with mentorship, IP guidance, and industry networks.",
   },
 ] as const
 
 export function AudienceSection() {
-  const t = useTranslations("home.audience")
-
   return (
     <section className="py-24 bg-[#000000] border-b border-white/10 relative">
       <div className="container-page">
@@ -50,7 +53,7 @@ export function AudienceSection() {
             </div>
 
             <h2 className="editorial-headline text-white">
-              {t("heading")}
+              Built for every layer of Egypt&apos;s photonics community.
             </h2>
 
             <p className="editorial-lead text-slate-400">
@@ -66,7 +69,7 @@ export function AudienceSection() {
 
           {/* Right Column: Architectural Cohort Ledger */}
           <div className="lg:col-span-8 divide-y divide-white/10 border-y border-white/10">
-            {SEGMENTS.map(({ key, id, tag, focus }) => (
+            {SEGMENTS.map(({ key, id, tag, focus, title, body }) => (
               <div
                 key={key}
                 className="py-8 sm:py-10 group hover:bg-white/[0.015] transition-colors"
@@ -86,14 +89,14 @@ export function AudienceSection() {
                   <div className="flex-1 max-w-xl space-y-2">
                     <div className="flex items-center gap-2">
                       <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#fa8716] transition-colors">
-                        {t(`${key}.title`)}
+                        {title}
                       </h3>
                     </div>
                     <p className="text-xs font-mono text-slate-500">
                       {focus}
                     </p>
                     <p className="text-sm text-slate-300 leading-relaxed font-light pt-2">
-                      {t(`${key}.body`)}
+                      {body}
                     </p>
                   </div>
 
