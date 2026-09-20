@@ -98,7 +98,10 @@ export default function HomePage() {
                 <p className="eyebrow">{dictionary.home.events.eyebrow}</p>
                 <h2 className="section-title">{dictionary.home.events.title}</h2>
               </div>
-              <Link href={localizedHref("en", "/events")} className="text-link">
+              <Link
+                href={localizedHref("en", "/events")}
+                className="text-link justify-self-start sm:justify-self-end"
+              >
                 {dictionary.home.events.action} <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
             </div>
