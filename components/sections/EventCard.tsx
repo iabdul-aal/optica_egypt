@@ -15,7 +15,7 @@ export function EventCard({ event, locale, dictionary }: EventCardProps) {
   const registerLabel = event.status === "upcoming" ? dictionary.events.earlyRegister : dictionary.eventDetail.register
 
   return (
-    <article className="event-row grid gap-5 py-7 sm:grid-cols-[9rem_1fr_auto] sm:items-start sm:gap-7">
+    <article className="group grid gap-5 border-b border-white/10 p-5 sm:p-7 transition-colors duration-200 hover:bg-white/[0.025] rounded-sm sm:grid-cols-[9rem_1fr_auto] sm:items-start sm:gap-7">
       <time dateTime={event.date} className="font-mono text-sm font-bold tracking-tight text-[var(--gold)]">
         {formatEventDate(event.date, locale, { day: "2-digit", month: "short", year: "numeric" })}
       </time>
@@ -34,7 +34,12 @@ export function EventCard({ event, locale, dictionary }: EventCardProps) {
       </div>
       <div className="flex flex-wrap items-center gap-4 sm:flex-col sm:items-end sm:gap-3 sm:mt-1">
         <Link href={localizedHref(locale, `/events/${event.id}`)} className="text-link w-fit">
-          {dictionary.events.viewEvent} <ArrowUpRight size={14} aria-hidden="true" />
+          {dictionary.events.viewEvent}{" "}
+          <ArrowUpRight
+            size={14}
+            aria-hidden="true"
+            className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </Link>
         {canRegister && (
           <Link href={localizedHref(locale, `/events/${event.id}/register`)} className="btn-primary !text-xs !py-1.5 !px-3">
