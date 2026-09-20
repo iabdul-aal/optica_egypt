@@ -23,10 +23,10 @@ const NODES: NodeDef[] = [
     id: "students",
     label: "STUDENTS",
     baseX: 118,
-    baseY: 74,
+    baseY: 82,
     radius: 22,
     textOffsetX: 0,
-    textOffsetY: -32,
+    textOffsetY: -40,
     textAnchor: "middle",
     speedX: 0.0018,
     speedY: 0.0022,
@@ -38,10 +38,10 @@ const NODES: NodeDef[] = [
     id: "researchers",
     label: "RESEARCHERS",
     baseX: 464,
-    baseY: 68,
+    baseY: 80,
     radius: 22,
     textOffsetX: 0,
-    textOffsetY: -31,
+    textOffsetY: -40,
     textAnchor: "middle",
     speedX: 0.0021,
     speedY: 0.0017,
@@ -52,11 +52,11 @@ const NODES: NodeDef[] = [
   {
     id: "academia",
     label: "ACADEMIA",
-    baseX: 506,
-    baseY: 190,
+    baseX: 495,
+    baseY: 185,
     radius: 22,
-    textOffsetX: 42,
-    textOffsetY: 5,
+    textOffsetX: 44,
+    textOffsetY: 0,
     textAnchor: "start",
     speedX: 0.0019,
     speedY: 0.0025,
@@ -67,11 +67,11 @@ const NODES: NodeDef[] = [
   {
     id: "industry",
     label: "INDUSTRY",
-    baseX: 425,
-    baseY: 301,
+    baseX: 435,
+    baseY: 295,
     radius: 22,
     textOffsetX: 0,
-    textOffsetY: 36,
+    textOffsetY: 44,
     textAnchor: "middle",
     speedX: 0.0023,
     speedY: 0.002,
@@ -82,11 +82,11 @@ const NODES: NodeDef[] = [
   {
     id: "startups",
     label: "STARTUPS",
-    baseX: 150,
-    baseY: 289,
+    baseX: 140,
+    baseY: 295,
     radius: 22,
-    textOffsetX: -32,
-    textOffsetY: 38,
+    textOffsetX: 0,
+    textOffsetY: 44,
     textAnchor: "middle",
     speedX: 0.0017,
     speedY: 0.0024,
@@ -408,6 +408,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
                 y={pos.y + node.textOffsetY}
                 fill={isHovered ? "#f0d79c" : "#b8b1a4"}
                 textAnchor={node.textAnchor}
+                dominantBaseline={node.id === "academia" ? "central" : undefined}
                 fontSize="12"
                 fontFamily="Arial, sans-serif"
                 fontWeight={isHovered ? "700" : "600"}
