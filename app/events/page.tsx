@@ -1,7 +1,16 @@
+import type { Metadata } from "next"
 import { EventCard } from "@/components/sections/EventCard"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { getUpcomingEvents } from "@/lib/events"
 import { getDictionary } from "@/lib/locales"
+
+export const metadata: Metadata = {
+  title: "Events",
+  description: "Explore upcoming events, workshops, symposiums, and scientific seminars organized by Optica Egypt Local Section.",
+  alternates: {
+    canonical: "/events/",
+  },
+}
 
 export default function EventsPage() {
   const dictionary = getDictionary("en")

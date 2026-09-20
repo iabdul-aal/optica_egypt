@@ -1,7 +1,16 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { getDictionary, localizedHref } from "@/lib/locales"
+
+export const metadata: Metadata = {
+  title: "Community",
+  description: "Connect with Egypt's photonics community spanning student chapters, research groups, university faculty, and industrial pioneers.",
+  alternates: {
+    canonical: "/community/",
+  },
+}
 
 export default function CommunityPage() {
   const dictionary = getDictionary("en")

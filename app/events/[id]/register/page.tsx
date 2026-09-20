@@ -17,9 +17,26 @@ export async function generateMetadata({ params }: EventRegistrationPageProps): 
   const { id } = await params
   const event = getEventById(id)
   const isEarly = event?.status === "upcoming"
-  return event
-    ? { title: `${isEarly ? "Early Register" : "Register"} — ${event.title.en}` }
-    : { title: "Event registration" }
+  if (!event) return { title: "Event registration" }
+
+  const prefix = isEarly ? "Early Register" : "Register"
+  const title = `${prefix}: ${event.title.en}`
+  const description = `Register for ${event.title.en} organized by Optica Egypt Local Section.`
+  const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/events/${event.id}/register/`,
+    },
+    openGraph: {
+      title: `${title} | Optica Egypt`,
+      description,
+      url: `${siteUrl}/events/${event.id}/register/`,
+      images: [`${siteUrl}/assets/brand/optica-egypt-logo.svg`],
+    },
+  }
 }
 
 export default async function EventRegistrationPage({ params }: EventRegistrationPageProps) {

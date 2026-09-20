@@ -6,7 +6,10 @@ import { PageHeader } from "@/components/sections/PageHeader"
 
 export const metadata: Metadata = {
   title: "Join Optica Egypt",
-  description: "Join the Optica Egypt Local Section.",
+  description: "Join the Optica Egypt Local Section. Connect with students, researchers, faculty, and industry professionals in photonics.",
+  alternates: {
+    canonical: "/join/",
+  },
 }
 
 const reasons = [

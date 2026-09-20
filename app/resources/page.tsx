@@ -1,7 +1,16 @@
+import type { Metadata } from "next"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { getDictionary, getLocalizedText } from "@/lib/locales"
 import { getAllResources } from "@/lib/resources"
+
+export const metadata: Metadata = {
+  title: "Resources",
+  description: "Curated optics and photonics resources, journals, open-source computational tools, and learning materials.",
+  alternates: {
+    canonical: "/resources/",
+  },
+}
 
 export default function ResourcesPage() {
   const dictionary = getDictionary("en")

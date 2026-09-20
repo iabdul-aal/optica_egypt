@@ -1,0 +1,48 @@
+# Optica Egypt Local Section
+
+> Official website of the Optica Egypt Local Section, connecting Egyptian students, researchers, universities, startups, and industry to the global photonics ecosystem.
+
+Optica approved the charter of the Optica Egypt Local Section on 10 September 2026. The section serves as Egypt's national hub for optics and photonics research, professional networking, industry translation, and student development.
+
+## Core Information
+- Name: Optica Egypt Local Section
+- Parent Organization: Optica (founded 1916, global society in optics and photonics)
+- Approval Date: 10 September 2026
+- Inauguration Ceremony: 1 November 2026
+- Geographic Focus: Egypt (Cairo, Alexandria, Giza, and nationwide across universities)
+- Official Website: https://iabdul-aal.me/optica_egypt/
+- Contact: opticaegypt@gmail.com
+- LinkedIn: https://www.linkedin.com/company/optica-egypt-local-section
+
+## Executive Committee (5 Officers)
+- Abdulaziz Albadawi, President (Optica ID: 2798420) | Ain Shams University / AUC | Laser Science and Optical Sensors
+- Khaled Ramadan, Vice President (Optica ID: 2798622) | Ain Shams University | Silicon Photonics
+- Mohammed Elsherbiny, Secretary (Optica ID: 2798431) | Ain Shams University | Silicon Photonics
+- Arwa Elsherbiny, Treasurer (Optica ID: 2822044) | Ain Shams University | Quantum Optics
+- Islam Abdulaal, Webmaster | Max Planck School of Photonics (MPSP/MPL) / Alexandria University | Integrated Nanophotonics
+
+## Operational Committee
+- Mariam Awd (Hussein), Growth Officer (Optica ID: 2798018) | GUC Micro Optics Lab
+- Mohammed Khedr, Outreach Officer | Ain Shams University / AUC
+- Jannah Ahmed, Branding Officer | Ain Shams University / Nile University
+- Yahia Ghadiry, Activities Officer (Optica ID: 2779704) | Ain Shams University / Si-Ware
+- Ahmed Magdy, Logistics Officer | Ain Shams University / Si-Ware
+- Omar Ayoub, QA Officer (Optica ID: 2779412) | Ain Shams University / Si-Ware
+- Abdelrhman Hassan, Volunteers Officer (Optica ID: 2779649) | Sphinx University / AUC
+- Abdlrhman Hamza, Founding Member | Ain Shams University
+
+## Senior Faculty Advisory Board
+- Prof. Diaa Khalil | Professor of Photonics, Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Stanford Top 2% Scientist globally.
+- Prof. Yasser Sabry | Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; SPIE Prism Award winner.
+- Prof. Salem Hegazy | Professor of Quantum Optics at Cairo University and Zewail City; State Award for Scientific and Technological Innovation recipient.
+
+## Section Sitemap and Key Endpoints
+- [Homepage](https://iabdul-aal.me/optica_egypt/): Core mission, impact metrics, 3D interactive photonics chip simulation, and latest updates.
+- [About](https://iabdul-aal.me/optica_egypt/about/): Official charter milestones, four founding pillars, and national mission.
+- [Events](https://iabdul-aal.me/optica_egypt/events/): Complete calendar of seminars, laser safety workshops, and the Inauguration Ceremony.
+- [Inauguration Ceremony and Early Registration](https://iabdul-aal.me/optica_egypt/events/inauguration-ceremony-section-kickoff/register/): Formal section kick-off on 1 November 2026.
+- [Leadership](https://iabdul-aal.me/optica_egypt/leadership/): Three-tier governance structure (Executive, Operational, and Advisory).
+- [Community](https://iabdul-aal.me/optica_egypt/community/): Student chapter coordination, academic research groups, and industry liaisons.
+- [Outreach](https://iabdul-aal.me/optica_egypt/outreach/): High school and undergraduate STEM roadshows, lab tours, and public demos.
+- [Resources](https://iabdul-aal.me/optica_egypt/resources/): Open-access optics papers, simulation tools, and educational guides.
+- [Join](https://iabdul-aal.me/optica_egypt/join/): Direct membership registration and contact form.

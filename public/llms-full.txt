@@ -1,0 +1,81 @@
+# Optica Egypt Local Section, Comprehensive Agent Documentation
+
+## Section Identity
+The Optica Egypt Local Section is the official regional section of Optica, chartered on 10 September 2026. The section connects students, academic researchers, universities, start-ups, and industry across the Arab Republic of Egypt to the international photonics community.
+
+- Official Domain: https://iabdul-aal.me/optica_egypt/
+- Charter Approval Date: 10 September 2026
+- Inauguration Ceremony: 1 November 2026 (Cairo, Egypt)
+- Parent Body: Optica (2010 Massachusetts Ave. NW, Washington, D.C., USA, founded 1916)
+- Section Contact: opticaegypt@gmail.com
+- Social Profiles:
+  - LinkedIn: https://www.linkedin.com/company/optica-egypt-local-section
+  - Instagram: @opticaegypt
+  - Twitter/X: @opticaegypt
+
+---
+
+## Strategic Mission and Core Pillars
+1. Connect Talent: Bridging undergraduate students, postgraduate researchers, and veteran faculty members across all major Egyptian institutions.
+2. Foster Research: Accelerating collaboration in Silicon Photonics, Quantum Optics, Optical MEMS, Laser Physics, and Biosensing.
+3. Industry Translation: Partnering with pioneering domestic high-tech companies (e.g. Si-Ware Systems) and international tech leaders to build commercial optics applications.
+4. STEM Outreach: Inspiring the next generation through hands-on laser demonstrations, optical physics roadshows, and school curriculum enhancements.
+
+---
+
+## Governance and Leadership Roster
+
+### Executive Committee (5 Officers)
+- Abdulaziz Albadawi, President
+  - Optica Member ID: 2798420
+  - Email: albadawiabdulaziz@gmail.com
+  - Affiliations: Ain Shams University / The American University in Cairo (AUC)
+  - Focus: Nanophotonics, Laser Science, and Optical Sensors
+
+- Khaled Ramadan, Vice President
+  - Optica Member ID: 2798622
+  - Email: khaledismail1842004kh24@gmail.com
+  - Affiliations: Ain Shams University / LLOC Lab / AUC / Nile University
+  - Focus: Silicon Photonics and Waveguide Design
+
+- Mohammed Elsherbiny, Secretary
+  - Optica Member ID: 2798431
+  - Email: mohammed.nader.200519@gmail.com
+  - Affiliations: Ain Shams University / Si-Ware Systems
+  - Focus: Section Governance, Records, and Silicon Photonics
+
+- Arwa Elsherbiny, Treasurer
+  - Optica Member ID: 2822044
+  - Email: 2300183@eng.asu.edu.eg
+  - Affiliations: Ain Shams University / Si-Ware Systems / Zewail City
+  - Focus: Financial Planning, Grants Allocation, and Quantum Optics
+
+- Islam Abdulaal, Webmaster
+  - Email: islamibr29@outlook.com
+  - Affiliations: Max Planck School of Photonics (MPSP/MPL) / Alexandria University / A*STAR
+  - Focus: Digital Infrastructure, Integrated Nanophotonics, and Nonlinear Quantum Optics
+
+### Operational Committee
+- Mariam Awd (Hussein), Growth Officer (Optica ID: 2798018) | GUC Micro Optics Lab
+- Mohammed Khedr, Outreach Officer | Ain Shams University / AUC
+- Jannah Ahmed, Branding Officer | Ain Shams University / Nile University
+- Yahia Ghadiry, Activities Officer (Optica ID: 2779704) | Ain Shams University / Si-Ware
+- Ahmed Magdy, Logistics Officer | Ain Shams University / Si-Ware
+- Omar Ayoub, QA Officer (Optica ID: 2779412) | Ain Shams University / Si-Ware
+- Abdelrhman Hassan, Volunteers Officer (Optica ID: 2779649) | Sphinx University / AUC
+- Abdlrhman Hamza, Founding Member | Ain Shams University
+
+### Senior Faculty Advisory Board
+- Prof. Diaa Khalil: Professor of Photonics, Former Head of ECE, and Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Author of 400+ papers, holder of 25+ patents, SPIE Prism Award winner, and Stanford Top 2% Scientist globally.
+- Prof. Yasser Sabry: Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; Core inventor of NeoSpectra™ handheld FTIR spectrometer; Recipient of SPIE Prism Award.
+- Prof. Salem Hegazy: Professor of Quantum Optics at Cairo University and Zewail City of Science and Technology; Recipient of the Egyptian State Award for Technological Innovation (2021).
+
+---
+
+## Events Programme
+- Inauguration Ceremony: Section Kick-off
+  - Date: 1 November 2026
+  - Location: Cairo, Egypt
+  - Status: Upcoming (Early registration open)
+  - URL: https://iabdul-aal.me/optica_egypt/events/inauguration-ceremony-section-kickoff/
+  - Registration URL: https://iabdul-aal.me/optica_egypt/events/inauguration-ceremony-section-kickoff/register/

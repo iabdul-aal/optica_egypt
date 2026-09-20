@@ -1,7 +1,16 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { getDictionary, localizedHref } from "@/lib/locales"
+
+export const metadata: Metadata = {
+  title: "Outreach",
+  description: "Educational outreach, secondary school science initiatives, and regional university workshops by Optica Egypt.",
+  alternates: {
+    canonical: "/outreach/",
+  },
+}
 
 export default function OutreachPage() {
   const dictionary = getDictionary("en")

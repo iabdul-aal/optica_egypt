@@ -1,7 +1,16 @@
+import type { Metadata } from "next"
 import { MemberCard } from "@/components/sections/MemberCard"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { getDictionary } from "@/lib/locales"
 import { getExecutiveMembers, getOperationalMembers, getAdvisoryMembers } from "@/lib/members"
+
+export const metadata: Metadata = {
+  title: "Leadership",
+  description: "Meet the executive officers, operational chairs, and advisory board of Optica Egypt Local Section.",
+  alternates: {
+    canonical: "/leadership/",
+  },
+}
 
 export default function LeadershipPage() {
   const dictionary = getDictionary("en")

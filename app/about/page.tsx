@@ -1,5 +1,14 @@
+import type { Metadata } from "next"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { getDictionary } from "@/lib/locales"
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Learn about Optica Egypt Local Section, our mission, vision, and strategic pillars advancing photonics in Egypt.",
+  alternates: {
+    canonical: "/about/",
+  },
+}
 
 export default function AboutPage() {
   const dictionary = getDictionary("en")

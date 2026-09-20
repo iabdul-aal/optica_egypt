@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { formatEventDate, formatEventFormat, formatEventStatus } from "@/lib/formatting"
 import { getAllEvents, getEventById } from "@/lib/events"
 import { getDictionary, getLocalizedText, localizedHref } from "@/lib/locales"
+import { siteConfig } from "@/lib/site-config"
 
 type EventPageProps = { params: Promise<{ id: string }> }
 
@@ -15,7 +16,40 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
   const { id } = await params
   const event = getEventById(id)
-  return event ? { title: getLocalizedText(event.title, "en"), description: getLocalizedText(event.description, "en") } : { title: "Event not found" }
+  if (!event) return { title: "Event not found" }
+
+  const title = getLocalizedText(event.title, "en")
+  const description = getLocalizedText(event.description, "en")
+  const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
+  const eventUrl = `${siteUrl}/events/${event.id}/`
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/events/${event.id}/`,
+    },
+    openGraph: {
+      type: "article",
+      title: `${title} | Optica Egypt Local Section`,
+      description,
+      url: eventUrl,
+      images: [
+        {
+          url: `${siteUrl}/assets/brand/optica-egypt-logo.svg`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Optica Egypt`,
+      description,
+      images: [`${siteUrl}/assets/brand/optica-egypt-logo.svg`],
+    },
+  }
 }
 
 export default async function EventDetailPage({ params }: EventPageProps) {
@@ -24,10 +58,69 @@ export default async function EventDetailPage({ params }: EventPageProps) {
   const event = getEventById(id)
   if (!event) notFound()
 
+  const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
   const registrationAvailable = event.status === "registration_open" || event.status === "registration_closing"
+
+  const eventJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: getLocalizedText(event.title, "en"),
+    description: getLocalizedText(event.description, "en"),
+    startDate: event.date,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode:
+      event.format === "online"
+        ? "https://schema.org/OnlineEventAttendanceMode"
+        : event.format === "hybrid"
+          ? "https://schema.org/MixedEventAttendanceMode"
+          : "https://schema.org/OfflineEventAttendanceMode",
+    location:
+      event.format === "online"
+        ? {
+            "@type": "VirtualLocation",
+            url: `${siteUrl}/events/${event.id}/`,
+          }
+        : {
+            "@type": "Place",
+            name: getLocalizedText(event.location, "en"),
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Cairo",
+              addressCountry: "EG",
+            },
+          },
+    image: [`${siteUrl}/assets/brand/optica-egypt-logo.svg`],
+    organizer: {
+      "@type": "Organization",
+      name: "Optica Egypt Local Section",
+      url: siteUrl,
+    },
+    offers: {
+      "@type": "Offer",
+      url: `${siteUrl}/events/${event.id}/register/`,
+      price: "0",
+      priceCurrency: "USD",
+      availability: registrationAvailable ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+    },
+    performer: event.speakers.map((speaker) => ({
+      "@type": "Person",
+      name: speaker.name,
+      jobTitle: speaker.role || undefined,
+      worksFor: speaker.institution
+        ? {
+            "@type": "Organization",
+            name: speaker.institution,
+          }
+        : undefined,
+    })),
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+      />
       <section className="scientific-grid border-b border-white/10 bg-[var(--surface)]">
         <div className="container-page py-10 sm:py-14">
           <Link href={localizedHref("en", "/events")} className="text-link">
