@@ -14,10 +14,10 @@ export function PageHeader({ eyebrow, title, intro }: PageHeaderProps) {
           </p>
         </div>
         <div className="lg:col-span-8">
-          <h1 className="max-w-4xl font-[family-name:var(--font-display)] text-[clamp(2.5rem,5vw,4.75rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[var(--ink)]">
+          <h1 className="max-w-4xl font-[family-name:var(--font-display)] text-[clamp(2.5rem,5vw,4.75rem)] font-semibold leading-[1.12] tracking-[-0.035em] text-[var(--ink)]">
             {title}
           </h1>
-          <p className="mt-7 max-w-2xl text-base leading-7 text-[var(--ink-soft)] sm:text-lg sm:leading-8">
+          <p className="mt-8 max-w-2xl text-base leading-relaxed text-[var(--ink-soft)] sm:text-lg sm:leading-8">
             {intro}
           </p>
         </div>

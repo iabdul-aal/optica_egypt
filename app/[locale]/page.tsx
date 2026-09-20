@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import { DomainsShowcase } from "@/components/sections/DomainsShowcase"
 import { EventCard } from "@/components/sections/EventCard"
 import { HeroSection } from "@/components/sections/HeroSection"
 import { ImpactMetrics } from "@/components/sections/ImpactMetrics"
@@ -86,9 +85,6 @@ export default async function HomePage({ params }: PageProps) {
           </Link>
         </div>
       </section>
-
-      {/* ── Scientific domains — interactive schematics ──────────── */}
-      <DomainsShowcase />
 
       {/* ── Events ──────────────────────────────────────────────── */}
       <section className="section-space bg-[var(--surface)]">
