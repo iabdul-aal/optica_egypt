@@ -84,9 +84,7 @@ export default async function HomePage({ params }: PageProps) {
                 <text x="429" y="337" fill="#b8b1a4" textAnchor="middle" fontSize="12" fontFamily="Arial">INDUSTRY</text>
                 <text x="118" y="327" fill="#b8b1a4" textAnchor="middle" fontSize="12" fontFamily="Arial">STARTUPS</text>
               </svg>
-              <p className="relative mt-3 border-t border-white/10 pt-3 font-mono text-[0.65rem] tracking-[0.08em] text-[var(--gold)]">
-                CONCEPTUAL NETWORK / KNOWLEDGE FLOWS BOTH WAYS
-              </p>
+
             </div>
           </div>
 
