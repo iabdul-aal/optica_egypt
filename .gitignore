@@ -58,3 +58,4 @@ scratch/
 
 # ─── Downloaded archives (member photos, exports, etc.) ─────────────────────
 *.zip
+_photos_temp/
