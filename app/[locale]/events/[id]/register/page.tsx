@@ -3,10 +3,14 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { notFound } from "next/navigation"
 import { EventRegistrationForm } from "@/components/sections/EventRegistrationForm"
-import { getEventById } from "@/lib/events"
+import { getAllEvents, getEventById } from "@/lib/events"
 import { siteConfig } from "@/lib/site-config"
 
 type EventRegistrationPageProps = { params: Promise<{ id: string }> }
+
+export function generateStaticParams() {
+  return getAllEvents().map((event) => ({ id: event.id }))
+}
 
 export async function generateMetadata({ params }: EventRegistrationPageProps): Promise<Metadata> {
   const { id } = await params
