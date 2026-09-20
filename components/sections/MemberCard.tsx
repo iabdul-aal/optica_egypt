@@ -41,20 +41,20 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       </div>
 
       {/* Info row */}
-      <div className="mt-5 flex items-start justify-between gap-3">
+      <div className={`mt-5 flex-1 flex items-start justify-between gap-3 ${
+        member.tier === "advisory" ? "min-h-[10.5rem]" : "min-h-[7.75rem]"
+      }`}>
         <div className="min-w-0 flex-1">
           <p className="eyebrow truncate">{getLocalizedText(member.role, locale)}</p>
           <h3 className="mt-2 text-lg font-semibold text-[var(--ink)] leading-snug">{name}</h3>
-          {member.institution.en ? (
-            <p className="mt-1 text-sm text-[var(--ink-soft)] leading-snug min-h-[2.6rem] flex items-start">
+          {member.institution.en && (
+            <p className="mt-1 text-sm text-[var(--ink-soft)] leading-snug">
               {getLocalizedText(member.institution, locale)}
             </p>
-          ) : (
-            <div className="mt-1 min-h-[2.6rem]" />
           )}
-          {member.tier === "advisory" && (
-            <p className="mt-2 text-[0.68rem] font-mono font-medium text-[var(--gold)] leading-snug min-h-[2.5rem]">
-              {member.specializedSector || ""}
+          {member.tier === "advisory" && member.specializedSector && (
+            <p className="mt-2 text-[0.68rem] font-mono font-medium text-[var(--gold)] leading-snug">
+              {member.specializedSector}
             </p>
           )}
         </div>
@@ -94,8 +94,8 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       </div>
 
       {/* Detailed Profile */}
-      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId || member.website) && (
-        <details className="group mt-4">
+      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId || member.website) ? (
+        <details className="group mt-auto pt-4">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
           <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
             {hasBio && (
@@ -144,7 +144,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
             )}
           </div>
         </details>
-      )}
+      ) : null}
     </article>
   )
 }
