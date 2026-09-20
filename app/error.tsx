@@ -47,7 +47,7 @@ export default function Error({
           >
             <RefreshCcw size={15} /> Re-align system (Try again)
           </button>
-          <Link href="/en" className="btn-secondary inline-flex items-center gap-2">
+          <Link href="/" className="btn-secondary inline-flex items-center gap-2">
             <Home size={15} /> Return to homepage <ArrowUpRight size={14} />
           </Link>
         </div>

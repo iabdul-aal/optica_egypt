@@ -7,26 +7,18 @@ import { NewsSection } from "@/components/sections/NewsSection"
 import { OpticaHeritage } from "@/components/sections/OpticaHeritage"
 import { ResearchExplorer } from "@/components/sections/ResearchExplorer"
 import { getUpcomingEvents } from "@/lib/events"
-import { getDictionary, isLocale, localizedHref, type Locale } from "@/lib/locales"
+import { getDictionary, localizedHref } from "@/lib/locales"
 import { getLatestNews } from "@/lib/news"
 
-type PageProps = { params: Promise<{ locale: string }> }
-
-function resolveLocale(value: string): Locale {
-  return isLocale(value) ? value : "en"
-}
-
-export default async function HomePage({ params }: PageProps) {
-  const { locale: requestedLocale } = await params
-  const locale = resolveLocale(requestedLocale)
-  const dictionary = getDictionary(locale)
+export default function HomePage() {
+  const dictionary = getDictionary("en")
   const events = getUpcomingEvents(3)
   const news = getLatestNews(3)
   const nodes = Object.values(dictionary.home.community.nodes)
 
   return (
     <>
-      <HeroSection locale={locale} dictionary={dictionary} />
+      <HeroSection locale="en" dictionary={dictionary} />
 
       {/* ── Learn / Exchange / Build strip ───────────────────────── */}
       <ImpactMetrics />
@@ -80,7 +72,7 @@ export default async function HomePage({ params }: PageProps) {
             </div>
           </div>
 
-          <Link href={localizedHref(locale, "/community")} className="text-link mt-10">
+          <Link href={localizedHref("en", "/community")} className="text-link mt-10">
             {dictionary.home.community.action} <ArrowUpRight size={14} aria-hidden="true" />
           </Link>
         </div>
@@ -94,7 +86,7 @@ export default async function HomePage({ params }: PageProps) {
               <p className="eyebrow">{dictionary.home.events.eyebrow}</p>
               <h2 className="section-title">{dictionary.home.events.title}</h2>
             </div>
-            <Link href={localizedHref(locale, "/events")} className="text-link">
+            <Link href={localizedHref("en", "/events")} className="text-link">
               {dictionary.home.events.action} <ArrowUpRight size={14} aria-hidden="true" />
             </Link>
           </div>
@@ -104,17 +96,16 @@ export default async function HomePage({ params }: PageProps) {
               <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">{dictionary.home.events.emptyBody}</p>
             </div>
           ) : (
-            <div>{events.map((event) => <EventCard event={event} locale={locale} dictionary={dictionary} key={event.id} />)}</div>
+            <div>{events.map((event) => <EventCard event={event} locale="en" dictionary={dictionary} key={event.id} />)}</div>
           )}
         </div>
       </section>
 
-      <ResearchExplorer locale={locale} dictionary={dictionary} />
-      <NewsSection news={news} locale={locale} dictionary={dictionary} />
+      <ResearchExplorer locale="en" dictionary={dictionary} />
+      <NewsSection news={news} locale="en" dictionary={dictionary} />
 
       {/* ── Global affiliation ───────────────────────────────────── */}
-      <OpticaHeritage locale={locale} />
+      <OpticaHeritage locale="en" />
     </>
   )
 }
-

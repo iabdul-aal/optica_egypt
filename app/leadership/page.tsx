@@ -1,14 +1,10 @@
 import { MemberCard } from "@/components/sections/MemberCard"
 import { PageHeader } from "@/components/sections/PageHeader"
-import { getDictionary, isLocale, type Locale } from "@/lib/locales"
+import { getDictionary } from "@/lib/locales"
 import { getExecutiveMembers, getOperationalMembers, getAdvisoryMembers } from "@/lib/members"
 
-type PageProps = { params: Promise<{ locale: string }> }
-
-export default async function LeadershipPage({ params }: PageProps) {
-  const { locale: requestedLocale } = await params
-  const locale: Locale = isLocale(requestedLocale) ? requestedLocale : "en"
-  const dictionary = getDictionary(locale)
+export default function LeadershipPage() {
+  const dictionary = getDictionary("en")
 
   const executiveMembers = getExecutiveMembers()
   const operationalMembers = getOperationalMembers()
@@ -34,7 +30,7 @@ export default async function LeadershipPage({ params }: PageProps) {
           </div>
           <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {executiveMembers.map((member) => (
-              <MemberCard member={member} locale={locale} dictionary={dictionary} key={member.id} />
+              <MemberCard member={member} locale="en" dictionary={dictionary} key={member.id} />
             ))}
           </div>
         </div>
@@ -52,7 +48,7 @@ export default async function LeadershipPage({ params }: PageProps) {
           </div>
           <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {operationalMembers.map((member) => (
-              <MemberCard member={member} locale={locale} dictionary={dictionary} key={member.id} />
+              <MemberCard member={member} locale="en" dictionary={dictionary} key={member.id} />
             ))}
           </div>
         </div>
@@ -70,7 +66,7 @@ export default async function LeadershipPage({ params }: PageProps) {
           </div>
           <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {advisoryMembers.map((member) => (
-              <MemberCard member={member} locale={locale} dictionary={dictionary} key={member.id} />
+              <MemberCard member={member} locale="en" dictionary={dictionary} key={member.id} />
             ))}
           </div>
         </div>

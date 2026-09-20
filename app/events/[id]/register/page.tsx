@@ -5,9 +5,9 @@ import { notFound } from "next/navigation"
 import { EventRegistrationForm } from "@/components/sections/EventRegistrationForm"
 import { getAllEvents, getEventById } from "@/lib/events"
 import { siteConfig } from "@/lib/site-config"
-import { isLocale, localizedHref, type Locale } from "@/lib/locales"
+import { localizedHref } from "@/lib/locales"
 
-type EventRegistrationPageProps = { params: Promise<{ locale: string; id: string }> }
+type EventRegistrationPageProps = { params: Promise<{ id: string }> }
 
 export function generateStaticParams() {
   return getAllEvents().map((event) => ({ id: event.id }))
@@ -23,8 +23,7 @@ export async function generateMetadata({ params }: EventRegistrationPageProps): 
 }
 
 export default async function EventRegistrationPage({ params }: EventRegistrationPageProps) {
-  const { id, locale: requestedLocale } = await params
-  const locale: Locale = isLocale(requestedLocale) ? requestedLocale : "en"
+  const { id } = await params
   const event = getEventById(id)
   if (!event) notFound()
 
@@ -34,7 +33,7 @@ export default async function EventRegistrationPage({ params }: EventRegistratio
     <section className="section-space scientific-grid min-h-[70vh]">
       <div className="container-page grid gap-12 lg:grid-cols-[.86fr_1.14fr]">
         <div>
-          <Link href={localizedHref(locale, `/events/${event.id}`)} className="text-link">
+          <Link href={localizedHref("en", `/events/${event.id}`)} className="text-link">
             <ArrowLeft size={14} /> Event details
           </Link>
           <p className="eyebrow mt-10">
