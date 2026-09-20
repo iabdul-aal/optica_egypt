@@ -1,8 +1,10 @@
 "use client"
 
-import { useId, useState } from "react"
+import { useCallback, useEffect, useId, useState } from "react"
 import type { Dictionary, Locale, LocalizedText } from "@/lib/locales"
 import { getLocalizedText } from "@/lib/locales"
+
+const INTERVAL = 5000 // ms per topic
 
 type ResearchArea = {
   id: "integrated" | "quantum" | "communications" | "bio" | "nano"
@@ -16,37 +18,37 @@ const areas: ResearchArea[] = [
   {
     id: "integrated",
     code: "PIC / 01",
-    label: { en: "Integrated photonics", ar: "الضوئيات المتكاملة" },
-    summary: { en: "Guiding, shaping, and routing light on a compact platform.", ar: "توجيه الضوء وتشكيله ومساراته على منصة مدمجة." },
-    terms: [{ en: "Waveguides", ar: "موجهات موجية" }, { en: "Resonators", ar: "مرنانات" }, { en: "Couplers", ar: "مقرنات" }],
+    label: { en: "Integrated photonics", ar: "Integrated photonics" },
+    summary: { en: "Guiding, shaping, and routing light on a compact platform.", ar: "Guiding, shaping, and routing light on a compact platform." },
+    terms: [{ en: "Waveguides", ar: "Waveguides" }, { en: "Resonators", ar: "Resonators" }, { en: "Couplers", ar: "Couplers" }],
   },
   {
     id: "quantum",
     code: "QNT / 02",
-    label: { en: "Quantum photonics", ar: "الضوئيات الكمّية" },
-    summary: { en: "Using optical states and correlations for measurement and information.", ar: "استخدام الحالات والارتباطات الضوئية للقياس والمعلومات." },
-    terms: [{ en: "States", ar: "حالات" }, { en: "Correlation", ar: "ارتباط" }, { en: "Nonlinearity", ar: "لاخطية" }],
+    label: { en: "Quantum photonics", ar: "Quantum photonics" },
+    summary: { en: "Using optical states and correlations for measurement and information.", ar: "Using optical states and correlations for measurement and information." },
+    terms: [{ en: "States", ar: "States" }, { en: "Correlation", ar: "Correlation" }, { en: "Nonlinearity", ar: "Nonlinearity" }],
   },
   {
     id: "communications",
     code: "COM / 03",
-    label: { en: "Optical communications", ar: "الاتصالات الضوئية" },
-    summary: { en: "Carrying information through fibres, interconnects, and optical channels.", ar: "نقل المعلومات عبر الألياف والوصلات والقنوات الضوئية." },
-    terms: [{ en: "Fibre", ar: "ألياف" }, { en: "Channels", ar: "قنوات" }, { en: "Sensing", ar: "استشعار" }],
+    label: { en: "Optical communications", ar: "Optical communications" },
+    summary: { en: "Carrying information through fibres, interconnects, and optical channels.", ar: "Carrying information through fibres, interconnects, and optical channels." },
+    terms: [{ en: "Fibre", ar: "Fibre" }, { en: "Channels", ar: "Channels" }, { en: "Sensing", ar: "Sensing" }],
   },
   {
     id: "bio",
     code: "BIO / 04",
-    label: { en: "Biophotonics and imaging", ar: "الضوئيات الحيوية والتصوير" },
-    summary: { en: "Using light to observe, measure, and understand biological systems.", ar: "استخدام الضوء لرصد الأنظمة الحيوية وقياسها وفهمها." },
-    terms: [{ en: "Microscopy", ar: "مجهرية" }, { en: "Spectroscopy", ar: "مطيافية" }, { en: "Sensing", ar: "استشعار" }],
+    label: { en: "Biophotonics and imaging", ar: "Biophotonics and imaging" },
+    summary: { en: "Using light to observe, measure, and understand biological systems.", ar: "Using light to observe, measure, and understand biological systems." },
+    terms: [{ en: "Microscopy", ar: "Microscopy" }, { en: "Spectroscopy", ar: "Spectroscopy" }, { en: "Sensing", ar: "Sensing" }],
   },
   {
     id: "nano",
     code: "NANO / 05",
-    label: { en: "Nanophotonics", ar: "الضوئيات النانوية" },
-    summary: { en: "Controlling optical behaviour with structures smaller than a wavelength.", ar: "التحكم بالسلوك الضوئي عبر بنى أصغر من طول موجي." },
-    terms: [{ en: "Metasurfaces", ar: "أسطح فائقة" }, { en: "Materials", ar: "مواد" }, { en: "Phase", ar: "طور" }],
+    label: { en: "Nanophotonics", ar: "Nanophotonics" },
+    summary: { en: "Controlling optical behaviour with structures smaller than a wavelength.", ar: "Controlling optical behaviour with structures smaller than a wavelength." },
+    terms: [{ en: "Metasurfaces", ar: "Metasurfaces" }, { en: "Materials", ar: "Materials" }, { en: "Phase", ar: "Phase" }],
   },
 ]
 
@@ -56,12 +58,37 @@ type ResearchExplorerProps = {
 }
 
 export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) {
-  const [activeId, setActiveId] = useState<ResearchArea["id"]>("integrated")
-  const active = areas.find((area) => area.id === activeId) ?? areas[0]
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [timerKey, setTimerKey] = useState(0)
+  const [paused, setPaused] = useState(false)
   const headingId = useId()
 
+  const active = areas[activeIndex]
+
+  const advance = useCallback(() => {
+    setActiveIndex((i) => (i + 1) % areas.length)
+    setTimerKey((k) => k + 1)
+  }, [])
+
+  // Auto-cycle — restarts cleanly when unpaused or user manually selects
+  useEffect(() => {
+    if (paused) return
+    const id = setInterval(advance, INTERVAL)
+    return () => clearInterval(id)
+  }, [advance, paused, timerKey])
+
+  function handleSelect(index: number) {
+    setActiveIndex(index)
+    setTimerKey((k) => k + 1)
+  }
+
   return (
-    <section className="research-explorer section-space" aria-labelledby={headingId}>
+    <section
+      className="research-explorer section-space"
+      aria-labelledby={headingId}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="container-page">
         <div className="section-split-heading">
           <div>
@@ -70,10 +97,12 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
           </div>
           <p className="lede">{dictionary.home.research.intro}</p>
         </div>
+
         <div className="research-layout">
+          {/* ── Tab list ─────────────────────────────────────────── */}
           <div className="research-topic-list" role="tablist" aria-label={dictionary.home.research.title}>
-            {areas.map((area) => {
-              const selected = area.id === active.id
+            {areas.map((area, index) => {
+              const selected = index === activeIndex
               return (
                 <button
                   key={area.id}
@@ -83,14 +112,26 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
                   aria-controls={`research-panel-${area.id}`}
                   id={`research-tab-${area.id}`}
                   className="research-topic"
-                  onClick={() => setActiveId(area.id)}
+                  onClick={() => handleSelect(index)}
                 >
                   <span>{area.code}</span>
                   <strong>{getLocalizedText(area.label, locale)}</strong>
+
+                  {/* Auto-timer progress bar — only on active tab */}
+                  {selected && (
+                    <span
+                      key={timerKey}
+                      className={`research-topic-progress${paused ? " research-topic-progress--paused" : ""}`}
+                      style={{ animationDuration: `${INTERVAL}ms` }}
+                      aria-hidden="true"
+                    />
+                  )}
                 </button>
               )
             })}
           </div>
+
+          {/* ── Stage panel ──────────────────────────────────────── */}
           <div
             key={active.id}
             id={`research-panel-${active.id}`}
@@ -99,17 +140,21 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
             className="research-stage topic-transition"
             aria-live="polite"
           >
+            {/* Decorative 3-layer depth card */}
             <div className="research-depth-card" aria-hidden="true">
               <span className="research-axis research-axis-a" />
               <span className="research-axis research-axis-b" />
               <span className="research-axis research-axis-c" />
             </div>
+
             <div className="research-stage-copy">
               <p className="eyebrow">{active.code} / {dictionary.home.research.model}</p>
               <h3>{getLocalizedText(active.label, locale)}</h3>
               <p>{getLocalizedText(active.summary, locale)}</p>
               <ul aria-label={getLocalizedText(active.label, locale)}>
-                {active.terms.map((term) => <li key={term.en}>{getLocalizedText(term, locale)}</li>)}
+                {active.terms.map((term) => (
+                  <li key={term.en}>{getLocalizedText(term, locale)}</li>
+                ))}
               </ul>
             </div>
           </div>
