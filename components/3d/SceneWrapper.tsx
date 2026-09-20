@@ -3,6 +3,7 @@
 import React, { useState, useEffect, Suspense, ReactNode } from "react"
 import Image from "next/image"
 import { useLocale } from "next-intl"
+import { getAssetPath } from "@/lib/utils"
 
 interface SceneWrapperProps {
   fallbackSrc?: string
@@ -57,7 +58,7 @@ export function SceneWrapper({
       return (
         <div className="relative w-full h-full">
           <Image
-            src={fallbackSrc}
+            src={getAssetPath(fallbackSrc)}
             alt={fallbackAlt[locale as "en" | "ar"] || fallbackAlt.en}
             fill
             className="object-cover"

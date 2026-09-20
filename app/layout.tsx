@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description: dictionary.site.description,
     images: [
       {
-        url: `${siteUrl}/assets/brand/optica-egypt-logo.svg`,
+        url: `${siteUrl}/assets/brand/optica-egypt-logo.png`,
         width: 1200,
         height: 630,
         alt: "Optica Egypt Local Section",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     description: dictionary.site.description,
     creator: "@opticaegypt",
     site: "@opticaegypt",
-    images: [`${siteUrl}/assets/brand/optica-egypt-logo.svg`],
+    images: [`${siteUrl}/assets/brand/optica-egypt-logo.png`],
   },
   robots: {
     index: true,
@@ -86,7 +86,7 @@ const jsonLd = {
       name: "Optica Egypt Local Section",
       alternateName: ["Optica Egypt", "Egypt Photonics Section"],
       url: siteUrl,
-      logo: `${siteUrl}/assets/brand/optica-egypt-logo.svg`,
+      logo: `${siteUrl}/assets/brand/optica-egypt-logo.png`,
       description: dictionary.site.description,
       foundingDate: "2026-09-10",
       parentOrganization: {

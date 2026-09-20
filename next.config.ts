@@ -7,6 +7,9 @@ const isGithubPages = process.env.GITHUB_PAGES === "true" || process.env.GITHUB_
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGithubPages ? "/optica_egypt" : "")
 
 const config: NextConfig = {
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   ...(isGithubPages ? { output: "export", basePath, trailingSlash: true } : {}),
 
   // Security headers (only applied in server mode)

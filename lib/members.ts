@@ -1,7 +1,13 @@
 import rawMembers from "@/data/members.json"
 import type { Member } from "@/types/member"
+import { getAssetPath } from "@/lib/utils"
 
-const members: Member[] = (rawMembers as Member[]).filter((m) => m.active)
+const members: Member[] = (rawMembers as Member[])
+  .filter((m) => m.active)
+  .map((m) => ({
+    ...m,
+    photo: m.photo ? getAssetPath(m.photo) : "",
+  }))
 
 export function getActiveMembers(): Member[] {
   return [...members].sort((a, b) => a.order - b.order)

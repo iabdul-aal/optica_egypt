@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { ArrowUpRight, Globe, Linkedin, Mail } from "lucide-react"
 import { getLocalizedText, type Dictionary, type Locale } from "@/lib/locales"
+import { getAssetPath } from "@/lib/utils"
 import type { Member } from "@/types/member"
 
 type MemberCardProps = {
@@ -22,7 +23,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
         {hasPhoto ? (
           <>
             <Image
-              src={member.photo!}
+              src={getAssetPath(member.photo!)}
               alt={name}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

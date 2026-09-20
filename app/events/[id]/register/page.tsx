@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: EventRegistrationPageProps): 
       title: `${title} | Optica Egypt`,
       description,
       url: `${siteUrl}/events/${event.id}/register/`,
-      images: [`${siteUrl}/assets/brand/optica-egypt-logo.svg`],
+      images: [`${siteUrl}/assets/brand/optica-egypt-logo.png`],
     },
   }
 }
