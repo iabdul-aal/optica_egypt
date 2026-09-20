@@ -1,4 +1,4 @@
-﻿# Content Governance
+# Content Governance
 
 Rules for all user-facing text on the Optica Egypt Local Section website.
 Read this file before editing any static copy, page description, locale
@@ -23,20 +23,9 @@ explanatory text outside the explicitly permitted exceptions.
 
 ---
 
-## Bilingual requirements
+## Content requirements
 
-Every user-facing string must exist in both `messages/en.json` and
-`messages/ar.json`. Strings must convey equivalent meaning; Arabic text
-is not a direct word-for-word translation but a natural, readable rendering
-of the same concept for an Arabic-speaking audience.
-
-For Arabic content:
-- Use Modern Standard Arabic (MSA) for formal content.
-- Use accessible, clear language; avoid overly formal or archaic constructions.
-- Use proper Arabic punctuation: ، (comma) ؛ (semicolon) ؟ (question mark).
-- Numbers in Arabic strings: use Western Arabic numerals (0-9) for counts,
-  dates, and statistics in body text unless the surrounding context is fully
-  in Eastern Arabic numerals.
+Every user-facing string must exist in `messages/en.json`. Strings must convey clear, accessible meaning for all readers.
 
 ---
 
@@ -95,19 +84,19 @@ Rules:
 
 Use these canonical labels consistently across all pages and components:
 
-| Concept | English label | Arabic label | Avoid |
-|---|---|---|---|
-| Navigation: home | Home | الرئيسية | Homepage, Main |
-| Navigation: about | About | عن القسم | About Us |
-| Navigation: events | Events | الفعاليات | Calendar, Activities |
-| Navigation: leadership | Leadership | القيادة | Team, Officers, Board |
-| Navigation: outreach | Outreach | التوعية | Community, Engagement |
-| Navigation: resources | Resources | الموارد | Links, Materials |
-| Navigation: join | Join Us | انضم إلينا | Register, Sign Up |
-| Event type: seminar | Seminar | ندوة | Talk, Lecture (informal) |
-| Event type: workshop | Workshop | ورشة عمل | Training |
-| Event type: webinar | Webinar | ندوة إلكترونية | Online Talk |
-| Parent org | Optica | Optica | OSA, Optical Society |
+| Concept | English label | Avoid |
+|---|---|---|
+| Navigation: home | Home | Homepage, Main |
+| Navigation: about | About | About Us |
+| Navigation: events | Events | Calendar, Activities |
+| Navigation: leadership | Leadership | Team, Officers, Board |
+| Navigation: outreach | Outreach | Community, Engagement |
+| Navigation: resources | Resources | Links, Materials |
+| Navigation: join | Join Us | Register, Sign Up |
+| Event type: seminar | Seminar | Talk, Lecture (informal) |
+| Event type: workshop | Workshop | Training |
+| Event type: webinar | Webinar | Online Talk |
+| Parent org | Optica | OSA, Optical Society |
 
 ---
 
@@ -118,7 +107,6 @@ Empty states use a single sentence following this pattern:
 > "[Items] will appear here as [condition]."
 
 Example: "Upcoming events will appear here as they are scheduled."
-Arabic: "ستظهر الفعاليات القادمة هنا فور إضافتها."
 
 ---
 
@@ -127,14 +115,10 @@ Arabic: "ستظهر الفعاليات القادمة هنا فور إضافته
 These rules apply to all text in all files (JSON, TSX, markdown, messages):
 
 - The `&` character is forbidden as a written connective. Always write "and".
-- The em-dash character (U+2014) is forbidden. Use a comma, semicolon, or
-  a separate sentence.
+- The em-dash character (U+2014) is forbidden. Use a comma, semicolon, or a separate sentence.
 - No first-person plural in descriptive text (see Voice section above).
-- No marketing language: "cutting-edge", "world-class", "revolutionary",
-  "leading", "top-tier", "state-of-the-art" applied to the chapter itself.
+- No marketing language: "cutting-edge", "world-class", "revolutionary", "leading", "top-tier", "state-of-the-art" applied to the chapter itself.
 - No colloquialisms or overly casual language in formal section copy.
-- No placeholder text of any kind ("Lorem ipsum", "Coming soon", "TBD")
-  in committed files. Use the empty-state pattern instead.
-- No hardcoded English or Arabic strings in JSX. Use `useTranslations()`.
-- No Latin punctuation inside Arabic-language strings.
+- No placeholder text of any kind ("Lorem ipsum", "Coming soon", "TBD") in committed files. Use the empty-state pattern instead.
+- No hardcoded strings in JSX.
 - "OSA", "Optical Society", or any pre-2021 Optica name for the parent org.

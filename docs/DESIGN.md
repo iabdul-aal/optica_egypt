@@ -1,4 +1,4 @@
-﻿# Design System
+# Design System
 
 Optica Egypt Local Section website. A light, community-focused site designed
 for students, researchers, and outreach partners reading on desktop and mobile
@@ -69,12 +69,6 @@ content containers.
 Font family: Inter (loaded via `next/font/google`) with system-ui fallback.
 Font feature settings: kern and liga enabled.
 
-### Arabic text
-
-Font family: Noto Naskh Arabic (loaded via `next/font/google`) with serif
-fallback. Applied automatically when `dir="rtl"` is active on the root element.
-Never apply `tracking-tight` or any letter-spacing to Arabic text.
-
 ### Type scale (Tailwind classes in use)
 
 | Role | Classes | Notes |
@@ -96,9 +90,8 @@ Do not use `max-w-full` for paragraph text.
 
 - Negative letter spacing on any text.
 - Display text larger than `text-4xl` outside the hero.
-- New font families beyond Inter and Noto Naskh Arabic.
+- New font families beyond the approved design system.
 - Italic as a stylistic device (italic is reserved for citations and `<em>`).
-- Letter-spacing on Arabic text.
 
 ---
 
@@ -215,13 +208,10 @@ Before submitting any UI change, verify each item passes:
 - [ ] No border radius larger than `rounded-lg` on content cards.
 - [ ] No card-in-card nesting.
 - [ ] No new font families introduced.
-- [ ] No negative letter spacing or letter-spacing on Arabic text.
+- [ ] No negative letter spacing on text.
 - [ ] No entrance animations.
 - [ ] No `prefers-reduced-motion` bypass.
 - [ ] Buttons use `.btn-primary` or `.btn-secondary` only.
 - [ ] `.btn-primary` used for at most one CTA per page.
 - [ ] No `&` connective or em-dash in any string.
-- [ ] Every user-facing string rendered via `useTranslations()`.
-- [ ] Both `messages/en.json` and `messages/ar.json` updated.
-- [ ] RTL layout verified for all touched components.
 - [ ] `npm run check` passes.

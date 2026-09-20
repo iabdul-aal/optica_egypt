@@ -1,14 +1,14 @@
 export interface Member {
   id: string
-  name: { en: string; ar?: string }
-  role: { en: string; ar?: string }
+  name: { en: string }
+  role: { en: string }
   term: string
   tier: "executive" | "operational" | "advisory"
-  institution: { en: string; ar?: string }
+  institution: { en: string }
   linkedin?: string
   email?: string
   photo?: string
-  bio: { en: string; ar?: string }
+  bio: { en: string }
   academicBackground?: string
   professionalFocus?: string
   specializedSector?: string

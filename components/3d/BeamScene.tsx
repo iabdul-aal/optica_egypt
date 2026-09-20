@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import React, { useRef, useState, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
@@ -134,7 +134,7 @@ export function BeamScene({ className = "" }: { className?: string }) {
   return (
     <SceneWrapper
       fallbackSrc="/assets/photography/scene-beam-fallback.webp"
-      fallbackAlt={{ en: "Laser Beamsplitter Prism 3D Scene", ar: "مشهد مجزئ شعاع الليزر الموشوري ثلاثي الأبعاد" }}
+      fallbackAlt={{ en: "Laser Beamsplitter Prism 3D Scene" }}
       fallbackPlaceholder={<BeamFallback />}
       className={className}
       height="h-[260px] md:h-[320px]"

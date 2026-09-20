@@ -1,4 +1,4 @@
-﻿# Brand Architecture
+# Brand Architecture
 
 Optica Egypt Local Section — Brand Identity System
 
@@ -57,7 +57,6 @@ contact Optica at studentchapters@optica.org.
 | Egyptian motifs | Pyramid, Eye, Nile wave, solar disc — supporting graphics only | `public/assets/brand/egypt/iconography/` |
 | Typography (display) | Montserrat or Poppins for headings — LOCAL choice, not Optica spec | `app/globals.css` |
 | Typography (body) | Inter — LOCAL choice | `app/globals.css` |
-| Typography (Arabic) | Noto Naskh Arabic — LOCAL choice | `app/globals.css` |
 
 ---
 
@@ -199,7 +198,6 @@ The following are Egypt local design-system decisions:
 |---|---|---|
 | Display / headings | Montserrat | Google Fonts — local choice |
 | Body / UI | Inter | Google Fonts — local choice |
-| Arabic | Noto Naskh Arabic | Google Fonts — local choice |
 
 Never label these as "Optica official fonts."
 
@@ -207,11 +205,7 @@ Never label these as "Optica official fonts."
 
 ## Footer affiliation statement (required on every page)
 
-English:
 > Optica Egypt Local Section — Part of Optica, Advancing Optics and Photonics Worldwide.
-
-Arabic:
-> القسم المحلي المصري لـ Optica — جزء من Optica، نحو تقدم علم البصريات والفوتونيات عالميًا.
 
 The phrase "Advancing Optics and Photonics Worldwide" is Optica's official tagline
 and must not be omitted or altered.

@@ -1,12 +1,12 @@
 export interface Event {
   id: string
-  title: { en: string; ar?: string }
-  description: { en: string; ar?: string }
+  title: { en: string }
+  description: { en: string }
   date: string
   startTime?: string
   endTime?: string
   timezone: string
-  location: { en: string; ar?: string }
+  location: { en: string }
   format: "in_person" | "online" | "hybrid"
   type: "seminar" | "workshop" | "social" | "competition" | "webinar"
   status: "draft" | "upcoming" | "registration_open" | "registration_closing" | "sold_out" | "completed" | "cancelled"
@@ -24,11 +24,11 @@ export interface EventSpeaker {
 
 export interface RegistrationCriterion {
   id: string
-  label: { en: string; ar: string }
-  description?: { en: string; ar: string }
+  label: { en: string }
+  description?: { en: string }
   required?: boolean
   type: "text" | "select"
-  options?: { value: string; label: { en: string; ar: string } }[]
+  options?: { value: string; label: { en: string } }[]
 }
 
 export interface EventRegistrationSettings {

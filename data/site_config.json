@@ -1,7 +1,7 @@
 {
-  "name": { "en": "Optica Egypt Local Section", "ar": "قسم أوبتيكا مصر المحلي" },
-  "shortName": { "en": "Optica Egypt", "ar": "أوبتيكا مصر" },
-  "tagline": { "en": "Connecting Talent. Advancing Photonics.", "ar": "نربط المواهب. نقدّم الفوتونيات." },
+  "name": { "en": "Optica Egypt Local Section" },
+  "shortName": { "en": "Optica Egypt" },
+  "tagline": { "en": "Connecting Talent. Advancing Photonics." },
   "founded": "2026",
   "approvedDate": "10 September 2026",
   "approvalDateISO": "2026-09-10",

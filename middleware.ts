@@ -7,14 +7,7 @@ export function middleware(request: NextRequest) {
 
   if (possibleLocale === "en") return NextResponse.next()
 
-  // Redirect Arabic paths to English equivalent
-  if (possibleLocale === "ar") {
-    const rest = pathname.slice(3) || "/"
-    const destination = rest === "/" ? "/en" : `/en${rest}`
-    return NextResponse.redirect(new URL(destination, request.url), 308)
-  }
-
-  // Redirect root and all non-locale paths to /en
+  // Redirect root and non-prefixed paths to /en
   const destination = pathname === "/" ? "/en" : `/en${pathname}`
   return NextResponse.redirect(new URL(destination, request.url), 307)
 }

@@ -1,4 +1,4 @@
-﻿# Product
+# Product
 
 ## Register
 
@@ -47,9 +47,6 @@ chapter that takes optics and photonics seriously while remaining accessible to
 students at all stages. It communicates credibility through well-organized
 content and consistent Optica branding, not through impressive visual effects.
 
-Both Arabic and English audiences must feel equally welcomed. The site is not
-an English site with Arabic translations; it is a genuinely bilingual site.
-
 ---
 
 ## Anti-references
@@ -75,14 +72,11 @@ Avoid:
 2. **Events first**: upcoming events are the most time-sensitive content and
    must be prominently surfaced on the homepage.
 
-3. **Bilingual equality**: Arabic and English receive identical information
-   hierarchy, layout quality, and content completeness.
-
-4. **Data-driven durability**: officer terms change, events pass, and outreach
+3. **Data-driven durability**: officer terms change, events pass, and outreach
    grows. Every piece of time-sensitive content must update from a data file,
    not a code change.
 
-5. **Optica brand alignment**: the site must feel like a natural extension of
+4. **Optica brand alignment**: the site must feel like a natural extension of
    the Optica brand family while having its own local character.
 
 ---
@@ -95,8 +89,7 @@ Do not add pages or navigation items without:
 1. Updating `components/navigation.tsx`.
 2. Updating this file with justification.
 3. Updating the page inventory in `.agents/AGENTS.md`.
-4. Adding routes to both locale segments in `app/[locale]/`.
-5. Updating the Playwright smoke tests in `e2e/smoke.test.ts`.
+4. Updating the Playwright smoke tests in `e2e/smoke.test.ts`.
 
 ---
 
@@ -105,8 +98,6 @@ Do not add pages or navigation items without:
 - Target WCAG AA contrast on all text and interactive elements.
 - All images must have descriptive `alt` text.
 - Navigation must be keyboard-accessible with visible focus states.
-- Arabic text must be semantically marked with `lang="ar"` when embedded
-  in an otherwise English page (e.g., in a bilingual card).
 - Respect `prefers-reduced-motion` for all transitions and animations.
 - PDF resources linked from the Resources page must include accessible
   alternatives or descriptions where possible.

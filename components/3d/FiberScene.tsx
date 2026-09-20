@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import React, { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
@@ -182,7 +182,7 @@ export function FiberScene({ className = "" }: { className?: string }) {
   return (
     <SceneWrapper
       fallbackSrc="/assets/photography/scene-fiber-fallback.webp"
-      fallbackAlt={{ en: "Fiber Optic River 3D Scene", ar: "مشهد نهر الألياف البصرية ثلاثي الأبعاد" }}
+      fallbackAlt={{ en: "Fiber Optic River 3D Scene" }}
       fallbackPlaceholder={<FiberFallback />}
       className={className}
       height="h-full min-h-[420px]"

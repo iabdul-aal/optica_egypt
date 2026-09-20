@@ -2,12 +2,10 @@
   {
     "id": "optica-publishing-group",
     "title": {
-      "en": "Optica Publishing Group, Peer-Reviewed Journals",
-      "ar": "مجموعة أوبتيكا للنشر, دوريات علمية محكمة"
+      "en": "Optica Publishing Group, Peer-Reviewed Journals"
     },
     "description": {
-      "en": "Access Optica, Optics Express, Applied Optics, and the largest peer-reviewed digital library in optics and photonics.",
-      "ar": "الوصول إلى مجلات أوبتيكا وأوبتيكس إكسبريس وأكبر مكتبة رقمية محكمة عالمياً في علوم الضوئيات."
+      "en": "Access Optica, Optics Express, Applied Optics, and the largest peer-reviewed digital library in optics and photonics."
     },
     "url": "https://opg.optica.org",
     "category": "journal",
@@ -21,12 +19,10 @@
   {
     "id": "gdsfactory-pic-design",
     "title": {
-      "en": "gdsfactory, Open-Source Silicon Photonics Design",
-      "ar": "جي دي إس فاكتوري, تصميم الدوائر الضوئية مفتوحة المصدر"
+      "en": "gdsfactory, Open-Source Silicon Photonics Design"
     },
     "description": {
-      "en": "Python framework for layout, design rule checking, and tapeout verification of Photonic Integrated Circuits (PICs).",
-      "ar": "إطار عمل بلغة بايثون لتصميم وتخطيط ومراجعة رقائق السيليكون الضوئية والدوائر المتكاملة."
+      "en": "Python framework for layout, design rule checking, and tapeout verification of Photonic Integrated Circuits (PICs)."
     },
     "url": "https://gdsfactory.github.io/gdsfactory/",
     "category": "software",
@@ -41,12 +37,10 @@
   {
     "id": "meep-fdtd-simulation",
     "title": {
-      "en": "Meep FDTD, Electromagnetic Wave Solver",
-      "ar": "مييب, محاكي الموجات الكهرومغناطيسية بتقنية FDTD"
+      "en": "Meep FDTD, Electromagnetic Wave Solver"
     },
     "description": {
-      "en": "MIT open-source finite-difference time-domain (FDTD) simulation software package for electrodynamics and optical physics.",
-      "ar": "حزمة محاكاة متقدمة من معهد MIT مفتوحة المصدر لحل معادلات ماكسويل ودراسة انتشار الضوء."
+      "en": "MIT open-source finite-difference time-domain (FDTD) simulation software package for electrodynamics and optical physics."
     },
     "url": "https://meep.readthedocs.io",
     "category": "software",
@@ -61,12 +55,10 @@
   {
     "id": "optica-foundation-grants",
     "title": {
-      "en": "Optica Foundation Student Travel Grants and Fellowships",
-      "ar": "منح السفر والزمالات البحثية من مؤسسة أوبتيكا"
+      "en": "Optica Foundation Student Travel Grants and Fellowships"
     },
     "description": {
-      "en": "International travel funding, Amplify scholarships, and career advancement awards for optical science students and researchers.",
-      "ar": "تمويل السفر الدولي لحضور المؤتمرات ومنح الدعم المالي والزمالات لطلاب وباحثي علوم البصريات."
+      "en": "International travel funding, Amplify scholarships, and career advancement awards for optical science students and researchers."
     },
     "url": "https://www.optica.org/foundation/opportunities/",
     "category": "grants",
@@ -81,12 +73,10 @@
   {
     "id": "arxiv-physics-optics",
     "title": {
-      "en": "arXiv Physics, Optics and Quantum Preprints",
-      "ar": "أرشيف الفيزياء, أحدث الأوراق البحثية في البصريات"
+      "en": "arXiv Physics, Optics and Quantum Preprints"
     },
     "description": {
-      "en": "Free repository of open-access preprint research manuscripts covering fundamental and applied optical physics.",
-      "ar": "مستودع عالمي مجاني للأوراق البحثية الحديثة في فيزياء البصريات والضوئيات قبل النشر النهائي."
+      "en": "Free repository of open-access preprint research manuscripts covering fundamental and applied optical physics."
     },
     "url": "https://arxiv.org/list/physics.optics/recent",
     "category": "journal",
@@ -101,12 +91,10 @@
   {
     "id": "photonics-spectra-tech",
     "title": {
-      "en": "Photonics Spectra, DeepTech Industry Analysis",
-      "ar": "فوتونيكس سبيكترا, تحليلات صناعة الضوئيات"
+      "en": "Photonics Spectra, DeepTech Industry Analysis"
     },
     "description": {
-      "en": "Leading industry analysis covering lasers, fiber optics, sensors, imaging, and photonics manufacturing breakthroughs.",
-      "ar": "المجلة الرائدة في رصد التطورات الصناعية في مجالات الليزر والألياف الضوئية والحساسات."
+      "en": "Leading industry analysis covering lasers, fiber optics, sensors, imaging, and photonics manufacturing breakthroughs."
     },
     "url": "https://www.photonics.com",
     "category": "learning",

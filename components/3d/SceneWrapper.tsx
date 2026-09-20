@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import React, { useState, useEffect, Suspense, ReactNode } from "react"
 import Image from "next/image"
@@ -6,7 +6,7 @@ import { useLocale } from "next-intl"
 
 interface SceneWrapperProps {
   fallbackSrc?: string
-  fallbackAlt?: { en: string; ar: string }
+  fallbackAlt?: { en: string; ar?: string }
   fallbackPlaceholder?: ReactNode
   children: ReactNode
   className?: string
@@ -15,7 +15,7 @@ interface SceneWrapperProps {
 
 export function SceneWrapper({
   fallbackSrc,
-  fallbackAlt = { en: "Optics visualization", ar: "تصور بصري متقدم" },
+  fallbackAlt = { en: "Optics visualization" },
   fallbackPlaceholder,
   children,
   className = "",

@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import React, { useRef, useMemo } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
@@ -105,7 +105,7 @@ export function WaveScene({ className = "" }: { className?: string }) {
   return (
     <SceneWrapper
       fallbackSrc="/assets/photography/scene-wave-fallback.webp"
-      fallbackAlt={{ en: "Wave Interference Pattern 3D Scene", ar: "مشهد نمط تداخل الموجات ثلاثي الأبعاد" }}
+      fallbackAlt={{ en: "Wave Interference Pattern 3D Scene" }}
       fallbackPlaceholder={<WaveFallback />}
       className={className}
       height="h-[280px] md:h-[360px]"
