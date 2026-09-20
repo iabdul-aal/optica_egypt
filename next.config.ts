@@ -4,7 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin"
 const withNextIntl = createNextIntlPlugin("./lib/i18n.ts")
 
 const isGithubPages = process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS === "true"
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGithubPages ? "/optica-egypt" : "")
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGithubPages ? "/optica_egypt" : "")
 
 const config: NextConfig = {
   ...(isGithubPages ? { output: "export", basePath } : {}),
