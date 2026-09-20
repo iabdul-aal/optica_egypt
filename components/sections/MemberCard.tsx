@@ -44,6 +44,11 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
           {member.institution.en && (
             <p className="mt-1 text-sm text-[var(--ink-soft)]">{getLocalizedText(member.institution, locale)}</p>
           )}
+          {member.specializedSector && (
+            <p className="mt-2 text-[0.68rem] font-mono font-medium text-[var(--gold)]">
+              {member.specializedSector}
+            </p>
+          )}
         </div>
         <div className="flex shrink-0 gap-2">
           {member.email && member.email !== "" && (
@@ -69,13 +74,35 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
         </div>
       </div>
 
-      {/* Biography */}
-      {hasBio && (
+      {/* Detailed Profile */}
+      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements) && (
         <details className="group mt-5">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
-          <p className="mt-4 border-t border-white/10 pt-4 text-sm leading-7 text-[var(--ink-soft)]">
-            {getLocalizedText(member.bio, locale)}
-          </p>
+          <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
+            {hasBio && (
+              <p className="text-sm leading-6 text-[var(--ink)]">
+                {getLocalizedText(member.bio, locale)}
+              </p>
+            )}
+            {member.academicBackground && (
+              <div>
+                <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Background:</span>
+                <p className="mt-0.5 text-[var(--ink-soft)]">{member.academicBackground}</p>
+              </div>
+            )}
+            {member.professionalFocus && (
+              <div>
+                <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Focus:</span>
+                <p className="mt-0.5 text-[var(--ink-soft)]">{member.professionalFocus}</p>
+              </div>
+            )}
+            {member.achievements && (
+              <div>
+                <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Achievements:</span>
+                <p className="mt-0.5 text-[var(--ink-soft)]">{member.achievements}</p>
+              </div>
+            )}
+          </div>
         </details>
       )}
     </article>
