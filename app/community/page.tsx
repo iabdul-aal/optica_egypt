@@ -47,18 +47,18 @@ export default function CommunityPage() {
       </section>
       <section className="border-y border-white/10 bg-[var(--surface)] py-14">
         <div className="container-page">
-          <div className="grid gap-px border-y border-[var(--line)] bg-[var(--line)] md:grid-cols-3">
-            <article className="bg-[var(--surface)] p-6 transition-colors duration-200 hover:bg-[#151a1b]">
+          <div className="grid border border-white/15 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/15">
+            <article className="bg-[var(--surface)] p-6 sm:p-8 transition-colors duration-200 hover:bg-[#151a1b]">
               <p className="eyebrow">01 / DISCOVER</p>
               <h2 className="mt-6 text-2xl font-semibold tracking-tight text-[var(--ink)]">Find the right room.</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">Start with an event, resource, or shared technical interest.</p>
             </article>
-            <article className="bg-[var(--surface)] p-6 transition-colors duration-200 hover:bg-[#151a1b]">
+            <article className="bg-[var(--surface)] p-6 sm:p-8 transition-colors duration-200 hover:bg-[#151a1b]">
               <p className="eyebrow">02 / CONTRIBUTE</p>
               <h2 className="mt-6 text-2xl font-semibold tracking-tight text-[var(--ink)]">Bring a useful perspective.</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">A question, a skill, a proposal, or practical experience can move a conversation forward.</p>
             </article>
-            <article className="bg-[var(--surface)] p-6 transition-colors duration-200 hover:bg-[#151a1b]">
+            <article className="bg-[var(--surface)] p-6 sm:p-8 transition-colors duration-200 hover:bg-[#151a1b]">
               <p className="eyebrow">03 / CONTINUE</p>
               <h2 className="mt-6 text-2xl font-semibold tracking-tight text-[var(--ink)]">Build a real connection.</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)]">Follow up through a human coordinator when a collaboration, chapter, or event needs care.</p>

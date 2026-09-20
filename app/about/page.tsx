@@ -30,14 +30,23 @@ export default function AboutPage() {
         </ScrollReveal>
 
         <ScrollReveal animation="fade-up" delay={50}>
-          <div className="container-page mt-12 grid divide-y divide-white/10 border-y border-white/10 md:grid-cols-2 md:divide-x md:divide-y-0">
-            {pillars.map((pillar) => (
-              <article key={pillar.title} className="group/pillar px-1 py-7 md:px-7 transition-colors duration-200 hover:bg-white/[0.02]">
-                <p className="font-mono text-sm font-bold text-[var(--gold)]">{pillar.number}</p>
-                <h3 className="mt-3 text-xl font-semibold text-[var(--ink)] group-hover/pillar:text-white transition-colors">{pillar.title}</h3>
-                <p className="mt-3 max-w-sm text-sm leading-6 text-[var(--ink-soft)]">{pillar.body}</p>
-              </article>
-            ))}
+          <div className="container-page mt-12">
+            <div className="grid border border-white/15 md:grid-cols-2">
+              {pillars.map((pillar, index) => (
+                <article
+                  key={pillar.title}
+                  className={`group/pillar p-6 sm:p-8 transition-colors duration-200 hover:bg-white/[0.02] ${
+                    index % 2 === 1 ? "md:border-l md:border-white/15" : ""
+                  } ${index > 0 ? "border-t md:border-t-0" : ""} ${
+                    index >= 2 ? "md:border-t md:border-white/15" : ""
+                  }`}
+                >
+                  <p className="font-mono text-sm font-bold text-[var(--gold)]">{pillar.number}</p>
+                  <h3 className="mt-3 text-xl font-semibold text-[var(--ink)] group-hover/pillar:text-white transition-colors">{pillar.title}</h3>
+                  <p className="mt-3 max-w-sm text-sm leading-6 text-[var(--ink-soft)]">{pillar.body}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
 
