@@ -1,241 +1,202 @@
-﻿"use client"
+"use client"
 
-import React, { useState } from "react"
+import { useState } from "react"
+
+const domains = [
+  {
+    id: "01",
+    code: "PIC / SYS",
+    name: "Integrated photonics and PICs",
+    desc: "Photonic Integrated Circuits replace electronic copper wires with silicon and indium phosphide waveguides, transmitting data at the speed of light with near-zero heat dissipation.",
+    highlight: "Silicon photonics prototyping and layout",
+    specs: [
+      { label: "Core loss", val: "< 0.2 dB/cm" },
+      { label: "Foundry PDK", val: "220 nm SOI" },
+      { label: "Modulation", val: "> 50 GHz" },
+    ],
+    diagram: "pic",
+  },
+  {
+    id: "02",
+    code: "LASER / CAV",
+    name: "Laser physics and ultrafast optics",
+    desc: "From femtosecond pulsed lasers to industrial diode systems, we explore beam conditioning, nonlinear harmonic generation, and precision spectroscopy for material processing and biomedical diagnostics.",
+    highlight: "Femtosecond spectroscopy and diagnostics",
+    specs: [
+      { label: "Pulse duration", val: "< 20 fs FWHM" },
+      { label: "Peak power", val: "2.5 MW" },
+      { label: "Crystal", val: "Ti:Sapphire" },
+    ],
+    diagram: "laser",
+  },
+  {
+    id: "03",
+    code: "FIBER / GRID",
+    name: "Fiber communications and sensors",
+    desc: "Egypt connects 17+ submarine optical fiber cables bridging East and West. We run advanced workshops on WDM, optical amplifiers, and distributed fiber sensing.",
+    highlight: "WDM telecom networks and subsea links",
+    specs: [
+      { label: "ITU grid", val: "50 GHz C-Band" },
+      { label: "Subsea cables", val: "17+ Red Sea" },
+      { label: "Fiber core", val: "9/125 µm SMF" },
+    ],
+    diagram: "fiber",
+  },
+  {
+    id: "04",
+    code: "QUANTUM / OPT",
+    name: "Quantum optics and photonic computing",
+    desc: "Exploiting entangled photon pairs for quantum key distribution and optical tensor processing capable of running deep neural networks at teraflops per watt.",
+    highlight: "Optical neural networks and QKD",
+    specs: [
+      { label: "Bell state", val: "|Ψ+⟩ Singlet" },
+      { label: "Fidelity", val: "99.4 %" },
+      { label: "Pump source", val: "405 nm diode" },
+    ],
+    diagram: "quantum",
+  },
+]
+
+function Schematic({ type }: { type: string }) {
+  if (type === "pic") return (
+    <svg className="w-full h-48" viewBox="0 0 360 180" fill="none" aria-label="PIC ring resonator schematic">
+      <path d="M20 50L120 50Q150 50 150 70L150 110Q150 130 180 130L340 130" stroke="#5CB1A2" strokeWidth="2" />
+      <path d="M20 130L120 130Q150 130 150 110L150 70Q150 50 180 50L340 50" stroke="#5CB1A2" strokeWidth="2" strokeDasharray="3 3" opacity="0.7" />
+      <circle cx="260" cy="90" r="30" stroke="#d7ae5b" strokeWidth="2" fill="none" />
+      <circle cx="260" cy="90" r="2" fill="#d7ae5b" />
+      <line x1="260" y1="60" x2="260" y2="120" stroke="rgba(215,174,91,0.3)" strokeDasharray="2 2" />
+      <rect x="70" y="38" width="40" height="24" rx="1" fill="#000" stroke="#d7ae5b" strokeWidth="1" />
+      <text x="75" y="53" fill="#d7ae5b" fontSize="9" fontFamily="monospace">Δφ (1550)</text>
+      <text x="15" y="42" fill="#7f827d" fontSize="8" fontFamily="monospace">P_IN</text>
+      <text x="280" y="42" fill="#5CB1A2" fontSize="8" fontFamily="monospace">P_THROUGH</text>
+      <text x="235" y="150" fill="#d7ae5b" fontSize="8" fontFamily="monospace">P_DROP</text>
+    </svg>
+  )
+  if (type === "laser") return (
+    <svg className="w-full h-48" viewBox="0 0 360 180" fill="none" aria-label="Laser cavity schematic">
+      <rect x="25" y="60" width="10" height="60" fill="#333" stroke="#999" />
+      <rect x="325" y="60" width="8" height="60" fill="#d7ae5b" opacity="0.8" />
+      <line x1="35" y1="90" x2="140" y2="90" stroke="#e55" strokeWidth="2" />
+      <line x1="180" y1="90" x2="325" y2="90" stroke="#e55" strokeWidth="2" />
+      <polygon points="140,70 180,70 170,110 130,110" fill="#200" stroke="#f87" strokeWidth="1.5" />
+      <text x="132" y="125" fill="#f99" fontSize="8" fontFamily="monospace">Ti:Sapphire</text>
+      <polygon points="220,120 240,150 200,150" stroke="#5CB1A2" strokeWidth="1" fill="#0a2035" />
+      <polygon points="260,120 280,150 240,150" stroke="#5CB1A2" strokeWidth="1" fill="#0a2035" />
+      <path d="M333 90 Q340 70 345 90 Q350 110 355 90" stroke="#f87" strokeWidth="2" />
+      <text x="25" y="48" fill="#7f827d" fontSize="8" fontFamily="monospace">HR Mirror (99.9%)</text>
+      <text x="240" y="48" fill="#d7ae5b" fontSize="8" fontFamily="monospace">OC (T=5%)</text>
+    </svg>
+  )
+  if (type === "fiber") return (
+    <svg className="w-full h-48" viewBox="0 0 360 180" fill="none" aria-label="Fiber optic cross-section and WDM spectrum">
+      <circle cx="90" cy="90" r="55" stroke="#333" strokeWidth="1.5" fill="#0F172A" />
+      <circle cx="90" cy="90" r="18" stroke="#5CB1A2" strokeWidth="2" fill="#0284C7" fillOpacity="0.4" />
+      <circle cx="90" cy="90" r="4" fill="#38BDF8" />
+      <text x="45" y="160" fill="#7f827d" fontSize="8" fontFamily="monospace">Core 9µm / Clad 125µm</text>
+      <g transform="translate(180,40)">
+        <line x1="0" y1="80" x2="160" y2="80" stroke="#333" strokeWidth="1" />
+        {[["#5CB1A2", 20], ["#5CB1A2", 40], ["#d7ae5b", 60], ["#d7ae5b", 80], ["#d7ae5b", 100], ["#5CB1A2", 120], ["#7e58f5", 140]].map(([col, x], i) => (
+          <line key={i} x1={x} y1="80" x2={x} y2={20 + i * 7} stroke={col as string} strokeWidth="2" />
+        ))}
+        <text x="20" y="95" fill="#7f827d" fontSize="7" fontFamily="monospace">1530 nm (C-Band) 1565 nm</text>
+      </g>
+    </svg>
+  )
+  // quantum
+  return (
+    <svg className="w-full h-48" viewBox="0 0 360 180" fill="none" aria-label="SPDC quantum entanglement schematic">
+      <line x1="20" y1="90" x2="120" y2="90" stroke="#a855f7" strokeWidth="2.5" />
+      <text x="20" y="75" fill="#c084fc" fontSize="8" fontFamily="monospace">Pump (405 nm)</text>
+      <polygon points="120,60 160,75 160,105 120,120" fill="#1e1b4b" stroke="#818cf8" strokeWidth="1.5" />
+      <text x="122" y="140" fill="#a5b4fc" fontSize="8" fontFamily="monospace">BBO Crystal</text>
+      <line x1="160" y1="85" x2="310" y2="45" stroke="#d7ae5b" strokeWidth="2" />
+      <line x1="160" y1="95" x2="310" y2="135" stroke="#5CB1A2" strokeWidth="2" />
+      <rect x="310" y="35" width="30" height="20" fill="#000" stroke="#d7ae5b" />
+      <rect x="310" y="125" width="30" height="20" fill="#000" stroke="#5CB1A2" />
+      <text x="250" y="30" fill="#d7ae5b" fontSize="8" fontFamily="monospace">|H⟩ Signal</text>
+      <text x="250" y="160" fill="#5CB1A2" fontSize="8" fontFamily="monospace">|V⟩ Idler</text>
+    </svg>
+  )
+}
 
 export function DomainsShowcase() {
-  const [activeTab, setActiveTab] = useState(0)
-
-  const domains = [
-    {
-      id: "01",
-      code: "PIC_SYS",
-      name: "Integrated Photonics and PICs",
-      desc: "Photonic Integrated Circuits (PICs) replace electronic copper wires with microscopic silicon and indium phosphide waveguides, transmitting data at the speed of light with near-zero heat dissipation.",
-      highlight: "Silicon Photonics Prototyping and Layout",
-      badge: "Optical Compute",
-      specs: [
-        { label: "CORE LOSS", val: "< 0.2 dB/cm" },
-        { label: "FOUNDRY PDK", val: "220nm SOI" },
-        { label: "MODULATION", val: "> 50 GHz" },
-      ],
-    },
-    {
-      id: "02",
-      code: "LASER_CAV",
-      name: "Laser Physics and Ultrafast Optics",
-      desc: "From femtosecond pulsed lasers to industrial diode systems, we explore beam conditioning, nonlinear harmonic generation, and precision spectroscopy used in material processing and biomedical diagnostics.",
-      highlight: "Femtosecond Spectroscopy and Diagnostics",
-      badge: "Laser Systems",
-      specs: [
-        { label: "PULSE DURATION", val: "< 20 fs FWHM" },
-        { label: "PEAK POWER", val: "2.5 MW" },
-        { label: "CRYSTAL", val: "Ti:Sapphire" },
-      ],
-    },
-    {
-      id: "03",
-      code: "FIBER_GRID",
-      name: "Fiber Communications and Sensors",
-      desc: "Egypt connects 17+ submarine optical fiber cables bridging the East and West. We provide advanced workshops on wavelength division multiplexing (WDM), optical amplifiers, and distributed fiber sensors.",
-      highlight: "WDM Telecom Networks and Subsea Links",
-      badge: "Telecom and Sensing",
-      specs: [
-        { label: "ITU GRID", val: "50 GHz C-Band" },
-        { label: "SUBSEA RED SEA", val: "17+ Cables" },
-        { label: "FIBER CORE", val: "9/125 µm SMF" },
-      ],
-    },
-    {
-      id: "04",
-      code: "QUANTUM_OPT",
-      name: "Quantum Optics and Photonic AI",
-      desc: "Exploiting entangled photon pairs for quantum key distribution (QKD) and optical tensor processing units (TPUs) capable of running deep neural networks at teraflops per watt.",
-      highlight: "Optical Neural Networks and QKD",
-      badge: "DeepTech Frontier",
-      specs: [
-        { label: "BELL STATE", val: "|Ψ+⟩ Singlet" },
-        { label: "FIDELITY", val: "99.4%" },
-        { label: "PUMP SOURCE", val: "405 nm Diode" },
-      ],
-    },
-  ]
-
-  const active = domains[activeTab]
+  const [active, setActive] = useState(0)
+  const domain = domains[active]
 
   return (
-    <section className="py-24 bg-[#000000] border-b border-white/10 relative">
+    <section className="section-space bg-[var(--canvas)] border-block border-[var(--line)]">
       <div className="container-page">
-        {/* Editorial Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8 pb-8 border-b border-white/10">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-2 h-2 bg-[#fa8716]" />
-              <span className="editorial-label text-[#fa8716]">
-                CORE SCIENTIFIC DOMAINS
-              </span>
-            </div>
-            <h2 className="editorial-headline text-white">
-              The Photonic Disciplines
-            </h2>
+        {/* Header */}
+        <div className="section-split-heading">
+          <div>
+            <p className="eyebrow">Core scientific domains</p>
+            <h2 className="section-title mt-3">The photonic disciplines.</h2>
           </div>
-          <p className="editorial-lead text-slate-400 max-w-md">
-            Bridging fundamental optical physics with industrial photonic engineering across Egyptian research universities.
+          <p className="lede">
+            Bridging fundamental optical physics with industrial photonic engineering
+            across Egyptian research universities.
           </p>
         </div>
 
-        {/* Split Laboratory Bench: Left Controller Ledger + Right Optical Workstation */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Domain Selector Ledger + Active Analysis */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* Vertical Index Ledger */}
-            <div className="divide-y divide-white/10 border-y border-white/10">
-              {domains.map((d, index) => {
-                const isSelected = activeTab === index
+        {/* Body: left ledger + right workstation */}
+        <div className="mt-10 grid gap-8 lg:grid-cols-12 lg:items-start">
+          {/* Left: domain selector + description */}
+          <div className="space-y-6 lg:col-span-5">
+            <div className="divide-y divide-[var(--line-subtle)] border-y border-[var(--line-subtle)]" role="tablist" aria-label="Scientific domains">
+              {domains.map((d, i) => {
+                const sel = i === active
                 return (
                   <button
                     key={d.id}
-                    onClick={() => setActiveTab(index)}
-                    className={`w-full py-4 text-start transition-all flex items-start justify-between gap-4 group ${
-                      isSelected ? "text-white" : "text-slate-500 hover:text-slate-300"
-                    }`}
+                    type="button"
+                    role="tab"
+                    aria-selected={sel}
+                    aria-controls={`domain-panel-${d.id}`}
+                    id={`domain-tab-${d.id}`}
+                    onClick={() => setActive(i)}
+                    className={`flex w-full items-start justify-between gap-4 py-4 text-start transition-colors ${sel ? "text-[var(--ink)]" : "text-[var(--ink-faint)] hover:text-[var(--ink-soft)]"}`}
                   >
                     <div className="flex items-start gap-4">
-                      <span
-                        className={`editorial-label transition-colors mt-0.5 ${
-                          isSelected ? "text-[#fa8716] font-bold" : "text-slate-600 group-hover:text-slate-400"
-                        }`}
-                      >
+                      <span className={`font-mono text-[0.66rem] font-bold transition-colors ${sel ? "text-[var(--gold)]" : "text-[var(--ink-faint)]"}`}>
                         {d.id}
                       </span>
                       <div>
-                        <h3 className={`text-sm sm:text-base font-semibold tracking-tight transition-colors ${
-                          isSelected ? "text-white" : "text-slate-400 group-hover:text-slate-200"
-                        }`}>
+                        <p className={`text-sm font-semibold tracking-tight transition-colors ${sel ? "text-[var(--ink)]" : ""}`}>
                           {d.name}
-                        </h3>
-                        <p className="editorial-label text-[10px] text-slate-500 mt-1">
-                          {d.code} {"//"} {d.badge}
                         </p>
+                        <p className="mt-0.5 font-mono text-[0.6rem] text-[var(--ink-faint)]">{d.code}</p>
                       </div>
                     </div>
-                    <div className="pt-1 shrink-0">
-                      <span
-                        className={`block w-2 h-2 transition-all ${
-                          isSelected ? "bg-[#fa8716] scale-100" : "bg-transparent scale-0 border border-white/20"
-                        }`}
-                      />
-                    </div>
+                    <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 transition-colors ${sel ? "bg-[var(--gold)]" : "border border-[var(--line)] bg-transparent"}`} />
                   </button>
                 )
               })}
             </div>
 
-            {/* Active Domain Detailed Statement */}
-            <div className="pt-4 space-y-4">
-              <p className="text-sm text-slate-300 leading-relaxed font-light">
-                {active.desc}
-              </p>
-              <div className="py-3 px-4 bg-white/[0.02] border-l-2 border-[#fa8716] text-xs text-slate-200 font-mono flex items-center justify-between">
-                <span>{active.highlight}</span>
+            <div className="space-y-4">
+              <p className="text-sm leading-7 text-[var(--ink-soft)]">{domain.desc}</p>
+              <div className="border-l-2 border-[var(--gold)] bg-white/[0.02] px-4 py-3 font-mono text-xs text-[var(--ink-soft)]">
+                {domain.highlight}
               </div>
             </div>
           </div>
 
-          {/* Right Column: Optical Bench Oscilloscope Display */}
-          <div className="lg:col-span-7 bg-[#000000] border border-white/10 p-6 relative">
-            {/* Laboratory Test-Bench Header Telemetry */}
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10 font-mono text-[10px]">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#00e660]" />
-                <span className="text-[#00e660] font-bold">BENCH_0{active.id} {"//"} ACTIVE</span>
-              </div>
-              <span className="text-slate-500">SCHEMATIC: {active.code}</span>
-              <span className="text-slate-400">TELEMETRY: VERIFIED</span>
+          {/* Right: schematic + spec ledger */}
+          <div className="border border-[var(--line)] bg-[#0c1011] p-6 lg:col-span-7">
+            <div className="mb-4 border-b border-[var(--line-subtle)] pb-3 flex items-center justify-between">
+              <span className="font-mono text-[0.65rem] font-bold text-[var(--gold)]">{domain.code}</span>
+              <span className="font-mono text-[0.65rem] text-[var(--ink-faint)]">{domain.name.toUpperCase()}</span>
             </div>
 
-            {/* Precision Optical Schematics */}
-            <div className="min-h-[220px] flex items-center justify-center p-2">
-              {activeTab === 0 && (
-                <div className="w-full space-y-4">
-                  <svg className="w-full h-48" viewBox="0 0 360 180" fill="none">
-                    <path d="M 20 50 L 120 50 Q 150 50 150 70 L 150 110 Q 150 130 180 130 L 340 130" stroke="#00B4FF" strokeWidth="2" />
-                    <path d="M 20 130 L 120 130 Q 150 130 150 110 L 150 70 Q 150 50 180 50 L 340 50" stroke="#00B4FF" strokeWidth="2" strokeDasharray="3 3" opacity="0.7" />
-                    <circle cx="260" cy="90" r="30" stroke="#fa8716" strokeWidth="2" fill="none" />
-                    <circle cx="260" cy="90" r="2" fill="#fa8716" />
-                    <line x1="260" y1="60" x2="260" y2="120" stroke="rgba(250,135,22,0.3)" strokeDasharray="2 2" />
-                    <rect x="70" y="38" width="40" height="24" rx="1" fill="#000000" stroke="#fa8716" strokeWidth="1" />
-                    <text x="75" y="53" fill="#fa8716" fontSize="9" fontFamily="monospace">Δφ (1550)</text>
-                    <text x="15" y="42" fill="#94A3B8" fontSize="8" fontFamily="monospace">P_IN (Laser)</text>
-                    <text x="280" y="42" fill="#00B4FF" fontSize="8" fontFamily="monospace">P_THROUGH</text>
-                    <text x="260" y="150" fill="#fa8716" fontSize="8" fontFamily="monospace">P_DROP (Resonant)</text>
-                  </svg>
-                </div>
-              )}
-
-              {activeTab === 1 && (
-                <div className="w-full space-y-4">
-                  <svg className="w-full h-48" viewBox="0 0 360 180" fill="none">
-                    <rect x="25" y="60" width="10" height="60" fill="#475569" stroke="#94A3B8" />
-                    <rect x="325" y="60" width="8" height="60" fill="#fa8716" opacity="0.8" />
-                    <line x1="35" y1="90" x2="140" y2="90" stroke="#EF4444" strokeWidth="2" />
-                    <line x1="180" y1="90" x2="325" y2="90" stroke="#EF4444" strokeWidth="2" />
-                    <polygon points="140,70 180,70 170,110 130,110" fill="#991B1B" stroke="#F87171" strokeWidth="1.5" />
-                    <text x="132" y="125" fill="#FCA5A5" fontSize="8" fontFamily="monospace">Ti:Sapphire</text>
-                    <polygon points="220,120 240,150 200,150" stroke="#5CB1A2" strokeWidth="1" fill="#0C4A6E" />
-                    <polygon points="260,120 280,150 240,150" stroke="#5CB1A2" strokeWidth="1" fill="#0C4A6E" />
-                    <path d="M 333 90 Q 340 70 345 90 Q 350 110 355 90" stroke="#F87171" strokeWidth="2" />
-                    <text x="25" y="48" fill="#94A3B8" fontSize="8" fontFamily="monospace">HR Mirror (99.9%)</text>
-                    <text x="250" y="48" fill="#fa8716" fontSize="8" fontFamily="monospace">Output Coupler (T=5%)</text>
-                  </svg>
-                </div>
-              )}
-
-              {activeTab === 2 && (
-                <div className="w-full space-y-4">
-                  <svg className="w-full h-48" viewBox="0 0 360 180" fill="none">
-                    <circle cx="90" cy="90" r="55" stroke="#334155" strokeWidth="1.5" fill="#0F172A" />
-                    <circle cx="90" cy="90" r="18" stroke="#5CB1A2" strokeWidth="2" fill="#0284C7" fillOpacity="0.4" />
-                    <circle cx="90" cy="90" r="4" fill="#38BDF8" />
-                    <text x="45" y="160" fill="#94A3B8" fontSize="8" fontFamily="monospace">Core: 9µm / Clad: 125µm</text>
-                    <g transform="translate(180, 40)">
-                      <line x1="0" y1="80" x2="160" y2="80" stroke="#475569" strokeWidth="1" />
-                      <line x1="20" y1="80" x2="20" y2="20" stroke="#38BDF8" strokeWidth="2" />
-                      <line x1="40" y1="80" x2="40" y2="15" stroke="#5CB1A2" strokeWidth="2" />
-                      <line x1="60" y1="80" x2="60" y2="10" stroke="#fa8716" strokeWidth="2" />
-                      <line x1="80" y1="80" x2="80" y2="12" stroke="#F59E0B" strokeWidth="2" />
-                      <line x1="100" y1="80" x2="100" y2="25" stroke="#fa8716" strokeWidth="2" />
-                      <line x1="120" y1="80" x2="120" y2="30" stroke="#10B981" strokeWidth="2" />
-                      <line x1="140" y1="80" x2="140" y2="40" stroke="#6366F1" strokeWidth="2" />
-                      <text x="20" y="95" fill="#94A3B8" fontSize="8" fontFamily="monospace">1530nm (C-BAND) 1565nm</text>
-                    </g>
-                  </svg>
-                </div>
-              )}
-
-              {activeTab === 3 && (
-                <div className="w-full space-y-4">
-                  <svg className="w-full h-48" viewBox="0 0 360 180" fill="none">
-                    <line x1="20" y1="90" x2="120" y2="90" stroke="#A855F7" strokeWidth="2.5" />
-                    <text x="20" y="75" fill="#C084FC" fontSize="8" fontFamily="monospace">Pump (405 nm)</text>
-                    <polygon points="120,60 160,75 160,105 120,120" fill="#1E1B4B" stroke="#818CF8" strokeWidth="1.5" />
-                    <text x="122" y="140" fill="#A5B4FC" fontSize="8" fontFamily="monospace">BBO Crystal</text>
-                    <line x1="160" y1="85" x2="310" y2="45" stroke="#fa8716" strokeWidth="2" />
-                    <line x1="160" y1="95" x2="310" y2="135" stroke="#5CB1A2" strokeWidth="2" />
-                    <rect x="310" y="35" width="30" height="20" fill="#000000" stroke="#fa8716" />
-                    <rect x="310" y="125" width="30" height="20" fill="#000000" stroke="#5CB1A2" />
-                    <text x="250" y="30" fill="#fa8716" fontSize="8" fontFamily="monospace">|H⟩ Signal (810 nm)</text>
-                    <text x="250" y="160" fill="#5CB1A2" fontSize="8" fontFamily="monospace">|V⟩ Idler (810 nm)</text>
-                  </svg>
-                </div>
-              )}
+            <div className="flex min-h-[200px] items-center justify-center">
+              <Schematic type={domain.diagram} />
             </div>
 
-            {/* Bottom Parameter Ledger */}
-            <div className="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 font-mono text-[10px]">
-              {active.specs.map((spec, i) => (
-                <div key={i} className="p-2.5 bg-white/[0.02] border border-white/5">
-                  <span className="text-slate-500 block text-[9px]">{spec.label}</span>
-                  <span className="text-white font-bold">{spec.val}</span>
+            <div className="mt-4 grid grid-cols-3 gap-3 border-t border-[var(--line-subtle)] pt-4">
+              {domain.specs.map((s) => (
+                <div key={s.label} className="border border-[var(--line-subtle)] bg-white/[0.02] p-2.5">
+                  <span className="block text-[0.6rem] font-bold uppercase tracking-wider text-[var(--ink-faint)]">{s.label}</span>
+                  <span className="mt-0.5 block font-mono text-xs font-bold text-[var(--ink)]">{s.val}</span>
                 </div>
               ))}
             </div>

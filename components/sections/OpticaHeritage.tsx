@@ -1,82 +1,70 @@
-"use client"
-
-import React from "react"
 import Link from "next/link"
-import { Globe, Award, BookOpen, ExternalLink, ArrowRight } from "lucide-react"
+import { Globe, Award, BookOpen, ExternalLink, ArrowUpRight } from "lucide-react"
+import { localizedHref, type Locale } from "@/lib/locales"
 
-export function OpticaHeritage() {
+type Props = { locale: Locale }
+
+export function OpticaHeritage({ locale }: Props) {
   return (
-    <section className="py-24 bg-[#000000] border-b border-white/10 relative">
+    <section className="section-space bg-[#080a0b] border-t border-[var(--line)]">
       <div className="container-page">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Global Optica Heritage Narrative */}
-          <div className="lg:col-span-8 space-y-6">
-            <div className="flex items-center gap-3 font-mono text-[10px] text-[#fa8716]">
-              <Globe size={13} />
-              <span className="editorial-label text-[#fa8716]">WASHINGTON D.C. · EST. 1916</span>
-            </div>
-
-            <h2 className="editorial-headline text-white">
-              Backed by the World&apos;s Leading Optics Society
+        <div className="grid gap-12 lg:grid-cols-[1.6fr_0.9fr] lg:gap-16 lg:items-center">
+          {/* Left: narrative */}
+          <div>
+            <p className="eyebrow">Global affiliation</p>
+            <h2 className="section-title mt-3 max-w-2xl">
+              Backed by the world&apos;s leading optics society.
             </h2>
-
-            <p className="editorial-lead text-slate-300 max-w-2xl">
-              Optica is dedicated to promoting the generation, application, and archiving of knowledge in optics and photonics. As the official local section in Egypt, we provide our members with direct access to Optica technical groups, student travel grants, and peer-reviewed scientific journals.
+            <p className="lede mt-5 max-w-2xl">
+              Optica is dedicated to promoting the generation, application, and archiving of knowledge
+              in optics and photonics. As the official local section in Egypt, we provide members with
+              direct access to Optica technical groups, student travel grants, and peer-reviewed journals.
             </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="https://www.optica.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#fa8716] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors"
+                className="btn-primary"
               >
-                <span>Visit Optica Global</span>
-                <ExternalLink size={14} />
+                Visit Optica <ExternalLink size={14} aria-hidden="true" />
               </a>
-
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/20 hover:border-white text-white font-mono text-xs uppercase tracking-wider transition-colors"
-              >
-                <span>About Egypt Section</span>
-                <ArrowRight size={14} />
+              <Link href={localizedHref(locale, "/about")} className="btn-secondary">
+                About the section <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Architectural Milestone Panels */}
-          <div className="lg:col-span-4 divide-y divide-white/10 border-y border-white/10">
-            <div className="py-6 flex items-start gap-4">
-              <div className="text-[#fa8716] mt-1 shrink-0">
-                <Award size={20} />
-              </div>
+          {/* Right: credential boxes */}
+          <div className="divide-y divide-[var(--line-subtle)] border-y border-[var(--line-subtle)]">
+            <div className="flex items-start gap-4 py-6">
+              <Award size={18} className="mt-0.5 shrink-0 text-[var(--gold)]" aria-hidden="true" />
               <div>
-                <p className="editorial-label text-[10px] text-slate-500 mb-1">AFFILIATION</p>
-                <p className="text-base font-bold text-white">Official Local Section</p>
-                <p className="text-xs text-slate-400 mt-1 font-light">Chartered representation across Egyptian universities.</p>
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--ink-faint)]">Affiliation</p>
+                <p className="mt-1 font-semibold text-[var(--ink)]">Official Local Section</p>
+                <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
+                  Chartered representation across Egyptian universities.
+                </p>
               </div>
             </div>
-
-            <div className="py-6 flex items-start gap-4">
-              <div className="text-[#5CB1A2] mt-1 shrink-0">
-                <BookOpen size={20} />
-              </div>
+            <div className="flex items-start gap-4 py-6">
+              <BookOpen size={18} className="mt-0.5 shrink-0 text-[var(--gold)]" aria-hidden="true" />
               <div>
-                <p className="editorial-label text-[10px] text-slate-500 mb-1">PUBLICATIONS</p>
-                <p className="text-base font-bold text-white">Optica Publishing Group</p>
-                <p className="text-xs text-slate-400 mt-1 font-light">Direct conduits to premier peer-reviewed journals.</p>
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--ink-faint)]">Publications</p>
+                <p className="mt-1 font-semibold text-[var(--ink)]">Optica Publishing Group</p>
+                <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
+                  Direct conduits to premier peer-reviewed journals.
+                </p>
               </div>
             </div>
-
-            <div className="py-6 flex items-start gap-4">
-              <div className="text-[#00e660] mt-1 shrink-0">
-                <Globe size={20} />
-              </div>
+            <div className="flex items-start gap-4 py-6">
+              <Globe size={18} className="mt-0.5 shrink-0 text-[var(--gold)]" aria-hidden="true" />
               <div>
-                <p className="editorial-label text-[10px] text-slate-500 mb-1">FELLOWSHIP</p>
-                <p className="text-base font-bold text-white">180+ Countries Network</p>
-                <p className="text-xs text-slate-400 mt-1 font-light">Connecting local researchers to international laboratories.</p>
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--ink-faint)]">Fellowship</p>
+                <p className="mt-1 font-semibold text-[var(--ink)]">180+ Countries Network</p>
+                <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
+                  Connecting local researchers to international laboratories.
+                </p>
               </div>
             </div>
           </div>
