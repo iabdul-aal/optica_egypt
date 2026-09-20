@@ -211,28 +211,14 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
         <defs>
           {/* Central gold radial glow */}
           <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#d7ae5b" stopOpacity="0.25" />
-            <stop offset="70%" stopColor="#d7ae5b" stopOpacity="0.05" />
+            <stop offset="0%" stopColor="#d7ae5b" stopOpacity="0.2" />
+            <stop offset="70%" stopColor="#d7ae5b" stopOpacity="0.04" />
             <stop offset="100%" stopColor="#d7ae5b" stopOpacity="0" />
-          </radialGradient>
-
-          {/* Node bubble gradient */}
-          <radialGradient id="bubbleGradient" cx="35%" cy="35%" r="65%">
-            <stop offset="0%" stopColor="#252d30" />
-            <stop offset="60%" stopColor="#14191a" />
-            <stop offset="100%" stopColor="#0a0d0e" />
-          </radialGradient>
-
-          {/* Center bubble gradient */}
-          <radialGradient id="centerBubbleGrad" cx="40%" cy="40%" r="60%">
-            <stop offset="0%" stopColor="#222a2c" />
-            <stop offset="70%" stopColor="#121618" />
-            <stop offset="100%" stopColor="#090c0d" />
           </radialGradient>
 
           {/* Drop shadow filters for bubbles */}
           <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -244,8 +230,8 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
         <path
           d={outerPolygonPath}
           stroke="#4b5550"
-          strokeWidth="1.5"
-          opacity="0.65"
+          strokeWidth="1.2"
+          opacity="0.5"
           className="transition-all duration-300"
         />
 
@@ -263,7 +249,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
                   y2={pos.y}
                   stroke="#d7ae5b"
                   strokeWidth="3"
-                  opacity="0.4"
+                  opacity="0.35"
                   filter="url(#goldGlow)"
                 />
               )}
@@ -292,7 +278,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
           )
         })}
 
-        {/* ── Center Hub: OPTICA EGYPT Floating Bubble ── */}
+        {/* ── Center Hub: OPTICA EGYPT Floating Node ── */}
         <g
           className="cursor-pointer transition-transform duration-200"
           onMouseEnter={() => setIsCenterHovered(true)}
@@ -302,20 +288,21 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
           <circle
             cx={centerPos.x}
             cy={centerPos.y}
-            r={CENTER.radius + 32}
+            r={CENTER.radius + 28}
             fill="url(#centerGlow)"
             className="animate-pulse"
           />
 
-          {/* Outer gold ring */}
+          {/* Outer gold ring & flat obsidian fill */}
           <circle
             cx={centerPos.x}
             cy={centerPos.y}
             r={CENTER.radius}
-            fill="url(#centerBubbleGrad)"
+            fill="#090c0d"
             stroke={isCenterHovered ? "#f0d79c" : "#d7ae5b"}
-            strokeWidth={isCenterHovered ? 2.8 : 2}
+            strokeWidth={isCenterHovered ? 2.5 : 2}
             filter={isCenterHovered ? "url(#goldGlow)" : undefined}
+            className="transition-all duration-200 ease-out"
           />
 
           {/* Concentric rotating reticle ring */}
@@ -357,7 +344,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
           </text>
         </g>
 
-        {/* ── Five Outer Floating Bubbles ── */}
+        {/* ── Five Outer Floating Nodes ── */}
         {NODES.map((node, i) => {
           const pos = nodePositions[i]
           const isHovered = hoveredNode === node.id
@@ -369,42 +356,53 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
               onMouseEnter={() => setHoveredNode(node.id)}
               onMouseLeave={() => setHoveredNode(null)}
             >
-              {/* Outer bubble pulse halo on hover */}
+              {/* Outer node pulse halo on hover */}
               {isHovered && (
                 <circle
                   cx={pos.x}
                   cy={pos.y}
-                  r={node.radius + 10}
+                  r={node.radius + 8}
                   fill="none"
                   stroke="#d7ae5b"
                   strokeWidth="1"
-                  opacity="0.5"
+                  opacity="0.4"
                   className="animate-ping"
                 />
               )}
 
-              {/* Main Bubble */}
+              {/* Main Abstract Node */}
               <circle
                 cx={pos.x}
                 cy={pos.y}
-                r={isHovered ? node.radius + 3 : node.radius}
-                fill="url(#bubbleGradient)"
+                r={isHovered ? node.radius + 2 : node.radius}
+                fill="#101415"
                 stroke={isHovered ? "#f0d79c" : "#d7ae5b"}
-                strokeWidth={isHovered ? 2.5 : 1.8}
+                strokeWidth={isHovered ? 2.2 : 1.6}
                 filter={isHovered ? "url(#goldGlow)" : undefined}
                 className="transition-all duration-200 ease-out"
               />
 
-              {/* Inner bubble specular dot */}
+              {/* Inner concentric reticle ring */}
               <circle
-                cx={pos.x - (isHovered ? 6 : 5)}
-                cy={pos.y - (isHovered ? 6 : 5)}
-                r={isHovered ? 3.5 : 2.5}
-                fill="#ffffff"
-                opacity={isHovered ? 0.6 : 0.25}
+                cx={pos.x}
+                cy={pos.y}
+                r={node.radius * 0.48}
+                stroke={isHovered ? "#f0d79c" : "#d7ae5b"}
+                strokeWidth="1"
+                strokeDasharray="2 3"
+                opacity={isHovered ? 0.6 : 0.3}
               />
 
-              {/* Node Label Floating With Bubble */}
+              {/* Center optical core pip */}
+              <circle
+                cx={pos.x}
+                cy={pos.y}
+                r={2}
+                fill={isHovered ? "#f0d79c" : "#d7ae5b"}
+                opacity={isHovered ? 1 : 0.5}
+              />
+
+              {/* Node Label Floating With Node */}
               <text
                 x={pos.x + node.textOffsetX}
                 y={pos.y + node.textOffsetY}

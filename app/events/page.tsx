@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { BeamSection } from "@/components/sections/BeamSection"
 import { EventCard } from "@/components/sections/EventCard"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
@@ -23,10 +22,6 @@ export default function EventsPage() {
       <PageHeader eyebrow={dictionary.events.eyebrow} title={dictionary.events.title} intro={dictionary.events.intro} />
       <section className="section-space">
         <div className="container-page">
-          {/* Contractual 3D Scene C: Laser Beamsplitter */}
-          <ScrollReveal animation="fade-up" delay={40}>
-            <BeamSection />
-          </ScrollReveal>
 
           <ScrollReveal animation="fade-up" delay={60}>
             <div className="section-split-heading">

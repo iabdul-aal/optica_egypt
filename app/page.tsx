@@ -6,7 +6,6 @@ import { ImpactMetrics } from "@/components/sections/ImpactMetrics"
 import { NewsSection } from "@/components/sections/NewsSection"
 import { OpticaHeritage } from "@/components/sections/OpticaHeritage"
 import { ResearchExplorer } from "@/components/sections/ResearchExplorer"
-import { WaveSection } from "@/components/sections/WaveSection"
 import { CommunityBubbles } from "@/components/sections/CommunityBubbles"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getUpcomingEvents } from "@/lib/events"
@@ -65,10 +64,6 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* ── Contractual 3D Scene B: Wave Interference ─────────────── */}
-      <ScrollReveal animation="fade-up" delay={50}>
-        <WaveSection />
-      </ScrollReveal>
 
       {/* ── Events ──────────────────────────────────────────────── */}
       <ScrollReveal animation="fade-up" delay={50}>
