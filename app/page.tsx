@@ -7,6 +7,7 @@ import { NewsSection } from "@/components/sections/NewsSection"
 import { OpticaHeritage } from "@/components/sections/OpticaHeritage"
 import { ResearchExplorer } from "@/components/sections/ResearchExplorer"
 import { WaveSection } from "@/components/sections/WaveSection"
+import { CommunityBubbles } from "@/components/sections/CommunityBubbles"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getUpcomingEvents } from "@/lib/events"
 import { getDictionary, localizedHref } from "@/lib/locales"
@@ -51,29 +52,9 @@ export default function HomePage() {
                   </article>
                 ))}
               </div>
-              {/* SVG polygon diagram */}
+              {/* Interactive Moving Bubbles Diagram */}
               <div className="order-1 relative py-2 sm:py-4 lg:order-2">
-                <svg
-                  viewBox="0 0 620 360"
-                  className="relative h-auto w-full"
-                  fill="none"
-                  aria-label={dictionary.home.community.diagramLabel}
-                >
-                  <path d="M310 181L118 74M310 181L464 68M310 181L506 190M310 181L425 301M310 181L150 289" stroke="#d1a247" strokeWidth="2" strokeDasharray="5 8" opacity="0.8" />
-                  <path d="M118 74L464 68M464 68L506 190M506 190L425 301M425 301L150 289M150 289L118 74" stroke="#5b615d" strokeWidth="1.5" opacity="0.8" />
-                  <circle cx="310" cy="181" r="67" fill="#151b1c" stroke="#d1a247" strokeWidth="2" />
-                  <circle cx="310" cy="181" r="47" stroke="#f3efe7" strokeWidth="1" opacity="0.35" />
-                  {([[118, 74], [464, 68], [506, 190], [425, 301], [150, 289]] as [number, number][]).map(([cx, cy], i) => (
-                    <circle key={i} cx={cx} cy={cy} r="20" fill="#171c1d" stroke="#d1a247" strokeWidth="2" />
-                  ))}
-                  <text x="310" y="176" fill="#f3efe7" textAnchor="middle" fontSize="14" fontFamily="Arial" fontWeight="700">OPTICA</text>
-                  <text x="310" y="196" fill="#d1a247" textAnchor="middle" fontSize="12" fontFamily="Arial" fontWeight="700">EGYPT</text>
-                  <text x="118" y="42"  fill="#b8b1a4" textAnchor="middle" fontSize="12" fontFamily="Arial">STUDENTS</text>
-                  <text x="464" y="37"  fill="#b8b1a4" textAnchor="middle" fontSize="12" fontFamily="Arial">RESEARCHERS</text>
-                  <text x="550" y="195" fill="#b8b1a4" fontSize="12" fontFamily="Arial">ACADEMIA</text>
-                  <text x="429" y="337" fill="#b8b1a4" textAnchor="middle" fontSize="12" fontFamily="Arial">INDUSTRY</text>
-                  <text x="118" y="327" fill="#b8b1a4" textAnchor="middle" fontSize="12" fontFamily="Arial">STARTUPS</text>
-                </svg>
+                <CommunityBubbles diagramLabel={dictionary.home.community.diagramLabel} />
               </div>
             </div>
 
