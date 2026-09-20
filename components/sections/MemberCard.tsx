@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ArrowUpRight, Globe, Linkedin, Mail } from "lucide-react"
+import { Globe, Linkedin, Mail } from "lucide-react"
 import { getLocalizedText, type Dictionary, type Locale } from "@/lib/locales"
 import { getAssetPath } from "@/lib/utils"
 import type { Member } from "@/types/member"
@@ -58,14 +58,14 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
             </p>
           )}
         </div>
-        <div className="flex shrink-0 gap-2 pt-0.5">
+        <div className="flex shrink-0 gap-1.5 pt-0.5">
           {member.email && member.email !== "" && (
             <a
               href={`mailto:${member.email}`}
               aria-label={`Email ${name}`}
-              className="icon-link"
+              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-white/15 text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
             >
-              <Mail size={14} aria-hidden="true" />
+              <Mail size={13} aria-hidden="true" />
             </a>
           )}
           {member.website && member.website !== "" && (
@@ -74,9 +74,9 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${name}'s personal website`}
-              className="icon-link"
+              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-white/15 text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
             >
-              <Globe size={14} aria-hidden="true" />
+              <Globe size={13} aria-hidden="true" />
             </a>
           )}
           {member.linkedin && member.linkedin !== "none" && member.linkedin !== "" && (
@@ -85,16 +85,16 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={dictionary.leadership.linkedin.replace("{name}", name)}
-              className="icon-link"
+              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-white/15 text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
             >
-              <Linkedin size={14} aria-hidden="true" />
+              <Linkedin size={13} aria-hidden="true" />
             </a>
           )}
         </div>
       </div>
 
       {/* Detailed Profile */}
-      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId || member.website) ? (
+      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId) ? (
         <details className="group mt-auto pt-4">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
           <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
@@ -107,21 +107,6 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               <div>
                 <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Optica Member ID:</span>
                 <p className="mt-0.5 font-mono text-[var(--ink)]">{member.opticaId}</p>
-              </div>
-            )}
-            {member.website && (
-              <div>
-                <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Personal Website:</span>
-                <p className="mt-0.5">
-                  <a
-                    href={member.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[var(--gold)] hover:underline inline-flex items-center gap-1 font-mono text-xs"
-                  >
-                    {member.website} <ArrowUpRight size={11} aria-hidden="true" />
-                  </a>
-                </p>
               </div>
             )}
             {member.academicBackground && (
