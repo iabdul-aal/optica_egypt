@@ -24,7 +24,6 @@ const navigation = [
 export function Header({ locale, dictionary }: HeaderProps) {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  const nextLocale: Locale = locale === "en" ? "ar" : "en"
 
   useEffect(() => {
     setIsOpen(false)
@@ -34,7 +33,6 @@ export function Header({ locale, dictionary }: HeaderProps) {
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") setIsOpen(false)
     }
-
     window.addEventListener("keydown", closeOnEscape)
     return () => window.removeEventListener("keydown", closeOnEscape)
   }, [])
@@ -44,8 +42,6 @@ export function Header({ locale, dictionary }: HeaderProps) {
     return pathname === href || (path !== "/" && pathname.startsWith(`${href}/`))
   }
 
-  const unlocalizedPath = pathname.replace(/^\/(en|ar)(?=\/|$)/, "") || "/"
-
   return (
     <header className="site-header">
       <div className="container-layout header-inner">
@@ -53,11 +49,11 @@ export function Header({ locale, dictionary }: HeaderProps) {
           <span className="brand-marker" aria-hidden="true" />
           <span className="brand-copy">
             <span className="brand-optica">Optica Egypt</span>
-            <span className="brand-section">{locale === "ar" ? "قسم محلي" : "LOCAL SECTION"}</span>
+            <span className="brand-section">LOCAL SECTION</span>
           </span>
         </Link>
 
-        <nav className="desktop-navigation" aria-label={locale === "ar" ? "التنقل الرئيسي" : "Main navigation"}>
+        <nav className="desktop-navigation" aria-label="Main navigation">
           {navigation.map(([key, path]) => (
             <Link
               key={path}
@@ -71,9 +67,6 @@ export function Header({ locale, dictionary }: HeaderProps) {
         </nav>
 
         <div className="header-actions">
-          <Link className="language-link" href={localizedHref(nextLocale, unlocalizedPath)} lang={nextLocale}>
-            {dictionary.nav.language}
-          </Link>
           <Link href={localizedHref(locale, "/join")} className="btn-primary desktop-join">
             {dictionary.nav.join}
           </Link>
@@ -92,7 +85,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
 
       {isOpen && (
         <div id="mobile-navigation" className="mobile-navigation">
-          <nav className="container-layout mobile-navigation-list" aria-label={locale === "ar" ? "التنقل على الهاتف" : "Mobile navigation"}>
+          <nav className="container-layout mobile-navigation-list" aria-label="Mobile navigation">
             <Link href={localizedHref(locale)} className="mobile-nav-link" aria-current={isCurrent("/") ? "page" : undefined}>{dictionary.nav.home}</Link>
             {navigation.map(([key, path]) => (
               <Link key={path} href={localizedHref(locale, path)} className="mobile-nav-link" aria-current={isCurrent(path) ? "page" : undefined}>

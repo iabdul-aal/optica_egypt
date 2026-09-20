@@ -19,7 +19,6 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
   const { locale: requestedLocale } = await params
   const locale = isLocale(requestedLocale) ? requestedLocale : "en"
   const dictionary = getDictionary(locale)
-  const canonical = `/${locale}`
 
   return {
     metadataBase: new URL(siteConfig.seo.siteUrl),
@@ -29,13 +28,12 @@ export async function generateMetadata({ params }: Omit<LayoutProps, "children">
     authors: [{ name: dictionary.site.name }],
     creator: dictionary.site.name,
     alternates: {
-      canonical,
-      languages: { en: "/en", ar: "/ar" },
+      canonical: "/en",
     },
     openGraph: {
       type: "website",
-      locale: locale === "ar" ? "ar_EG" : "en_US",
-      url: canonical,
+      locale: "en_US",
+      url: "/en",
       siteName: dictionary.site.name,
       title: dictionary.site.name,
       description: dictionary.site.description,
@@ -53,8 +51,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const dictionary = getDictionary(locale)
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body className={locale === "ar" ? "font-arabic antialiased" : "font-latin antialiased"}>
+    <html lang="en">
+      <body className="font-latin antialiased">
         <a href="#main-content" className="skip-link">{dictionary.common.skipToContent}</a>
         <Header locale={locale} dictionary={dictionary} />
         <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">

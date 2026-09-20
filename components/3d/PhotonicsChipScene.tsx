@@ -3,10 +3,10 @@
 import { OrbitControls } from "@react-three/drei"
 import { Canvas, useFrame } from "@react-three/fiber"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
-import { Maximize2, Pause, Play, RotateCcw } from "lucide-react"
 import { useEffect, useMemo, useRef, useState } from "react"
 import * as THREE from "three"
 import type { Dictionary, Locale } from "@/lib/locales"
+
 
 const gold = "#d7ae5b"
 const ivory = "#f7f2e8"
@@ -161,12 +161,9 @@ type PhotonicsChipSceneProps = {
   className?: string
 }
 
-export function PhotonicsChipScene({ locale, dictionary, className = "" }: PhotonicsChipSceneProps) {
+export function PhotonicsChipScene({ locale: _locale, dictionary, className = "" }: PhotonicsChipSceneProps) {
   const [interactive, setInteractive] = useState(false)
   const [running, setRunning] = useState(true)
-  const [resetVersion, setResetVersion] = useState(0)
-  const [fullscreen, setFullscreen] = useState(false)
-  const sceneRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -186,45 +183,14 @@ export function PhotonicsChipScene({ locale, dictionary, className = "" }: Photo
     return () => media.removeEventListener("change", detect)
   }, [])
 
-  useEffect(() => {
-    const updateFullscreen = () => setFullscreen(document.fullscreenElement === sceneRef.current)
-    document.addEventListener("fullscreenchange", updateFullscreen)
-    return () => document.removeEventListener("fullscreenchange", updateFullscreen)
-  }, [])
-
-  async function toggleFullscreen() {
-    if (!sceneRef.current) return
-    if (document.fullscreenElement) {
-      await document.exitFullscreen()
-      return
-    }
-    await sceneRef.current.requestFullscreen?.()
-  }
-
-  const summaryId = `viewer-summary-${locale}`
-
   return (
-    <div ref={sceneRef} className={`photonics-viewer ${className}`} aria-label={dictionary.viewer.label}>
-      <div className="viewer-stage" aria-describedby={summaryId}>
-        {interactive ? <ChipCanvas running={running} resetVersion={resetVersion} onContextLost={() => setInteractive(false)} /> : <TextualFallback dictionary={dictionary} />}
+    <div className={`photonics-viewer ${className}`} aria-label={dictionary.viewer.label}>
+      <div className="viewer-stage">
+        {interactive
+          ? <ChipCanvas running={running} resetVersion={0} onContextLost={() => setInteractive(false)} />
+          : <TextualFallback dictionary={dictionary} />
+        }
       </div>
-      <div className="viewer-tools" aria-label={dictionary.viewer.label}>
-        <p className="viewer-hint">{interactive ? dictionary.viewer.hint : dictionary.viewer.fallback}</p>
-        {interactive && (
-          <div className="viewer-actions">
-            <button type="button" className="viewer-control" onClick={() => setResetVersion((value) => value + 1)} aria-label={dictionary.viewer.reset} title={dictionary.viewer.reset}>
-              <RotateCcw size={16} aria-hidden="true" />
-            </button>
-            <button type="button" className="viewer-control" onClick={() => setRunning((value) => !value)} aria-label={running ? dictionary.viewer.pause : dictionary.viewer.resume} title={running ? dictionary.viewer.pause : dictionary.viewer.resume}>
-              {running ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
-            </button>
-            <button type="button" className="viewer-control" onClick={toggleFullscreen} aria-label={fullscreen ? dictionary.viewer.exitFullscreen : dictionary.viewer.fullscreen} title={fullscreen ? dictionary.viewer.exitFullscreen : dictionary.viewer.fullscreen}>
-              <Maximize2 size={16} aria-hidden="true" />
-            </button>
-          </div>
-        )}
-      </div>
-      <p id={summaryId} className="sr-only">{dictionary.viewer.summary}</p>
     </div>
   )
 }
