@@ -16,20 +16,23 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
   const hasPhoto = Boolean(member.photo)
 
   return (
-    <article className="border-t border-white/15 pt-5">
+    <article className="group/card border-t border-white/15 pt-5">
       {/* Portrait — 4:6 (width:height = 2:3) */}
       <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)]">
         {hasPhoto ? (
-          <Image
-            src={member.photo!}
-            alt={name}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover object-top"
-          />
+          <>
+            <Image
+              src={member.photo!}
+              alt={name}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover object-top grayscale contrast-125 brightness-[0.82] transition-all duration-500 ease-out group-hover/card:scale-105 group-hover/card:grayscale-0 group-hover/card:contrast-100 group-hover/card:brightness-100"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[#09131F]/25 transition-opacity duration-500 group-hover/card:opacity-0" />
+          </>
         ) : (
           /* Placeholder with initials */
-          <div className="scientific-grid flex h-full w-full items-end justify-between p-5 text-[var(--gold)]" aria-label={dictionary.leadership.portraitPlaceholder.replace("{name}", name)}>
+          <div className="scientific-grid flex h-full w-full items-end justify-between p-5 text-[var(--gold)] transition-colors duration-500 group-hover/card:text-[var(--gold-pale)]" aria-label={dictionary.leadership.portraitPlaceholder.replace("{name}", name)}>
             <span className="text-5xl font-semibold tracking-[-0.1em]">{initials}</span>
             <span className="font-mono text-[0.62rem] tracking-[0.12em]">OPTICA EGYPT</span>
           </div>
@@ -39,7 +42,14 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       {/* Info row */}
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>
-          <p className="eyebrow">{getLocalizedText(member.role, locale)}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="eyebrow">{getLocalizedText(member.role, locale)}</p>
+            {member.opticaId && (
+              <span className="inline-flex items-center rounded border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-1.5 py-0.5 font-mono text-[0.6rem] font-semibold text-[var(--gold)]">
+                ID: {member.opticaId}
+              </span>
+            )}
+          </div>
           <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{name}</h3>
           {member.institution.en && (
             <p className="mt-1 text-sm text-[var(--ink-soft)]">{getLocalizedText(member.institution, locale)}</p>
@@ -75,7 +85,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       </div>
 
       {/* Detailed Profile */}
-      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements) && (
+      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId) && (
         <details className="group mt-5">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
           <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
@@ -83,6 +93,12 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               <p className="text-sm leading-6 text-[var(--ink)]">
                 {getLocalizedText(member.bio, locale)}
               </p>
+            )}
+            {member.opticaId && (
+              <div>
+                <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Optica Member ID:</span>
+                <p className="mt-0.5 font-mono text-[var(--ink)]">{member.opticaId}</p>
+              </div>
             )}
             {member.academicBackground && (
               <div>
