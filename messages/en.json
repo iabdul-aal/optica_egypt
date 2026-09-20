@@ -128,7 +128,9 @@
     "time": "Time",
     "registration": "Registration",
     "status": "Status",
-    "registrationUnavailable": "Registration details will be published with the confirmed programme."
+    "registrationUnavailable": "Registration details will be published with the confirmed programme.",
+    "earlyRegister": "Early Register",
+    "earlyRegistrationNote": "Registration details will be published with the confirmed programme, but early registration is open."
   },
   "eventDetail": {
     "eyebrow": "Event detail",
@@ -139,6 +141,7 @@
     "speaker": "Speaker",
     "speakerPending": "Speaker details will be confirmed with the programme.",
     "register": "Register for this event",
+    "earlyRegister": "Early Register",
     "backToEvents": "All events",
     "contactAbout": "Contact the section about this event",
     "tags": "Topics"
