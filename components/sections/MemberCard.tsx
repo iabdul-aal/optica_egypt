@@ -41,8 +41,8 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       </div>
 
       {/* Info row */}
-      <div className={`mt-5 flex-1 flex items-start justify-between gap-3 ${
-        member.tier === "advisory" ? "min-h-[10.5rem]" : "min-h-[7.75rem]"
+      <div className={`mt-5 flex items-start justify-between gap-3 ${
+        member.tier === "executive" ? "min-h-[7.25rem]" : ""
       }`}>
         <div className="min-w-0 flex-1">
           <p className="eyebrow truncate">{getLocalizedText(member.role, locale)}</p>
