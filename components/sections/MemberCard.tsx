@@ -17,7 +17,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
 
   return (
     <article className="group/card border-t border-white/15 pt-5">
-      {/* Portrait — 4:6 (width:height = 2:3) */}
+      {/* Portrait: 4:6 (width:height = 2:3) */}
       <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)]">
         {hasPhoto ? (
           <>

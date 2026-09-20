@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test"
 const ROUTES = ["", "/about", "/events", "/community", "/leadership", "/outreach", "/resources", "/join"]
 
 for (const route of ROUTES) {
-  test(`[en-only] ${route || "/"} — loads without error`, async ({ page }) => {
+  test(`[en-only] ${route || "/"} : loads without error`, async ({ page }) => {
     await page.goto(route || "/")
     await expect(page).not.toHaveTitle(/error/i)
     await expect(page.locator("main")).toBeVisible()

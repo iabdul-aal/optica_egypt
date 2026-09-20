@@ -1,6 +1,6 @@
 ﻿# Information Architecture
 
-## Navigation (8 items — fixed)
+## Navigation (8 items ,  fixed)
 Home · About · Events · Community · Leadership · Outreach · Resources · Join Us
 
 ## Page Hierarchy and Purpose
@@ -19,20 +19,20 @@ Home · About · Events · Community · Leadership · Outreach · Resources · J
 ## Content Hierarchy per Page
 
 ### Home
-1. Section identity (hero — immediate)
+1. Section identity (hero ,  immediate)
 2. Who we serve (audience cards)
 3. What is happening (events preview)
 4. Latest news
 5. Footer (quick links + contact)
 
 ### Events
-1. Upcoming events (most important — action-driving)
-2. Past events (credibility — when they exist)
+1. Upcoming events (most important ,  action-driving)
+2. Past events (credibility ,  when they exist)
 3. 3D Laser Beamsplitter scene (cinematic context)
 
 ### Leadership
 1. Grid of member cards (identity, trust)
-2. No body copy needed — photos and roles speak
+2. No body copy needed ,  photos and roles speak
 
 ## Navigation Mental Model
 Users think in:

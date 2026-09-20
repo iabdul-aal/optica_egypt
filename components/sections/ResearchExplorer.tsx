@@ -70,7 +70,7 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
     setTimerKey((k) => k + 1)
   }, [])
 
-  // Auto-cycle — restarts cleanly when unpaused or user manually selects
+  // Auto-cycle, restarts cleanly when unpaused or user manually selects
   useEffect(() => {
     if (paused) return
     const id = setInterval(advance, INTERVAL)
@@ -117,7 +117,7 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
                   <span>{area.code}</span>
                   <strong>{getLocalizedText(area.label, locale)}</strong>
 
-                  {/* Auto-timer progress bar — only on active tab */}
+                  {/* Auto-timer progress bar, only on active tab */}
                   {selected && (
                     <span
                       key={timerKey}

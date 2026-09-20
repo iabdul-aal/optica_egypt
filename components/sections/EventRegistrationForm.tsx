@@ -27,7 +27,7 @@ export function EventRegistrationForm({ eventTitle, eventDate, email }: EventReg
       `Role or study level: ${formData.get("role")}`,
     ].join("\n")
     setPrepared(true)
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(`Event registration — ${eventTitle}`)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(`Event registration: ${eventTitle}`)}&body=${encodeURIComponent(body)}`
   }
 
   return (

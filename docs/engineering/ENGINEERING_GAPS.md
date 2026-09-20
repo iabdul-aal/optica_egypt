@@ -2,7 +2,7 @@
 
 Identified from baseline. Ordered by impact × risk.
 
-## CRITICAL — Must fix before launch
+## CRITICAL ,  Must fix before launch
 
 ### GAP-001: No mobile navigation
 **Impact:** Users on mobile cannot access 7 of 8 pages.
@@ -21,7 +21,7 @@ Identified from baseline. Ordered by impact × risk.
 **Fix:** vercel.com → New Project → import iabdul-aal/optica_egypt.
 **Owner:** DevOps Engineer (2-minute manual step)
 
-## HIGH — Fix before first event
+## HIGH ,  Fix before first event
 
 ### GAP-004: Three 3D scenes not implemented
 **Impact:** Core cinematic requirement unmet. Site lacks differentiation.
@@ -35,7 +35,7 @@ Identified from baseline. Ordered by impact × risk.
 **Fix:** Create LenisProvider, add to locale layout, register ScrollTrigger proxy.
 
 ### GAP-006: No GSAP section animations
-**Impact:** Pages are static — no scroll-triggered entrances.
+**Impact:** Pages are static ,  no scroll-triggered entrances.
 **Fix:** Add useGSAP hook to each major section.
 
 ### GAP-007: Contact form not implemented
@@ -43,7 +43,7 @@ Identified from baseline. Ordered by impact × risk.
 **File:** `app/[locale]/join/page.tsx`
 **Fix:** react-hook-form + Formspree endpoint.
 
-## MEDIUM — Fix within first month
+## MEDIUM ,  Fix within first month
 
 ### GAP-008: No JSON-LD structured data
 **Impact:** Events not eligible for Google rich results.
@@ -67,7 +67,7 @@ Identified from baseline. Ordered by impact × risk.
 **File:** `.github/workflows/ci.yml`
 **Fix:** Add build + Playwright steps after check step.
 
-## LOW — Track and improve
+## LOW ,  Track and improve
 
 ### GAP-013: No unit tests on lib/ loaders
 **Impact:** Data loader bugs caught only in E2E.

@@ -1,4 +1,4 @@
-# Optica Egypt — Asset Location & Provision Guide
+# Optica Egypt: Asset Location and Provision Guide
 
 This document maps all static assets used by the website, their exact destination paths in the repository, recommended dimensions, and current in-code fallbacks.
 
@@ -40,7 +40,7 @@ When officers provide their photos, place them at the exact paths below.
 
 ---
 
-## 3. Brand & Social Sharing (OpenGraph)
+## 3. Brand and Social Sharing (OpenGraph)
 
 | Asset | Exact Path | Dimensions | Purpose |
 |---|---|---|---|
@@ -50,7 +50,7 @@ When officers provide their photos, place them at the exact paths below.
 
 ---
 
-## 4. Site Icons & Favicon Package
+## 4. Site Icons and Favicon Package
 
 | Asset | Exact Path | Dimensions |
 |---|---|---|
@@ -60,7 +60,7 @@ When officers provide their photos, place them at the exact paths below.
 
 ---
 
-## 5. Photography & Field Assets (For future gallery / events)
+## 5. Photography and Field Assets (For future gallery / events)
 
 | Asset Category | Destination Folder | Purpose |
 |---|---|---|

@@ -21,28 +21,28 @@ No database. No API. No auth.
 
 ## Component Architecture
 ```
-ui/       — Button, Badge, ThemeToggle (atoms)
-sections/ — HeroSection, EventCard, MemberCard, NewsSection, etc.
-3d/       — SceneWrapper (stub), FiberScene, WaveScene, BeamScene (not yet built)
-layout/   — Header, Footer
-providers/— ThemeProvider (next-themes)
+ui/       ,  Button, Badge, ThemeToggle (atoms)
+sections/ ,  HeroSection, EventCard, MemberCard, NewsSection, etc.
+3d/       ,  SceneWrapper (stub), FiberScene, WaveScene, BeamScene (not yet built)
+layout/   ,  Header, Footer
+providers/,  ThemeProvider (next-themes)
 ```
 
 ## Missing (as of baseline)
-- LenisProvider — smooth scroll not yet wired
-- SceneWrapper — stub exists in plan, not yet created
-- All 3 R3F scenes — not yet implemented
-- Mobile nav — Header desktop-only currently
-- Skip-to-content link — not yet in Header
-- Tailwind config — no tailwind.config.ts yet (using v4 CSS-first)
-- Contact form — Join page has link but no Formspree form
-- OG images — not yet generated
-- JSON-LD structured data — not yet implemented
-- Leader photos — awaiting Drive uploads
+- LenisProvider ,  smooth scroll not yet wired
+- SceneWrapper ,  stub exists in plan, not yet created
+- All 3 R3F scenes ,  not yet implemented
+- Mobile nav ,  Header desktop-only currently
+- Skip-to-content link ,  not yet in Header
+- Tailwind config ,  no tailwind.config.ts yet (using v4 CSS-first)
+- Contact form ,  Join page has link but no Formspree form
+- OG images ,  not yet generated
+- JSON-LD structured data ,  not yet implemented
+- Leader photos ,  awaiting Drive uploads
 
 ## CI/CD
 GitHub Actions: lint + typecheck on PR and push to main.
-Vercel: auto-deploy on push to main (not yet connected — manual step needed).
+Vercel: auto-deploy on push to main (not yet connected ,  manual step needed).
 
 ## Test Coverage
 Playwright smoke tests: 14 tests (7 routes × 2 locales).

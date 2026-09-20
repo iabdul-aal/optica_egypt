@@ -1,6 +1,6 @@
-﻿# Optica Egypt Local Section
+# Optica Egypt Local Section
 
-Official website for the Optica Egypt Local Section — connecting students, researchers, universities, industry, and startups across Egypt to the global photonics community.
+Official website for the Optica Egypt Local Section, connecting students, researchers, universities, industry, and startups across Egypt to the global photonics ecosystem.
 
 ## Stack
 
@@ -10,7 +10,7 @@ Official website for the Optica Egypt Local Section — connecting students, res
 | Styling | Tailwind CSS v4, CSS custom properties |
 | 3D | React Three Fiber, @react-three/drei |
 | Animation | GSAP, Framer Motion, Lenis |
-| i18n | next-intl — /en/ and /ar/ static routes |
+| i18n | Static English routes |
 | Theme | next-themes, dark-first |
 | Hosting | Vercel (free) |
 | CI/CD | Vercel GitHub integration + GitHub Actions |

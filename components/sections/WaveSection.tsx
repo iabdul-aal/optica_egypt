@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import React, { useState } from "react"
 import dynamic from "next/dynamic"
@@ -47,7 +47,7 @@ export function WaveSection() {
             </h2>
           </div>
 
-          {/* Interactive band selectors & Mathematical Telemetry */}
+          {/* Interactive band selectors and Mathematical Telemetry */}
           <div className="flex flex-wrap items-center gap-3 font-mono text-[10px]">
             <span className="text-slate-500 hidden sm:inline">λ FRINGE: β = λD/d</span>
             {[

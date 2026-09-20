@@ -67,9 +67,9 @@ Every user-facing string must exist in `messages/en.json`. Strings must convey c
 Every content page must follow this anatomy:
 
 ```
-<p>  eyebrow   — section label in small muted text (e.g., "Events")
-<h1> heading   — noun-phrase title (e.g., "Events and workshops")
-<p>  descriptor — 1-sentence explanation, 20-35 words
+<p>  eyebrow   ,  section label in small muted text (e.g., "Events")
+<h1> heading   ,  noun-phrase title (e.g., "Events and workshops")
+<p>  descriptor ,  1-sentence explanation, 20-35 words
 ```
 
 Rules:

@@ -1,6 +1,6 @@
 # Brand Architecture
 
-Optica Egypt Local Section — Brand Identity System
+Optica Egypt Local Section ,  Brand Identity System
 
 This document defines which brand elements are immutable global assets and
 which are local Egypt design choices. Every developer, designer, and agent
@@ -12,12 +12,12 @@ or visual asset.
 ## The two-layer principle
 
 ```
-LAYER 1: GLOBAL OPTICA — IMMUTABLE
+LAYER 1: GLOBAL OPTICA ,  IMMUTABLE
   Everything owned and governed by Optica (the parent organization).
   Source: Official Chapter Toolkit at optica.org.
   Rule: No modification of any kind. No recreation. No approximation.
 
-LAYER 2: EGYPT LOCAL — CHANGEABLE
+LAYER 2: EGYPT LOCAL ,  CHANGEABLE
   Everything created specifically for the Optica Egypt Local Section.
   Source: This repository, Egypt brand assets folder.
   Rule: Must never be presented as official Optica corporate material.
@@ -36,7 +36,7 @@ visually separated on every page.
 | Official logo | Optica horizontal logo (black container, white container) | Chapter Toolkit |
 | Official name | Optica | Optica brand guidelines |
 | Official tagline | Advancing Optics and Photonics Worldwide | Optica brand guidelines |
-| Trademark | Optica is a registered trademark | Legal — do not alter |
+| Trademark | Optica is a registered trademark | Legal ,  do not alter |
 | Logo clear space | Height of the Optica "O" mark on all four sides | Logo usage guidelines |
 
 No agent, developer, or designer may alter any of these. When in doubt,
@@ -50,13 +50,13 @@ contact Optica at studentchapters@optica.org.
 |---|---|---|
 | Egypt wordmark | "Optica Egypt Local Section" typographic mark | `public/assets/brand/egypt/logo/` |
 | Egypt icon | Standalone Egyptian motif (pyramid, wave, solar disc) | `public/assets/brand/egypt/iconography/` |
-| Gold palette | `#d4af37`, `#f4c95d`, `#8c641e` — Egypt design tokens | `app/globals.css` |
+| Gold palette | `#d4af37`, `#f4c95d`, `#8c641e` ,  Egypt design tokens | `app/globals.css` |
 | Wave patterns | Nile-wave SVG system for dividers and backgrounds | `public/assets/brand/egypt/patterns/` |
 | Hero imagery | Pyramid/sky/light-beam layered hero system | `public/assets/brand/egypt/hero/` |
 | Local campaign tagline | "Connecting Talent. Advancing Photonics." | Changeable each chapter year |
-| Egyptian motifs | Pyramid, Eye, Nile wave, solar disc — supporting graphics only | `public/assets/brand/egypt/iconography/` |
-| Typography (display) | Montserrat or Poppins for headings — LOCAL choice, not Optica spec | `app/globals.css` |
-| Typography (body) | Inter — LOCAL choice | `app/globals.css` |
+| Egyptian motifs | Pyramid, Eye, Nile wave, solar disc ,  supporting graphics only | `public/assets/brand/egypt/iconography/` |
+| Typography (display) | Montserrat or Poppins for headings ,  LOCAL choice, not Optica spec | `app/globals.css` |
+| Typography (body) | Inter ,  LOCAL choice | `app/globals.css` |
 
 ---
 
@@ -78,8 +78,8 @@ of the official Optica corporate identity.
 
 ### What the logo MUST be
 ```
-[Official Optica logo — untouched]  |  Optica Egypt Local Section
-                                        [Egypt motif / wordmark — separate]
+[Official Optica logo ,  untouched]  |  Optica Egypt Local Section
+                                        [Egypt motif / wordmark ,  separate]
 ```
 The official logo and the Egypt local mark sit side-by-side, separated by
 a thin vertical rule. Neither mark touches the other.
@@ -166,7 +166,7 @@ Responsive hero sizes required (all in WebP):
 
 ## Color system: two distinct palettes
 
-### Optica official (immutable — use only for official logo containers)
+### Optica official (immutable ,  use only for official logo containers)
 | Color | Hex | Notes |
 |---|---|---|
 | Optica Teal | `#00adef` | From Optica brand materials |
@@ -196,8 +196,8 @@ The following are Egypt local design-system decisions:
 
 | Role | Font | Notes |
 |---|---|---|
-| Display / headings | Montserrat | Google Fonts — local choice |
-| Body / UI | Inter | Google Fonts — local choice |
+| Display / headings | Montserrat | Google Fonts ,  local choice |
+| Body / UI | Inter | Google Fonts ,  local choice |
 
 Never label these as "Optica official fonts."
 
@@ -205,7 +205,7 @@ Never label these as "Optica official fonts."
 
 ## Footer affiliation statement (required on every page)
 
-> Optica Egypt Local Section — Part of Optica, Advancing Optics and Photonics Worldwide.
+> Optica Egypt Local Section ,  Part of Optica, Advancing Optics and Photonics Worldwide.
 
 The phrase "Advancing Optics and Photonics Worldwide" is Optica's official tagline
 and must not be omitted or altered.

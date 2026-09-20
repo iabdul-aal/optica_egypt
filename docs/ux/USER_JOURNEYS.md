@@ -1,6 +1,6 @@
 ﻿# User Journeys
 
-## Journey 1 — Student Discovery
+## Journey 1 ,  Student Discovery
 
 WHO: Egyptian physics or engineering student, 18–25
 TRIGGER: Professor mentions Optica, or sees Instagram post
@@ -9,11 +9,11 @@ DEVICE: Mobile (primary), Desktop
 
 STEPS:
 1. Lands on / (home)
-2. Reads hero — "Connecting Talent. Advancing Photonics."
-3. Scrolls — sees audience card "Students"
-4. Looks for events — sees empty state "First event coming soon"
-5. Navigates to /about — reads mission and vision
-6. Navigates to /join — reads body, clicks "Apply to Join"
+2. Reads hero ,  "Connecting Talent. Advancing Photonics."
+3. Scrolls ,  sees audience card "Students"
+4. Looks for events ,  sees empty state "First event coming soon"
+5. Navigates to /about ,  reads mission and vision
+6. Navigates to /join ,  reads body, clicks "Apply to Join"
 7. External form opens
 
 DECISION POINTS:
@@ -22,16 +22,16 @@ DECISION POINTS:
 - Join: "Is this worth my time?" → body copy must establish value
 
 FRICTION:
-- No events visible (honest empty state required — not blank)
+- No events visible (honest empty state required ,  not blank)
 - No photos on leadership yet (placeholder needed)
-- Join form is external — transition must feel deliberate not broken
+- Join form is external ,  transition must feel deliberate not broken
 
 SUCCESS: User submits join form
 NEXT JOURNEY: Receives confirmation, attends first event
 
 ---
 
-## Journey 2 — Event Registration
+## Journey 2 ,  Event Registration
 
 WHO: Student or researcher who heard about a specific event
 TRIGGER: WhatsApp message or Instagram story with event name
@@ -46,7 +46,7 @@ STEPS:
 5. Completes registration on external form
 
 FRICTION:
-- Currently zero events — entire journey is blocked
+- Currently zero events ,  entire journey is blocked
 - Fix: first event must be added to events.json before this journey exists
 
 SUCCESS: User registered for event
@@ -54,7 +54,7 @@ NEXT JOURNEY: Attends event, joins section
 
 ---
 
-## Journey 3 — Leadership Verification
+## Journey 3 ,  Leadership Verification
 
 WHO: University professor, industry professional, Optica staff
 TRIGGER: Received outreach from a section member
@@ -65,7 +65,7 @@ STEPS:
 1. Navigates to /leadership
 2. Sees grid of member cards
 3. Reads name, role, institution
-4. Hovers — LinkedIn icon appears
+4. Hovers ,  LinkedIn icon appears
 5. Clicks LinkedIn → verifies profile
 6. Trust established
 
@@ -78,7 +78,7 @@ FIX NEEDED: Member photo fallback (gold initials on navy) for missing photos
 
 ---
 
-## Journey 4 — Resource Discovery
+## Journey 4 ,  Resource Discovery
 
 WHO: Researcher looking for photonics resources
 TRIGGER: Hears section has curated resources
@@ -91,5 +91,5 @@ STEPS:
 3. Clicks "Visit" on relevant resource
 4. External site opens in new tab
 
-FRICTION: Only 5 resources currently — limited value
+FRICTION: Only 5 resources currently ,  limited value
 FIX: Add more resources to data/resources.json regularly

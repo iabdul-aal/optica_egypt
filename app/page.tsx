@@ -23,7 +23,7 @@ export default function HomePage() {
       {/* ── Learn / Exchange / Build strip ───────────────────────── */}
       <ImpactMetrics />
 
-      {/* ── Community — pentagon network diagram ────────────────── */}
+      {/* ── Community: pentagon network diagram ────────────────── */}
       <section className="section-space relative overflow-hidden bg-[#0a0c0d]">
         <div className="scientific-grid absolute inset-0 opacity-50" aria-hidden="true" />
         <div className="container-page relative">
