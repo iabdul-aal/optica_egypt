@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { LenisProvider } from "@/components/providers/LenisProvider"
+import { ScrollProgress } from "@/components/ui/ScrollProgress"
 import "@/app/globals.css"
 import { getDictionary } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
@@ -134,12 +136,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body className="font-latin antialiased">
-        <a href="#main-content" className="skip-link">{dictionary.common.skipToContent}</a>
-        <Header locale="en" dictionary={dictionary} />
-        <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">
-          {children}
-        </main>
-        <Footer locale="en" dictionary={dictionary} />
+        <LenisProvider>
+          <ScrollProgress />
+          <a href="#main-content" className="skip-link">{dictionary.common.skipToContent}</a>
+          <Header locale="en" dictionary={dictionary} />
+          <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">
+            {children}
+          </main>
+          <Footer locale="en" dictionary={dictionary} />
+        </LenisProvider>
       </body>
     </html>
   )

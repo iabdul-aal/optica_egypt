@@ -16,9 +16,9 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
   const hasPhoto = Boolean(member.photo)
 
   return (
-    <article className="group/card border-t border-white/15 pt-5">
+    <article className="group/card border-t border-white/15 pt-5 transition-transform duration-300 ease-out hover:-translate-y-1">
       {/* Portrait: 4:6 (width:height = 2:3) */}
-      <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)]">
+      <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.5)]">
         {hasPhoto ? (
           <>
             <Image
