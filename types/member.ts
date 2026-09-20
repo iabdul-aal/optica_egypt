@@ -7,6 +7,7 @@ export interface Member {
   institution: { en: string }
   linkedin?: string
   email?: string
+  website?: string
   opticaId?: string
   photo?: string
   bio: { en: string }

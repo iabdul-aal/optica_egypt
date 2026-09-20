@@ -9,7 +9,7 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
 - Parent Body: Optica (2010 Massachusetts Ave. NW, Washington, D.C., USA, founded 1916)
 - Section Contact: opticaegypt@gmail.com
 - Social Profiles:
-  - LinkedIn: https://www.linkedin.com/company/optica-egypt-local-section
+  - LinkedIn: https://www.linkedin.com/company/optica-egypt
   - Instagram: @opticaegypt
   - Twitter/X: @opticaegypt
 
@@ -29,7 +29,7 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
 - Abdulaziz Albadawi, President
   - Optica Member ID: 2798420
   - Email: albadawiabdulaziz@gmail.com
-  - Affiliations: Ain Shams University / The American University in Cairo (AUC)
+  - Affiliations: The American University in Cairo (AUC)
   - Focus: Nanophotonics, Laser Science, and Optical Sensors
 
 - Khaled Ramadan, Vice President
@@ -50,9 +50,10 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
   - Affiliations: Ain Shams University / Si-Ware Systems / Zewail City
   - Focus: Financial Planning, Grants Allocation, and Quantum Optics
 
-- Islam Abdulaal, Webmaster
-  - Email: islamibr29@outlook.com
-  - Affiliations: Max Planck School of Photonics (MPSP/MPL) / Alexandria University / A*STAR
+- Islam I. Abdulaal, Webmaster
+  - Website: https://iabdul-aal.me/
+  - Email: contact@iabdul-aal.me
+  - Affiliations: FAU Erlangen-Nürnberg / Max Planck School of Photonics (MPSP) / A*STAR
   - Focus: Digital Infrastructure, Integrated Nanophotonics, and Nonlinear Quantum Optics
 
 ### Operational Committee
@@ -68,7 +69,7 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
 ### Senior Faculty Advisory Board
 - Prof. Diaa Khalil: Professor of Photonics, Former Head of ECE, and Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Author of 400+ papers, holder of 25+ patents, SPIE Prism Award winner, and Stanford Top 2% Scientist globally.
 - Prof. Yasser Sabry: Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; Core inventor of NeoSpectra™ handheld FTIR spectrometer; Recipient of SPIE Prism Award.
-- Prof. Salem Hegazy: Professor of Quantum Optics at Cairo University and Zewail City of Science and Technology; Recipient of the Egyptian State Award for Technological Innovation (2021).
+- Assoc. Prof. Salem Hegazy: Associate Professor of Quantum Optics at Cairo University and Zewail City of Science and Technology; Recipient of the Egyptian State Award for Technological Innovation (2021).
 
 ---
 

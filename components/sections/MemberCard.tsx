@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Linkedin, Mail } from "lucide-react"
+import { ArrowUpRight, Globe, Linkedin, Mail } from "lucide-react"
 import { getLocalizedText, type Dictionary, type Locale } from "@/lib/locales"
 import type { Member } from "@/types/member"
 
@@ -42,19 +42,12 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       {/* Info row */}
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>
-          <div className="flex flex-wrap items-center gap-2">
-            <p className="eyebrow">{getLocalizedText(member.role, locale)}</p>
-            {member.opticaId && (
-              <span className="inline-flex items-center rounded border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-1.5 py-0.5 font-mono text-[0.6rem] font-semibold text-[var(--gold)]">
-                ID: {member.opticaId}
-              </span>
-            )}
-          </div>
+          <p className="eyebrow">{getLocalizedText(member.role, locale)}</p>
           <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{name}</h3>
           {member.institution.en && (
             <p className="mt-1 text-sm text-[var(--ink-soft)]">{getLocalizedText(member.institution, locale)}</p>
           )}
-          {member.specializedSector && (
+          {member.tier === "advisory" && member.specializedSector && (
             <p className="mt-2 text-[0.68rem] font-mono font-medium text-[var(--gold)]">
               {member.specializedSector}
             </p>
@@ -68,6 +61,17 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               className="icon-link"
             >
               <Mail size={14} aria-hidden="true" />
+            </a>
+          )}
+          {member.website && member.website !== "" && (
+            <a
+              href={member.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${name}'s personal website`}
+              className="icon-link"
+            >
+              <Globe size={14} aria-hidden="true" />
             </a>
           )}
           {member.linkedin && member.linkedin !== "none" && member.linkedin !== "" && (
@@ -85,7 +89,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       </div>
 
       {/* Detailed Profile */}
-      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId) && (
+      {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId || member.website) && (
         <details className="group mt-5">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
           <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
@@ -98,6 +102,21 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               <div>
                 <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Optica Member ID:</span>
                 <p className="mt-0.5 font-mono text-[var(--ink)]">{member.opticaId}</p>
+              </div>
+            )}
+            {member.website && (
+              <div>
+                <span className="font-mono text-[0.62rem] font-bold uppercase tracking-wider text-[var(--gold)]">Personal Website:</span>
+                <p className="mt-0.5">
+                  <a
+                    href={member.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--gold)] hover:underline inline-flex items-center gap-1 font-mono text-xs"
+                  >
+                    {member.website} <ArrowUpRight size={11} aria-hidden="true" />
+                  </a>
+                </p>
               </div>
             )}
             {member.academicBackground && (

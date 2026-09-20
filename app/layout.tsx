@@ -93,7 +93,7 @@ const jsonLd = {
         url: "https://www.optica.org",
       },
       sameAs: [
-        "https://www.linkedin.com/company/optica-egypt-local-section",
+        "https://www.linkedin.com/company/optica-egypt",
         "https://instagram.com/opticaegypt",
         "https://twitter.com/opticaegypt",
         "https://github.com/iabdul-aal/optica_egypt",

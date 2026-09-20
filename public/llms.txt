@@ -12,14 +12,14 @@ Optica approved the charter of the Optica Egypt Local Section on 10 September 20
 - Geographic Focus: Egypt (Cairo, Alexandria, Giza, and nationwide across universities)
 - Official Website: https://iabdul-aal.me/optica_egypt/
 - Contact: opticaegypt@gmail.com
-- LinkedIn: https://www.linkedin.com/company/optica-egypt-local-section
+- LinkedIn: https://www.linkedin.com/company/optica-egypt
 
 ## Executive Committee (5 Officers)
-- Abdulaziz Albadawi, President (Optica ID: 2798420) | Ain Shams University / AUC | Laser Science and Optical Sensors
+- Abdulaziz Albadawi, President (Optica ID: 2798420) | The American University in Cairo (AUC) | Laser Science and Optical Sensors
 - Khaled Ramadan, Vice President (Optica ID: 2798622) | Ain Shams University | Silicon Photonics
 - Mohammed Elsherbiny, Secretary (Optica ID: 2798431) | Ain Shams University | Silicon Photonics
 - Arwa Elsherbiny, Treasurer (Optica ID: 2822044) | Ain Shams University | Quantum Optics
-- Islam Abdulaal, Webmaster | Max Planck School of Photonics (MPSP/MPL) / Alexandria University | Integrated Nanophotonics
+- Islam I. Abdulaal, Webmaster (Website: https://iabdul-aal.me/, Email: contact@iabdul-aal.me) | FAU Erlangen-Nürnberg | Integrated Nanophotonics
 
 ## Operational Committee
 - Mariam Awd (Hussein), Growth Officer (Optica ID: 2798018) | GUC Micro Optics Lab
@@ -34,7 +34,7 @@ Optica approved the charter of the Optica Egypt Local Section on 10 September 20
 ## Senior Faculty Advisory Board
 - Prof. Diaa Khalil | Professor of Photonics, Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Stanford Top 2% Scientist globally.
 - Prof. Yasser Sabry | Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; SPIE Prism Award winner.
-- Prof. Salem Hegazy | Professor of Quantum Optics at Cairo University and Zewail City; State Award for Scientific and Technological Innovation recipient.
+- Assoc. Prof. Salem Hegazy | Associate Professor of Quantum Optics at Cairo University and Zewail City; State Award for Scientific and Technological Innovation recipient.
 
 ## Section Sitemap and Key Endpoints
 - [Homepage](https://iabdul-aal.me/optica_egypt/): Core mission, impact metrics, 3D interactive photonics chip simulation, and latest updates.
