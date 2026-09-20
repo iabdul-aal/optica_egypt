@@ -140,11 +140,16 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
             className="research-stage topic-transition"
             aria-live="polite"
           >
-            {/* Decorative 3-layer depth card */}
+            {/* Decorative 3D wireframe cube */}
             <div className="research-depth-card" aria-hidden="true">
-              <span className="research-axis research-axis-a" />
-              <span className="research-axis research-axis-b" />
-              <span className="research-axis research-axis-c" />
+              <div className="research-cube">
+                <span className="cube-face cube-face--front" />
+                <span className="cube-face cube-face--back" />
+                <span className="cube-face cube-face--right" />
+                <span className="cube-face cube-face--left" />
+                <span className="cube-face cube-face--top" />
+                <span className="cube-face cube-face--bottom" />
+              </div>
             </div>
 
             <div className="research-stage-copy">
