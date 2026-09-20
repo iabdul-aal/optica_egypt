@@ -19,6 +19,24 @@ export default async function AboutPage({ params }: PageProps) {
       <div className="container-page mt-12 grid divide-y divide-white/10 border-y border-white/10 md:grid-cols-2 md:divide-x md:divide-y-0">
         {pillars.map((pillar) => <article key={pillar.title} className="px-1 py-7 md:px-7"><p className="font-mono text-sm font-bold text-[var(--gold)]">{pillar.number}</p><h3 className="mt-3 text-xl font-semibold text-[var(--ink)]">{pillar.title}</h3><p className="mt-3 max-w-sm text-sm leading-6 text-[var(--ink-soft)]">{pillar.body}</p></article>)}
       </div>
+
+      {/* ── Key Milestones ────────────────────────────────────────── */}
+      <div className="container-page mt-16 grid gap-6 border-t border-white/10 pt-12 sm:grid-cols-2">
+        <div className="border border-white/10 bg-[#0d1011] p-6">
+          <p className="eyebrow">Charter Approval</p>
+          <p className="mt-2 font-mono text-xl font-bold text-[var(--gold)]">10 September 2026</p>
+          <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
+            Optica formally approved the establishment of the Optica Egypt Local Section, welcoming Egypt into the global optics society.
+          </p>
+        </div>
+        <div className="border border-white/10 bg-[#0d1011] p-6">
+          <p className="eyebrow">Inauguration Ceremony</p>
+          <p className="mt-2 font-mono text-xl font-bold text-[var(--gold)]">1 November 2026</p>
+          <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
+            Section kick-off gathering bringing together university faculties, researchers, students, and industry partners. Details to follow.
+          </p>
+        </div>
+      </div>
     </section>
   </>
 }

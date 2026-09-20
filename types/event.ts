@@ -1,12 +1,12 @@
 export interface Event {
   id: string
-  title: { en: string; ar: string }
-  description: { en: string; ar: string }
+  title: { en: string; ar?: string }
+  description: { en: string; ar?: string }
   date: string
   startTime?: string
   endTime?: string
   timezone: string
-  location: { en: string; ar: string }
+  location: { en: string; ar?: string }
   format: "in_person" | "online" | "hybrid"
   type: "seminar" | "workshop" | "social" | "competition" | "webinar"
   status: "draft" | "upcoming" | "registration_open" | "registration_closing" | "sold_out" | "completed" | "cancelled"

@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "id": "inauguration-ceremony-section-kickoff",
+    "title": {
+      "en": "Inauguration Ceremony: Section Kick-off"
+    },
+    "description": {
+      "en": "Official inauguration ceremony marking the formal kick-off of the Optica Egypt Local Section. Bringing together students, researchers, universities, and industry partners to celebrate Egypt's charter in the global photonics ecosystem. Venue, keynote speakers, and distinguished guests to be announced."
+    },
+    "date": "2026-11-01",
+    "startTime": "TBA",
+    "timezone": "EET (UTC+2)",
+    "location": {
+      "en": "To Be Announced (Cairo, Egypt)"
+    },
+    "format": "in_person",
+    "type": "seminar",
+    "status": "upcoming",
+    "speakers": [],
+    "tags": [
+      "Kick-off",
+      "Inauguration",
+      "Optica Egypt",
+      "Photonics"
+    ],
+    "published": true
+  }
+]

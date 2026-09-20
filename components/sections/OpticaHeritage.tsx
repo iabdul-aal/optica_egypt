@@ -43,7 +43,7 @@ export function OpticaHeritage({ locale }: Props) {
                 <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--ink-faint)]">Affiliation</p>
                 <p className="mt-1 font-semibold text-[var(--ink)]">Official Local Section</p>
                 <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
-                  Chartered representation across Egyptian universities.
+                  Approved by Optica on 10 September 2026. Chartered representation across Egyptian universities.
                 </p>
               </div>
             </div>
