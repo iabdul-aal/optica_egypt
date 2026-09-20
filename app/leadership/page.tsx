@@ -40,9 +40,9 @@ export default function LeadershipPage() {
               <p className="lede">{dictionary.leadership.executiveIntro}</p>
             </div>
           </ScrollReveal>
-          <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-start">
             {executiveMembers.map((member, index) => (
-              <ScrollReveal key={member.id} animation="fade-up" delay={index * 50} className="h-full">
+              <ScrollReveal key={member.id} animation="fade-up" delay={index * 50}>
                 <MemberCard member={member} locale="en" dictionary={dictionary} />
               </ScrollReveal>
             ))}
@@ -62,9 +62,9 @@ export default function LeadershipPage() {
               <p className="lede">{dictionary.leadership.operationalIntro}</p>
             </div>
           </ScrollReveal>
-          <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 items-start">
             {operationalMembers.map((member, index) => (
-              <ScrollReveal key={member.id} animation="fade-up" delay={index * 50} className="h-full">
+              <ScrollReveal key={member.id} animation="fade-up" delay={index * 50}>
                 <MemberCard member={member} locale="en" dictionary={dictionary} />
               </ScrollReveal>
             ))}
@@ -84,9 +84,9 @@ export default function LeadershipPage() {
               <p className="lede">{dictionary.leadership.advisoryIntro}</p>
             </div>
           </ScrollReveal>
-          <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 items-start">
             {advisoryMembers.map((member, index) => (
-              <ScrollReveal key={member.id} animation="fade-up" delay={index * 50} className="h-full">
+              <ScrollReveal key={member.id} animation="fade-up" delay={index * 50}>
                 <MemberCard member={member} locale="en" dictionary={dictionary} />
               </ScrollReveal>
             ))}

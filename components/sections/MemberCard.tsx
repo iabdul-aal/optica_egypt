@@ -17,7 +17,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
   const hasPhoto = Boolean(member.photo)
 
   return (
-    <article className="group/card border-t border-white/15 pt-5 transition-transform duration-300 ease-out hover:-translate-y-1 flex flex-col h-full">
+    <article className="group/card border-t border-white/15 pt-5 transition-transform duration-300 ease-out hover:-translate-y-1 flex flex-col">
       {/* Portrait: 4:6 (width:height = 2:3) */}
       <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.5)] shrink-0">
         {hasPhoto ? (
@@ -95,7 +95,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
 
       {/* Detailed Profile */}
       {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId) ? (
-        <details className="group mt-auto pt-4">
+        <details className="group pt-4">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
           <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
             {hasBio && (
