@@ -17,9 +17,9 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
   const hasPhoto = Boolean(member.photo)
 
   return (
-    <article className="group/card border-t border-white/15 pt-5 transition-transform duration-300 ease-out hover:-translate-y-1">
+    <article className="group/card border-t border-white/15 pt-5 transition-transform duration-300 ease-out hover:-translate-y-1 flex flex-col h-full">
       {/* Portrait: 4:6 (width:height = 2:3) */}
-      <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.5)]">
+      <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.5)] shrink-0">
         {hasPhoto ? (
           <>
             <Image
@@ -41,20 +41,24 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       </div>
 
       {/* Info row */}
-      <div className="mt-5 flex items-start justify-between gap-4">
-        <div>
-          <p className="eyebrow">{getLocalizedText(member.role, locale)}</p>
-          <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{name}</h3>
-          {member.institution.en && (
-            <p className="mt-1 text-sm text-[var(--ink-soft)]">{getLocalizedText(member.institution, locale)}</p>
+      <div className="mt-5 flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="eyebrow truncate">{getLocalizedText(member.role, locale)}</p>
+          <h3 className="mt-2 text-lg font-semibold text-[var(--ink)] leading-snug">{name}</h3>
+          {member.institution.en ? (
+            <p className="mt-1 text-sm text-[var(--ink-soft)] leading-snug min-h-[2.6rem] flex items-start">
+              {getLocalizedText(member.institution, locale)}
+            </p>
+          ) : (
+            <div className="mt-1 min-h-[2.6rem]" />
           )}
-          {member.tier === "advisory" && member.specializedSector && (
-            <p className="mt-2 text-[0.68rem] font-mono font-medium text-[var(--gold)]">
-              {member.specializedSector}
+          {member.tier === "advisory" && (
+            <p className="mt-2 text-[0.68rem] font-mono font-medium text-[var(--gold)] leading-snug min-h-[2.5rem]">
+              {member.specializedSector || ""}
             </p>
           )}
         </div>
-        <div className="flex shrink-0 gap-2">
+        <div className="flex shrink-0 gap-2 pt-0.5">
           {member.email && member.email !== "" && (
             <a
               href={`mailto:${member.email}`}
@@ -91,7 +95,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
 
       {/* Detailed Profile */}
       {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId || member.website) && (
-        <details className="group mt-5">
+        <details className="group mt-4">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
           <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
             {hasBio && (

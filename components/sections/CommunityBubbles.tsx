@@ -115,7 +115,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
   const [isCenterHovered, setIsCenterHovered] = useState(false)
-  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null)
+  const mousePosRef = useRef<{ x: number; y: number } | null>(null)
 
   // Animated node coordinates
   const [nodePositions, setNodePositions] = useState(
@@ -143,13 +143,14 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
       setCenterPos({ x: cX, y: cY })
 
       // Outer bubbles organic floating + subtle mouse influence
+      const mouse = mousePosRef.current
       const newPos = NODES.map((node) => {
         let x = node.baseX + Math.sin(elapsed * node.speedX + node.phase) * node.ampX
         let y = node.baseY + Math.cos(elapsed * node.speedY + node.phase) * node.ampY
 
-        if (mousePos) {
-          const dx = mousePos.x - x
-          const dy = mousePos.y - y
+        if (mouse) {
+          const dx = mouse.x - x
+          const dy = mouse.y - y
           const dist = Math.sqrt(dx * dx + dy * dy)
           if (dist < 120 && dist > 0) {
             const force = (1 - dist / 120) * 12
@@ -169,7 +170,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
 
     animationFrameId = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animationFrameId)
-  }, [mousePos])
+  }, [])
 
   // Mouse move handler for interactive parallax
   const handleMouseMove = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
@@ -177,14 +178,14 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
     if (!rect.width || !rect.height) return
     const scaleX = 620 / rect.width
     const scaleY = 360 / rect.height
-    setMousePos({
+    mousePosRef.current = {
       x: (e.clientX - rect.left) * scaleX,
       y: (e.clientY - rect.top) * scaleY,
-    })
+    }
   }, [])
 
   const handleMouseLeave = useCallback(() => {
-    setMousePos(null)
+    mousePosRef.current = null
     setHoveredNode(null)
     setIsCenterHovered(false)
   }, [])
