@@ -109,12 +109,75 @@
     "systemBody": "Each group brings a different kind of knowledge. The section exists to make those perspectives more visible to one another.",
     "action": "Get involved",
     "statement": "The aim is simple: make it easier for people working with light to find each other.",
+    "outcomesLabel": "Core Outcomes",
+    "focusLabel": "Primary Focus",
+    "pathwayLabel": "Immediate Pathway",
     "groups": {
-      "students": { "title": "Students", "body": "Discover a field, meet mentors, and make the next question easier to ask." },
-      "researchers": { "title": "Researchers", "body": "Exchange ideas, find collaborators, and connect work to a broader technical community." },
-      "academia": { "title": "Academia", "body": "Create stronger links between learning environments, laboratories, and future careers." },
-      "industry": { "title": "Industry", "body": "Share practical perspective and help connect research with real-world application." },
-      "startups": { "title": "Startups", "body": "Explore a growing network of people building with light, from sensing to communications." }
+      "students": {
+        "title": "Students and Early Career",
+        "tag": "TALENT AND ACADEMY",
+        "audience": "Undergraduate, Master's, and Doctoral Candidates",
+        "focus": "Transition from academic coursework to active research, hands-on laboratory experience, and international career trajectories.",
+        "outcomes": [
+          "Practical skill development through hands-on experimental workshops and photonic simulation tools.",
+          "Access to Optica international travel grants, student conference fellowships, and publishing subsidies.",
+          "Direct mentorship connections with university faculty, industrial labs, and student chapter networks."
+        ],
+        "entryPoint": "Join or launch a Student Chapter at your campus and take part in upcoming technical accelerators.",
+        "body": "Transition from academic coursework to active research, hands-on laboratory experience, and international career trajectories."
+      },
+      "researchers": {
+        "title": "Researchers and Principal Investigators",
+        "tag": "R AND D LABS",
+        "audience": "Faculty Members, Postdoctoral Fellows, and Research Scientists",
+        "focus": "Accelerate high-impact research, establish international scientific collaborations, and publish in leading peer-reviewed journals.",
+        "outcomes": [
+          "Cross-institutional collaboration across Egyptian research groups and regional photonics hubs.",
+          "Direct engagement with visiting international scholars, Optica traveling lecturers, and editorial boards.",
+          "Shared visibility for laboratory facilities, experimental apparatus, and joint research proposals."
+        ],
+        "entryPoint": "Participate in technical symposiums, submit papers to section workshops, or host visiting lecturers.",
+        "body": "Accelerate high-impact research, establish international scientific collaborations, and publish in leading peer-reviewed journals."
+      },
+      "academia": {
+        "title": "Academia and University Educators",
+        "tag": "HIGHER EDUCATION",
+        "audience": "Department Chairs, Professors, and Curriculum Directors",
+        "focus": "Enrich optics and photonics curricula with contemporary research standards and foster sustained institutional recognition.",
+        "outcomes": [
+          "Curriculum enrichment with modern computational photonics and laboratory demonstration modules.",
+          "Institutional sponsorship and formal chartering of recognized campus student chapters.",
+          "Structured industry-academia liaison channels for student internships and capstone projects."
+        ],
+        "entryPoint": "Charter an Optica Student Chapter at your institution and co-host regional academic forums.",
+        "body": "Enrich optics and photonics curricula with contemporary research standards and foster sustained institutional recognition."
+      },
+      "industry": {
+        "title": "Industry and Engineering",
+        "tag": "TELECOM AND MANUFACTURING",
+        "audience": "Optical Engineers, Telecom Specialists, and Technical Directors",
+        "focus": "Solve complex engineering bottlenecks, upskill technical workforces, and source specialized photonics engineering talent.",
+        "outcomes": [
+          "Targeted professional training in fiber optics, optical transceivers, and photonic integrated circuits.",
+          "Direct access to a specialized talent pipeline of Egyptian physics and photonics graduates.",
+          "Collaborative R and D partnerships to de-risk optical prototyping, testing, and validation."
+        ],
+        "entryPoint": "Partner on industry masterclasses, sponsor technical hackathons, or engage the talent network.",
+        "body": "Solve complex engineering bottlenecks, upskill technical workforces, and source specialized photonics engineering talent."
+      },
+      "startups": {
+        "title": "Startups and Innovators",
+        "tag": "DEEPTECH VENTURES",
+        "audience": "Hardware Founders, Spinout Teams, and Technology Incubators",
+        "focus": "Translate scientific discoveries into viable commercial hardware, secure fabrication access, and scale photonics ventures.",
+        "outcomes": [
+          "Access to cleanroom facilities, characterization testbeds, and multi-project wafer (MPW) runs.",
+          "Strategic mentorship on photonics intellectual property (IP), techno-economic modeling, and commercialization.",
+          "Introductions to deeptech investors, innovation grants, and global photonics accelerator programs."
+        ],
+        "entryPoint": "Showcase prototypes at section demo days and connect with technology transfer advisors.",
+        "body": "Translate scientific discoveries into viable commercial hardware, secure fabrication access, and scale photonics ventures."
+      }
     }
   },
   "events": {
