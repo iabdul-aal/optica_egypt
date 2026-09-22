@@ -15,7 +15,7 @@ export function EventCard({ event, locale, dictionary }: EventCardProps) {
   const registerLabel = event.status === "upcoming" ? dictionary.events.earlyRegister : dictionary.eventDetail.register
 
   return (
-    <article className="group grid gap-5 border-b border-white/10 p-5 sm:p-7 transition-colors duration-200 hover:bg-white/[0.025] rounded-sm sm:grid-cols-[9rem_1fr_auto] sm:items-start sm:gap-7">
+    <article className="group grid gap-5 border-b border-[var(--line-subtle)] p-5 sm:p-7 transition-colors duration-200 hover:bg-[var(--line-subtle)] rounded-sm sm:grid-cols-[9rem_1fr_auto] sm:items-start sm:gap-7">
       <time dateTime={event.date} className="font-mono text-sm font-bold tracking-tight text-[var(--gold)]">
         {formatEventDate(event.date, locale, { day: "2-digit", month: "short", year: "numeric" })}
       </time>

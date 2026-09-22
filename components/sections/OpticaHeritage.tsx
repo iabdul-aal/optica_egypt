@@ -6,7 +6,7 @@ type Props = { locale: Locale }
 
 export function OpticaHeritage({ locale }: Props) {
   return (
-    <section className="section-space bg-[#080a0b] border-t border-[var(--line)]">
+    <section className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
       <div className="container-page">
         <div className="grid gap-12 lg:grid-cols-[1.6fr_0.9fr] lg:gap-16 lg:items-center">
           {/* Left: narrative */}

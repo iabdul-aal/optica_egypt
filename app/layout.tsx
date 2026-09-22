@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { LenisProvider } from "@/components/providers/LenisProvider"
 import { ScrollProgress } from "@/components/ui/ScrollProgress"
 import "@/app/globals.css"
@@ -104,7 +105,7 @@ const jsonLd = {
         "@type": "ContactPoint",
         email: siteConfig.email,
         contactType: "administrative and general inquiries",
-        availableLanguage: ["English", "Arabic"],
+        availableLanguage: ["English"],
       },
       areaServed: {
         "@type": "Country",
@@ -127,7 +128,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="alternate" type="text/markdown" href={`${siteUrl}/llms.txt`} title="LLM Context Summary" />
         <script
@@ -136,15 +137,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body className="font-latin antialiased">
-        <LenisProvider>
-          <ScrollProgress />
-          <a href="#main-content" className="skip-link">{dictionary.common.skipToContent}</a>
-          <Header locale="en" dictionary={dictionary} />
-          <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">
-            {children}
-          </main>
-          <Footer locale="en" dictionary={dictionary} />
-        </LenisProvider>
+        <ThemeProvider>
+          <LenisProvider>
+            <ScrollProgress />
+            <a href="#main-content" className="skip-link">{dictionary.common.skipToContent}</a>
+            <Header locale="en" dictionary={dictionary} />
+            <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">
+              {children}
+            </main>
+            <Footer locale="en" dictionary={dictionary} />
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

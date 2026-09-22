@@ -108,10 +108,9 @@ Do not invent ad-hoc `px-` values at page level.
 
 ### Navigation
 
-Seven items only: Home, About, Events, Leadership, Outreach, Resources, Join Us.
-Do not add items without updating `components/navigation.tsx` and
-consulting `docs/PRODUCT.md`. The locale switcher (AR / EN) appears at the
-far end of the navigation bar and is not counted as a nav item.
+Navigation items are organized into functional groups (About, Community, Program, News) with
+a prominent primary CTA for "Get involved". Theme toggle (light / dark mode) appears in the
+header actions.
 
 ### Section rhythm
 
@@ -126,13 +125,6 @@ Permitted for repeated records: events, members, outreach, resources.
 - Background: `var(--card)` with `border border-border`.
 - No card-in-card nesting.
 - No drop shadows beyond `shadow-sm`.
-
-### RTL layout
-
-RTL is applied automatically via `dir="rtl"` on the root `html` element.
-Do not use `rtl:` Tailwind overrides for layout properties already handled
-by the root direction. Use `rtl:` only for specific visual adjustments that
-the root direction does not cover (e.g., rotating a directional chevron icon).
 
 ---
 
@@ -170,7 +162,7 @@ Defined in `app/globals.css`. Use these instead of inventing custom classes.
 | `outreach-record.tsx` | Single outreach activity card with impact metrics | Data from `data/outreach.json` |
 | `news-feed.tsx` | Latest announcements feed | Data from `data/news.json`; no hardcoded news |
 | `resource-card.tsx` | Single curated resource link card | Data from `data/resources.json` |
-| `locale-switcher.tsx` | AR / EN toggle in navigation | Uses next-intl `Link`; not a plain `<a>` |
+| `theme-toggle.tsx` | Light / dark mode toggle in navigation | Uses next-themes `useTheme` |
 
 ---
 

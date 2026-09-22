@@ -7,13 +7,17 @@
   },
   "nav": {
     "home": "Home",
-    "about": "About",
+    "about": "About the Section",
     "events": "Events",
     "community": "Community",
     "leadership": "Leadership",
     "outreach": "Outreach",
     "resources": "Resources",
-    "join": "Get involved"
+    "news": "News",
+    "join": "Get involved",
+    "groupAbout": "About",
+    "groupCommunity": "Community",
+    "groupProgram": "Program"
   },
   "common": {
     "allEvents": "All events",
@@ -256,5 +260,18 @@
     "title": "This optical path does not exist.",
     "body": "Return to the Optica Egypt Local Section homepage.",
     "action": "Go home"
+  },
+  "news": {
+    "eyebrow": "Latest Updates",
+    "title": "News from Optica Egypt.",
+    "intro": "Announcements, achievements, and updates from the section.",
+    "noNews": "No news items yet. Check back soon.",
+    "readMore": "Read more",
+    "categories": {
+      "announcement": "Announcement",
+      "achievement": "Achievement",
+      "update": "Update",
+      "opportunity": "Opportunity"
+    }
   }
 }

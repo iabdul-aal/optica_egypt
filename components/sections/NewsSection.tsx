@@ -9,7 +9,7 @@ type NewsSectionProps = {
 
 export function NewsSection({ news, locale, dictionary }: NewsSectionProps) {
   return (
-    <section className="section-space border-y border-white/10 bg-[#0c0e0f]">
+    <section className="section-space border-y border-[var(--line-subtle)] bg-[var(--surface-raised)]">
       <div className="container-page">
         <div className="section-split-heading">
           <div>

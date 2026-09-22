@@ -10,6 +10,7 @@ const ROUTES = [
   "/leadership",
   "/outreach",
   "/resources",
+  "/news",
   "/join",
 ]
 

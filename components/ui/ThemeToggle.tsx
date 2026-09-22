@@ -6,7 +6,7 @@ import { Sun, Moon } from "lucide-react"
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -17,23 +17,29 @@ export function ThemeToggle() {
       <button
         type="button"
         aria-label="Toggle theme"
-        className="w-8 h-8 flex items-center justify-center border border-white/10 text-slate-400 opacity-70"
+        className="theme-toggle-btn opacity-60 cursor-default"
+        disabled
       >
-        <span className="w-3 h-3 border border-current opacity-30" />
+        <span className="w-4 h-4" />
       </button>
     )
   }
 
-  const currentTheme = theme === "system" ? resolvedTheme : theme
+  const isDark = resolvedTheme === "dark"
 
   return (
     <button
       type="button"
-      onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-      aria-label="Toggle theme"
-      className="w-8 h-8 flex items-center justify-center border border-white/10 text-slate-400 hover:text-[#fa8716] hover:border-[#fa8716] transition-colors"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      title={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      className="theme-toggle-btn"
     >
-      {currentTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+      {isDark ? (
+        <Sun size={16} aria-hidden="true" className="text-[var(--gold)]" />
+      ) : (
+        <Moon size={16} aria-hidden="true" className="text-[var(--gold)]" />
+      )}
     </button>
   )
 }

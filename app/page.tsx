@@ -29,10 +29,10 @@ export default function HomePage() {
 
       {/* ── Community: pentagon network diagram ────────────────── */}
       <ScrollReveal animation="fade-up" delay={60}>
-        <section className="section-space relative overflow-hidden bg-[#0a0c0d]">
+        <section className="section-space relative overflow-hidden bg-[var(--surface)]">
           <div className="scientific-grid absolute inset-0 opacity-50" aria-hidden="true" />
           <div className="container-page relative">
-            <div className="grid gap-10 border-b border-white/15 pb-9 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+            <div className="grid gap-10 border-b border-[var(--line)] pb-9 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
               <div>
                 <p className="eyebrow">{dictionary.home.community.eyebrow}</p>
                 <h2 className="section-title mt-3 max-w-xl">{dictionary.home.community.title}</h2>
@@ -44,7 +44,7 @@ export default function HomePage() {
               {/* Node cards */}
               <div className="order-2 grid gap-x-7 gap-y-6 sm:grid-cols-2 lg:order-1">
                 {nodes.map((node, index) => (
-                  <article className="border-t border-white/15 pt-4" key={node.title}>
+                  <article className="border-t border-[var(--line)] pt-4" key={node.title}>
                     <p className="font-mono text-[0.68rem] font-bold text-[var(--gold)]">0{index + 1}</p>
                     <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{node.title}</h3>
                     <p className="mt-1 text-sm text-[var(--ink-soft)]">{node.detail}</p>

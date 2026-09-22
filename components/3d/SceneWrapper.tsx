@@ -6,7 +6,7 @@ import { getAssetPath } from "@/lib/utils"
 
 interface SceneWrapperProps {
   fallbackSrc?: string
-  fallbackAlt?: { en: string; ar?: string }
+  fallbackAlt?: { en: string }
   fallbackPlaceholder?: ReactNode
   children: ReactNode
   className?: string

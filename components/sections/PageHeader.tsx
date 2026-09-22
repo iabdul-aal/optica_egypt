@@ -6,7 +6,7 @@ type PageHeaderProps = {
 
 export function PageHeader({ eyebrow, title, intro }: PageHeaderProps) {
   return (
-    <section className="scientific-grid border-b border-white/10 bg-[#0d1011] text-[var(--ink)]">
+    <section className="scientific-grid border-b border-[var(--line-subtle)] bg-[var(--surface-raised)] text-[var(--ink)]">
       <div className="container-page grid gap-8 py-16 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:py-24">
         <div className="lg:col-span-3">
           <p className="border-l-2 border-[var(--gold)] pl-3 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[var(--gold)]">

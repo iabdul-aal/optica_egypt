@@ -45,4 +45,5 @@ Optica approved the charter of the Optica Egypt Local Section on 10 September 20
 - [Community](https://iabdul-aal.me/optica_egypt/community/): Student chapter coordination, academic research groups, and industry liaisons.
 - [Outreach](https://iabdul-aal.me/optica_egypt/outreach/): High school and undergraduate STEM roadshows, lab tours, and public demos.
 - [Resources](https://iabdul-aal.me/optica_egypt/resources/): Open-access optics papers, simulation tools, and educational guides.
+- [News](https://iabdul-aal.me/optica_egypt/news/): Official announcements, charter milestones, and community updates.
 - [Join](https://iabdul-aal.me/optica_egypt/join/): Direct membership registration and contact form.

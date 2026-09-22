@@ -11,7 +11,7 @@ type EventRegistrationFormProps = {
 
 export function EventRegistrationForm({ eventTitle, eventDate, email }: EventRegistrationFormProps) {
   const [prepared, setPrepared] = useState(false)
-  const fieldClass = "border border-white/15 bg-[#0d1011] px-4 py-3 text-[var(--ink)] outline-none transition-colors focus:border-[var(--gold)]"
+  const fieldClass = "border border-[var(--line)] bg-[var(--surface-raised)] px-4 py-3 text-[var(--ink)] outline-none transition-colors focus:border-[var(--gold)]"
 
   function prepareRegistration(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()

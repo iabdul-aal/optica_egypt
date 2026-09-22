@@ -17,7 +17,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
   const hasPhoto = Boolean(member.photo)
 
   return (
-    <article className="group/card border-t border-white/15 pt-5 transition-transform duration-300 ease-out hover:-translate-y-1 flex flex-col">
+    <article className="group/card border-t border-[var(--line)] pt-5 transition-transform duration-300 ease-out hover:-translate-y-1 flex flex-col">
       {/* Portrait: 4:6 (width:height = 2:3) */}
       <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.5)] shrink-0">
         {hasPhoto ? (
@@ -63,7 +63,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
             <a
               href={`mailto:${member.email}`}
               aria-label={`Email ${name}`}
-              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-white/15 text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
+              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
             >
               <Mail size={13} aria-hidden="true" />
             </a>
@@ -74,7 +74,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${name}'s personal website`}
-              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-white/15 text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
+              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
             >
               <Globe size={13} aria-hidden="true" />
             </a>
@@ -85,7 +85,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={dictionary.leadership.linkedin.replace("{name}", name)}
-              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-white/15 text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
+              className="w-7 h-7 inline-flex items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink-soft)] hover:text-[var(--gold)] hover:border-[var(--gold)] hover:bg-[rgba(215,174,91,0.08)] hover:-translate-y-0.5 transition-all duration-200"
             >
               <Linkedin size={13} aria-hidden="true" />
             </a>
@@ -97,7 +97,7 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       {(hasBio || member.academicBackground || member.professionalFocus || member.achievements || member.opticaId) ? (
         <details className="group pt-4">
           <summary className="text-link cursor-pointer list-none">{dictionary.leadership.readBio}</summary>
-          <div className="mt-4 space-y-3 border-t border-white/10 pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
+          <div className="mt-4 space-y-3 border-t border-[var(--line-subtle)] pt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
             {hasBio && (
               <p className="text-sm leading-6 text-[var(--ink)]">
                 {getLocalizedText(member.bio, locale)}

@@ -298,7 +298,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
             cx={centerPos.x}
             cy={centerPos.y}
             r={CENTER.radius}
-            fill="#090c0d"
+            fill="var(--canvas)"
             stroke={isCenterHovered ? "#f0d79c" : "#d7ae5b"}
             strokeWidth={isCenterHovered ? 2.5 : 2}
             filter={isCenterHovered ? "url(#goldGlow)" : undefined}
@@ -310,7 +310,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
             cx={centerPos.x}
             cy={centerPos.y}
             r={CENTER.innerRadius}
-            stroke="#f3efe7"
+            stroke="var(--ink)"
             strokeWidth="1.2"
             strokeDasharray="4 6"
             strokeDashoffset={dashOffset * -1}
@@ -321,7 +321,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
           <text
             x={centerPos.x}
             y={centerPos.y - 5}
-            fill="#f7f2e8"
+            fill="var(--ink)"
             textAnchor="middle"
             fontSize="14"
             fontFamily="Arial, sans-serif"
@@ -375,7 +375,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
                 cx={pos.x}
                 cy={pos.y}
                 r={isHovered ? node.radius + 2 : node.radius}
-                fill="#101415"
+                fill="var(--surface)"
                 stroke={isHovered ? "#f0d79c" : "#d7ae5b"}
                 strokeWidth={isHovered ? 2.2 : 1.6}
                 filter={isHovered ? "url(#goldGlow)" : undefined}
@@ -406,7 +406,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
               <text
                 x={pos.x + node.textOffsetX}
                 y={pos.y + node.textOffsetY}
-                fill={isHovered ? "#f0d79c" : "#b8b1a4"}
+                fill={isHovered ? "#f0d79c" : "var(--ink-soft)"}
                 textAnchor={node.textAnchor}
                 dominantBaseline={node.id === "academia" ? "central" : undefined}
                 fontSize="12"
