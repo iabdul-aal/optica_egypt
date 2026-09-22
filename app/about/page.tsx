@@ -20,7 +20,7 @@ export default function AboutPage() {
       <PageHeader eyebrow={dictionary.about.eyebrow} title={dictionary.about.title} intro={dictionary.about.intro} />
       <section className="section-space">
         <ScrollReveal animation="fade-up" delay={30}>
-          <div className="container-page grid gap-9 border-b border-white/15 pb-11 lg:grid-cols-[.85fr_1.15fr]">
+          <div className="container-page grid gap-9 border-b border-[var(--line)] pb-11 lg:grid-cols-[.85fr_1.15fr]">
             <div>
               <p className="eyebrow">{dictionary.about.purposeEyebrow}</p>
               <h2 className="section-title mt-3">{dictionary.about.purposeTitle}</h2>
@@ -31,18 +31,18 @@ export default function AboutPage() {
 
         <ScrollReveal animation="fade-up" delay={50}>
           <div className="container-page mt-12">
-            <div className="grid border border-white/15 md:grid-cols-2">
+            <div className="grid border border-[var(--line)] md:grid-cols-2">
               {pillars.map((pillar, index) => (
                 <article
                   key={pillar.title}
-                  className={`group/pillar p-6 sm:p-8 transition-colors duration-200 hover:bg-white/[0.02] ${
-                    index % 2 === 1 ? "md:border-l md:border-white/15" : ""
+                  className={`group/pillar p-6 sm:p-8 transition-colors duration-200 hover:bg-[var(--line-subtle)] ${
+                    index % 2 === 1 ? "md:border-l md:border-[var(--line)]" : ""
                   } ${index > 0 ? "border-t md:border-t-0" : ""} ${
-                    index >= 2 ? "md:border-t md:border-white/15" : ""
+                    index >= 2 ? "md:border-t md:border-[var(--line)]" : ""
                   }`}
                 >
                   <p className="font-mono text-sm font-bold text-[var(--gold)]">{pillar.number}</p>
-                  <h3 className="mt-3 text-xl font-semibold text-[var(--ink)] group-hover/pillar:text-white transition-colors">{pillar.title}</h3>
+                  <h3 className="mt-3 text-xl font-semibold text-[var(--ink)] group-hover/pillar:text-[var(--gold)] transition-colors">{pillar.title}</h3>
                   <p className="mt-3 max-w-sm text-sm leading-6 text-[var(--ink-soft)]">{pillar.body}</p>
                 </article>
               ))}
@@ -51,7 +51,7 @@ export default function AboutPage() {
         </ScrollReveal>
 
         {/* ── Key Milestones ────────────────────────────────────────── */}
-        <div className="container-page mt-16 grid gap-6 border-t border-white/10 pt-12 sm:grid-cols-2">
+        <div className="container-page mt-16 grid gap-6 border-t border-[var(--line-subtle)] pt-12 sm:grid-cols-2">
           <ScrollReveal animation="fade-up" delay={40}>
             <div className="site-card p-6">
               <p className="eyebrow">Charter Approval</p>

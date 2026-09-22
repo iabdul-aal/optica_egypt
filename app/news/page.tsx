@@ -37,10 +37,10 @@ export default function NewsPage() {
           {newsItems.length === 0 ? (
             <p className="lede">{dictionary.news.noNews}</p>
           ) : (
-            <div className="border-y border-white/15">
+            <div className="border-y border-[var(--line)]">
               {newsItems.map((item, index) => (
                 <ScrollReveal key={item.id} animation="fade-up" delay={index * 40}>
-                  <div className="group grid gap-4 border-b border-white/10 py-8 sm:grid-cols-[7rem_1fr_auto] sm:items-start sm:gap-6">
+                  <div className="group grid gap-4 border-b border-[var(--line-subtle)] py-8 sm:grid-cols-[7rem_1fr_auto] sm:items-start sm:gap-6">
                     {/* Left column: date + category */}
                     <div className="flex flex-col gap-1.5">
                       <span className="flex items-center gap-1.5 text-[0.65rem] font-bold tracking-[0.12em] text-[var(--gold)] uppercase">

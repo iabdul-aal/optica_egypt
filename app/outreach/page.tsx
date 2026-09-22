@@ -46,7 +46,7 @@ export default function OutreachPage() {
       </section>
       <ScrollReveal animation="fade-up" delay={40}>
         <section className="section-space">
-          <div className="container-page border-y border-white/15 py-10">
+          <div className="container-page border-y border-[var(--line)] py-10">
             <p className="eyebrow">{dictionary.outreach.hostEyebrow}</p>
             <h2 className="mt-3 max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-[var(--ink)]">
               {dictionary.outreach.hostTitle}

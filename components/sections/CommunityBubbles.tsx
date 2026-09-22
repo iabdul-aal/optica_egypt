@@ -355,6 +355,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
               className="cursor-pointer transition-all duration-200"
               onMouseEnter={() => setHoveredNode(node.id)}
               onMouseLeave={() => setHoveredNode(null)}
+              onClick={() => setHoveredNode(hoveredNode === node.id ? null : node.id)}
             >
               {/* Outer node pulse halo on hover */}
               {isHovered && (

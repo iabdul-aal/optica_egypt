@@ -77,6 +77,16 @@ export function Header({ locale, dictionary }: HeaderProps) {
     return () => window.removeEventListener("keydown", closeOnEscape)
   }, [])
 
+  useEffect(() => {
+    if (isOpen) {
+      const originalStyle = document.body.style.overflow
+      document.body.style.overflow = "hidden"
+      return () => {
+        document.body.style.overflow = originalStyle
+      }
+    }
+  }, [isOpen])
+
   function isCurrent(path: string) {
     const href = localizedHref(locale, path)
     return pathname === href || (path !== "/" && pathname.startsWith(`${href}/`))
@@ -169,6 +179,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
               href={localizedHref(locale)}
               className="mobile-nav-link"
               aria-current={isCurrent("/") ? "page" : undefined}
+              onClick={() => setIsOpen(false)}
             >
               {dictionary.nav.home}
             </Link>
@@ -181,6 +192,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
                     href={localizedHref(locale, item.path)}
                     className="mobile-nav-link"
                     aria-current={isCurrent(item.path) ? "page" : undefined}
+                    onClick={() => setIsOpen(false)}
                   >
                     {dictionary.nav[item.key]}
                   </Link>
@@ -216,6 +228,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
                           href={localizedHref(locale, sub.path)}
                           className={cn("mobile-nav-sub-link", isCurrent(sub.path) && "mobile-nav-sub-link-current")}
                           aria-current={isCurrent(sub.path) ? "page" : undefined}
+                          onClick={() => setIsOpen(false)}
                         >
                           {dictionary.nav[sub.key]}
                         </Link>
@@ -231,7 +244,11 @@ export function Header({ locale, dictionary }: HeaderProps) {
               <ThemeToggle />
             </div>
 
-            <Link href={localizedHref(locale, "/join")} className="btn-primary mobile-join">
+            <Link
+              href={localizedHref(locale, "/join")}
+              className="btn-primary mobile-join"
+              onClick={() => setIsOpen(false)}
+            >
               {dictionary.nav.join}
             </Link>
           </nav>

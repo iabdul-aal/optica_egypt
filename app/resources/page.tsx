@@ -22,14 +22,14 @@ export default function ResourcesPage() {
       <PageHeader eyebrow={dictionary.resources.eyebrow} title={dictionary.resources.title} intro={dictionary.resources.intro} />
       <section className="section-space">
         <div className="container-page">
-          <div className="border-y border-white/15">
+          <div className="border-y border-[var(--line)]">
             {resources.map((resource, index) => (
               <ScrollReveal key={resource.id} animation="fade-up" delay={index * 40}>
                 <a
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group grid gap-4 border-b border-white/10 py-7 transition-colors hover:bg-white/[0.025] sm:grid-cols-[3.5rem_8rem_1fr_auto] sm:items-start sm:gap-6"
+                  className="group grid gap-4 border-b border-[var(--line-subtle)] py-7 transition-colors hover:bg-[var(--line-subtle)] sm:grid-cols-[3.5rem_8rem_1fr_auto] sm:items-start sm:gap-6"
                 >
                   <span className="px-1 font-mono text-sm font-bold text-[var(--gold)]">{String(index + 1).padStart(2, "0")}</span>
                   <span className="px-1 text-[0.68rem] font-bold tracking-[0.12em] text-[var(--ink-soft)]">

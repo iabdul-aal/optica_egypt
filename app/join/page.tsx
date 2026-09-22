@@ -31,9 +31,9 @@ export default function JoinPage() {
           <div>
             <p className="eyebrow">Why join</p>
             <h2 className="section-title mt-3">Come as you are. Grow from there.</h2>
-            <ul className="mt-8 grid gap-0 border-y border-white/15">
+            <ul className="mt-8 grid gap-0 border-y border-[var(--line)]">
               {reasons.map((reason, index) => (
-                <li key={reason} className="flex gap-4 border-b border-white/10 py-4 text-sm leading-6 text-[var(--ink-soft)] last:border-b-0">
+                <li key={reason} className="flex gap-4 border-b border-[var(--line-subtle)] py-4 text-sm leading-6 text-[var(--ink-soft)] last:border-b-0">
                   <span className="font-mono text-[var(--gold)]">0{index + 1}</span>
                   {reason}
                 </li>

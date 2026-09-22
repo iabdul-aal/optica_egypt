@@ -35,7 +35,7 @@ export default function EventsPage() {
 
           {events.length === 0 ? (
             <ScrollReveal animation="fade-up" delay={80}>
-              <div className="border-b border-white/10 py-10">
+              <div className="border-b border-[var(--line-subtle)] py-10">
                 <h3 className="text-xl font-semibold text-[var(--ink)]">{dictionary.events.emptyTitle}</h3>
                 <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">{dictionary.events.emptyBody}</p>
               </div>
