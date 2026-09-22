@@ -324,7 +324,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
             fill="var(--ink)"
             textAnchor="middle"
             fontSize="14"
-            fontFamily="Arial, sans-serif"
+            fontFamily="var(--font-display), Montserrat, sans-serif"
             fontWeight="800"
             letterSpacing="0.06em"
           >
@@ -336,7 +336,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
             fill="#d7ae5b"
             textAnchor="middle"
             fontSize="12"
-            fontFamily="Arial, sans-serif"
+            fontFamily="var(--font-display), Montserrat, sans-serif"
             fontWeight="800"
             letterSpacing="0.1em"
           >
@@ -410,7 +410,7 @@ export function CommunityBubbles({ diagramLabel }: CommunityBubblesProps) {
                 textAnchor={node.textAnchor}
                 dominantBaseline={node.id === "academia" ? "central" : undefined}
                 fontSize="12"
-                fontFamily="Arial, sans-serif"
+                fontFamily="var(--font-latin), Inter, sans-serif"
                 fontWeight={isHovered ? "700" : "600"}
                 letterSpacing="0.08em"
                 className="transition-colors duration-200"

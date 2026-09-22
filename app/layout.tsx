@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Inter, Montserrat } from "next/font/google"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
@@ -7,6 +8,18 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress"
 import "@/app/globals.css"
 import { getDictionary } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+})
 
 type RootLayoutProps = Readonly<{
   children: React.ReactNode
@@ -136,7 +149,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-latin antialiased">
+      <body className={`${inter.variable} ${montserrat.variable} font-latin antialiased`}>
         <ThemeProvider>
           <LenisProvider>
             <ScrollProgress />
