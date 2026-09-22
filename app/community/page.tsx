@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Compass, CheckCircle2 } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getDictionary, localizedHref } from "@/lib/locales"
@@ -32,11 +32,11 @@ export default function CommunityPage() {
               <p className="lede mt-4">{dictionary.community.systemBody}</p>
 
               <div className="pt-6 border-t border-[var(--line-subtle)] space-y-3">
-                <div className="flex items-center gap-3 text-xs font-mono text-[var(--ink-faint)]">
-                  <span className="w-2 h-2 rounded-full bg-[var(--gold)]" />
-                  <span>5 ECOSYSTEM PATHWAYS</span>
-                  <span>{"//"}</span>
-                  <span>OPEN ACCESS</span>
+                <div className="flex items-center gap-2.5 text-xs font-medium text-[var(--ink-soft)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+                  <span>5 Ecosystem Pathways</span>
+                  <span className="text-[var(--line)]">·</span>
+                  <span>Open Access</span>
                 </div>
                 <p className="text-xs text-[var(--ink-soft)] leading-relaxed">
                   Every pathway is built around concrete, practical outcomes designed to eliminate institutional silos and accelerate Egypt&apos;s photonics capacity.
@@ -49,62 +49,63 @@ export default function CommunityPage() {
             </div>
           </ScrollReveal>
 
-          <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
+          <div className="space-y-6">
             {groups.map((group, index) => (
               <ScrollReveal key={group.key} animation="fade-up" delay={index * 40}>
-                <article className="py-8 sm:py-10 transition-colors duration-200">
-                  {/* Top Bar: Identifier, Category Tag, and Audience Scope */}
+                <article className="group rounded-xl border border-[var(--line)] bg-[var(--surface-raised)]/25 hover:bg-[var(--surface-raised)]/60 hover:border-[var(--gold)]/40 p-6 sm:p-8 transition-all duration-300 relative shadow-xs">
+                  {/* Card Header: Pathway Index, Track, and Audience Role */}
                   <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs font-bold text-[var(--gold)]">
-                        {"//"} 0{index + 1}
+                    <div className="flex items-center gap-2.5">
+                      <span className="flex h-6 w-6 items-center justify-center rounded bg-[var(--gold)]/15 text-[11px] font-semibold text-[var(--gold)] font-mono">
+                        0{index + 1}
                       </span>
-                      <span className="font-mono text-[11px] font-semibold tracking-wider uppercase text-[var(--ink-faint)]">
+                      <span className="text-xs font-semibold tracking-wide text-[var(--ink-soft)]">
                         {group.tag}
                       </span>
                     </div>
-                    <span className="rounded-full bg-[var(--surface-raised)] px-2.5 py-0.5 font-mono text-[11px] text-[var(--ink-soft)] border border-[var(--line-subtle)]">
+                    <span className="text-xs text-[var(--ink-soft)] font-medium bg-[var(--surface)] px-3 py-1 rounded-full border border-[var(--line-subtle)]">
                       {group.audience}
                     </span>
                   </div>
 
-                  {/* Title and Primary Focus */}
-                  <div className="mt-4">
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--ink)]">
+                  {/* Title and Strategic Focus */}
+                  <div className="mt-5 space-y-2">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-[var(--ink)] group-hover:text-[var(--gold)] transition-colors">
                       {group.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
+                    <p className="text-sm leading-relaxed text-[var(--ink-soft)] font-light max-w-2xl">
                       {group.focus}
                     </p>
                   </div>
 
-                  {/* Core Outcomes */}
-                  <div className="mt-6 rounded-sm border border-[var(--line-subtle)] bg-[var(--surface-raised)]/50 p-4 sm:p-5">
-                    <p className="font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
+                  {/* Strategic Deliverables */}
+                  <div className="mt-6 pt-5 border-t border-[var(--line-subtle)]">
+                    <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[var(--ink-faint)] mb-3">
                       {dictionary.community.outcomesLabel}
-                    </p>
-                    <ul className="mt-3 space-y-2.5">
+                    </h4>
+                    <ul className="space-y-3">
                       {group.outcomes.map((outcome, oIdx) => (
-                        <li key={oIdx} className="flex items-start gap-3 text-sm text-[var(--ink-soft)] leading-relaxed">
-                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--gold)]" aria-hidden="true" />
+                        <li key={oIdx} className="flex items-start gap-3 text-sm text-[var(--ink-soft)] leading-relaxed font-light">
+                          <CheckCircle2 size={16} className="mt-0.5 text-[var(--gold)] shrink-0 opacity-90" aria-hidden="true" />
                           <span>{outcome}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Immediate Pathway and CTA */}
-                  <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-sm border border-[var(--line-subtle)] bg-[var(--surface)] p-3.5 sm:p-4">
-                    <div className="text-xs text-[var(--ink-soft)] leading-relaxed">
-                      <span className="font-mono font-semibold uppercase text-[var(--gold)] mr-2">
-                        {dictionary.community.pathwayLabel}:
+                  {/* Recommended Pathway and Action */}
+                  <div className="mt-6 pt-5 border-t border-[var(--line-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="text-xs text-[var(--ink-soft)] leading-relaxed flex items-start gap-2.5 max-w-lg">
+                      <Compass size={16} className="text-[var(--gold)] shrink-0 mt-0.5" aria-hidden="true" />
+                      <span>
+                        <strong className="font-semibold text-[var(--ink)]">{dictionary.community.pathwayLabel}: </strong>
+                        {group.entryPoint}
                       </span>
-                      <span>{group.entryPoint}</span>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
                       <Link
                         href={localizedHref("en", `/join?tier=${group.key}`)}
-                        className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[var(--gold)] hover:text-[var(--gold-pale)] transition-colors"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg bg-[var(--gold)] text-[#09131F] hover:bg-[var(--gold-pale)] transition-all shadow-xs font-sans"
                       >
                         <span>Membership Benefits</span>
                         <ArrowUpRight size={13} aria-hidden="true" />

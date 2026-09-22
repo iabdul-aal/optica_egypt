@@ -99,8 +99,8 @@ export function EventsPreview({ events, locale = "en" }: { events: Event[]; loca
                   "Academic Grants and Fellowships",
                 ].map((track, i) => (
                   <div key={i} className="py-3 flex items-start gap-3 text-xs">
-                    <span className="editorial-label text-[#5CB1A2] text-[10px] mt-0.5">
-                      {"//"} 0{i + 1}
+                    <span className="editorial-label text-[#5CB1A2] text-[10px] mt-0.5 font-mono">
+                      0{i + 1}
                     </span>
                     <span className="text-slate-200 font-sans">{track}</span>
                   </div>

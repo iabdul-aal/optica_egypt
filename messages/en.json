@@ -116,13 +116,13 @@
     "systemBody": "Each group brings a different kind of knowledge. The section exists to make those perspectives more visible to one another.",
     "action": "Get involved",
     "statement": "The aim is simple: make it easier for people working with light to find each other.",
-    "outcomesLabel": "Core Outcomes",
+    "outcomesLabel": "Strategic Deliverables",
     "focusLabel": "Primary Focus",
-    "pathwayLabel": "Immediate Pathway",
+    "pathwayLabel": "Recommended Pathway",
     "groups": {
       "students": {
         "title": "Students and Early Career",
-        "tag": "TALENT AND ACADEMY",
+        "tag": "Talent and Academy",
         "audience": "Undergraduate, Master's, and Doctoral Candidates",
         "focus": "Transition from academic coursework to active research, hands-on laboratory experience, and international career trajectories.",
         "outcomes": [
@@ -135,7 +135,7 @@
       },
       "researchers": {
         "title": "Researchers and Principal Investigators",
-        "tag": "R AND D LABS",
+        "tag": "R and D Labs",
         "audience": "Faculty Members, Postdoctoral Fellows, and Research Scientists",
         "focus": "Accelerate high-impact research, establish international scientific collaborations, and publish in leading peer-reviewed journals.",
         "outcomes": [
@@ -148,7 +148,7 @@
       },
       "academia": {
         "title": "Academia and University Educators",
-        "tag": "HIGHER EDUCATION",
+        "tag": "Higher Education",
         "audience": "Department Chairs, Professors, and Curriculum Directors",
         "focus": "Enrich optics and photonics curricula with contemporary research standards and foster sustained institutional recognition.",
         "outcomes": [
@@ -161,7 +161,7 @@
       },
       "industry": {
         "title": "Industry and Engineering",
-        "tag": "TELECOM AND MANUFACTURING",
+        "tag": "Telecom and Manufacturing",
         "audience": "Optical Engineers, Telecom Specialists, and Technical Directors",
         "focus": "Solve complex engineering bottlenecks, upskill technical workforces, and source specialized photonics engineering talent.",
         "outcomes": [
@@ -174,7 +174,7 @@
       },
       "startups": {
         "title": "Startups and Innovators",
-        "tag": "DEEPTECH VENTURES",
+        "tag": "Deeptech Ventures",
         "audience": "Hardware Founders, Spinout Teams, and Technology Incubators",
         "focus": "Translate scientific discoveries into viable commercial hardware, secure fabrication access, and scale photonics ventures.",
         "outcomes": [

@@ -6,7 +6,7 @@ const SEGMENTS = [
   {
     key: "students",
     id: "01",
-    tag: "TALENT AND ACADEMY",
+    tag: "Talent and Academy",
     focus: "Undergraduate, Master's, and Doctoral Candidates",
     title: "Students and Early Career",
     body: "Transition from academic coursework to active research, hands-on laboratory experience, and international career trajectories.",
@@ -19,7 +19,7 @@ const SEGMENTS = [
   {
     key: "researchers",
     id: "02",
-    tag: "R AND D LABS",
+    tag: "R and D Labs",
     focus: "Faculty Members, Postdocs, and Research Scientists",
     title: "Researchers and Principal Investigators",
     body: "Accelerate high-impact research, establish international scientific collaborations, and publish in leading peer-reviewed journals.",
@@ -32,7 +32,7 @@ const SEGMENTS = [
   {
     key: "academia",
     id: "03",
-    tag: "HIGHER EDUCATION",
+    tag: "Higher Education",
     focus: "Department Chairs, Professors, and Curriculum Directors",
     title: "Academia and University Educators",
     body: "Enrich optics and photonics curricula with contemporary research standards and foster sustained institutional recognition.",
@@ -45,7 +45,7 @@ const SEGMENTS = [
   {
     key: "industry",
     id: "04",
-    tag: "TELECOM AND MANUFACTURING",
+    tag: "Telecom and Manufacturing",
     focus: "Optical Engineers, Telecom Specialists, and Technical Directors",
     title: "Industry and Engineering",
     body: "Solve complex engineering bottlenecks, upskill technical workforces, and source specialized photonics engineering talent.",
@@ -58,7 +58,7 @@ const SEGMENTS = [
   {
     key: "startups",
     id: "05",
-    tag: "DEEPTECH VENTURES",
+    tag: "Deeptech Ventures",
     focus: "Hardware Founders, Spinout Teams, and Incubators",
     title: "Startups and Innovators",
     body: "Translate scientific discoveries into viable commercial hardware, secure fabrication access, and scale photonics ventures.",
@@ -93,70 +93,67 @@ export function AudienceSection() {
               Connecting Egypt&apos;s scientific capacity directly to the global photonics frontier. Five specialized pathways designed to eliminate research silos and accelerate industrial innovation.
             </p>
 
-            <div className="pt-6 border-t border-[var(--line-subtle)] flex items-center gap-4 text-[10px] font-mono text-[var(--ink-faint)]">
-              <span>STATUS: OPEN ACCESS</span>
-              <span>{"//"}</span>
-              <span>100% SUBSIDIZED</span>
+            <div className="pt-6 border-t border-[var(--line-subtle)] flex items-center gap-3 text-xs text-[var(--ink-soft)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)]" />
+              <span>National Ecosystem</span>
+              <span className="text-[var(--line)]">·</span>
+              <span>Open Access</span>
             </div>
           </div>
 
           {/* Right Column: Architectural Cohort Ledger */}
-          <div className="lg:col-span-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+          <div className="lg:col-span-8 space-y-6">
             {SEGMENTS.map(({ key, id, tag, focus, title, body, outcomes }) => (
               <div
                 key={key}
-                className="py-8 sm:py-10 group hover:bg-[var(--line-subtle)]/40 transition-colors"
+                className="rounded-xl border border-[var(--line)] bg-[var(--surface-raised)]/25 hover:bg-[var(--surface-raised)]/60 hover:border-[var(--gold)]/40 p-6 sm:p-8 transition-all duration-300 relative"
               >
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
-                  {/* Left Metadata Indicator */}
-                  <div className="shrink-0 space-y-1">
-                    <span className="editorial-label text-[var(--gold)] font-bold">
-                      {"//"} {id}
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-6 w-6 items-center justify-center rounded bg-[var(--gold)]/15 text-[11px] font-semibold text-[var(--gold)] font-mono">
+                      {id}
                     </span>
-                    <p className="editorial-label text-[10px] text-[var(--ink-faint)]">
+                    <span className="text-xs font-semibold tracking-wider uppercase text-[var(--ink-soft)]">
                       {tag}
-                    </p>
+                    </span>
                   </div>
+                  <span className="text-xs text-[var(--ink-soft)] font-medium bg-[var(--surface)] px-3 py-1 rounded-full border border-[var(--line-subtle)]">
+                    {focus}
+                  </span>
+                </div>
 
-                  {/* Center Content */}
-                  <div className="flex-1 max-w-xl space-y-3">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-[var(--ink)] group-hover:text-[var(--gold)] transition-colors">
-                        {title}
-                      </h3>
-                    </div>
-                    <p className="text-xs font-mono text-[var(--ink-faint)]">
-                      {focus}
-                    </p>
-                    <p className="text-sm text-[var(--ink-soft)] leading-relaxed font-light">
-                      {body}
-                    </p>
-                    {/* Outcome Deliverables */}
-                    <div className="pt-2">
-                      <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--gold)] mb-2">
-                        Core Outcomes
-                      </p>
-                      <ul className="space-y-1.5">
-                        {outcomes.map((outcome, oIdx) => (
-                          <li key={oIdx} className="flex items-start gap-2.5 text-xs text-[var(--ink-soft)] leading-relaxed">
-                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--gold)]" aria-hidden="true" />
-                            <span>{outcome}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                <div className="mt-5 space-y-2">
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)] hover:text-[var(--gold)] transition-colors">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-[var(--ink-soft)] leading-relaxed font-light">
+                    {body}
+                  </p>
+                </div>
 
-                  {/* Right Action */}
-                  <div className="shrink-0 sm:self-center">
-                    <Link
-                      href="/community"
-                      className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--ink-soft)] group-hover:text-[var(--ink)] py-2 px-3 border border-[var(--line-subtle)] group-hover:border-[var(--gold)] transition-all"
-                    >
-                      <span>Explore</span>
-                      <ArrowUpRight size={14} className="text-[var(--gold)]" />
-                    </Link>
-                  </div>
+                <div className="mt-6 pt-5 border-t border-[var(--line-subtle)]">
+                  <h4 className="text-[11px] font-semibold uppercase tracking-wider text-[var(--ink-faint)] mb-3">
+                    Strategic Deliverables
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {outcomes.map((outcome, oIdx) => (
+                      <li key={oIdx} className="flex items-start gap-3 text-sm text-[var(--ink-soft)] leading-relaxed font-light">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--gold)]" aria-hidden="true" />
+                        <span>{outcome}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-6 pt-5 border-t border-[var(--line-subtle)] flex items-center justify-between">
+                  <span className="text-xs text-[var(--ink-soft)]">Explore community pathway</span>
+                  <Link
+                    href="/community"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-md bg-[var(--gold)]/10 text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[#09131F] transition-all"
+                  >
+                    <span>Explore Pathway</span>
+                    <ArrowUpRight size={13} className="text-[var(--gold)]" />
+                  </Link>
                 </div>
               </div>
             ))}
