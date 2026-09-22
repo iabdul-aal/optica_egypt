@@ -43,7 +43,9 @@ const navConfig: NavItem[] = [
     labelKey: "groupCommunity",
     items: [
       { key: "community", path: "/community" },
+      { key: "chapters", path: "/chapters" },
       { key: "outreach", path: "/outreach" },
+      { key: "volunteer", path: "/volunteer" },
     ],
   },
   {
@@ -51,10 +53,19 @@ const navConfig: NavItem[] = [
     labelKey: "groupProgram",
     items: [
       { key: "events", path: "/events" },
+      { key: "openSource", path: "/open-source" },
       { key: "resources", path: "/resources" },
     ],
   },
-  { kind: "direct", key: "news", path: "/news" },
+  {
+    kind: "group",
+    labelKey: "groupInsights",
+    items: [
+      { key: "news", path: "/news" },
+      { key: "blogs", path: "/blogs" },
+      { key: "gallery", path: "/gallery" },
+    ],
+  },
 ]
 
 export function Header({ locale, dictionary }: HeaderProps) {

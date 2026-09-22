@@ -10,11 +10,16 @@ type FooterProps = {
 
 const links = [
   ["about", "/about"],
-  ["community", "/community"],
-  ["events", "/events"],
   ["leadership", "/leadership"],
-  ["outreach", "/outreach"],
+  ["community", "/community"],
+  ["chapters", "/chapters"],
+  ["volunteer", "/volunteer"],
+  ["events", "/events"],
+  ["openSource", "/open-source"],
   ["resources", "/resources"],
+  ["news", "/news"],
+  ["blogs", "/blogs"],
+  ["gallery", "/gallery"],
 ] as const
 
 export function Footer({ locale, dictionary }: FooterProps) {

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "inauguration-kickoff-2026",
+    "title": "Section Inauguration and Strategic Assembly",
+    "category": "Events",
+    "date": "2026-09-10",
+    "location": "Cairo, Egypt",
+    "caption": "The official charter announcement and founding assembly of the Optica Egypt Local Section, bringing together university faculty, researchers, and student chapter delegates.",
+    "aspectRatio": "16/9",
+    "theme": "gold"
+  },
+  {
+    "id": "optical-waveguide-masterclass",
+    "title": "Hands-on Optical Waveguide Characterization",
+    "category": "Workshops",
+    "date": "2026-08-22",
+    "location": "Ain Shams Nanotechnology Center",
+    "caption": "Graduate researchers aligning fiber-to-chip grating couplers during the regional silicon photonics testbed masterclass.",
+    "aspectRatio": "4/3",
+    "theme": "teal"
+  },
+  {
+    "id": "cleanroom-facility-tour",
+    "title": "Cleanroom Semiconductor and Microfabrication Walkthrough",
+    "category": "Lab Visits",
+    "date": "2026-07-15",
+    "location": "Zewail City of Science and Technology",
+    "caption": "Undergraduate physics students inspecting photolithography aligners and thin-film deposition chambers during the summer lab tour.",
+    "aspectRatio": "16/9",
+    "theme": "indigo"
+  },
+  {
+    "id": "youth-optics-day",
+    "title": "Youth Optics Discovery Day: The Science of Light",
+    "category": "Community",
+    "date": "2026-06-04",
+    "location": "Children's Museum of Civilization, Cairo",
+    "caption": "Optica volunteers demonstrating total internal reflection, laser diffraction, and optical fibers to school students.",
+    "aspectRatio": "4/3",
+    "theme": "gold"
+  },
+  {
+    "id": "pda-hackathon-kickoff",
+    "title": "Open Source Photonic Design Sprint",
+    "category": "Workshops",
+    "date": "2026-05-18",
+    "location": "Cairo University Faculty of Engineering",
+    "caption": "Teams collaborating on automated Python layout generation using gdsfactory for Mach-Zehnder interferometer filters.",
+    "aspectRatio": "16/9",
+    "theme": "teal"
+  },
+  {
+    "id": "student-chapter-liaison-forum",
+    "title": "Inter-University Student Chapter Roundtable",
+    "category": "Community",
+    "date": "2026-04-20",
+    "location": "Alexandria University",
+    "caption": "Representatives from Cairo, Alexandria, and Mansoura student chapters discussing Optica traveling lecturer invitations and outreach grants.",
+    "aspectRatio": "4/3",
+    "theme": "indigo"
+  }
+]

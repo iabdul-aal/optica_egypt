@@ -43,18 +43,21 @@ All content lives in `data/`. Adding or updating content never requires code cha
 | `data/events.json` | Events database |
 | `data/members.json` | Officer directory |
 | `data/news.json` | Announcements |
+| `data/blogs.json` | Technical articles and research spotlights |
+| `data/gallery.json` | Photo and activity archive |
+| `data/open_source.json` | Open source photonics program, tools, and chipathon |
 | `data/outreach.json` | Outreach activities |
 | `data/resources.json` | Curated photonics resources |
 
 ## Internationalization
 
-All strings live in `messages/en.json` and `messages/ar.json`.
-Routes: `/en/*` and `/ar/*`. Language toggle in header switches locale.
+All strings live in `messages/en.json`.
+Routes are statically generated at root paths with dark-mode primary and light-mode parity.
 
 ## Agentic System
 
-The `.agents/` directory contains the full agentic configuration:
-skills, memory, context, and the master `AGENTS.md` contract.
+The root `AGENTS.md` and `.agents/` directory contain the full agentic configuration:
+skills, memory logs (`decisions.md`, `patterns.md`, `anti-patterns.md`), context, and sitemap.
 
 ## Deployment
 

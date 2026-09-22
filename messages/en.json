@@ -7,17 +7,24 @@
   },
   "nav": {
     "home": "Home",
-    "about": "About the Section",
+    "about": "About",
     "events": "Events",
     "community": "Community",
+    "chapters": "Student Chapters",
     "leadership": "Leadership",
     "outreach": "Outreach",
+    "volunteer": "Volunteer",
+    "openSource": "Open Source Photonics",
     "resources": "Resources",
     "news": "News",
+    "blogs": "Blogs",
+    "gallery": "Gallery",
     "join": "Get involved",
-    "groupAbout": "About",
+    "groupAbout": "Section",
+    "groupSection": "Section",
     "groupCommunity": "Community",
-    "groupProgram": "Program"
+    "groupProgram": "Program",
+    "groupInsights": "Insights"
   },
   "common": {
     "allEvents": "All events",
@@ -336,5 +343,43 @@
       "update": "Update",
       "opportunity": "Opportunity"
     }
+  },
+  "volunteer": {
+    "eyebrow": "Get Involved",
+    "title": "Volunteer with Optica Egypt",
+    "intro": "Contribute your energy, expertise, and leadership to shape Egypt's photonics future.",
+    "tracksEyebrow": "Volunteer Opportunities",
+    "tracksTitle": "Find your track in the section",
+    "benefitsEyebrow": "Why Volunteer",
+    "benefitsTitle": "Growth, recognition, and scientific community",
+    "applyEyebrow": "Intake Form",
+    "applyTitle": "Submit your volunteer interest"
+  },
+  "openSource": {
+    "eyebrow": "Technical Program",
+    "title": "Open Source Photonics Program",
+    "intro": "Democratizing photonic integrated circuit design, open-source PDKs, and design automation across Egyptian universities and laboratories.",
+    "pillarsEyebrow": "Strategic Pillars",
+    "pillarsTitle": "Build It. Test It. Publish It.",
+    "toolsEyebrow": "Tooling and Frameworks",
+    "toolsTitle": "Open Photonic Design Automation (PDA) Stack",
+    "chipathonEyebrow": "Annual Contest",
+    "chipathonTitle": "Egypt Photonic Chipathon"
+  },
+  "blogs": {
+    "eyebrow": "Insights and Perspectives",
+    "title": "Photonics Articles and Dispatches",
+    "intro": "Technical deep-dives, research spotlights, tutorials, and community perspectives from photonics practitioners.",
+    "noBlogs": "No blog articles published yet. Check back soon."
+  },
+  "gallery": {
+    "eyebrow": "Visual Archive",
+    "title": "Optica Egypt in Action",
+    "intro": "A photographic record of workshops, kickoffs, lab visits, and collaborative sessions across Egypt."
+  },
+  "chapters": {
+    "eyebrow": "University Network",
+    "title": "Optica Student Chapters in Egypt",
+    "intro": "Connecting university campuses, student researchers, and optics enthusiasts across Egypt to global Optica grants, international traveling lecturers, and technical workshops."
   }
 }

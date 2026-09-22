@@ -1,0 +1,35 @@
+[
+  {
+    "id": "rise-of-silicon-photonics-in-egypt",
+    "title": "The Rise of Silicon Photonics in Egypt: From Cleanrooms to Open PDKs",
+    "slug": "rise-of-silicon-photonics-in-egypt",
+    "excerpt": "How Egyptian researchers and university laboratories are positioning the nation as a regional leader in photonic integrated circuits through open tooling and multi-project wafer collaborations.",
+    "date": "2026-09-18",
+    "author": "Optica Egypt Technical Committee",
+    "readTime": "6 min read",
+    "category": "Research Spotlight",
+    "tags": ["Silicon Photonics", "Cleanrooms", "PDKs", "Egypt Science"]
+  },
+  {
+    "id": "getting-started-pda-gdsfactory",
+    "title": "Practical Photonic Design Automation: Designing Optical Waveguides with gdsfactory",
+    "slug": "getting-started-pda-gdsfactory",
+    "excerpt": "A step-by-step introduction for students and engineers to programmatically route directional couplers, ring resonators, and grating couplers using open-source Python frameworks.",
+    "date": "2026-09-12",
+    "author": "Open Source Photonics Working Group",
+    "readTime": "8 min read",
+    "category": "Technical Tutorial",
+    "tags": ["gdsfactory", "PDA", "Python", "Waveguides"]
+  },
+  {
+    "id": "student-chapter-empowerment-grants",
+    "title": "Empowering Egyptian Student Chapters: The Optica Global Grant Roadmap",
+    "slug": "student-chapter-empowerment-grants",
+    "excerpt": "A comprehensive guide on how university student chapters across Cairo, Alexandria, Assiut, and the Delta can unlock Optica international travel grants and lecture series funding.",
+    "date": "2026-09-05",
+    "author": "Student Affairs Committee",
+    "readTime": "5 min read",
+    "category": "Community Guidance",
+    "tags": ["Student Chapters", "Grants", "Education", "Travel Awards"]
+  }
+]

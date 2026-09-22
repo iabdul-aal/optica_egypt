@@ -1,0 +1,116 @@
+{
+  "stats": [
+    {
+      "label": "Chartered Chapter",
+      "value": "1",
+      "detail": "The American University in Cairo (AUC)"
+    },
+    {
+      "label": "Pipeline Universities",
+      "value": "3",
+      "detail": "Cairo, Ain Shams, and Alexandria Universities"
+    },
+    {
+      "label": "Students Engaged",
+      "value": "150+",
+      "detail": "Undergraduate and graduate physics / engineering members"
+    },
+    {
+      "label": "Annual Chapter Grant",
+      "value": "$2,000+",
+      "detail": "Direct Optica Global funding for campus lectures and activities"
+    }
+  ],
+  "charteredChapters": [
+    {
+      "id": "auc",
+      "name": "The American University in Cairo (AUC) Optica Student Chapter",
+      "shortName": "AUC Student Chapter",
+      "university": "The American University in Cairo",
+      "status": "Active Chartered Chapter",
+      "charteredYear": 2024,
+      "campus": "New Cairo Campus, AUC Avenue",
+      "city": "New Cairo",
+      "governorate": "Cairo Governorate",
+      "coordinates": { "x": 68, "y": 42 },
+      "facultyAdvisor": "Prof. Yehea Ismail",
+      "advisorDepartment": "School of Sciences and Engineering / Physics and Nanotechnology",
+      "description": "The first formally recognized and chartered Optica Student Chapter in Egypt. Hosted within the School of Sciences and Engineering at AUC New Cairo, the chapter connects physics, optical engineering, and nanotechnology students with international researchers, traveling lecturers, and hands-on laboratory workshops.",
+      "focusAreas": [
+        "Nanophotonics and Plasmonics",
+        "Optical Materials Characterization",
+        "Femtosecond Laser Demonstrations",
+        "Optica Traveling Lecturer Seminars",
+        "Student Research Symposia"
+      ],
+      "socials": {
+        "email": "optica@aucegypt.edu",
+        "linkedin": "https://www.linkedin.com/school/the-american-university-in-cairo/",
+        "website": "https://www.aucegypt.edu/academics/departments/physics",
+        "instagram": "https://www.instagram.com/aucegypt/"
+      },
+      "highlights": [
+        "Annual Light Science Showcase with hands-on spectrometer demonstrations for undergraduate students.",
+        "Hosted international Optica Traveling Lecturer on advanced metamaterials and silicon photonics.",
+        "Active student travel delegations presenting at Optica Frontiers in Optics (FiO) conferences."
+      ]
+    }
+  ],
+  "pipelineChapters": [
+    {
+      "id": "cairo-university",
+      "name": "Cairo University Student Chapter",
+      "university": "Cairo University",
+      "status": "In Formation",
+      "targetYear": "2026 / 2027",
+      "faculty": "Faculty of Engineering / Department of Electronics and Electrical Communications",
+      "city": "Giza",
+      "coordinates": { "x": 64, "y": 44 },
+      "description": "Student researchers in optical fiber networks, silicon photonics, and communications are organizing bylaws and establishing the campus executive committee."
+    },
+    {
+      "id": "ain-shams",
+      "name": "Ain Shams University Student Chapter",
+      "university": "Ain Shams University",
+      "status": "In Formation",
+      "targetYear": "2026 / 2027",
+      "faculty": "Faculty of Science and Nanotechnology Research Center",
+      "city": "Cairo",
+      "coordinates": { "x": 66, "y": 40 },
+      "description": "Focusing on nanophotonics, biosensing, and laser physics, student leaders are finalizing advisor endorsements for formal charter submission."
+    },
+    {
+      "id": "alexandria",
+      "name": "Alexandria University Student Chapter",
+      "university": "Alexandria University",
+      "status": "In Formation",
+      "targetYear": "2027",
+      "faculty": "Faculty of Engineering / Communications and Electronics",
+      "city": "Alexandria",
+      "coordinates": { "x": 52, "y": 28 },
+      "description": "Connecting Mediterranean coast photonics students to regional seminars, cleanroom visits, and technical competitions."
+    }
+  ],
+  "charterRoadmap": [
+    {
+      "step": "01",
+      "title": "Assemble Core Student Members",
+      "body": "Gather a minimum of five student members enrolled at your university who share an interest in optics, photonics, physics, or optical engineering."
+    },
+    {
+      "step": "02",
+      "title": "Secure Faculty Advisor",
+      "body": "Identify a faculty member or researcher affiliated with your department who is or agrees to become an active Optica professional member."
+    },
+    {
+      "step": "03",
+      "title": "Adopt Chapter Constitution",
+      "body": "Utilize the official Optica student chapter constitution template to define officer positions (President, Vice-President, Secretary, Treasurer)."
+    },
+    {
+      "step": "04",
+      "title": "Submit Charter Application",
+      "body": "The Optica Egypt Local Section assists your team in submitting your charter package to the Optica Global Council for formal approval and initial funding."
+    }
+  ]
+}

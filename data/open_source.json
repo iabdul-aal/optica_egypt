@@ -1,0 +1,97 @@
+{
+  "program": {
+    "title": "Open Source Photonics Program",
+    "motto": "Build It. Test It. Publish It.",
+    "intro": "Modeled after pioneering open-source silicon initiatives, the Optica Egypt Open Source Photonics Program democratizes access to Photonic Integrated Circuit (PIC) design, simulation, and physical fabrication for Egyptian researchers, students, and engineers.",
+    "vision": "Lowering entry barriers to optical chip design through open Python-based photonic design automation (PDA), open process design kits (PDKs), and collaborative tapeout partnerships."
+  },
+  "pillars": [
+    {
+      "id": "pda-tools",
+      "number": "01",
+      "title": "Open PDA and Layout Automation",
+      "summary": "Full design flows powered by open-source Python frameworks, algorithmic routing, and automated layout generation without costly proprietary licenses.",
+      "tools": ["gdsfactory", "SiEPIC-Tools", "KLayout", "pyGDSign"]
+    },
+    {
+      "id": "open-pdks",
+      "number": "02",
+      "title": "Open PDKs and Design Rules",
+      "summary": "Promoting standard, community-verified Process Design Kits with verified optical parametric cells, waveguide bends, directional couplers, and grating couplers.",
+      "tools": ["Open Source Silicon Photonics PDKs", "EBeam Passive PDK", "GlobalFoundries Open PDKs"]
+    },
+    {
+      "id": "chipathon",
+      "number": "03",
+      "title": "Egypt Photonic Chipathon",
+      "summary": "An annual nationwide design contest where student and researcher teams design novel photonic circuits, undergo peer review, and compete for subsidized tapeout fabrication.",
+      "tools": ["Annual Design Competition", "Mentor Network", "Multi-Project Wafer (MPW) Subsidies"]
+    },
+    {
+      "id": "notebooks",
+      "number": "04",
+      "title": "Reproducible Jupyter Notebooks",
+      "summary": "Interactive tutorials teaching fundamental wave optics, finite-difference time-domain (FDTD) simulation, and silicon photonic layout step by step.",
+      "tools": ["Meep FDTD", "Femwell Mode Solver", "NumPy / SciPy Photonics", "Open Notebooks"]
+    },
+    {
+      "id": "measurement-grants",
+      "number": "05",
+      "title": "Tapeout and Travel Fellowships",
+      "summary": "Modeled after the IEEE SSCS Code-a-Chip awards, offering travel and characterization grants for Egyptian student teams to measure fabricated chips at partner laboratories.",
+      "tools": ["Measurement Testbeds", "Conference Travel Subsidies", "Optica Foundation Grants"]
+    }
+  ],
+  "toolstack": [
+    {
+      "name": "gdsfactory",
+      "category": "Photonic Layout & DRC",
+      "description": "Python-driven photonic circuit design framework with built-in component models, DRC, and electrical-optical co-design support.",
+      "github": "https://github.com/gdsfactory/gdsfactory",
+      "status": "Core Supported"
+    },
+    {
+      "name": "Meep (FDTD)",
+      "category": "Electromagnetic Simulation",
+      "description": "Open-source finite-difference time-domain (FDTD) simulation software developed at MIT for modeling electromagnetic wave propagation.",
+      "github": "https://github.com/NanoComp/meep",
+      "status": "Core Supported"
+    },
+    {
+      "name": "SiEPIC-Tools",
+      "category": "KLayout PIC EDA",
+      "description": "KLayout-based layout and verification package for silicon photonics, developed by the University of British Columbia.",
+      "github": "https://github.com/SiEPIC/SiEPIC-Tools",
+      "status": "Recommended"
+    },
+    {
+      "name": "Femwell",
+      "category": "Optical Mode Solver",
+      "description": "Finite element mode solver for optical waveguides and resonant structures written in Python.",
+      "github": "https://github.com/HelgeGehring/femwell",
+      "status": "Recommended"
+    }
+  ],
+  "chipathonTimeline": [
+    {
+      "phase": "Phase 1: Registration and Tooling Workshops",
+      "timeline": "Month 1 to 2",
+      "description": "Introductory hands-on masterclasses covering gdsfactory, KLayout, and waveguide physics."
+    },
+    {
+      "phase": "Phase 2: Architecture and Design Submission",
+      "timeline": "Month 3 to 4",
+      "description": "Teams submit design rule checked (DRC-clean) GDSII layouts with simulation verification."
+    },
+    {
+      "phase": "Phase 3: Silicon MPW Tapeout Selection",
+      "timeline": "Month 5",
+      "description": "Independent jury selects winning entries for multi-project wafer fabrication."
+    },
+    {
+      "phase": "Phase 4: Physical Testing and Characterization",
+      "timeline": "Month 8 to 9",
+      "description": "Fabricated dies are measured using optical probe stations at partner Egyptian laboratories."
+    }
+  ]
+}

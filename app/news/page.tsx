@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { ArrowUpRight, Calendar } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
+import { InsightsNav } from "@/components/sections/InsightsNav"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getDictionary, getLocalizedText } from "@/lib/locales"
 import { getAllNews } from "@/lib/news"
@@ -27,6 +28,7 @@ export default function NewsPage() {
 
   return (
     <>
+      <InsightsNav />
       <PageHeader
         eyebrow={dictionary.news.eyebrow}
         title={dictionary.news.title}
