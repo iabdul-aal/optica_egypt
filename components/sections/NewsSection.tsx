@@ -1,10 +1,20 @@
+import Link from "next/link"
+import { ArrowUpRight, Calendar } from "lucide-react"
 import type { NewsItem } from "@/types/news"
-import { getLocalizedText, type Dictionary, type Locale } from "@/lib/locales"
+import { getLocalizedText, localizedHref, type Dictionary, type Locale } from "@/lib/locales"
 
 type NewsSectionProps = {
   news: NewsItem[]
   locale: Locale
   dictionary: Dictionary
+}
+
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  })
 }
 
 export function NewsSection({ news, locale, dictionary }: NewsSectionProps) {
@@ -16,29 +26,43 @@ export function NewsSection({ news, locale, dictionary }: NewsSectionProps) {
             <p className="eyebrow">{dictionary.home.news.eyebrow}</p>
             <h2 className="section-title">{dictionary.home.news.title}</h2>
           </div>
-          <p className="lede">{dictionary.home.news.intro}</p>
+          <Link href={localizedHref(locale, "/news")} className="text-link justify-self-start sm:justify-self-end">
+            <span>View all news</span>
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </Link>
         </div>
         {news.length === 0 ? (
-          <div className="border-b border-white/10 py-10">
+          <div className="py-10">
             <h3 className="text-xl font-semibold text-[var(--ink)]">{dictionary.home.news.emptyTitle}</h3>
             <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">{dictionary.home.news.emptyBody}</p>
           </div>
         ) : (
-          <div>
-            {news.map((item, index) => (
-              <article className="grid grid-cols-[2.4rem_1fr] gap-x-3 gap-y-3 border-b border-white/10 py-7 md:grid-cols-[3.4rem_10.5rem_1fr] md:gap-x-6" key={item.id}>
-                <span className="font-mono text-sm font-bold text-[var(--gold)]">{String(index + 1).padStart(2, "0")}</span>
-                <div className="flex flex-col gap-1 pt-0.5 md:pt-1">
-                  <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--gold)]">
-                    {item.category}
-                  </span>
-                  <time dateTime={item.date} className="font-mono text-xs text-[var(--ink-soft)] whitespace-nowrap">
-                    {item.date}
-                  </time>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {news.map((item) => (
+              <article
+                key={item.id}
+                className="group flex flex-col justify-between rounded-xl border border-[var(--line)] bg-[var(--surface)] hover:bg-[var(--surface-raised)]/70 hover:border-[var(--gold)]/40 p-6 transition-all duration-300 shadow-xs"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 text-xs">
+                    <span className="font-semibold px-2.5 py-0.5 rounded-full bg-[var(--gold)]/15 text-[var(--gold)] text-[11px] capitalize">
+                      {item.category}
+                    </span>
+                    <time dateTime={item.date} className="text-[var(--ink-soft)] font-medium text-xs flex items-center gap-1">
+                      <Calendar size={11} className="text-[var(--ink-faint)]" aria-hidden="true" />
+                      {formatDate(item.date)}
+                    </time>
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-bold text-[var(--ink)] group-hover:text-[var(--gold)] transition-colors leading-snug">
+                    {getLocalizedText(item.title, locale)}
+                  </h3>
+                  <p className="mt-2 text-sm text-[var(--ink-soft)] line-clamp-3 leading-relaxed font-light">
+                    {getLocalizedText(item.summary, locale)}
+                  </p>
                 </div>
-                <div className="col-span-2 md:col-span-1 md:col-start-3 md:row-start-1">
-                  <h3 className="text-lg font-semibold leading-snug text-[var(--ink)]">{getLocalizedText(item.title, locale)}</h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--ink-soft)]">{getLocalizedText(item.summary, locale)}</p>
+                <div className="mt-6 pt-4 border-t border-[var(--line-subtle)] flex items-center justify-between text-xs font-semibold text-[var(--gold)]">
+                  <span>Read update</span>
+                  <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </article>
             ))}

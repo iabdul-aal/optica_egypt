@@ -9,6 +9,33 @@
     },
     "date": "2026-09-10",
     "category": "announcement",
+    "url": "/about",
+    "published": true
+  },
+  {
+    "id": "student-chapter-expansion-initiative",
+    "title": {
+      "en": "Student Chapter Expansion Initiative Launched with AUC Chapter"
+    },
+    "summary": {
+      "en": "Optica Egypt convened its first cross-university coordination meeting with the Chartered Student Chapter at The American University in Cairo (AUC), setting a nationwide roadmap to charter new chapters at Cairo University, Ain Shams University, and Alexandria University."
+    },
+    "date": "2026-09-15",
+    "category": "update",
+    "url": "/chapters",
+    "published": true
+  },
+  {
+    "id": "open-source-photonics-track-kickoff",
+    "title": {
+      "en": "Open Source Silicon Photonics Design Track Announced for 2026"
+    },
+    "summary": {
+      "en": "In partnership with regional laboratories, Optica Egypt unveiled the Open Source Photonics track, providing Egyptian engineering students and researchers with open PDK design kits, gdsfactory training, and preparation for multi-project wafer (MPW) fabrication runs."
+    },
+    "date": "2026-09-18",
+    "category": "opportunity",
+    "url": "/open-source",
     "published": true
   }
 ]
