@@ -161,22 +161,23 @@ function HoverController({ children }: { children: React.ReactNode }) {
     const idleRotX = Math.sin(time * 0.6) * 0.015
     const idleRotY = Math.cos(time * 0.5) * 0.02
 
-    // Enhanced Initial Point of View:
-    // Base pitch ~ -35 deg, yaw ~ 20 deg, roll ~ -4 deg so the 3D chip body covers substantial vertical and horizontal space
-    const baseRotX = -0.62
-    const baseRotY = 0.36
-    const baseRotZ = -0.07
+    // Plan view with 45 degree shift line of sight
+    // Base pitch ~ 47 deg (0.82 rad), yaw ~ -26 deg (-0.45 rad), roll ~ 7 deg (0.12 rad)
+    // Tilted forward from vertical normal so the entire circuit plane is prominently displayed
+    const baseRotX = 0.82
+    const baseRotY = -0.45
+    const baseRotZ = 0.12
 
     // Hover response:
-    // Moving mouse up/down tilts the chip (pitch)
-    // Moving mouse left/right turns the chip (yaw) and banks slightly (roll)
-    const targetRotX = baseRotX - mouseRef.current.y * 0.22 + idleRotX
-    const targetRotY = baseRotY + mouseRef.current.x * 0.34 + idleRotY
-    const targetRotZ = baseRotZ - mouseRef.current.x * 0.08
+    // Moving mouse up/down gently tilts around the 45-degree sweet spot
+    // Moving mouse left/right turns the azimuth with damped perspective
+    const targetRotX = baseRotX - mouseRef.current.y * 0.15 + idleRotX
+    const targetRotY = baseRotY + mouseRef.current.x * 0.22 + idleRotY
+    const targetRotZ = baseRotZ - mouseRef.current.x * 0.05
 
-    // Position parallax
-    const targetPosX = 0.15 + mouseRef.current.x * 0.25
-    const targetPosY = mouseRef.current.y * 0.18 + idleFloatY
+    // Position parallax keeping the chip centered on the stage
+    const targetPosX = 0.2 + mouseRef.current.x * 0.18
+    const targetPosY = 0.25 + mouseRef.current.y * 0.14 + idleFloatY
 
     // Butter-smooth damping
     const lerpSpeed = Math.min(delta * 3.4, 0.14)
@@ -195,18 +196,18 @@ function ChipCanvas({ running, onContextLost }: { running: boolean; onContextLos
   return (
     <Canvas
       className="viewer-canvas"
-      camera={{ position: [0.15, 3.6, 7.6], fov: 44 }}
+      camera={{ position: [0, 0, 11], fov: 42 }}
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       onCreated={({ gl }) => {
         gl.domElement.addEventListener("webglcontextlost", onContextLost, { once: true })
       }}
     >
-      <ambientLight intensity={0.75} />
-      <hemisphereLight args={["#f5ead0", "#090b0c", 0.72]} />
-      <directionalLight position={[5, 6, 4]} intensity={1.55} color="#f1dfbb" />
-      <pointLight position={[-4, 2, 3]} intensity={1.3} color="#c89739" distance={9} />
-      <pointLight position={[3, 1, -4]} intensity={0.5} color="#f4f0e6" distance={8} />
+      <ambientLight intensity={0.78} />
+      <hemisphereLight args={["#f5ead0", "#090b0c", 0.75]} />
+      <directionalLight position={[4, 7, 5]} intensity={1.65} color="#f5e4c3" />
+      <pointLight position={[-4, 3, 4]} intensity={1.4} color="#d4af37" distance={10} />
+      <pointLight position={[3, -2, 3]} intensity={0.6} color="#f4f0e6" distance={8} />
 
       <HoverController>
         <PhotonicChip running={running} />
