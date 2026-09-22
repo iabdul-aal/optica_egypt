@@ -123,7 +123,7 @@ export function Header({ locale, dictionary }: HeaderProps) {
                   aria-haspopup="true"
                 >
                   {dictionary.nav[item.labelKey]}
-                  <ChevronDown size={11} aria-hidden="true" className="nav-group-chevron" />
+                  <ChevronDown size={13} aria-hidden="true" className="nav-group-chevron" />
                 </button>
                 <div className="nav-dropdown" role="menu">
                   {item.items.map((sub) => (
