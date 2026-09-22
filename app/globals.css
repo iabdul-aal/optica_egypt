@@ -361,7 +361,7 @@ a { color: inherit; }
 
 .photonics-viewer { background: var(--canvas); display: flex; flex-direction: column; height: 100%; min-height: 28rem; overflow: hidden; position: relative; }
 .viewer-stage { flex: 1; min-height: 0; }
-.viewer-canvas { height: 100% !important; touch-action: none; width: 100% !important; }
+.viewer-canvas { height: 100% !important; touch-action: pan-y; width: 100% !important; }
 .viewer-tools { align-items: center; background: rgb(9 12 13 / 0.82); border-top: 1px solid var(--line-subtle); display: flex; gap: 1rem; justify-content: space-between; padding: 0.65rem 0.8rem; }
 .viewer-hint { color: var(--ink-soft); font-size: 0.7rem; line-height: 1.45; margin: 0; max-width: 35rem; }
 .viewer-actions { display: flex; gap: 0.35rem; }
