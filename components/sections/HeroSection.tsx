@@ -23,7 +23,7 @@ export function HeroSection({ locale, dictionary }: HeroSectionProps) {
     <section className="hero-shell">
       <div className="hero-copy-wrap container-layout">
         <div className="hero-copy">
-          <p className="eyebrow">{dictionary.home.eyebrow}</p>
+          <p className="eyebrow hero-eyebrow">{dictionary.home.eyebrow}</p>
           <h1 className="display-title">{dictionary.home.title}</h1>
           <p className="lede">{dictionary.home.intro}</p>
           <div className="hero-actions">
