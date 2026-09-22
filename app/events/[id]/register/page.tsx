@@ -57,7 +57,7 @@ export default async function EventRegistrationPage({ params }: EventRegistratio
             {isEarly ? "Early event registration" : "Event registration"}
           </p>
           <h1 className="section-title mt-3">{event.title.en}</h1>
-          <div className="mt-7 border-y border-white/15 py-5 text-sm leading-6 text-[var(--ink-soft)]">
+          <div className="mt-7 border-y border-[var(--line)] py-5 text-sm leading-6 text-[var(--ink-soft)]">
             <p>
               {event.date}
               {event.startTime && (
@@ -67,11 +67,13 @@ export default async function EventRegistrationPage({ params }: EventRegistratio
             <p className="mt-2">{event.location.en}</p>
           </div>
         </div>
-        <div className="border-y border-white/15 py-8 sm:px-2">
+        <div className="border-y border-[var(--line)] py-8 sm:px-2">
           <EventRegistrationForm
+            eventId={event.id}
             eventTitle={event.title.en}
             eventDate={event.date}
-            email={siteConfig.email}
+            eventLocation={event.location.en}
+            isEarly={isEarly}
           />
         </div>
       </div>

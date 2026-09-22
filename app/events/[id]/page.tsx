@@ -121,7 +121,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
-      <section className="scientific-grid border-b border-white/10 bg-[var(--surface)]">
+      <section className="scientific-grid border-b border-[var(--line)] bg-[var(--surface)]">
         <div className="container-page py-10 sm:py-14">
           <Link href={localizedHref("en", "/events")} className="text-link">
             <ArrowLeft size={14} aria-hidden="true" /> {dictionary.eventDetail.backToEvents}
@@ -133,7 +133,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 {getLocalizedText(event.title, "en")}
               </h1>
             </div>
-            <div className="border-l-0 border-white/15 pt-1 lg:border-l lg:pl-8">
+            <div className="border-l-0 border-[var(--line)] pt-1 lg:border-l lg:pl-8">
               <p className="font-mono text-xl font-bold text-[var(--gold)]">
                 {formatEventDate(event.date, "en", { weekday: "long" })}
               </p>
@@ -155,16 +155,16 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               {getLocalizedText(event.description, "en")}
             </p>
             {event.tags.length > 0 && (
-              <div className="mt-9 flex flex-wrap gap-2 border-t border-white/15 pt-5">
+              <div className="mt-9 flex flex-wrap gap-2 border-t border-[var(--line)] pt-5">
                 {event.tags.map((tag) => (
-                  <span className="border border-white/15 px-3 py-1.5 text-xs font-bold tracking-wide text-[var(--gold-pale)]" key={tag}>
+                  <span className="border border-[var(--line)] px-3 py-1.5 text-xs font-bold tracking-wide text-[var(--gold-pale)]" key={tag}>
                     {tag}
                   </span>
                 ))}
               </div>
             )}
           </article>
-          <aside className="border-y border-white/15 py-6">
+          <aside className="border-y border-[var(--line)] py-6">
             <p className="eyebrow">{dictionary.eventDetail.informationEyebrow}</p>
             <dl className="mt-5 grid gap-5 text-sm">
               <div className="flex gap-3 text-[var(--ink-soft)]">
