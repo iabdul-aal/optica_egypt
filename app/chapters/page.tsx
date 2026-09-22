@@ -51,7 +51,7 @@ export default function ChaptersPage() {
         </div>
       </section>
 
-      {/* ── Egypt Campus Geographic Hub & Map ─────────────────────────────── */}
+      {/* ── Egypt Campus Geographic Hub and Map ─────────────────────────────── */}
       <section className="section-space">
         <div className="container-page">
           <div className="border-b border-[var(--line)] pb-8 mb-10">

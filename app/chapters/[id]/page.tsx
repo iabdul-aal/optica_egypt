@@ -76,7 +76,7 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </p>
             </div>
 
-            {/* Social & Contact Actions */}
+            {/* Social and Contact Actions */}
             <div className="flex flex-wrap items-center gap-3 lg:justify-end">
               {chapter.socials?.email && (
                 <a
@@ -138,7 +138,7 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </p>
             </div>
 
-            {/* Research & Focus Areas */}
+            {/* Research and Focus Areas */}
             {chapter.focusAreas && (
               <div className="site-card p-6 sm:p-8">
                 <h2 className="text-lg font-bold text-[var(--ink)]">Technical Focus and Initiatives</h2>
@@ -156,7 +156,7 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </div>
             )}
 
-            {/* Activities & Highlights */}
+            {/* Activities and Highlights */}
             {chapter.highlights && (
               <div className="site-card p-6 sm:p-8">
                 <h2 className="text-lg font-bold text-[var(--ink)]">Activities and Accomplishments</h2>

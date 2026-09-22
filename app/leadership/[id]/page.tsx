@@ -66,7 +66,7 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
         </Link>
 
         <div className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start">
-          {/* ── Left Column: Portrait & Quick Details ── */}
+          {/* ── Left Column: Portrait and Quick Details ── */}
           <div className="site-card p-6 sm:p-8 flex flex-col items-center text-center sm:items-start sm:text-left">
             <div className="relative aspect-[2/3] w-full max-w-[320px] overflow-hidden rounded-sm bg-[var(--surface-raised)] border border-[var(--line)] shadow-lg">
               {hasPhoto ? (
@@ -158,7 +158,7 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
             </div>
           </div>
 
-          {/* ── Right Column: Biography & Background Details ── */}
+          {/* ── Right Column: Biography and Background Details ── */}
           <div className="space-y-8">
             {/* Biography */}
             <div className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] p-6 sm:p-8">
@@ -173,7 +173,7 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
               </p>
             </div>
 
-            {/* Structured Academic & Professional Information */}
+            {/* Structured Academic and Professional Information */}
             <div className="grid gap-5 sm:grid-cols-2">
               {member.academicBackground && (
                 <div className="site-card p-6">

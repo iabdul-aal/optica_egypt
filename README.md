@@ -45,7 +45,9 @@ All content lives in `data/`. Adding or updating content never requires code cha
 | `data/news.json` | Announcements |
 | `data/blogs.json` | Technical articles and research spotlights |
 | `data/gallery.json` | Photo and activity archive |
+| `data/chapters.json` | Student chapters registry and campus map data |
 | `data/open_source.json` | Open source photonics program, tools, and chipathon |
+| `data/membership_tiers.json` | Audience-specific membership tiers, pricing, and benefits |
 | `data/outreach.json` | Outreach activities |
 | `data/resources.json` | Curated photonics resources |
 

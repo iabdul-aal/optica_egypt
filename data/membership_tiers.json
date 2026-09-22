@@ -1,0 +1,104 @@
+[
+  {
+    "id": "students",
+    "cohort": "Students and Early Career",
+    "name": "Optica Student Membership",
+    "tag": "Most Popular for Students",
+    "audience": "Undergraduate, Master's, and PhD candidates in physics, optical engineering, and electrical communications",
+    "pricingNote": "Subsidized global student rate (Egypt Tier 2 country discount applies)",
+    "valueProposition": "For the cost of a few cups of coffee, unlock conference travel grants worth up to $1,500, free access to 50 peer-reviewed journal papers, and eligibility to lead your university Student Chapter.",
+    "benefits": [
+      "Direct eligibility for Optica Student Travel Grants (up to $1,500) to attend FiO, CLEO, and OFC",
+      "50 free journal downloads annually from the Optica Publishing Group digital library",
+      "Subsidized or free registration to Optica conferences, summer schools, and technical webinars",
+      "Exclusive access to chartered university Optica Student Chapter leadership and annual grant funding",
+      "Eligibility for Optica Foundation fellowships, scholarships, and the prestigious Siegman Laser Summer School",
+      "Free digital and print subscription to Optics and Photonics News (OPN)",
+      "Entry into international student paper competitions and student leadership conferences"
+    ],
+    "opticaUrl": "https://www.optica.org/membership/join/student/",
+    "ctaLabel": "Buy Student Membership",
+    "localPath": "/join?tier=students"
+  },
+  {
+    "id": "early-career",
+    "cohort": "Recent Graduates",
+    "name": "Early Career Professional Membership",
+    "tag": "Career Transition",
+    "audience": "Recent graduates within 3 to 5 years of graduation entering industry, national laboratories, or postdoctoral positions",
+    "pricingNote": "Special discounted transitional early-career rate",
+    "valueProposition": "Bridge the transition from graduate study to high-impact engineering or research roles with specialized mentorship, resume visibility, and technical committee seats.",
+    "benefits": [
+      "Subsidized transitional membership rates during your first 5 years post-graduation",
+      "Exclusive access to the Optica Career Accelerator and international optical engineering job board",
+      "Voting privileges and eligibility for Optica Technical Group executive seats",
+      "Substantial discounts on conference registration and professional development short courses",
+      "Early career networking receptions at premier global photonics summits",
+      "Mentorship pairing with seasoned international optical scientists and industry fellows"
+    ],
+    "opticaUrl": "https://www.optica.org/membership/join/early_career/",
+    "ctaLabel": "Buy Early Career Membership",
+    "localPath": "/join?tier=early-career"
+  },
+  {
+    "id": "researchers",
+    "cohort": "Researchers and Faculty",
+    "name": "Optica Professional Membership",
+    "tag": "For Active Researchers",
+    "audience": "University professors, postdoctoral fellows, research scientists, and laboratory directors",
+    "pricingNote": "Egypt Tier 2 developing nation discount applies automatically",
+    "valueProposition": "Publish faster with publishing charge discounts, access the entire optics literature database, establish international research partnerships, and gain eligibility for Senior Member and Optica Fellow honors.",
+    "benefits": [
+      "Substantial discounts on Article Processing Charges (APCs) in high-impact Optica open-access journals",
+      "50 free full-text journal downloads annually across Optica Publishing Group digital library",
+      "Significant member discounts on registration for premier conferences (CLEO, OFC, FiO)",
+      "Host international Optica Traveling Lecturers at your university with travel fully funded by Optica",
+      "Eligibility for prestigious elevation to Optica Senior Member and Optica Fellow",
+      "Full voting rights in Optica governance, board elections, and technical council leadership",
+      "Peer review opportunities and editorial board eligibility for leading scientific journals"
+    ],
+    "opticaUrl": "https://www.optica.org/membership/join/individual/",
+    "ctaLabel": "Buy Professional Membership",
+    "localPath": "/join?tier=researchers"
+  },
+  {
+    "id": "academia",
+    "cohort": "Academic Institutions",
+    "name": "Institutional Affiliation and Chapter Sponsorship",
+    "tag": "University Partners",
+    "audience": "Physics and engineering department chairs, deans, laboratory heads, and curriculum directors",
+    "pricingNote": "Campus chartering and institutional sponsorship pathway",
+    "valueProposition": "Elevate your university's international research standing, charter an official on-campus Optica Student Chapter with annual activity grants, and secure free optical demonstration kits for your labs.",
+    "benefits": [
+      "Charter and sponsor an official on-campus Optica Student Chapter with annual activity grants ($2,000+)",
+      "Free Optics Discovery educational demonstration kits for undergraduate physics and optics laboratories",
+      "Global visibility in Optica international university directories and conference catalogs",
+      "Priority funding for your institution's graduate students to attend global summer schools and symposiums",
+      "Co-host subsidized regional academic symposiums and international traveling lecturer tours",
+      "Access to curriculum guidelines and computational photonics educational modules"
+    ],
+    "opticaUrl": "https://www.optica.org/membership/join/",
+    "ctaLabel": "Explore Academic Affiliation",
+    "localPath": "/join?tier=academia"
+  },
+  {
+    "id": "industry",
+    "cohort": "Industry and Startups",
+    "name": "Optica Industry Network (OIN) and Corporate Membership",
+    "tag": "Industry and Corporate",
+    "audience": "Optical engineers, telecom service providers, hardware startups, component fabricators, and corporate R and D groups",
+    "pricingNote": "Corporate and startup scaled tiers available",
+    "valueProposition": "Gain actionable global photonics market intelligence, showcase your hardware at major global exhibitions with member discounts, and recruit specialized optical engineering talent in Egypt.",
+    "benefits": [
+      "Full access to Optica Industry Network (OIN) market research, roadmaps, and industry trend reports",
+      "Substantial exhibition booth and sponsorship discounts at flagship international events (OFC, CLEO)",
+      "Direct recruitment pipeline into Egypt's top optics, photonics, and telecommunications graduates",
+      "VIP invitations to executive networking receptions, CEO roundtables, and technical summits",
+      "Demonstration opportunities during Optica Egypt Local Section industrial masterclasses",
+      "Brand recognition across Optica global conference marketing and digital media"
+    ],
+    "opticaUrl": "https://www.optica.org/industry/",
+    "ctaLabel": "Join Industry Network",
+    "localPath": "/join?tier=industry"
+  }
+]

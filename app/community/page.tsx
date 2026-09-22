@@ -101,13 +101,15 @@ export default function CommunityPage() {
                       </span>
                       <span>{group.entryPoint}</span>
                     </div>
-                    <Link
-                      href={localizedHref("en", `/join?interest=${group.key}`)}
-                      className="inline-flex shrink-0 items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[var(--gold)] hover:text-[var(--gold-pale)] transition-colors"
-                    >
-                      <span>Connect</span>
-                      <ArrowUpRight size={13} aria-hidden="true" />
-                    </Link>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <Link
+                        href={localizedHref("en", `/join?tier=${group.key}`)}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[var(--gold)] hover:text-[var(--gold-pale)] transition-colors"
+                      >
+                        <span>Membership Benefits</span>
+                        <ArrowUpRight size={13} aria-hidden="true" />
+                      </Link>
+                    </div>
                   </div>
                 </article>
               </ScrollReveal>
