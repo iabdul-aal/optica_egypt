@@ -20,23 +20,26 @@ These are shown on mobile devices (`< 768px`), for users with `prefers-reduced-m
 
 When officers provide their photos, place them at the exact paths below.
 - **Aspect ratio:** 4:5 (recommended 800 × 1000 px)
-- **Format:** JPG or WebP
+- **Format:** PNG
 - **Current in-code fallback:** Golden monogram initials on dark navy background with concentric optical rings.
 
 | Officer | Role | Destination Path |
 |---|---|---|
-| Abdulaziz Albadawi | President | `public/people/leadership/abdulaziz-albadawi.jpg` |
-| Khaled Ramadan | Vice President | `public/people/leadership/khaled-ramadan.jpg` |
-| Mohammed Elsherbiny | Secretary | `public/people/leadership/mohammed-elsherbiny.jpg` |
-| Arwa Elsherbiny | Treasurer | `public/people/leadership/arwa-elsherbiny.jpg` |
-| Mariam Hussein | Growth Officer | `public/people/leadership/mariam-hussein.jpg` |
-| Ahmed Magdy | Logistics Officer | `public/people/leadership/ahmed-magdy.jpg` |
-| Mohammed Khedr | Outreach Officer | `public/people/leadership/mohammed-khedr.jpg` |
-| Yahia Ghadiry | Activities Officer | `public/people/leadership/yahia-ghadiry.jpg` |
-| Omar Ayoub | QA Officer | `public/people/leadership/omar-ayoub.jpg` |
-| Abdelrhman Hassan | Volunteers Officer | `public/people/leadership/abdelrhman-hassan.jpg` |
-| Islam Abduaal | Webmaster | `public/people/leadership/islam-abduaal.jpg` |
-| Abdlrhman Hamza | Member | `public/people/leadership/abdlrhman-hamza.jpg` |
+| Abdulaziz Albadawi | President | `public/people/leadership/abdulaziz-albadawi.png` |
+| Khaled Ramadan | Vice President | `public/people/leadership/khaled-ramadan.png` |
+| Mohamed Nader | Secretary | `public/people/leadership/mohammed-elsherbiny.png` |
+| Arwa Elsherbiny | Treasurer | `public/people/leadership/arwa-elsherbiny.png` |
+| Mariam Awd | Growth Officer | `public/people/leadership/mariam-awd.png` |
+| Ahmed Magdy | Logistics Officer | `public/people/leadership/ahmed-magdy.png` |
+| Mohammed Khedr | Outreach Officer | `public/people/leadership/mohammed-khedr.png` |
+| Yahia Ghadiry | Activities Officer | `public/people/leadership/yahia-ghadiry.png` |
+| Omar Ayoub | QA Officer | `public/people/leadership/omar-ayoub.png` |
+| Abdelrhman Hassan | Volunteers Officer | `public/people/leadership/abdelrhman-hassan.png` |
+| Islam Abduaal | Webmaster | `public/people/leadership/islam-abduaal.png` |
+| Abdlrhman Hamza | Member | `public/people/leadership/abdlrhman-hamza.png` |
+| Prof. Diaa Khalil | Senior Faculty Advisor | `public/people/leadership/diaa-khalil.png` |
+| Prof. Yasser Sabry | Senior Faculty Advisor | `public/people/leadership/yasser-sabry.png` |
+| Assoc. Prof. Salem Hegazy | Senior Faculty Advisor | `public/people/leadership/salem-hegazy.png` |
 
 ---
 
