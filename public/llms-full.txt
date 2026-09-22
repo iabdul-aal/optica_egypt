@@ -38,7 +38,7 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
   - Affiliations: Ain Shams University / LLOC Lab / AUC / Nile University
   - Focus: Silicon Photonics and Waveguide Design
 
-- Mohammed Elsherbiny, Secretary
+- Mohamed Nader, Secretary
   - Optica Member ID: 2798431
   - Email: mohammed.nader.200519@gmail.com
   - Affiliations: Ain Shams University / Si-Ware Systems
@@ -46,7 +46,7 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
 
 - Arwa Elsherbiny, Treasurer
   - Optica Member ID: 2822044
-  - Email: 2300183@eng.asu.edu.eg
+  - Email: arwaelsherbiny33@gmail.com
   - Affiliations: Ain Shams University / Si-Ware Systems / Zewail City
   - Focus: Financial Planning, Grants Allocation, and Quantum Optics
 
@@ -57,19 +57,19 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
   - Focus: Digital Infrastructure, Integrated Nanophotonics, and Nonlinear Quantum Optics
 
 ### Operational Committee
-- Mariam Awd (Hussein), Growth Officer (Optica ID: 2798018) | GUC Micro Optics Lab
-- Mohammed Khedr, Outreach Officer | Ain Shams University / AUC
-- Jannah Ahmed, Branding Officer | Ain Shams University / Nile University
-- Yahia Ghadiry, Activities Officer (Optica ID: 2779704) | Ain Shams University / Si-Ware
-- Ahmed Magdy, Logistics Officer | Ain Shams University / Si-Ware
-- Omar Ayoub, QA Officer (Optica ID: 2779412) | Ain Shams University / Si-Ware
-- Abdelrhman Hassan, Volunteers Officer (Optica ID: 2779649) | Sphinx University / AUC
-- Abdlrhman Hamza, Founding Member | Ain Shams University
+- Mariam Awd (Hussein), Growth Officer (Optica ID: 2798018, Email: mariam.hussin@guc.edu.eg) | GUC Micro Optics Lab
+- Mohammed Khedr, Outreach Officer (Email: mmh.khedre@gmail.com) | Ain Shams University / AUC
+- Jannah Ahmed, Branding Officer (Email: jannahahmedsaber18@gmail.com) | Ain Shams University / Nile University
+- Yahia Ghadiry, Activities Officer (Optica ID: 2779704, Email: yahiaghadiry@gmail.com) | Ain Shams University / Si-Ware
+- Ahmed Magdy, Logistics Officer (Email: am2289148@gmail.com) | Ain Shams University / Si-Ware
+- Omar Ayoub, QA Officer (Optica ID: 2779412, Email: omarnmayoub@gmail.com) | Ain Shams University / Si-Ware
+- Abdelrhman Hassan, Volunteers Officer (Optica ID: 2779649, Email: abderhman0009@gmail.com) | Sphinx University / AUC
+- Abdlrhman Hamza, Founding Member (Email: abdrhmanhamzaa@gmail.com) | Ain Shams University
 
 ### Senior Faculty Advisory Board
-- Prof. Diaa Khalil: Professor of Photonics, Former Head of ECE, and Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Author of 400+ papers, holder of 25+ patents, SPIE Prism Award winner, and Stanford Top 2% Scientist globally.
-- Prof. Yasser Sabry: Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; Core inventor of NeoSpectra™ handheld FTIR spectrometer; Recipient of SPIE Prism Award.
-- Assoc. Prof. Salem Hegazy: Associate Professor of Quantum Optics at Cairo University and Zewail City of Science and Technology; Recipient of the Egyptian State Award for Technological Innovation (2021).
+- Prof. Diaa Khalil (Email: diaa_khalil@eng.asu.edu.eg): Professor of Photonics, Former Head of ECE, and Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Author of 400+ papers, holder of 25+ patents, SPIE Prism Award winner, and Stanford Top 2% Scientist globally.
+- Prof. Yasser Sabry (Email: yasser.sabry@eng.asu.edu.eg): Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; Core inventor of NeoSpectra™ handheld FTIR spectrometer; Recipient of SPIE Prism Award.
+- Assoc. Prof. Salem Hegazy (Email: shegazy@zewailcity.edu.eg): Associate Professor of Quantum Optics at Cairo University and Zewail City of Science and Technology; Recipient of the Egyptian State Award for Technological Innovation (2021).
 
 ---
 

@@ -32,6 +32,7 @@ When officers provide their photos, place them at the exact paths below.
 | Mariam Awd | Growth Officer | `public/people/leadership/mariam-awd.png` |
 | Ahmed Magdy | Logistics Officer | `public/people/leadership/ahmed-magdy.png` |
 | Mohammed Khedr | Outreach Officer | `public/people/leadership/mohammed-khedr.png` |
+| Jannah Ahmed | Branding Officer | `public/people/leadership/jannah-ahmed.png` |
 | Yahia Ghadiry | Activities Officer | `public/people/leadership/yahia-ghadiry.png` |
 | Omar Ayoub | QA Officer | `public/people/leadership/omar-ayoub.png` |
 | Abdelrhman Hassan | Volunteers Officer | `public/people/leadership/abdelrhman-hassan.png` |
