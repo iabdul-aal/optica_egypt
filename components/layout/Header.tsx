@@ -42,7 +42,7 @@ const navConfig: NavItem[] = [
     kind: "group",
     labelKey: "groupCommunity",
     items: [
-      { key: "community", path: "/community" },
+      { key: "communityOverview", path: "/community" },
       { key: "chapters", path: "/chapters" },
       { key: "outreach", path: "/outreach" },
       { key: "volunteer", path: "/volunteer" },

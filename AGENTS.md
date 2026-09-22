@@ -29,7 +29,7 @@ Optica Egypt
 │   ├── About (/about)
 │   └── Leadership (/leadership, /leadership/[id])
 ├── Community
-│   ├── Community Ecosystem (/community)
+│   ├── Overview (/community)
 │   ├── Student Chapters (/chapters, /chapters/[id])
 │   ├── Outreach Initiatives (/outreach)
 │   └── Volunteer Portal (/volunteer)
