@@ -27,7 +27,7 @@ export default function ChaptersPage() {
       <PageHeader
         eyebrow="University Network"
         title="Optica Chapters in Egypt."
-        intro="Student chapters are the campus cornerstone of optics and photonics research. They host technical workshops, invite international traveling lecturers, and connect students to global Optica fellowships and travel grants."
+        intro="Chapters are the campus cornerstone of optics and photonics research. They host technical workshops, invite international traveling lecturers, and connect students to global Optica fellowships and travel grants."
       />
 
       {/* ── Key Statistics Row ────────────────────────────────────────────── */}

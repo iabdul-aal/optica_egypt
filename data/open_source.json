@@ -1,8 +1,8 @@
 {
   "program": {
-    "title": "Open Source Photonics Program",
+    "title": "Open Source",
     "motto": "Build It. Test It. Publish It.",
-    "intro": "Modeled after pioneering open-source silicon initiatives, the Optica Egypt Open Source Photonics Program democratizes access to Photonic Integrated Circuit (PIC) design, simulation, and physical fabrication for Egyptian researchers, students, and engineers.",
+    "intro": "Modeled after pioneering open-source silicon initiatives, the Optica Egypt Open Source initiative democratizes access to Photonic Integrated Circuit (PIC) design, simulation, and physical fabrication for Egyptian researchers, students, and engineers.",
     "vision": "Lowering entry barriers to optical chip design through open Python-based photonic design automation (PDA), open process design kits (PDKs), and collaborative tapeout partnerships."
   },
   "pillars": [
@@ -44,9 +44,9 @@
     {
       "id": "software-defined",
       "number": "06",
-      "title": "Software-Defined Photonics Hackathon",
-      "summary": "A competitive hackathon where participants build open-source software tools, simulation libraries, or AI models that accelerate photonic design, analysis, or fabrication workflows. All winning projects are published under open-source licenses.",
-      "tools": ["Python", "PyTorch / JAX", "Inverse Design", "AI-Driven Optimization", "Open Datasets"]
+      "title": "Software-Defined Hackathon",
+      "summary": "A flagship hackathon program to build software tools for photonics or AI models for photonics. Teams develop open-source simulation libraries, layout packages, and machine learning models for optical chip design.",
+      "tools": ["Python Tools", "AI Models", "Inverse Design", "PyTorch / JAX", "Open Datasets"]
     }
   ],
   "toolstack": [

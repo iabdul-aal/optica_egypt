@@ -11,7 +11,7 @@ import {
 } from "@/lib/open-source"
 
 export const metadata: Metadata = {
-  title: "Open Source Photonics",
+  title: "Open Source",
   description: "Democratizing Photonic Integrated Circuit (PIC) design, open-source PDKs, and PDA tools across Egypt. Modeled after the global open-silicon movement, adapted for photonics.",
   alternates: {
     canonical: "/open-source/",
@@ -28,7 +28,7 @@ export default function OpenSourcePage() {
     <>
       <PageHeader
         eyebrow="Technical Program"
-        title="Open Source Photonics."
+        title="Open Source."
         intro={program.intro}
       />
 
@@ -177,11 +177,11 @@ export default function OpenSourcePage() {
           <div>
             <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1.5 text-xs text-[var(--gold)] font-mono uppercase">
               <Terminal size={14} aria-hidden="true" />
-              <span>Annual Hackathon</span>
+              <span>Hackathon Program</span>
             </div>
-            <h2 className="section-title mt-4">Software-Defined Photonics Hackathon</h2>
+            <h2 className="section-title mt-4">Software-Defined</h2>
             <p className="lede mt-4">
-              A competitive open-source hackathon where teams build software tools or AI models that accelerate photonic design, simulation, or fabrication workflows.
+              A flagship hackathon program to build software tools for photonics or AI models for photonics.
             </p>
             <p className="mt-4 text-sm leading-6 text-[var(--ink-soft)]">
               Participants choose their challenge track: build a Python simulation library, train an inverse-design neural network, or develop an AI model that predicts photonic device performance from structural parameters. All winning projects are published under open-source licenses and integrated into the Optica Egypt open toolchain.

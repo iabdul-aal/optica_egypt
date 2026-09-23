@@ -358,7 +358,7 @@
   },
   "openSource": {
     "eyebrow": "Technical Program",
-    "title": "Open Source Photonics Program",
+    "title": "Open Source",
     "intro": "Democratizing photonic integrated circuit design, open-source PDKs, and design automation across Egyptian universities and laboratories.",
     "pillarsEyebrow": "Strategic Pillars",
     "pillarsTitle": "Build It. Test It. Publish It.",
@@ -380,7 +380,7 @@
   },
   "chapters": {
     "eyebrow": "University Network",
-    "title": "Optica Student Chapters in Egypt",
+    "title": "Optica Chapters in Egypt",
     "intro": "Connecting university campuses, student researchers, and optics enthusiasts across Egypt to global Optica grants, international traveling lecturers, and technical workshops."
   }
 }
