@@ -36,6 +36,7 @@ Optica Egypt
 ├── Program
 │   ├── Events and Technical Talks (/events, /events/[id], /events/[id]/register)
 │   ├── Open Source Photonics (/open-source)
+│   ├── Competitions and Hackathons (/competitions, /hackathons)
 │   └── Curated Resources (/resources)
 ├── Insights
 │   ├── News and Announcements (/news)

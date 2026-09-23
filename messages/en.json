@@ -16,6 +16,8 @@
     "outreach": "Outreach",
     "volunteer": "Volunteer",
     "openSource": "Open Source",
+    "competitions": "Competitions",
+    "hackathons": "Hackathons",
     "resources": "Resources",
     "news": "News",
     "blogs": "Blogs",
@@ -382,5 +384,10 @@
     "eyebrow": "University Network",
     "title": "Optica Chapters in Egypt",
     "intro": "Connecting university campuses, student researchers, and optics enthusiasts across Egypt to global Optica grants, international traveling lecturers, and technical workshops."
+  },
+  "competitions": {
+    "eyebrow": "Competitive Technical Programs",
+    "title": "Competitions and Hackathons",
+    "intro": "Egypt's premier competitive hackathons and engineering contests to develop open-source design automation tools, simulation accelerators, and machine learning models for photonics."
   }
 }

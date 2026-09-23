@@ -15,6 +15,7 @@ const links = [
   ["chapters", "/chapters"],
   ["volunteer", "/volunteer"],
   ["events", "/events"],
+  ["competitions", "/competitions"],
   ["openSource", "/open-source"],
   ["resources", "/resources"],
   ["news", "/news"],

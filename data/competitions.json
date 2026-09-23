@@ -1,0 +1,139 @@
+{
+  "flagship": {
+    "id": "software-defined",
+    "name": "Software-Defined Photonics Hackathon",
+    "edition": "2026 Edition",
+    "motto": "Build Software Tools and AI Models for Photonics",
+    "eyebrow": "Flagship Technical Championship",
+    "intro": "Egypt's premier competitive hackathon to develop open-source design automation tools, simulation accelerators, and machine learning models for optics and photonics.",
+    "description": "The Software-Defined Photonics Hackathon brings together undergraduate engineers, graduate researchers, and software developers across Egypt. Teams build production-ready Python tools, train inverse-design neural networks, and curate open photonic benchmarks that empower the global optics community.",
+    "registrationDeadline": "November 2026",
+    "format": "Hybrid (Virtual Build Sprint and In-Person Finale)",
+    "teamSize": "1 to 4 Members",
+    "licensing": "Open Source (Apache 2.0 / MIT / BSD)"
+  },
+  "tracks": [
+    {
+      "id": "software-tools",
+      "number": "01",
+      "title": "Software Tools Track",
+      "focus": "Photonic Design Automation and Simulation",
+      "description": "Build open-source Python libraries, layout automation scripts, GDSII and OASIS DRC utilities, or electromagnetic solver acceleration packages.",
+      "tools": ["gdsfactory", "KLayout", "Meep", "Femwell", "SciPy"],
+      "exampleTopics": [
+        "Automated optical routing and waveguide curve optimization",
+        "Fast FDTD pre-processing and post-processing libraries",
+        "Open-source optical circuit design rule checking (DRC) engines"
+      ]
+    },
+    {
+      "id": "ai-models",
+      "number": "02",
+      "title": "AI Models Track",
+      "focus": "Machine Learning and Neural Inverse Design",
+      "description": "Develop deep learning surrogates, inverse-design neural networks, or physics-informed neural networks (PINNs) to predict or optimize optical device behavior.",
+      "tools": ["PyTorch", "JAX", "TensorFlow", "Scikit-Learn", "Optuna"],
+      "exampleTopics": [
+        "Deep learning surrogates for micro-ring resonator spectra",
+        "Inverse design of compact grating couplers using adjoint methods",
+        "Neural network prediction of fabrication tolerances in silicon photonics"
+      ]
+    },
+    {
+      "id": "open-datasets",
+      "number": "03",
+      "title": "Open Datasets Track",
+      "focus": "Standardized Benchmarks and Labeled Data",
+      "description": "Curate and publish labeled datasets of simulated or experimentally measured photonic components to establish global community benchmarks.",
+      "tools": ["Hugging Face", "Zenodo", "Pandas", "HDF5", "Parquet"],
+      "exampleTopics": [
+        "Curated silicon photonic component S-parameter libraries",
+        "Broadband transmission spectra of fabricated directional couplers",
+        "Multi-temperature waveguide loss measurement datasets"
+      ]
+    },
+    {
+      "id": "integration-connectors",
+      "number": "04",
+      "title": "Integration and Toolchain Track",
+      "focus": "Interoperability and Ecosystem Bridges",
+      "description": "Create plugins, converters, or workflow adapters linking standalone tools like gdsfactory, Meep, and EDA suites into unified design pipelines.",
+      "tools": ["Python APIs", "CLI Tooling", "WebAssembly", "JupyterLab Extensions"],
+      "exampleTopics": [
+        "Automated export from Meep simulations to gdsfactory layout components",
+        "Interactive JupyterLab widgets for photonic parameter sweeps",
+        "Open-source schematic-driven layout (SDL) generators for PICs"
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "phase": "Phase 1: Registration and Team Formation",
+      "timeline": "Week 1 to 2",
+      "description": "Teams register, select their challenge track, access starter repositories, and attend technical onboarding masterclasses."
+    },
+    {
+      "phase": "Phase 2: Sprint and Mentor Office Hours",
+      "timeline": "Week 3 to 5",
+      "description": "Intensive development sprint with weekly check-ins and dedicated mentorship sessions with academic and industry experts."
+    },
+    {
+      "phase": "Phase 3: Repository Submission and Code Review",
+      "timeline": "Week 6",
+      "description": "Teams submit public GitHub repositories with clean documentation, unit tests, and reproducible Jupyter demonstration notebooks."
+    },
+    {
+      "phase": "Phase 4: Judging, Live Demos, and Awards",
+      "timeline": "Week 7",
+      "description": "Finalist teams present live demos to an independent technical jury. Winners receive cash prizes, compute credits, and conference travel grants."
+    }
+  ],
+  "rubric": [
+    {
+      "criterion": "Technical Innovation and Depth",
+      "weight": "30%",
+      "description": "Novelty of the computational approach, algorithmic efficiency, and sophistication of photonics modeling."
+    },
+    {
+      "criterion": "Code Quality and Documentation",
+      "weight": "25%",
+      "description": "Readable, modular codebase with comprehensive docstrings, unit tests, and accessible getting-started tutorials."
+    },
+    {
+      "criterion": "Community Impact and Utility",
+      "weight": "25%",
+      "description": "Practical usefulness of the tool or model for researchers, students, and engineers in the photonics ecosystem."
+    },
+    {
+      "criterion": "Reproducibility and Verification",
+      "weight": "20%",
+      "description": "Clear benchmark comparisons against established analytical formulas or numerical simulation ground truth."
+    }
+  ],
+  "awards": [
+    {
+      "place": "First Prize Championship",
+      "reward": "Grand Trophy, Cash Award, and Conference Travel Fellowship",
+      "perks": "Priority integration into Optica Egypt open toolstack and cloud compute credits."
+    },
+    {
+      "place": "Runner-Up Award",
+      "reward": "Distinguished Excellence Award and Project Grant",
+      "perks": "Direct mentorship pairing with international research laboratories."
+    },
+    {
+      "place": "Special Track Commendations",
+      "reward": "Best AI Model, Best Tool Documentation, and Best Open Dataset",
+      "perks": "Optica membership sponsorship and official publication recognition."
+    }
+  ],
+  "relatedContests": [
+    {
+      "id": "chipathon",
+      "name": "Egypt Photonic Chipathon",
+      "category": "Hardware and Tapeout Design Contest",
+      "description": "Annual nationwide PIC layout competition where university teams submit DRC-clean silicon designs for subsidized multi-project wafer (MPW) fabrication.",
+      "href": "/open-source#chipathon"
+    }
+  ]
+}

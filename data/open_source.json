@@ -40,13 +40,6 @@
       "title": "Tapeout and Travel Fellowships",
       "summary": "Modeled after open-silicon grants, offering travel and characterization grants for Egyptian student teams to measure fabricated chips at partner laboratories.",
       "tools": ["Measurement Testbeds", "Conference Travel Subsidies", "Optica Foundation Grants"]
-    },
-    {
-      "id": "software-defined",
-      "number": "06",
-      "title": "Software-Defined Hackathon",
-      "summary": "A flagship hackathon program to build software tools for photonics or AI models for photonics. Teams develop open-source simulation libraries, layout packages, and machine learning models for optical chip design.",
-      "tools": ["Python Tools", "AI Models", "Inverse Design", "PyTorch / JAX", "Open Datasets"]
     }
   ],
   "toolstack": [
