@@ -31,7 +31,7 @@ export default function ChaptersPage() {
       />
 
       {/* ── Key Statistics Row ────────────────────────────────────────────── */}
-      <section className="border-b border-[var(--line)] bg-[var(--surface-raised)] py-8">
+      <section className="bg-[var(--surface-raised)] py-8">
         <div className="container-page grid grid-cols-2 gap-6 lg:grid-cols-4">
           {stats.map((s, idx) => (
             <div key={s.label} className="space-y-1">
