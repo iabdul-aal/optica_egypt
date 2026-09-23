@@ -9,6 +9,7 @@
     "home": "Home",
     "about": "About",
     "events": "Events",
+    "education": "Education",
     "community": "Community",
     "communityOverview": "Overview",
     "chapters": "Chapters",
@@ -389,5 +390,10 @@
     "eyebrow": "Competitive Technical Programs",
     "title": "Competitions and Hackathons",
     "intro": "Egypt's premier competitive hackathons and engineering contests to develop open-source design automation tools, simulation accelerators, and machine learning models for photonics."
+  },
+  "education": {
+    "eyebrow": "Academic Programs and Upskilling",
+    "title": "Education and Technical Training",
+    "intro": "Developing Egypt's next generation of optical scientists and photonic layout engineers through intensive seasonal schools, international distinguished webinars, and hands-on student design contests."
   }
 }

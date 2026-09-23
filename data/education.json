@@ -1,0 +1,147 @@
+{
+  "school": {
+    "name": "Egypt Photonics Seasonal School",
+    "edition": "2027 Winter School",
+    "eyebrow": "Flagship Academic Training Camp",
+    "tagline": "Intensive technical immersion bridging classroom physics with modern photonic design.",
+    "description": "A premier five-day national training school rotating among Egyptian universities. Featuring theoretical foundations, computational simulation bootcamps, and physical device characterization led by university faculty, industry leaders, and international Optica traveling lecturers.",
+    "hostInstitution": "Ain Shams University and The American University in Cairo (AUC)",
+    "dates": "January 24 – 28, 2027",
+    "location": "Cairo, Egypt (In-person with hybrid broadcast to Alexandria and Upper Egypt campuses)",
+    "format": "Five-Day Intensive Course with Daily Hands-on Computer Laboratories",
+    "eligibility": "Undergraduate seniors, graduate researchers (M.Sc. and Ph.D.), and junior industry engineers.",
+    "certificate": "Official Certificate of Completion awarded jointly by Optica Egypt and host institutions.",
+    "tuition": "Subsidized by Optica Global and industry sponsors; free admission for selected scholarship fellows.",
+    "modules": [
+      {
+        "id": "module-pic",
+        "number": "01",
+        "title": "Integrated Silicon and Silicon Nitride Photonics",
+        "description": "Electromagnetic waveguide theory, passive components, grating couplers, ring resonators, Mach-Zehnder interferometers, and multi-mode interferometers (MMI).",
+        "instructor": "Faculty and Research Fellows in Integrated Optics"
+      },
+      {
+        "id": "module-pda",
+        "number": "02",
+        "title": "Photonic Design Automation and Scripted Layout",
+        "description": "Python-first layout workflows, parameterized cells (PCells), DRC verification, waveguide routing, and GDSII export using gdsfactory.",
+        "instructor": "Open-Source Photonics Layout Engineers"
+      },
+      {
+        "id": "module-em",
+        "number": "03",
+        "title": "Computational Electrodynamics and Numerical Modeling",
+        "description": "Finite-difference time-domain (FDTD) fundamentals, boundary conditions (PML), frequency-domain eigenmode solving, and S-parameter extraction with Meep.",
+        "instructor": "Computational Modeling Faculty and Simulation Specialists"
+      },
+      {
+        "id": "module-mems",
+        "number": "04",
+        "title": "Optical MEMS, Sensors, and Applied Spectroscopy",
+        "description": "Microsystems engineering, MEMS FTIR spectroscopy, photonic crystal refractive index sensors, bio-photonics, and industrial gas detection.",
+        "instructor": "Prof. Diaa Khalil and Prof. Yasser Sabry (Ain Shams University / Si-Ware Systems)"
+      },
+      {
+        "id": "module-quantum",
+        "number": "05",
+        "title": "Quantum Photonics and Nonlinear Optical Physics",
+        "description": "Single-photon sources, spontaneous parametric down-conversion (SPDC), quantum entanglement on chip, and nonlinear Kerr optical phenomena.",
+        "instructor": "Assoc. Prof. Salem Hegazy (Cairo University / Zewail City)"
+      }
+    ],
+    "highlights": [
+      {
+        "title": "Daily 3-Hour Hands-on CAD Lab",
+        "description": "Every participant works through verified Jupyter notebook exercises, implementing real layout designs and running electromagnetic simulations."
+      },
+      {
+        "title": "Traveling Lecturer Masterclass",
+        "description": "Direct in-person sessions delivered by international Optica Traveling Lecturers sponsored by the Optica Foundation."
+      },
+      {
+        "title": "Industry Career Colloquium",
+        "description": "Exclusive networking panels with Egyptian photonics companies, fabless start-ups, and international graduate scholarship advisors."
+      }
+    ]
+  },
+  "webinars": {
+    "eyebrow": "Virtual Masterclasses and Technical Talks",
+    "title": "Distinguished Webinar Series",
+    "description": "Regular virtual technical lectures connecting Egyptian students and researchers with leading international scientists, Optica traveling lecturers, and Egyptian photonics leaders across the global diaspora.",
+    "features": [
+      "Live interactive Q and A with global researchers",
+      "Open-access digital video archive with downloadable slides",
+      "Attendance certificates for verified student participants",
+      "Special sessions on graduate admissions and fellowship applications"
+    ],
+    "schedule": [
+      {
+        "id": "webinar-swillam-2026",
+        "title": "Advances in Silicon Photonic Transceivers and Optical Computing for AI Data Centers",
+        "speaker": "Prof. Mohamed A. Swillam",
+        "role": "Professor and Chair of Physics, The American University in Cairo (AUC)",
+        "date": "October 18, 2026",
+        "time": "18:00 – 19:30 EET (UTC+2)",
+        "platform": "Zoom and YouTube Live",
+        "abstract": "Explores how high-density integrated silicon photonics addresses the interconnect bottleneck in modern artificial intelligence clusters, examining co-packaged optics, micro-ring modulators, and neural optical accelerators.",
+        "status": "Upcoming",
+        "registrationUrl": "/join"
+      },
+      {
+        "id": "webinar-saligane-2026",
+        "title": "Open-Source EDA and Design Automation for Next-Generation Integrated Photonics",
+        "speaker": "Dr. Mehdi Saligane",
+        "role": "Research Scientist, University of Michigan; Chair, IEEE SSCS TC-OSE",
+        "date": "November 14, 2026",
+        "time": "19:00 – 20:30 EET (UTC+2)",
+        "platform": "Zoom and YouTube Live",
+        "abstract": "An overview of how open-source silicon tools (gdsfactory, KLayout, OpenLane) are revolutionizing hardware accessibility, drawing parallels between open-silicon and open-photonics ecosystems.",
+        "status": "Upcoming",
+        "registrationUrl": "/join"
+      },
+      {
+        "id": "webinar-khalil-2026",
+        "title": "Miniaturized Optical MEMS FTIR Spectrometers: From Egyptian Lab to Global Commercialization",
+        "speaker": "Prof. Diaa Khalil",
+        "role": "Professor of Photonics, Ain Shams University; Chief Scientist, Si-Ware Systems",
+        "date": "December 05, 2026",
+        "time": "18:00 – 19:30 EET (UTC+2)",
+        "platform": "Zoom and YouTube Live",
+        "abstract": "The journey of conceiving, fabricating, and commercializing the NeoSpectra handheld FTIR spectrometer, demonstrating the immense economic and scientific potential of Egyptian deep-tech innovation.",
+        "status": "Upcoming",
+        "registrationUrl": "/join"
+      }
+    ]
+  },
+  "contests": {
+    "eyebrow": "Competitive Learning Ecosystem",
+    "title": "Hands-on Contests and Student Challenges",
+    "description": "Learning reaches its highest impact when tested in competition. Optica Egypt provides structured challenges where classroom theory translates into working open-source code and fabricated silicon.",
+    "items": [
+      {
+        "id": "hackathon",
+        "title": "Software-Defined Photonics Hackathon",
+        "category": "Software Tools and AI Models Championship",
+        "description": "A seven-week nationwide build sprint challenging teams to create Python automation scripts, FDTD pre-processing tools, and deep learning inverse design surrogates.",
+        "href": "/competitions",
+        "badge": "Flagship Hackathon"
+      },
+      {
+        "id": "chipathon",
+        "title": "Egypt Photonic Chipathon",
+        "category": "Silicon Hardware Tapeout Contest",
+        "description": "Annual layout design contest where university teams submit DRC-clean photonic integrated circuit designs for subsidized multi-project wafer (MPW) fabrication.",
+        "href": "/open-source",
+        "badge": "Tapeout Contest"
+      },
+      {
+        "id": "poster-contest",
+        "title": "Optica Egypt Student Paper and Poster Competition",
+        "category": "Research Showcase and Best Presentation",
+        "description": "Annual academic symposium contest celebrating outstanding undergraduate capstone projects and graduate research across optics, photonics, and laser engineering.",
+        "href": "/events",
+        "badge": "Academic Research"
+      }
+    ]
+  }
+}
