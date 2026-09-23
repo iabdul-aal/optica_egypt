@@ -1,18 +1,94 @@
 [
   {
-    "id": "optica-publishing-group",
+    "id": "itida-itac-grants",
     "title": {
-      "en": "Optica Publishing Group, Peer-Reviewed Journals"
+      "en": "ITIDA ITAC Graduation Project Funding"
     },
     "description": {
-      "en": "Access Optica, Optics Express, Applied Optics, and the largest peer-reviewed digital library in optics and photonics."
+      "en": "Annual Egyptian Ministry of Communications (MCIT) grant providing up to 50,000 EGP per engineering team for graduation capstones in electronics and photonics."
     },
-    "url": "https://opg.optica.org",
-    "category": "journal",
+    "url": "https://itida.gov.eg",
+    "category": "grants",
     "tags": [
-      "optica",
-      "peer-reviewed",
-      "research"
+      "itida",
+      "mcit",
+      "egypt",
+      "graduation-project",
+      "funding"
+    ],
+    "free": true
+  },
+  {
+    "id": "asrt-mashrouy-grants",
+    "title": {
+      "en": "ASRT Mashrouy, National Graduation Project Grants"
+    },
+    "description": {
+      "en": "Academy of Scientific Research and Technology funding program supporting graduation research projects and deep-tech prototypes in Egyptian universities."
+    },
+    "url": "http://www.asrt.sci.eg",
+    "category": "grants",
+    "tags": [
+      "asrt",
+      "egypt",
+      "government",
+      "research",
+      "graduation-project"
+    ],
+    "free": true
+  },
+  {
+    "id": "stdf-innovation-grants",
+    "title": {
+      "en": "STDF, Science, Technology and Innovation Funding Authority"
+    },
+    "description": {
+      "en": "Primary Egyptian funding agency financing capacity building, basic scientific research, and applied photonics innovation across Egyptian research institutes."
+    },
+    "url": "https://www.stdf.eg",
+    "category": "grants",
+    "tags": [
+      "stdf",
+      "egypt",
+      "research-grants",
+      "capacity-building"
+    ],
+    "free": true
+  },
+  {
+    "id": "optica-foundation-grants",
+    "title": {
+      "en": "Optica Foundation Student Travel Grants and Fellowships"
+    },
+    "description": {
+      "en": "International travel funding, Amplify scholarships, and career advancement awards for optical science students and researchers."
+    },
+    "url": "https://www.optica.org/foundation/opportunities/",
+    "category": "grants",
+    "tags": [
+      "scholarship",
+      "travel-grant",
+      "funding",
+      "students"
+    ],
+    "free": true
+  },
+  {
+    "id": "gdsfactory-colab-notebooks",
+    "title": {
+      "en": "gdsfactory Interactive Cloud Notebooks"
+    },
+    "description": {
+      "en": "Zero-installation, browser-based Jupyter notebooks on Google Colab for interactive silicon photonics design, layout scripting, and PDK DRC verification."
+    },
+    "url": "https://gdsfactory.github.io/gdsfactory/notebooks.html",
+    "category": "software",
+    "tags": [
+      "python",
+      "colab",
+      "cloud",
+      "zero-install",
+      "pic"
     ],
     "free": true
   },
@@ -53,20 +129,38 @@
     "free": true
   },
   {
-    "id": "optica-foundation-grants",
+    "id": "shared-characterization-consortium",
     "title": {
-      "en": "Optica Foundation Student Travel Grants and Fellowships"
+      "en": "Optica Egypt Inter-University Characterization Protocol"
     },
     "description": {
-      "en": "International travel funding, Amplify scholarships, and career advancement awards for optical science students and researchers."
+      "en": "Guidelines and submission schedule for Egyptian university teams to access shared optical test benches at AUC, Ain Shams, and Si-Ware for passive chip measurement."
     },
-    "url": "https://www.optica.org/foundation/opportunities/",
-    "category": "grants",
+    "url": "/open-source",
+    "category": "learning",
     "tags": [
-      "scholarship",
-      "travel-grant",
-      "funding",
-      "students"
+      "measurement",
+      "testing",
+      "consortium",
+      "egypt",
+      "labs"
+    ],
+    "free": true
+  },
+  {
+    "id": "optica-publishing-group",
+    "title": {
+      "en": "Optica Publishing Group, Peer-Reviewed Journals"
+    },
+    "description": {
+      "en": "Access Optica, Optics Express, Applied Optics, and the largest peer-reviewed digital library in optics and photonics."
+    },
+    "url": "https://opg.optica.org",
+    "category": "journal",
+    "tags": [
+      "optica",
+      "peer-reviewed",
+      "research"
     ],
     "free": true
   },
