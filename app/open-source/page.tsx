@@ -141,7 +141,7 @@ export default function OpenSourcePage() {
             </div>
             <h2 className="section-title mt-4">Egypt Photonic Chipathon</h2>
             <p className="lede mt-4">
-              Modeled after the IEEE SSCS Chipathon, teams from Egyptian universities compete to design, verify, and document novel silicon photonic circuits using open-source tools.
+              Modeled after global open-silicon chipathons, teams from Egyptian universities compete to design, verify, and document novel silicon photonic circuits using open-source tools.
             </p>
             <p className="mt-4 text-sm leading-6 text-[var(--ink-soft)]">
               Winning designs receive funded slots on regional and international Multi-Project Wafer (MPW) fabrication runs, followed by hands-on testing on optical bench testbeds.
