@@ -45,7 +45,7 @@ export default function ResourcesPage() {
                   Are you an Egyptian senior engineering team building a capstone in optics, photonics, optical communications, or MEMS? Optica Egypt helps you navigate domestic government funding, access zero-cost cloud design tools, and pair with international diaspora co-advisors.
                 </p>
 
-                <div className="mt-4 grid gap-3 sm:grid-cols-3 pt-2">
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 pt-2">
                   <div className="rounded-sm border border-[var(--line)] bg-[var(--surface)] p-3.5">
                     <span className="font-mono text-[10px] uppercase text-[var(--gold)] font-bold block">
                       ITIDA ITAC Grants
@@ -70,6 +70,18 @@ export default function ResourcesPage() {
                     </p>
                   </div>
 
+                  <div className="rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/5 p-3.5">
+                    <span className="font-mono text-[10px] uppercase text-[var(--gold)] font-bold block">
+                      Optica Thesis Fund
+                    </span>
+                    <p className="text-xs font-semibold text-[var(--ink)] mt-1">
+                      Up to 25,000 EGP
+                    </p>
+                    <p className="text-[11px] text-[var(--ink-soft)] mt-0.5">
+                      Direct section grants for optics components, PCBs, and layout fees.
+                    </p>
+                  </div>
+
                   <div className="rounded-sm border border-[var(--line)] bg-[var(--surface)] p-3.5">
                     <span className="font-mono text-[10px] uppercase text-[var(--gold)] font-bold block">
                       Diaspora Co-Mentors
@@ -89,8 +101,8 @@ export default function ResourcesPage() {
                   <span>Request Capstone Mentorship</span>
                   <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>
-                <Link href="/about#strategy" className="btn-secondary whitespace-nowrap">
-                  <span>View National Strategy</span>
+                <Link href="/fellowships" className="btn-secondary whitespace-nowrap">
+                  <span>Explore Thesis Fund</span>
                   <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>
               </div>

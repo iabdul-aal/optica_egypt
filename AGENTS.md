@@ -37,9 +37,9 @@ Optica Egypt
 │   └── Volunteer (/volunteer)
 ├── Program
 │   ├── Events (/events, /events/[id], /events/[id]/register)
-│   ├── Conferences (/conferences, /conference)
+│   ├── Conferences (/conferences)
 │   ├── Education (/education)
-│   ├── Competitions (/competitions, /hackathons)
+│   ├── Competitions (/competitions)
 │   ├── Open-Source (/open-source)
 │   └── Resources (/resources)
 ├── Insights

@@ -9,20 +9,36 @@ export const dynamic = "force-static"
 const BASE_URL = siteConfig.seo.siteUrl.replace(/\/$/, "")
 
 const STATIC_ROUTES = [
+  // Homepage
   { path: "", changeFrequency: "weekly" as const, priority: 1.0 },
+
+  // Section
   { path: "/about", changeFrequency: "monthly" as const, priority: 0.9 },
-  { path: "/events", changeFrequency: "weekly" as const, priority: 0.9 },
   { path: "/leadership", changeFrequency: "monthly" as const, priority: 0.85 },
-  { path: "/community", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/awards", changeFrequency: "monthly" as const, priority: 0.85 },
+
+  // Community
+  { path: "/community", changeFrequency: "monthly" as const, priority: 0.85 },
   { path: "/chapters", changeFrequency: "monthly" as const, priority: 0.85 },
+  { path: "/fellowships", changeFrequency: "monthly" as const, priority: 0.85 },
   { path: "/outreach", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/volunteer", changeFrequency: "monthly" as const, priority: 0.85 },
+
+  // Program
+  { path: "/events", changeFrequency: "weekly" as const, priority: 0.9 },
+  { path: "/conferences", changeFrequency: "monthly" as const, priority: 0.9 },
+  { path: "/education", changeFrequency: "monthly" as const, priority: 0.85 },
+  { path: "/competitions", changeFrequency: "monthly" as const, priority: 0.85 },
   { path: "/open-source", changeFrequency: "monthly" as const, priority: 0.85 },
-  { path: "/resources", changeFrequency: "monthly" as const, priority: 0.75 },
+  { path: "/resources", changeFrequency: "monthly" as const, priority: 0.8 },
+
+  // Insights
   { path: "/news", changeFrequency: "weekly" as const, priority: 0.8 },
   { path: "/blogs", changeFrequency: "weekly" as const, priority: 0.8 },
   { path: "/gallery", changeFrequency: "monthly" as const, priority: 0.75 },
-  { path: "/join", changeFrequency: "monthly" as const, priority: 0.85 },
+
+  // Primary Action
+  { path: "/join", changeFrequency: "monthly" as const, priority: 0.9 },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

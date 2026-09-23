@@ -31,10 +31,10 @@ export default function OutreachPage() {
               <p className="lede">{dictionary.outreach.programmesIntro}</p>
             </div>
           </ScrollReveal>
-          <div className="mt-2 divide-y divide-white/10">
+          <div className="mt-2 divide-y divide-[var(--line)]">
             {programmes.map((programme, index) => (
               <ScrollReveal key={programme.title} animation="fade-up" delay={index * 50}>
-                <article className="grid gap-3 py-7 transition-colors duration-200 hover:bg-white/[0.02] hover:pl-2 rounded-sm sm:grid-cols-[4rem_12rem_1fr] sm:gap-6">
+                <article className="grid gap-3 py-7 transition-colors duration-200 hover:bg-[var(--surface-raised)] hover:pl-2 rounded-sm sm:grid-cols-[4rem_12rem_1fr] sm:gap-6">
                   <p className="font-mono text-sm font-bold text-[var(--gold)]">{programme.number}</p>
                   <h2 className="text-lg font-semibold text-[var(--ink)]">{programme.title}</h2>
                   <p className="max-w-xl text-sm leading-6 text-[var(--ink-soft)]">{programme.body}</p>

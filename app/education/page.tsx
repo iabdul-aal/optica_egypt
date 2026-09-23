@@ -244,7 +244,7 @@ export default function EducationPage() {
                   Looking for competitive challenges and hackathons?
                 </h4>
                 <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">
-                  Test your skills in the Software-Defined Photonics Hackathon, the physical silicon Chipathon, or the student capstone championship.
+                  Test your skills in the Software-Defined Photonics Hackathon or the physical silicon Chipathon design contest.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-[var(--line-subtle)]">

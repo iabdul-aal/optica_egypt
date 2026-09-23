@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 
 const INSIGHTS_TABS = [
-  { label: "News and Announcements", href: "/news" },
-  { label: "Blogs and Perspectives", href: "/blogs" },
-  { label: "Photo Gallery", href: "/gallery" },
+  { label: "News", href: "/news" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "Gallery", href: "/gallery" },
 ]
 
 export function InsightsNav() {

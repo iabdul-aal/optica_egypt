@@ -284,7 +284,7 @@ export default function CompetitionsPage() {
               <p className="eyebrow">National Competition Arena</p>
               <h2 className="section-title mt-2">Additional Design Contests and Academic Challenges.</h2>
               <p className="text-xs text-[var(--ink-soft)] mt-2">
-                Complementing the Software-Defined Hackathon with physical silicon tapeouts and student research poster competitions.
+                Complementing the Software-Defined Hackathon with physical silicon tapeouts and national academic thesis awards.
               </p>
             </div>
 

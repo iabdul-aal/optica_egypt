@@ -136,11 +136,11 @@
       "href": "/open-source#chipathon"
     },
     {
-      "id": "poster-contest",
-      "name": "Student Capstone and Poster Championship",
-      "category": "Academic Research Contest",
-      "description": "Annual competition celebrating the best bachelor graduation capstones, master research posters, and optical engineering prototypes across Egyptian universities.",
-      "href": "/events"
+      "id": "thesis-award",
+      "name": "Best Thesis Award in Photonics",
+      "category": "Academic Thesis Merit Honor",
+      "description": "Annual nationwide merit distinction and cash honors recognizing outstanding bachelor graduation capstones, master theses, and Ph.D. dissertations.",
+      "href": "/fellowships"
     }
   ]
 }
