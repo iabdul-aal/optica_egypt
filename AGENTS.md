@@ -21,32 +21,33 @@
 
 ## 2. Information Architecture and Sitemap
 
-The site follows a scalable 4-group hierarchical taxonomy:
+The site follows a scalable 4-group hierarchical taxonomy with strictly single-word navigation tabs:
 
 ```
 Optica Egypt
 ├── Section
 │   ├── About (/about)
-│   └── Leadership (/leadership, /leadership/[id])
-├── Membership
+│   ├── Leadership (/leadership, /leadership/[id])
+│   └── Awards (/awards)
+├── Community
 │   ├── Overview (/community)
 │   ├── Chapters (/chapters, /chapters/[id])
-│   ├── Awards and Honors (/awards)
-│   ├── Outreach Initiatives (/outreach)
-│   └── Volunteer Portal (/volunteer)
+│   ├── Fellowships (/fellowships)
+│   ├── Outreach (/outreach)
+│   └── Volunteer (/volunteer)
 ├── Program
-│   ├── Events and Technical Talks (/events, /events/[id], /events/[id]/register)
-│   ├── Conferences and Symposia (/conferences, /conference)
-│   ├── Education and Technical Training (/education)
-│   ├── Open Source Photonics (/open-source)
-│   ├── Competitions and Hackathons (/competitions, /hackathons)
-│   └── Curated Resources (/resources)
+│   ├── Events (/events, /events/[id], /events/[id]/register)
+│   ├── Conferences (/conferences, /conference)
+│   ├── Education (/education)
+│   ├── Competitions (/competitions, /hackathons)
+│   ├── Open-Source (/open-source)
+│   └── Resources (/resources)
 ├── Insights
-│   ├── News and Announcements (/news)
-│   ├── Blogs and Perspectives (/blogs)
-│   └── Visual and Activity Gallery (/gallery)
+│   ├── News (/news)
+│   ├── Blogs (/blogs)
+│   └── Gallery (/gallery)
 └── Primary Action
-    └── Get Involved / Join (/join)
+    └── Join (/join)
 ```
 
 ---

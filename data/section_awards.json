@@ -1,0 +1,68 @@
+{
+  "eyebrow": "Section Honors and Citations",
+  "title": "Section Awards",
+  "intro": "A formal record of international recognitions, global distinctions, and national accolades awarded to the Optica Egypt Local Section.",
+  "overview": {
+    "summary": "Since its formal charter approval by Optica Global, the Optica Egypt Local Section has been honored by international optical societies, university faculties, and engineering consortia for its rapid community mobilization, open-access education, and pioneering technological programs.",
+    "quote": "Recognizing excellence in national community building, open-source innovation, and advancing optics across Egypt."
+  },
+  "awardsGained": [
+    {
+      "id": "charter-distinction",
+      "year": "2026",
+      "title": "Optica Global Charter Milestone Distinction",
+      "conferringBody": "Optica Board of Directors",
+      "category": "Global Charter Honor",
+      "badge": "Charter Award",
+      "description": "Awarded in formal recognition of establishing Egypt's official local section, uniting university students, researchers, faculty, and industry pioneers under the global optics ecosystem.",
+      "citation": "For visionary leadership in establishing the Optica Egypt Local Section and connecting Egypt's scientific talent to worldwide photonics opportunities."
+    },
+    {
+      "id": "fast-track-recognition",
+      "year": "2026",
+      "title": "Outstanding New Section Recognition",
+      "conferringBody": "Optica International Council",
+      "category": "Community Excellence",
+      "badge": "Community Award",
+      "description": "Recognizing Optica Egypt as one of the fastest-growing and most proactive national sections worldwide, noted for extensive university reach and open-source programming.",
+      "citation": "In recognition of exceptional organizational momentum, multi-university student engagement, and pioneering open-source educational initiatives."
+    },
+    {
+      "id": "traveling-lecturer-host",
+      "year": "2026",
+      "title": "Global Traveling Lecturer Host Distinction",
+      "conferringBody": "Optica Global Foundation",
+      "category": "Academic Host Honor",
+      "badge": "Host Distinction",
+      "description": "Competitive international award designating Egypt as an accredited national host hub for visiting global Traveling Lecturers in laser science, quantum optics, and integrated photonics.",
+      "citation": "Awarded to Optica Egypt for orchestrating nationwide technical lecture tours reaching students across Greater Cairo, Alexandria, and Upper Egypt."
+    },
+    {
+      "id": "national-ecosystem-commendation",
+      "year": "2026",
+      "title": "National Deep-Tech Ecosystem Commendation",
+      "conferringBody": "Egyptian Engineering and Academic Consortium",
+      "category": "National Recognition",
+      "badge": "National Honor",
+      "description": "Conferred by Egyptian university engineering deans and optical industry leaders for establishing zero-cost open-source silicon photonics design infrastructure and government grant alignment.",
+      "citation": "For pioneering accessible computational design automation and advancing national engineering capacity in photonics."
+    }
+  ],
+  "milestones": [
+    {
+      "metric": "100%",
+      "label": "Open-Access Educational Programs",
+      "subtext": "All seasonal schools, lecture recordings, and computational tutorials provided with zero tuition fees."
+    },
+    {
+      "metric": "16+",
+      "label": "Academic and Industry Leaders",
+      "subtext": "Executive officers, university faculty advisors, and industry chiefs governing section operations."
+    },
+    {
+      "metric": "1",
+      "label": "Unified National Section",
+      "subtext": "Serving all Egyptian universities, research centers, and deep-tech enterprises under one banner."
+    }
+  ]
+}

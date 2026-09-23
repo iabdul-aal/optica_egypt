@@ -11,9 +11,11 @@ type FooterProps = {
 const links = [
   ["about", "/about"],
   ["leadership", "/leadership"],
+  ["awards", "/awards"],
   ["community", "/community"],
   ["chapters", "/chapters"],
-  ["awards", "/awards"],
+  ["fellowships", "/fellowships"],
+  ["outreach", "/outreach"],
   ["volunteer", "/volunteer"],
   ["events", "/events"],
   ["conferences", "/conferences"],

@@ -8,27 +8,28 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "events": "Events and Talks",
-    "conferences": "Conferences and Symposia",
-    "education": "Education and Training",
+    "leadership": "Leadership",
+    "awards": "Awards",
     "community": "Community",
     "communityOverview": "Overview",
     "chapters": "Chapters",
-    "awards": "Awards and Honors",
-    "leadership": "Leadership",
+    "fellowships": "Fellowships",
     "outreach": "Outreach",
     "volunteer": "Volunteer",
-    "openSource": "Open Source Photonics",
-    "competitions": "Competitions and Hackathons",
+    "events": "Events",
+    "conferences": "Conferences",
+    "education": "Education",
+    "competitions": "Competitions",
     "hackathons": "Hackathons",
-    "resources": "Curated Resources",
+    "openSource": "Open-Source",
+    "resources": "Resources",
     "news": "News",
     "blogs": "Blogs",
     "gallery": "Gallery",
-    "join": "Get involved",
+    "join": "Join",
     "groupAbout": "Section",
     "groupSection": "Section",
-    "groupCommunity": "Membership",
+    "groupCommunity": "Community",
     "groupProgram": "Program",
     "groupInsights": "Insights"
   },
@@ -399,9 +400,14 @@
     "intro": "Developing Egypt's next generation of optical scientists and photonic layout engineers through intensive seasonal schools, foundational curriculum modules, and hands-on computer-aided design laboratories."
   },
   "awards": {
-    "eyebrow": "Recognition and Merit",
-    "title": "Awards and Honors",
-    "intro": "Celebrating academic excellence, scientific leadership, and distinguished service across Egypt's optics and photonics community through national honors and global Optica fellowships."
+    "eyebrow": "Section Honors and Citations",
+    "title": "Section Awards",
+    "intro": "A formal record of international recognitions, global distinctions, and national accolades awarded to the Optica Egypt Local Section."
+  },
+  "fellowships": {
+    "eyebrow": "Merit and Research Grants",
+    "title": "Community Fellowships",
+    "intro": "Empowering Egyptian talent through the Best Thesis Award in Photonics, the Optica Egypt Thesis Fund, and global Optica Foundation fellowships."
   },
   "conferences": {
     "eyebrow": "Flagship Scientific Meetings",
