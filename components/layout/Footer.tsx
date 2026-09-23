@@ -16,6 +16,7 @@ const links = [
   ["awards", "/awards"],
   ["volunteer", "/volunteer"],
   ["events", "/events"],
+  ["conferences", "/conferences"],
   ["education", "/education"],
   ["competitions", "/competitions"],
   ["openSource", "/open-source"],

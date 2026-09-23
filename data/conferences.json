@@ -1,0 +1,191 @@
+{
+  "flagship": {
+    "name": "Egypt Photonics Conference",
+    "acronym": "EPC 2027",
+    "edition": "Inaugural Edition · Spring 2027",
+    "eyebrow": "Flagship Annual Scientific Conference",
+    "motto": "Illuminating Egypt's Technological Frontier",
+    "dates": "April 18 – 20, 2027",
+    "location": "Cairo, Egypt (In-person and Hybrid Virtual Broadcast)",
+    "venue": "Ain Shams University and The American University in Cairo (AUC)",
+    "description": "The premier scientific meeting for optics, photonics, and quantum technologies across Egypt and the broader region. Bringing together university professors, doctoral researchers, international keynote speakers, and deep-tech industry leaders for three days of peer-reviewed technical sessions, workshops, poster presentations, and industrial technology exhibitions.",
+    "proceedings": "All accepted and presented peer-reviewed papers will be published in the official Optica Egypt Conference Proceedings and Technical Digest with registered digital object identifiers (DOIs).",
+    "format": "Three-Day Multi-Track Scientific Conference with Peer-Reviewed Oral Sessions and Interactive Poster Demonstrations"
+  },
+  "tracks": [
+    {
+      "id": "pic",
+      "number": "01",
+      "title": "Integrated Silicon and Photonic Circuits (PIC)",
+      "scope": "Design, automation, fabrication, and testing of integrated optical chips.",
+      "topics": [
+        "Silicon and silicon nitride passive and active device architectures",
+        "High-speed electro-optic modulators and photodetector integration",
+        "Photonic packaging, optical fiber coupling, and edge couplers",
+        "Open-source process design kits (PDKs) and automated layout scripting"
+      ]
+    },
+    {
+      "id": "comms",
+      "number": "02",
+      "title": "Optical Communications and Optical Computing",
+      "scope": "Next-generation transmission, co-packaged optics, and optical accelerators.",
+      "topics": [
+        "Co-packaged optics (CPO) and optical interconnects for artificial intelligence clusters",
+        "High-capacity optical fiber networks and wavelength-division multiplexing",
+        "Photonic neural networks, matrix-vector multipliers, and optical computing engines",
+        "Free-space optical communications, underwater telemetry, and satellite links"
+      ]
+    },
+    {
+      "id": "laser-quantum",
+      "number": "03",
+      "title": "Laser Science, Quantum Technologies, and Nonlinear Optics",
+      "scope": "Fundamental laser physics, nonlinear interactions, and quantum optical systems.",
+      "topics": [
+        "Ultrafast lasers, micro-resonator frequency combs, and harmonic generation",
+        "On-chip single-photon sources, quantum key distribution (QKD), and entanglement",
+        "Nonlinear wave mixing, optical parametric oscillators, and soliton dynamics",
+        "Integrated quantum photonic circuits for metrology and quantum information"
+      ]
+    },
+    {
+      "id": "mems-sensors",
+      "number": "04",
+      "title": "Optical MEMS, Sensors, and Applied Spectroscopy",
+      "scope": "Miniaturized microsystems, spectroscopic instrumentation, and sensing.",
+      "topics": [
+        "MEMS-based FTIR spectrometers and tunable Fabry-Perot micro-cavities",
+        "Photonic crystal refractive index sensors and lab-on-a-chip diagnostic devices",
+        "Environmental gas monitoring, industrial spectroscopy, and agritech photonics",
+        "Optofluidics, biomedical imaging, and point-of-care optical biosensors"
+      ]
+    },
+    {
+      "id": "nano-meta",
+      "number": "05",
+      "title": "Nanophotonics, Metasurfaces, and Plasmonics",
+      "scope": "Sub-wavelength optical phenomena, flat optics, and structured materials.",
+      "topics": [
+        "Dielectric metasurfaces for flat optics, beam steering, and polarization control",
+        "Plasmonic waveguiding, near-field optical microscopy, and sub-wavelength focusing",
+        "Two-dimensional materials in photonics (graphene, transition metal dichalcogenides)",
+        "Computational inverse design and topological photonics"
+      ]
+    }
+  ],
+  "deadlines": [
+    {
+      "milestone": "Call for Papers (CFP) Official Launch",
+      "date": "November 15, 2026",
+      "status": "Upcoming"
+    },
+    {
+      "milestone": "Full Paper and Extended Abstract Submission",
+      "date": "January 15, 2027",
+      "status": "Upcoming"
+    },
+    {
+      "milestone": "Peer Review and Author Notification",
+      "date": "February 20, 2027",
+      "status": "Upcoming"
+    },
+    {
+      "milestone": "Camera-Ready Final Manuscript Submission",
+      "date": "March 15, 2027",
+      "status": "Upcoming"
+    },
+    {
+      "milestone": "Early-Bird Registration Closes",
+      "date": "March 30, 2027",
+      "status": "Upcoming"
+    },
+    {
+      "milestone": "Conference Opening and Technical Sessions",
+      "date": "April 18 – 20, 2027",
+      "status": "Upcoming"
+    }
+  ],
+  "committees": {
+    "generalChairs": [
+      {
+        "name": "Prof. Diaa Khalil",
+        "role": "General Co-Chair",
+        "institution": "Ain Shams University and Si-Ware Systems"
+      },
+      {
+        "name": "Prof. Mohamed A. Swillam",
+        "role": "General Co-Chair",
+        "institution": "The American University in Cairo (AUC)"
+      }
+    ],
+    "tpcChairs": [
+      {
+        "name": "Assoc. Prof. Salem Hegazy",
+        "role": "Technical Program Chair",
+        "institution": "Cairo University and Zewail City"
+      },
+      {
+        "name": "Prof. Yasser Sabry",
+        "role": "Technical Program Co-Chair",
+        "institution": "Ain Shams University"
+      }
+    ],
+    "publicationChairs": [
+      {
+        "name": "Islam I. Abdulaal",
+        "role": "Publication and Digital Proceedings Chair",
+        "institution": "Max Planck School of Photonics and FAU Erlangen-Nürnberg"
+      }
+    ],
+    "steeringCommittee": [
+      {
+        "name": "Abdulaziz Albadawi",
+        "role": "Conference Secretariat and President",
+        "institution": "The American University in Cairo (AUC)"
+      },
+      {
+        "name": "Khaled Ramadan",
+        "role": "Operations and Logistics Co-Chair",
+        "institution": "Ain Shams University"
+      },
+      {
+        "name": "Mohamed Nader",
+        "role": "Author Relations and Registration",
+        "institution": "Ain Shams University"
+      },
+      {
+        "name": "Arwa Elsherbiny",
+        "role": "Finance and Sponsorship Chair",
+        "institution": "Ain Shams University"
+      }
+    ]
+  },
+  "registration": [
+    {
+      "tier": "Optica Member Author",
+      "fee": "$120 USD / 6,000 EGP",
+      "description": "Standard registration covering publication of one accepted paper in proceedings, access to all technical sessions, lunches, and conference banquet."
+    },
+    {
+      "tier": "Non-Member Author",
+      "fee": "$180 USD / 9,000 EGP",
+      "description": "Full author registration with proceedings publication, conference banquet, and one-year complimentary Optica local section affiliate membership."
+    },
+    {
+      "tier": "Student Attendee / Presenter",
+      "fee": "$50 USD / 2,500 EGP",
+      "description": "Subsidized tier for undergraduate and graduate students presenting papers or posters, including career mentorship sessions and digital digest."
+    },
+    {
+      "tier": "Industry Delegate and Exhibition",
+      "fee": "$350 USD / 17,500 EGP",
+      "description": "Two delegate passes, tabletop display booth in the technology pavilion, company logo in the program, and attendee directory inclusion."
+    }
+  ],
+  "authorGuidelines": {
+    "pageLimit": "Four to six pages in standard double-column IEEE / Optica conference format including figures, tables, and references.",
+    "peerReview": "All submissions undergo rigorous double-blind peer review by at least three independent members of the Technical Program Committee.",
+    "templates": "LaTeX and Microsoft Word templates will be made available upon Call for Papers launch."
+  }
+}

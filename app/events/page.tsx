@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import Link from "next/link"
+import { ArrowUpRight, Trophy } from "lucide-react"
 import { EventCard } from "@/components/sections/EventCard"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
@@ -20,6 +22,31 @@ export default function EventsPage() {
   return (
     <>
       <PageHeader eyebrow={dictionary.events.eyebrow} title={dictionary.events.title} intro={dictionary.events.intro} />
+
+      {/* ── Flagship Conference Spotlight Banner ──────────────────────────── */}
+      <section className="border-b border-[var(--line)] bg-[var(--surface-raised)] py-8">
+        <div className="container-page">
+          <div className="site-card p-6 sm:p-8 border-l-4 border-l-[var(--gold)] flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[var(--gold)] uppercase">
+                <Trophy size={14} />
+                <span>Flagship Annual Scientific Conference</span>
+              </div>
+              <h3 className="text-xl font-bold tracking-tight text-[var(--ink)]">
+                Egypt Photonics Conference (EPC 2027)
+              </h3>
+              <p className="text-xs leading-relaxed text-[var(--ink-soft)]">
+                Our premier three-day peer-reviewed conference featuring five technical tracks, keynote plenaries, and indexed DOI proceedings. Scheduled for April 18 – 20, 2027.
+              </p>
+            </div>
+            <Link href="/conferences" className="btn-primary shrink-0">
+              <span>Explore Flagship Conference</span>
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="section-space">
         <div className="container-page">
 

@@ -9,6 +9,7 @@
     "home": "Home",
     "about": "About",
     "events": "Events",
+    "conferences": "Conferences",
     "education": "Education",
     "community": "Community",
     "communityOverview": "Overview",
@@ -401,5 +402,10 @@
     "eyebrow": "Recognition and Merit",
     "title": "Awards and Honors",
     "intro": "Celebrating academic excellence, scientific leadership, and distinguished service across Egypt's optics and photonics community through national honors and global Optica fellowships."
+  },
+  "conferences": {
+    "eyebrow": "Flagship Scientific Meetings",
+    "title": "Conferences and Symposia",
+    "intro": "The premier academic gathering for peer-reviewed optics, photonics, and quantum technologies research across Egypt and the MENA region."
   }
 }

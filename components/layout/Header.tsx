@@ -54,6 +54,7 @@ const navConfig: NavItem[] = [
     labelKey: "groupProgram",
     items: [
       { key: "events", path: "/events" },
+      { key: "conferences", path: "/conferences" },
       { key: "education", path: "/education" },
       { key: "competitions", path: "/competitions" },
       { key: "openSource", path: "/open-source" },

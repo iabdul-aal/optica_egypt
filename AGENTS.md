@@ -36,6 +36,7 @@ Optica Egypt
 │   └── Volunteer Portal (/volunteer)
 ├── Program
 │   ├── Events and Technical Talks (/events, /events/[id], /events/[id]/register)
+│   ├── Conferences and Symposia (/conferences, /conference)
 │   ├── Education and Technical Training (/education)
 │   ├── Open Source Photonics (/open-source)
 │   ├── Competitions and Hackathons (/competitions, /hackathons)
