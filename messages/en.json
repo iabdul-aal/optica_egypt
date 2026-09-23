@@ -8,9 +8,9 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "events": "Events",
-    "conferences": "Conferences",
-    "education": "Education",
+    "events": "Events and Talks",
+    "conferences": "Conferences and Symposia",
+    "education": "Education and Training",
     "community": "Community",
     "communityOverview": "Overview",
     "chapters": "Chapters",
@@ -18,10 +18,10 @@
     "leadership": "Leadership",
     "outreach": "Outreach",
     "volunteer": "Volunteer",
-    "openSource": "Open Source",
-    "competitions": "Competitions",
+    "openSource": "Open Source Photonics",
+    "competitions": "Competitions and Hackathons",
     "hackathons": "Hackathons",
-    "resources": "Resources",
+    "resources": "Curated Resources",
     "news": "News",
     "blogs": "Blogs",
     "gallery": "Gallery",
@@ -396,7 +396,7 @@
   "education": {
     "eyebrow": "Academic Programs and Upskilling",
     "title": "Education and Technical Training",
-    "intro": "Developing Egypt's next generation of optical scientists and photonic layout engineers through intensive seasonal schools, international distinguished webinars, and hands-on student design contests."
+    "intro": "Developing Egypt's next generation of optical scientists and photonic layout engineers through intensive seasonal schools, foundational curriculum modules, and hands-on computer-aided design laboratories."
   },
   "awards": {
     "eyebrow": "Recognition and Merit",

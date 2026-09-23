@@ -276,31 +276,45 @@ export default function CompetitionsPage() {
         </div>
       </section>
 
-      {/* ── Related Contests Banner (Hardware and Tapeout) ──────────────────── */}
-      {relatedContests.map((contest) => (
-        <section key={contest.id} className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
+      {/* ── Related Contests Arena ────────────────────────────────────────── */}
+      {relatedContests.length > 0 && (
+        <section className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
           <div className="container-page">
-            <div className="site-card p-6 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div className="space-y-2 max-w-2xl">
-                <div className="inline-flex items-center gap-2 text-xs font-mono text-[var(--gold)] uppercase font-bold">
-                  <Cpu size={14} />
-                  <span>{contest.category}</span>
+            <div className="border-b border-[var(--line)] pb-6 mb-8">
+              <p className="eyebrow">National Competition Arena</p>
+              <h2 className="section-title mt-2">Additional Design Contests and Academic Challenges.</h2>
+              <p className="text-xs text-[var(--ink-soft)] mt-2">
+                Complementing the Software-Defined Hackathon with physical silicon tapeouts and student research poster competitions.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {relatedContests.map((contest) => (
+                <div key={contest.id} className="site-card p-6 sm:p-8 flex flex-col justify-between">
+                  <div>
+                    <div className="inline-flex items-center gap-2 text-xs font-mono text-[var(--gold)] uppercase font-bold">
+                      <Cpu size={14} />
+                      <span>{contest.category}</span>
+                    </div>
+                    <h3 className="text-xl font-bold tracking-tight text-[var(--ink)] mt-3">
+                      {contest.name}
+                    </h3>
+                    <p className="text-xs leading-relaxed text-[var(--ink-soft)] mt-2">
+                      {contest.description}
+                    </p>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-[var(--line-subtle)]">
+                    <Link href={contest.href} className="btn-secondary w-full justify-between">
+                      <span>Explore {contest.name}</span>
+                      <ArrowUpRight size={14} aria-hidden="true" />
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold tracking-tight text-[var(--ink)]">
-                  Looking for physical chip design? Explore the {contest.name}.
-                </h3>
-                <p className="text-xs leading-relaxed text-[var(--ink-soft)]">
-                  {contest.description}
-                </p>
-              </div>
-              <Link href={contest.href} className="btn-secondary shrink-0">
-                <span>Explore {contest.name}</span>
-                <ArrowUpRight size={14} aria-hidden="true" />
-              </Link>
+              ))}
             </div>
           </div>
         </section>
-      ))}
+      )}
     </>
   )
 }

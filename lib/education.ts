@@ -30,47 +30,36 @@ export interface PhotonicsSchool {
   highlights: SchoolHighlight[]
 }
 
-export interface WebinarItem {
-  id: string
-  title: string
-  speaker: string
-  role: string
-  date: string
-  time: string
-  platform: string
-  abstract: string
-  status: string
-  registrationUrl: string
+export interface BootcampTool {
+  name: string
+  purpose: string
 }
 
-export interface WebinarsSection {
+export interface CadBootcampSection {
   eyebrow: string
   title: string
   description: string
-  features: string[]
-  schedule: WebinarItem[]
+  tools: BootcampTool[]
 }
 
-export interface EducationContest {
-  id: string
-  title: string
-  category: string
+export interface EducationalPathway {
+  stage: string
+  level: string
+  focus: string
   description: string
-  href: string
-  badge: string
 }
 
-export interface ContestsSection {
+export interface UniversityHostingSection {
   eyebrow: string
   title: string
   description: string
-  items: EducationContest[]
 }
 
 export interface EducationData {
   school: PhotonicsSchool
-  webinars: WebinarsSection
-  contests: ContestsSection
+  cadBootcamp: CadBootcampSection
+  educationalPathways: EducationalPathway[]
+  universityHosting: UniversityHostingSection
 }
 
 export function getEducationData(): EducationData {
@@ -81,10 +70,14 @@ export function getPhotonicsSchool(): PhotonicsSchool {
   return educationData.school
 }
 
-export function getWebinars(): WebinarsSection {
-  return educationData.webinars
+export function getCadBootcamp(): CadBootcampSection {
+  return educationData.cadBootcamp
 }
 
-export function getEducationContests(): ContestsSection {
-  return educationData.contests
+export function getEducationalPathways(): EducationalPathway[] {
+  return educationData.educationalPathways
+}
+
+export function getUniversityHosting(): UniversityHostingSection {
+  return educationData.universityHosting
 }

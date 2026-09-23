@@ -11,7 +11,7 @@ import {
 } from "@/lib/open-source"
 
 export const metadata: Metadata = {
-  title: "Open Source",
+  title: "Open Source Photonics",
   description: "Democratizing Photonic Integrated Circuit (PIC) design, open-source PDKs, and PDA tools across Egypt. Modeled after the global open-silicon movement, adapted for photonics.",
   alternates: {
     canonical: "/open-source/",
@@ -28,7 +28,7 @@ export default function OpenSourcePage() {
     <>
       <PageHeader
         eyebrow="Technical Program"
-        title="Open Source."
+        title="Open Source Photonics."
         intro={program.intro}
       />
 

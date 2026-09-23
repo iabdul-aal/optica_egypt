@@ -64,84 +64,48 @@
       }
     ]
   },
-  "webinars": {
-    "eyebrow": "Virtual Masterclasses and Technical Talks",
-    "title": "Distinguished Webinar Series",
-    "description": "Regular virtual technical lectures connecting Egyptian students and researchers with leading international scientists, Optica traveling lecturers, and Egyptian photonics leaders across the global diaspora.",
-    "features": [
-      "Live interactive Q and A with global researchers",
-      "Open-access digital video archive with downloadable slides",
-      "Attendance certificates for verified student participants",
-      "Special sessions on graduate admissions and fellowship applications"
-    ],
-    "schedule": [
+  "cadBootcamp": {
+    "eyebrow": "Applied Computing",
+    "title": "Hands-on CAD and Simulation Bootcamps",
+    "description": "Moving beyond equations into working code. Every student completes guided, verified notebook laboratories in scripted photonic layout and electromagnetic wave propagation.",
+    "tools": [
       {
-        "id": "webinar-swillam-2026",
-        "title": "Advances in Silicon Photonic Transceivers and Optical Computing for AI Data Centers",
-        "speaker": "Prof. Mohamed A. Swillam",
-        "role": "Professor and Chair of Physics, The American University in Cairo (AUC)",
-        "date": "October 18, 2026",
-        "time": "18:00 – 19:30 EET (UTC+2)",
-        "platform": "Zoom and YouTube Live",
-        "abstract": "Explores how high-density integrated silicon photonics addresses the interconnect bottleneck in modern artificial intelligence clusters, examining co-packaged optics, micro-ring modulators, and neural optical accelerators.",
-        "status": "Upcoming",
-        "registrationUrl": "/join"
+        "name": "gdsfactory Python PDA",
+        "purpose": "Parameterized component layout, automated waveguide routing, and DRC verification."
       },
       {
-        "id": "webinar-saligane-2026",
-        "title": "Open-Source EDA and Design Automation for Next-Generation Integrated Photonics",
-        "speaker": "Dr. Mehdi Saligane",
-        "role": "Research Scientist, University of Michigan; Chair, IEEE SSCS TC-OSE",
-        "date": "November 14, 2026",
-        "time": "19:00 – 20:30 EET (UTC+2)",
-        "platform": "Zoom and YouTube Live",
-        "abstract": "An overview of how open-source silicon tools (gdsfactory, KLayout, OpenLane) are revolutionizing hardware accessibility, drawing parallels between open-silicon and open-photonics ecosystems.",
-        "status": "Upcoming",
-        "registrationUrl": "/join"
+        "name": "Meep FDTD Solver",
+        "purpose": "Finite-difference time-domain electromagnetic simulation and S-parameter extraction."
       },
       {
-        "id": "webinar-khalil-2026",
-        "title": "Miniaturized Optical MEMS FTIR Spectrometers: From Egyptian Lab to Global Commercialization",
-        "speaker": "Prof. Diaa Khalil",
-        "role": "Professor of Photonics, Ain Shams University; Chief Scientist, Si-Ware Systems",
-        "date": "December 05, 2026",
-        "time": "18:00 – 19:30 EET (UTC+2)",
-        "platform": "Zoom and YouTube Live",
-        "abstract": "The journey of conceiving, fabricating, and commercializing the NeoSpectra handheld FTIR spectrometer, demonstrating the immense economic and scientific potential of Egyptian deep-tech innovation.",
-        "status": "Upcoming",
-        "registrationUrl": "/join"
+        "name": "KLayout GDSII Viewer",
+        "purpose": "Microscopic layout inspection, layer hierarchy validation, and mask preparation."
       }
     ]
   },
-  "contests": {
-    "eyebrow": "Competitive Learning Ecosystem",
-    "title": "Hands-on Contests and Student Challenges",
-    "description": "Learning reaches its highest impact when tested in competition. Optica Egypt provides structured challenges where classroom theory translates into working open-source code and fabricated silicon.",
-    "items": [
-      {
-        "id": "hackathon",
-        "title": "Software-Defined Photonics Hackathon",
-        "category": "Software Tools and AI Models Championship",
-        "description": "A seven-week nationwide build sprint challenging teams to create Python automation scripts, FDTD pre-processing tools, and deep learning inverse design surrogates.",
-        "href": "/competitions",
-        "badge": "Flagship Hackathon"
-      },
-      {
-        "id": "chipathon",
-        "title": "Egypt Photonic Chipathon",
-        "category": "Silicon Hardware Tapeout Contest",
-        "description": "Annual layout design contest where university teams submit DRC-clean photonic integrated circuit designs for subsidized multi-project wafer (MPW) fabrication.",
-        "href": "/open-source",
-        "badge": "Tapeout Contest"
-      },
-      {
-        "id": "poster-contest",
-        "title": "Optica Egypt Student Paper and Poster Competition",
-        "category": "Research Showcase and Best Presentation",
-        "description": "Annual academic symposium contest celebrating outstanding undergraduate capstone projects and graduate research across optics, photonics, and laser engineering.",
-        "href": "/events",
-        "badge": "Academic Research"
-      }
-    ]
+  "educationalPathways": [
+    {
+      "stage": "Stage 01",
+      "level": "Undergraduate Foundation",
+      "focus": "Classroom Physics to Practical Optics",
+      "description": "Curricular roadmaps bridging electromagnetics, semiconductor devices, and wave optics with open computational exercises."
+    },
+    {
+      "stage": "Stage 02",
+      "level": "Seasonal School and CAD Bootcamp",
+      "focus": "Intensive Five-Day Skill Acquisition",
+      "description": "Hands-on immersion in Python layout automation and FDTD simulation leading to an official joint certificate of completion."
+    },
+    {
+      "stage": "Stage 03",
+      "level": "Applied Capstone and Competition",
+      "focus": "Transforming Skills into Working Prototypes",
+      "description": "Direct progression into the Software-Defined Photonics Hackathon, the Egypt Photonic Chipathon, or graduation project capstones."
+    }
+  ],
+  "universityHosting": {
+    "eyebrow": "Academic Network",
+    "title": "University Host Rotation Program",
+    "description": "The Egypt Photonics Seasonal School rotates between campuses across Greater Cairo, Alexandria, the Delta, and Upper Egypt. Universities can apply to host upcoming seasonal editions, providing computer lab facilities while Optica Egypt provides accredited lecturers and curriculum materials."
   }
 }
