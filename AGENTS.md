@@ -28,9 +28,10 @@ Optica Egypt
 ├── Section
 │   ├── About (/about)
 │   └── Leadership (/leadership, /leadership/[id])
-├── Community
+├── Membership
 │   ├── Overview (/community)
 │   ├── Chapters (/chapters, /chapters/[id])
+│   ├── Awards and Honors (/awards)
 │   ├── Outreach Initiatives (/outreach)
 │   └── Volunteer Portal (/volunteer)
 ├── Program

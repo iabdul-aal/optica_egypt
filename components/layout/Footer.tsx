@@ -13,6 +13,7 @@ const links = [
   ["leadership", "/leadership"],
   ["community", "/community"],
   ["chapters", "/chapters"],
+  ["awards", "/awards"],
   ["volunteer", "/volunteer"],
   ["events", "/events"],
   ["education", "/education"],

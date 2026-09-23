@@ -1,0 +1,101 @@
+{
+  "sectionAwards": [
+    {
+      "id": "distinguished-service",
+      "title": "Distinguished Service in Photonics Award",
+      "category": "Lifetime and Milestone Leadership",
+      "eyebrow": "Section Honor",
+      "description": "Recognizing exceptional individuals whose leadership, academic dedication, and mentorship have shaped Egypt's optics and photonics community across generations.",
+      "eligibility": "Senior faculty members, industry founders, and section advisors with sustained service to Egyptian scientific advancement.",
+      "prize": "Commemorative Section Plaque and Honorary Lifetime Local Section Membership.",
+      "deadline": "Annual Nomination Window: September 1 – October 15"
+    },
+    {
+      "id": "outstanding-chapter",
+      "title": "Outstanding Student Chapter of the Year Award",
+      "category": "Student Leadership and Campus Activity",
+      "eyebrow": "Campus Excellence",
+      "description": "Honoring the Optica Student Chapter in Egypt that demonstrates the highest impact in student recruitment, technical workshops, community outreach, and international engagement.",
+      "eligibility": "Active chartered Optica Student Chapters across Egyptian universities.",
+      "prize": "$1,000 USD Chapter Activity Grant and Featured Presentation at the Annual Section Kickoff.",
+      "deadline": "Annual Submission: November 30"
+    },
+    {
+      "id": "emerging-researcher",
+      "title": "Emerging Photonics Researcher Award",
+      "category": "Young Professionals and Post-Doctoral Fellows",
+      "eyebrow": "Early Career Achievement",
+      "description": "Celebrating early-career researchers and engineers within five years of their terminal degree who have published high-impact work or led pioneering deep-tech innovation in Egypt.",
+      "eligibility": "Young professionals, post-doctoral researchers, and assistant professors under 35 years of age.",
+      "prize": "Research Travel Subsidy ($750 USD) and Keynote Invitation at Egypt Photonics Day.",
+      "deadline": "Annual Submission: October 31"
+    },
+    {
+      "id": "best-thesis",
+      "title": "Best Capstone and Thesis Award in Optics",
+      "category": "Undergraduate and Graduate Research",
+      "eyebrow": "Academic Recognition",
+      "description": "Annual national contest recognizing the most innovative bachelor capstone projects, master theses, and doctoral dissertations across Egyptian universities.",
+      "eligibility": "Graduating seniors and recent post-graduate alumni from Egyptian faculties of Engineering and Science.",
+      "prize": "Cash Prize, Publication Support, and Direct Mentorship for International Journal Submission.",
+      "deadline": "Annual Submission: August 15"
+    }
+  ],
+  "globalFellowships": [
+    {
+      "id": "fio-travel",
+      "title": "Optica Foundation Student Travel Grants",
+      "organization": "Optica Global Foundation",
+      "grant": "Up to $1,500 USD Travel Support",
+      "description": "Enabling Egyptian undergraduate and graduate students presenting accepted papers at Frontiers in Optics (FiO) or CLEO to travel and participate in-person.",
+      "url": "https://www.optica.org/foundation",
+      "scope": "International Conference Travel"
+    },
+    {
+      "id": "siegman-school",
+      "title": "Siegman International School on Lasers Fellowship",
+      "organization": "Optica Global Foundation",
+      "grant": "Full Tuition and Travel Fellowship",
+      "description": "Fully funded fellowship sending one outstanding Egyptian laser physics or optics student each year to the world's most prestigious week-long laser summer school.",
+      "url": "https://www.optica.org/foundation",
+      "scope": "Seasonal Summer School"
+    },
+    {
+      "id": "women-scholars",
+      "title": "Optica Women Scholars Award",
+      "organization": "Optica Global Foundation",
+      "grant": "$10,000 USD Scholarship and Global Mentorship",
+      "description": "Multi-year scholarship awarded to promising female undergraduate and graduate students pursuing degrees in optics and photonics, accompanied by executive mentorship.",
+      "url": "https://www.optica.org/foundation",
+      "scope": "Scholarship and Mentorship"
+    },
+    {
+      "id": "amplify-scholarship",
+      "title": "Amplify Scholarship for Underrepresented Students",
+      "organization": "Optica Global Foundation",
+      "grant": "$7,500 USD Academic Support",
+      "description": "Supporting talented optics and physics students overcoming geographic and socioeconomic obstacles to complete advanced photonic degrees.",
+      "url": "https://www.optica.org/foundation",
+      "scope": "Diversity and Inclusion"
+    }
+  ],
+  "elevations": {
+    "eyebrow": "Professional Recognition Pipeline",
+    "title": "Senior Member and Fellow Elevations",
+    "description": "Optica Egypt actively guides and supports mid-career and senior Egyptian researchers through the international peer-review process to achieve Senior Member and Fellow milestones.",
+    "tiers": [
+      {
+        "tier": "Optica Senior Member",
+        "experience": "10+ Years Professional Experience",
+        "perks": "International recognition, senior committee eligibility, and peer review leadership.",
+        "support": "Section advisory committee provides reference letters, nomination packaging, and dossier review."
+      },
+      {
+        "tier": "Optica Fellow",
+        "experience": "Distinguished Global Contribution",
+        "perks": "Top 0.5 percent lifetime distinction in optics and photonics worldwide.",
+        "support": "Coordinated endorsement from current Egyptian and international Fellows."
+      }
+    ]
+  }
+}

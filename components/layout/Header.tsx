@@ -44,6 +44,7 @@ const navConfig: NavItem[] = [
     items: [
       { key: "communityOverview", path: "/community" },
       { key: "chapters", path: "/chapters" },
+      { key: "awards", path: "/awards" },
       { key: "outreach", path: "/outreach" },
       { key: "volunteer", path: "/volunteer" },
     ],

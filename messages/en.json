@@ -13,6 +13,7 @@
     "community": "Community",
     "communityOverview": "Overview",
     "chapters": "Chapters",
+    "awards": "Awards and Honors",
     "leadership": "Leadership",
     "outreach": "Outreach",
     "volunteer": "Volunteer",
@@ -26,7 +27,7 @@
     "join": "Get involved",
     "groupAbout": "Section",
     "groupSection": "Section",
-    "groupCommunity": "Community",
+    "groupCommunity": "Membership",
     "groupProgram": "Program",
     "groupInsights": "Insights"
   },
@@ -395,5 +396,10 @@
     "eyebrow": "Academic Programs and Upskilling",
     "title": "Education and Technical Training",
     "intro": "Developing Egypt's next generation of optical scientists and photonic layout engineers through intensive seasonal schools, international distinguished webinars, and hands-on student design contests."
+  },
+  "awards": {
+    "eyebrow": "Recognition and Merit",
+    "title": "Awards and Honors",
+    "intro": "Celebrating academic excellence, scientific leadership, and distinguished service across Egypt's optics and photonics community through national honors and global Optica fellowships."
   }
 }
