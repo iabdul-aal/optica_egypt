@@ -48,7 +48,7 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
         {/* Back navigation */}
         <Link href="/chapters" className="text-link inline-flex items-center gap-2 mb-10">
           <ArrowLeft size={14} aria-hidden="true" />
-          <span>Back to student chapters</span>
+          <span>Back to chapters</span>
         </Link>
 
         {/* Chapter Header Banner */}

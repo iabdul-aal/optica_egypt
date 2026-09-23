@@ -38,14 +38,21 @@
       "id": "measurement-grants",
       "number": "05",
       "title": "Tapeout and Travel Fellowships",
-      "summary": "Modeled after the IEEE SSCS Code-a-Chip awards, offering travel and characterization grants for Egyptian student teams to measure fabricated chips at partner laboratories.",
+      "summary": "Modeled after open-silicon grants, offering travel and characterization grants for Egyptian student teams to measure fabricated chips at partner laboratories.",
       "tools": ["Measurement Testbeds", "Conference Travel Subsidies", "Optica Foundation Grants"]
+    },
+    {
+      "id": "software-defined",
+      "number": "06",
+      "title": "Software-Defined Photonics Hackathon",
+      "summary": "A competitive hackathon where participants build open-source software tools, simulation libraries, or AI models that accelerate photonic design, analysis, or fabrication workflows. All winning projects are published under open-source licenses.",
+      "tools": ["Python", "PyTorch / JAX", "Inverse Design", "AI-Driven Optimization", "Open Datasets"]
     }
   ],
   "toolstack": [
     {
       "name": "gdsfactory",
-      "category": "Photonic Layout & DRC",
+      "category": "Photonic Layout and DRC",
       "description": "Python-driven photonic circuit design framework with built-in component models, DRC, and electrical-optical co-design support.",
       "github": "https://github.com/gdsfactory/gdsfactory",
       "status": "Core Supported"

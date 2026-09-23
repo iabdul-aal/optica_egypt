@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Open Source Photonics",
-  description: "Democratizing Photonic Integrated Circuit (PIC) design, open-source PDKs, and PDA tools across Egypt. Modeled after the IEEE SSCS PICO initiative.",
+  description: "Democratizing Photonic Integrated Circuit (PIC) design, open-source PDKs, and PDA tools across Egypt. Modeled after the global open-silicon movement, adapted for photonics.",
   alternates: {
     canonical: "/open-source/",
   },
@@ -28,7 +28,7 @@ export default function OpenSourcePage() {
     <>
       <PageHeader
         eyebrow="Technical Program"
-        title="Open Source Photonics Program."
+        title="Open Source Photonics."
         intro={program.intro}
       />
 
@@ -42,7 +42,7 @@ export default function OpenSourcePage() {
             </p>
           </div>
           <p className="text-xs text-[var(--ink-soft)] max-w-xl">
-            Inspired by the IEEE SSCS Platform for IC Design Outreach (PICO) and the global open-silicon movement, adapted for optics and photonics.
+            Inspired by the global open-silicon movement, adapted for optics and photonics.
           </p>
         </div>
       </section>
@@ -52,9 +52,9 @@ export default function OpenSourcePage() {
         <div className="container-page">
           <div className="border-b border-[var(--line)] pb-8">
             <p className="eyebrow">Program Architecture</p>
-            <h2 className="section-title mt-3">Five pillars enabling accessible optical chip innovation.</h2>
+            <h2 className="section-title mt-3">Six pillars enabling accessible optical chip innovation.</h2>
             <p className="lede max-w-2xl mt-4">
-              From open Python design automation to physical laboratory characterization, we are building a continuous pipeline for Egyptian photonics talent.
+              From open Python design automation to AI-driven photonic tooling, we are building a continuous pipeline for Egyptian photonics talent.
             </p>
           </div>
 
@@ -165,6 +165,63 @@ export default function OpenSourcePage() {
                   <span className="font-mono text-xs text-[var(--gold)] whitespace-nowrap">{phase.timeline}</span>
                 </div>
                 <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">{phase.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Software-Defined Photonics Hackathon ──────────────────────────── */}
+      <section className="section-space bg-[var(--surface-raised)] border-y border-[var(--line)]">
+        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1fr]">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1.5 text-xs text-[var(--gold)] font-mono uppercase">
+              <Terminal size={14} aria-hidden="true" />
+              <span>Annual Hackathon</span>
+            </div>
+            <h2 className="section-title mt-4">Software-Defined Photonics Hackathon</h2>
+            <p className="lede mt-4">
+              A competitive open-source hackathon where teams build software tools or AI models that accelerate photonic design, simulation, or fabrication workflows.
+            </p>
+            <p className="mt-4 text-sm leading-6 text-[var(--ink-soft)]">
+              Participants choose their challenge track: build a Python simulation library, train an inverse-design neural network, or develop an AI model that predicts photonic device performance from structural parameters. All winning projects are published under open-source licenses and integrated into the Optica Egypt open toolchain.
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {[
+                { label: "Software Tools Track", desc: "Open-source Python libraries for PIC design automation, FDTD pre/post-processing, or layout scripting." },
+                { label: "AI Models Track", desc: "Machine learning or deep learning models for inverse design, fabrication prediction, or anomaly detection in photonics." },
+                { label: "Open Datasets Track", desc: "Curated labeled datasets of photonic measurements or simulation results released under open data licenses." },
+                { label: "Integration Track", desc: "Plugins, adapters, or workflow connectors linking existing tools like gdsfactory, Meep, or KLayout to new capabilities." },
+              ].map((track) => (
+                <div key={track.label} className="rounded-sm border border-[var(--line)] bg-[var(--surface)] p-4">
+                  <h3 className="text-xs font-semibold font-mono text-[var(--gold)] uppercase tracking-wide">{track.label}</h3>
+                  <p className="mt-1.5 text-xs text-[var(--ink-soft)] leading-relaxed">{track.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/volunteer" className="btn-primary">
+                Join as Mentor or Judge <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
+              <Link href="/join" className="btn-secondary">
+                Register as Participant <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { phase: "Phase 1: Kickoff and Team Formation", timeline: "Week 1", desc: "Participants form teams of 1 to 4, select a track, and receive onboarding materials on photonics software stacks and open datasets." },
+              { phase: "Phase 2: Development Sprint", timeline: "Week 2 to 5", desc: "Intensive build phase with weekly check-ins, technical office hours with mentors, and intermediate milestone demos." },
+              { phase: "Phase 3: Submission and Code Review", timeline: "Week 6", desc: "Teams submit GitHub repositories with documentation, reproducible demos, and a short technical report describing their contribution." },
+              { phase: "Phase 4: Judging and Awards", timeline: "Week 7", desc: "Independent jury of researchers and engineers evaluates novelty, technical depth, reproducibility, and open-source quality. Top projects receive cash prizes and conference travel support." },
+            ].map((phase) => (
+              <div key={phase.phase} className="site-card p-5 sm:p-6 border-l-2 border-l-[var(--gold)]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <h3 className="font-semibold text-[var(--ink)] text-base">{phase.phase}</h3>
+                  <span className="font-mono text-xs text-[var(--gold)] whitespace-nowrap">{phase.timeline}</span>
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">{phase.desc}</p>
               </div>
             ))}
           </div>

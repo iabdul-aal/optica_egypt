@@ -6,19 +6,19 @@
       "detail": "The American University in Cairo (AUC)"
     },
     {
-      "label": "Pipeline Universities",
-      "value": "3",
-      "detail": "Cairo, Ain Shams, and Alexandria Universities"
+      "label": "Active Status",
+      "value": "Inactive",
+      "detail": "Reactivation and officer onboarding in progress"
     },
     {
-      "label": "Students Engaged",
-      "value": "150+",
-      "detail": "Undergraduate and graduate physics / engineering members"
+      "label": "National Reach",
+      "value": "1 Campus",
+      "detail": "New Cairo Campus, School of Sciences and Engineering"
     },
     {
-      "label": "Annual Chapter Grant",
-      "value": "$2,000+",
-      "detail": "Direct Optica Global funding for campus lectures and activities"
+      "label": "Charter Opportunity",
+      "value": "Nationwide",
+      "detail": "Open to all public and private Egyptian universities"
     }
   ],
   "charteredChapters": [
@@ -27,15 +27,15 @@
       "name": "The American University in Cairo (AUC) Optica Student Chapter",
       "shortName": "AUC Student Chapter",
       "university": "The American University in Cairo",
-      "status": "Active Chartered Chapter",
+      "status": "Chartered · Currently Inactive",
       "charteredYear": 2024,
       "campus": "New Cairo Campus, AUC Avenue",
       "city": "New Cairo",
       "governorate": "Cairo Governorate",
-      "coordinates": { "x": 68, "y": 42 },
+      "coordinates": { "x": 56.8, "y": 27.5 },
       "facultyAdvisor": "Prof. Yehea Ismail",
       "advisorDepartment": "School of Sciences and Engineering / Physics and Nanotechnology",
-      "description": "The first formally recognized and chartered Optica Student Chapter in Egypt. Hosted within the School of Sciences and Engineering at AUC New Cairo, the chapter connects physics, optical engineering, and nanotechnology students with international researchers, traveling lecturers, and hands-on laboratory workshops.",
+      "description": "The first and only formally chartered Optica Student Chapter in Egypt. Hosted within the School of Sciences and Engineering at AUC New Cairo, the chapter connects physics, optical engineering, and nanotechnology students with international researchers. The chapter is currently inactive while undergoing executive committee reactivation and student leadership onboarding.",
       "focusAreas": [
         "Nanophotonics and Plasmonics",
         "Optical Materials Characterization",
@@ -50,47 +50,13 @@
         "instagram": "https://www.instagram.com/aucegypt/"
       },
       "highlights": [
-        "Annual Light Science Showcase with hands-on spectrometer demonstrations for undergraduate students.",
-        "Hosted international Optica Traveling Lecturer on advanced metamaterials and silicon photonics.",
-        "Active student travel delegations presenting at Optica Frontiers in Optics (FiO) conferences."
+        "First formally chartered Optica student chapter in Egypt, established in 2024.",
+        "Undergoing formal section-supported reactivation to reconstitute student leadership and activities.",
+        "Hosted international Optica Traveling Lecturer on advanced metamaterials and silicon photonics."
       ]
     }
   ],
-  "pipelineChapters": [
-    {
-      "id": "cairo-university",
-      "name": "Cairo University Student Chapter",
-      "university": "Cairo University",
-      "status": "In Formation",
-      "targetYear": "2026 / 2027",
-      "faculty": "Faculty of Engineering / Department of Electronics and Electrical Communications",
-      "city": "Giza",
-      "coordinates": { "x": 64, "y": 44 },
-      "description": "Student researchers in optical fiber networks, silicon photonics, and communications are organizing bylaws and establishing the campus executive committee."
-    },
-    {
-      "id": "ain-shams",
-      "name": "Ain Shams University Student Chapter",
-      "university": "Ain Shams University",
-      "status": "In Formation",
-      "targetYear": "2026 / 2027",
-      "faculty": "Faculty of Science and Nanotechnology Research Center",
-      "city": "Cairo",
-      "coordinates": { "x": 66, "y": 40 },
-      "description": "Focusing on nanophotonics, biosensing, and laser physics, student leaders are finalizing advisor endorsements for formal charter submission."
-    },
-    {
-      "id": "alexandria",
-      "name": "Alexandria University Student Chapter",
-      "university": "Alexandria University",
-      "status": "In Formation",
-      "targetYear": "2027",
-      "faculty": "Faculty of Engineering / Communications and Electronics",
-      "city": "Alexandria",
-      "coordinates": { "x": 52, "y": 28 },
-      "description": "Connecting Mediterranean coast photonics students to regional seminars, cleanroom visits, and technical competitions."
-    }
-  ],
+  "pipelineChapters": [],
   "charterRoadmap": [
     {
       "step": "01",

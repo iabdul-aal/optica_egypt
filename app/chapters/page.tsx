@@ -1,19 +1,17 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight, Globe, Instagram, Linkedin, Mail, Sparkles } from "lucide-react"
+import { ArrowUpRight, Award, Globe, GraduationCap, Info, Instagram, Linkedin, Mail, Sparkles, Users } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
-import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { ChaptersMap } from "@/components/sections/ChaptersMap"
 import {
   getChapterStats,
   getCharteredChapters,
-  getPipelineChapters,
   getCharterRoadmap,
 } from "@/lib/chapters"
 
 export const metadata: Metadata = {
-  title: "Student Chapters",
-  description: "University Optica student chapters across Egypt, featuring the chartered AUC Student Chapter, campus statistics, geographic distribution map, and chartering roadmap.",
+  title: "Chapters",
+  description: "University Optica student chapters across Egypt, featuring the chartered AUC Student Chapter, geographic distribution map, and nationwide university chartering roadmap.",
   alternates: {
     canonical: "/chapters/",
   },
@@ -22,15 +20,14 @@ export const metadata: Metadata = {
 export default function ChaptersPage() {
   const stats = getChapterStats()
   const chartered = getCharteredChapters()
-  const pipeline = getPipelineChapters()
   const roadmap = getCharterRoadmap()
 
   return (
     <>
       <PageHeader
         eyebrow="University Network"
-        title="Optica Student Chapters in Egypt."
-        intro="Student chapters are the heartbeat of campus optics research. They organize hands-on technical workshops, invite international traveling lecturers, and connect students to global Optica fellowships."
+        title="Optica Chapters in Egypt."
+        intro="Student chapters are the campus cornerstone of optics and photonics research. They host technical workshops, invite international traveling lecturers, and connect students to global Optica fellowships and travel grants."
       />
 
       {/* ── Key Statistics Row ────────────────────────────────────────────── */}
@@ -56,28 +53,28 @@ export default function ChaptersPage() {
         <div className="container-page">
           <div className="border-b border-[var(--line)] pb-8 mb-10">
             <p className="eyebrow">Geographic Distribution</p>
-            <h2 className="section-title mt-3">Active and emerging university hubs across Egypt.</h2>
+            <h2 className="section-title mt-3">University photonics presence across Egypt.</h2>
             <p className="lede max-w-2xl mt-4">
-              Explore the chartered AUC Student Chapter in New Cairo and the active university chapters currently in formation across the Delta and Mediterranean coast.
+              Explore the chartered AUC Student Chapter in New Cairo. Currently, no other chapters exist in Egypt. The section actively supports students and faculty across all Egyptian universities in establishing new chapters.
             </p>
           </div>
 
-          <ChaptersMap chartered={chartered} pipeline={pipeline} />
+          <ChaptersMap chartered={chartered} />
         </div>
       </section>
 
-      {/* ── Active Chartered Chapter Spotlight: AUC ───────────────────────── */}
+      {/* ── Chartered Chapter Spotlight: AUC ──────────────────────────────── */}
       <section className="section-space bg-[var(--surface-raised)] border-y border-[var(--line)]">
         <div className="container-page">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[var(--line)] pb-8 mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
+              <div className="inline-flex items-center gap-2 rounded-sm border border-amber-500/30 bg-amber-500/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                 <Sparkles size={13} aria-hidden="true" />
-                <span>Chartered University Chapter</span>
+                <span>Chartered Chapter · Currently Inactive</span>
               </div>
               <h2 className="section-title mt-4">The American University in Cairo (AUC)</h2>
               <p className="text-xs font-mono text-[var(--ink-soft)] mt-1">
-                School of Sciences and Engineering · Chartered in 2024 · New Cairo
+                School of Sciences and Engineering · Chartered in 2024 · New Cairo Campus
               </p>
             </div>
             <Link href="/chapters/auc" className="btn-primary">
@@ -88,6 +85,17 @@ export default function ChaptersPage() {
           {chartered.map((ch) => (
             <div key={ch.id} className="site-card p-6 sm:p-10 grid gap-8 lg:grid-cols-[1.2fr_.8fr]">
               <div className="space-y-6">
+                {/* Reactivation Banner */}
+                <div className="rounded-sm border border-amber-500/30 bg-amber-500/5 p-4 flex items-start gap-3">
+                  <Info size={18} className="text-amber-500 shrink-0 mt-0.5" />
+                  <div className="text-xs text-[var(--ink-soft)] leading-relaxed">
+                    <strong className="text-[var(--ink)] block font-semibold mb-0.5">
+                      Chapter Reactivation Notice
+                    </strong>
+                    The AUC chapter is Egypt&apos;s first chartered Optica chapter. While campus activities are currently inactive, the Optica Egypt Local Section is actively liaising with university faculty and student researchers to reconstitute the executive board for upcoming academic sessions.
+                  </div>
+                </div>
+
                 <div>
                   <h3 className="text-xl font-bold text-[var(--ink)]">About the Chapter</h3>
                   <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">
@@ -114,7 +122,7 @@ export default function ChaptersPage() {
                 {ch.highlights && (
                   <div>
                     <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--gold)]">
-                      Recent Activities and Milestones
+                      Activities and History
                     </h4>
                     <ul className="mt-3 space-y-2 text-xs text-[var(--ink-soft)]">
                       {ch.highlights.map((h) => (
@@ -212,42 +220,62 @@ export default function ChaptersPage() {
         </div>
       </section>
 
-      {/* ── Chapters in Pipeline ─────────────────────────────────────────── */}
+      {/* ── Nationwide University Charter Invitation ─────────────────────── */}
       <section className="section-space">
         <div className="container-page">
           <div className="border-b border-[var(--line)] pb-8 mb-12">
-            <p className="eyebrow">Emerging Campus Chapters</p>
-            <h2 className="section-title mt-3">Universities currently in the chartering pipeline.</h2>
+            <p className="eyebrow">Nationwide Invitation</p>
+            <h2 className="section-title mt-3">Charter an Optica Student Chapter at your university.</h2>
             <p className="lede max-w-2xl mt-4">
-              Student researchers and faculty at these institutions are establishing executive committees, drafting bylaws, and preparing official charter packages.
+              No other university chapters currently exist in Egypt. Whether you study or teach at Cairo University, Ain Shams University, Alexandria University, Mansoura, Assiut, Zewail City, or any Egyptian institution, you can launch an official chapter.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {pipeline.map((p, idx) => (
-              <ScrollReveal key={p.id} animation="fade-up" delay={idx * 30}>
-                <div className="site-card p-6 h-full flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between text-xs font-mono text-[var(--ink-faint)]">
-                      <span className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-2 py-0.5 text-[10px] text-[var(--gold)]">
-                        {p.status}
-                      </span>
-                      <span>Target: {p.targetYear}</span>
-                    </div>
-
-                    <h3 className="mt-4 text-lg font-bold text-[var(--ink)]">{p.university}</h3>
-                    <p className="text-xs font-mono text-[var(--gold)] mt-1">{p.faculty}</p>
-                    <p className="mt-3 text-xs leading-relaxed text-[var(--ink-soft)]">{p.description}</p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-[var(--line-subtle)]">
-                    <Link href="/volunteer" className="text-link text-xs">
-                      Join this formation team <ArrowUpRight size={12} />
-                    </Link>
-                  </div>
+            <div className="site-card p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--gold)]/10 border border-[var(--gold)]/20 text-[var(--gold)]">
+                  <Award size={20} />
                 </div>
-              </ScrollReveal>
-            ))}
+                <h3 className="mt-4 text-lg font-bold text-[var(--ink)]">Annual Chapter Grant</h3>
+                <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">
+                  Chartered chapters receive annual direct funding up to $2,000 USD from Optica Global to host seminars, purchase optical demonstration equipment, and organize campus science outreach.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[var(--line-subtle)] text-xs font-mono text-[var(--gold)]">
+                Direct Global Sponsorship
+              </div>
+            </div>
+
+            <div className="site-card p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--gold)]/10 border border-[var(--gold)]/20 text-[var(--gold)]">
+                  <Globe size={20} />
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-[var(--ink)]">Traveling Lecturer Visits</h3>
+                <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">
+                  Invite renowned international researchers and industry leaders in silicon photonics, quantum optics, and laser science to visit your campus with travel costs sponsored by Optica.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[var(--line-subtle)] text-xs font-mono text-[var(--gold)]">
+                International Speaker Program
+              </div>
+            </div>
+
+            <div className="site-card p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--gold)]/10 border border-[var(--gold)]/20 text-[var(--gold)]">
+                  <Users size={20} />
+                </div>
+                <h3 className="mt-4 text-lg font-bold text-[var(--ink)]">Conference Travel Fellowships</h3>
+                <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">
+                  Active chapter officers and student members gain priority access to international travel grants for Frontiers in Optics (FiO) and Optica leadership conferences worldwide.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[var(--line-subtle)] text-xs font-mono text-[var(--gold)]">
+                Global Leadership Network
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -257,9 +285,9 @@ export default function ChaptersPage() {
         <div className="container-page">
           <div className="border-b border-[var(--line)] pb-8 mb-12">
             <p className="eyebrow">Charter Roadmap</p>
-            <h2 className="section-title mt-3">How to launch an Optica Student Chapter at your campus.</h2>
+            <h2 className="section-title mt-3">Four steps to launch an Optica Student Chapter.</h2>
             <p className="lede max-w-2xl mt-4">
-              Optica provides formal recognition, startup funding, traveling lecturer visits, and conference fellowships for chartered student chapters.
+              The Optica Egypt Local Section guides student founders and faculty advisors through every stage of the charter application process.
             </p>
           </div>
 
@@ -276,10 +304,14 @@ export default function ChaptersPage() {
           </div>
 
           <div className="mt-12 site-card p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div>
-              <h3 className="text-lg font-bold text-[var(--ink)]">Ready to begin the chartering process?</h3>
-              <p className="text-xs text-[var(--ink-soft)] mt-1">
-                The Optica Egypt Section Student Affairs Committee provides mentorship and template constitution files.
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[var(--gold)]">
+                <GraduationCap size={15} />
+                <span>Start Your Campus Chapter</span>
+              </div>
+              <h3 className="text-lg font-bold text-[var(--ink)]">Ready to establish a chapter at your university?</h3>
+              <p className="text-xs text-[var(--ink-soft)]">
+                The Optica Egypt Student Affairs Committee provides mentorship, sample constitutions, and chartering support.
               </p>
             </div>
             <Link href="/volunteer" className="btn-primary shrink-0">
