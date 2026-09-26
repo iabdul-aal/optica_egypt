@@ -11,7 +11,8 @@ type FooterProps = {
 const links = [
   ["about", "/about"],
   ["leadership", "/leadership"],
-  ["awards", "/awards"],
+  ["recognitions", "/recognitions"],
+  ["partners", "/partners"],
   ["community", "/community"],
   ["chapters", "/chapters"],
   ["fellowships", "/fellowships"],
@@ -25,6 +26,7 @@ const links = [
   ["resources", "/resources"],
   ["news", "/news"],
   ["blogs", "/blogs"],
+  ["press", "/press"],
   ["gallery", "/gallery"],
 ] as const
 

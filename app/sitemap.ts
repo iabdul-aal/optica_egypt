@@ -15,7 +15,8 @@ const STATIC_ROUTES = [
   // Section
   { path: "/about", changeFrequency: "monthly" as const, priority: 0.9 },
   { path: "/leadership", changeFrequency: "monthly" as const, priority: 0.85 },
-  { path: "/awards", changeFrequency: "monthly" as const, priority: 0.85 },
+  { path: "/recognitions", changeFrequency: "monthly" as const, priority: 0.85 },
+  { path: "/partners", changeFrequency: "monthly" as const, priority: 0.85 },
 
   // Community
   { path: "/community", changeFrequency: "monthly" as const, priority: 0.85 },
@@ -35,6 +36,7 @@ const STATIC_ROUTES = [
   // Insights
   { path: "/news", changeFrequency: "weekly" as const, priority: 0.8 },
   { path: "/blogs", changeFrequency: "weekly" as const, priority: 0.8 },
+  { path: "/press", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/gallery", changeFrequency: "monthly" as const, priority: 0.75 },
 
   // Primary Action

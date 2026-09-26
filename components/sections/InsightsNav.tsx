@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 const INSIGHTS_TABS = [
   { label: "News", href: "/news" },
   { label: "Blogs", href: "/blogs" },
+  { label: "Press", href: "/press" },
   { label: "Gallery", href: "/gallery" },
 ]
 

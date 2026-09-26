@@ -36,7 +36,8 @@ const navConfig: NavItem[] = [
     items: [
       { key: "about", path: "/about" },
       { key: "leadership", path: "/leadership" },
-      { key: "awards", path: "/awards" },
+      { key: "recognitions", path: "/recognitions" },
+      { key: "partners", path: "/partners" },
     ],
   },
   {
@@ -68,6 +69,7 @@ const navConfig: NavItem[] = [
     items: [
       { key: "news", path: "/news" },
       { key: "blogs", path: "/blogs" },
+      { key: "press", path: "/press" },
       { key: "gallery", path: "/gallery" },
     ],
   },

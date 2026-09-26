@@ -22,11 +22,17 @@ test("mobile navigation drawer opens with full viewport height and navigates pro
   expect(box).not.toBeNull()
   expect(box!.height).toBeGreaterThan(600)
 
-  // 4. Test "Section" group accordion and navigation to /about
+  // 4. Test "Section" group accordion and sub-links
   const sectionToggle = page.locator("#mobile-navigation button:has-text('Section')")
   await expect(sectionToggle).toBeVisible()
   await sectionToggle.click()
   await page.waitForTimeout(200)
+
+  const recognitionsLink = page.locator("#mobile-navigation a[href='/recognitions']")
+  await expect(recognitionsLink).toBeVisible()
+
+  const partnersLink = page.locator("#mobile-navigation a[href='/partners']")
+  await expect(partnersLink).toBeVisible()
 
   const aboutLink = page.locator("#mobile-navigation a[href='/about']")
   await expect(aboutLink).toBeVisible()
@@ -49,7 +55,22 @@ test("mobile navigation drawer opens with full viewport height and navigates pro
   await page.waitForURL("**/conferences")
   expect(page.url()).toContain("/conferences")
 
-  // 6. Open menu on /conferences and test "Join" direct button
+  // 6. Open menu on /conferences and test "Insights" -> /press
+  await menuButton.click()
+  await page.waitForTimeout(300)
+
+  const insightsToggle = page.locator("#mobile-navigation button:has-text('Insights')")
+  await expect(insightsToggle).toBeVisible()
+  await insightsToggle.click()
+  await page.waitForTimeout(200)
+
+  const pressLink = page.locator("#mobile-navigation a[href='/press']")
+  await expect(pressLink).toBeVisible()
+  await pressLink.click()
+  await page.waitForURL("**/press")
+  expect(page.url()).toContain("/press")
+
+  // 7. Open menu on /press and test "Join" direct button
   await menuButton.click()
   await page.waitForTimeout(300)
 

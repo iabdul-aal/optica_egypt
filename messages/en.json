@@ -10,6 +10,9 @@
     "about": "About",
     "leadership": "Leadership",
     "awards": "Awards",
+    "recognitions": "Recognitions",
+    "partners": "Partners",
+    "press": "Press",
     "community": "Community",
     "communityOverview": "Overview",
     "chapters": "Chapters",
@@ -463,8 +466,23 @@
   },
   "awards": {
     "eyebrow": "Section Honors and Citations",
-    "title": "Section Awards",
+    "title": "Section Recognitions",
     "intro": "A formal record of international recognitions, global distinctions, and national accolades awarded to the Optica Egypt Local Section."
+  },
+  "recognitions": {
+    "eyebrow": "Section Honors and Citations",
+    "title": "Section Recognitions",
+    "intro": "A formal record of international recognitions, global distinctions, and national accolades awarded to the Optica Egypt Local Section."
+  },
+  "partners": {
+    "eyebrow": "Strategic Alliances",
+    "title": "Section Partners and Alliances",
+    "intro": "Collaborating with leading Egyptian universities, research institutes, industrial enterprises, and government agencies to accelerate the national optics and photonics ecosystem."
+  },
+  "press": {
+    "eyebrow": "Media and Communications",
+    "title": "Press Room and Media Hub",
+    "intro": "Official press releases, brand assets, downloadable media kits, executive photography, and contact points for journalists covering Egyptian photonics."
   },
   "fellowships": {
     "eyebrow": "Merit and Research Grants",

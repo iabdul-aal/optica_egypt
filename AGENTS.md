@@ -28,7 +28,8 @@ Optica Egypt
 ├── Section
 │   ├── About (/about)
 │   ├── Leadership (/leadership, /leadership/[id])
-│   └── Awards (/awards)
+│   ├── Recognitions (/recognitions)
+│   └── Partners (/partners)
 ├── Community
 │   ├── Overview (/community)
 │   ├── Chapters (/chapters, /chapters/[id])
@@ -45,6 +46,7 @@ Optica Egypt
 ├── Insights
 │   ├── News (/news)
 │   ├── Blogs (/blogs)
+│   ├── Press (/press)
 │   └── Gallery (/gallery)
 └── Primary Action
     └── Join (/join)
