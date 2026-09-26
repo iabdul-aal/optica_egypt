@@ -170,8 +170,8 @@
     "professionalFocus": "Technical Management Intern, Si-Ware Systems",
     "specializedSector": "Optics",
     "linkedin": "ahmed-magdy-62abab2a8",
-    "email": "am2289148@gmail.com",
-    "photo": "",
+    "email": "ahmed.magdy.roshdy1@gmail.com",
+    "photo": "/people/leadership/ahmed-magdy.png",
     "bio": { "en": "Overseeing venue management, technical equipment, and event operations. Technical management intern at Si-Ware Systems focusing on optical systems." },
     "order": 10,
     "active": true
@@ -189,7 +189,7 @@
     "linkedin": "omar-nasser-ayoub",
     "email": "omarnmayoub@gmail.com",
     "opticaId": "2779412",
-    "photo": "",
+    "photo": "/people/leadership/omar-ayoub.png",
     "bio": { "en": "Ensuring compliance with Optica global section standards and internal governance quality. Optical systems intern at Si-Ware Systems and junior research assistant at AUC focusing on gas spectroscopy." },
     "order": 11,
     "active": true
@@ -242,6 +242,7 @@
     "achievements": "Author of 400+ publications; Holder of 25+ international patents; Recipient of Egyptian State Appreciation Prize, State Incentive Prize, and SPIE Prism Award; Listed among Stanford University's Top 2% Scientists.",
     "linkedin": "diaakhalil",
     "email": "diaa_khalil@eng.asu.edu.eg",
+    "photo": "/people/leadership/diaa-khalil.png",
     "bio": { "en": "Professor of Photonics, Former Head of ECE, and Former Acting Dean at Ain Shams University. Chief Scientist and Former CTO at Si-Ware Systems. Author of 400+ publications, holder of 25+ patents, SPIE Prism Award winner, and ranked among Stanford University's Top 2% Scientists globally." },
     "order": 14,
     "active": true
