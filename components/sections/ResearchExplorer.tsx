@@ -80,6 +80,7 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
   function handleSelect(index: number) {
     setActiveIndex(index)
     setTimerKey((k) => k + 1)
+    setPaused(true)
   }
 
   return (
@@ -88,6 +89,7 @@ export function ResearchExplorer({ locale, dictionary }: ResearchExplorerProps) 
       aria-labelledby={headingId}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
     >
       <div className="container-page">
         <div className="section-split-heading">

@@ -229,7 +229,6 @@ a { color: inherit; }
 .desktop-join { min-height: 2.55rem; padding: 0.65rem 0.95rem; font-size: 0.8rem; }
 .menu-toggle { align-items: center; background: transparent; border: 1px solid var(--line); border-radius: var(--radius-sm); color: var(--ink); display: none; height: 2.65rem; justify-content: center; width: 2.65rem; }
 .mobile-navigation {
-  animation: mobile-drawer-enter 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   background: var(--surface);
   border-bottom: 1px solid var(--line);
   bottom: 0;
@@ -239,11 +238,20 @@ a { color: inherit; }
   right: 0;
   top: 5.25rem;
   -webkit-overflow-scrolling: touch;
-  z-index: 100;
+  z-index: 45;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
 }
-@keyframes mobile-drawer-enter {
-  from { opacity: 0; transform: translateY(-0.5rem); }
-  to { opacity: 1; transform: translateY(0); }
+.mobile-navigation-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+.mobile-navigation-closed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-0.5rem);
+  visibility: hidden;
 }
 .mobile-navigation-list {
   display: grid;
@@ -331,7 +339,7 @@ a { color: inherit; }
 .nav-dropdown-link-current:hover { color: var(--gold-pale); }
 
 /* ── Grouped nav: mobile accordion ────────────────────────────────────── */
-.mobile-nav-group { display: grid; }
+.mobile-nav-group { display: grid; border-bottom: 1px solid var(--line-subtle); }
 .mobile-nav-group-toggle {
   align-items: center;
   background: transparent;
@@ -344,8 +352,16 @@ a { color: inherit; }
 }
 .mobile-nav-link-active { color: var(--gold); }
 .mobile-nav-chevron { flex-shrink: 0; transition: transform 0.2s ease; }
-.mobile-nav-chevron-open { transform: rotate(-180deg); }
-.mobile-nav-sub-list { display: grid; gap: 0; padding-bottom: 0.5rem; }
+.mobile-nav-chevron-open { transform: rotate(-180deg); color: var(--gold); }
+.mobile-nav-sub-list {
+  display: grid;
+  gap: 0;
+  padding-bottom: 0.25rem;
+  padding-inline-start: 0.75rem;
+  background: color-mix(in srgb, var(--surface-raised) 50%, transparent);
+  border-left: 2px solid var(--gold);
+  margin-block: 0.25rem 0.5rem;
+}
 .mobile-nav-sub-link {
   align-items: center;
   border-bottom: 1px solid var(--line-subtle);
@@ -353,15 +369,18 @@ a { color: inherit; }
   display: flex;
   font-size: 0.95rem;
   font-weight: 600;
-  min-height: 2.85rem;
+  min-height: 3rem;
   padding-block: 0.65rem;
-  padding-inline-start: 1.25rem;
+  padding-inline-start: 0.75rem;
   text-decoration: none;
   transition: color 0.15s ease;
 }
+.mobile-nav-sub-link:last-child {
+  border-bottom: 0;
+}
 .mobile-nav-sub-link:active,
 .mobile-nav-sub-link:hover { color: var(--ink); }
-.mobile-nav-sub-link-current { color: var(--gold); }
+.mobile-nav-sub-link-current { color: var(--gold); font-weight: 700; }
 
 
 .site-footer { background: #070909; border-top: 1px solid var(--line); color: var(--ink-soft); padding-top: clamp(3.5rem, 7vw, 6.25rem); }

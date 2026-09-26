@@ -113,7 +113,8 @@ export function Header({ locale, dictionary }: HeaderProps) {
   }
 
   return (
-    <header className="site-header">
+    <>
+      <header className="site-header">
       <div className="container-layout header-inner">
         <Link href={localizedHref(locale)} className="brand-mark" aria-label={dictionary.site.name}>
           <span className="brand-marker" aria-hidden="true" />
@@ -186,90 +187,105 @@ export function Header({ locale, dictionary }: HeaderProps) {
           </button>
         </div>
       </div>
-
-      {/* Mobile navigation */}
-      {isOpen && (
-        <div id="mobile-navigation" className="mobile-navigation" ref={mobileRef}>
-          <nav className="container-layout mobile-navigation-list" aria-label="Mobile navigation">
-            <Link
-              href={localizedHref(locale)}
-              className="mobile-nav-link"
-              aria-current={isCurrent("/") ? "page" : undefined}
-              onClick={() => setIsOpen(false)}
-            >
-              {dictionary.nav.home}
-            </Link>
-
-            {navConfig.map((item) => {
-              if (item.kind === "direct") {
-                return (
-                  <Link
-                    key={item.path}
-                    href={localizedHref(locale, item.path)}
-                    className="mobile-nav-link"
-                    aria-current={isCurrent(item.path) ? "page" : undefined}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {dictionary.nav[item.key]}
-                  </Link>
-                )
-              }
-
-              // Group accordion
-              const groupKey = item.labelKey
-              const isExpanded = expandedGroup === groupKey
-              return (
-                <div key={groupKey} className="mobile-nav-group">
-                  <button
-                    type="button"
-                    className={cn(
-                      "mobile-nav-link mobile-nav-group-toggle",
-                      isGroupActive(item.items) && "mobile-nav-link-active"
-                    )}
-                    aria-expanded={isExpanded}
-                    onClick={() => setExpandedGroup(isExpanded ? null : groupKey)}
-                  >
-                    {dictionary.nav[groupKey]}
-                    <ChevronDown
-                      size={14}
-                      aria-hidden="true"
-                      className={cn("mobile-nav-chevron", isExpanded && "mobile-nav-chevron-open")}
-                    />
-                  </button>
-                  {isExpanded && (
-                    <div className="mobile-nav-sub-list">
-                      {item.items.map((sub) => (
-                        <Link
-                          key={sub.path}
-                          href={localizedHref(locale, sub.path)}
-                          className={cn("mobile-nav-sub-link", isCurrent(sub.path) && "mobile-nav-sub-link-current")}
-                          aria-current={isCurrent(sub.path) ? "page" : undefined}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {dictionary.nav[sub.key]}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-
-            <div className="flex items-center justify-between py-3 border-b border-[var(--line-subtle)] my-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-soft)]">Theme</span>
-              <ThemeToggle />
-            </div>
-
-            <Link
-              href={localizedHref(locale, "/join")}
-              className="btn-primary mobile-join"
-              onClick={() => setIsOpen(false)}
-            >
-              {dictionary.nav.join}
-            </Link>
-          </nav>
-        </div>
-      )}
     </header>
+
+    {/* Mobile navigation - rendered outside header so fixed position uses viewport containing block */}
+    <div
+      id="mobile-navigation"
+      className={cn(
+        "mobile-navigation",
+        isOpen ? "mobile-navigation-open" : "mobile-navigation-closed"
+      )}
+      ref={mobileRef}
+      aria-hidden={!isOpen}
+    >
+      <nav className="container-layout mobile-navigation-list" aria-label="Mobile navigation">
+        <Link
+          href={localizedHref(locale)}
+          className="mobile-nav-link"
+          aria-current={isCurrent("/") ? "page" : undefined}
+          onClick={() => {
+            if (isCurrent("/")) setIsOpen(false)
+          }}
+        >
+          {dictionary.nav.home}
+        </Link>
+
+        {navConfig.map((item) => {
+          if (item.kind === "direct") {
+            return (
+              <Link
+                key={item.path}
+                href={localizedHref(locale, item.path)}
+                className="mobile-nav-link"
+                aria-current={isCurrent(item.path) ? "page" : undefined}
+                onClick={() => {
+                  if (isCurrent(item.path)) setIsOpen(false)
+                }}
+              >
+                {dictionary.nav[item.key]}
+              </Link>
+            )
+          }
+
+          // Group accordion
+          const groupKey = item.labelKey
+          const isExpanded = expandedGroup === groupKey
+          return (
+            <div key={groupKey} className="mobile-nav-group">
+              <button
+                type="button"
+                className={cn(
+                  "mobile-nav-link mobile-nav-group-toggle",
+                  isGroupActive(item.items) && "mobile-nav-link-active"
+                )}
+                aria-expanded={isExpanded}
+                onClick={() => setExpandedGroup(isExpanded ? null : groupKey)}
+              >
+                {dictionary.nav[groupKey]}
+                <ChevronDown
+                  size={14}
+                  aria-hidden="true"
+                  className={cn("mobile-nav-chevron", isExpanded && "mobile-nav-chevron-open")}
+                />
+              </button>
+              {isExpanded && (
+                <div className="mobile-nav-sub-list">
+                  {item.items.map((sub) => (
+                    <Link
+                      key={sub.path}
+                      href={localizedHref(locale, sub.path)}
+                      className={cn("mobile-nav-sub-link", isCurrent(sub.path) && "mobile-nav-sub-link-current")}
+                      aria-current={isCurrent(sub.path) ? "page" : undefined}
+                      onClick={() => {
+                        if (isCurrent(sub.path)) setIsOpen(false)
+                      }}
+                    >
+                      {dictionary.nav[sub.key]}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )
+        })}
+
+        <div className="flex items-center justify-between py-3 border-b border-[var(--line-subtle)] my-1">
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--ink-soft)]">Theme</span>
+          <ThemeToggle />
+        </div>
+
+        <Link
+          href={localizedHref(locale, "/join")}
+          className="btn-primary mobile-join"
+          onClick={() => {
+            if (isCurrent("/join")) setIsOpen(false)
+          }}
+        >
+          {dictionary.nav.join}
+        </Link>
+      </nav>
+    </div>
+    </>
   )
 }
