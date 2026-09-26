@@ -87,18 +87,42 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
             </div>
 
             <div className="mt-6 w-full space-y-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                <ShieldCheck size={13} aria-hidden="true" />
-                {tierLabels[member.tier]}
-              </span>
+              <div className="flex flex-wrap gap-2 items-center">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
+                  <ShieldCheck size={13} aria-hidden="true" />
+                  {tierLabels[member.tier]}
+                </span>
+                {member.isInitiator ? (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)] bg-[var(--gold)]/20 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
+                    <Sparkles size={13} aria-hidden="true" />
+                    Founder and Section Initiator
+                  </span>
+                ) : member.isFirstPresident ? (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)] bg-[var(--gold)]/20 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
+                    <ShieldCheck size={13} aria-hidden="true" />
+                    First President and Co-Founder
+                  </span>
+                ) : member.isFounder ? (
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-[var(--ink-soft)]">
+                    {member.foundingRole || "Co-Founder"}
+                  </span>
+                ) : null}
+              </div>
 
               <h1 className="text-2xl font-bold tracking-tight text-[var(--ink)] sm:text-3xl">
                 {name}
               </h1>
 
-              <p className="font-mono text-xs uppercase tracking-wider text-[var(--gold)]">
-                {member.role.en}
-              </p>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-[var(--gold)] font-bold">
+                  {member.role.en}
+                </p>
+                {member.foundingRole && member.foundingRole !== member.role.en && (
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-[var(--ink-faint)] mt-0.5">
+                    {member.foundingRole}
+                  </p>
+                )}
+              </div>
 
               {member.institution.en && (
                 <p className="text-sm text-[var(--ink-soft)] leading-relaxed">
@@ -197,6 +221,24 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
                 </div>
               )}
             </div>
+
+            {member.foundingRole && (
+              <div className="site-card p-6 border-l-2 border-l-[var(--gold)]">
+                <p className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
+                  Charter Founding Status
+                </p>
+                <p className="mt-2 text-base font-semibold text-[var(--ink)] leading-snug">
+                  {member.foundingRole}
+                </p>
+                <p className="mt-1.5 text-xs text-[var(--ink-soft)] leading-relaxed">
+                  {member.isInitiator
+                    ? "Conceived and initiated the Optica Egypt Local Section charter petition to Optica Global, convening the founding leadership cohort."
+                    : member.isFirstPresident
+                    ? "First President steering the inaugural executive governance and charter operations of the Optica Egypt Local Section."
+                    : "Founding member of the Optica Egypt Local Section, advancing the national optics and photonics charter."}
+                </p>
+              </div>
+            )}
 
             {member.achievements && (
               <div className="site-card p-6">

@@ -5,6 +5,10 @@ export interface Member {
   term: string
   tier: "executive" | "operational" | "advisory"
   institution: { en: string }
+  foundingRole?: string
+  isFounder?: boolean
+  isInitiator?: boolean
+  isFirstPresident?: boolean
   linkedin?: string
   email?: string
   website?: string

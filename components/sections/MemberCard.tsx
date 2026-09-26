@@ -22,6 +22,21 @@ export function MemberCard({ member, locale, dictionary }: MemberCardProps) {
       <div className="flex flex-col flex-grow">
         {/* Portrait: 4:6 (width:height = 2:3) */}
         <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.5)] shrink-0">
+          {/* Founding Status Badge */}
+          {member.isInitiator ? (
+            <span className="absolute top-2.5 left-2.5 z-10 rounded-sm bg-[#09131F]/90 backdrop-blur-md px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-[var(--gold)] border border-[var(--gold)]/50 shadow-md">
+              Section Initiator
+            </span>
+          ) : member.isFirstPresident ? (
+            <span className="absolute top-2.5 left-2.5 z-10 rounded-sm bg-[#09131F]/90 backdrop-blur-md px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-[var(--gold)] border border-[var(--gold)]/50 shadow-md">
+              First President
+            </span>
+          ) : member.isFounder ? (
+            <span className="absolute top-2.5 left-2.5 z-10 rounded-sm bg-[#09131F]/85 backdrop-blur-md px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-[var(--ink-soft)] border border-[var(--line)] shadow-sm">
+              Co-Founder
+            </span>
+          ) : null}
+
           {hasPhoto ? (
             <>
               <Image

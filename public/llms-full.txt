@@ -23,38 +23,38 @@ The Optica Egypt Local Section is the official regional section of Optica, chart
 
 ---
 
-## Governance and Leadership Roster
+## Governance and Founding Leadership Roster (All Current Officers are Founding Members / Co-Founders)
 
-### Executive Committee (5 Officers)
-- Abdulaziz Albadawi, President
+### Founding Executive Committee (5 Officers)
+- Abdulaziz Albadawi, First President and Co-Founder
   - Optica Member ID: 2798420
   - Email: albadawiabdulaziz@gmail.com
   - Affiliations: The American University in Cairo (AUC)
-  - Focus: Nanophotonics, Laser Science, and Optical Sensors
+  - Focus: First President of the Section, Nanophotonics, Laser Science, and Optical Sensors
 
-- Khaled Ramadan, Vice President
+- Khaled Ramadan, Vice President and Co-Founder
   - Optica Member ID: 2798622
   - Email: khaledismail1842004kh24@gmail.com
   - Affiliations: Ain Shams University / LLOC Lab / AUC / Nile University
   - Focus: Silicon Photonics and Waveguide Design
 
-- Mohamed Nader, Secretary
+- Mohamed Nader, Secretary and Co-Founder
   - Optica Member ID: 2798431
   - Email: mohammed.nader.200519@gmail.com
   - Affiliations: Ain Shams University / Si-Ware Systems
   - Focus: Section Governance, Records, and Silicon Photonics
 
-- Arwa Elsherbiny, Treasurer
+- Arwa Elsherbiny, Treasurer and Co-Founder
   - Optica Member ID: 2822044
   - Email: arwaelsherbiny33@gmail.com
   - Affiliations: Ain Shams University / Si-Ware Systems / Zewail City
   - Focus: Financial Planning, Grants Allocation, and Quantum Optics
 
-- Islam I. Abdulaal, Webmaster
+- Islam I. Abdulaal, Founder and Section Initiator, Webmaster
   - Website: https://iabdul-aal.me/
   - Email: contact@iabdul-aal.me
   - Affiliations: FAU Erlangen-Nürnberg / Max Planck School of Photonics (MPSP) / A*STAR
-  - Focus: Digital Infrastructure, Integrated Nanophotonics, and Nonlinear Quantum Optics
+  - Focus: Section Initiator (conceived and initiated the Optica Egypt Local Section charter petition), Digital Infrastructure, Integrated Nanophotonics, and Nonlinear Quantum Optics
 
 ### Operational Committee
 - Mariam Awd (Hussein), Growth Officer (Optica ID: 2798018, Email: mariam.hussin@guc.edu.eg) | GUC Micro Optics Lab

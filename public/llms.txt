@@ -14,12 +14,12 @@ Optica approved the charter of the Optica Egypt Local Section on 10 September 20
 - Contact: opticaegypt@gmail.com
 - LinkedIn: https://www.linkedin.com/company/optica-egypt
 
-## Executive Committee (5 Officers)
-- Abdulaziz Albadawi, President (Optica ID: 2798420) | The American University in Cairo (AUC) | Laser Science and Optical Sensors
-- Khaled Ramadan, Vice President (Optica ID: 2798622) | Ain Shams University | Silicon Photonics
-- Mohamed Nader, Secretary (Optica ID: 2798431) | Ain Shams University | Silicon Photonics
-- Arwa Elsherbiny, Treasurer (Optica ID: 2822044) | Ain Shams University | Quantum Optics
-- Islam I. Abdulaal, Webmaster (Website: https://iabdul-aal.me/, Email: contact@iabdul-aal.me) | FAU Erlangen-Nürnberg | Integrated Nanophotonics
+## Founding Executive Committee (All Officers are Founding Members / Co-Founders)
+- Abdulaziz Albadawi, First President and Co-Founder (Optica ID: 2798420) | The American University in Cairo (AUC) | Laser Science and Optical Sensors
+- Khaled Ramadan, Vice President and Co-Founder (Optica ID: 2798622) | Ain Shams University | Silicon Photonics
+- Mohamed Nader, Secretary and Co-Founder (Optica ID: 2798431) | Ain Shams University | Silicon Photonics
+- Arwa Elsherbiny, Treasurer and Co-Founder (Optica ID: 2822044) | Ain Shams University | Quantum Optics
+- Islam I. Abdulaal, Founder and Section Initiator, Webmaster (Website: https://iabdul-aal.me/, Email: contact@iabdul-aal.me) | FAU Erlangen-Nürnberg | Integrated Nanophotonics
 
 ## Operational Committee
 - Mariam Awd (Hussein), Growth Officer (Optica ID: 2798018) | GUC Micro Optics Lab
