@@ -103,6 +103,69 @@
     "eyebrow": "About the section",
     "title": "A shared home for people who work with light.",
     "intro": "Optica Egypt Local Section supports an open, connected photonics community across Egypt, in dialogue with the wider Optica network.",
+    "vision": {
+      "eyebrow": "Our Vision",
+      "title": "A premier regional hub for optics, photonics, and quantum technologies.",
+      "body": "To establish Egypt as a premier regional hub for optics, photonics, and quantum technologies, empowering domestic researchers, engineers, and students to pioneer globally recognized scientific breakthroughs and deep-tech innovations that drive national development."
+    },
+    "mission": {
+      "eyebrow": "Our Mission",
+      "title": "Connecting local talent with global opportunity to advance optical science.",
+      "body": "To connect Egypt's university students, academic researchers, faculty, and industry leaders with the international Optica ecosystem; to eliminate institutional barriers through open-access design automation and shared laboratory infrastructure; and to cultivate the next generation of optical engineers through hands-on education, merit recognition, and seed funding."
+    },
+    "values": {
+      "eyebrow": "Core Values",
+      "title": "Guiding principles for national scientific impact.",
+      "intro": "Our operational roadmap, educational programs, and technical initiatives are guided by five core values built for impact and inclusion.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Scientific Rigor and Excellence",
+          "tagline": "Rigor Without Compromise",
+          "body": "Upholding the highest standards in peer-reviewed research, simulation accuracy, and physical experimental validation across all section initiatives."
+        },
+        {
+          "number": "02",
+          "title": "Open Access and Equity",
+          "tagline": "Democratizing Photonics",
+          "body": "Democratizing knowledge, open-source PDKs, and Python-first design automation so any student with a laptop can participate, regardless of campus equipment."
+        },
+        {
+          "number": "03",
+          "title": "Resource Pragmatism",
+          "tagline": "Ingenuity Over Capital",
+          "body": "Engineering zero-capital computational solutions, pooling inter-university resources, and systematically unlocking Egyptian government grants (ITIDA, ASRT, STDF)."
+        },
+        {
+          "number": "04",
+          "title": "Collaborative Community",
+          "tagline": "Breaking Institutional Silos",
+          "body": "Fostering inter-university synergy between public, private, and national institutions, paired with active diaspora co-mentorship with Egyptian leaders abroad."
+        },
+        {
+          "number": "05",
+          "title": "Global Integration",
+          "tagline": "Seamless International Reach",
+          "body": "Seamlessly linking Egyptian talent to global Optica Foundation travel fellowships, visiting lecturers, international conferences, and publishing subsidies."
+        }
+      ]
+    },
+    "milestones": {
+      "eyebrow": "Charter Milestones",
+      "title": "Foundational milestones of the Local Section.",
+      "items": [
+        {
+          "tag": "Charter Approval",
+          "date": "10 September 2026",
+          "body": "Optica formally approved the establishment of the Optica Egypt Local Section, welcoming Egypt into the global optics society."
+        },
+        {
+          "tag": "Inauguration Ceremony",
+          "date": "1 November 2026",
+          "body": "Section kick-off gathering bringing together university faculties, researchers, students, and industry partners across Egypt."
+        }
+      ]
+    },
     "purposeEyebrow": "Our purpose",
     "purposeTitle": "Curiosity becomes capability when a community stands behind it.",
     "purposeBody": "The section creates welcoming entry points to optics and photonics, then cultivates the relationships that help students, researchers, and professionals keep moving forward.",

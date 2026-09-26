@@ -2,8 +2,14 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import {
   ArrowUpRight,
+  BookOpen,
+  Calendar,
   CheckCircle2,
+  Compass,
   Cpu,
+  Eye,
+  Globe,
+  Sparkles,
   Users,
 } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
@@ -13,7 +19,7 @@ import { getStrategyData } from "@/lib/strategy"
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn about Optica Egypt Local Section, our mission, vision, and strategic pillars advancing photonics in Egypt.",
+  description: "Learn about Optica Egypt Local Section, our vision, mission, core values, and strategic blueprint advancing photonics in Egypt.",
   alternates: {
     canonical: "/about/",
   },
@@ -21,71 +27,119 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const dictionary = getDictionary("en")
-  const pillars = Object.values(dictionary.about.pillars)
   const strategy = getStrategyData()
+
+  const valueIcons = [Sparkles, BookOpen, Cpu, Users, Globe]
 
   return (
     <>
       <PageHeader eyebrow={dictionary.about.eyebrow} title={dictionary.about.title} intro={dictionary.about.intro} />
 
-      {/* ── Section Purpose and Foundation Pillars ───────────────────────── */}
+      {/* ── Vision and Mission ────────────────────────────────────────── */}
       <section className="section-space">
-        <ScrollReveal animation="fade-up" delay={30}>
-          <div className="container-page grid gap-9 border-b border-[var(--line)] pb-11 lg:grid-cols-[.85fr_1.15fr]">
-            <div>
-              <p className="eyebrow">{dictionary.about.purposeEyebrow}</p>
-              <h2 className="section-title mt-3">{dictionary.about.purposeTitle}</h2>
-            </div>
-            <p className="lede max-w-2xl lg:pt-8">{dictionary.about.purposeBody}</p>
-          </div>
-        </ScrollReveal>
+        <div className="container-page">
+          <div className="grid gap-8 lg:grid-cols-2">
+            {/* Vision Card */}
+            <ScrollReveal animation="fade-up" delay={20}>
+              <div className="site-card p-8 sm:p-10 relative overflow-hidden h-full flex flex-col justify-between border-t-2 border-t-[var(--gold)]">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)] mb-6">
+                    <Eye size={14} aria-hidden="true" />
+                    <span>{dictionary.about.vision.eyebrow}</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--ink)] leading-snug">
+                    {dictionary.about.vision.title}
+                  </h2>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
+                    {dictionary.about.vision.body}
+                  </p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-[var(--line-subtle)] flex items-center justify-between">
+                  <span className="font-mono text-xs text-[var(--ink-faint)] uppercase tracking-wider">
+                    Charter Strategic North Star
+                  </span>
+                  <span className="font-mono text-xs font-bold text-[var(--gold)]">2026—2030</span>
+                </div>
+              </div>
+            </ScrollReveal>
 
-        <ScrollReveal animation="fade-up" delay={50}>
-          <div className="container-page mt-12">
-            <div className="grid border border-[var(--line)] md:grid-cols-2">
-              {pillars.map((pillar, index) => (
-                <article
-                  key={pillar.title}
-                  className={`group/pillar p-6 sm:p-8 transition-colors duration-200 hover:bg-[var(--line-subtle)] ${
-                    index % 2 === 1 ? "md:border-l md:border-[var(--line)]" : ""
-                  } ${index > 0 ? "border-t md:border-t-0" : ""} ${
-                    index >= 2 ? "md:border-t md:border-[var(--line)]" : ""
-                  }`}
-                >
-                  <p className="font-mono text-sm font-bold text-[var(--gold)]">{pillar.number}</p>
-                  <h3 className="mt-3 text-xl font-semibold text-[var(--ink)] group-hover/pillar:text-[var(--gold)] transition-colors">{pillar.title}</h3>
-                  <p className="mt-3 max-w-sm text-sm leading-6 text-[var(--ink-soft)]">{pillar.body}</p>
-                </article>
-              ))}
-            </div>
+            {/* Mission Card */}
+            <ScrollReveal animation="fade-up" delay={40}>
+              <div className="site-card p-8 sm:p-10 relative overflow-hidden h-full flex flex-col justify-between border-t-2 border-t-[var(--gold)]">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)] mb-6">
+                    <Compass size={14} aria-hidden="true" />
+                    <span>{dictionary.about.mission.eyebrow}</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--ink)] leading-snug">
+                    {dictionary.about.mission.title}
+                  </h2>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
+                    {dictionary.about.mission.body}
+                  </p>
+                </div>
+                <div className="mt-8 pt-6 border-t border-[var(--line-subtle)] flex items-center justify-between">
+                  <span className="font-mono text-xs text-[var(--ink-faint)] uppercase tracking-wider">
+                    Operational Execution Mandate
+                  </span>
+                  <Link href="/join" className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[var(--gold)] hover:underline">
+                    <span>Join the Mission</span>
+                    <ArrowUpRight size={13} aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
+        </div>
+      </section>
 
-        {/* ── Key Milestones ────────────────────────────────────────── */}
-        <div className="container-page mt-16 grid gap-6 border-t border-[var(--line-subtle)] pt-12 sm:grid-cols-2">
-          <ScrollReveal animation="fade-up" delay={40}>
-            <div className="site-card p-6">
-              <p className="eyebrow">Charter Approval</p>
-              <p className="mt-2 font-mono text-xl font-bold text-[var(--gold)]">10 September 2026</p>
-              <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                Optica formally approved the establishment of the Optica Egypt Local Section, welcoming Egypt into the global optics society.
-              </p>
+      {/* ── Core Values ──────────────────────────────────────────────── */}
+      <section className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
+        <div className="container-page">
+          <ScrollReveal animation="fade-up" delay={20}>
+            <div className="max-w-3xl mb-12">
+              <p className="eyebrow">{dictionary.about.values.eyebrow}</p>
+              <h2 className="section-title mt-3">{dictionary.about.values.title}</h2>
+              <p className="lede mt-4">{dictionary.about.values.intro}</p>
             </div>
           </ScrollReveal>
-          <ScrollReveal animation="fade-up" delay={80}>
-            <div className="site-card p-6">
-              <p className="eyebrow">Inauguration Ceremony</p>
-              <p className="mt-2 font-mono text-xl font-bold text-[var(--gold)]">1 November 2026</p>
-              <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
-                Section kick-off gathering bringing together university faculties, researchers, students, and industry partners. Details to follow.
-              </p>
-            </div>
-          </ScrollReveal>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {dictionary.about.values.items.map((val, index) => {
+              const Icon = valueIcons[index] || Sparkles
+
+              return (
+                <ScrollReveal key={val.number} animation="fade-up" delay={30 + index * 30}>
+                  <article className="site-card p-6 sm:p-8 h-full flex flex-col justify-between group transition-colors duration-200 hover:border-[var(--gold)]/50">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="font-mono text-xs font-bold text-[var(--gold)]">
+                          VALUE {val.number}
+                        </span>
+                        <div className="p-2 rounded-sm bg-[var(--gold)]/10 text-[var(--gold)] group-hover:scale-110 transition-transform">
+                          <Icon size={18} aria-hidden="true" />
+                        </div>
+                      </div>
+                      <h3 className="text-lg font-bold text-[var(--ink)] tracking-tight group-hover:text-[var(--gold)] transition-colors">
+                        {val.title}
+                      </h3>
+                      <p className="font-mono text-[11px] text-[var(--ink-faint)] uppercase tracking-wider mt-1">
+                        {val.tagline}
+                      </p>
+                      <p className="mt-4 text-xs sm:text-sm text-[var(--ink-soft)] leading-relaxed">
+                        {val.body}
+                      </p>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              )
+            })}
+          </div>
         </div>
       </section>
 
       {/* ── Strategic Blueprint: Economic Pragmatism for Egypt ──────────────── */}
-      <section className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
+      <section id="strategy" className="section-space border-t border-[var(--line)]">
         <div className="container-page">
           <ScrollReveal animation="fade-up" delay={30}>
             <div className="border-b border-[var(--line)] pb-8 mb-12">
@@ -201,6 +255,34 @@ export default function AboutPage() {
               <span>Partner With Optica Egypt</span>
               <ArrowUpRight size={14} aria-hidden="true" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Charter Milestones ────────────────────────────────────────── */}
+      <section className="section-space border-t border-[var(--line)]">
+        <div className="container-page">
+          <ScrollReveal animation="fade-up" delay={20}>
+            <div className="max-w-2xl mb-10">
+              <p className="eyebrow">{dictionary.about.milestones.eyebrow}</p>
+              <h2 className="section-title mt-3">{dictionary.about.milestones.title}</h2>
+            </div>
+          </ScrollReveal>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {dictionary.about.milestones.items.map((m, idx) => (
+              <ScrollReveal key={m.tag} animation="fade-up" delay={40 + idx * 40}>
+                <div className="site-card p-6 sm:p-8 h-full border-l-2 border-l-[var(--gold)] flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Calendar size={14} className="text-[var(--gold)]" aria-hidden="true" />
+                      <span className="eyebrow">{m.tag}</span>
+                    </div>
+                    <p className="mt-3 font-mono text-xl font-bold text-[var(--gold)]">{m.date}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">{m.body}</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
