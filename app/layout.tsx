@@ -100,7 +100,7 @@ const jsonLd = {
       name: "Optica Egypt Local Section",
       alternateName: ["Optica Egypt", "Egypt Photonics Section"],
       url: siteUrl,
-      logo: `${siteUrl}/assets/brand/optica-egypt-logo.png`,
+      logo: `${siteUrl}/assets/brand/egypt/logo/egypt-local-mark.png`,
       description: dictionary.site.description,
       foundingDate: "2026-09-10",
       parentOrganization: {
