@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
       url: eventUrl,
       images: [
         {
-          url: `${siteUrl}/assets/brand/optica-egypt-logo.png`,
+          url: `${siteUrl}/og/og-events.jpg`,
           width: 1200,
           height: 630,
           alt: title,
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
       card: "summary_large_image",
       title: `${title} | Optica Egypt`,
       description,
-      images: [`${siteUrl}/assets/brand/optica-egypt-logo.png`],
+      images: [`${siteUrl}/og/og-events.jpg`],
     },
   }
 }

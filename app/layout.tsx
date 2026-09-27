@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     description: dictionary.site.description,
     images: [
       {
-        url: `${siteUrl}/assets/brand/optica-egypt-logo.png`,
+        url: `${siteUrl}/og/og-default.jpg`,
         width: 1200,
         height: 630,
         alt: "Optica Egypt Local Section",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     description: dictionary.site.description,
     creator: "@opticaegypt",
     site: "@opticaegypt",
-    images: [`${siteUrl}/assets/brand/optica-egypt-logo.png`],
+    images: [`${siteUrl}/og/og-default.jpg`],
   },
   robots: {
     index: true,

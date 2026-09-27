@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: MemberProfilePageProps): Prom
       title,
       description,
       url: `${siteUrl}/leadership/${member.id}/`,
-      images: [member.photo ? `${siteUrl}${member.photo}` : `${siteUrl}/assets/brand/optica-egypt-logo.png`],
+      images: [member.photo ? `${siteUrl}${member.photo}` : `${siteUrl}/og/og-leadership.jpg`],
     },
   }
 }

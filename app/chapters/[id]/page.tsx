@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: ChapterDetailPageProps): Prom
       title,
       description,
       url: `${siteUrl}/chapters/${chapter.id}/`,
-      images: [`${siteUrl}/assets/brand/optica-egypt-logo.png`],
+      images: [`${siteUrl}/og/og-community.jpg`],
     },
   }
 }
