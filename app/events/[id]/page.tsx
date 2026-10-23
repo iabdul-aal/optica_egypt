@@ -36,11 +36,7 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
       url: eventUrl,
       images: [
         {
-<<<<<<< HEAD
           url: `${siteUrl}/og/og-events.jpg`,
-=======
-          url: `${siteUrl}/og/og-default.jpg`,
->>>>>>> f0e445b (feat: advance join member portal, press SVG media kit, interactive blogs reader, multi-event programme, and gallery lightbox)
           width: 1200,
           height: 630,
           alt: title,
@@ -51,11 +47,7 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
       card: "summary_large_image",
       title: `${title} | Optica Egypt`,
       description,
-<<<<<<< HEAD
       images: [`${siteUrl}/og/og-events.jpg`],
-=======
-      images: [`${siteUrl}/og/og-default.jpg`],
->>>>>>> f0e445b (feat: advance join member portal, press SVG media kit, interactive blogs reader, multi-event programme, and gallery lightbox)
     },
   }
 }
@@ -97,7 +89,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               addressCountry: "EG",
             },
           },
-    image: [`${siteUrl}/assets/brand/optica-egypt-logo.png`],
+    image: [`${siteUrl}/og/og-events.jpg`],
     organizer: {
       "@type": "Organization",
       name: "Optica Egypt Local Section",
