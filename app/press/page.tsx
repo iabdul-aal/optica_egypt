@@ -14,6 +14,7 @@ import { InsightsNav } from "@/components/sections/InsightsNav"
 import { BoilerplateBox } from "@/components/sections/BoilerplateBox"
 import { PressInquiryForm } from "@/components/sections/PressInquiryForm"
 import { getPressData } from "@/lib/press"
+import { getAssetPath } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Press",
@@ -28,13 +29,13 @@ export default function PressPage() {
 
   return (
     <>
+      <InsightsNav />
+
       <PageHeader
         eyebrow={data.eyebrow}
         title={data.title}
         intro={data.intro}
       />
-
-      <InsightsNav />
 
       {/* ── Press Releases List ────────────────────────────────────────────── */}
       <section className="section-space">
@@ -166,14 +167,29 @@ export default function PressPage() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[var(--line-subtle)]">
+                <div className="mt-6 pt-4 border-t border-[var(--line-subtle)] flex items-center justify-between gap-3">
                   <a
-                    href={asset.downloadUrl}
+                    href={getAssetPath(asset.downloadUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={!asset.downloadUrl.endsWith(".html")}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--gold)] hover:text-[var(--gold-pale)] transition-colors min-h-[40px]"
-                    download
                   >
                     <Download size={14} aria-hidden="true" />
-                    <span>Download Official Asset</span>
+                    <span>
+                      {asset.downloadUrl.endsWith(".html")
+                        ? "Open Printable Fact Sheet"
+                        : "Download Official Asset"}
+                    </span>
+                  </a>
+                  <a
+                    href={getAssetPath(asset.downloadUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] font-mono text-[var(--ink-soft)] hover:text-[var(--ink)] transition-colors"
+                  >
+                    <span>Preview</span>
+                    <ExternalLink size={12} aria-hidden="true" />
                   </a>
                 </div>
               </div>
@@ -193,7 +209,7 @@ export default function PressPage() {
                   <div key={color.hex} className="rounded-sm border border-[var(--line)] bg-[var(--surface)] p-3">
                     <div className="flex items-center gap-2">
                       <div
-                        className="h-4 w-4 rounded-full border border-white/20 shrink-0"
+                        className="h-4 w-4 rounded-full border border-[var(--line)] shrink-0"
                         style={{ backgroundColor: color.hex }}
                         aria-hidden="true"
                       />

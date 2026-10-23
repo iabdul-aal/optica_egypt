@@ -54,7 +54,7 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
   const [selectedChapter, setSelectedChapter] = useState<Chapter | undefined>(aucChapter)
   const [isChapterHovered, setIsChapterHovered] = useState(false)
 
-  // Interactive Zoom & Pan State
+  // Interactive Zoom and Pan State
   const [zoom, setZoom] = useState(1.0)
   const [pan, setPan] = useState({ x: 0, y: 0 })
   const [isFocusAUC, setIsFocusAUC] = useState(false)

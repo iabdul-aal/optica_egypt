@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight, BookOpen, Calendar, Clock, Tag } from "lucide-react"
+import { ArrowUpRight, BookOpen } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { InsightsNav } from "@/components/sections/InsightsNav"
-import { ScrollReveal } from "@/components/ui/ScrollReveal"
+import { BlogArticleList } from "@/components/sections/BlogArticleList"
 import { getAllBlogs } from "@/lib/blogs"
 
 export const metadata: Metadata = {
@@ -12,14 +12,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/blogs/",
   },
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  })
 }
 
 export default function BlogsPage() {
@@ -36,53 +28,9 @@ export default function BlogsPage() {
 
       <section className="section-space">
         <div className="container-page">
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr]">
-            {/* ── Main Articles List ── */}
-            <div className="space-y-6">
-              {blogs.map((post, index) => (
-                <ScrollReveal key={post.id} animation="fade-up" delay={index * 40}>
-                  <article className="site-card p-6 sm:p-8">
-                    <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[var(--ink-faint)]">
-                      <span className="inline-flex items-center gap-1.5 text-[var(--gold)] font-bold uppercase">
-                        <Calendar size={12} aria-hidden="true" />
-                        {formatDate(post.date)}
-                      </span>
-                      <span>·</span>
-                      <span className="inline-flex items-center gap-1.5">
-                        <Clock size={12} aria-hidden="true" />
-                        {post.readTime}
-                      </span>
-                      <span>·</span>
-                      <span className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-2 py-0.5 text-[10px] text-[var(--gold)]">
-                        {post.category}
-                      </span>
-                    </div>
-
-                    <h2 className="mt-4 text-xl font-bold tracking-tight text-[var(--ink)] sm:text-2xl">
-                      {post.title}
-                    </h2>
-
-                    <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line-subtle)] pt-4">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {post.tags.map((tag) => (
-                          <span key={tag} className="inline-flex items-center gap-1 text-[11px] font-mono text-[var(--ink-faint)]">
-                            <Tag size={10} className="text-[var(--gold)]" />
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <span className="text-xs font-mono text-[var(--ink-soft)]">
-                        By {post.author}
-                      </span>
-                    </div>
-                  </article>
-                </ScrollReveal>
-              ))}
-            </div>
+          <div className="grid gap-8 lg:grid-cols-[1.25fr_.75fr]">
+            {/* ── Interactive Articles Reader ── */}
+            <BlogArticleList blogs={blogs} />
 
             {/* ── Sidebar ── */}
             <aside className="space-y-6">
@@ -106,6 +54,10 @@ export default function BlogsPage() {
                 <div className="mt-4 space-y-3 text-sm">
                   <Link href="/news" className="flex items-center justify-between text-[var(--ink)] hover:text-[var(--gold)] transition-colors py-1.5 border-b border-[var(--line-subtle)]">
                     <span>News and Announcements</span>
+                    <ArrowUpRight size={13} />
+                  </Link>
+                  <Link href="/press" className="flex items-center justify-between text-[var(--ink)] hover:text-[var(--gold)] transition-colors py-1.5 border-b border-[var(--line-subtle)]">
+                    <span>Press Room and Media Kit</span>
                     <ArrowUpRight size={13} />
                   </Link>
                   <Link href="/gallery" className="flex items-center justify-between text-[var(--ink)] hover:text-[var(--gold)] transition-colors py-1.5 border-b border-[var(--line-subtle)]">

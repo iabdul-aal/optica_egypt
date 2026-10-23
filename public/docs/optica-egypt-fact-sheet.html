@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optica Egypt Local Section — Official Fact Sheet and Charter Profile</title>
+  <style>
+    :root {
+      --navy: #09131F;
+      --gold: #D4AF37;
+      --gold-dark: #9B7B1C;
+      --ink: #0F172A;
+      --muted: #475569;
+      --line: #E2E8F0;
+      --surface: #F8FAFC;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: #E2E8F0;
+      line-height: 1.55;
+      padding: 2rem 1rem;
+    }
+    .toolbar {
+      max-width: 210mm;
+      margin: 0 auto 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--navy);
+      color: #fff;
+      padding: 0.85rem 1.25rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--gold);
+    }
+    .toolbar button {
+      background: var(--gold);
+      color: var(--navy);
+      border: 0;
+      padding: 0.55rem 1.1rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .sheet {
+      max-width: 210mm;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 18mm 18mm;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 3px solid var(--navy);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .brand-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .brand-sub {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--gold-dark);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+    .meta-box {
+      text-align: right;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .meta-box strong { color: var(--navy); }
+    h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-dark);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.35rem;
+      margin: 1.35rem 0 0.75rem;
+    }
+    p { font-size: 0.88rem; color: var(--ink); margin-bottom: 0.65rem; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      padding: 0.85rem 1rem;
+    }
+    .card h3 { font-size: 0.9rem; color: var(--navy); margin-bottom: 0.25rem; }
+    .card p { font-size: 0.8rem; color: var(--muted); margin: 0; }
+    ul { padding-left: 1.1rem; font-size: 0.84rem; color: var(--ink); }
+    li { margin-bottom: 0.35rem; }
+    .footer {
+      margin-top: 2rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar { display: none; }
+      .sheet { box-shadow: none; padding: 10mm; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span><strong>Optica Egypt Local Section</strong> — Official Executive Fact Sheet</span>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <main class="sheet">
+    <header class="header">
+      <div>
+        <div class="brand-title">Optica Egypt Local Section</div>
+        <div class="brand-sub">Official Charter of Optica Worldwide</div>
+      </div>
+      <div class="meta-box">
+        <div><strong>Charter Approved:</strong> 10 September 2026</div>
+        <div><strong>Inauguration:</strong> 1 November 2026</div>
+        <div><strong>Parent Society:</strong> Optica (Washington, D.C.)</div>
+      </div>
+    </header>
+
+    <h2>Executive Overview and Mandate</h2>
+    <p>
+      The Optica Egypt Local Section is the official national charter of Optica (formerly OSA) in the Arab Republic of Egypt. Established on 10 September 2026, the section unites university students, academic researchers, faculty, and deep-tech industry engineers across Egypt into a single collaborative ecosystem connected to the global optics and photonics community.
+    </p>
+
+    <div class="grid-2" style="margin-top: 0.85rem;">
+      <div class="card">
+        <h3>Strategic Vision</h3>
+        <p>Position Egypt as the premier regional hub for optical science, silicon photonics design, and deep-tech innovation across the Middle East and North Africa.</p>
+      </div>
+      <div class="card">
+        <h3>Operational Mission</h3>
+        <p>Democratize photonics education, open-source design automation, and research funding with zero financial barriers for Egyptian students and researchers.</p>
+      </div>
+    </div>
+
+    <h2>Five Strategic Execution Pillars</h2>
+    <ul>
+      <li><strong>Open-Source Photonic Design Automation (PDA):</strong> Zero-cost Python layout and FDTD simulation workflows using gdsfactory, Meep, and KLayout.</li>
+      <li><strong>Flagship Scientific Conference (EPC 2027):</strong> Peer-reviewed Egypt Photonics Conference with five technical tracks and DOI-indexed proceedings.</li>
+      <li><strong>Academic Upskilling and Seasonal Schools:</strong> Intensive tuition-free seasonal schools and hands-on CAD bootcamps rotating across Egyptian universities.</li>
+      <li><strong>Direct Research Seed Funding:</strong> Best Thesis Award in Photonics (B.Sc., M.Sc., Ph.D.) and the Optica Egypt Thesis Fund (up to 25,000 EGP).</li>
+      <li><strong>Nationwide Campus Chapters and STEM Outreach:</strong> Supporting student chapters across Egyptian universities and pre-university K-12 optics demonstrations.</li>
+    </ul>
+
+    <h2>Founding Executive Leadership and Senior Advisory Board</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Founding Executive Officers</h3>
+        <p>
+          <strong>Abdulaziz Albadawi</strong> — First President and Co-Founder (AUC)<br/>
+          <strong>Islam I. Abdulaal</strong> — Founder, Section Initiator, and Webmaster (FAU / MPSP)<br/>
+          <strong>Khaled Ramadan</strong> — Vice President and Co-Founder (Ain Shams)<br/>
+          <strong>Mohamed Nader</strong> — Secretary and Co-Founder (Ain Shams)<br/>
+          <strong>Arwa Elsherbiny</strong> — Treasurer and Co-Founder (Ain Shams)
+        </p>
+      </div>
+      <div class="card">
+        <h3>Founding Senior Faculty Advisors</h3>
+        <p>
+          <strong>Prof. Diaa Khalil</strong> — Professor of Photonics, Ain Shams University; Chief Scientist, Si-Ware Systems<br/>
+          <strong>Prof. Yasser Sabry</strong> — Professor of Photonics and MEMS, Ain Shams University; Co-Inventor of NeoSpectra<br/>
+          <strong>Assoc. Prof. Salem Hegazy</strong> — Associate Professor of Quantum Optics, Cairo University and Zewail City
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <span>Web: https://iabdul-aal.me/optica_egypt/</span>
+      <span>Email: opticaegypt@gmail.com | Press: press@optica-egypt.org</span>
+      <span>Document ID: OPT-EG-FACTSHEET-2026</span>
+    </footer>
+  </main>
+</body>
+</html>

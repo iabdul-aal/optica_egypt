@@ -42,8 +42,32 @@ export type PressInquiryInput = {
   message: string
 }
 
+export interface MemberPortalRecord {
+  id: string
+  fullName: string
+  email: string
+  affiliation: string
+  cohort: string
+  opticaMemberId?: string
+  submissionType: string
+  message: string
+  createdAt: string
+  status: "confirmed" | "under_review"
+}
+
+export type MemberPortalInput = {
+  fullName: string
+  email: string
+  affiliation: string
+  cohort: string
+  opticaMemberId?: string
+  submissionType: string
+  message: string
+}
+
 const PARTNER_STORAGE_KEY = "optica_egypt_partner_inquiries_v1"
 const PRESS_STORAGE_KEY = "optica_egypt_press_inquiries_v1"
+const MEMBER_PORTAL_STORAGE_KEY = "optica_egypt_member_portal_v1"
 
 function generatePartnerCode(): string {
   const year = new Date().getFullYear()
@@ -55,6 +79,11 @@ function generatePressCode(): string {
   const year = new Date().getFullYear()
   const randomSegment = Math.random().toString(36).substring(2, 6).toUpperCase()
   return `OPT-EG-PRESS-${year}-${randomSegment}`
+}
+
+function generateConfirmationCode(): string {
+  const randomSegment = Math.random().toString(36).substring(2, 6).toUpperCase()
+  return `OPT-EG-2026-${randomSegment}`
 }
 
 function getLocalRecords<T>(key: string): T[] {
@@ -100,5 +129,17 @@ export async function savePressInquiry(input: PressInquiryInput): Promise<PressI
   }
 
   saveLocalRecord(PRESS_STORAGE_KEY, record)
+  return record
+}
+
+export async function saveMemberPortalSubmission(input: MemberPortalInput): Promise<MemberPortalRecord> {
+  const record: MemberPortalRecord = {
+    id: generateConfirmationCode(),
+    ...input,
+    createdAt: new Date().toISOString(),
+    status: "confirmed",
+  }
+
+  saveLocalRecord(MEMBER_PORTAL_STORAGE_KEY, record)
   return record
 }

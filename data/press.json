@@ -71,18 +71,18 @@
         "downloadUrl": "/branding/optica-egypt-logo-light.svg"
       },
       {
-        "id": "executive-photos",
-        "title": "Founding Leadership Portrait Pack",
-        "format": "High-Res JPEG Archive",
-        "description": "Official press portraits of First President Abdulaziz Albadawi, Section Initiator Islam Abdulaal, and Senior Faculty Advisors.",
-        "downloadUrl": "/people/leadership/diaa-khalil.png"
+        "id": "brand-monogram",
+        "title": "Optica Egypt Square Monogram Badge",
+        "format": "SVG Vector Seal",
+        "description": "Official 1:1 optical ring resonator monogram badge for social avatars, conference seals, and partner badges.",
+        "downloadUrl": "/branding/optica-egypt-monogram.svg"
       },
       {
         "id": "section-factsheet",
         "title": "Section Fact Sheet and Charter Profile",
-        "format": "PDF Reference Document",
+        "format": "Printable A4 Document",
         "description": "One-page executive summary of Optica Egypt's charter date, leadership roster, strategic pillars, and university chapters.",
-        "downloadUrl": "/docs/optica-egypt-fact-sheet.pdf"
+        "downloadUrl": "/docs/optica-egypt-fact-sheet.html"
       }
     ],
     "brandColors": [

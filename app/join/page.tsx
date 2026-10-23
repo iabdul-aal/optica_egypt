@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import { siteConfig } from "@/lib/site-config"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { MembershipBenefits } from "@/components/sections/MembershipBenefits"
@@ -47,7 +47,7 @@ export default function JoinPage() {
       </section>
 
       {/* ── Local Section Connection and Inquiry ──────────────────────────── */}
-      <section className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
+      <section id="member-portal" className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
         <div className="container-page grid gap-12 lg:grid-cols-[.82fr_1.18fr]">
           <div>
             <p className="eyebrow">Local Section Integration</p>
@@ -65,22 +65,17 @@ export default function JoinPage() {
               ))}
             </ul>
 
-            <div className="mt-9 flex flex-wrap items-center gap-5">
-              <a
-                href={siteConfig.joinFormUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary"
-              >
-                Local Member Roster Form <ArrowUpRight size={14} />
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <a href="#portal-type" className="btn-primary">
+                Enroll in Local Roster <ArrowUpRight size={14} aria-hidden="true" />
               </a>
-              <a href={`mailto:${siteConfig.email}`} className="btn-secondary">
-                Email the Secretariat <ArrowUpRight size={14} />
-              </a>
+              <Link href="/volunteer" className="btn-secondary">
+                Join a Section Committee <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
             </div>
           </div>
 
-          <div className="site-card p-6 sm:p-8">
+          <div className="site-card p-6 sm:p-8 border-t-4 border-t-[var(--gold)]">
             <ContactForm />
           </div>
         </div>

@@ -5,23 +5,116 @@
       "en": "Inauguration Ceremony: Section Kick-off"
     },
     "description": {
-      "en": "Official inauguration ceremony marking the formal kick-off of the Optica Egypt Local Section. Bringing together students, researchers, universities, and industry partners to celebrate Egypt's charter in the global photonics ecosystem. Venue, keynote speakers, and distinguished guests to be announced."
+      "en": "Official inauguration ceremony marking the formal kick-off of the Optica Egypt Local Section. Bringing together students, researchers, universities, and industry partners to celebrate Egypt's charter in the global photonics ecosystem and unveil the section's five-pillar operational roadmap."
     },
     "date": "2026-11-01",
-    "startTime": "TBA",
+    "startTime": "18:00",
+    "endTime": "21:00",
     "timezone": "EET (UTC+2)",
     "location": {
-      "en": "To Be Announced (Cairo, Egypt)"
+      "en": "Hybrid — Cairo, Egypt and Online Live Stream"
     },
-    "format": "in_person",
+    "format": "hybrid",
     "type": "seminar",
-    "status": "upcoming",
-    "speakers": [],
+    "status": "registration_open",
+    "speakers": [
+      {
+        "name": "Abdulaziz Albadawi",
+        "role": "First President and Co-Founder",
+        "institution": "Optica Egypt Local Section"
+      },
+      {
+        "name": "Islam I. Abdulaal",
+        "role": "Section Initiator, Founder, and Webmaster",
+        "institution": "Optica Egypt Local Section"
+      },
+      {
+        "name": "Prof. Diaa Khalil",
+        "role": "Founding Senior Faculty Advisor",
+        "institution": "Ain Shams University and Si-Ware Systems"
+      },
+      {
+        "name": "Prof. Mohamed A. Swillam",
+        "role": "Founding Senior Faculty Advisor",
+        "institution": "The American University in Cairo (AUC)"
+      }
+    ],
     "tags": [
       "Kick-off",
       "Inauguration",
       "Optica Egypt",
       "Photonics"
+    ],
+    "published": true
+  },
+  {
+    "id": "open-source-silicon-photonics-workshop",
+    "title": {
+      "en": "Hands-On Workshop: Open-Source Silicon Photonics with gdsfactory"
+    },
+    "description": {
+      "en": "An intensive technical workshop introducing university students and graduation project teams to programmatic photonic integrated circuit layout using Python, gdsfactory, KLayout, and Meep FDTD with zero commercial licensing barriers."
+    },
+    "date": "2026-11-21",
+    "startTime": "19:00",
+    "endTime": "21:30",
+    "timezone": "EET (UTC+2)",
+    "location": {
+      "en": "Online Interactive Lab (Zoom and Cloud Jupyter)"
+    },
+    "format": "online",
+    "type": "workshop",
+    "status": "registration_open",
+    "speakers": [
+      {
+        "name": "Islam I. Abdulaal",
+        "role": "Section Initiator, Founder, and Webmaster",
+        "institution": "Optica Egypt Open-Source Working Group"
+      },
+      {
+        "name": "Ahmed Magdy",
+        "role": "Founding Vice President and Co-Founder",
+        "institution": "Optica Egypt Local Section"
+      }
+    ],
+    "tags": [
+      "Silicon Photonics",
+      "gdsfactory",
+      "Open Source",
+      "Workshop"
+    ],
+    "published": true
+  },
+  {
+    "id": "mems-ftir-spectral-sensing-seminar",
+    "title": {
+      "en": "Distinguished Lecture: Optical MEMS and Single-Chip FT-IR Spectrometers"
+    },
+    "description": {
+      "en": "A deep-dive scientific seminar exploring how micro-electro-mechanical interferometers, silicon photonics, and chemometric algorithms enable portable spectral sensing for agriculture, healthcare, and industrial quality control."
+    },
+    "date": "2026-12-12",
+    "startTime": "18:30",
+    "endTime": "20:00",
+    "timezone": "EET (UTC+2)",
+    "location": {
+      "en": "Greater Cairo Academic Hub and Live Stream"
+    },
+    "format": "hybrid",
+    "type": "seminar",
+    "status": "upcoming",
+    "speakers": [
+      {
+        "name": "Prof. Diaa Khalil",
+        "role": "Founding Senior Faculty Advisor",
+        "institution": "Faculty of Engineering, Ain Shams University"
+      }
+    ],
+    "tags": [
+      "Optical MEMS",
+      "Spectroscopy",
+      "Distinguished Lecture",
+      "Industry"
     ],
     "published": true
   }

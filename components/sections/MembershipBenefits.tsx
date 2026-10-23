@@ -56,7 +56,7 @@ export function MembershipBenefits({ tiers, initialTierId }: MembershipBenefitsP
 
       {/* ── Active Category Membership Spotlight Card ── */}
       <div className="site-card overflow-hidden grid lg:grid-cols-[1.1fr_.9fr] border-l-4 border-l-[var(--gold)]">
-        {/* Left Side: Tier Details & Benefits */}
+        {/* Left Side: Tier Details and Benefits */}
         <div className="p-6 sm:p-10 space-y-6">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
