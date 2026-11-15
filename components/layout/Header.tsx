@@ -49,6 +49,7 @@ const navConfig: NavItem[] = [
       { key: "fellowships", path: "/fellowships" },
       { key: "outreach", path: "/outreach" },
       { key: "volunteer", path: "/volunteer" },
+      { key: "recruitment", path: "/recruitment" },
     ],
   },
   {

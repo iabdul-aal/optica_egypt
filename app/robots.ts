@@ -11,6 +11,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: ["/admin", "/api", "/auth"],
       },
       {
         userAgent: [
@@ -26,6 +27,7 @@ export default function robots(): MetadataRoute.Robots {
           "CCBot",
         ],
         allow: "/",
+        disallow: ["/admin", "/api", "/auth"],
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,

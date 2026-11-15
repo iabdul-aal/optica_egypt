@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import { ContactForm } from "@/components/sections/ContactForm"
+import { RecruitmentForm } from "@/components/sections/RecruitmentForm"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { MembershipBenefits } from "@/components/sections/MembershipBenefits"
 import { getAllMembershipTiers } from "@/lib/membership"
@@ -30,6 +30,12 @@ export default function JoinPage() {
         title="Your next scientific connection starts here."
         intro="Membership connects you to the global optics and photonics community. Explore tailored benefits, subsidized rates, and direct enrollment pathways designed for your career stage."
       />
+      <section className="border-y border-[var(--line)] bg-[var(--surface-raised)] py-8">
+        <div className="container-page flex flex-wrap items-center justify-between gap-6">
+          <div><p className="eyebrow">Chapter recruitment</p><h2 className="text-xl font-semibold">Find your committee. Build your community.</h2><p className="mt-2 text-sm text-[var(--ink-soft)]">Apply to join the chapter and contribute to optics and photonics in Egypt.</p></div>
+          <Link href="/recruitment" className="btn-primary min-h-12">Apply to the chapter <ArrowUpRight size={16} /></Link>
+        </div>
+      </section>
 
       {/* ── Audience-Specific Membership Benefits Section ─────────────────── */}
       <section className="section-space">
@@ -66,9 +72,9 @@ export default function JoinPage() {
             </ul>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a href="#portal-type" className="btn-primary">
-                Enroll in Local Roster <ArrowUpRight size={14} aria-hidden="true" />
-              </a>
+              <Link href="/recruitment" className="btn-primary">
+                Apply to the Chapter <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
               <Link href="/volunteer" className="btn-secondary">
                 Join a Section Committee <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
@@ -76,7 +82,7 @@ export default function JoinPage() {
           </div>
 
           <div className="site-card p-6 sm:p-8 border-t-4 border-t-[var(--gold)]">
-            <ContactForm />
+            <RecruitmentForm />
           </div>
         </div>
       </section>

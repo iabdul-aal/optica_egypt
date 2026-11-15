@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { VolunteerForm } from "@/components/sections/VolunteerForm"
@@ -81,6 +82,7 @@ export default function VolunteerPage() {
         title="Volunteer with Optica Egypt."
         intro="Shape technical workshops, mentor student chapters, contribute to open-source photonics, and build an inclusive scientific community."
       />
+      <div className="container-page pt-8"><div className="site-card flex flex-wrap items-center justify-between gap-5 p-6"><div><p className="eyebrow">Chapter membership</p><p className="text-sm text-[var(--ink-soft)]">Looking to join a chapter committee? Use our membership recruitment form.</p></div><Link href="/recruitment" className="btn-primary min-h-12">Apply to the chapter</Link></div></div>
 
       {/* ── Volunteer Tracks ──────────────────────────────────────────────── */}
       <section className="section-space">

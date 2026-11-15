@@ -8,13 +8,13 @@
 
 | Layer | Specification |
 |---|---|
-| Framework | Next.js 15 (App Router, Static Export `output: "export"`) |
+| Framework | Next.js 15 (App Router, Vercel server hosting) |
 | Runtime | React 19, TypeScript 5 (Strict Mode) |
 | Styling | Tailwind CSS v4, Semantic CSS Custom Properties |
 | 3D Visualization | React Three Fiber, Three.js, `@react-three/drei` (Damped Hover Springs) |
 | Theming | `next-themes` (Dark-primary `#09131F`, Light `#F8FAFC`, Gold `#D4AF37`) |
 | Data Layer | Structured JSON records in `data/`, typed loaders in `lib/` |
-| Database | Universal client adapter (`lib/db/`) supporting Supabase, Webhooks, and Persistent Storage |
+| Database | Supabase recruitment data with server APIs, Auth, and RLS; legacy adapters in `lib/db/` |
 | Quality Gates | ESLint 9, TypeScript compiler (`tsc --noEmit`), Playwright E2E smoke tests |
 
 ---
@@ -49,7 +49,11 @@ Optica Egypt
 │   ├── Press (/press)
 │   └── Gallery (/gallery)
 └── Primary Action
-    └── Join (/join)
+    ├── Join (/join)
+    └── Recruitment (/recruitment)
+
+Staff workspace: `/admin`, `/admin/applications/[id]`, `/admin/staff`.
+Staff sign-in: `/admin/login`. Enforce permissions in server handlers and RLS.
 ```
 
 ---
@@ -111,5 +115,7 @@ npm run dev        # Launch Next.js local dev server
 npm run lint       # Run ESLint across codebase
 npm run typecheck  # Run TypeScript compiler typecheck
 npm run check      # Full quality gate (lint + typecheck)
-npm run build      # Compile production static export
+npm run build      # Compile production server deployment
+npm run test:unit  # Offline delivery regression tests
+npm run test:live  # Live recruitment and RLS tests using .env.local
 ```

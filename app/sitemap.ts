@@ -41,6 +41,7 @@ const STATIC_ROUTES = [
 
   // Primary Action
   { path: "/join", changeFrequency: "monthly" as const, priority: 0.9 },
+  { path: "/recruitment", changeFrequency: "monthly" as const, priority: 0.9 },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

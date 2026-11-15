@@ -25,7 +25,7 @@ const STORAGE_KEY = "optica_egypt_volunteer_intake_v1"
 
 function generateVolunteerCode(): string {
   const year = new Date().getFullYear()
-  const randomSegment = Math.random().toString(36).substring(2, 7).toUpperCase()
+  const randomSegment = crypto.randomUUID().replace(/-/g, "").slice(0, 12).toUpperCase()
   return `OPT-EG-VOL-${year}-${randomSegment}`
 }
 
@@ -40,23 +40,10 @@ function getLocalVolunteers(): VolunteerRecord[] {
   }
 }
 
-function saveLocalVolunteer(record: VolunteerRecord): void {
-  if (typeof window === "undefined") return
-  try {
-    const existing = getLocalVolunteers()
-    const updated = [record, ...existing.filter((item) => item.id !== record.id)]
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
-  } catch (error) {
-    console.warn("Unable to save volunteer record to local storage:", error)
-  }
-}
-
 /**
- * Saves a volunteer application directly to the database.
- * Supports:
- * 1. Supabase (PostgreSQL) if configured.
- * 2. Custom Webhook / REST endpoint if configured.
- * 3. Persistent browser storage as resilient local database fallback with CSV export.
+ * Returns a receipt only after the configured backend accepts the application.
+ * Supabase takes precedence over the legacy webhook. Applicant details are
+ * never saved to browser storage as a substitute for delivery.
  */
 export async function saveVolunteerApplication(input: VolunteerInput): Promise<VolunteerRecord> {
   const id = generateVolunteerCode()
@@ -73,49 +60,43 @@ export async function saveVolunteerApplication(input: VolunteerInput): Promise<V
     createdAt,
   }
 
-  saveLocalVolunteer(record)
-
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   const webhookUrl = process.env.NEXT_PUBLIC_VOLUNTEER_WEBHOOK_URL || process.env.NEXT_PUBLIC_REGISTRATION_WEBHOOK_URL
 
   if (supabaseUrl && supabaseKey) {
-    try {
-      await fetch(`${supabaseUrl}/rest/v1/volunteer_applications`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
-          Prefer: "return=representation",
-        },
-        body: JSON.stringify({
-          application_code: record.id,
-          applicant_name: record.name,
-          applicant_email: record.email,
-          affiliation: record.affiliation,
-          track: record.track,
-          experience: record.experience,
-          statement: record.statement,
-          status: record.status,
-          created_at: record.createdAt,
-        }),
-      })
-    } catch (err) {
-      console.warn("Supabase volunteer submission skipped, local record saved:", err)
-    }
-  }
-
-  if (webhookUrl) {
-    try {
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "volunteer_application", ...record }),
-      })
-    } catch (err) {
-      console.warn("Webhook volunteer submission skipped, local record saved:", err)
-    }
+    const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/volunteer_applications`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({
+        application_code: record.id,
+        applicant_name: record.name,
+        applicant_email: record.email,
+        affiliation: record.affiliation,
+        track: record.track,
+        experience: record.experience,
+        statement: record.statement,
+        status: record.status,
+        created_at: record.createdAt,
+      }),
+      signal: AbortSignal.timeout(15000),
+    })
+    if (!response.ok) throw new Error("Application delivery failed. Please try again.")
+  } else if (webhookUrl) {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "volunteer_application", ...record }),
+      signal: AbortSignal.timeout(15000),
+    })
+    if (!response.ok) throw new Error("Application delivery failed. Please try again.")
+  } else {
+    throw new Error("Applications are temporarily unavailable. Please check back later.")
   }
 
   return record

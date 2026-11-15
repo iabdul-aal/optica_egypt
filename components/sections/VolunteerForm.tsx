@@ -49,7 +49,9 @@ export function VolunteerForm() {
       setRecord(result)
     } catch (err) {
       console.error("Volunteer submission error:", err)
-      setErrorMessage("We were unable to record your submission. Please try again.")
+      setErrorMessage(err instanceof Error && err.message === "Applications are temporarily unavailable. Please check back later."
+        ? err.message
+        : "We were unable to record your submission. Your details are still in the form. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
@@ -152,7 +154,7 @@ export function VolunteerForm() {
       </div>
 
       {errorMessage && (
-        <div className="rounded-sm border border-[var(--danger)] bg-[var(--danger)]/10 p-3 text-sm text-[var(--danger)]">
+        <div role="alert" className="rounded-sm border border-[var(--danger)] bg-[var(--danger)]/10 p-3 text-sm text-[var(--danger)]">
           {errorMessage}
         </div>
       )}
