@@ -2,6 +2,7 @@ import { test } from "node:test"
 import assert from "node:assert/strict"
 import { applicationSchema, reviewSchema } from "../lib/recruitment-validation.ts"
 import { submissionReviewSchema, submissionSchema } from "../lib/submissions-validation.ts"
+import { formatSubmitError, readJsonResponse } from "../lib/utils.ts"
 
 const validUuid = "11111111-1111-4111-8111-111111111111"
 
@@ -80,4 +81,51 @@ test("review schemas enforce valid workflow states and non-negative version", ()
   assert.equal(reviewSchema.safeParse({ status: "interview", note: "Invite", version: -1 }).success, false)
   assert.equal(submissionReviewSchema.safeParse({ status: "scheduled", note: "Booked", version: 2 }).success, true)
   assert.equal(submissionReviewSchema.safeParse({ status: "bogus", note: "", version: 0 }).success, false)
+})
+
+test("readJsonResponse handles HTML error pages without SyntaxError and preserves JSON API errors", async () => {
+  const html405 = new Response("<html>\n<head><title>405 Not Allowed</title></head></html>", {
+    status: 405,
+    headers: { "Content-Type": "text/html" },
+  })
+  await assert.rejects(
+    readJsonResponse(html405, "Fallback unavailable."),
+    (err) => err instanceof Error && err.message === "Fallback unavailable."
+  )
+
+  const html200 = new Response("<html><head><title>Gateway</title></head></html>", {
+    status: 200,
+    headers: { "Content-Type": "text/html" },
+  })
+  await assert.rejects(
+    readJsonResponse(html200, "Fallback unavailable."),
+    (err) => err instanceof Error && err.message === "Fallback unavailable."
+  )
+
+  const jsonError = new Response(JSON.stringify({ error: "Rate limit exceeded." }), {
+    status: 429,
+    headers: { "Content-Type": "application/json" },
+  })
+  await assert.rejects(
+    readJsonResponse(jsonError, "Fallback unavailable."),
+    (err) => err instanceof Error && err.message === "Rate limit exceeded."
+  )
+
+  const jsonOk = new Response(JSON.stringify({ code: "OPT-EG-2026-UNIT1" }), {
+    status: 201,
+    headers: { "Content-Type": "application/json" },
+  })
+  const parsed = await readJsonResponse(jsonOk, "Fallback unavailable.")
+  assert.deepEqual(parsed, { code: "OPT-EG-2026-UNIT1" })
+
+  const timeoutErr = new Error("Timed out")
+  timeoutErr.name = "TimeoutError"
+  assert.equal(
+    formatSubmitError(timeoutErr, { timeoutMessage: "Timed out cleanly.", unavailableMessage: "Offline." }),
+    "Timed out cleanly."
+  )
+  assert.equal(
+    formatSubmitError(new TypeError("Failed to fetch"), { timeoutMessage: "Timed out.", unavailableMessage: "Offline." }),
+    "Offline."
+  )
 })

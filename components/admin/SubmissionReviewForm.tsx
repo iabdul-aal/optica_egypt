@@ -8,6 +8,7 @@ import {
   type SubmissionRecord,
   type SubmissionStage,
 } from "@/lib/submissions"
+import { formatSubmitError, readJsonResponse } from "@/lib/utils"
 
 export function SubmissionReviewForm({
   submission,
@@ -43,14 +44,18 @@ export function SubmissionReviewForm({
               version: submission.version,
             }),
           })
-          const data = await response.json()
-          if (!response.ok) throw new Error(data.error)
+          await readJsonResponse<{ error?: string }>(response, "Unable to save.")
           setMessage("Review saved.")
           form.reset()
           router.refresh()
         } catch (err) {
           setIsError(true)
-          setMessage(err instanceof Error ? err.message : "Unable to save.")
+          setMessage(
+            formatSubmitError(err, {
+              timeoutMessage: "Save timed out. Please try again.",
+              unavailableMessage: "Unable to save.",
+            })
+          )
         } finally {
           setBusy(false)
         }

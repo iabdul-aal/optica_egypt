@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
+import { formatSubmitError, readJsonResponse } from "@/lib/utils"
 
 export function ChangePasswordForm() {
   const [ready, setReady] = useState(false)
@@ -21,11 +22,18 @@ export function ChangePasswordForm() {
           method: "POST", headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ currentPassword: form.get("currentPassword"), password: form.get("password") })
         })
-        const data = await response.json()
-        if (!response.ok) throw new Error(data.error)
+        await readJsonResponse<{ error?: string }>(
+          response,
+          "Unable to change password. Please try again."
+        )
         window.location.assign("/admin")
       } catch (error) {
-        setMessage(error instanceof Error ? error.message : "Unable to change password. Please try again.")
+        setMessage(
+          formatSubmitError(error, {
+            timeoutMessage: "Password update timed out. Please try again.",
+            unavailableMessage: "Unable to change password. Please try again."
+          })
+        )
       } finally { setBusy(false) }
     }}>
       {[

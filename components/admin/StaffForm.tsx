@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { roles } from "@/lib/recruitment"
+import { formatSubmitError, readJsonResponse } from "@/lib/utils"
 export function StaffForm() {
   const router = useRouter()
   const [busy, setBusy] = useState(false)
@@ -27,14 +28,19 @@ export function StaffForm() {
               role: values.get("role") || null
             })
           })
-          const data = await response.json()
-          if (!response.ok) throw new Error(data.error)
+          await readJsonResponse<{ error?: string }>(
+            response,
+            "Unable to update access."
+          )
           setMessage("Staff access updated.")
           router.refresh()
         } catch (err) {
           setIsError(true)
           setMessage(
-            err instanceof Error ? err.message : "Unable to update access."
+            formatSubmitError(err, {
+              timeoutMessage: "Request timed out. Please try again.",
+              unavailableMessage: "Unable to update access."
+            })
           )
         } finally {
           setBusy(false)

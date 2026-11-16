@@ -23,3 +23,49 @@ export function getApiUrl(path: string): string {
   if (!apiBase) return cleanPath
   return `${apiBase}${cleanPath}`
 }
+
+/**
+ * Safely parse a fetch Response that is expected to return JSON, preventing
+ * raw HTML error pages (such as 404/405 static-host responses) from leaking
+ * `SyntaxError: Unexpected token '<'` into client form alerts.
+ */
+export async function readJsonResponse<T extends { error?: string }>(
+  response: Response,
+  fallbackError: string
+): Promise<T> {
+  const raw = await response.text()
+  let parsed: T | null = null
+
+  if (raw) {
+    try {
+      parsed = JSON.parse(raw) as T
+    } catch {
+      parsed = null
+    }
+  }
+
+  if (!response.ok) {
+    throw new Error(parsed?.error || fallbackError)
+  }
+
+  if (!parsed || typeof parsed !== "object") {
+    throw new Error(fallbackError)
+  }
+
+  return parsed
+}
+
+/**
+ * Map fetch/AbortError/TypeError exceptions into consistent user-facing form messages.
+ */
+export function formatSubmitError(
+  err: unknown,
+  messages: { timeoutMessage: string; unavailableMessage: string }
+): string {
+  if (err instanceof Error) {
+    if (err.name === "TimeoutError") return messages.timeoutMessage
+    if (err instanceof TypeError) return messages.unavailableMessage
+    return err.message || messages.unavailableMessage
+  }
+  return messages.unavailableMessage
+}

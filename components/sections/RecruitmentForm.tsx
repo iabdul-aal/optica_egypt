@@ -3,7 +3,12 @@
 import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, Check, CheckCircle2, Copy, Loader2 } from "lucide-react"
 import { committees } from "@/lib/recruitment"
-import { getApiUrl } from "@/lib/utils"
+import { formatSubmitError, getApiUrl, readJsonResponse } from "@/lib/utils"
+
+const UNAVAILABLE_MESSAGE =
+  "We could not save your application on this host. Your details remain in the form; please submit at optica-egypt.com or email info@optica-egypt.com."
+const TIMEOUT_MESSAGE =
+  "The request timed out. Your details remain in the form; please try again."
 
 export function RecruitmentForm() {
   const [busy, setBusy] = useState(false)
@@ -34,15 +39,17 @@ export function RecruitmentForm() {
         }),
         signal: AbortSignal.timeout(20000)
       })
-      const result = await response.json()
-      if (!response.ok)
-        throw new Error(result.error || "Unable to submit. Please try again.")
+      const result = await readJsonResponse<{ code: string; error?: string }>(
+        response,
+        UNAVAILABLE_MESSAGE
+      )
       setCode(result.code)
     } catch (err) {
       setError(
-        err instanceof Error && err.name !== "TimeoutError"
-          ? err.message
-          : "The request timed out. Your details remain in the form; please try again."
+        formatSubmitError(err, {
+          timeoutMessage: TIMEOUT_MESSAGE,
+          unavailableMessage: UNAVAILABLE_MESSAGE
+        })
       )
     } finally {
       setBusy(false)

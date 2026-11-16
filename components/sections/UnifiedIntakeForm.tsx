@@ -4,7 +4,12 @@ import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, Check, CheckCircle2, Copy, Loader2 } from "lucide-react"
 import { copyTextSafely } from "@/lib/clipboard"
 import { submissionIntentLabels, type SubmissionIntent } from "@/lib/submissions"
-import { getApiUrl } from "@/lib/utils"
+import { formatSubmitError, getApiUrl, readJsonResponse } from "@/lib/utils"
+
+const UNAVAILABLE_MESSAGE =
+  "Online intake is temporarily unavailable on this host. Your form entries remain preserved; please submit at optica-egypt.com or email info@optica-egypt.com."
+const TIMEOUT_MESSAGE =
+  "The request timed out. Your form entries remain preserved; retry or email info@optica-egypt.com."
 
 interface UnifiedIntakeFormProps {
   defaultIntent?: SubmissionIntent
@@ -86,16 +91,17 @@ export function UnifiedIntakeForm({
         signal: AbortSignal.timeout(20000),
       })
 
-      const result = await response.json()
-      if (!response.ok) {
-        throw new Error(result.error || "Unable to submit request.")
-      }
+      const result = await readJsonResponse<{ code: string; error?: string }>(
+        response,
+        UNAVAILABLE_MESSAGE
+      )
       setCode(result.code)
     } catch (err) {
       setError(
-        err instanceof Error && err.name !== "TimeoutError"
-          ? err.message
-          : "The request timed out. Your form entries remain preserved; retry or email info@optica-egypt.com."
+        formatSubmitError(err, {
+          timeoutMessage: TIMEOUT_MESSAGE,
+          unavailableMessage: UNAVAILABLE_MESSAGE,
+        })
       )
     } finally {
       setBusy(false)

@@ -7,6 +7,7 @@ import {
   type Application,
   type Stage
 } from "@/lib/recruitment"
+import { formatSubmitError, readJsonResponse } from "@/lib/utils"
 export function ReviewForm({
   application
 }: {
@@ -42,14 +43,18 @@ export function ReviewForm({
               })
             }
           )
-          const data = await response.json()
-          if (!response.ok) throw new Error(data.error)
+          await readJsonResponse<{ error?: string }>(response, "Unable to save.")
           setMessage("Review saved.")
           form.reset()
           router.refresh()
         } catch (err) {
           setIsError(true)
-          setMessage(err instanceof Error ? err.message : "Unable to save.")
+          setMessage(
+            formatSubmitError(err, {
+              timeoutMessage: "Save timed out. Please try again.",
+              unavailableMessage: "Unable to save."
+            })
+          )
         } finally {
           setBusy(false)
         }

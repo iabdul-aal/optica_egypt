@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
+import { formatSubmitError, readJsonResponse } from "@/lib/utils"
 
 export function LoginForm() {
   const [busy, setBusy] = useState(false)
@@ -23,11 +24,18 @@ export function LoginForm() {
               password: form.get("password")
             })
           })
-          const data = await response.json()
-          if (!response.ok) throw new Error(data.error)
+          const data = await readJsonResponse<{ redirect: string; error?: string }>(
+            response,
+            "Unable to sign in. Please try again."
+          )
           window.location.assign(data.redirect)
         } catch (error) {
-          setMessage(error instanceof Error ? error.message : "Unable to sign in. Please try again.")
+          setMessage(
+            formatSubmitError(error, {
+              timeoutMessage: "Sign-in timed out. Please try again.",
+              unavailableMessage: "Unable to sign in. Please try again."
+            })
+          )
         } finally {
           setBusy(false)
         }

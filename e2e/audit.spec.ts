@@ -335,6 +335,66 @@ test("join portal mocked 201 flows for both recruitment and section desk submiss
   expect(consoleErrors.filter((c) => !c.includes("503"))).toEqual([])
 })
 
+test("forms reject HTML 405/404 responses cleanly without Unexpected token '<' JSON errors", async ({
+  page,
+}) => {
+  const { pageErrors } = monitorRuntime(page)
+  const html405 =
+    "<html>\n<head><title>405 Not Allowed</title></head>\n<body><center><h1>405 Not Allowed</h1></center></body>\n</html>"
+
+  await page.route("**/api/recruitment", async (route) => {
+    await route.fulfill({
+      status: 405,
+      contentType: "text/html",
+      body: html405,
+    })
+  })
+  await page.route("**/api/submissions", async (route) => {
+    await route.fulfill({
+      status: 405,
+      contentType: "text/html",
+      body: html405,
+    })
+  })
+
+  // 1. Committee recruitment form preserves entries and avoids SyntaxError on HTML 405
+  await page.goto("/volunteer", { waitUntil: "load" })
+  await page.getByLabel("Full name", { exact: true }).fill("Nour El-Din")
+  await page.getByLabel("Email address", { exact: true }).fill("nour@example.org")
+  await page.getByLabel("University or institution").fill("Cairo University")
+  await page.getByLabel("Study level").selectOption("Undergraduate")
+  await page.getByLabel("Preferred committee").selectOption("Outreach")
+  await page
+    .getByLabel("Why would you like to join?")
+    .fill("Excited to contribute to campus optics workshops and student engagement.")
+  await page.getByLabel("Availability").fill("3 hours per week")
+  await page.locator('input[name="consent"]').check()
+  await page.getByRole("button", { name: "Submit application" }).click()
+
+  const recruitmentAlert = page.locator("form").getByRole("alert")
+  await expect(recruitmentAlert).toBeVisible({ timeout: 15_000 })
+  await expect(recruitmentAlert).toContainText(/could not save your application/i)
+  await expect(recruitmentAlert).not.toContainText(/Unexpected token|not valid JSON/i)
+  await expect(page.getByLabel("Full name", { exact: true })).toHaveValue("Nour El-Din")
+
+  // 2. Unified intake desk preserves entries and avoids SyntaxError on HTML 405
+  await page.goto("/partners", { waitUntil: "load" })
+  await page.fill("#intake-name", "Dr. Omar Zaki")
+  await page.fill("#intake-email", "omar.zaki@university.edu.eg")
+  await page.fill("#intake-affiliation", "Alexandria Photonics Lab")
+  await page.fill("#intake-details", "Interested in hosting an inaugural technical seminar on campus.")
+  await page.locator('input[name="consent"]').check()
+  await page.getByRole("button", { name: "Submit Request", exact: true }).click()
+
+  const deskAlert = page.locator("form").getByRole("alert")
+  await expect(deskAlert).toBeVisible({ timeout: 15_000 })
+  await expect(deskAlert).toContainText(/temporarily unavailable/i)
+  await expect(deskAlert).not.toContainText(/Unexpected token|not valid JSON/i)
+  await expect(page.locator("#intake-name")).toHaveValue("Dr. Omar Zaki")
+
+  expect(pageErrors).toEqual([])
+})
+
 test("admin unavailable boundaries and API/auth CSRF + malformed resilience", async ({
   page,
 }) => {
