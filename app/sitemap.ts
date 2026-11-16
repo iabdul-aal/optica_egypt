@@ -8,6 +8,12 @@ import { siteConfig } from "@/lib/site-config"
 export const dynamic = "force-static"
 
 const BASE_URL = siteConfig.seo.siteUrl.replace(/\/$/, "")
+const TRAILING_SLASH = process.env.GITHUB_PAGES === "true"
+
+function toUrl(path: string): string {
+  if (path === "") return `${BASE_URL}/`
+  return `${BASE_URL}${path}${TRAILING_SLASH ? "/" : ""}`
+}
 
 const STATIC_ROUTES = [
   { path: "", changeFrequency: "weekly" as const, priority: 1.0 },
@@ -27,31 +33,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...STATIC_ROUTES.map((route) => ({
-      url: route.path === "" ? `${BASE_URL}/` : `${BASE_URL}${route.path}`,
+      url: toUrl(route.path),
       lastModified: new Date("2026-11-16"),
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),
     ...members.map((m) => ({
-      url: `${BASE_URL}/leadership/${m.id}`,
+      url: toUrl(`/leadership/${m.id}`),
       lastModified: new Date("2026-11-16"),
       changeFrequency: "monthly" as const,
       priority: 0.75,
     })),
     ...chapters.map((c) => ({
-      url: `${BASE_URL}/chapters/${c.id}`,
+      url: toUrl(`/chapters/${c.id}`),
       lastModified: new Date("2026-11-16"),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     ...projects.map((p) => ({
-      url: `${BASE_URL}/projects/${p.slug}`,
+      url: toUrl(`/projects/${p.slug}`),
       lastModified: new Date("2026-11-16"),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     ...dispatches.map((d) => ({
-      url: `${BASE_URL}/updates/${d.slug}`,
+      url: toUrl(`/updates/${d.slug}`),
       lastModified: new Date(d.dateISO),
       changeFrequency: "monthly" as const,
       priority: 0.75,

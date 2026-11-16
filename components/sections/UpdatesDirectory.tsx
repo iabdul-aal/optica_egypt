@@ -1,7 +1,8 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import { ArrowUpRight, Calendar } from "lucide-react"
 import { DISPATCH_KIND_LABELS } from "@/lib/dispatches"
 import { formatDateISO } from "@/lib/formatting"
@@ -18,9 +19,18 @@ export function UpdatesDirectory({
   availableKinds,
   initialKind = "all",
 }: UpdatesDirectoryProps) {
+  const searchParams = useSearchParams()
+  const rawKind = searchParams.get("kind") || initialKind
   const validInitial =
-    availableKinds.includes(initialKind as DispatchKind) ? initialKind : "all"
+    availableKinds.includes(rawKind as DispatchKind) ? rawKind : "all"
   const [selectedKind, setSelectedKind] = useState<string>(validInitial)
+
+  useEffect(() => {
+    const param = searchParams.get("kind")
+    if (param && availableKinds.includes(param as DispatchKind)) {
+      setSelectedKind(param)
+    }
+  }, [searchParams, availableKinds])
 
   const filtered = useMemo(() => {
     if (selectedKind === "all") return dispatches

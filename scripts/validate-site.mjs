@@ -499,6 +499,10 @@ function validateInteractiveForms() {
 function validateAgenticFiles() {
   const errors = [];
   const skillsDir = path.join(ROOT, ".agents", "skills");
+  if (!fs.existsSync(skillsDir)) {
+    recordCheck("Agentic Skills Frontmatter", errors);
+    return;
+  }
   const skillFiles = walkFiles(skillsDir, (f) => path.basename(f) === "SKILL.md");
 
   if (skillFiles.length === 0) {

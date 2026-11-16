@@ -3,6 +3,7 @@ import { ArrowUpRight, Mail } from "lucide-react"
 import { SocialIcon } from "@/components/ui/SocialIcon"
 import { siteConfig } from "@/lib/site-config"
 import { getActiveSocialChannels } from "@/lib/social"
+import { getAssetPath } from "@/lib/utils"
 
 const links = [
   { label: "About", href: "/about" },
@@ -90,7 +91,7 @@ export function Footer() {
               <span>Visit Optica Global</span>
               <ArrowUpRight size={13} aria-hidden="true" />
             </a>
-            <a className="text-link inline-flex items-center gap-1 min-h-[48px]" href="/docs/optica-egypt-fact-sheet.html" target="_blank" rel="noopener noreferrer">
+            <a className="text-link inline-flex items-center gap-1 min-h-[48px]" href={getAssetPath("/docs/optica-egypt-fact-sheet.html")} target="_blank" rel="noopener noreferrer">
               <span>Section Fact Sheet (A4)</span>
               <ArrowUpRight size={13} aria-hidden="true" />
             </a>

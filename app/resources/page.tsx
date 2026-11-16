@@ -14,14 +14,7 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/resources",
 })
 
-export default async function ResourcesPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>
-}) {
-  const params = await searchParams
-  const rawCat = typeof params.category === "string" ? params.category : "all"
-
+export default function ResourcesPage() {
   const resources = getAllResources()
   const membershipTiers = getAllMembershipTiers()
   const projects = getAllProjects()
@@ -48,7 +41,6 @@ export default async function ResourcesPage({
               resources={resources}
               membershipTiers={membershipTiers}
               usedInProjectCount={usedInProjectCount}
-              initialCategory={rawCat}
             />
           </Suspense>
         </div>

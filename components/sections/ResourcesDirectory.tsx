@@ -1,7 +1,8 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import { ArrowUpRight, Search, X } from "lucide-react"
 import type { MembershipTier } from "@/lib/membership"
 import type { Resource } from "@/types/resource"
@@ -28,8 +29,18 @@ export function ResourcesDirectory({
   usedInProjectCount,
   initialCategory = "all",
 }: ResourcesDirectoryProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory)
+  const searchParams = useSearchParams()
+  const rawCategory = searchParams.get("category") || initialCategory
+  const validInitial = rawCategory in CATEGORY_LABELS ? rawCategory : "all"
+  const [selectedCategory, setSelectedCategory] = useState<string>(validInitial)
   const [query, setQuery] = useState("")
+
+  useEffect(() => {
+    const param = searchParams.get("category")
+    if (param && param in CATEGORY_LABELS) {
+      setSelectedCategory(param)
+    }
+  }, [searchParams])
 
   const categories = useMemo(() => {
     const counts = new Map<string, number>()

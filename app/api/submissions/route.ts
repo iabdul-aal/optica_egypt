@@ -1,11 +1,22 @@
 import { createHmac } from "node:crypto"
 import { NextRequest, NextResponse } from "next/server"
 import { submissionSchema } from "@/lib/submissions-validation"
-import { boundedJson, sameOrigin } from "@/lib/http"
+import { boundedJson, isAllowedPublicOrigin, publicCorsHeaders } from "@/lib/http"
 import { isSupabaseConfigured, serviceClient } from "@/lib/supabase/server"
 
+export async function OPTIONS(request: NextRequest) {
+  if (!isAllowedPublicOrigin(request)) {
+    return new NextResponse(null, { status: 403 })
+  }
+  return new NextResponse(null, {
+    status: 204,
+    headers: publicCorsHeaders(request),
+  })
+}
+
 export async function POST(request: NextRequest) {
-  if (!sameOrigin(request)) {
+  const corsHeaders = publicCorsHeaders(request)
+  if (!isAllowedPublicOrigin(request)) {
     return NextResponse.json(
       { error: "Invalid request origin." },
       { status: 403 }
@@ -18,7 +29,7 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json(
       { error: "Invalid or oversized submission." },
-      { status: 400 }
+      { status: 400, headers: corsHeaders }
     )
   }
 
@@ -29,7 +40,7 @@ export async function POST(request: NextRequest) {
         error:
           "Check all required fields. Details must contain at least 10 characters.",
       },
-      { status: 400 }
+      { status: 400, headers: corsHeaders }
     )
   }
 
@@ -39,7 +50,7 @@ export async function POST(request: NextRequest) {
         error:
           "Online intake is temporarily unavailable. Use info@optica-egypt.com directly while your form details remain preserved.",
       },
-      { status: 503 }
+      { status: 503, headers: corsHeaders }
     )
   }
 
@@ -74,7 +85,7 @@ export async function POST(request: NextRequest) {
       if (!allowed) {
         return NextResponse.json(
           { error: "Too many attempts. Try again in an hour." },
-          { status: 429, headers: { "Retry-After": "3600" } }
+          { status: 429, headers: { "Retry-After": "3600", ...corsHeaders } }
         )
       }
     }
@@ -100,7 +111,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { code },
-      { status: 201, headers: { "Cache-Control": "no-store" } }
+      { status: 201, headers: { "Cache-Control": "no-store", ...corsHeaders } }
     )
   } catch {
     return NextResponse.json(
@@ -108,7 +119,7 @@ export async function POST(request: NextRequest) {
         error:
           "Could not save your submission. Your details remain in the form; retry or write to info@optica-egypt.com.",
       },
-      { status: 503 }
+      { status: 503, headers: corsHeaders }
     )
   }
 }

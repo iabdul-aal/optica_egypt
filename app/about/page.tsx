@@ -89,7 +89,7 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a
-                href="/docs/optica-egypt-fact-sheet.html"
+                href={getAssetPath("/docs/optica-egypt-fact-sheet.html")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary min-h-[48px]"

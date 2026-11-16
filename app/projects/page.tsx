@@ -12,13 +12,7 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/projects",
 })
 
-export default async function ProjectsPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>
-}) {
-  const params = await searchParams
-  const rawTrack = typeof params.track === "string" ? params.track : "all"
+export default function ProjectsPage() {
   const projects = getAllProjects()
 
   return (
@@ -32,7 +26,7 @@ export default async function ProjectsPage({
       <section className="section-space">
         <div className="container-page">
           <Suspense fallback={<div className="site-card p-8 text-sm text-[var(--ink-soft)]">Loading projects...</div>}>
-            <ProjectsDirectory projects={projects} initialTrack={rawTrack} />
+            <ProjectsDirectory projects={projects} />
           </Suspense>
         </div>
       </section>

@@ -16,3 +16,10 @@ export function getAssetPath(path: string | undefined | null): string {
   const cleanPath = path.startsWith("/") ? path : `/${path}`
   return `${basePath}${cleanPath}`
 }
+
+export function getApiUrl(path: string): string {
+  const cleanPath = path.startsWith("/") ? path : `/${path}`
+  const apiBase = (process.env.NEXT_PUBLIC_API_BASE_URL || "").trim().replace(/\/+$/, "")
+  if (!apiBase) return cleanPath
+  return `${apiBase}${cleanPath}`
+}

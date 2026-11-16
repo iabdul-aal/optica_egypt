@@ -7,6 +7,7 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress"
 import "@/app/globals.css"
 import { siteConfig } from "@/lib/site-config"
 import { getSocialSameAsUrls } from "@/lib/social"
+import { getAssetPath } from "@/lib/utils"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,12 +41,12 @@ export const metadata: Metadata = {
     "Optica student chapters Egypt",
   ],
   icons: {
-    icon: "/icon.png",
-    shortcut: "/favicon.ico",
-    apple: "/apple-icon.png",
+    icon: getAssetPath("/icon.png"),
+    shortcut: getAssetPath("/favicon.ico"),
+    apple: getAssetPath("/apple-icon.png"),
   },
   alternates: {
-    canonical: "/",
+    canonical: `${siteUrl}/`,
   },
   openGraph: {
     type: "website",

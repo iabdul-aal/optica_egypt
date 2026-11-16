@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, Check, CheckCircle2, Copy, Loader2 } from "lucide-react"
 import { copyTextSafely } from "@/lib/clipboard"
 import { submissionIntentLabels, type SubmissionIntent } from "@/lib/submissions"
+import { getApiUrl } from "@/lib/utils"
 
 interface UnifiedIntakeFormProps {
   defaultIntent?: SubmissionIntent
@@ -65,7 +66,7 @@ export function UnifiedIntakeForm({
     submissionId.current ??= crypto.randomUUID()
 
     try {
-      const response = await fetch("/api/submissions", {
+      const response = await fetch(getApiUrl("/api/submissions"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

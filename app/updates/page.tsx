@@ -14,14 +14,7 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/updates",
 })
 
-export default async function UpdatesPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>
-}) {
-  const params = await searchParams
-  const rawKind = typeof params.kind === "string" ? params.kind : "all"
-
+export default function UpdatesPage() {
   const dispatches = getAllDispatches()
   const availableKinds = getPublishedDispatchKinds()
 
@@ -56,7 +49,6 @@ export default async function UpdatesPage({
             <UpdatesDirectory
               dispatches={dispatches}
               availableKinds={availableKinds}
-              initialKind={rawKind}
             />
           </Suspense>
         </div>

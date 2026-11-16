@@ -360,6 +360,15 @@ test("admin unavailable boundaries and API/auth CSRF + malformed resilience", as
   expect((await page.request.post("/auth/change-password", { headers: crossHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.post("/auth/logout", { headers: crossHeaders })).status()).toBe(403)
 
+  // CORS preflight allows trusted GitHub Pages mirror origin and blocks untrusted origins
+  expect((await page.request.fetch("/api/submissions", { method: "OPTIONS", headers: crossHeaders })).status()).toBe(403)
+  const trustedPreflight = await page.request.fetch("/api/submissions", {
+    method: "OPTIONS",
+    headers: { origin: "https://iabdul-aal.me" },
+  })
+  expect(trustedPreflight.status()).toBe(204)
+  expect(trustedPreflight.headers()["access-control-allow-origin"]).toBe("https://iabdul-aal.me")
+
   expect((await page.request.post("/api/recruitment", { data: {} })).status()).toBe(400)
   expect((await page.request.post("/api/submissions", { data: {} })).status()).toBe(400)
   expect((await page.request.post("/auth/login", { data: {} })).status()).toBe(400)

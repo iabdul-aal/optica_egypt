@@ -1,7 +1,8 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import { ArrowUpRight } from "lucide-react"
 import { FUNDING_LABELS, LIFECYCLE_LABELS, TRACK_LABELS } from "@/lib/projects"
 import type { Project, ProjectTrack } from "@/types/project"
@@ -17,8 +18,17 @@ export function ProjectsDirectory({
   projects,
   initialTrack = "all",
 }: ProjectsDirectoryProps) {
-  const safeInitial = VALID_TRACKS.has(initialTrack) ? initialTrack : "all"
+  const searchParams = useSearchParams()
+  const rawTrack = searchParams.get("track") || initialTrack
+  const safeInitial = VALID_TRACKS.has(rawTrack) ? rawTrack : "all"
   const [selectedTrack, setSelectedTrack] = useState<string>(safeInitial)
+
+  useEffect(() => {
+    const param = searchParams.get("track")
+    if (param && VALID_TRACKS.has(param)) {
+      setSelectedTrack(param)
+    }
+  }, [searchParams])
 
   const tracks = useMemo(() => {
     const counts = new Map<string, number>()

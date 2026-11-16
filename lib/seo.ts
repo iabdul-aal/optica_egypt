@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site-config"
 
 const SITE_URL = siteConfig.seo.siteUrl.replace(/\/$/, "")
 const DEFAULT_OG_IMAGE = `${SITE_URL}/branding/FullOnBlack.png`
+const TRAILING_SLASH = process.env.GITHUB_PAGES === "true"
 
 interface BuildPageMetadataInput {
   title: string
@@ -27,8 +28,12 @@ export function buildPageMetadata({
   publishedTime,
   image,
 }: BuildPageMetadataInput): Metadata {
-  const normalizedPath = path === "/" ? "/" : `/${path.replace(/^\/+|\/+$/g, "")}`
-  const fullUrl = normalizedPath === "/" ? `${SITE_URL}/` : `${SITE_URL}${normalizedPath}`
+  const cleanSubpath = path.replace(/^\/+|\/+$/g, "")
+  const fullUrl =
+    cleanSubpath === ""
+      ? `${SITE_URL}/`
+      : `${SITE_URL}/${cleanSubpath}${TRAILING_SLASH ? "/" : ""}`
+
   const resolvedImageUrl = image
     ? image.url.startsWith("http")
       ? image.url
@@ -45,7 +50,7 @@ export function buildPageMetadata({
   return {
     title,
     description,
-    alternates: { canonical: normalizedPath },
+    alternates: { canonical: fullUrl },
     openGraph: {
       type,
       locale: "en_US",

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, Check, CheckCircle2, Copy, Loader2 } from "lucide-react"
 import { committees } from "@/lib/recruitment"
+import { getApiUrl } from "@/lib/utils"
 
 export function RecruitmentForm() {
   const [busy, setBusy] = useState(false)
@@ -23,7 +24,7 @@ export function RecruitmentForm() {
     const data = new FormData(event.currentTarget)
     submissionId.current ??= crypto.randomUUID()
     try {
-      const response = await fetch("/api/recruitment", {
+      const response = await fetch(getApiUrl("/api/recruitment"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
