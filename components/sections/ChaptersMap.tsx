@@ -243,7 +243,7 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
             onDoubleClick={handleDoubleClick}
-            className={`w-full h-auto max-h-[580px] ${
+            className={`figure-bw w-full h-auto max-h-[580px] ${
               zoom > 1.0 ? (isDragging ? "cursor-grabbing" : "cursor-grab") : "cursor-default"
             }`}
             style={{ touchAction: zoom > 1.0 ? "none" : "pan-y" }}

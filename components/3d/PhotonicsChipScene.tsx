@@ -268,7 +268,7 @@ export function PhotonicsChipScene() {
 
   return (
     <div
-      className="photonics-viewer"
+      className="photonics-viewer figure-bw"
       role="img"
       aria-label="Interactive 3D Silicon Photonic Chip showing waveguides, microring resonators, and grating couplers"
     >

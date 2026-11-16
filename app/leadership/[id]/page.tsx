@@ -92,13 +92,13 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <div className="container-page">
-        <Link href="/about#leadership" className="text-link inline-flex min-h-[48px] items-center gap-2 mb-8">
+        <Link href="/leadership" className="text-link inline-flex min-h-[48px] items-center gap-2 mb-8">
           <ArrowLeft size={14} aria-hidden="true" />
           <span>Back to leadership roster</span>
         </Link>
 
         <div className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start">
-          <div className="site-card p-6 sm:p-8 flex flex-col items-center text-center sm:items-start sm:text-left">
+          <div className="group site-card p-6 sm:p-8 flex flex-col items-center text-center sm:items-start sm:text-left">
             <div className="relative aspect-[2/3] w-full max-w-[320px] overflow-hidden rounded-sm bg-[var(--surface-raised)] border border-[var(--line)]">
               {member.photo ? (
                 <Image
@@ -107,7 +107,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
                   fill
                   priority
                   sizes="(max-width: 640px) 100vw, 380px"
-                  className="object-cover object-top"
+                  className="figure-bw object-cover object-top"
                 />
               ) : (
                 <div className="scientific-grid flex h-full w-full items-end justify-between p-6 text-[var(--gold)]">

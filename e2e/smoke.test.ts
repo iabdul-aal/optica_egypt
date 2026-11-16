@@ -107,12 +107,17 @@ test("homepage photonic hero, theme toggle, and announcement link work", async (
   expect(consoleErrors).toEqual([])
 })
 
-test("/about verifies charter date, official domain, bylaws, executive alignment, and recognitions state", async ({ page }) => {
+test("/about and /governance keep clean non-redundant scopes and verified records", async ({ page }) => {
   const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
   await page.goto("/about", { waitUntil: "domcontentloaded" })
 
   await expect(page.getByText("10 September 2026").first()).toBeVisible()
   await expect(page.getByText("optica-egypt.com").first()).toBeVisible()
+  await expect(page.getByRole("link", { name: /Inspect governance/i })).toBeVisible()
+  await expect(page.getByRole("link", { name: /View leadership roster/i })).toBeVisible()
+  await expect(page.getByRole("heading", { name: "Optica Local Section Governance Standards" })).toHaveCount(0)
+
+  await page.goto("/governance", { waitUntil: "domcontentloaded" })
   await expect(page.getByRole("heading", { name: "Optica Local Section Governance Standards" })).toBeVisible()
   await expect(page.getByText(/30% of section membership/i)).toBeVisible()
   await expect(page.getByRole("link", { name: /Abdulaziz Albadawi/i }).first()).toBeVisible()
@@ -140,7 +145,7 @@ test("/resources filters Grants tab and searches ITIDA cleanly", async ({ page }
   expect(consoleErrors).toEqual([])
 })
 
-test("/leadership renders 16 clean portrait cards without photo overlay taglines", async ({ page }) => {
+test("/leadership renders 16 clean monochrome-at-rest portrait cards without photo overlay taglines", async ({ page }) => {
   const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
   await page.goto("/leadership", { waitUntil: "domcontentloaded" })
 
@@ -150,6 +155,12 @@ test("/leadership renders 16 clean portrait cards without photo overlay taglines
     const text = (await frames.nth(i).textContent())?.trim() ?? ""
     expect(text).not.toMatch(/Section Initiator|First President|Co-Founder/i)
   }
+
+  const firstPortraitFilter = await page
+    .locator("article .aspect-\\[2\\/3\\] img")
+    .first()
+    .evaluate((el) => getComputedStyle(el).filter)
+  expect(firstPortraitFilter).toContain("grayscale")
 
   expect(pageErrors).toEqual([])
   expect(consoleErrors).toEqual([])

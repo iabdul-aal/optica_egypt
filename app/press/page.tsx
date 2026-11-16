@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
-import { Download } from "lucide-react"
+import Link from "next/link"
+import { ArrowUpRight, Download } from "lucide-react"
 import { BoilerplateBox } from "@/components/sections/BoilerplateBox"
 import { PageHeader } from "@/components/sections/PageHeader"
-import { UnifiedIntakeForm } from "@/components/sections/UnifiedIntakeForm"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getMediaKit, getPressBoilerplate } from "@/lib/press"
 import { buildPageMetadata } from "@/lib/seo"
@@ -11,7 +11,7 @@ import { getAssetPath } from "@/lib/utils"
 export const metadata: Metadata = buildPageMetadata({
   title: "Press",
   description:
-    "Official press boilerplate, brand identity kit, vector crest assets, and media inquiry desk for Optica Egypt.",
+    "Official press boilerplate, brand identity kit, vector crest assets, color tokens, and typography specifications for Optica Egypt.",
   path: "/press",
 })
 
@@ -24,11 +24,11 @@ export default function PressPage() {
       <PageHeader
         eyebrow="Media and Communications"
         title="Press Kit and Brand Assets."
-        intro="Verified institutional descriptions, downloadable official brand emblems, color specifications, and media coordination for publications covering Optica Egypt."
+        intro="Verified institutional descriptions, downloadable brand emblems, color specifications, and media coordination for publications covering Optica Egypt."
       />
 
       <section className="section-space">
-        <div className="container-page space-y-14">
+        <div className="container-page space-y-12">
           <ScrollReveal>
             <BoilerplateBox
               title={boilerplate.title}
@@ -110,16 +110,19 @@ export default function PressPage() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={100}>
-            <div id="media-desk" className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start border-t border-[var(--line)] pt-12">
-              <div className="space-y-3">
+          <ScrollReveal delay={80}>
+            <div className="site-card p-6 sm:p-8 flex flex-wrap items-center justify-between gap-4 border-l-4 border-l-[var(--gold)]">
+              <div className="space-y-1 max-w-2xl">
                 <p className="eyebrow">Press Coordination</p>
-                <h2 className="section-title">Media Inquiry Desk</h2>
-                <p className="text-sm leading-relaxed text-[var(--ink-soft)]">
-                  Journalists, university communications offices, and conference organizers may request interviews, leadership quotes, or verified charter documentation through this form.
+                <h2 className="text-lg font-semibold text-[var(--ink)]">Media Inquiry Desk</h2>
+                <p className="text-sm text-[var(--ink-soft)]">
+                  Journalists, university communications teams, and event organizers can route interview and asset requests via the unified participation desk.
                 </p>
               </div>
-              <UnifiedIntakeForm defaultIntent="press_inquiry" />
+              <Link href="/join?type=press" className="btn-primary min-h-[48px] shrink-0">
+                <span>Submit Media Inquiry</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
             </div>
           </ScrollReveal>
         </div>

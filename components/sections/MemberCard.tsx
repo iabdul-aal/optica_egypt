@@ -24,7 +24,7 @@ export function MemberCard({ member }: { member: Member }) {
               fill
               decoding="async"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover object-top transition-transform duration-300 ease-out group-hover/card:scale-[1.03]"
+              className="figure-bw object-cover object-top transition-[filter,transform] duration-500 ease-out group-hover/card:scale-[1.03]"
             />
           ) : (
             <div className="scientific-grid flex h-full w-full items-end justify-between p-5 text-[var(--gold)]">

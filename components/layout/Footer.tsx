@@ -7,22 +7,12 @@ import { getAssetPath } from "@/lib/utils"
 
 const links = [
   { label: "About", href: "/about" },
-  { label: "Governance", href: "/governance" },
-  { label: "Leadership", href: "/leadership" },
-  { label: "Partners", href: "/partners" },
   { label: "Chapters", href: "/chapters" },
-  { label: "Fellowships", href: "/fellowships" },
-  { label: "Outreach", href: "/outreach" },
-  { label: "Volunteer", href: "/volunteer" },
   { label: "Projects", href: "/projects" },
-  { label: "Events", href: "/events" },
   { label: "Open-Source", href: "/open-source" },
   { label: "Resources", href: "/resources" },
   { label: "Updates", href: "/updates" },
-  { label: "News", href: "/news" },
-  { label: "Blogs", href: "/blogs" },
   { label: "Press", href: "/press" },
-  { label: "Gallery", href: "/gallery" },
   { label: "Join", href: "/join" },
 ] as const
 
@@ -63,9 +53,6 @@ export function Footer() {
             </a>
           </div>
           <div className="footer-socials flex-wrap">
-            <a aria-label="Email the section" className="icon-link min-h-[48px] min-w-[48px]" href={`mailto:${siteConfig.email}`}>
-              <Mail size={18} aria-hidden="true" />
-            </a>
             {activeSocials.map((channel) => (
               <a
                 key={channel.id}

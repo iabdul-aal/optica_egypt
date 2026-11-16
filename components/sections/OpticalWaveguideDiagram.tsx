@@ -7,7 +7,7 @@ export function OpticalWaveguideDiagram() {
     >
       <svg
         viewBox="0 0 560 360"
-        className="w-full max-w-[520px] h-auto"
+        className="figure-bw w-full max-w-[520px] h-auto"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

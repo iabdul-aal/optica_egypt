@@ -198,10 +198,10 @@ export function CommunityBubbles({
     ) + "Z"
 
   return (
-    <div className="relative w-full py-2 sm:py-4 select-none overflow-hidden">
+    <div className="group relative w-full py-2 sm:py-4 select-none overflow-hidden">
       <svg
         viewBox="0 0 640 360"
-        className="relative h-auto w-full"
+        className="figure-bw relative h-auto w-full"
         fill="none"
         role="img"
         aria-label={diagramLabel}

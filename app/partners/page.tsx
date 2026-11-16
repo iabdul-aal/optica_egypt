@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight, ExternalLink, Handshake } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
-import { UnifiedIntakeForm } from "@/components/sections/UnifiedIntakeForm"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getConfirmedPartners, getPartnershipModels } from "@/lib/governance"
 import { buildPageMetadata } from "@/lib/seo"
@@ -10,7 +9,7 @@ import { buildPageMetadata } from "@/lib/seo"
 export const metadata: Metadata = buildPageMetadata({
   title: "Partners",
   description:
-    "Academic, industry, and open-hardware collaboration models with Optica Egypt and direct partnership proposal submission.",
+    "Academic, industry, and open-hardware collaboration models with Optica Egypt and verified institutional partner registry.",
   path: "/partners",
 })
 
@@ -27,7 +26,7 @@ export default function PartnersPage() {
       />
 
       <section className="section-space">
-        <div className="container-page space-y-14">
+        <div className="container-page space-y-12">
           <ScrollReveal>
             <div>
               <p className="eyebrow">Collaboration Frameworks</p>
@@ -57,14 +56,14 @@ export default function PartnersPage() {
                     Confirmed Institutional Partners ({partners.length})
                   </h2>
                 </div>
-                <Link href="/governance" className="text-link inline-flex min-h-[48px] items-center gap-1">
-                  <span>Governance Standards</span>
-                  <ArrowUpRight size={13} aria-hidden="true" />
+                <Link href="/join?type=partner" className="btn-primary min-h-[48px]">
+                  <span>Submit Partner Proposal</span>
+                  <ArrowUpRight size={14} aria-hidden="true" />
                 </Link>
               </div>
               {partners.length === 0 ? (
                 <p className="text-sm text-[var(--ink-soft)] max-w-2xl">
-                  Formal institutional agreements and memoranda of understanding are executed and published here once the 10 September 2026 section charter enters active operation.
+                  Formal institutional agreements and memoranda of understanding are executed and published here once the charter enters active operation. Proposals submitted through the unified participation desk are routed directly to the Executive Committee.
                 </p>
               ) : (
                 <div className="grid gap-5 md:grid-cols-2">
@@ -90,23 +89,6 @@ export default function PartnersPage() {
                   ))}
                 </div>
               )}
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100}>
-            <div id="partner-proposal" className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start border-t border-[var(--line)] pt-12">
-              <div className="space-y-4">
-                <p className="eyebrow">Submission Desk</p>
-                <h2 className="section-title">Submit a Partnership Proposal</h2>
-                <p className="text-sm leading-relaxed text-[var(--ink-soft)]">
-                  Universities, research institutes, hardware sponsors, and engineering teams can initiate joint workshops, open-source chipathons, or visiting lecturer hosting through the verified intake desk.
-                </p>
-                <div className="site-card p-5 space-y-2 text-xs text-[var(--ink-soft)]">
-                  <p className="font-mono text-[var(--gold)] uppercase tracking-wider">Review Process</p>
-                  <p>All submissions receive a trackable reference code and are routed directly to the Executive Committee review queue.</p>
-                </div>
-              </div>
-              <UnifiedIntakeForm defaultIntent="partner_proposal" />
             </div>
           </ScrollReveal>
         </div>
