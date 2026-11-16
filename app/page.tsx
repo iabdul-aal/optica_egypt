@@ -2,7 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { DispatchesSection } from "@/components/sections/DispatchesSection"
+import { EcosystemConstellationSection } from "@/components/sections/EcosystemConstellationSection"
 import { HeroSection } from "@/components/sections/HeroSection"
+import { ImpactMetrics } from "@/components/sections/ImpactMetrics"
 import { OpticaHeritage } from "@/components/sections/OpticaHeritage"
 import { ResearchExplorer } from "@/components/sections/ResearchExplorer"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
@@ -21,30 +23,6 @@ export const metadata: Metadata = {
   title: { absolute: siteConfig.seo.defaultTitle },
 }
 
-const AUDIENCE_PATHS = [
-  {
-    index: "01",
-    title: "Students and Thesis Teams",
-    summary: "Access license-free Python photonics simulation tools, domestic grants, and chapter startup support.",
-    href: "/resources",
-    label: "Explore Toolkit",
-  },
-  {
-    index: "02",
-    title: "Faculty and Research Labs",
-    summary: "Co-host workshops, advise campus student chapters, and coordinate Senior or Fellow nominations.",
-    href: "/partners",
-    label: "Partner or Host",
-  },
-  {
-    index: "03",
-    title: "Volunteers and Committees",
-    summary: "Join active working groups across technical programming, open-source PDA, or regional outreach.",
-    href: "/volunteer",
-    label: "Apply to Committee",
-  },
-] as const
-
 export default function HomePage() {
   const dispatches = getLatestDispatches(3)
   const domains = getAllDomains()
@@ -54,39 +32,15 @@ export default function HomePage() {
     <>
       <HeroSection />
 
-      {/* Three concise audience entry points */}
-      <section className="section-space bg-[var(--surface)]">
-        <div className="container-page">
-          <div className="grid gap-6 md:grid-cols-3">
-            {AUDIENCE_PATHS.map((item, idx) => (
-              <ScrollReveal key={item.index} delay={idx * 70}>
-                <article className="site-card p-6 flex flex-col h-full justify-between gap-6">
-                  <div>
-                    <span className="font-mono text-xs font-bold text-[var(--gold)]">
-                      {item.index}
-                    </span>
-                    <h2 className="mt-3 text-lg font-semibold text-[var(--ink)]">
-                      {item.title}
-                    </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-                      {item.summary}
-                    </p>
-                  </div>
-                  <Link
-                    href={item.href}
-                    className="text-link inline-flex min-h-[48px] items-center gap-1.5 self-start"
-                  >
-                    <span>{item.label}</span>
-                    <ArrowUpRight size={14} aria-hidden="true" />
-                  </Link>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ScrollReveal delay={40}>
+        <ImpactMetrics />
+      </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal delay={60}>
+        <EcosystemConstellationSection />
+      </ScrollReveal>
+
+      <ScrollReveal delay={50}>
         <DispatchesSection dispatches={dispatches} />
       </ScrollReveal>
 
@@ -141,11 +95,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ScrollReveal>
+      <ScrollReveal delay={50}>
         <ResearchExplorer domains={domains} />
       </ScrollReveal>
 
-      <ScrollReveal>
+      <ScrollReveal delay={50}>
         <OpticaHeritage />
       </ScrollReveal>
     </>

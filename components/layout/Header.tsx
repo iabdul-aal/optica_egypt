@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { ChevronDown, Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
 import { cn } from "@/lib/utils"
 
@@ -60,19 +60,35 @@ const NAV_GROUPS: readonly NavGroupItem[] = [
 export function Header() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  const [openDesktopGroup, setOpenDesktopGroup] = useState<string | null>(null)
+  const [suppressedGroup, setSuppressedGroup] = useState<string | null>(null)
   const [expandedGroup, setExpandedGroup] = useState<string | null>(null)
+  const desktopNavRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     setIsOpen(false)
+    setOpenDesktopGroup(null)
     setExpandedGroup(null)
   }, [pathname])
 
   useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") setIsOpen(false)
+      if (event.key === "Escape") {
+        setIsOpen(false)
+        setOpenDesktopGroup(null)
+      }
+    }
+    function handleOutsideClick(event: MouseEvent) {
+      if (desktopNavRef.current && !desktopNavRef.current.contains(event.target as Node)) {
+        setOpenDesktopGroup(null)
+      }
     }
     window.addEventListener("keydown", closeOnEscape)
-    return () => window.removeEventListener("keydown", closeOnEscape)
+    document.addEventListener("mousedown", handleOutsideClick)
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape)
+      document.removeEventListener("mousedown", handleOutsideClick)
+    }
   }, [])
 
   useEffect(() => {
@@ -115,15 +131,33 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="desktop-navigation" aria-label="Main navigation">
+          <nav ref={desktopNavRef} className="desktop-navigation" aria-label="Main navigation">
             {NAV_GROUPS.map((group) => {
               const active = isGroupActive(group.items)
+              const open = openDesktopGroup === group.label
+              const suppressed = suppressedGroup === group.label
               return (
-                <div key={group.label} className="nav-group">
+                <div
+                  key={group.label}
+                  className={cn(
+                    "nav-group",
+                    open && "nav-group-open",
+                    suppressed && "nav-group-suppressed"
+                  )}
+                  onMouseLeave={() => {
+                    setSuppressedGroup((cur) => (cur === group.label ? null : cur))
+                    setOpenDesktopGroup((cur) => (cur === group.label ? null : cur))
+                  }}
+                >
                   <button
                     type="button"
                     className={cn("nav-link nav-group-trigger", active && "nav-link-current")}
                     aria-haspopup="true"
+                    aria-expanded={open}
+                    onClick={() => {
+                      setSuppressedGroup(null)
+                      setOpenDesktopGroup((cur) => (cur === group.label ? null : group.label))
+                    }}
                   >
                     <span>{group.label}</span>
                     <ChevronDown size={13} aria-hidden="true" className="nav-group-chevron" />
@@ -135,6 +169,11 @@ export function Header() {
                         href={sub.href}
                         role="menuitem"
                         aria-current={isCurrent(sub.href) ? "page" : undefined}
+                        onClick={(e) => {
+                          setOpenDesktopGroup(null)
+                          setSuppressedGroup(group.label)
+                          e.currentTarget.blur()
+                        }}
                         className={cn(
                           "nav-dropdown-link",
                           isCurrent(sub.href) && "nav-dropdown-link-current"

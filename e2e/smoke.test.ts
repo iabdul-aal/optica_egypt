@@ -153,3 +153,37 @@ test("/leadership renders 16 clean portrait cards without photo overlay taglines
   expect(pageErrors).toEqual([])
   expect(consoleErrors).toEqual([])
 })
+
+test("homepage ecosystem constellation, pathways, research tabs, desktop click dropdowns, and hub subnav work cleanly", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  // ImpactMetrics strip + Pentagon CommunityBubbles SVG
+  await expect(page.getByRole("link", { name: /01\s*Learn/i })).toBeVisible()
+  await expect(page.getByRole("img", { name: /Interactive network linking five pillars/i })).toBeVisible()
+
+  // ResearchExplorer tab interaction
+  const tabs = page.locator("#research-explorer [role='tab']")
+  expect(await tabs.count()).toBeGreaterThan(1)
+  await tabs.nth(1).click()
+  await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true")
+
+  // Desktop click-to-open dropdown toggles aria-expanded cleanly
+  const sectionBtn = page.locator(".desktop-navigation button", { hasText: "Section" })
+  await sectionBtn.click()
+  await expect(sectionBtn).toHaveAttribute("aria-expanded", "true")
+  await page.locator(".nav-dropdown a[href='/governance']").click()
+  await page.waitForURL("**/governance")
+
+  // Sibling HubSubnav bar navigates directly across section pages
+  const partnersSubnav = page.getByLabel("Section Hub sub-navigation").getByRole("link", { name: "Partners" })
+  await expect(partnersSubnav).toBeVisible()
+  await partnersSubnav.click()
+  await page.waitForURL("**/partners")
+
+  expect(pageErrors).toEqual([])
+  expect(consoleErrors).toEqual([])
+})

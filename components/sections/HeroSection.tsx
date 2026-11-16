@@ -24,17 +24,17 @@ export function HeroSection() {
         <div className="hero-copy">
           <p className="eyebrow hero-eyebrow">Optica Egypt Local Section</p>
           <h1 className="display-title">
-            Photonics coordination across Egyptian universities and labs.
+            A shared field of view for Egypt&apos;s optics and photonics community.
           </h1>
           <p className="lede">
-            Chartered 10 September 2026 under Optica bylaws, connecting student chapters, researchers, and open-source simulation workflows across Egypt.
+            Chartered 10 September 2026 under Optica bylaws. Meet researchers, explore open-source photonics workflows, and connect chapters across Egypt.
           </p>
           <div className="hero-actions">
             <Link href="/projects" className="btn-primary min-h-[48px]">
               Explore Projects <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
-            <Link href="/resources" className="btn-secondary min-h-[48px]">
-              Tools and Grants
+            <Link href="/chapters" className="btn-secondary min-h-[48px]">
+              Meet the Community
             </Link>
           </div>
         </div>
