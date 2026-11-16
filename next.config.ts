@@ -7,6 +7,7 @@ const basePath =
 const config: NextConfig = {
   compress: true,
   poweredByHeader: false,
+  transpilePackages: ["three"],
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
     NEXT_PUBLIC_SITE_URL:
@@ -21,26 +22,13 @@ const config: NextConfig = {
     : {
         async redirects() {
           return [
-            { source: "/governance", destination: "/about#governance", permanent: true },
-            { source: "/awards", destination: "/about#governance", permanent: true },
-            { source: "/recognitions", destination: "/about#governance", permanent: true },
-            { source: "/leadership", destination: "/about#leadership", permanent: true },
-            { source: "/press", destination: "/about#press", permanent: true },
-            { source: "/partners", destination: "/join?type=partner", permanent: true },
-            { source: "/community", destination: "/projects", permanent: true },
-            { source: "/fellowships", destination: "/projects?track=fellowships", permanent: true },
-            { source: "/outreach", destination: "/projects?track=outreach", permanent: true },
-            { source: "/programs", destination: "/projects?track=training", permanent: true },
-            { source: "/open-source", destination: "/projects?track=open-pda", permanent: true },
+            { source: "/awards", destination: "/governance", permanent: true },
+            { source: "/recognitions", destination: "/governance", permanent: true },
+            { source: "/community", destination: "/chapters", permanent: true },
+            { source: "/programs", destination: "/projects", permanent: true },
             { source: "/conferences", destination: "/projects?track=training", permanent: true },
             { source: "/education", destination: "/projects?track=training", permanent: true },
             { source: "/competitions", destination: "/projects?track=open-pda", permanent: true },
-            { source: "/events", destination: "/updates?kind=event", permanent: true },
-            { source: "/events/:path*", destination: "/updates", permanent: true },
-            { source: "/news", destination: "/updates?kind=announcement", permanent: true },
-            { source: "/blogs", destination: "/updates?kind=article", permanent: true },
-            { source: "/gallery", destination: "/updates?kind=media", permanent: true },
-            { source: "/volunteer", destination: "/join?type=committee", permanent: true },
             { source: "/recruitment", destination: "/join?type=committee", permanent: true },
           ]
         },

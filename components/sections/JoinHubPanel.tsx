@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useSearchParams } from "next/navigation"
 import { RecruitmentForm } from "@/components/sections/RecruitmentForm"
 import { UnifiedIntakeForm } from "@/components/sections/UnifiedIntakeForm"
 import type { SubmissionIntent } from "@/lib/submissions"
@@ -22,22 +21,23 @@ const TYPE_MAP: Record<string, SubmissionIntent> = {
 }
 
 export function JoinHubPanel() {
-  const searchParams = useSearchParams()
-  const typeParam = (searchParams.get("type") || "").toLowerCase()
-  const refParam = searchParams.get("ref") || ""
-  const mappedIntent = TYPE_MAP[typeParam]
-
-  const [mode, setMode] = useState<"recruitment" | "desk">(
-    mappedIntent ? "desk" : "recruitment"
-  )
+  const [mode, setMode] = useState<"recruitment" | "desk">("recruitment")
+  const [defaultIntent, setDefaultIntent] = useState<SubmissionIntent>("partner_proposal")
+  const [defaultRef, setDefaultRef] = useState("")
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const typeParam = (params.get("type") || "").toLowerCase()
+    const refParam = params.get("ref") || ""
+    const mappedIntent = TYPE_MAP[typeParam]
+    setDefaultRef(refParam)
     if (mappedIntent) {
+      setDefaultIntent(mappedIntent)
       setMode("desk")
     } else if (typeParam === "committee") {
       setMode("recruitment")
     }
-  }, [mappedIntent, typeParam])
+  }, [])
 
   return (
     <div className="space-y-6">
@@ -85,8 +85,9 @@ export function JoinHubPanel() {
       ) : (
         <div id="panel-desk" role="tabpanel" aria-labelledby="tab-desk">
           <UnifiedIntakeForm
-            defaultIntent={mappedIntent || "partner_proposal"}
-            defaultRef={refParam}
+            key={`${defaultIntent}:${defaultRef}`}
+            defaultIntent={defaultIntent}
+            defaultRef={defaultRef}
           />
         </div>
       )}

@@ -405,16 +405,16 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
               }}
               aria-label="The American University in Cairo (AUC) Optica Student Chapter - Chartered and Currently Inactive"
             >
-              {/* Outer Resonance Ring */}
+              {/* Outer Resonance Pulse Ring */}
               <circle
                 cx={aucPinX}
                 cy={aucPinY}
                 r={isChapterHovered ? "42" : "34"}
                 stroke="var(--gold)"
                 strokeWidth="1.5"
-                strokeOpacity={isChapterHovered ? "0.6" : "0.3"}
                 fill="var(--gold)"
-                fillOpacity={isChapterHovered ? "0.18" : "0.08"}
+                fillOpacity="0.14"
+                className="chapter-pulse"
               />
 
               {/* Status Aura */}

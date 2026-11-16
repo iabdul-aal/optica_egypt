@@ -21,7 +21,7 @@ export function ResearchExplorer({ domains }: { domains: Domain[] }) {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
           <div className="flex flex-col gap-2" role="tablist" aria-label="Photonics research domains">
             {domains.map((domain, idx) => {
               const active = idx === activeIndex
@@ -45,19 +45,32 @@ export function ResearchExplorer({ domains }: { domains: Domain[] }) {
             })}
           </div>
 
-          <div className="site-card p-7 sm:p-8" role="tabpanel">
-            <p className="font-mono text-xs font-bold text-[var(--gold)]">{current.code}</p>
-            <h3 className="mt-3 text-2xl font-semibold text-[var(--ink)]">{current.label}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">{current.summary}</p>
-            <div className="mt-6 flex flex-wrap gap-2 border-t border-[var(--line-subtle)] pt-5">
-              {current.terms.map((term) => (
-                <span
-                  key={term}
-                  className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1 font-mono text-xs text-[var(--ink-soft)]"
-                >
-                  {term}
-                </span>
-              ))}
+          <div className="research-stage site-card p-7 sm:p-8" role="tabpanel">
+            <div className="research-depth-card" aria-hidden="true">
+              <div className="research-cube">
+                <span className="cube-face cube-face--front" />
+                <span className="cube-face cube-face--back" />
+                <span className="cube-face cube-face--right" />
+                <span className="cube-face cube-face--left" />
+                <span className="cube-face cube-face--top" />
+                <span className="cube-face cube-face--bottom" />
+              </div>
+            </div>
+
+            <div key={current.id} className="topic-transition relative z-10 max-w-xl">
+              <p className="font-mono text-xs font-bold text-[var(--gold)]">{current.code}</p>
+              <h3 className="mt-3 text-2xl font-semibold text-[var(--ink)]">{current.label}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">{current.summary}</p>
+              <div className="mt-6 flex flex-wrap gap-2 border-t border-[var(--line-subtle)] pt-5">
+                {current.terms.map((term) => (
+                  <span
+                    key={term}
+                    className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1 font-mono text-xs text-[var(--ink-soft)]"
+                  >
+                    {term}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

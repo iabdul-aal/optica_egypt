@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { Suspense } from "react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { ResourcesDirectory } from "@/components/sections/ResourcesDirectory"
 import { getAllMembershipTiers } from "@/lib/membership"
@@ -36,13 +35,11 @@ export default function ResourcesPage() {
 
       <section className="section-space">
         <div className="container-page">
-          <Suspense fallback={<div className="site-card p-8 text-sm text-[var(--ink-soft)]">Loading resources...</div>}>
-            <ResourcesDirectory
-              resources={resources}
-              membershipTiers={membershipTiers}
-              usedInProjectCount={usedInProjectCount}
-            />
-          </Suspense>
+          <ResourcesDirectory
+            resources={resources}
+            membershipTiers={membershipTiers}
+            usedInProjectCount={usedInProjectCount}
+          />
         </div>
       </section>
     </>

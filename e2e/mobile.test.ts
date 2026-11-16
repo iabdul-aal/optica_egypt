@@ -32,12 +32,14 @@ test("mobile flat navigation drawer opens at full height, navigates cleanly, and
   expect(box).not.toBeNull()
   expect(box!.height).toBeGreaterThan(600)
 
+  await page.locator("#mobile-navigation button", { hasText: "Programs" }).click()
   await page.locator("#mobile-navigation a[href='/projects']").click()
   await page.waitForURL("**/projects")
   await assertNoHorizontalOverflow(page)
 
   await menuButton.click()
   await expect(drawer).toBeVisible()
+  await page.locator("#mobile-navigation button", { hasText: "Section" }).click()
   await page.locator("#mobile-navigation a[href='/about']").click()
   await page.waitForURL("**/about")
   await assertNoHorizontalOverflow(page)

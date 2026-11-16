@@ -40,9 +40,21 @@ Optica approved the charter of the Optica Egypt Local Section on 10 September 20
 
 ## Canonical Sitemap (Strict English-Only Architecture)
 - [Home](https://optica-egypt.com/): Institutional overview, active updates, featured initiatives, and research domains.
-- [About](https://optica-egypt.com/about): Charter record, governance bylaws, constitutional officers, 16-member roster (`/leadership/[id]`), partnership models, boilerplate, and vector media kit.
+- [About](https://optica-egypt.com/about): Charter record, governance overview, leadership preview, partnership models, and press boilerplate.
+- [Governance](https://optica-egypt.com/governance): Optica Local Section bylaws, constitutional executive seats, charter verification, and annual reporting scope.
+- [Leadership](https://optica-egypt.com/leadership): Full 16-member Founding Executive Committee, Operational Committee, and Faculty Advisors roster (`/leadership/[id]`).
+- [Partners](https://optica-egypt.com/partners): Collaboration frameworks, confirmed institutional partnerships, and partner proposal intake.
 - [Chapters](https://optica-egypt.com/chapters): Interactive Egypt map, reactivating AUC chapter (`/chapters/auc`), and national charter checklist.
+- [Fellowships](https://optica-egypt.com/fellowships): Fellowship advisories, conference travel grants, and funding directories.
+- [Outreach](https://optica-egypt.com/outreach): Public science outreach demonstrations and campus optics engagement tracks.
+- [Volunteer](https://optica-egypt.com/volunteer): Standing working committees and Postgres-backed committee volunteer application.
 - [Projects](https://optica-egypt.com/projects): Open-source photonics PDA working group, training roadmaps, thesis concepts, and campus outreach (`/projects/[slug]`).
+- [Events](https://optica-egypt.com/events): Scheduled seminars, workshops, and Visiting Lecturer sessions.
+- [Open-Source Photonics](https://optica-egypt.com/open-source): Open-source PDA working group tracks and license-free photonic software index.
 - [Resources](https://optica-egypt.com/resources): Free Python photonics software, domestic Egyptian research grants (ITIDA, ASRT, STDF), journals, and Optica membership cohorts.
 - [Updates](https://optica-egypt.com/updates): Verified announcements, confirmed events, technical articles, and media records (`/updates/[slug]`).
+- [News](https://optica-egypt.com/news): Official section announcements and governance notices.
+- [Blogs](https://optica-egypt.com/blogs): Technical write-ups and simulation tutorials.
+- [Press](https://optica-egypt.com/press): Official boilerplate, brand assets, typography, and media inquiry desk.
+- [Gallery](https://optica-egypt.com/gallery): Verified photographic archive of section events.
 - [Join](https://optica-egypt.com/join): Two-step Global Optica and Local Section intake backed by Postgres (`/api/recruitment` and `/api/submissions`), plus official social channels.

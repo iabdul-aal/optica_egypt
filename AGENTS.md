@@ -11,28 +11,44 @@
 | Framework | Next.js 15 (App Router, Server-Rendered on Vercel, Node 24) |
 | Language Policy | Strict English-only across all UI, data, metadata, and intake |
 | Styling | Tailwind CSS v4, Semantic CSS Custom Properties (`#090c0d` / `#f8f9fa` / `#d7ae5b`) |
-| Diagrams | Deterministic inline SVG optical diagrams (no WebGL hero overhead) |
+| Diagrams and 3D | Interactive Three.js / React Three Fiber silicon photonic chip (`PhotonicsChipScene`) with deterministic inline SVG fallback (`OpticalWaveguideDiagram`) |
 | Data Layer | Relational strict-English JSON records in `data/`, typed graph loaders in `lib/` |
 | Database | Supabase Postgres, Auth, and RLS (`/api/recruitment`, `/api/submissions`, `/admin`) |
 | Quality Gates | ESLint 9, TypeScript compiler (`tsc --noEmit`), Deterministic Validation (`scripts/validate-site.mjs`), Unit Tests (`npm run test:unit`), Playwright E2E suite |
 
 ---
 
-## 2. Canonical Sitemap (Lean 7-Hub Architecture)
+## 2. Canonical Sitemap (Grouped Navigation Architecture)
 
 ```
 Optica Egypt
 ├── Home (/)
-├── About (/about: Charter overview, #governance, #leadership -> /leadership/[id], #partners, #press)
-├── Chapters (/chapters, /chapters/[id]: Geographic map, AUC chapter, charter checklist)
-├── Projects (/projects, /projects/[slug]: Unified open-pda, training, fellowships, outreach index)
-├── Resources (/resources: Free EDA tools, domestic grants, journals, Optica tiers)
-├── Updates (/updates, /updates/[slug]: Conditional event, news, article, and media dispatches)
+├── Section (Dropdown / Accordion)
+│   ├── About (/about: Charter overview, #governance, #leadership, #partners, #press)
+│   ├── Governance (/governance: Charter verification record, Optica bylaws, executive seats, annual scope)
+│   ├── Leadership (/leadership, /leadership/[id]: Founding 16-officer and faculty roster)
+│   └── Partners (/partners: Institutional collaboration frameworks, MOUs, and proposal desk)
+├── Community (Dropdown / Accordion)
+│   ├── Chapters (/chapters, /chapters/[id]: Geographic map, AUC chapter, charter checklist)
+│   ├── Fellowships (/fellowships: Global fellowships and Egyptian research grant pathways)
+│   ├── Outreach (/outreach: Science demonstration kits and campus outreach tracks)
+│   └── Volunteer (/volunteer: Standing working committees and committee intake form)
+├── Programs (Dropdown / Accordion)
+│   ├── Projects (/projects, /projects/[slug]: Unified open-pda, training, fellowships, outreach index)
+│   ├── Events (/events: Scheduled seminars, workshops, and Visiting Lecturer sessions)
+│   ├── Open-Source (/open-source: Open-PDA working group tracks and license-free tools)
+│   └── Resources (/resources: Free EDA tools, domestic grants, journals, Optica tiers)
+├── Insights (Dropdown / Accordion)
+│   ├── Updates (/updates, /updates/[slug]: Filterable announcements, events, articles, and media)
+│   ├── News (/news: Section announcements and governance milestones)
+│   ├── Blogs (/blogs: Technical notes and photonics simulation articles)
+│   ├── Press (/press: Official boilerplate, brand assets, and media inquiry desk)
+│   └── Gallery (/gallery: Verified photographic event archive)
 ├── Join (/join: Two-step Global vs Local overview, Committee Application, Unified Desk Form, Social Channels)
 └── Staff Operations (/admin, /admin/applications/[id], /admin/submissions/[id], /admin/staff, /admin/login, /admin/change-password)
 ```
 
-Deprecated legacy paths (`/governance`, `/awards`, `/recognitions`, `/leadership`, `/press`, `/partners`, `/community`, `/fellowships`, `/outreach`, `/programs`, `/open-source`, `/conferences`, `/education`, `/competitions`, `/events`, `/news`, `/blogs`, `/gallery`, `/volunteer`, `/recruitment`) permanently resolve via HTTP 308 rules in `next.config.ts`.
+Deprecated legacy paths (`/awards`, `/recognitions`, `/community`, `/programs`, `/conferences`, `/education`, `/competitions`, `/recruitment`) resolve via HTTP 308 rules in `next.config.ts`.
 
 ---
 

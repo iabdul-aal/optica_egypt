@@ -1,26 +1,70 @@
 "use client"
 
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
 import { cn } from "@/lib/utils"
 
-const NAV_ITEMS = [
-  { label: "About", href: "/about" },
-  { label: "Chapters", href: "/chapters" },
-  { label: "Projects", href: "/projects" },
-  { label: "Resources", href: "/resources" },
-  { label: "Updates", href: "/updates" },
-] as const
+interface NavLinkItem {
+  label: string
+  href: string
+}
+
+interface NavGroupItem {
+  label: string
+  items: readonly NavLinkItem[]
+}
+
+const NAV_GROUPS: readonly NavGroupItem[] = [
+  {
+    label: "Section",
+    items: [
+      { label: "About", href: "/about" },
+      { label: "Governance", href: "/governance" },
+      { label: "Leadership", href: "/leadership" },
+      { label: "Partners", href: "/partners" },
+    ],
+  },
+  {
+    label: "Community",
+    items: [
+      { label: "Chapters", href: "/chapters" },
+      { label: "Fellowships", href: "/fellowships" },
+      { label: "Outreach", href: "/outreach" },
+      { label: "Volunteer", href: "/volunteer" },
+    ],
+  },
+  {
+    label: "Programs",
+    items: [
+      { label: "Projects", href: "/projects" },
+      { label: "Events", href: "/events" },
+      { label: "Open-Source", href: "/open-source" },
+      { label: "Resources", href: "/resources" },
+    ],
+  },
+  {
+    label: "Insights",
+    items: [
+      { label: "Updates", href: "/updates" },
+      { label: "News", href: "/news" },
+      { label: "Blogs", href: "/blogs" },
+      { label: "Press", href: "/press" },
+      { label: "Gallery", href: "/gallery" },
+    ],
+  },
+]
 
 export function Header() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  const [expandedGroup, setExpandedGroup] = useState<string | null>(null)
 
   useEffect(() => {
     setIsOpen(false)
+    setExpandedGroup(null)
   }, [pathname])
 
   useEffect(() => {
@@ -41,7 +85,11 @@ export function Header() {
   }, [isOpen])
 
   function isCurrent(href: string) {
-    return pathname === href || pathname.startsWith(`${href}/`)
+    return pathname === href || (href !== "/" && pathname.startsWith(`${href}/`))
+  }
+
+  function isGroupActive(items: readonly NavLinkItem[]) {
+    return items.some((item) => isCurrent(item.href))
   }
 
   return (
@@ -68,16 +116,37 @@ export function Header() {
           </Link>
 
           <nav className="desktop-navigation" aria-label="Main navigation">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={cn("nav-link", isCurrent(item.href) && "nav-link-current")}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV_GROUPS.map((group) => {
+              const active = isGroupActive(group.items)
+              return (
+                <div key={group.label} className="nav-group">
+                  <button
+                    type="button"
+                    className={cn("nav-link nav-group-trigger", active && "nav-link-current")}
+                    aria-haspopup="true"
+                  >
+                    <span>{group.label}</span>
+                    <ChevronDown size={13} aria-hidden="true" className="nav-group-chevron" />
+                  </button>
+                  <div className="nav-dropdown" role="menu" aria-label={`${group.label} submenu`}>
+                    {group.items.map((sub) => (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        role="menuitem"
+                        aria-current={isCurrent(sub.href) ? "page" : undefined}
+                        className={cn(
+                          "nav-dropdown-link",
+                          isCurrent(sub.href) && "nav-dropdown-link-current"
+                        )}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
           </nav>
 
           <div className="header-actions">
@@ -108,31 +177,63 @@ export function Header() {
         )}
       >
         <div className="container-layout mobile-navigation-list">
-          <div className="space-y-1">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={cn("mobile-nav-link min-h-[48px]", isCurrent(item.href) && "text-[var(--gold)]")}
-                onClick={() => {
-                  if (pathname === item.href) setIsOpen(false)
-                }}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="pt-4 mt-4 border-t border-[var(--line-subtle)] flex flex-wrap gap-2">
-              <Link href="/about#governance" className="mobile-nav-sub-link min-h-[48px]" onClick={() => setIsOpen(false)}>
-                Governance
-              </Link>
-              <Link href="/about#leadership" className="mobile-nav-sub-link min-h-[48px]" onClick={() => setIsOpen(false)}>
-                Leadership
-              </Link>
-              <Link href="/about#press" className="mobile-nav-sub-link min-h-[48px]" onClick={() => setIsOpen(false)}>
-                Press Kit
-              </Link>
-            </div>
+          <nav className="space-y-1" aria-label="Mobile navigation">
+            <Link
+              href="/"
+              aria-current={pathname === "/" ? "page" : undefined}
+              className={cn("mobile-nav-link min-h-[48px]", pathname === "/" && "text-[var(--gold)]")}
+              onClick={() => {
+                if (pathname === "/") setIsOpen(false)
+              }}
+            >
+              Home
+            </Link>
+
+            {NAV_GROUPS.map((group) => {
+              const expanded = expandedGroup === group.label
+              const active = isGroupActive(group.items)
+              return (
+                <div key={group.label} className="mobile-nav-group">
+                  <button
+                    type="button"
+                    aria-expanded={expanded}
+                    onClick={() => setExpandedGroup(expanded ? null : group.label)}
+                    className={cn(
+                      "mobile-nav-link mobile-nav-group-toggle min-h-[48px]",
+                      active && "mobile-nav-link-active"
+                    )}
+                  >
+                    <span>{group.label}</span>
+                    <ChevronDown
+                      size={15}
+                      aria-hidden="true"
+                      className={cn("mobile-nav-chevron", expanded && "mobile-nav-chevron-open")}
+                    />
+                  </button>
+                  {expanded && (
+                    <div className="mobile-nav-sub-list">
+                      {group.items.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          aria-current={isCurrent(sub.href) ? "page" : undefined}
+                          className={cn(
+                            "mobile-nav-sub-link min-h-[48px]",
+                            isCurrent(sub.href) && "mobile-nav-sub-link-current"
+                          )}
+                          onClick={() => {
+                            if (pathname === sub.href) setIsOpen(false)
+                          }}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+
             <Link
               href="/join"
               className="btn-primary mobile-join min-h-[48px]"
@@ -142,7 +243,7 @@ export function Header() {
             >
               Join
             </Link>
-          </div>
+          </nav>
         </div>
       </div>
     </>

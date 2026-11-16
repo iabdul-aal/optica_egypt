@@ -51,8 +51,8 @@ The Optica Egypt Local Section is a chartered volunteer section of Optica in the
 - The American University in Cairo (AUC) Optica Student Chapter (chartered 2024, Faculty Advisor: Prof. Yehea Ismail): sole chartered student chapter in Egypt, currently undergoing section-supported reactivation.
 
 ## 6. Canonical Architecture
-- Public Hubs: `/`, `/about`, `/chapters`, `/projects`, `/resources`, `/updates`, `/join`
+- Public Hubs and Subpages: `/`, `/about`, `/governance`, `/leadership`, `/partners`, `/chapters`, `/fellowships`, `/outreach`, `/volunteer`, `/projects`, `/events`, `/open-source`, `/resources`, `/updates`, `/news`, `/blogs`, `/press`, `/gallery`, `/join`
 - Detail Pages: `/leadership/[id]`, `/chapters/[id]`, `/projects/[slug]`, `/updates/[slug]`
-- Legacy URLs (`/governance`, `/awards`, `/recognitions`, `/leadership`, `/press`, `/partners`, `/community`, `/fellowships`, `/outreach`, `/programs`, `/open-source`, `/conferences`, `/education`, `/competitions`, `/events`, `/news`, `/blogs`, `/gallery`, `/volunteer`, `/recruitment`): Permanent HTTP 308 redirects to their canonical targets.
+- Legacy Alias Redirects (`/awards`, `/recognitions`, `/community`, `/programs`, `/conferences`, `/education`, `/competitions`, `/recruitment`): Permanent HTTP 308 redirects to their active subpages or filtered hubs.
 - Verified Postgres Intake: `/api/recruitment` (committee applications) and `/api/submissions` (chapter charter, partner, speaker, event RSVP, press, general inquiries) persisted to Supabase Postgres with zero client-side storage fallback.
 - Staff Operations: `/admin`, `/admin/applications/[id]`, `/admin/submissions/[id]`, `/admin/staff`, `/admin/login`, `/admin/change-password`.

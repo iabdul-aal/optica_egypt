@@ -9,7 +9,7 @@ Official web platform for the Optica Egypt Local Section (`https://optica-egypt.
 | Framework | Next.js 15 (App Router, Node 24 server runtime on Vercel) |
 | Language Policy | Strict English-only across UI, data, metadata, and intake |
 | Styling | Tailwind CSS v4, semantic CSS custom properties (`#090c0d` / `#f8f9fa` / `#d7ae5b`) |
-| Diagrams | Deterministic inline SVG optical schematics and vector Egypt chapter map |
+| Diagrams and 3D | Interactive Three.js / React Three Fiber silicon photonic chip (`PhotonicsChipScene`) with deterministic inline SVG waveguide fallback (`OpticalWaveguideDiagram`) and vector Egypt chapter map |
 | Theme | `next-themes`, dark-first with light-mode parity |
 | Database and Auth | Supabase Postgres, Auth, and row-level security (`/api/recruitment`, `/api/submissions`, `/admin`) |
 | SEO and Discovery | Canonical metadata (`lib/seo.ts`), Schema.org JSON-LD, `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`, `/llms.txt` |
@@ -41,7 +41,7 @@ npm run test:live   # Live Supabase recruitment and RLS integration tests (.env.
 
 ## Architecture
 
-Public routes follow a lean 7-hub structure (`About`, `Chapters`, `Projects`, `Resources`, `Updates`, `Join`, plus `/` and detail routes `/leadership/[id]`, `/chapters/[id]`, `/projects/[slug]`, `/updates/[slug]`), with permanent `308` redirects in `next.config.ts` preserving legacy paths.
+Public routes follow a grouped 4-menu navigation hierarchy (`Section`: `/about`, `/governance`, `/leadership`, `/partners`; `Community`: `/chapters`, `/fellowships`, `/outreach`, `/volunteer`; `Programs`: `/projects`, `/events`, `/open-source`, `/resources`; `Insights`: `/updates`, `/news`, `/blogs`, `/press`, `/gallery`; plus `/join`, `/`, and detail routes `/leadership/[id]`, `/chapters/[id]`, `/projects/[slug]`, `/updates/[slug]`), with permanent `308` redirects in `next.config.ts` mapping merged legacy aliases (`/awards`, `/recognitions`, `/community`, `/programs`, `/conferences`, `/education`, `/competitions`, `/recruitment`).
 
 Structured content lives in `data/`:
 

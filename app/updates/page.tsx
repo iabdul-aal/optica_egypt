@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Suspense } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { UpdatesDirectory } from "@/components/sections/UpdatesDirectory"
@@ -45,12 +44,10 @@ export default function UpdatesPage() {
 
       <section className="section-space">
         <div className="container-page">
-          <Suspense fallback={<div className="site-card p-8 text-sm text-[var(--ink-soft)]">Loading updates...</div>}>
-            <UpdatesDirectory
-              dispatches={dispatches}
-              availableKinds={availableKinds}
-            />
-          </Suspense>
+          <UpdatesDirectory
+            dispatches={dispatches}
+            availableKinds={availableKinds}
+          />
         </div>
       </section>
     </>

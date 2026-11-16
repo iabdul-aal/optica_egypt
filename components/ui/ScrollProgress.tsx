@@ -34,13 +34,17 @@ export function ScrollProgress() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2px]"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[100] h-[2.5px]"
       aria-hidden="true"
     >
       <div
         ref={barRef}
-        className="h-full w-full origin-left bg-[var(--gold)] transition-opacity duration-150"
-        style={{ transform: "scaleX(0)", opacity: 0 }}
+        className="h-full w-full origin-left bg-gradient-to-r from-[var(--gold)]/70 via-[var(--gold)] to-[var(--gold-pale)] transition-opacity duration-150"
+        style={{
+          transform: "scaleX(0)",
+          opacity: 0,
+          boxShadow: "0 0 8px rgba(215, 174, 91, 0.65)",
+        }}
       />
     </div>
   )

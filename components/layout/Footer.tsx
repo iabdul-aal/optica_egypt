@@ -7,13 +7,22 @@ import { getAssetPath } from "@/lib/utils"
 
 const links = [
   { label: "About", href: "/about" },
-  { label: "Governance", href: "/about#governance" },
-  { label: "Leadership", href: "/about#leadership" },
-  { label: "Press Kit", href: "/about#press" },
+  { label: "Governance", href: "/governance" },
+  { label: "Leadership", href: "/leadership" },
+  { label: "Partners", href: "/partners" },
   { label: "Chapters", href: "/chapters" },
+  { label: "Fellowships", href: "/fellowships" },
+  { label: "Outreach", href: "/outreach" },
+  { label: "Volunteer", href: "/volunteer" },
   { label: "Projects", href: "/projects" },
+  { label: "Events", href: "/events" },
+  { label: "Open-Source", href: "/open-source" },
   { label: "Resources", href: "/resources" },
   { label: "Updates", href: "/updates" },
+  { label: "News", href: "/news" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "Press", href: "/press" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Join", href: "/join" },
 ] as const
 

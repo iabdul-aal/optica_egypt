@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { Suspense } from "react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { ProjectsDirectory } from "@/components/sections/ProjectsDirectory"
 import { getAllProjects } from "@/lib/projects"
@@ -25,9 +24,7 @@ export default function ProjectsPage() {
 
       <section className="section-space">
         <div className="container-page">
-          <Suspense fallback={<div className="site-card p-8 text-sm text-[var(--ink-soft)]">Loading projects...</div>}>
-            <ProjectsDirectory projects={projects} />
-          </Suspense>
+          <ProjectsDirectory projects={projects} />
         </div>
       </section>
     </>

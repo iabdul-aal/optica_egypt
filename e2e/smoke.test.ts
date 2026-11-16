@@ -3,29 +3,38 @@ import { test, expect, type Page } from "@playwright/test"
 const CANONICAL_ROUTES = [
   "/",
   "/about",
+  "/governance",
+  "/leadership",
   "/leadership/abdulaziz-albadawi",
+  "/partners",
   "/chapters",
   "/chapters/auc",
+  "/fellowships",
+  "/outreach",
+  "/volunteer",
   "/projects",
   "/projects/open-photonics-pda",
+  "/events",
+  "/open-source",
   "/resources",
   "/updates",
   "/updates/optica-egypt-charter-approval",
+  "/news",
+  "/blogs",
+  "/press",
+  "/gallery",
   "/join",
 ] as const
 
 const LEGACY_REDIRECTS = [
-  { from: "/governance", targetPattern: /\/about(?:#governance)?\/?$/, expectedHeading: /Charter, Governance, and Founding Team/i },
-  { from: "/awards", targetPattern: /\/about(?:#governance)?\/?$/, expectedHeading: /Charter, Governance, and Founding Team/i },
-  { from: "/recognitions", targetPattern: /\/about(?:#governance)?\/?$/, expectedHeading: /Charter, Governance, and Founding Team/i },
-  { from: "/leadership", targetPattern: /\/about(?:#leadership)?\/?$/, expectedHeading: /Charter, Governance, and Founding Team/i },
-  { from: "/press", targetPattern: /\/about(?:#press)?\/?$/, expectedHeading: /Charter, Governance, and Founding Team/i },
-  { from: "/programs", targetPattern: /\/projects\?track=training/, expectedHeading: /Projects, Working Groups, and Open Calls/i },
-  { from: "/open-source", targetPattern: /\/projects\?track=open-pda/, expectedHeading: /Projects, Working Groups, and Open Calls/i },
-  { from: "/fellowships", targetPattern: /\/projects\?track=fellowships/, expectedHeading: /Projects, Working Groups, and Open Calls/i },
-  { from: "/events", targetPattern: /\/updates\?kind=event/, expectedHeading: /Updates and Events/i },
+  { from: "/awards", targetPattern: /\/governance\/?$/, expectedHeading: /Governance and Bylaws/i },
+  { from: "/recognitions", targetPattern: /\/governance\/?$/, expectedHeading: /Governance and Bylaws/i },
+  { from: "/community", targetPattern: /\/chapters\/?$/, expectedHeading: /Student Chapters in Egypt/i },
+  { from: "/programs", targetPattern: /\/projects\/?$/, expectedHeading: /Projects, Working Groups, and Open Calls/i },
+  { from: "/conferences", targetPattern: /\/projects\?track=training/, expectedHeading: /Projects, Working Groups, and Open Calls/i },
+  { from: "/education", targetPattern: /\/projects\?track=training/, expectedHeading: /Projects, Working Groups, and Open Calls/i },
+  { from: "/competitions", targetPattern: /\/projects\?track=open-pda/, expectedHeading: /Projects, Working Groups, and Open Calls/i },
   { from: "/recruitment", targetPattern: /\/join\?type=committee/, expectedHeading: /Join Optica Egypt/i },
-  { from: "/volunteer", targetPattern: /\/join\?type=committee/, expectedHeading: /Join Optica Egypt/i },
 ] as const
 
 function attachRuntimeMonitors(page: Page) {
@@ -79,11 +88,11 @@ test("unknown route renders custom 404 recovery cleanly", async ({ page }) => {
   expect(consoleErrors.filter((t) => !t.includes("404"))).toEqual([])
 })
 
-test("homepage SVG waveguide hero, theme toggle, and announcement link work", async ({ page }) => {
+test("homepage photonic hero, theme toggle, and announcement link work", async ({ page }) => {
   const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
   await page.goto("/", { waitUntil: "networkidle" })
 
-  await expect(page.getByRole("img", { name: /silicon photonic add-drop microring resonator/i })).toBeVisible()
+  await expect(page.getByRole("img", { name: /silicon photonic/i })).toBeVisible()
 
   await page.getByRole("button", { name: /Switch to light theme/i }).first().click()
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light")
@@ -125,6 +134,21 @@ test("/resources filters Grants tab and searches ITIDA cleanly", async ({ page }
   await searchInput.fill("ITIDA")
   await expect(page.getByText("1 of 13 Verified Entries")).toBeVisible()
   await expect(page.getByText("ITIDA ITAC Graduation Project Funding")).toBeVisible()
+
+  expect(pageErrors).toEqual([])
+  expect(consoleErrors).toEqual([])
+})
+
+test("/leadership renders 16 clean portrait cards without photo overlay taglines", async ({ page }) => {
+  const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
+  await page.goto("/leadership", { waitUntil: "domcontentloaded" })
+
+  const frames = page.locator("article .aspect-\\[2\\/3\\]")
+  await expect(frames).toHaveCount(16)
+  for (let i = 0; i < 16; i++) {
+    const text = (await frames.nth(i).textContent())?.trim() ?? ""
+    expect(text).not.toMatch(/Section Initiator|First President|Co-Founder/i)
+  }
 
   expect(pageErrors).toEqual([])
   expect(consoleErrors).toEqual([])

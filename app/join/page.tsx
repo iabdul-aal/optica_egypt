@@ -1,10 +1,8 @@
 import type { Metadata } from "next"
-import { Suspense } from "react"
 import Link from "next/link"
 import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { JoinHubPanel } from "@/components/sections/JoinHubPanel"
 import { PageHeader } from "@/components/sections/PageHeader"
-import { RecruitmentForm } from "@/components/sections/RecruitmentForm"
 import { SocialChannelsBand } from "@/components/sections/SocialChannelsBand"
 import { buildPageMetadata } from "@/lib/seo"
 
@@ -73,9 +71,7 @@ export default function JoinPage() {
             </div>
           </div>
 
-          <Suspense fallback={<RecruitmentForm />}>
-            <JoinHubPanel />
-          </Suspense>
+          <JoinHubPanel />
         </div>
       </section>
 

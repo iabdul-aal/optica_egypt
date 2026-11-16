@@ -16,21 +16,7 @@ export function MemberCard({ member }: { member: Member }) {
   return (
     <article className="group/card border-t border-[var(--line)] pt-5 transition-transform duration-300 ease-out hover:-translate-y-1 flex flex-col h-full min-w-0 justify-between">
       <div className="flex flex-col flex-grow min-w-0">
-        <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.5)] shrink-0">
-          {member.isInitiator ? (
-            <span className="absolute top-2.5 left-2.5 z-10 rounded-sm bg-[var(--canvas)]/95 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-[var(--gold)] border border-[var(--gold)]/50">
-              Section Initiator
-            </span>
-          ) : member.isFirstPresident ? (
-            <span className="absolute top-2.5 left-2.5 z-10 rounded-sm bg-[var(--canvas)]/95 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-[var(--gold)] border border-[var(--gold)]/50">
-              First President
-            </span>
-          ) : member.isFounder ? (
-            <span className="absolute top-2.5 left-2.5 z-10 rounded-sm bg-[var(--canvas)]/95 px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider text-[var(--ink)] border border-[var(--line)]">
-              Co-Founder
-            </span>
-          ) : null}
-
+        <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.45)] shrink-0">
           {hasPhoto ? (
             <Image
               src={getAssetPath(member.photo)}
