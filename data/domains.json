@@ -1,0 +1,37 @@
+[
+  {
+    "id": "photonic-ic",
+    "code": "PIC / 01",
+    "label": "Integrated Photonics",
+    "summary": "Silicon and silicon nitride waveguides, resonators, and couplers on planar photonic platforms.",
+    "terms": ["Waveguides", "Microrings", "Couplers"]
+  },
+  {
+    "id": "optical-comm",
+    "code": "COM / 02",
+    "label": "Optical Communications",
+    "summary": "Fiber links, optical interconnects, RF photonics, and high-speed signal transport.",
+    "terms": ["Interconnects", "Coherent Links", "RF Photonics"]
+  },
+  {
+    "id": "lasers-nonlinear",
+    "code": "LSR / 03",
+    "label": "Lasers and Nonlinear Optics",
+    "summary": "Coherent light sources, ultrafast dynamics, and frequency conversion in optical media.",
+    "terms": ["Laser Physics", "Ultrafast", "Frequency Mixing"]
+  },
+  {
+    "id": "mems-sensing",
+    "code": "SNS / 04",
+    "label": "Optical MEMS and Sensing",
+    "summary": "Compact spectrometers, gas sensors, optical MEMS actuators, and biophotonics instrumentation.",
+    "terms": ["Spectroscopy", "Optical MEMS", "Fiber Sensors"]
+  },
+  {
+    "id": "quantum-nano",
+    "code": "QNT / 05",
+    "label": "Quantum and Nanophotonics",
+    "summary": "Subwavelength metasurfaces, plasmonics, and nonclassical optical states.",
+    "terms": ["Metasurfaces", "Quantum States", "Plasmonics"]
+  }
+]

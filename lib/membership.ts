@@ -17,7 +17,3 @@ export interface MembershipTier {
 export function getAllMembershipTiers(): MembershipTier[] {
   return membershipData as MembershipTier[]
 }
-
-export function getMembershipTierById(id: string): MembershipTier | undefined {
-  return (membershipData as MembershipTier[]).find((tier) => tier.id === id)
-}

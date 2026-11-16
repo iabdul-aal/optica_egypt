@@ -36,7 +36,7 @@ export default function Error({
 
         {error.digest && (
           <p className="mt-4 font-mono text-xs text-[var(--gold)]">
-            Reference code: <span className="text-white/80">{error.digest}</span>
+            Reference code: <span className="text-[var(--ink)]">{error.digest}</span>
           </p>
         )}
 

@@ -1,40 +1,33 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight, Globe, Instagram, Linkedin, Mail, MapPin, Sparkles, UserCheck } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Globe, Instagram, Linkedin, Mail, MapPin, UserCheck } from "lucide-react"
 import { getAllChapters, getChapterById } from "@/lib/chapters"
-import { siteConfig } from "@/lib/site-config"
+import { getProjectsForChapter } from "@/lib/graph"
+import { LIFECYCLE_LABELS } from "@/lib/projects"
+import { buildPageMetadata } from "@/lib/seo"
 
-type ChapterDetailPageProps = {
+interface ChapterDetailPageProps {
   params: Promise<{ id: string }>
 }
 
-export function generateStaticParams() {
-  return getAllChapters().map((c) => ({ id: c.id }))
+export async function generateStaticParams() {
+  return getAllChapters().map((chapter) => ({ id: chapter.id }))
 }
 
 export async function generateMetadata({ params }: ChapterDetailPageProps): Promise<Metadata> {
   const { id } = await params
   const chapter = getChapterById(id)
-  if (!chapter) return { title: "Student Chapter" }
+  if (!chapter) return { title: "Chapter Not Found" }
 
-  const title = `${chapter.shortName || chapter.name} | Optica Egypt`
-  const description = `${chapter.name} hosted at ${chapter.university}. ${chapter.description.slice(0, 150)}...`
-  const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
+  const title = chapter.shortName || chapter.name
+  const description = `${chapter.name} hosted at ${chapter.university}. ${chapter.description.slice(0, 140)}`
 
-  return {
+  return buildPageMetadata({
     title,
     description,
-    alternates: {
-      canonical: `/chapters/${chapter.id}/`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `${siteUrl}/chapters/${chapter.id}/`,
-      images: [`${siteUrl}/og/og-community.jpg`],
-    },
-  }
+    path: `/chapters/${chapter.id}`,
+  })
 }
 
 export default async function ChapterDetailPage({ params }: ChapterDetailPageProps) {
@@ -42,24 +35,23 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
   const chapter = getChapterById(id)
   if (!chapter) notFound()
 
+  const linkedProjects = getProjectsForChapter(chapter.id)
+
   return (
     <section className="section-space scientific-grid min-h-[75vh]">
       <div className="container-page">
-        {/* Back navigation */}
-        <Link href="/chapters" className="text-link inline-flex items-center gap-2 mb-10">
+        <Link href="/chapters" className="text-link inline-flex min-h-[48px] items-center gap-2 mb-8">
           <ArrowLeft size={14} aria-hidden="true" />
           <span>Back to chapters</span>
         </Link>
 
-        {/* Chapter Header Banner */}
         <div className="site-card p-6 sm:p-10 mb-10">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line-subtle)] pb-4">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
-              <Sparkles size={13} aria-hidden="true" />
+            <span className="rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
               {chapter.status}
             </span>
             <span className="text-xs font-mono text-[var(--ink-faint)]">
-              {chapter.charteredYear ? `Chartered: ${chapter.charteredYear}` : `Target: ${chapter.targetYear}`}
+              Chartered {chapter.charteredYear || "In Progress"}
             </span>
           </div>
 
@@ -71,66 +63,45 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               <h1 className="mt-2 text-2xl font-bold tracking-tight text-[var(--ink)] sm:text-4xl">
                 {chapter.name}
               </h1>
-              <p className="mt-3 text-sm text-[var(--ink-soft)] leading-relaxed max-w-2xl">
+              <p className="mt-3 text-sm text-[var(--ink-soft)] max-w-2xl">
                 {chapter.campus || chapter.faculty}
               </p>
             </div>
 
-            {/* Social and Contact Actions */}
             <div className="flex flex-wrap items-center gap-3 lg:justify-end">
               {chapter.socials?.email && (
-                <a
-                  href={`mailto:${chapter.socials.email}`}
-                  className="btn-primary"
-                >
-                  <Mail size={14} />
+                <a href={`mailto:${chapter.socials.email}`} className="btn-primary min-h-[48px]">
+                  <Mail size={14} aria-hidden="true" />
                   <span>Email Chapter</span>
                 </a>
               )}
               {chapter.socials?.linkedin && (
-                <a
-                  href={chapter.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary"
-                >
-                  <Linkedin size={14} />
+                <a href={chapter.socials.linkedin} target="_blank" rel="noopener noreferrer" className="btn-secondary min-h-[48px]">
+                  <Linkedin size={14} aria-hidden="true" />
                   <span>LinkedIn</span>
-                  <ArrowUpRight size={12} />
+                  <ArrowUpRight size={12} aria-hidden="true" />
                 </a>
               )}
               {chapter.socials?.website && (
-                <a
-                  href={chapter.socials.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary"
-                >
-                  <Globe size={14} />
+                <a href={chapter.socials.website} target="_blank" rel="noopener noreferrer" className="btn-secondary min-h-[48px]">
+                  <Globe size={14} aria-hidden="true" />
                   <span>Website</span>
-                  <ArrowUpRight size={12} />
+                  <ArrowUpRight size={12} aria-hidden="true" />
                 </a>
               )}
               {chapter.socials?.instagram && (
-                <a
-                  href={chapter.socials.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary"
-                >
-                  <Instagram size={14} />
+                <a href={chapter.socials.instagram} target="_blank" rel="noopener noreferrer" className="btn-secondary min-h-[48px]">
+                  <Instagram size={14} aria-hidden="true" />
                   <span>Instagram</span>
-                  <ArrowUpRight size={12} />
+                  <ArrowUpRight size={12} aria-hidden="true" />
                 </a>
               )}
             </div>
           </div>
         </div>
 
-        {/* Two-Column Details */}
         <div className="grid gap-10 lg:grid-cols-[1.2fr_.8fr]">
           <div className="space-y-8">
-            {/* Overview */}
             <div className="site-card p-6 sm:p-8">
               <h2 className="text-xl font-bold text-[var(--ink)]">About the Chapter</h2>
               <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
@@ -138,10 +109,9 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </p>
             </div>
 
-            {/* Research and Focus Areas */}
             {chapter.focusAreas && (
               <div className="site-card p-6 sm:p-8">
-                <h2 className="text-lg font-bold text-[var(--ink)]">Technical Focus and Initiatives</h2>
+                <h2 className="text-lg font-bold text-[var(--ink)]">Technical Focus</h2>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   {chapter.focusAreas.map((area) => (
                     <div
@@ -156,34 +126,35 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </div>
             )}
 
-            {/* Activities and Highlights */}
-            {chapter.highlights && (
+            {linkedProjects.length > 0 && (
               <div className="site-card p-6 sm:p-8">
-                <h2 className="text-lg font-bold text-[var(--ink)]">Activities and Accomplishments</h2>
-                <ul className="mt-4 space-y-3 text-sm text-[var(--ink-soft)] leading-relaxed">
-                  {chapter.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-3">
-                      <span className="text-[var(--gold)] font-bold mt-0.5">•</span>
-                      <span>{h}</span>
-                    </li>
+                <h2 className="text-lg font-bold text-[var(--ink)]">Connected Section Initiatives</h2>
+                <div className="mt-4 divide-y divide-[var(--line-subtle)]">
+                  {linkedProjects.map((project) => (
+                    <Link
+                      key={project.id}
+                      href={`/projects/${project.slug}`}
+                      className="flex min-h-[48px] items-center justify-between gap-4 py-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
+                    >
+                      <span>{project.title}</span>
+                      <span className="font-mono text-xs text-[var(--gold)]">
+                        {LIFECYCLE_LABELS[project.lifecycle]}
+                      </span>
+                    </Link>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
           </div>
 
-          {/* Sidebar */}
           <aside className="space-y-6">
             <div className="site-card p-6">
-              <p className="eyebrow">Academic Oversight</p>
+              <p className="eyebrow">Faculty Oversight</p>
               <div className="mt-4 flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--gold)]/10 border border-[var(--gold)]/20 text-[var(--gold)] shrink-0">
-                  <UserCheck size={18} />
-                </div>
+                <UserCheck size={18} className="mt-0.5 text-[var(--gold)] shrink-0" aria-hidden="true" />
                 <div>
-                  <span className="font-mono text-[10px] uppercase text-[var(--ink-faint)]">Faculty Advisor</span>
-                  <p className="font-semibold text-sm text-[var(--ink)] mt-0.5">
-                    {chapter.facultyAdvisor || "Chapter Faculty Coordinator"}
+                  <p className="font-semibold text-sm text-[var(--ink)]">
+                    {chapter.facultyAdvisor || "Faculty Coordinator"}
                   </p>
                   <p className="text-xs text-[var(--ink-soft)] mt-1">
                     {chapter.advisorDepartment || chapter.faculty}
@@ -193,33 +164,28 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
             </div>
 
             <div className="site-card p-6">
-              <p className="eyebrow">Campus Geography</p>
+              <p className="eyebrow">Campus Location</p>
               <div className="mt-4 flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--gold)]/10 border border-[var(--gold)]/20 text-[var(--gold)] shrink-0">
-                  <MapPin size={18} />
-                </div>
+                <MapPin size={18} className="mt-0.5 text-[var(--gold)] shrink-0" aria-hidden="true" />
                 <div>
-                  <span className="font-mono text-[10px] uppercase text-[var(--ink-faint)]">Location</span>
-                  <p className="font-semibold text-sm text-[var(--ink)] mt-0.5">
-                    {chapter.city}, Egypt
-                  </p>
-                  <p className="text-xs text-[var(--ink-soft)] mt-1">
-                    {chapter.campus || chapter.faculty}
-                  </p>
+                  <p className="font-semibold text-sm text-[var(--ink)]">{chapter.city}, Egypt</p>
+                  <p className="text-xs text-[var(--ink-soft)] mt-1">{chapter.campus}</p>
                 </div>
               </div>
             </div>
 
             <div className="site-card p-6 border-l-2 border-l-[var(--gold)]">
-              <h3 className="font-bold text-sm text-[var(--ink)]">Connect with the Chapter</h3>
-              <p className="mt-2 text-xs text-[var(--ink-soft)] leading-relaxed">
-                Interested in attending campus seminars, collaborating on student projects, or joining this chapter as a member?
+              <h3 className="font-bold text-sm text-[var(--ink)]">Connect with Chapter Desk</h3>
+              <p className="mt-2 text-xs text-[var(--ink-soft)]">
+                Join reactivation efforts or coordinate an inter-university workshop.
               </p>
-              <div className="mt-4">
-                <Link href="/volunteer" className="btn-primary w-full justify-center text-xs">
-                  Connect via Student Affairs <ArrowUpRight size={13} />
-                </Link>
-              </div>
+              <Link
+                href={`/join?type=chapter&ref=${chapter.id}`}
+                className="btn-primary mt-4 min-h-[48px] w-full justify-center"
+              >
+                <span>Submit Chapter Request</span>
+                <ArrowUpRight size={13} aria-hidden="true" />
+              </Link>
             </div>
           </aside>
         </div>

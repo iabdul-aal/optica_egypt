@@ -1,18 +1,23 @@
 {
-  "name": { "en": "Optica Egypt Local Section" },
-  "shortName": { "en": "Optica Egypt" },
-  "tagline": { "en": "Connecting Talent. Advancing Photonics." },
+  "name": "Optica Egypt Local Section",
+  "shortName": "Optica Egypt",
+  "tagline": "Connecting Egypt's optics and photonics community.",
+  "affiliation": "Official Local Section of Optica, chartered 10 September 2026.",
   "founded": "2026",
   "approvedDate": "10 September 2026",
   "approvalDateISO": "2026-09-10",
-  "email": "opticaegypt@gmail.com",
-  "joinFormUrl": "/join#member-portal",
+  "email": "info@optica-egypt.com",
+  "joinUrl": "/join",
   "driveUrl": "https://drive.google.com/drive/folders/1_pzdKToj0i_mPpY1oVYkbYakw0-xxfPc",
   "social": {
-    "linkedin": "optica-egypt",
-    "instagram": "opticaegypt",
-    "twitter": "opticaegypt",
-    "youtube": ""
+    "linkedin": "optica-egypt-section",
+    "facebook": "optica.egypt.section",
+    "instagram": "",
+    "twitter": "",
+    "whatsapp": "",
+    "telegram": "",
+    "youtube": "",
+    "tiktok": ""
   },
   "parentOrg": {
     "name": "Optica",
@@ -21,7 +26,7 @@
   "seo": {
     "defaultTitle": "Optica Egypt Local Section",
     "titleTemplate": "%s | Optica Egypt",
-    "defaultDescription": "Optica Egypt Local Section connects Egypt's photonics community, including students, researchers, universities, industry, and startups, to the global photonics ecosystem.",
-    "siteUrl": "https://iabdul-aal.me/optica_egypt"
+    "defaultDescription": "Optica Egypt Local Section connects students, researchers, faculty, and engineers across Egypt with open-source photonics tools, student chapters, and Optica networks.",
+    "siteUrl": "https://optica-egypt.com"
   }
 }

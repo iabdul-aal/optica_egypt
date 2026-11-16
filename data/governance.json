@@ -1,0 +1,89 @@
+{
+  "eyebrow": "Governance and Bylaws",
+  "title": "Section Charter and Governance",
+  "intro": "Charter verification, Optica Local Section bylaw compliance, executive seat alignment, and annual reporting records.",
+  "charterRecord": {
+    "approvalDate": "10 September 2026",
+    "approvalISO": "2026-09-10",
+    "parentOrganization": "Optica",
+    "parentUrl": "https://www.optica.org/get_involved/local_sections/",
+    "contactEmail": "info@optica-egypt.com",
+    "hqContact": "localsections@optica.org",
+    "currentStanding": "Chartered Active Section (Inaugural Cycle)"
+  },
+  "bylawStandards": [
+    {
+      "id": "member-standing",
+      "number": "01",
+      "title": "Minimum Member Standing",
+      "requirement": "At least 8 active section members, including at least 5 Optica Global members across academia, industry, or government.",
+      "sectionStatus": "Satisfied in the inaugural roster of 16 founding officers and faculty advisors."
+    },
+    {
+      "id": "elected-officers",
+      "number": "02",
+      "title": "Elected Officers",
+      "requirement": "President, Vice President, Treasurer, and Secretary serving two-year calendar terms with active Optica membership.",
+      "sectionStatus": "All four constitutional executive seats filled in the inaugural charter roster."
+    },
+    {
+      "id": "decision-quorum",
+      "number": "03",
+      "title": "Decision Quorum",
+      "requirement": "30% of section membership required for official business and elections.",
+      "sectionStatus": "Applied to section resolutions, committee governance, and election procedures."
+    },
+    {
+      "id": "annual-reporting",
+      "number": "04",
+      "title": "Annual Reporting",
+      "requirement": "Annual Activity Report and Membership Roster submitted to Optica by 31 December.",
+      "sectionStatus": "Tracked cleanly across dispatches, projects, and active member records."
+    }
+  ],
+  "executiveAlignment": [
+    { "constitutionalSeat": "President", "memberId": "abdulaziz-albadawi" },
+    { "constitutionalSeat": "Vice President", "memberId": "khaled-ramadan" },
+    { "constitutionalSeat": "Secretary", "memberId": "mohammed-elsherbiny" },
+    { "constitutionalSeat": "Treasurer", "memberId": "arwa-elsherbiny" }
+  ],
+  "annualReportScope": [
+    {
+      "id": "events-meetings",
+      "title": "Events and Technical Meetings",
+      "sourceFile": "data/dispatches.json",
+      "description": "Confirmed seminars, workshops, and technical sessions published on the section calendar."
+    },
+    {
+      "id": "projects-outreach",
+      "title": "Projects and Campus Outreach",
+      "sourceFile": "data/projects.json",
+      "description": "Active student initiatives, campus outreach activities, and hosting partnerships."
+    },
+    {
+      "id": "officer-roster",
+      "title": "Active Officer and Member Roster",
+      "sourceFile": "data/members.json",
+      "description": "Constitutional officers, committee leads, advisors, and verified Optica membership IDs."
+    }
+  ],
+  "partnershipModels": [
+    {
+      "id": "academic",
+      "title": "University and Lab Hosting",
+      "scope": "Campus venues, computer labs, faculty advisorship, and Traveling Lecturer sessions."
+    },
+    {
+      "id": "industry",
+      "title": "Industry Technical Exchange",
+      "scope": "Engineering talks, capstone mentorship, and prototyping/MPW sponsorship."
+    },
+    {
+      "id": "national",
+      "title": "National Science Alignment",
+      "scope": "Connecting student teams to ITIDA, ASRT, STDF, and regional STEM outreach."
+    }
+  ],
+  "partners": [],
+  "recognitions": []
+}

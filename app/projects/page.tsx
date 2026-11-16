@@ -1,0 +1,41 @@
+import type { Metadata } from "next"
+import { Suspense } from "react"
+import { PageHeader } from "@/components/sections/PageHeader"
+import { ProjectsDirectory } from "@/components/sections/ProjectsDirectory"
+import { getAllProjects } from "@/lib/projects"
+import { buildPageMetadata } from "@/lib/seo"
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Projects and Initiatives",
+  description:
+    "Open-source photonics working groups, seasonal training roadmaps, thesis guidance, and student outreach led by the Optica Egypt Local Section.",
+  path: "/projects",
+})
+
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>
+}) {
+  const params = await searchParams
+  const rawTrack = typeof params.track === "string" ? params.track : "all"
+  const projects = getAllProjects()
+
+  return (
+    <>
+      <PageHeader
+        eyebrow="Initiatives Index"
+        title="Projects, Working Groups, and Open Calls."
+        intro="Every technical initiative, training roadmap, and fellowship pathway tracked with its funding status, section lead, and linked tools."
+      />
+
+      <section className="section-space">
+        <div className="container-page">
+          <Suspense fallback={<div className="site-card p-8 text-sm text-[var(--ink-soft)]">Loading projects...</div>}>
+            <ProjectsDirectory projects={projects} initialTrack={rawTrack} />
+          </Suspense>
+        </div>
+      </section>
+    </>
+  )
+}

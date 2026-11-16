@@ -1,70 +1,48 @@
 # Optica Egypt Local Section
 
-> Official website of the Optica Egypt Local Section, connecting Egyptian students, researchers, universities, startups, and industry to the global photonics ecosystem.
+> Official digital platform of the Optica Egypt Local Section, connecting Egyptian students, researchers, faculty, and engineers to the global optics and photonics community.
 
-Optica approved the charter of the Optica Egypt Local Section on 10 September 2026. The section serves as Egypt's national hub for optics and photonics research, professional networking, industry translation, and student development.
+Optica approved the charter of the Optica Egypt Local Section on 10 September 2026. The section operates as a chartered volunteer local section of Optica, legally and operationally distinct from Optica Global corporate headquarters in Washington, D.C.
 
 ## Core Information
 - Name: Optica Egypt Local Section
-- Parent Organization: Optica (founded 1916, global society in optics and photonics)
-- Approval Date: 10 September 2026
-- Inauguration Ceremony: 1 November 2026
-- Geographic Focus: Egypt (Cairo, Alexandria, Giza, Delta, Zewail City, and nationwide across universities)
-- Official Website: https://iabdul-aal.me/optica_egypt/
-- Contact: opticaegypt@gmail.com
-- LinkedIn: https://www.linkedin.com/company/optica-egypt
+- Parent Organization: Optica (Washington, D.C., USA)
+- Charter Approval Date: 10 September 2026
+- Chartered Student Chapters in Egypt: 1 (The American University in Cairo Optica Student Chapter, currently undergoing reactivation)
+- Official Website: https://optica-egypt.com/
+- Contact: info@optica-egypt.com
+- LinkedIn: https://www.linkedin.com/company/optica-egypt-section
+- Facebook: https://www.facebook.com/optica.egypt.section
 
-## Founding Executive Committee (All Officers are Founding Members / Co-Founders)
-- Abdulaziz Albadawi, First President and Co-Founder (Optica ID: 2798420) | The American University in Cairo (AUC) | Laser Science and Optical Sensors
-- Ahmed Magdy, Founding Vice President and Co-Founder (Email: ahmed.magdy.roshdy1@gmail.com) | Ain Shams University / Si-Ware Systems
-- Mohamed Nader, Founding Secretary and Co-Founder (Optica ID: 2798431) | Ain Shams University | Silicon Photonics
-- Arwa Elsherbiny, Founding Treasurer and Co-Founder (Optica ID: 2822044) | Ain Shams University | Quantum Optics
-- Islam I. Abdulaal, Section Initiator, Founder, and Webmaster (Website: https://iabdul-aal.me/, Email: contact@iabdul-aal.me) | FAU Erlangen-Nürnberg | Integrated Nanophotonics
+## Founding Leadership Roster (16 Active Officers and Advisors)
 
-## Founding Operational Committee
-- Khaled Ramadan, Founding Technical Programs Lead and Co-Founder (Optica ID: 2798622) | Ain Shams University | Silicon Photonics
-- Mariam Awd (Hussein), Founding Growth Officer and Co-Founder (Optica ID: 2798018) | GUC Micro Optics Lab
-- Mohammed Khedr, Founding Outreach Officer and Co-Founder | Ain Shams University / AUC
-- Jannah Ahmed, Founding Branding Officer and Co-Founder | Ain Shams University / Nile University
-- Yahia Ghadiry, Founding Activities Officer and Co-Founder (Optica ID: 2779704) | Ain Shams University / Si-Ware
-- Omar Ayoub, Founding QA Officer and Co-Founder (Optica ID: 2779412) | Ain Shams University / Si-Ware
-- Abdelrhman Hassan, Founding Student Chapters Coordinator and Co-Founder (Optica ID: 2779649) | Sphinx University / AUC
-- Abdlrhman Hamza, Founding Member and Co-Founder | Ain Shams University
+### Founding Executive Committee (5)
+- Abdulaziz Albadawi, First President (First President and Co-Founder, Optica ID: 2798420) | The American University in Cairo (AUC)
+- Khaled Ramadan, Vice President (Vice President and Co-Founder, Optica ID: 2798622) | Ain Shams University
+- Mohamed Nader, Secretary (Secretary and Co-Founder, Optica ID: 2798431) | Ain Shams University
+- Arwa Elsherbiny, Treasurer (Treasurer and Co-Founder, Optica ID: 2822044) | Ain Shams University
+- Islam I. Abdulaal, Webmaster and Section Initiator (Founder and Section Initiator) | FAU Erlangen-Nürnberg
 
-## Founding Senior Faculty Advisory Board
-- Prof. Diaa Khalil | Professor of Photonics, Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Optica Fellow; Stanford Top 2% Scientist globally.
-- Prof. Mohamed A. Swillam | Professor and Chair of Physics at The American University in Cairo (AUC); Optica Fellow and SPIE Fellow.
-- Prof. Tarek A. Ramadan | Professor of Photonics at Ain Shams University and Zewail City of Science and Technology.
-- Prof. Yasser Sabry | Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; SPIE Prism Award winner.
-- Prof. Amr M. Shaarawi | Professor of Physics and Former Provost at The American University in Cairo (AUC); Optica Fellow.
-- Assoc. Prof. Salem Hegazy | Associate Professor of Quantum Optics at Cairo University and Zewail City; State Award for Scientific and Technological Innovation recipient.
+### Founding Operational Committee (8)
+- Mariam Awd, Growth Officer (Growth Officer and Co-Founder, Optica ID: 2798018) | German University in Cairo (GUC)
+- Mohammed Khedr, Outreach Officer (Outreach Officer and Co-Founder) | Ain Shams University
+- Jannah Ahmed, Branding Officer (Branding Officer and Co-Founder) | Ain Shams University
+- Yahia Ghadiry, Activities Officer (Activities Officer and Co-Founder, Optica ID: 2779704) | Ain Shams University
+- Ahmed Magdy, Logistics Officer (Logistics Officer and Co-Founder) | Ain Shams University
+- Omar Ayoub, QA Officer (QA Officer and Co-Founder, Optica ID: 2779412) | Ain Shams University
+- Abdelrhman Hassan, Volunteers Officer (Volunteers Officer and Co-Founder, Optica ID: 2779649) | Sphinx University
+- Abdlrhman Hamza, Founding Member (Founding Member and Co-Founder) | Ain Shams University
 
-## Section Sitemap (4-Group Taxonomy)
+### Founding Senior Faculty Advisors (3)
+- Prof. Diaa Khalil, Senior Faculty Advisor | Ain Shams University / Si-Ware Systems
+- Prof. Yasser Sabry, Senior Faculty Advisor | Ain Shams University / Si-Ware Systems
+- Assoc. Prof. Salem Hegazy, Senior Faculty Advisor | Cairo University / Zewail City
 
-### 1. Section
-- [About](https://iabdul-aal.me/optica_egypt/about/): Vision, mission, core values, charter milestones, and five-pillar operational strategy.
-- [Leadership](https://iabdul-aal.me/optica_egypt/leadership/): Founding Executive Council, Operational Committee, and Senior Faculty Advisory Board.
-- [Recognitions](https://iabdul-aal.me/optica_egypt/recognitions/): Optica Fellows in Egypt, Best Thesis and Graduation Project Fund, and student honors.
-- [Partners](https://iabdul-aal.me/optica_egypt/partners/): Institutional alliances, industry partners, university nodes, and sponsorship tiers.
-
-### 2. Community
-- [Community Overview](https://iabdul-aal.me/optica_egypt/community/): Ecosystem connecting students, researchers, faculty, and industry.
-- [Chapters](https://iabdul-aal.me/optica_egypt/chapters/): Chartered university student chapters across Egypt.
-- [Fellowships](https://iabdul-aal.me/optica_egypt/fellowships/): Global Optica Foundation scholarships, travel grants, and career acceleration.
-- [Outreach](https://iabdul-aal.me/optica_egypt/outreach/): STEM roadshows, Youth Optics Discovery Days, and public science kits.
-- [Volunteer](https://iabdul-aal.me/optica_egypt/volunteer/): Functional volunteer tracks and in-page volunteer application portal.
-
-### 3. Program
-- [Events](https://iabdul-aal.me/optica_egypt/events/): Upcoming seminars, workshops, and the Inauguration Ceremony (1 November 2026).
-- [Conferences](https://iabdul-aal.me/optica_egypt/conferences/): Flagship Egypt Photonics Conference (EPC 2027) and technical tracks.
-- [Education](https://iabdul-aal.me/optica_egypt/education/): Seasonal schools, curriculum modernization, and training modules.
-- [Competitions](https://iabdul-aal.me/optica_egypt/competitions/): Annual Photonics Design Hackathon and Open-Source Chipathon.
-- [Open-Source](https://iabdul-aal.me/optica_egypt/open-source/): Photonic Design Automation (PDA) with gdsfactory, Meep FDTD, and KLayout.
-- [Resources](https://iabdul-aal.me/optica_egypt/resources/): Curated simulation tools, textbooks, and open PDK references.
-
-### 4. Insights and Primary Action
-- [News](https://iabdul-aal.me/optica_egypt/news/): Official section dispatches and charter announcements.
-- [Blogs](https://iabdul-aal.me/optica_egypt/blogs/): Technical articles, gdsfactory tutorials, and research spotlights.
-- [Press](https://iabdul-aal.me/optica_egypt/press/): Official boilerplate, press releases, downloadable SVG media kit, printable Fact Sheet, and press desk form.
-- [Gallery](https://iabdul-aal.me/optica_egypt/gallery/): Visual archive of workshops, cleanroom tours, and section milestones.
-- [Join](https://iabdul-aal.me/optica_egypt/join/): Global Optica membership pathways and in-page Local Section Roster and Program Submission Portal.
+## Canonical Sitemap (Strict English-Only Architecture)
+- [Home](https://optica-egypt.com/): Institutional overview, active updates, featured initiatives, and research domains.
+- [About](https://optica-egypt.com/about): Charter record, governance bylaws, constitutional officers, 16-member roster (`/leadership/[id]`), partnership models, boilerplate, and vector media kit.
+- [Chapters](https://optica-egypt.com/chapters): Interactive Egypt map, reactivating AUC chapter (`/chapters/auc`), and national charter checklist.
+- [Projects](https://optica-egypt.com/projects): Open-source photonics PDA working group, training roadmaps, thesis concepts, and campus outreach (`/projects/[slug]`).
+- [Resources](https://optica-egypt.com/resources): Free Python photonics software, domestic Egyptian research grants (ITIDA, ASRT, STDF), journals, and Optica membership cohorts.
+- [Updates](https://optica-egypt.com/updates): Verified announcements, confirmed events, technical articles, and media records (`/updates/[slug]`).
+- [Join](https://optica-egypt.com/join): Two-step Global Optica and Local Section intake backed by Postgres (`/api/recruitment` and `/api/submissions`), plus official social channels.

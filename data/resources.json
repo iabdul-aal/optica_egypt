@@ -1,202 +1,171 @@
 [
   {
     "id": "itida-itac-grants",
-    "title": {
-      "en": "ITIDA ITAC Graduation Project Funding"
-    },
-    "description": {
-      "en": "Annual Egyptian Ministry of Communications (MCIT) grant providing up to 50,000 EGP per engineering team for graduation capstones in electronics and photonics."
-    },
+    "title": "ITIDA ITAC Graduation Project Funding",
+    "description": "Egyptian ITIDA grant program funding senior graduation projects and industry-academia photonics prototypes.",
     "url": "https://itida.gov.eg",
     "category": "grants",
-    "tags": [
-      "itida",
-      "mcit",
-      "egypt",
-      "graduation-project",
-      "funding"
-    ],
+    "costTier": "grant",
+    "accessReq": "Egyptian university team",
+    "domainIds": ["photonic-ic", "mems-sensing"],
+    "tags": ["itida", "mcit", "egypt", "graduation-project", "funding"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "asrt-mashrouy-grants",
-    "title": {
-      "en": "ASRT Mashrouy, National Graduation Project Grants"
-    },
-    "description": {
-      "en": "Academy of Scientific Research and Technology funding program supporting graduation research projects and deep-tech prototypes in Egyptian universities."
-    },
+    "title": "ASRT Mashrouy: Graduation Project Grants",
+    "description": "Academy of Scientific Research and Technology grants supporting senior student engineering prototypes.",
     "url": "http://www.asrt.sci.eg",
     "category": "grants",
-    "tags": [
-      "asrt",
-      "egypt",
-      "government",
-      "research",
-      "graduation-project"
-    ],
+    "costTier": "grant",
+    "accessReq": "Egyptian university team",
+    "domainIds": ["photonic-ic", "lasers-nonlinear"],
+    "tags": ["asrt", "egypt", "research", "graduation-project"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "stdf-innovation-grants",
-    "title": {
-      "en": "STDF, Science, Technology and Innovation Funding Authority"
-    },
-    "description": {
-      "en": "Primary Egyptian funding agency financing capacity building, basic scientific research, and applied photonics innovation across Egyptian research institutes."
-    },
+    "title": "STDF: Science, Technology and Innovation Funding Authority",
+    "description": "National Egyptian authority financing capacity building and applied optics research across institutes.",
     "url": "https://www.stdf.eg",
     "category": "grants",
-    "tags": [
-      "stdf",
-      "egypt",
-      "research-grants",
-      "capacity-building"
-    ],
+    "costTier": "grant",
+    "accessReq": "Faculty or research institute",
+    "domainIds": ["photonic-ic", "optical-comm", "mems-sensing", "quantum-nano"],
+    "tags": ["stdf", "egypt", "research-grants"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "optica-foundation-grants",
-    "title": {
-      "en": "Optica Foundation Student Travel Grants and Fellowships"
-    },
-    "description": {
-      "en": "International travel funding, Amplify scholarships, and career advancement awards for optical science students and researchers."
-    },
+    "title": "Optica Foundation Fellowships and Travel Grants",
+    "description": "Global scholarships, Siegman Laser School, Women Scholars, Amplify, and conference travel grants.",
     "url": "https://www.optica.org/foundation/opportunities/",
     "category": "grants",
-    "tags": [
-      "scholarship",
-      "travel-grant",
-      "funding",
-      "students"
-    ],
+    "costTier": "grant",
+    "accessReq": "Optica student/early-career criteria",
+    "domainIds": ["lasers-nonlinear", "photonic-ic", "quantum-nano"],
+    "tags": ["optica", "travel-grant", "scholarship", "fellowships"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "gdsfactory-colab-notebooks",
-    "title": {
-      "en": "gdsfactory Interactive Cloud Notebooks"
-    },
-    "description": {
-      "en": "Zero-installation, browser-based Jupyter notebooks on Google Colab for interactive silicon photonics design, layout scripting, and PDK DRC verification."
-    },
+    "title": "gdsfactory Interactive Cloud Notebooks",
+    "description": "Zero-install Jupyter notebooks in browser for silicon photonics scripting and circuit verification.",
     "url": "https://gdsfactory.github.io/gdsfactory/notebooks.html",
     "category": "software",
-    "tags": [
-      "python",
-      "colab",
-      "cloud",
-      "zero-install",
-      "pic"
-    ],
+    "costTier": "free",
+    "accessReq": "Browser only",
+    "domainIds": ["photonic-ic"],
+    "tags": ["python", "colab", "cloud", "zero-install", "pic"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "gdsfactory-pic-design",
-    "title": {
-      "en": "gdsfactory, Open-Source Silicon Photonics Design"
-    },
-    "description": {
-      "en": "Python framework for layout, design rule checking, and tapeout verification of Photonic Integrated Circuits (PICs)."
-    },
+    "title": "gdsfactory: Open-Source Silicon Photonics Design",
+    "description": "Python framework for parameterized photonic integrated circuit layout, DRC, and open PDK flows.",
     "url": "https://gdsfactory.github.io/gdsfactory/",
     "category": "software",
-    "tags": [
-      "pic",
-      "python",
-      "eda",
-      "open-source"
-    ],
+    "costTier": "free",
+    "accessReq": "Local Python or Colab",
+    "domainIds": ["photonic-ic"],
+    "tags": ["pic", "python", "eda", "open-source"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "meep-fdtd-simulation",
-    "title": {
-      "en": "Meep FDTD, Electromagnetic Wave Solver"
-    },
-    "description": {
-      "en": "MIT open-source finite-difference time-domain (FDTD) simulation software package for electrodynamics and optical physics."
-    },
+    "title": "Meep FDTD: Electromagnetic Wave Solver",
+    "description": "MIT open-source finite-difference time-domain (FDTD) simulator for waveguiding and nanophotonics.",
     "url": "https://meep.readthedocs.io",
     "category": "software",
-    "tags": [
-      "simulation",
-      "fdtd",
-      "mit",
-      "physics"
-    ],
+    "costTier": "free",
+    "accessReq": "Linux/WSL or Colab",
+    "domainIds": ["photonic-ic", "quantum-nano", "lasers-nonlinear"],
+    "tags": ["simulation", "fdtd", "mit", "physics"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
-    "id": "shared-characterization-consortium",
-    "title": {
-      "en": "Optica Egypt Inter-University Characterization Protocol"
-    },
-    "description": {
-      "en": "Guidelines and submission schedule for Egyptian university teams to access shared optical test benches at AUC, Ain Shams, and Si-Ware for passive chip measurement."
-    },
-    "url": "/open-source",
+    "id": "siepic-tools-eda",
+    "title": "SiEPIC-Tools for KLayout",
+    "description": "KLayout silicon photonics verification and layout package maintained with the University of British Columbia.",
+    "url": "https://github.com/SiEPIC/SiEPIC-Tools",
+    "category": "software",
+    "costTier": "free",
+    "accessReq": "KLayout desktop app",
+    "domainIds": ["photonic-ic"],
+    "tags": ["klayout", "siepic", "pic", "eda"],
+    "lastVerifiedISO": "2026-11-16",
+    "free": true
+  },
+  {
+    "id": "femwell-mode-solver",
+    "title": "Femwell: Python Optical Mode Solver",
+    "description": "Open finite-element waveguide mode solver in Python pairing directly with gdsfactory geometry.",
+    "url": "https://github.com/HelgeGehring/femwell",
+    "category": "software",
+    "costTier": "free",
+    "accessReq": "Python",
+    "domainIds": ["photonic-ic"],
+    "tags": ["python", "fem", "waveguide", "open-source"],
+    "lastVerifiedISO": "2026-11-16",
+    "free": true
+  },
+  {
+    "id": "optica-traveling-lecturer",
+    "title": "Optica Traveling Lecturer Program",
+    "description": "Society funding for visiting international speakers hosted by chartered local sections and student chapters.",
+    "url": "https://www.optica.org/get_involved/student_chapters/",
     "category": "learning",
-    "tags": [
-      "measurement",
-      "testing",
-      "consortium",
-      "egypt",
-      "labs"
-    ],
+    "costTier": "grant",
+    "accessReq": "Chartered chapter or section",
+    "domainIds": ["optical-comm", "photonic-ic", "lasers-nonlinear"],
+    "tags": ["optica", "lecturers", "chapters", "seminars"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "optica-publishing-group",
-    "title": {
-      "en": "Optica Publishing Group, Peer-Reviewed Journals"
-    },
-    "description": {
-      "en": "Access Optica, Optics Express, Applied Optics, and the largest peer-reviewed digital library in optics and photonics."
-    },
+    "title": "Optica Publishing Group Journals",
+    "description": "Peer-reviewed optics archive including Optica, Optics Express, and Applied Optics.",
     "url": "https://opg.optica.org",
-    "category": "journal",
-    "tags": [
-      "optica",
-      "peer-reviewed",
-      "research"
-    ],
+    "category": "journals",
+    "costTier": "tier2-discount",
+    "accessReq": "Open access or Optica login",
+    "domainIds": ["photonic-ic", "optical-comm", "lasers-nonlinear", "mems-sensing", "quantum-nano"],
+    "tags": ["optica", "peer-reviewed", "journals"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "arxiv-physics-optics",
-    "title": {
-      "en": "arXiv Physics, Optics and Quantum Preprints"
-    },
-    "description": {
-      "en": "Free repository of open-access preprint research manuscripts covering fundamental and applied optical physics."
-    },
+    "title": "arXiv Physics: Optics Preprints",
+    "description": "Open preprint archive covering optical physics, integrated photonics, and quantum optics manuscripts.",
     "url": "https://arxiv.org/list/physics.optics/recent",
-    "category": "journal",
-    "tags": [
-      "preprint",
-      "free",
-      "research",
-      "arxiv"
-    ],
+    "category": "journals",
+    "costTier": "free",
+    "accessReq": "Open access",
+    "domainIds": ["quantum-nano", "lasers-nonlinear", "photonic-ic"],
+    "tags": ["preprint", "free", "research", "arxiv"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   },
   {
     "id": "photonics-spectra-tech",
-    "title": {
-      "en": "Photonics Spectra, DeepTech Industry Analysis"
-    },
-    "description": {
-      "en": "Leading industry analysis covering lasers, fiber optics, sensors, imaging, and photonics manufacturing breakthroughs."
-    },
+    "title": "Photonics Spectra Technical Archive",
+    "description": "Applied industry reference covering lasers, fiber optics, sensors, imaging, and optical fabrication.",
     "url": "https://www.photonics.com",
     "category": "learning",
-    "tags": [
-      "industry",
-      "lasers",
-      "technology"
-    ],
+    "costTier": "free",
+    "accessReq": "Open access",
+    "domainIds": ["mems-sensing", "optical-comm", "lasers-nonlinear"],
+    "tags": ["industry", "lasers", "sensors"],
+    "lastVerifiedISO": "2026-11-16",
     "free": true
   }
 ]

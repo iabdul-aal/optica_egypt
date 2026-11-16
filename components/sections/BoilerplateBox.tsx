@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Copy, Check, FileText } from "lucide-react"
+import { copyTextSafely } from "@/lib/clipboard"
 
 type BoilerplateBoxProps = {
   title: string
@@ -13,8 +14,9 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
   const [copiedFull, setCopiedFull] = useState(false)
   const [copiedShort, setCopiedShort] = useState(false)
 
-  function handleCopy(text: string, isShort: boolean) {
-    navigator.clipboard.writeText(text)
+  async function handleCopy(text: string, isShort: boolean) {
+    const ok = await copyTextSafely(text)
+    if (!ok) return
     if (isShort) {
       setCopiedShort(true)
       setTimeout(() => setCopiedShort(false), 2000)
@@ -33,11 +35,11 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
             {title}
           </h3>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => handleCopy(body, false)}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1.5 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[40px]"
+            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px]"
           >
             {copiedFull ? <Check size={13} className="text-[var(--gold)]" /> : <Copy size={13} />}
             <span>{copiedFull ? "Copied" : "Copy Boilerplate"}</span>
@@ -45,7 +47,7 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
           <button
             type="button"
             onClick={() => handleCopy(short, true)}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1.5 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[40px]"
+            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px]"
           >
             {copiedShort ? <Check size={13} className="text-[var(--gold)]" /> : <Copy size={13} />}
             <span>{copiedShort ? "Copied Short" : "Copy Short Version"}</span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Optica Egypt Local Section — Official Fact Sheet and Charter Profile</title>
+  <title>Optica Egypt Local Section - Official Fact Sheet and Charter Profile</title>
   <style>
     :root {
       --navy: #09131F;
@@ -19,7 +19,7 @@
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: var(--ink);
       background: #E2E8F0;
-      line-height: 1.55;
+      line-height: 1.5;
       padding: 2rem 1rem;
     }
     .toolbar {
@@ -50,70 +50,96 @@
       max-width: 210mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 18mm 18mm;
+      padding: 15mm 16mm;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     }
     .header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 1rem;
       border-bottom: 3px solid var(--navy);
-      padding-bottom: 1.25rem;
-      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1.15rem;
     }
     .brand-title {
-      font-size: 1.75rem;
+      font-size: 1.65rem;
       font-weight: 800;
       color: var(--navy);
       letter-spacing: -0.02em;
     }
     .brand-sub {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
       color: var(--gold-dark);
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       margin-top: 0.2rem;
     }
     .meta-box {
       text-align: right;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--muted);
+      line-height: 1.55;
     }
     .meta-box strong { color: var(--navy); }
     h2 {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--gold-dark);
       border-bottom: 1px solid var(--line);
-      padding-bottom: 0.35rem;
-      margin: 1.35rem 0 0.75rem;
+      padding-bottom: 0.3rem;
+      margin: 1.15rem 0 0.65rem;
     }
-    p { font-size: 0.88rem; color: var(--ink); margin-bottom: 0.65rem; }
+    p { font-size: 0.84rem; color: var(--ink); margin-bottom: 0.55rem; }
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.85rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
     }
     .card {
       background: var(--surface);
       border: 1px solid var(--line);
       border-left: 3px solid var(--gold);
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 0.9rem;
     }
-    .card h3 { font-size: 0.9rem; color: var(--navy); margin-bottom: 0.25rem; }
-    .card p { font-size: 0.8rem; color: var(--muted); margin: 0; }
-    ul { padding-left: 1.1rem; font-size: 0.84rem; color: var(--ink); }
-    li { margin-bottom: 0.35rem; }
+    .card-full {
+      grid-column: 1 / -1;
+    }
+    .card h3 { font-size: 0.86rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .card p, .card li { font-size: 0.77rem; color: var(--muted); line-height: 1.48; }
+    .roster-list {
+      list-style: none;
+      padding: 0;
+    }
+    .roster-list li {
+      margin-bottom: 0.25rem;
+      color: var(--ink);
+    }
+    .roster-list strong { color: var(--navy); }
+    ul.bullets { padding-left: 1.1rem; font-size: 0.81rem; color: var(--ink); }
+    ul.bullets li { margin-bottom: 0.3rem; }
     .footer {
-      margin-top: 2rem;
-      padding-top: 0.85rem;
+      margin-top: 1.5rem;
+      padding-top: 0.75rem;
       border-top: 1px solid var(--line);
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      font-size: 0.75rem;
+      gap: 0.5rem;
+      font-size: 0.72rem;
       color: var(--muted);
+    }
+    @media (max-width: 640px) {
+      .header { flex-direction: column; }
+      .meta-box { text-align: left; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
     }
     @media print {
       body { background: #fff; padding: 0; }
@@ -124,73 +150,89 @@
 </head>
 <body>
   <div class="toolbar">
-    <span><strong>Optica Egypt Local Section</strong> — Official Executive Fact Sheet</span>
-    <button onclick="window.print()">Print / Save as PDF</button>
+    <span><strong>Optica Egypt Local Section</strong> - Official Charter Fact Sheet</span>
+    <button onclick="window.print()">Print or Save as PDF</button>
   </div>
 
   <main class="sheet">
     <header class="header">
       <div>
         <div class="brand-title">Optica Egypt Local Section</div>
-        <div class="brand-sub">Official Charter of Optica Worldwide</div>
+        <div class="brand-sub">Chartered Local Section of Optica</div>
       </div>
       <div class="meta-box">
         <div><strong>Charter Approved:</strong> 10 September 2026</div>
-        <div><strong>Inauguration:</strong> 1 November 2026</div>
+        <div><strong>Launch Phase:</strong> Inaugural Planning Cycle</div>
         <div><strong>Parent Society:</strong> Optica (Washington, D.C.)</div>
       </div>
     </header>
 
-    <h2>Executive Overview and Mandate</h2>
+    <h2>Charter Mandate and Governance Boundary</h2>
     <p>
-      The Optica Egypt Local Section is the official national charter of Optica (formerly OSA) in the Arab Republic of Egypt. Established on 10 September 2026, the section unites university students, academic researchers, faculty, and deep-tech industry engineers across Egypt into a single collaborative ecosystem connected to the global optics and photonics community.
+      The Optica Egypt Local Section is a chartered local volunteer section of Optica in the Arab Republic of Egypt, approved on 10 September 2026. The section connects university students, academic researchers, faculty advisors, and industry engineers across Egypt to the global optics and photonics community.
+    </p>
+    <p>
+      As an Optica Local Section operating under Optica section bylaws, Optica Egypt functions as a regional volunteer organization and remains legally and operationally distinct from Optica Global corporate headquarters in Washington, D.C.
     </p>
 
-    <div class="grid-2" style="margin-top: 0.85rem;">
+    <div class="grid-2" style="margin-top: 0.7rem;">
       <div class="card">
-        <h3>Strategic Vision</h3>
-        <p>Position Egypt as the premier regional hub for optical science, silicon photonics design, and deep-tech innovation across the Middle East and North Africa.</p>
+        <h3>Strategic Mandate</h3>
+        <p>Support open technical exchange, computational photonics education, student chapter development, and research collaboration across Egyptian universities and laboratories.</p>
       </div>
       <div class="card">
-        <h3>Operational Mission</h3>
-        <p>Democratize photonics education, open-source design automation, and research funding with zero financial barriers for Egyptian students and researchers.</p>
+        <h3>Student Chapters Network</h3>
+        <p><strong>1 Chartered Optica Student Chapter:</strong> The American University in Cairo (AUC) Optica Student Chapter (currently undergoing reactivation). Open to charter applications from universities across Egypt.</p>
       </div>
     </div>
 
-    <h2>Five Strategic Execution Pillars</h2>
-    <ul>
-      <li><strong>Open-Source Photonic Design Automation (PDA):</strong> Zero-cost Python layout and FDTD simulation workflows using gdsfactory, Meep, and KLayout.</li>
-      <li><strong>Flagship Scientific Conference (EPC 2027):</strong> Peer-reviewed Egypt Photonics Conference with five technical tracks and DOI-indexed proceedings.</li>
-      <li><strong>Academic Upskilling and Seasonal Schools:</strong> Intensive tuition-free seasonal schools and hands-on CAD bootcamps rotating across Egyptian universities.</li>
-      <li><strong>Direct Research Seed Funding:</strong> Best Thesis Award in Photonics (B.Sc., M.Sc., Ph.D.) and the Optica Egypt Thesis Fund (up to 25,000 EGP).</li>
-      <li><strong>Nationwide Campus Chapters and STEM Outreach:</strong> Supporting student chapters across Egyptian universities and pre-university K-12 optics demonstrations.</li>
+    <h2>Verified Program Focus Areas</h2>
+    <ul class="bullets">
+      <li><strong>Open-Source Photonic Design Automation (PDA):</strong> Python-based layout and electromagnetic simulation workflows using gdsfactory, SiEPIC-Tools, KLayout, Femwell, and Meep FDTD requiring zero commercial license fees.</li>
+      <li><strong>Integrated Photonics and Optical Microsystems:</strong> Silicon photonics, integrated nanophotonics, optical MEMS, and applied optical spectroscopy.</li>
+      <li><strong>Laser Science and Quantum Photonics:</strong> Ultrafast optics, nonlinear optics, optical sensors, and photonic quantum technologies.</li>
+      <li><strong>Technical Programming and Education:</strong> Seminars, hands-on CAD workshops, and seasonal training initiatives announced as confirmed schedules are finalized.</li>
+      <li><strong>Global Optica Integration:</strong> Guidance on Optica Foundation fellowships, travel grants, Traveling Lecturer coordination, and student chapter chartering.</li>
     </ul>
 
-    <h2>Founding Executive Leadership and Senior Advisory Board</h2>
-    <div class="grid-2">
+    <h2>Founding Leadership Roster (16 Active Officers and Advisors)</h2>
+    <div class="grid-3">
       <div class="card">
-        <h3>Founding Executive Officers</h3>
-        <p>
-          <strong>Abdulaziz Albadawi</strong> — First President and Co-Founder (AUC)<br/>
-          <strong>Islam I. Abdulaal</strong> — Founder, Section Initiator, and Webmaster (FAU / MPSP)<br/>
-          <strong>Khaled Ramadan</strong> — Vice President and Co-Founder (Ain Shams)<br/>
-          <strong>Mohamed Nader</strong> — Secretary and Co-Founder (Ain Shams)<br/>
-          <strong>Arwa Elsherbiny</strong> — Treasurer and Co-Founder (Ain Shams)
-        </p>
+        <h3>Founding Executive Committee (5)</h3>
+        <ul class="roster-list">
+          <li><strong>Abdulaziz Albadawi</strong> - First President (AUC, Optica ID 2798420)</li>
+          <li><strong>Khaled Ramadan</strong> - Vice President (Ain Shams University, Optica ID 2798622)</li>
+          <li><strong>Mohamed Nader</strong> - Secretary (Ain Shams University, Optica ID 2798431)</li>
+          <li><strong>Arwa Elsherbiny</strong> - Treasurer (Ain Shams University, Optica ID 2822044)</li>
+          <li><strong>Islam I. Abdulaal</strong> - Webmaster and Section Initiator (FAU Erlangen-Nürnberg)</li>
+        </ul>
       </div>
       <div class="card">
-        <h3>Founding Senior Faculty Advisors</h3>
-        <p>
-          <strong>Prof. Diaa Khalil</strong> — Professor of Photonics, Ain Shams University; Chief Scientist, Si-Ware Systems<br/>
-          <strong>Prof. Yasser Sabry</strong> — Professor of Photonics and MEMS, Ain Shams University; Co-Inventor of NeoSpectra<br/>
-          <strong>Assoc. Prof. Salem Hegazy</strong> — Associate Professor of Quantum Optics, Cairo University and Zewail City
-        </p>
+        <h3>Founding Senior Faculty Advisors (3)</h3>
+        <ul class="roster-list">
+          <li><strong>Prof. Diaa Khalil</strong> - Senior Faculty Advisor (Ain Shams University / Si-Ware Systems)</li>
+          <li><strong>Prof. Yasser Sabry</strong> - Senior Faculty Advisor (Ain Shams University / Si-Ware Systems)</li>
+          <li><strong>Assoc. Prof. Salem Hegazy</strong> - Senior Faculty Advisor (Cairo University / Zewail City)</li>
+        </ul>
+      </div>
+      <div class="card card-full">
+        <h3>Founding Operational Committee (8)</h3>
+        <ul class="roster-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 1rem;">
+          <li><strong>Mariam Awd</strong> - Growth Officer (GUC, Optica ID 2798018)</li>
+          <li><strong>Mohammed Khedr</strong> - Outreach Officer (Ain Shams University)</li>
+          <li><strong>Jannah Ahmed</strong> - Branding Officer (Ain Shams University)</li>
+          <li><strong>Yahia Ghadiry</strong> - Activities Officer (Ain Shams University, Optica ID 2779704)</li>
+          <li><strong>Ahmed Magdy</strong> - Logistics Officer (Ain Shams University)</li>
+          <li><strong>Omar Ayoub</strong> - QA Officer (Ain Shams University, Optica ID 2779412)</li>
+          <li><strong>Abdelrhman Hassan</strong> - Volunteers Officer (Sphinx University, Optica ID 2779649)</li>
+          <li><strong>Abdlrhman Hamza</strong> - Founding Member (Ain Shams University)</li>
+        </ul>
       </div>
     </div>
 
     <footer class="footer">
-      <span>Web: https://iabdul-aal.me/optica_egypt/</span>
-      <span>Email: opticaegypt@gmail.com | Press: press@optica-egypt.org</span>
+      <span>Web: https://optica-egypt.com/</span>
+      <span>Email: info@optica-egypt.com</span>
       <span>Document ID: OPT-EG-FACTSHEET-2026</span>
     </footer>
   </main>

@@ -1,287 +1,331 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import {
-  ArrowUpRight,
-  BookOpen,
-  Calendar,
-  CheckCircle2,
-  Compass,
-  Cpu,
-  Eye,
-  Globe,
-  Sparkles,
-  Users,
-} from "lucide-react"
+import { ArrowUpRight, ExternalLink, FileText, Mail } from "lucide-react"
+import { BoilerplateBox } from "@/components/sections/BoilerplateBox"
+import { MemberCard } from "@/components/sections/MemberCard"
 import { PageHeader } from "@/components/sections/PageHeader"
-import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { getDictionary } from "@/lib/locales"
-import { getStrategyData } from "@/lib/strategy"
+import {
+  getAnnualReportScope,
+  getBylawStandards,
+  getCharterRecord,
+  getConfirmedPartners,
+  getExecutiveAlignment,
+  getGovernanceOverview,
+  getPartnershipModels,
+  getSectionRecognitions,
+} from "@/lib/governance"
+import { getAdvisoryMembers, getExecutiveMembers, getOperationalMembers } from "@/lib/members"
+import { getPressBoilerplate, getMediaKit } from "@/lib/press"
+import { buildPageMetadata } from "@/lib/seo"
+import { getSiteUrlSafe } from "@/lib/site-helpers"
+import { getAssetPath } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Learn about Optica Egypt Local Section, our vision, mission, core values, and strategic blueprint advancing photonics in Egypt.",
-  alternates: {
-    canonical: "/about/",
-  },
-}
+export const metadata: Metadata = buildPageMetadata({
+  title: "About, Governance, and Leadership",
+  description:
+    "Charter verification, Optica bylaw compliance, founding officer roster, partnerships, and press identity kit for the Optica Egypt Local Section.",
+  path: "/about",
+})
 
 export default function AboutPage() {
-  const dictionary = getDictionary("en")
-  const strategy = getStrategyData()
+  const governance = getGovernanceOverview()
+  const charter = getCharterRecord()
+  const bylaws = getBylawStandards()
+  const seats = getExecutiveAlignment()
+  const annualScope = getAnnualReportScope()
+  const partners = getConfirmedPartners()
+  const partnerModels = getPartnershipModels()
+  const recognitions = getSectionRecognitions()
 
-  const valueIcons = [Sparkles, BookOpen, Cpu, Users, Globe]
+  const executive = getExecutiveMembers()
+  const operational = getOperationalMembers()
+  const advisory = getAdvisoryMembers()
+  const totalMembers = executive.length + operational.length + advisory.length
+
+  const boilerplate = getPressBoilerplate()
+  const mediaKit = getMediaKit()
+  const siteUrl = getSiteUrlSafe()
 
   return (
     <>
-      <PageHeader eyebrow={dictionary.about.eyebrow} title={dictionary.about.title} intro={dictionary.about.intro} />
+      <PageHeader
+        eyebrow="Section Record"
+        title="Charter, Governance, and Founding Team."
+        intro="Verified standing of the Optica Egypt Local Section, constitutional officers, partnership scope, and official brand identity assets."
+      />
 
-      {/* ── Vision and Mission ────────────────────────────────────────── */}
-      <section className="section-space">
-        <div className="container-page">
-          <div className="grid gap-8 lg:grid-cols-2">
-            {/* Vision Card */}
-            <ScrollReveal animation="fade-up" delay={20}>
-              <div className="site-card p-8 sm:p-10 relative overflow-hidden h-full flex flex-col justify-between border-t-2 border-t-[var(--gold)]">
-                <div>
-                  <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)] mb-6">
-                    <Eye size={14} aria-hidden="true" />
-                    <span>{dictionary.about.vision.eyebrow}</span>
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--ink)] leading-snug">
-                    {dictionary.about.vision.title}
-                  </h2>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
-                    {dictionary.about.vision.body}
-                  </p>
-                </div>
-                <div className="mt-8 pt-6 border-t border-[var(--line-subtle)] flex items-center justify-between">
-                  <span className="font-mono text-xs text-[var(--ink-faint)] uppercase tracking-wider">
-                    Charter Strategic North Star
-                  </span>
-                  <span className="font-mono text-xs font-bold text-[var(--gold)]">2026—2030</span>
-                </div>
-              </div>
-            </ScrollReveal>
+      {/* Sticky Section Anchor Bar */}
+      <nav
+        aria-label="About sections"
+        className="border-b border-[var(--line)] bg-[var(--surface-raised)]"
+      >
+        <div className="container-page flex flex-wrap gap-2 py-3">
+          {[
+            { label: "Charter", href: "#overview" },
+            { label: "Governance", href: "#governance" },
+            { label: "Leadership (16)", href: "#leadership" },
+            { label: "Partners", href: "#partners" },
+            { label: "Press Kit", href: "#press" },
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="inline-flex min-h-[48px] items-center rounded-sm border border-[var(--line)] bg-[var(--surface)] px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider text-[var(--ink-soft)] hover:border-[var(--gold)] hover:text-[var(--ink)] transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </nav>
 
-            {/* Mission Card */}
-            <ScrollReveal animation="fade-up" delay={40}>
-              <div className="site-card p-8 sm:p-10 relative overflow-hidden h-full flex flex-col justify-between border-t-2 border-t-[var(--gold)]">
-                <div>
-                  <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)] mb-6">
-                    <Compass size={14} aria-hidden="true" />
-                    <span>{dictionary.about.mission.eyebrow}</span>
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--ink)] leading-snug">
-                    {dictionary.about.mission.title}
-                  </h2>
-                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
-                    {dictionary.about.mission.body}
-                  </p>
-                </div>
-                <div className="mt-8 pt-6 border-t border-[var(--line-subtle)] flex items-center justify-between">
-                  <span className="font-mono text-xs text-[var(--ink-faint)] uppercase tracking-wider">
-                    Operational Execution Mandate
-                  </span>
-                  <Link href="/join" className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[var(--gold)] hover:underline">
-                    <span>Join the Mission</span>
-                    <ArrowUpRight size={13} aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
+      {/* 1. Overview and Charter Table */}
+      <section id="overview" className="section-space scroll-mt-24">
+        <div className="container-page grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
+          <div className="space-y-4">
+            <p className="eyebrow">Institutional Identity</p>
+            <h2 className="section-title">Local volunteer coordination under Optica bylaws.</h2>
+            <p className="text-sm leading-relaxed text-[var(--ink-soft)]">
+              The Optica Egypt Local Section operates across Egyptian universities and industrial optics laboratories to connect student chapters, faculty advisors, and researchers with global Optica resources. Global Optica membership billing and Society publications remain administered directly on optica.org.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href="/docs/optica-egypt-fact-sheet.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary min-h-[48px]"
+              >
+                <FileText size={15} aria-hidden="true" />
+                <span>Charter Fact Sheet (A4)</span>
+              </a>
+              <Link href="/join" className="btn-primary min-h-[48px]">
+                <span>Join or Contact</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
+
+          <dl className="site-card divide-y divide-[var(--line-subtle)] p-6">
+            {[
+              ["Charter Approval", charter.approvalDate],
+              ["Current Standing", charter.currentStanding],
+              ["Parent Organization", charter.parentOrganization],
+              ["Section Desk Email", charter.contactEmail],
+              ["Official Domain", `${siteUrl}/`],
+            ].map(([term, val]) => (
+              <div key={term} className="flex flex-wrap items-center justify-between gap-2 py-3 first:pt-0 last:pb-0">
+                <dt className="font-mono text-xs text-[var(--ink-faint)]">{term}</dt>
+                <dd className="text-sm font-semibold text-[var(--ink)] break-all">{val}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* ── Core Values ──────────────────────────────────────────────── */}
-      <section className="section-space bg-[var(--surface-raised)] border-t border-[var(--line)]">
-        <div className="container-page">
-          <ScrollReveal animation="fade-up" delay={20}>
-            <div className="max-w-3xl mb-12">
-              <p className="eyebrow">{dictionary.about.values.eyebrow}</p>
-              <h2 className="section-title mt-3">{dictionary.about.values.title}</h2>
-              <p className="lede mt-4">{dictionary.about.values.intro}</p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {dictionary.about.values.items.map((val, index) => {
-              const Icon = valueIcons[index] || Sparkles
-
-              return (
-                <ScrollReveal key={val.number} animation="fade-up" delay={30 + index * 30}>
-                  <article className="site-card p-6 sm:p-8 h-full flex flex-col justify-between group transition-colors duration-200 hover:border-[var(--gold)]/50">
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="font-mono text-xs font-bold text-[var(--gold)]">
-                          VALUE {val.number}
-                        </span>
-                        <div className="p-2 rounded-sm bg-[var(--gold)]/10 text-[var(--gold)] group-hover:scale-110 transition-transform">
-                          <Icon size={18} aria-hidden="true" />
-                        </div>
-                      </div>
-                      <h3 className="text-lg font-bold text-[var(--ink)] tracking-tight group-hover:text-[var(--gold)] transition-colors">
-                        {val.title}
-                      </h3>
-                      <p className="font-mono text-[11px] text-[var(--ink-faint)] uppercase tracking-wider mt-1">
-                        {val.tagline}
-                      </p>
-                      <p className="mt-4 text-xs sm:text-sm text-[var(--ink-soft)] leading-relaxed">
-                        {val.body}
-                      </p>
-                    </div>
-                  </article>
-                </ScrollReveal>
-              )
-            })}
+      {/* 2. Governance and Bylaws */}
+      <section id="governance" className="section-space scroll-mt-24 border-t border-[var(--line)] bg-[var(--surface)]">
+        <div className="container-page space-y-12">
+          <div>
+            <p className="eyebrow">{governance.eyebrow}</p>
+            <h2 className="section-title mt-2">Optica Local Section Governance Standards</h2>
+            <p className="mt-2 max-w-2xl text-sm text-[var(--ink-soft)]">{governance.intro}</p>
           </div>
-        </div>
-      </section>
 
-      {/* ── Strategic Blueprint: Economic Pragmatism for Egypt ──────────────── */}
-      <section id="strategy" className="section-space border-t border-[var(--line)]">
-        <div className="container-page">
-          <ScrollReveal animation="fade-up" delay={30}>
-            <div className="border-b border-[var(--line)] pb-8 mb-12">
-              <div className="inline-flex items-center gap-2 rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)] mb-3">
-                <Cpu size={14} aria-hidden="true" />
-                <span>{strategy.eyebrow}</span>
-              </div>
-              <h2 className="section-title">{strategy.title}</h2>
-              <p className="lede max-w-3xl mt-4">
-                {strategy.vision}
-              </p>
-
-              {/* Economic Realities Callout Strip */}
-              <div className="mt-8 rounded-sm border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8 grid gap-6 md:grid-cols-2">
-                <div>
-                  <span className="font-mono text-[10px] uppercase text-[var(--ink-faint)] tracking-wider block font-bold">
-                    The Domestic Challenge:
-                  </span>
-                  <p className="text-xs text-[var(--ink-soft)] mt-2 leading-relaxed">
-                    {strategy.economicContext.description}
-                  </p>
-                </div>
-                <div className="border-t md:border-t-0 md:border-l border-[var(--line-subtle)] pt-4 md:pt-0 md:pl-6">
-                  <span className="font-mono text-[10px] uppercase text-[var(--gold)] tracking-wider block font-bold">
-                    The Optica Egypt Response:
-                  </span>
-                  <p className="text-xs text-[var(--ink)] mt-2 leading-relaxed">
-                    {strategy.economicContext.response}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Five Pragmatic Pillars */}
-          <div className="space-y-8">
-            {strategy.pillars.map((p, index) => (
-              <ScrollReveal key={p.id} animation="fade-up" delay={index * 50}>
-                <div className="site-card p-6 sm:p-8 border-l-4 border-l-[var(--gold)]">
-                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
-                    <div className="space-y-3 max-w-3xl">
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs font-bold text-[var(--gold)]">
-                          PILLAR {p.number}
-                        </span>
-                        <span className="text-[var(--line)]">·</span>
-                        <span className="font-mono text-xs text-[var(--ink-faint)] uppercase tracking-wider">
-                          {p.tagline}
-                        </span>
-                      </div>
-
-                      <h3 className="text-xl font-bold tracking-tight text-[var(--ink)]">
-                        {p.title}
-                      </h3>
-
-                      <p className="text-xs text-[var(--ink-soft)] leading-relaxed">
-                        {p.summary}
-                      </p>
-
-                      <div className="mt-4 pt-4 border-t border-[var(--line-subtle)]">
-                        <span className="font-mono text-[10px] uppercase text-[var(--gold)] tracking-wider block mb-2 font-bold">
-                          Tactical Execution Plan:
-                        </span>
-                        <ul className="grid gap-2 sm:grid-cols-2 text-xs text-[var(--ink-soft)]">
-                          {p.tactics.map((t) => (
-                            <li key={t} className="flex items-start gap-2">
-                              <CheckCircle2 size={13} className="text-[var(--gold)] shrink-0 mt-0.5" />
-                              <span>{t}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="shrink-0 lg:w-72 rounded-sm border border-[var(--line)] bg-[var(--surface)] p-4 flex flex-col justify-between">
-                      <div>
-                        <span className="font-mono text-[10px] uppercase text-[var(--ink-faint)] tracking-wider block">
-                          Resource and Cost Model:
-                        </span>
-                        <p className="text-xs font-semibold text-[var(--ink)] mt-1.5 leading-snug">
-                          {p.costModel}
-                        </p>
-                      </div>
-
-                      <div className="mt-6 pt-3 border-t border-[var(--line-subtle)]">
-                        <Link href="/resources" className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--gold)] hover:underline font-bold">
-                          <span>Explore Tooling and Grants</span>
-                          <ArrowUpRight size={13} />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
+          <div className="grid gap-6 md:grid-cols-2">
+            {bylaws.map((item) => (
+              <article key={item.id} className="site-card p-6">
+                <span className="font-mono text-xs font-bold text-[var(--gold)]">{item.number}</span>
+                <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{item.title}</h3>
+                <p className="mt-2 text-sm text-[var(--ink-soft)]">{item.requirement}</p>
+                <p className="mt-3 border-t border-[var(--line-subtle)] pt-3 font-mono text-xs text-[var(--gold)]">
+                  {item.sectionStatus}
+                </p>
+              </article>
             ))}
           </div>
 
-          {/* Strategic Partnership CTA Strip */}
-          <div className="mt-12 site-card p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[var(--gold)] uppercase">
-                <Users size={14} />
-                <span>Government, University, and Corporate Partners</span>
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
+            <div className="site-card p-6">
+              <h3 className="text-lg font-semibold text-[var(--ink)]">Constitutional Executive Seats</h3>
+              <div className="mt-4 divide-y divide-[var(--line-subtle)]">
+                {seats.map((seat) => (
+                  <div key={seat.memberId} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                    <div>
+                      <p className="font-mono text-xs text-[var(--gold)]">{seat.constitutionalSeat}</p>
+                      <Link
+                        href={`/leadership/${seat.memberId}`}
+                        className="text-sm font-semibold text-[var(--ink)] hover:text-[var(--gold)] inline-flex min-h-[48px] items-center gap-1"
+                      >
+                        <span>{seat.holderName}</span>
+                        <ArrowUpRight size={13} aria-hidden="true" />
+                      </Link>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-[var(--ink-soft)]">{seat.institution}</p>
+                      <p className="font-mono text-[11px] text-[var(--ink-faint)]">
+                        Optica ID {seat.opticaId}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-bold tracking-tight text-[var(--ink)]">
-                Are you an institution or sponsor looking to advance Egyptian optics?
-              </h3>
-              <p className="text-xs leading-relaxed text-[var(--ink-soft)]">
-                We partner with Egyptian government bodies (ITIDA, ASRT, STDF), universities, and industry innovators to fund student capstones, sponsor tapeouts, and expand shared measurement access.
-              </p>
             </div>
-            <Link href="/volunteer" className="btn-primary shrink-0">
-              <span>Partner With Optica Egypt</span>
-              <ArrowUpRight size={14} aria-hidden="true" />
-            </Link>
+
+            <div className="site-card p-6 space-y-5">
+              <div>
+                <h3 className="text-lg font-semibold text-[var(--ink)]">Annual Reporting Scope</h3>
+                <p className="mt-1 text-xs text-[var(--ink-soft)]">
+                  Prepared annually for the 31 December Optica reporting cycle.
+                </p>
+              </div>
+              <div className="divide-y divide-[var(--line-subtle)]">
+                {annualScope.map((item) => (
+                  <div key={item.id} className="py-3">
+                    <p className="text-sm font-semibold text-[var(--ink)]">{item.title}</p>
+                    <p className="mt-1 text-xs text-[var(--ink-soft)]">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="border-t border-[var(--line-subtle)] pt-4">
+                <p className="font-mono text-xs uppercase tracking-wider text-[var(--ink-faint)]">
+                  Section Recognitions ({recognitions.length})
+                </p>
+                <p className="mt-1 text-xs text-[var(--ink-soft)]">
+                  {recognitions.length === 0
+                    ? "Confirmed section recognitions will appear here as they are awarded."
+                    : `${recognitions.length} recorded honors.`}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Charter Milestones ────────────────────────────────────────── */}
-      <section className="section-space border-t border-[var(--line)]">
-        <div className="container-page">
-          <ScrollReveal animation="fade-up" delay={20}>
-            <div className="max-w-2xl mb-10">
-              <p className="eyebrow">{dictionary.about.milestones.eyebrow}</p>
-              <h2 className="section-title mt-3">{dictionary.about.milestones.title}</h2>
+      {/* 3. Founding Leadership Directory */}
+      <section id="leadership" className="section-space scroll-mt-24 border-t border-[var(--line)]">
+        <div className="container-page space-y-12">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-6">
+            <div>
+              <p className="eyebrow">Founding Roster</p>
+              <h2 className="section-title mt-2">
+                {totalMembers} Active Officers and Faculty Advisors
+              </h2>
             </div>
-          </ScrollReveal>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {dictionary.about.milestones.items.map((m, idx) => (
-              <ScrollReveal key={m.tag} animation="fade-up" delay={40 + idx * 40}>
-                <div className="site-card p-6 sm:p-8 h-full border-l-2 border-l-[var(--gold)] flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Calendar size={14} className="text-[var(--gold)]" aria-hidden="true" />
-                      <span className="eyebrow">{m.tag}</span>
-                    </div>
-                    <p className="mt-3 font-mono text-xl font-bold text-[var(--gold)]">{m.date}</p>
-                    <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">{m.body}</p>
-                  </div>
+            <span className="font-mono text-xs text-[var(--gold)]">
+              Term 2024–2026 / Inaugural Cycle
+            </span>
+          </div>
+
+          <div className="space-y-12">
+            <div>
+              <h3 className="eyebrow mb-6">Executive Committee ({executive.length})</h3>
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+                {executive.map((m) => (
+                  <MemberCard key={m.id} member={m} />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="eyebrow mb-6">Operational Committee ({operational.length})</h3>
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+                {operational.map((m) => (
+                  <MemberCard key={m.id} member={m} />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="eyebrow mb-6">Senior Faculty Advisory Board ({advisory.length})</h3>
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+                {advisory.map((m) => (
+                  <MemberCard key={m.id} member={m} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Partnerships */}
+      <section id="partners" className="section-space scroll-mt-24 border-t border-[var(--line)] bg-[var(--surface-raised)]">
+        <div className="container-page space-y-8">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-6">
+            <div>
+              <p className="eyebrow">Institutional Alliances</p>
+              <h2 className="section-title mt-2">University, Lab, and Industry Partnerships</h2>
+            </div>
+            <Link href="/join?type=partner" className="btn-primary min-h-[48px]">
+              <span>Submit Partnership Inquiry</span>
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {partnerModels.map((model) => (
+              <div key={model.id} className="site-card p-6">
+                <h3 className="text-base font-semibold text-[var(--ink)]">{model.title}</h3>
+                <p className="mt-2 text-sm text-[var(--ink-soft)]">{model.scope}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs font-mono text-[var(--ink-faint)]">
+            {partners.length === 0
+              ? "Confirmed institutional MOU agreements will appear here once finalized."
+              : `${partners.length} active agreements recorded.`}
+          </p>
+        </div>
+      </section>
+
+      {/* 5. Press Kit and Official Marks */}
+      <section id="press" className="section-space scroll-mt-24 border-t border-[var(--line)]">
+        <div className="container-page space-y-10">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-6">
+            <div>
+              <p className="eyebrow">Media and Brand Kit</p>
+              <h2 className="section-title mt-2">Official Boilerplate and Vector Marks</h2>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={`mailto:${charter.contactEmail}`}
+                className="btn-secondary min-h-[48px]"
+              >
+                <Mail size={14} aria-hidden="true" />
+                <span>{charter.contactEmail}</span>
+              </a>
+              <Link href="/join?type=press" className="btn-primary min-h-[48px]">
+                <span>Press Desk Form</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          <BoilerplateBox
+            title={boilerplate.title}
+            body={boilerplate.body}
+            short={boilerplate.short}
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {mediaKit.assets.map((asset) => (
+              <a
+                key={asset.id}
+                href={getAssetPath(asset.downloadUrl)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="site-card p-5 flex flex-col justify-between gap-4 hover:border-[var(--gold)] transition-colors min-h-[48px]"
+              >
+                <div>
+                  <span className="font-mono text-[10px] font-bold uppercase text-[var(--gold)]">
+                    {asset.format}
+                  </span>
+                  <h3 className="mt-2 text-sm font-semibold text-[var(--ink)]">{asset.title}</h3>
+                  <p className="mt-1 text-xs text-[var(--ink-soft)]">{asset.description}</p>
                 </div>
-              </ScrollReveal>
+                <span className="inline-flex items-center gap-1 font-mono text-xs text-[var(--gold)]">
+                  Download / Open <ExternalLink size={12} aria-hidden="true" />
+                </span>
+              </a>
             ))}
           </div>
         </div>

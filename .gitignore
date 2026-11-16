@@ -15,6 +15,7 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+.vercel/
 
 # OS
 .DS_Store
@@ -60,3 +61,5 @@ scratch/
 *.zip
 *.pdf
 _photos_temp/
+.vercel
+.env*

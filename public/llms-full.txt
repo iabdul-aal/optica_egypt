@@ -1,95 +1,58 @@
-# Optica Egypt Local Section, Comprehensive Agent Documentation
+# Optica Egypt Local Section: Institutional Reference
 
-## Section Identity
-The Optica Egypt Local Section is the official regional section of Optica, chartered on 10 September 2026. The section connects students, academic researchers, universities, start-ups, and industry across the Arab Republic of Egypt to the international photonics community.
+## 1. Section Identity and Legal Separation
+The Optica Egypt Local Section is a chartered volunteer section of Optica in the Arab Republic of Egypt, approved on 10 September 2026. It is legally and operationally distinct from Optica Global corporate headquarters in Washington, D.C.
 
-- Official Domain: https://iabdul-aal.me/optica_egypt/
+- Official Website: https://optica-egypt.com/
 - Charter Approval Date: 10 September 2026
-- Inauguration Ceremony: 1 November 2026 (Hybrid — Cairo, Egypt and Online)
-- Parent Body: Optica (2010 Massachusetts Ave. NW, Washington, D.C., USA, founded 1916)
-- Section Contact: opticaegypt@gmail.com
-- Social Profiles:
-  - LinkedIn: https://www.linkedin.com/company/optica-egypt
-  - Instagram: @opticaegypt
-  - Twitter/X: @opticaegypt
+- Parent Body: Optica (2010 Massachusetts Ave. NW, Washington, D.C., USA)
+- Section Contact: info@optica-egypt.com
+- Live Social Profiles:
+  - LinkedIn: https://www.linkedin.com/company/optica-egypt-section
+  - Facebook: https://www.facebook.com/optica.egypt.section
+- Rollout Directory: https://optica-egypt.com/join#social-channels
 
----
+## 2. Core Priorities
+1. Open-Source Photonic Design Automation (PDA) using gdsfactory, SiEPIC-Tools, KLayout, Femwell, and Meep FDTD.
+2. Reactivation of the chartered Optica Student Chapter at The American University in Cairo (AUC) and charter guidance across Egyptian universities.
+3. Connecting Egyptian researchers and graduation teams to ITIDA, ASRT, STDF, Optica Foundation fellowships, and Senior Member or Fellow nominations.
 
-## Strategic Mission, Vision, and Five-Pillar Blueprint
-- **Vision**: To establish Egypt as a premier regional powerhouse and global contributor in optical sciences, silicon photonics, and quantum engineering.
-- **Mission**: To unite Egyptian students, researchers, faculty, and deep-tech practitioners into a single cohesive national network that eliminates financial and infrastructure barriers through open-source design, collaborative access, and global scientific integration.
-- **Five Operational Pillars**:
-  1. Pragmatic Research and Low-Cost Innovation (Open-source PDA, gdsfactory, Meep FDTD, computational imaging)
-  2. Flagship Events and Annual Egypt Photonics Conference (EPC 2027)
-  3. Academic and Curriculum Modernization (Seasonal schools, Arabic and English technical modules)
-  4. Direct Funding and Recognitions (Best Thesis and Graduation Project Fund, Optica Fellow nominations)
-  5. Community Mobilization and STEM Outreach (Student chapters across Cairo, Alexandria, Delta, and Upper Egypt)
+## 3. Governance Compliance
+- Optica Local Section minimum standing requires at least 8 active participants and 5 Optica members: satisfied by 16 active founders and advisors (8 with verified Optica Member IDs in `data/members.json`).
+- Constitutional seats filled: First President, Vice President, Secretary, and Treasurer.
+- Quorum rule: 30 percent of active membership required for formal decisions and elections.
+- Annual reporting: Verified activity records in `data/dispatches.json`, `data/projects.json`, and `data/members.json` audited ahead of 31 December each year.
 
----
+## 4. Founding Leadership Roster (16 Active Officers and Advisors)
 
-## Governance and Founding Leadership Roster (All 19 Current Officers and Advisors are Founding Members / Co-Founders)
+### Founding Executive Committee (5)
+1. Abdulaziz Albadawi, First President (First President and Co-Founder, Optica ID: 2798420, Email: albadawiabdulaziz@gmail.com) | The American University in Cairo (AUC)
+2. Khaled Ramadan, Vice President (Vice President and Co-Founder, Optica ID: 2798622, Email: khaledismail1842004kh24@gmail.com) | Ain Shams University
+3. Mohamed Nader, Secretary (Secretary and Co-Founder, Optica ID: 2798431, Email: mohammed.nader.200519@gmail.com) | Ain Shams University
+4. Arwa Elsherbiny, Treasurer (Treasurer and Co-Founder, Optica ID: 2822044, Email: arwaelsherbiny33@gmail.com) | Ain Shams University
+5. Islam I. Abdulaal, Webmaster and Section Initiator (Founder and Section Initiator, Email: contact@iabdul-aal.me, Website: https://iabdul-aal.me/) | FAU Erlangen-Nürnberg
 
-### Founding Executive Committee
-- Abdulaziz Albadawi, First President and Co-Founder
-  - Optica Member ID: 2798420
-  - Email: albadawiabdulaziz@gmail.com
-  - Affiliations: The American University in Cairo (AUC)
-  - Focus: First President of the Section, Nanophotonics, Laser Science, and Optical Sensors
+### Founding Operational Committee (8)
+6. Mariam Awd, Growth Officer (Growth Officer and Co-Founder, Optica ID: 2798018, Email: mariam.hussin@guc.edu.eg) | German University in Cairo (GUC)
+7. Mohammed Khedr, Outreach Officer (Outreach Officer and Co-Founder, Email: mmh.khedre@gmail.com) | Ain Shams University
+8. Jannah Ahmed, Branding Officer (Branding Officer and Co-Founder, Email: jannahahmedsaber18@gmail.com) | Ain Shams University
+9. Yahia Ghadiry, Activities Officer (Activities Officer and Co-Founder, Optica ID: 2779704, Email: yahiaghadiry@gmail.com) | Ain Shams University
+10. Ahmed Magdy, Logistics Officer (Logistics Officer and Co-Founder, Email: ahmed.magdy.roshdy1@gmail.com) | Ain Shams University
+11. Omar Ayoub, QA Officer (QA Officer and Co-Founder, Optica ID: 2779412, Email: omarnmayoub@gmail.com) | Ain Shams University
+12. Abdelrhman Hassan, Volunteers Officer (Volunteers Officer and Co-Founder, Optica ID: 2779649, Email: abderhman0009@gmail.com) | Sphinx University
+13. Abdlrhman Hamza, Founding Member (Founding Member and Co-Founder, Email: abdrhmanhamzaa@gmail.com) | Ain Shams University
 
-- Ahmed Magdy, Founding Vice President and Co-Founder
-  - Email: ahmed.magdy.roshdy1@gmail.com
-  - Affiliations: Ain Shams University / Si-Ware Systems
-  - Focus: Vice Presidency, Institutional Operations, and Photonic Systems
+### Founding Senior Faculty Advisors (3)
+14. Prof. Diaa Khalil, Senior Faculty Advisor (`Founding Senior Faculty Advisor`, Email: diaa_khalil@eng.asu.edu.eg) | Ain Shams University / Si-Ware Systems
+15. Prof. Yasser Sabry, Senior Faculty Advisor (`Founding Senior Faculty Advisor`, Email: yasser.sabry@eng.asu.edu.eg) | Ain Shams University / Si-Ware Systems
+16. Assoc. Prof. Salem Hegazy, Senior Faculty Advisor (`Founding Senior Faculty Advisor`, Email: shegazy@zewailcity.edu.eg) | Cairo University / Zewail City
 
-- Mohamed Nader, Founding Secretary and Co-Founder
-  - Optica Member ID: 2798431
-  - Email: mohammed.nader.200519@gmail.com
-  - Affiliations: Ain Shams University / Si-Ware Systems
-  - Focus: Section Governance, Official Records, and Silicon Photonics
+## 5. Student Chapters Status
+- The American University in Cairo (AUC) Optica Student Chapter (chartered 2024, Faculty Advisor: Prof. Yehea Ismail): sole chartered student chapter in Egypt, currently undergoing section-supported reactivation.
 
-- Arwa Elsherbiny, Founding Treasurer and Co-Founder
-  - Optica Member ID: 2822044
-  - Email: arwaelsherbiny33@gmail.com
-  - Affiliations: Ain Shams University / Si-Ware Systems / Zewail City
-  - Focus: Financial Planning, Grants Allocation, and Quantum Optics
-
-- Islam I. Abdulaal, Section Initiator, Founder, and Webmaster
-  - Website: https://iabdul-aal.me/
-  - Email: contact@iabdul-aal.me
-  - Affiliations: FAU Erlangen-Nürnberg / Max Planck School of Photonics (MPSP) / A*STAR
-  - Focus: Section Initiator (conceived and initiated the Optica Egypt Local Section charter petition), Digital Architecture, Integrated Nanophotonics, and Nonlinear Quantum Optics
-
-### Founding Operational Committee
-- Khaled Ramadan, Founding Technical Programs Lead and Co-Founder (Optica ID: 2798622, Email: khaledismail1842004kh24@gmail.com) | Ain Shams University / LLOC Lab / AUC / Nile University
-- Mariam Awd (Hussein), Founding Growth Officer and Co-Founder (Optica ID: 2798018, Email: mariam.hussin@guc.edu.eg) | GUC Micro Optics Lab
-- Mohammed Khedr, Founding Outreach Officer and Co-Founder (Email: mmh.khedre@gmail.com) | Ain Shams University / AUC
-- Jannah Ahmed, Founding Branding Officer and Co-Founder (Email: jannahahmedsaber18@gmail.com) | Ain Shams University / Nile University
-- Yahia Ghadiry, Founding Activities Officer and Co-Founder (Optica ID: 2779704, Email: yahiaghadiry@gmail.com) | Ain Shams University / Si-Ware
-- Omar Ayoub, Founding QA Officer and Co-Founder (Optica ID: 2779412, Email: omarnmayoub@gmail.com) | Ain Shams University / Si-Ware
-- Abdelrhman Hassan, Founding Student Chapters Coordinator and Co-Founder (Optica ID: 2779649, Email: abderhman0009@gmail.com) | Sphinx University / AUC
-- Abdlrhman Hamza, Founding Member and Co-Founder (Email: abdrhmanhamzaa@gmail.com) | Ain Shams University
-
-### Founding Senior Faculty Advisory Board
-- Prof. Diaa Khalil (Email: diaa_khalil@eng.asu.edu.eg): Professor of Photonics, Former Head of ECE, and Former Acting Dean at Ain Shams University; Chief Scientist and Former CTO at Si-Ware Systems; Optica Fellow; Author of 400+ papers, holder of 25+ patents, SPIE Prism Award winner, and Stanford Top 2% Scientist globally.
-- Prof. Mohamed A. Swillam: Professor and Chair of the Department of Physics at The American University in Cairo (AUC); Optica Fellow and SPIE Fellow; pioneer in plasmonics, metamaterials, and silicon nanophotonics.
-- Prof. Tarek A. Ramadan: Professor of Photonics at Ain Shams University and Zewail City of Science and Technology; specialist in integrated optical waveguides and photonic device modeling.
-- Prof. Yasser Sabry (Email: yasser.sabry@eng.asu.edu.eg): Professor of Photonics and MEMS at Ain Shams University; Senior Staff MEMS Engineer at Si-Ware Systems; Core inventor of NeoSpectra handheld FT-IR spectrometer; Recipient of SPIE Prism Award.
-- Prof. Amr M. Shaarawi: Professor of Physics and Former Provost at The American University in Cairo (AUC); Optica Fellow; international authority on localized electromagnetic and acoustic waves.
-- Assoc. Prof. Salem Hegazy (Email: shegazy@zewailcity.edu.eg): Associate Professor of Quantum Optics at Cairo University and Zewail City of Science and Technology; Recipient of the Egyptian State Award for Technological Innovation (2021).
-
----
-
-## Upcoming Events Programme
-1. Inauguration Ceremony: Section Kick-off
-   - Date: 1 November 2026 (18:00 EET)
-   - Format: Hybrid — Cairo, Egypt and Online Live Stream
-   - URL: https://iabdul-aal.me/optica_egypt/events/inauguration-ceremony-section-kickoff/
-   - Registration URL: https://iabdul-aal.me/optica_egypt/events/inauguration-ceremony-section-kickoff/register/
-2. Hands-On Workshop: Open-Source Silicon Photonics with gdsfactory
-   - Date: 21 November 2026 (19:00 EET)
-   - Format: Online Interactive Lab (Zoom and Cloud Jupyter)
-   - URL: https://iabdul-aal.me/optica_egypt/events/open-source-silicon-photonics-workshop/
-3. Distinguished Lecture: Optical MEMS and Single-Chip FT-IR Spectrometers
-   - Date: 12 December 2026 (18:30 EET)
-   - Format: Hybrid — Greater Cairo Academic Hub and Live Stream
-   - URL: https://iabdul-aal.me/optica_egypt/events/mems-ftir-spectral-sensing-seminar/
+## 6. Canonical Architecture
+- Public Hubs: `/`, `/about`, `/chapters`, `/projects`, `/resources`, `/updates`, `/join`
+- Detail Pages: `/leadership/[id]`, `/chapters/[id]`, `/projects/[slug]`, `/updates/[slug]`
+- Legacy URLs (`/governance`, `/awards`, `/recognitions`, `/leadership`, `/press`, `/partners`, `/community`, `/fellowships`, `/outreach`, `/programs`, `/open-source`, `/conferences`, `/education`, `/competitions`, `/events`, `/news`, `/blogs`, `/gallery`, `/volunteer`, `/recruitment`): Permanent HTTP 308 redirects to their canonical targets.
+- Verified Postgres Intake: `/api/recruitment` (committee applications) and `/api/submissions` (chapter charter, partner, speaker, event RSVP, press, general inquiries) persisted to Supabase Postgres with zero client-side storage fallback.
+- Staff Operations: `/admin`, `/admin/applications/[id]`, `/admin/submissions/[id]`, `/admin/staff`, `/admin/login`, `/admin/change-password`.

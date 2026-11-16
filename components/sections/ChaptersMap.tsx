@@ -168,7 +168,7 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
     <div className="site-card overflow-hidden grid lg:grid-cols-[1.3fr_.7fr]">
       {/* ── Geographic Map Canvas ── */}
       <div className="relative p-4 sm:p-8 bg-[var(--surface)] border-b lg:border-b-0 lg:border-r border-[var(--line)] flex flex-col justify-between">
-        {/* Header Toolbar & Interactive Zoom Controls */}
+        {/* Header Toolbar and Interactive Zoom Controls */}
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line-subtle)] pb-4">
           <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[var(--gold)]">
             <MapPin size={14} className="text-[var(--gold)]" />
@@ -176,16 +176,16 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
           </div>
 
           {/* Interactive Zoom and Navigation Bar */}
-          <div className="flex items-center gap-1.5 bg-[var(--surface-raised)] border border-[var(--line)] rounded-sm p-1">
+          <div className="flex items-center gap-1 bg-[var(--surface-raised)] border border-[var(--line)] rounded-sm p-1">
             <button
               type="button"
               onClick={handleZoomOut}
               disabled={zoom <= 1.0}
               aria-label="Zoom out map"
               title="Zoom Out (-)"
-              className="w-7 h-7 flex items-center justify-center rounded-sm text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
+              className="min-w-[48px] min-h-[48px] flex items-center justify-center rounded-sm text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
             >
-              <ZoomOut size={14} />
+              <ZoomOut size={15} />
             </button>
 
             <span className="font-mono text-[11px] font-bold px-2 min-w-[3.25rem] text-center text-[var(--ink)] select-none">
@@ -198,25 +198,25 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
               disabled={zoom >= 2.5}
               aria-label="Zoom in map"
               title="Zoom In (+)"
-              className="w-7 h-7 flex items-center justify-center rounded-sm text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
+              className="min-w-[48px] min-h-[48px] flex items-center justify-center rounded-sm text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
             >
-              <ZoomIn size={14} />
+              <ZoomIn size={15} />
             </button>
 
-            <div className="h-3.5 w-px bg-[var(--line)] mx-0.5" />
+            <div className="h-5 w-px bg-[var(--line)] mx-0.5" />
 
             <button
               type="button"
               onClick={handleFocusAUC}
               aria-label="Focus on AUC Chapter in New Cairo"
               title="Focus directly on AUC Student Chapter"
-              className={`px-2.5 h-7 flex items-center gap-1.5 rounded-sm text-xs font-mono transition-colors ${
+              className={`px-3 min-h-[48px] flex items-center gap-1.5 rounded-sm text-xs font-mono transition-colors ${
                 isFocusAUC && zoom > 1.0
                   ? "bg-[var(--gold)]/20 text-[var(--gold)] font-bold border border-[var(--gold)]/40"
                   : "text-[var(--ink-soft)] hover:text-[var(--gold)] hover:bg-[var(--surface)]"
               }`}
             >
-              <Crosshair size={13} />
+              <Crosshair size={14} />
               <span className="hidden sm:inline">Focus AUC</span>
             </button>
 
@@ -226,9 +226,9 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
               disabled={zoom === 1.0 && pan.x === 0 && pan.y === 0}
               aria-label="Reset map to full country view"
               title="Reset View"
-              className="w-7 h-7 flex items-center justify-center rounded-sm text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
+              className="min-w-[48px] min-h-[48px] flex items-center justify-center rounded-sm text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-25 disabled:pointer-events-none transition-colors"
             >
-              <RotateCcw size={13} />
+              <RotateCcw size={14} />
             </button>
           </div>
         </div>
@@ -243,7 +243,7 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
             onDoubleClick={handleDoubleClick}
-            className={`w-full h-auto max-h-[580px] transition-all duration-300 ${
+            className={`w-full h-auto max-h-[580px] ${
               zoom > 1.0 ? (isDragging ? "cursor-grabbing" : "cursor-grab") : "cursor-default"
             }`}
             style={{ touchAction: zoom > 1.0 ? "none" : "pan-y" }}
@@ -263,12 +263,6 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
                 <stop offset="55%" stopColor="var(--canvas)" stopOpacity="0.3" />
                 <stop offset="100%" stopColor="var(--canvas)" stopOpacity="0" />
               </linearGradient>
-
-              {/* Gold luminescence glow filter for chapter hover pop */}
-              <filter id="gold-pop-glow" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="8" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
             </defs>
 
             {/* Background Graticule Grid spanning full expanse */}
@@ -405,51 +399,49 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
               }}
               className="cursor-pointer focus:outline-none"
               style={{
-                transform: isChapterHovered ? "scale(1.22)" : "scale(1)",
+                transform: isChapterHovered ? "scale(1.12)" : "scale(1)",
                 transformOrigin: `${aucPinX}px ${aucPinY}px`,
-                transition: "transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 320ms ease",
-                filter: isChapterHovered ? "url(#gold-pop-glow)" : "none",
+                transition: "transform 220ms cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               aria-label="The American University in Cairo (AUC) Optica Student Chapter - Chartered and Currently Inactive"
             >
-              {/* Outer Pulsing Ping Ring */}
+              {/* Outer Resonance Ring */}
               <circle
                 cx={aucPinX}
                 cy={aucPinY}
-                r={isChapterHovered ? "46" : "36"}
-                className="animate-ping"
+                r={isChapterHovered ? "42" : "34"}
+                stroke="var(--gold)"
+                strokeWidth="1.5"
+                strokeOpacity={isChapterHovered ? "0.6" : "0.3"}
                 fill="var(--gold)"
-                opacity={isChapterHovered ? "0.45" : "0.25"}
+                fillOpacity={isChapterHovered ? "0.18" : "0.08"}
               />
 
-              {/* Status Glow Aura */}
+              {/* Status Aura */}
               <circle
                 cx={aucPinX}
                 cy={aucPinY}
-                r={isChapterHovered ? "32" : "24"}
+                r={isChapterHovered ? "30" : "24"}
                 fill="var(--gold)"
-                fillOpacity={isChapterHovered ? "0.32" : "0.2"}
+                fillOpacity={isChapterHovered ? "0.28" : "0.18"}
                 stroke="var(--gold)"
-                strokeWidth={isChapterHovered ? "3.5" : "2.5"}
-                className="transition-all duration-300"
+                strokeWidth={isChapterHovered ? "3" : "2.5"}
               />
 
               {/* Core Node Circle */}
               <circle
                 cx={aucPinX}
                 cy={aucPinY}
-                r={isChapterHovered ? "14" : "12"}
+                r={isChapterHovered ? "13" : "12"}
                 fill="#09131F"
                 stroke="var(--gold)"
-                strokeWidth={isChapterHovered ? "4" : "3.5"}
-                className="transition-all duration-300"
+                strokeWidth="3.5"
               />
               <circle
                 cx={aucPinX}
                 cy={aucPinY}
-                r={isChapterHovered ? "6.5" : "5"}
+                r={isChapterHovered ? "6" : "5"}
                 fill="var(--gold)"
-                className="transition-all duration-300"
               />
 
               {/* Connected Line and Label Tag */}
@@ -459,15 +451,14 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
                 x2={aucPinX + 50}
                 y2={aucPinY - 40}
                 stroke="var(--gold)"
-                strokeWidth={isChapterHovered ? "3" : "2"}
-                className="transition-all duration-300"
+                strokeWidth={isChapterHovered ? "2.5" : "2"}
               />
 
               {/* Interactive Tag Box with Pop Hover Elevation */}
               <g
                 style={{
-                  transform: isChapterHovered ? "translateY(-6px)" : "translateY(0)",
-                  transition: "transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  transform: isChapterHovered ? "translateY(-4px)" : "translateY(0)",
+                  transition: "transform 220ms cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
                 <rect
@@ -478,13 +469,7 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
                   rx="6"
                   fill="var(--surface)"
                   stroke={isChapterHovered ? "var(--gold)" : "var(--line)"}
-                  strokeWidth={isChapterHovered ? "2.5" : "1.5"}
-                  className="transition-all duration-300"
-                  style={{
-                    filter: isChapterHovered
-                      ? "drop-shadow(0 16px 32px rgba(0,0,0,0.65)) drop-shadow(0 0 16px rgba(212,175,55,0.45))"
-                      : "drop-shadow(0 4px 10px rgba(0,0,0,0.3))",
-                  }}
+                  strokeWidth={isChapterHovered ? "2" : "1.5"}
                 />
 
                 <text
@@ -501,7 +486,7 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
                 <text
                   x={aucPinX + 66}
                   y={aucPinY - 26}
-                  fill="#D97706"
+                  fill="var(--gold-pale)"
                   fontSize="12"
                   fontWeight="bold"
                   fontFamily="monospace"
@@ -563,16 +548,16 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
         </div>
       </div>
 
-      {/* ── Selected Chapter Detail Card ── */}
+      {/* Selected Chapter Detail Card */}
       <div
-        className={`p-6 sm:p-8 bg-[var(--surface-raised)] flex flex-col justify-between transition-all duration-300 ${
+        className={`p-6 sm:p-8 bg-[var(--surface-raised)] flex flex-col justify-between transition-colors duration-200 ${
           isChapterHovered ? "ring-1 ring-[var(--gold)]/50" : ""
         }`}
       >
         <div>
           {/* Status Badge */}
           <div className="flex items-center justify-between gap-2 border-b border-[var(--line-subtle)] pb-4">
-            <span className="rounded-full px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 inline-flex items-center gap-1.5">
+            <span className="rounded-full px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1.5">
               <Sparkles size={11} aria-hidden="true" />
               <span>Chartered · Currently Inactive</span>
             </span>
@@ -667,8 +652,8 @@ export function ChaptersMap({ chartered }: ChaptersMapProps) {
               Interested in launching a chapter at Cairo University, Ain Shams, Alexandria, or your institution?
             </p>
             <Link
-              href="/volunteer"
-              className="inline-flex items-center gap-1 text-[11px] font-mono text-[var(--gold)] hover:underline mt-2 font-bold"
+              href="/join?type=chapter"
+              className="inline-flex min-h-[48px] items-center gap-1 text-[11px] font-mono text-[var(--gold)] hover:underline mt-1 font-bold"
             >
               <span>Connect with Student Affairs Committee</span>
               <ArrowUpRight size={11} />

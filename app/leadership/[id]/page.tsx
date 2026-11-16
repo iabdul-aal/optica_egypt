@@ -3,52 +3,54 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowUpRight, Globe, Linkedin, Mail, ShieldCheck, Sparkles } from "lucide-react"
+import {
+  getDispatchesForMember,
+  getDomainsByIds,
+  getProjectsForMember,
+} from "@/lib/graph"
 import { getActiveMembers, getMemberById } from "@/lib/members"
-import { getAssetPath } from "@/lib/utils"
+import { LIFECYCLE_LABELS } from "@/lib/projects"
+import { buildPageMetadata } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
+import { getAssetPath } from "@/lib/utils"
 
-type MemberProfilePageProps = {
+interface MemberPageProps {
   params: Promise<{ id: string }>
 }
 
-export function generateStaticParams() {
-  return getActiveMembers().map((member) => ({ id: member.id }))
+export async function generateStaticParams() {
+  return getActiveMembers().map((m) => ({ id: m.id }))
 }
 
-export async function generateMetadata({ params }: MemberProfilePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: MemberPageProps): Promise<Metadata> {
   const { id } = await params
   const member = getMemberById(id)
-  if (!member) return { title: "Officer Profile" }
+  if (!member) return { title: "Member Not Found" }
 
-  const name = member.name.en
-  const role = member.role.en
-  const title = `${name} — ${role} | Optica Egypt`
-  const description = `${name} serves as ${role} for the Optica Egypt Local Section. ${member.institution.en}`
-  const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
+  const title = `${member.name} | ${member.role}`
+  const description = `${member.name} serves as ${member.role} for the Optica Egypt Local Section. ${member.institution}`
 
-  return {
+  return buildPageMetadata({
     title,
     description,
-    alternates: {
-      canonical: `/leadership/${member.id}/`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `${siteUrl}/leadership/${member.id}/`,
-      images: [member.photo ? `${siteUrl}${member.photo}` : `${siteUrl}/og/og-leadership.jpg`],
-    },
-  }
+    path: `/leadership/${member.id}`,
+    image: member.photo
+      ? { url: member.photo, width: 720, height: 900, alt: member.name }
+      : undefined,
+  })
 }
 
-export default async function MemberProfilePage({ params }: MemberProfilePageProps) {
+export default async function MemberProfilePage({ params }: MemberPageProps) {
   const { id } = await params
   const member = getMemberById(id)
   if (!member) notFound()
 
-  const name = member.name.en
-  const initials = name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase()
-  const hasPhoto = Boolean(member.photo)
+  const initials = member.name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase()
 
   const tierLabels = {
     executive: "Executive Committee Officer",
@@ -56,27 +58,56 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
     advisory: "Senior Faculty Advisory Board",
   }
 
+  const domains = getDomainsByIds(member.domainIds)
+  const projectsLed = getProjectsForMember(member.id)
+  const dispatchesAuthored = getDispatchesForMember(member.id)
+  const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
+  const sameAs = [
+    ...(member.linkedin && member.linkedin !== "none"
+      ? [`https://www.linkedin.com/in/${member.linkedin}`]
+      : []),
+    ...(member.website ? [member.website] : []),
+  ]
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    affiliation: {
+      "@type": "Organization",
+      name: member.institution,
+    },
+    memberOf: {
+      "@id": `${siteUrl}/#organization`,
+    },
+    url: `${siteUrl}/leadership/${member.id}`,
+    ...(member.photo ? { image: `${siteUrl}${member.photo}` } : {}),
+    ...(sameAs.length > 0 ? { sameAs } : {}),
+  }
+
   return (
     <section className="section-space scientific-grid min-h-[75vh]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <div className="container-page">
-        {/* Back navigation */}
-        <Link href="/leadership" className="text-link inline-flex items-center gap-2 mb-10">
+        <Link href="/about#leadership" className="text-link inline-flex min-h-[48px] items-center gap-2 mb-8">
           <ArrowLeft size={14} aria-hidden="true" />
-          <span>Back to leadership directory</span>
+          <span>Back to leadership roster</span>
         </Link>
 
         <div className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start">
-          {/* ── Left Column: Portrait and Quick Details ── */}
           <div className="site-card p-6 sm:p-8 flex flex-col items-center text-center sm:items-start sm:text-left">
-            <div className="relative aspect-[2/3] w-full max-w-[320px] overflow-hidden rounded-sm bg-[var(--surface-raised)] border border-[var(--line)] shadow-lg">
-              {hasPhoto ? (
+            <div className="relative aspect-[2/3] w-full max-w-[320px] overflow-hidden rounded-sm bg-[var(--surface-raised)] border border-[var(--line)]">
+              {member.photo ? (
                 <Image
-                  src={getAssetPath(member.photo!)}
-                  alt={name}
+                  src={getAssetPath(member.photo)}
+                  alt={member.name}
                   fill
                   priority
                   sizes="(max-width: 640px) 100vw, 380px"
-                  className="object-cover object-top grayscale contrast-110 brightness-[0.9] hover:grayscale-0 transition-all duration-500"
+                  className="object-cover object-top"
                 />
               ) : (
                 <div className="scientific-grid flex h-full w-full items-end justify-between p-6 text-[var(--gold)]">
@@ -92,65 +123,37 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
                   <ShieldCheck size={13} aria-hidden="true" />
                   {tierLabels[member.tier]}
                 </span>
-                {member.isInitiator ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)] bg-[var(--gold)]/20 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                    <Sparkles size={13} aria-hidden="true" />
-                    Founder and Section Initiator
-                  </span>
-                ) : member.isFirstPresident ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)] bg-[var(--gold)]/20 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                    <ShieldCheck size={13} aria-hidden="true" />
-                    First President and Co-Founder
-                  </span>
-                ) : member.isFounder ? (
+                {member.isFounder && (
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-[var(--ink-soft)]">
+                    <Sparkles size={12} aria-hidden="true" />
                     {member.foundingRole || "Co-Founder"}
                   </span>
-                ) : null}
-              </div>
-
-              <h1 className="text-2xl font-bold tracking-tight text-[var(--ink)] sm:text-3xl">
-                {name}
-              </h1>
-
-              <div>
-                <p className="font-mono text-xs uppercase tracking-wider text-[var(--gold)] font-bold">
-                  {member.role.en}
-                </p>
-                {member.foundingRole && member.foundingRole !== member.role.en && (
-                  <p className="font-mono text-[11px] uppercase tracking-wider text-[var(--ink-faint)] mt-0.5">
-                    {member.foundingRole}
-                  </p>
                 )}
               </div>
 
-              {member.institution.en && (
-                <p className="text-sm text-[var(--ink-soft)] leading-relaxed">
-                  {member.institution.en}
-                </p>
-              )}
+              <h1 className="text-2xl font-bold tracking-tight text-[var(--ink)] sm:text-3xl">
+                {member.name}
+              </h1>
 
-              {member.specializedSector && (
-                <p className="text-xs font-mono text-[var(--ink-faint)]">
-                  Sector: <strong className="text-[var(--ink)]">{member.specializedSector}</strong>
-                </p>
-              )}
+              <p className="font-mono text-xs uppercase tracking-wider text-[var(--gold)] font-bold">
+                {member.role}
+              </p>
+
+              <p className="text-sm text-[var(--ink-soft)]">{member.institution}</p>
 
               {member.opticaId && (
                 <div className="pt-2 border-t border-[var(--line-subtle)] text-xs font-mono text-[var(--ink-faint)]">
-                  <span>Optica Member ID: </span>
-                  <strong className="text-[var(--gold)]">{member.opticaId}</strong>
+                  Optica Member ID: <strong className="text-[var(--gold)]">{member.opticaId}</strong>
                 </div>
               )}
 
-              {/* Social Channels */}
               <div className="pt-4 border-t border-[var(--line-subtle)] flex flex-wrap gap-2 justify-center sm:justify-start">
                 {member.email && (
                   <a
                     href={`mailto:${member.email}`}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    className="inline-flex min-h-[48px] items-center gap-1.5 px-3.5 py-2 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
                   >
-                    <Mail size={13} />
+                    <Mail size={13} aria-hidden="true" />
                     <span>Email</span>
                   </a>
                 )}
@@ -159,11 +162,11 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
                     href={`https://linkedin.com/in/${member.linkedin}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    className="inline-flex min-h-[48px] items-center gap-1.5 px-3.5 py-2 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
                   >
-                    <Linkedin size={13} />
+                    <Linkedin size={13} aria-hidden="true" />
                     <span>LinkedIn</span>
-                    <ArrowUpRight size={11} />
+                    <ArrowUpRight size={11} aria-hidden="true" />
                   </a>
                 )}
                 {member.website && (
@@ -171,98 +174,102 @@ export default async function MemberProfilePage({ params }: MemberProfilePagePro
                     href={member.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    className="inline-flex min-h-[48px] items-center gap-1.5 px-3.5 py-2 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
                   >
-                    <Globe size={13} />
+                    <Globe size={13} aria-hidden="true" />
                     <span>Website</span>
-                    <ArrowUpRight size={11} />
+                    <ArrowUpRight size={11} aria-hidden="true" />
                   </a>
                 )}
               </div>
             </div>
           </div>
 
-          {/* ── Right Column: Biography and Background Details ── */}
-          <div className="space-y-8">
-            {/* Biography */}
-            <div className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] p-6 sm:p-8">
-              <div className="flex items-center gap-2 text-[var(--gold)] mb-4">
-                <Sparkles size={16} aria-hidden="true" />
-                <span className="font-mono text-xs font-bold uppercase tracking-wider">
-                  Professional Biography
-                </span>
-              </div>
-              <p className="text-base sm:text-lg leading-relaxed text-[var(--ink)]">
-                {member.bio.en || "Biography details are being updated by the section secretariat."}
-              </p>
-            </div>
-
-            {/* Structured Academic and Professional Information */}
-            <div className="grid gap-5 sm:grid-cols-2">
-              {member.academicBackground && (
-                <div className="site-card p-6">
-                  <p className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
-                    Academic Background
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-                    {member.academicBackground}
-                  </p>
-                </div>
-              )}
-
-              {member.professionalFocus && (
-                <div className="site-card p-6">
-                  <p className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
-                    Professional Focus
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-                    {member.professionalFocus}
-                  </p>
+          <div className="space-y-6">
+            <div className="site-card p-6 sm:p-8">
+              <p className="eyebrow">Biography</p>
+              <p className="mt-3 text-base leading-relaxed text-[var(--ink)]">{member.bio}</p>
+              {domains.length > 0 && (
+                <div className="mt-5 flex flex-wrap gap-2 border-t border-[var(--line-subtle)] pt-4">
+                  {domains.map((domain) => (
+                    <span
+                      key={domain.id}
+                      className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-2.5 py-1 font-mono text-[11px] text-[var(--gold)]"
+                    >
+                      {domain.label}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>
 
-            {member.foundingRole && (
-              <div className="site-card p-6 border-l-2 border-l-[var(--gold)]">
-                <p className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
-                  Charter Founding Status
-                </p>
-                <p className="mt-2 text-base font-semibold text-[var(--ink)] leading-snug">
-                  {member.foundingRole}
-                </p>
-                <p className="mt-1.5 text-xs text-[var(--ink-soft)] leading-relaxed">
-                  {member.isInitiator
-                    ? "Conceived and initiated the Optica Egypt Local Section charter petition to Optica Global, convening the founding leadership cohort."
-                    : member.isFirstPresident
-                    ? "First President steering the inaugural executive governance and charter operations of the Optica Egypt Local Section."
-                    : "Founding member of the Optica Egypt Local Section, advancing the national optics and photonics charter."}
-                </p>
+            {(member.academicBackground || member.professionalFocus) && (
+              <div className="grid gap-5 sm:grid-cols-2">
+                {member.academicBackground && (
+                  <div className="site-card p-6">
+                    <p className="eyebrow">Academic Background</p>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
+                      {member.academicBackground}
+                    </p>
+                  </div>
+                )}
+                {member.professionalFocus && (
+                  <div className="site-card p-6">
+                    <p className="eyebrow">Professional Focus</p>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
+                      {member.professionalFocus}
+                    </p>
+                  </div>
+                )}
               </div>
             )}
 
             {member.achievements && (
               <div className="site-card p-6">
-                <p className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
-                  Key Achievements and Contributions
-                </p>
+                <p className="eyebrow">Key Distinctions</p>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
                   {member.achievements}
                 </p>
               </div>
             )}
 
-            {/* Committee Engagement Card */}
-            <div className="site-card p-6 border-l-2 border-l-[var(--gold)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <h3 className="font-semibold text-base text-[var(--ink)]">Connect with the Section Leadership</h3>
-                <p className="text-xs text-[var(--ink-soft)] mt-1">
-                  Have inquiries about academic collaborations, student chapter sponsorships, or technical seminars?
-                </p>
+            {projectsLed.length > 0 && (
+              <div className="site-card p-6">
+                <p className="eyebrow">Section Projects Coordinated</p>
+                <div className="mt-3 divide-y divide-[var(--line-subtle)]">
+                  {projectsLed.map((project) => (
+                    <Link
+                      key={project.id}
+                      href={`/projects/${project.slug}`}
+                      className="flex min-h-[48px] items-center justify-between gap-4 py-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
+                    >
+                      <span>{project.title}</span>
+                      <span className="font-mono text-xs text-[var(--gold)]">
+                        {LIFECYCLE_LABELS[project.lifecycle]}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
               </div>
-              <Link href="/join" className="btn-primary shrink-0">
-                Get Involved <ArrowUpRight size={14} aria-hidden="true" />
-              </Link>
-            </div>
+            )}
+
+            {dispatchesAuthored.length > 0 && (
+              <div className="site-card p-6">
+                <p className="eyebrow">Linked Dispatches</p>
+                <div className="mt-3 divide-y divide-[var(--line-subtle)]">
+                  {dispatchesAuthored.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={`/updates/${item.slug}`}
+                      className="flex min-h-[48px] items-center justify-between gap-4 py-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
+                    >
+                      <span>{item.title}</span>
+                      <ArrowUpRight size={14} aria-hidden="true" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

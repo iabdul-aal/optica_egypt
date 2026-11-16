@@ -3,11 +3,10 @@ import { Inter, Montserrat } from "next/font/google"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
-import { LenisProvider } from "@/components/providers/LenisProvider"
 import { ScrollProgress } from "@/components/ui/ScrollProgress"
 import "@/app/globals.css"
-import { getDictionary } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
+import { getSocialSameAsUrls } from "@/lib/social"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,55 +24,56 @@ type RootLayoutProps = Readonly<{
   children: React.ReactNode
 }>
 
-const dictionary = getDictionary("en")
 const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: dictionary.site.name, template: `%s | ${dictionary.site.shortName}` },
-  description: dictionary.site.description,
+  title: { default: siteConfig.seo.defaultTitle, template: siteConfig.seo.titleTemplate },
+  description: siteConfig.seo.defaultDescription,
   keywords: [
-    "Optica",
     "Optica Egypt",
     "Optica Egypt Local Section",
     "Egypt photonics",
     "optics society Egypt",
-    "laser science Egypt",
     "silicon photonics Cairo",
-    "quantum optics",
-    "Ain Shams University",
-    "scientific research Cairo",
+    "open-source photonics PDA",
+    "Optica student chapters Egypt",
   ],
-  authors: [{ name: dictionary.site.name, url: siteUrl }],
-  creator: dictionary.site.name,
-  publisher: "Optica",
-  category: "science, technology, photonics",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
-    siteName: dictionary.site.name,
-    title: dictionary.site.name,
-    description: dictionary.site.description,
+    url: `${siteUrl}/`,
+    siteName: siteConfig.name,
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
     images: [
       {
-        url: `${siteUrl}/og/og-default.jpg`,
-        width: 1200,
-        height: 630,
+        url: `${siteUrl}/branding/FullOnBlack.png`,
+        width: 1080,
+        height: 1080,
         alt: "Optica Egypt Local Section",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: dictionary.site.name,
-    description: dictionary.site.description,
-    creator: "@opticaegypt",
-    site: "@opticaegypt",
-    images: [`${siteUrl}/og/og-default.jpg`],
+    card: "summary",
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
+    ...(siteConfig.social.twitter
+      ? {
+          creator: `@${siteConfig.social.twitter.replace(/^@+/, "")}`,
+          site: `@${siteConfig.social.twitter.replace(/^@+/, "")}`,
+        }
+      : {}),
+    images: [`${siteUrl}/branding/FullOnBlack.png`],
   },
   robots: {
     index: true,
@@ -86,9 +86,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
-  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
 }
 
 const jsonLd = {
@@ -99,9 +103,14 @@ const jsonLd = {
       "@id": `${siteUrl}/#organization`,
       name: "Optica Egypt Local Section",
       alternateName: ["Optica Egypt", "Egypt Photonics Section"],
-      url: siteUrl,
-      logo: `${siteUrl}/assets/brand/egypt/logo/egypt-local-mark.png`,
-      description: dictionary.site.description,
+      url: `${siteUrl}/`,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/branding/FullOnBlack.png`,
+        width: 1080,
+        height: 1080,
+      },
+      description: siteConfig.seo.defaultDescription,
       foundingDate: "2026-09-10",
       parentOrganization: {
         "@type": "Organization",
@@ -109,15 +118,14 @@ const jsonLd = {
         url: "https://www.optica.org",
       },
       sameAs: [
-        "https://www.linkedin.com/company/optica-egypt",
-        "https://instagram.com/opticaegypt",
-        "https://twitter.com/opticaegypt",
+        ...getSocialSameAsUrls(),
         "https://github.com/iabdul-aal/optica_egypt",
       ],
       contactPoint: {
         "@type": "ContactPoint",
         email: siteConfig.email,
         contactType: "administrative and general inquiries",
+        url: `${siteUrl}/join`,
         availableLanguage: ["English"],
       },
       areaServed: {
@@ -130,7 +138,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
       name: "Optica Egypt Local Section",
-      description: dictionary.site.description,
+      description: siteConfig.seo.defaultDescription,
       publisher: {
         "@id": `${siteUrl}/#organization`,
       },
@@ -151,15 +159,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body className={`${inter.variable} ${montserrat.variable} font-latin antialiased`}>
         <ThemeProvider>
-          <LenisProvider>
-            <ScrollProgress />
-            <a href="#main-content" className="skip-link">{dictionary.common.skipToContent}</a>
-            <Header locale="en" dictionary={dictionary} />
-            <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">
-              {children}
-            </main>
-            <Footer locale="en" dictionary={dictionary} />
-          </LenisProvider>
+          <ScrollProgress />
+          <a href="#main-content" className="skip-link">Skip to content</a>
+          <Header />
+          <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

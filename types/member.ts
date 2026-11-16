@@ -1,24 +1,27 @@
+import type { DomainId } from "./domain"
+
 export interface Member {
   id: string
-  name: { en: string }
-  role: { en: string }
-  term: string
-  tier: "executive" | "operational" | "advisory"
-  institution: { en: string }
+  name: string
+  role: string
   foundingRole?: string
   isFounder?: boolean
   isInitiator?: boolean
   isFirstPresident?: boolean
-  linkedin?: string
-  email?: string
-  website?: string
-  opticaId?: string
-  photo?: string
-  bio: { en: string }
+  tier: "executive" | "operational" | "advisory"
+  term: string
+  institution: string
   academicBackground?: string
   professionalFocus?: string
   specializedSector?: string
   achievements?: string
+  domainIds: DomainId[]
+  linkedin?: string
+  email?: string
+  website?: string
+  opticaId?: string
+  photo: string
+  bio: string
   order: number
   active: boolean
 }

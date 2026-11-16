@@ -1,6 +1,6 @@
 import chaptersData from "@/data/chapters.json"
 
-export interface ChapterSocials {
+interface ChapterSocials {
   email?: string
   linkedin?: string
   website?: string
@@ -28,28 +28,14 @@ export interface Chapter {
   highlights?: string[]
 }
 
-export interface ChapterStat {
-  label: string
-  value: string
-  detail: string
-}
-
-export interface RoadmapStep {
+interface RoadmapStep {
   step: string
   title: string
   body: string
 }
 
-export function getChapterStats(): ChapterStat[] {
-  return chaptersData.stats
-}
-
 export function getCharteredChapters(): Chapter[] {
   return chaptersData.charteredChapters as Chapter[]
-}
-
-export function getPipelineChapters(): Chapter[] {
-  return chaptersData.pipelineChapters as Chapter[]
 }
 
 export function getAllChapters(): Chapter[] {

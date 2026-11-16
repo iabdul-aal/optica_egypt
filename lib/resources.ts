@@ -7,6 +7,7 @@ export function getAllResources(): Resource[] {
   return resources
 }
 
-export function getResourcesByCategory(category: string): Resource[] {
-  return resources.filter((r) => r.category === category)
+export function getResourcesByIds(ids: string[]): Resource[] {
+  const idSet = new Set(ids)
+  return resources.filter((r) => idSet.has(r.id))
 }

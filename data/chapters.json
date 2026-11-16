@@ -32,7 +32,10 @@
       "campus": "New Cairo Campus, AUC Avenue",
       "city": "New Cairo",
       "governorate": "Cairo Governorate",
-      "coordinates": { "x": 56.8, "y": 27.5 },
+      "coordinates": {
+        "x": 56.8,
+        "y": 27.5
+      },
       "facultyAdvisor": "Prof. Yehea Ismail",
       "advisorDepartment": "School of Sciences and Engineering / Physics and Nanotechnology",
       "description": "The first and only formally chartered Optica Student Chapter in Egypt. Hosted within the School of Sciences and Engineering at AUC New Cairo, the chapter connects physics, optical engineering, and nanotechnology students with international researchers. The chapter is currently inactive while undergoing executive committee reactivation and student leadership onboarding.",
@@ -53,6 +56,11 @@
         "First formally chartered Optica student chapter in Egypt, established in 2024.",
         "Undergoing formal section-supported reactivation to reconstitute student leadership and activities.",
         "Hosted international Optica Traveling Lecturer on advanced metamaterials and silicon photonics."
+      ],
+      "domainIds": [
+        "quantum-nano",
+        "photonic-ic",
+        "lasers-nonlinear"
       ]
     }
   ],

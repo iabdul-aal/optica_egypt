@@ -1,9 +1,15 @@
+import type { DomainId } from "./domain"
+
 export interface Resource {
   id: string
-  title: { en: string }
-  description: { en: string }
+  title: string
+  description: string
   url: string
-  category: "journal" | "conference" | "funding" | "grants" | "learning" | "tool" | "software" | "community"
+  category: "grants" | "software" | "learning" | "journals"
+  costTier: "free" | "tier2-discount" | "grant"
+  accessReq: string
+  domainIds: DomainId[]
   tags: string[]
+  lastVerifiedISO: string
   free: boolean
 }

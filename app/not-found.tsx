@@ -1,24 +1,17 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight, Compass, Calendar, Users, Home } from "lucide-react"
+import { ArrowUpRight, Calendar, Compass, Home, Users } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Page Not Found",
-  robots: {
-    index: false,
-    follow: false,
-  },
+  robots: { index: false, follow: false },
 }
 
 export default function NotFound() {
   return (
     <section className="scientific-grid relative min-h-[80vh] flex items-center justify-center py-20 px-5 sm:px-8">
-      {/* Laser line accent */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
-      
       <div className="container-page max-w-3xl text-center">
         <div className="inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3.5 py-1 text-xs font-mono font-bold tracking-wider text-[var(--gold)] uppercase">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
           Optical Path Interrupted / 404
         </div>
 
@@ -31,59 +24,34 @@ export default function NotFound() {
         </h1>
 
         <p className="mt-4 max-w-xl mx-auto text-base text-[var(--ink-soft)] leading-relaxed">
-          The requested beam could not resolve a target wavelength. The page may have been redirected, renamed, or temporarily diffracted into another spectrum.
+          The requested page has moved or does not exist. Select one of the canonical destinations below.
         </p>
 
-        {/* Primary CTA Buttons */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/" className="btn-primary">
-            <Home size={15} /> Return to homepage <ArrowUpRight size={14} />
+          <Link href="/" className="btn-primary min-h-[48px]">
+            <Home size={15} aria-hidden="true" /> Return to homepage <ArrowUpRight size={14} aria-hidden="true" />
           </Link>
-          <Link href="/events" className="btn-secondary">
-            <Calendar size={15} /> Explore events
+          <Link href="/updates" className="btn-secondary min-h-[48px]">
+            <Calendar size={15} aria-hidden="true" /> Explore updates
           </Link>
         </div>
 
-        {/* Helpful links grid */}
-        <div className="mt-14 border-t border-white/10 pt-10 text-left">
-          <p className="eyebrow text-center mb-6">Explore alternative optical routes</p>
-          <div className="grid gap-4 sm:grid-cols-3">
-            <Link
-              href="/events"
-              className="group rounded border border-white/10 bg-[var(--surface)]/80 p-4 transition-all hover:border-[var(--gold)] hover:bg-[var(--surface-raised)]"
-            >
-              <div className="flex items-center justify-between text-[var(--gold)]">
-                <Calendar size={18} />
-                <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
-              <h2 className="mt-3 font-semibold text-sm text-[var(--ink)]">Events and Workshops</h2>
-              <p className="mt-1 text-xs text-[var(--ink-soft)]">Upcoming inauguration, technical talks, and roadshows.</p>
-            </Link>
-
-            <Link
-              href="/leadership"
-              className="group rounded border border-white/10 bg-[var(--surface)]/80 p-4 transition-all hover:border-[var(--gold)] hover:bg-[var(--surface-raised)]"
-            >
-              <div className="flex items-center justify-between text-[var(--gold)]">
-                <Users size={18} />
-                <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
-              <h2 className="mt-3 font-semibold text-sm text-[var(--ink)]">Leadership and Team</h2>
-              <p className="mt-1 text-xs text-[var(--ink-soft)]">Executive officers, operational chairs, and faculty advisors.</p>
-            </Link>
-
-            <Link
-              href="/about"
-              className="group rounded border border-white/10 bg-[var(--surface)]/80 p-4 transition-all hover:border-[var(--gold)] hover:bg-[var(--surface-raised)]"
-            >
-              <div className="flex items-center justify-between text-[var(--gold)]">
-                <Compass size={18} />
-                <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" />
-              </div>
-              <h2 className="mt-3 font-semibold text-sm text-[var(--ink)]">About Section</h2>
-              <p className="mt-1 text-xs text-[var(--ink-soft)]">Mission, vision, charter governance, and history in Egypt.</p>
-            </Link>
-          </div>
+        <div className="mt-12 border-t border-[var(--line)] pt-8 text-left grid gap-4 sm:grid-cols-3">
+          <Link href="/projects" className="site-card p-4 hover:border-[var(--gold)] transition-colors min-h-[48px]">
+            <Compass size={16} className="text-[var(--gold)]" aria-hidden="true" />
+            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)]">Projects</h2>
+            <p className="mt-1 text-xs text-[var(--ink-soft)]">Working groups, Open-Source PDA, and outreach tracks.</p>
+          </Link>
+          <Link href="/about#leadership" className="site-card p-4 hover:border-[var(--gold)] transition-colors min-h-[48px]">
+            <Users size={16} className="text-[var(--gold)]" aria-hidden="true" />
+            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)]">Leadership</h2>
+            <p className="mt-1 text-xs text-[var(--ink-soft)]">Executive officers, operational leads, and faculty advisors.</p>
+          </Link>
+          <Link href="/resources" className="site-card p-4 hover:border-[var(--gold)] transition-colors min-h-[48px]">
+            <Calendar size={16} className="text-[var(--gold)]" aria-hidden="true" />
+            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)]">Resources</h2>
+            <p className="mt-1 text-xs text-[var(--ink-soft)]">Free simulation software and Egyptian research grants.</p>
+          </Link>
         </div>
       </div>
     </section>

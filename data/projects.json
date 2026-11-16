@@ -1,0 +1,173 @@
+[
+  {
+    "id": "open-photonics-pda",
+    "slug": "open-photonics-pda",
+    "track": "open-pda",
+    "lifecycle": "planning",
+    "funding": "unfunded-concept",
+    "title": "Open-Source Photonics Working Group",
+    "summary": "Python PIC layout, open PDK references, and browser notebooks removing commercial EDA license barriers.",
+    "description": "Develops accessible simulation workflows built on gdsfactory, KLayout SiEPIC-Tools, Meep FDTD, and Femwell so Egyptian students can learn photonic integrated circuit layout on standard laptops or Colab.",
+    "leadMemberIds": ["khaled-ramadan", "islam-abduaal"],
+    "chapterIds": ["auc"],
+    "domainIds": ["photonic-ic", "quantum-nano"],
+    "resourceIds": [
+      "gdsfactory-colab-notebooks",
+      "gdsfactory-pic-design",
+      "meep-fdtd-simulation",
+      "siepic-tools-eda",
+      "femwell-mode-solver"
+    ],
+    "requirements": [
+      "Volunteer lab mentors comfortable with Python or FDTD",
+      "Host university computer labs for introductory hands-on tutorials"
+    ],
+    "milestones": [
+      { "label": "Curate zero-install notebook starter pack", "timeline": "Inaugural cycle", "state": "in-progress" },
+      { "label": "Run introductory campus workshop", "timeline": "Dates To Be Announced", "state": "pending" }
+    ],
+    "ctaIntent": "speaker_proposal",
+    "ctaLabel": "Propose Workshop or Mentor"
+  },
+  {
+    "id": "photonic-chipathon",
+    "slug": "photonic-chipathon",
+    "track": "open-pda",
+    "lifecycle": "seeking-partners",
+    "funding": "unfunded-concept",
+    "title": "Egypt Open Photonic Chipathon Concept",
+    "summary": "Team challenge pairing DRC-verified GDSII circuit layouts and inverse-design scripts with foundry sponsorship search.",
+    "description": "Proposed national design challenge modeled after open-silicon chipathons across Python EDA utilities, surrogate AI models, open optical datasets, and passive silicon photonics layouts.",
+    "leadMemberIds": ["khaled-ramadan", "mohammed-elsherbiny"],
+    "chapterIds": [],
+    "domainIds": ["photonic-ic"],
+    "resourceIds": ["gdsfactory-pic-design", "siepic-tools-eda", "meep-fdtd-simulation"],
+    "requirements": [
+      "Multi-project wafer (MPW) shuttle sponsorship for fabricated student designs",
+      "University optical bench partners for post-fabrication characterization"
+    ],
+    "milestones": [
+      { "label": "Publish open PDK design rules and challenge tracks", "timeline": "To Be Announced", "state": "pending" },
+      { "label": "Confirm external shuttle sponsorship", "timeline": "Pending Sponsor", "state": "pending" }
+    ],
+    "ctaIntent": "partner_proposal",
+    "ctaLabel": "Sponsor or Partner"
+  },
+  {
+    "id": "seasonal-photonics-school",
+    "slug": "seasonal-photonics-school",
+    "track": "training",
+    "lifecycle": "seeking-partners",
+    "funding": "unfunded-concept",
+    "title": "Egypt Photonics Seasonal Training School",
+    "summary": "Multi-day training pairing integrated waveguide physics, computational simulation, and faculty lectures.",
+    "description": "Introductory and intermediate training roadmap hosted at Egyptian university campuses covering integrated optics, FDTD simulation, optical MEMS, and spectroscopy.",
+    "leadMemberIds": ["yahia-ghadiry", "abdulaziz-albadawi"],
+    "chapterIds": ["auc"],
+    "domainIds": ["photonic-ic", "mems-sensing", "lasers-nonlinear"],
+    "resourceIds": ["gdsfactory-colab-notebooks", "optica-traveling-lecturer"],
+    "requirements": [
+      "Host university auditorium or computer lab in Egypt",
+      "Local faculty liaison and student volunteers"
+    ],
+    "milestones": [
+      { "label": "Select inaugural host university", "timeline": "Open for proposals", "state": "in-progress" },
+      { "label": "Publish syllabus and speaker schedule", "timeline": "To Be Announced", "state": "pending" }
+    ],
+    "ctaIntent": "partner_proposal",
+    "ctaLabel": "Propose Host Campus"
+  },
+  {
+    "id": "scientific-symposium",
+    "slug": "scientific-symposium",
+    "track": "training",
+    "lifecycle": "seeking-partners",
+    "funding": "unfunded-concept",
+    "title": "Egypt Photonics Scientific Symposium",
+    "summary": "National meeting framework convening Egyptian research labs, graduate presenters, and industry engineers.",
+    "description": "Inaugural national technical symposium roadmap covering photonic circuits, optical interconnects, lasers, quantum optics, and sensing instrumentation.",
+    "leadMemberIds": ["abdulaziz-albadawi", "diaa-khalil", "yasser-sabry"],
+    "chapterIds": ["auc"],
+    "domainIds": ["photonic-ic", "optical-comm", "mems-sensing", "quantum-nano"],
+    "resourceIds": ["optica-publishing-group", "optica-traveling-lecturer"],
+    "requirements": [
+      "Academic co-organizer institution and venue",
+      "Technical program reviewers across Egyptian faculties"
+    ],
+    "milestones": [
+      { "label": "Confirm host university co-organizer", "timeline": "Open for proposals", "state": "in-progress" },
+      { "label": "Open abstract call", "timeline": "To Be Announced", "state": "pending" }
+    ],
+    "ctaIntent": "partner_proposal",
+    "ctaLabel": "Propose Co-Organization"
+  },
+  {
+    "id": "thesis-recognition-concept",
+    "slug": "thesis-recognition-concept",
+    "track": "fellowships",
+    "lifecycle": "planning",
+    "funding": "unfunded-concept",
+    "title": "National Thesis Recognition and Support Concept",
+    "summary": "Proposed recognition and prototyping support for Egyptian B.Sc., M.Sc., and Ph.D. optics projects.",
+    "description": "Planning-stage local charter initiative pairing future sponsor backing with faculty advisor review for student capstones, bench components, and graduation research grants.",
+    "leadMemberIds": ["omar-ayoub", "salem-hegazy"],
+    "chapterIds": [],
+    "domainIds": ["lasers-nonlinear", "mems-sensing", "quantum-nano"],
+    "resourceIds": ["itida-itac-grants", "asrt-mashrouy-grants", "stdf-innovation-grants"],
+    "requirements": [
+      "Founding donor or industrial sponsorship commitment",
+      "Confirmed annual review calendar"
+    ],
+    "milestones": [
+      { "label": "Publish domestic grant guide", "timeline": "Completed", "state": "done" },
+      { "label": "Secure local prototype sponsorship", "timeline": "Pending Sponsor", "state": "pending" }
+    ],
+    "ctaIntent": "partner_proposal",
+    "ctaLabel": "Sponsor Thesis Support"
+  },
+  {
+    "id": "senior-fellow-nominations",
+    "slug": "senior-fellow-nominations",
+    "track": "fellowships",
+    "lifecycle": "active",
+    "funding": "optica-funded",
+    "title": "Optica Global Fellowship and Elevation Guidance",
+    "summary": "Advisory endorsement coordination connecting Egyptian researchers to Optica Foundation awards and Senior/Fellow grades.",
+    "description": "Connects eligible Egyptian students and mid-career researchers to official Optica Foundation calls (FiO/CLEO Travel, Siegman Laser School, Women Scholars, Amplify) and Senior Member/Fellow endorsement contacts.",
+    "leadMemberIds": ["diaa-khalil", "yasser-sabry", "salem-hegazy"],
+    "chapterIds": ["auc"],
+    "domainIds": ["photonic-ic", "optical-comm", "lasers-nonlinear", "mems-sensing", "quantum-nano"],
+    "resourceIds": ["optica-foundation-grants"],
+    "requirements": [
+      "Active Optica membership per official Optica criteria on optica.org"
+    ],
+    "milestones": [
+      { "label": "Coordinate Senior and Fellow endorsement introductions", "timeline": "Ongoing", "state": "in-progress" }
+    ],
+    "ctaIntent": "general_inquiry",
+    "ctaLabel": "Request Endorsement Guidance"
+  },
+  {
+    "id": "stem-campus-outreach",
+    "slug": "stem-campus-outreach",
+    "track": "outreach",
+    "lifecycle": "seeking-partners",
+    "funding": "unfunded-concept",
+    "title": "Egyptian School and Campus Optics Roadshow",
+    "summary": "Hands-on light demonstrations and university orientation sessions across Cairo, Delta, and Upper Egypt.",
+    "description": "Volunteer-led outreach connecting regional universities and secondary schools with bench demonstrations, chapter startup clinics, and introductory optics sessions.",
+    "leadMemberIds": ["mohammed-khedr", "abdelrhman-hassan"],
+    "chapterIds": ["auc"],
+    "domainIds": ["lasers-nonlinear", "mems-sensing"],
+    "resourceIds": ["optica-traveling-lecturer", "photonics-spectra-tech"],
+    "requirements": [
+      "School or university science coordinator hosting invitation",
+      "Trained local student volunteer team"
+    ],
+    "milestones": [
+      { "label": "Open host school and campus request queue", "timeline": "Open now", "state": "in-progress" }
+    ],
+    "ctaIntent": "speaker_proposal",
+    "ctaLabel": "Host an Outreach Session"
+  }
+]

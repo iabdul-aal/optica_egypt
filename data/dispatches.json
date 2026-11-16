@@ -1,0 +1,17 @@
+[
+  {
+    "id": "optica-egypt-charter-approval",
+    "slug": "optica-egypt-charter-approval",
+    "kind": "announcement",
+    "published": true,
+    "dateISO": "2026-09-10",
+    "title": "Optica Egypt Local Section Officially Approved",
+    "summary": "Optica formally approved the charter of the Optica Egypt Local Section on 10 September 2026, establishing a national section coordinating student chapters, research workshops, and institutional exchange across Egypt.",
+    "bodyMarkdown": "On 10 September 2026, Optica formally approved the charter petition for the Optica Egypt Local Section.\n\nThe inaugural section brings together 16 founding officers and senior faculty advisors spanning The American University in Cairo (AUC), Ain Shams University, Cairo University, Zewail City, the German University in Cairo (GUC), Sphinx University, Si-Ware Systems, and FAU Erlangen-Nuremberg.\n\nInitial priorities focus on reactivating student chapters, organizing open-source photonic design automation tutorials, and serving as a transparent coordination desk for Egyptian optics researchers and students.",
+    "authorIds": ["abdulaziz-albadawi", "islam-abduaal"],
+    "projectId": "open-photonics-pda",
+    "domainIds": ["photonic-ic", "mems-sensing"],
+    "resourceIds": ["gdsfactory-colab-notebooks", "itida-itac-grants"],
+    "externalUrl": "/about"
+  }
+]

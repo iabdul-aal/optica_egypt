@@ -1,67 +1,68 @@
 # Optica Egypt Local Section
 
-Official website for the Optica Egypt Local Section, connecting students, researchers, universities, industry, and startups across Egypt to the global photonics ecosystem.
+Official web platform for the Optica Egypt Local Section (`https://optica-egypt.com`), connecting university student chapters, faculty advisors, researchers, and engineers across Egypt with open-source photonics tools, initiatives, and Optica networks.
 
 ## Stack
 
 | Layer | Technology |
 |---|---|
-| Framework | Next.js 15, React 19, TypeScript 5 |
-| Styling | Tailwind CSS v4, CSS custom properties |
-| 3D | React Three Fiber, @react-three/drei |
-| Animation | GSAP, Framer Motion, Lenis |
-| i18n | Static English routes |
-| Theme | next-themes, dark-first |
-| Hosting | Vercel (free) |
-| CI/CD | Vercel GitHub integration + GitHub Actions |
+| Framework | Next.js 15 (App Router, Node 24 server runtime on Vercel) |
+| Language Policy | Strict English-only across UI, data, metadata, and intake |
+| Styling | Tailwind CSS v4, semantic CSS custom properties (`#090c0d` / `#f8f9fa` / `#d7ae5b`) |
+| Diagrams | Deterministic inline SVG optical schematics and vector Egypt chapter map |
+| Theme | `next-themes`, dark-first with light-mode parity |
+| Database and Auth | Supabase Postgres, Auth, and row-level security (`/api/recruitment`, `/api/submissions`, `/admin`) |
+| SEO and Discovery | Canonical metadata (`lib/seo.ts`), Schema.org JSON-LD, `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`, `/llms.txt` |
+| CI/CD | GitHub Actions (`npm run check`, `npm run test:unit`, `npm run build`) |
 
 ## Getting Started
 
 ```bash
-npm install
+npm ci
+# Copy .env.example to .env.local and add Supabase keys to test live recruitment and desk forms.
 npm run dev
 ```
 
-Open [http://localhost:3000/en](http://localhost:3000/en)
+Open [http://localhost:3000](http://localhost:3000).
 
 ## Commands
 
 ```bash
-npm run dev       # Development server
-npm run build     # Production build
-npm run check     # Lint + typecheck (run before push)
-npx playwright test --reporter=list   # E2E smoke tests
+npm run dev         # Local development server
+npm run lint        # ESLint across codebase
+npm run typecheck   # TypeScript compiler check
+npm run validate    # Deterministic schema, foreign-key, asset, and editorial checks
+npm run check       # Full static gate (lint + typecheck + validate)
+npm run test:unit   # Zod intake and review schema unit tests
+npm run build       # Production Next.js server build
+npm run test        # Playwright E2E smoke, SEO, mobile, and audit tests
+npm run test:live   # Live Supabase recruitment and RLS integration tests (.env.local)
 ```
 
-## Content
+## Architecture
 
-All content lives in `data/`. Adding or updating content never requires code changes.
+Public routes follow a lean 7-hub structure (`About`, `Chapters`, `Projects`, `Resources`, `Updates`, `Join`, plus `/` and detail routes `/leadership/[id]`, `/chapters/[id]`, `/projects/[slug]`, `/updates/[slug]`), with permanent `308` redirects in `next.config.ts` preserving legacy paths.
+
+Structured content lives in `data/`:
 
 | File | Content |
 |---|---|
-| `data/site_config.json` | Chapter identity, email, social handles |
-| `data/events.json` | Events database |
-| `data/members.json` | Officer directory |
-| `data/news.json` | Announcements |
-| `data/blogs.json` | Technical articles and research spotlights |
-| `data/gallery.json` | Photo and activity archive |
-| `data/chapters.json` | Student chapters registry and campus map data |
-| `data/open_source.json` | Open source photonics program, tools, and chipathon |
-| `data/membership_tiers.json` | Audience-specific membership tiers, pricing, and benefits |
-| `data/outreach.json` | Outreach activities |
-| `data/resources.json` | Curated photonics resources |
+| `data/site_config.json` | Section identity, `info@optica-egypt.com`, social handles, canonical `https://optica-egypt.com` |
+| `data/governance.json` | Charter approval (`10 September 2026`), bylaws, constitutional officer seats, and honest empty partner/recognition states |
+| `data/members.json` | 16 active founding officers and faculty advisors with WebP portraits (`public/people/leadership/*.webp`) |
+| `data/domains.json` | Active Egyptian photonics research domains |
+| `data/chapters.json` | Chartered AUC student chapter record and national chapter checklist |
+| `data/projects.json` | Open-source PDA, training, fellowships, and campus outreach tracks with milestone and foreign-key links |
+| `data/dispatches.json` | Published announcements, events, articles, and media dispatches |
+| `data/resources.json` | Verified license-free photonics tools (`gdsfactory`, `Meep`, `SiEPIC-Tools`, `Femwell`), domestic grants, and journals |
+| `data/membership_tiers.json` | Optica Global membership cohorts and pathways |
+| `data/press.json` | Official press boilerplate and brand kit downloads (`public/branding/*`, `public/docs/optica-egypt-fact-sheet.html`) |
 
-## Internationalization
+## Deployment and Google Search Console Setup
 
-All strings live in `messages/en.json`.
-Routes are statically generated at root paths with dark-mode primary and light-mode parity.
+Deploy on Vercel using Node.js 24 and configure environment variables per `.env.example`:
 
-## Agentic System
-
-The root `AGENTS.md` and `.agents/` directory contain the full agentic configuration:
-skills, memory logs (`decisions.md`, `patterns.md`, `anti-patterns.md`), context, and sitemap.
-
-## Deployment
-
-Auto-deploys to Vercel on every push to `main`.
-Preview deployments created for every pull request.
+- Apply all SQL migrations in `supabase/migrations/` in chronological order (`202611050001_recruitment.sql` through `202611160001_submissions.sql`).
+- Provision staff accounts from a private roster file outside this checkout via `scripts/provision-staff.mjs`.
+- Set `NEXT_PUBLIC_SITE_URL=https://optica-egypt.com`.
+- Verify ownership in Google Search Console via domain DNS TXT record (recommended) or by setting `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel environment variables, then submit `https://optica-egypt.com/sitemap.xml`.

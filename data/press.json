@@ -1,95 +1,78 @@
 {
   "eyebrow": "Media and Communications",
   "title": "Press Room and Media Hub",
-  "intro": "The official resource for journalists, editors, and conference correspondents reporting on optics, photonics, and quantum technologies in Egypt.",
+  "intro": "Official background materials, brand assets, and press inquiry contacts for journalists and editors covering optics and photonics in Egypt.",
   "boilerplate": {
     "title": "Official Boilerplate (About Optica Egypt Local Section)",
-    "body": "The Optica Egypt Local Section is the official Egyptian charter of Optica (formerly OSA), the leading global society dedicated to advancing optics and photonics worldwide. Formally approved in September 2026, the section connects university students, scientific researchers, faculty, and industry pioneers across Egypt into the international optics ecosystem. With a strict commitment to open-access education, pragmatic low-cost computational innovation, and multi-university collaboration, Optica Egypt empowers domestic engineering talent through specialized seasonal schools, nationwide conferences, competitive design hackathons, and direct thesis seed funding.",
-    "short": "Optica Egypt Local Section is the official Egyptian charter of Optica, uniting Egyptian students, researchers, faculty, and industry leaders to advance optics, photonics, and quantum engineering through open education, technical conferences, and research funding."
+    "body": "Approved by Optica on 10 September 2026, the Optica Egypt Local Section connects university students, academic researchers, faculty, and engineering practitioners across Egypt with the international optics and photonics community. Operating under Optica local section bylaws, the section supports open-source computational education, campus student chapter development, technical seminars, and collaborative dialogue across Egyptian academic and technical institutions.",
+    "short": "Approved on 10 September 2026, the Optica Egypt Local Section connects students, researchers, faculty, and professionals in Egypt with the international optics and photonics community."
   },
-  "pressReleases": [
-    {
-      "id": "charter-approval-2026",
-      "date": "10 September 2026",
-      "dateISO": "2026-09-10",
-      "location": "Cairo, Egypt and Washington, D.C.",
-      "title": "Optica Officially Approves Historic Charter for Egypt Local Section",
-      "summary": "Optica Global Board of Directors formally approves the establishment of the Optica Egypt Local Section, creating Egypt's first unified nationwide professional home for optical sciences and photonics engineering.",
-      "lead": "In a milestone moment for Egyptian scientific advancement, the Board of Directors of Optica (formerly OSA) has unanimously approved the official charter for the Optica Egypt Local Section. The newly chartered section unifies university student chapters, academic research faculties, and deep-tech practitioners across Egypt under one national umbrella.",
-      "quote": {
-        "text": "The establishment of Optica Egypt provides a direct, permanent bridge between Egyptian researchers and the worldwide optics community. Our priority is to ensure every student and researcher in Egypt has access to global technical resources, regardless of domestic economic constraints.",
-        "speaker": "Abdulaziz Albadawi",
-        "title": "First President and Co-Founder, Optica Egypt Local Section"
-      },
-      "tags": ["Official Charter", "Optica Global", "National Milestone"]
-    },
-    {
-      "id": "inauguration-announcement-2026",
-      "date": "20 September 2026",
-      "dateISO": "2026-09-20",
-      "location": "Cairo, Egypt",
-      "title": "Optica Egypt Announces Inauguration Ceremony and National Strategic Blueprint",
-      "summary": "Optica Egypt announces its formal hybrid Inauguration Ceremony scheduled for 1 November 2026, unveiling a five-pillar operational strategy tailored to domestic economic realities.",
-      "lead": "Following the ratification of its international charter, the Optica Egypt Local Section has announced its official Inauguration Ceremony and Section Kickoff, set to take place on Sunday, 1 November 2026. The executive committee will present a comprehensive operational blueprint focusing on zero-cost computational design, academic thesis funding, and multi-university chapter expansion.",
-      "quote": {
-        "text": "By shifting the focus toward open-source photonic design automation, simulation, and algorithm co-design, Egyptian engineers can produce world-class publications and IP without the multi-million-dollar capital barriers of physical cleanrooms.",
-        "speaker": "Islam I. Abdulaal",
-        "title": "Section Initiator, Founder, and Webmaster, Optica Egypt Local Section"
-      },
-      "tags": ["Inauguration", "Strategic Blueprint", "Executive Council"]
-    },
-    {
-      "id": "open-source-initiative-2026",
-      "date": "25 September 2026",
-      "dateISO": "2026-09-25",
-      "location": "Giza, Egypt",
-      "title": "Optica Egypt Launches National Open-Source Silicon Photonics Design Initiative",
-      "summary": "Section establishes national computational photonics track with zero software licensing barriers, pairing open PDKs and Python tooling for university graduation projects.",
-      "lead": "Addressing the high software licensing costs that frequently impede university senior design projects, Optica Egypt has launched a national Open-Source Silicon Photonics initiative. The program equips students with curated workflows utilizing gdsfactory, Meep FDTD, and cloud-hosted Jupyter notebooks.",
-      "quote": {
-        "text": "Open-access simulation and design tools represent the great equalizer in global semiconductor education. Egypt has exceptional mathematical and engineering minds ready to excel in optical computing and integrated photonics.",
-        "speaker": "Prof. Diaa Khalil",
-        "title": "Founding Senior Faculty Advisor and Professor of Photonics"
-      },
-      "tags": ["Open Source", "Silicon Photonics", "Higher Education"]
-    }
-  ],
+  "pressReleases": [],
   "mediaKit": {
     "assets": [
       {
+        "id": "brand-logo-transparent-svg",
+        "title": "Optica Egypt Combination Mark (Transparent SVG)",
+        "format": "SVG Vector",
+        "description": "Official Optica Egypt Local Section vector wordmark with gold pyramid and Eye of Horus optical crest on a transparent background.",
+        "downloadUrl": "/branding/FullOnTransparent.svg"
+      },
+      {
         "id": "brand-logo-dark",
-        "title": "Optica Egypt Brand Mark (Primary Dark)",
-        "format": "SVG and PNG Vector",
-        "description": "Primary high-resolution logo suited for dark backgrounds with gold laser marker and crisp white lettering.",
+        "title": "Optica Egypt Combination Mark (On Black SVG)",
+        "format": "SVG Vector",
+        "description": "Official white and gold combination mark framed on a black canvas for dark editorial layouts and broadcast overlays.",
         "downloadUrl": "/branding/optica-egypt-logo-dark.svg"
       },
       {
         "id": "brand-logo-light",
-        "title": "Optica Egypt Brand Mark (Light Mode)",
-        "format": "SVG and PNG Vector",
-        "description": "High-contrast variant optimized for white or light grey publication backgrounds.",
+        "title": "Optica Egypt Combination Mark (On White SVG)",
+        "format": "SVG Vector",
+        "description": "High-contrast black and gold combination mark framed on white for print and light editorial layouts.",
         "downloadUrl": "/branding/optica-egypt-logo-light.svg"
       },
       {
+        "id": "brand-logo-transparent-png",
+        "title": "Optica Egypt Combination Mark (Transparent PNG)",
+        "format": "PNG Raster",
+        "description": "High-resolution transparent PNG export of the official Optica Egypt Local Section combination mark.",
+        "downloadUrl": "/branding/FullOnTransparent.png"
+      },
+      {
         "id": "brand-monogram",
-        "title": "Optica Egypt Square Monogram Badge",
+        "title": "Optica Egypt Pyramid Crest (Transparent SVG)",
         "format": "SVG Vector Seal",
-        "description": "Official 1:1 optical ring resonator monogram badge for social avatars, conference seals, and partner badges.",
+        "description": "Standalone gold pyramid and Eye of Horus vector emblem for social avatars, slides, and official section seals.",
         "downloadUrl": "/branding/optica-egypt-monogram.svg"
+      },
+      {
+        "id": "brand-icon-transparent-png",
+        "title": "Optica Egypt Pyramid Crest (Transparent PNG)",
+        "format": "PNG Raster Seal",
+        "description": "High-resolution transparent PNG icon badge of the Optica Egypt gold crest.",
+        "downloadUrl": "/branding/IconOnTransparent.png"
+      },
+      {
+        "id": "brand-icon-black-svg",
+        "title": "Optica Egypt Monochrome White Crest (On Black SVG)",
+        "format": "SVG Vector Seal",
+        "description": "Monochrome white seal framed on black for single-ink print applications and dark social badges.",
+        "downloadUrl": "/branding/IconWhiteOnBlack.svg"
       },
       {
         "id": "section-factsheet",
         "title": "Section Fact Sheet and Charter Profile",
         "format": "Printable A4 Document",
-        "description": "One-page executive summary of Optica Egypt's charter date, leadership roster, strategic pillars, and university chapters.",
+        "description": "One-page summary of the Optica Egypt Local Section charter date, founding leadership roster, governance mandate, and university chapter standing.",
         "downloadUrl": "/docs/optica-egypt-fact-sheet.html"
       }
     ],
     "brandColors": [
-      { "name": "Deep Space Primary", "hex": "#09131F", "usage": "Primary background and surface depth" },
-      { "name": "Imperial Gold Accent", "hex": "#D4AF37", "usage": "Laser beams, badges, active accents" },
-      { "name": "Light Mode Surface", "hex": "#F8FAFC", "usage": "High-contrast light mode background" },
-      { "name": "Crisp Ink Text", "hex": "#F1F5F9", "usage": "Primary headings and high-contrast prose" }
+      { "name": "Obsidian Dark Canvas", "hex": "#090C0D", "usage": "Primary dark canvas and editorial depth" },
+      { "name": "Optica Egypt Gold", "hex": "#D7AE5B", "usage": "Pyramid crest, laser markers, and dark-mode accents" },
+      { "name": "Light Mode Accent Gold", "hex": "#A67C1E", "usage": "High-contrast gold tokens on light surfaces" },
+      { "name": "Light Mode Canvas", "hex": "#F8F9FA", "usage": "High-contrast light mode background" },
+      { "name": "Warm Bone Ink", "hex": "#F7F2E8", "usage": "Primary display typography in dark mode" }
     ],
     "typography": [
       { "name": "Montserrat", "usage": "Display titles, section headings, numbers, and brand marks" },
@@ -97,27 +80,5 @@
       { "name": "System Monospace", "usage": "Metrics, timestamps, code snippets, and receipt identifiers" }
     ]
   },
-  "mediaCoverage": [
-    {
-      "source": "Optica Global Newsroom",
-      "date": "September 2026",
-      "headline": "Optica Expands Global Presence with New Local Section in Egypt",
-      "summary": "Global society highlights the ratification of Egypt Local Section as a major expansion of optics and photonics leadership across the Middle East and North Africa.",
-      "url": "https://www.optica.org"
-    },
-    {
-      "source": "Egyptian Tech and Engineering Review",
-      "date": "September 2026",
-      "headline": "Young Egyptian Engineers Launch Section to Champion Silicon Photonics",
-      "summary": "Feature article exploring how Optica Egypt overcomes local equipment constraints through open-source EDA tools and inter-university research consortiums.",
-      "url": "https://iabdul-aal.me/optica_egypt"
-    },
-    {
-      "source": "MENA Science and Innovation Dispatch",
-      "date": "September 2026",
-      "headline": "Photonics in Egypt: From Campus Graduation Projects to Global Impact",
-      "summary": "An in-depth review of the section's Inauguration agenda, thesis fund, and student chapter mobilization strategy.",
-      "url": "https://iabdul-aal.me/optica_egypt"
-    }
-  ]
+  "mediaCoverage": []
 }

@@ -1,110 +1,148 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-import { EventCard } from "@/components/sections/EventCard"
+import { DispatchesSection } from "@/components/sections/DispatchesSection"
 import { HeroSection } from "@/components/sections/HeroSection"
-import { ImpactMetrics } from "@/components/sections/ImpactMetrics"
-import { NewsSection } from "@/components/sections/NewsSection"
 import { OpticaHeritage } from "@/components/sections/OpticaHeritage"
 import { ResearchExplorer } from "@/components/sections/ResearchExplorer"
-import { CommunityBubbles } from "@/components/sections/CommunityBubbles"
-import { ScrollReveal } from "@/components/ui/ScrollReveal"
-import { getUpcomingEvents } from "@/lib/events"
-import { getDictionary, localizedHref } from "@/lib/locales"
-import { getLatestNews } from "@/lib/news"
+import { getLatestDispatches } from "@/lib/dispatches"
+import { getAllDomains } from "@/lib/domains"
+import { FUNDING_LABELS, LIFECYCLE_LABELS, getAllProjects } from "@/lib/projects"
+import { buildPageMetadata } from "@/lib/seo"
+import { siteConfig } from "@/lib/site-config"
+
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
+    path: "/",
+  }),
+  title: { absolute: siteConfig.seo.defaultTitle },
+}
+
+const AUDIENCE_PATHS = [
+  {
+    index: "01",
+    title: "Students and Thesis Teams",
+    summary: "Access license-free Python photonics simulation tools, domestic grants, and chapter startup support.",
+    href: "/resources",
+    label: "Explore Toolkit",
+  },
+  {
+    index: "02",
+    title: "Faculty and Research Labs",
+    summary: "Co-host workshops, advise campus student chapters, and coordinate Senior/Fellow nominations.",
+    href: "/join?type=partner",
+    label: "Partner or Host",
+  },
+  {
+    index: "03",
+    title: "Volunteers and Committees",
+    summary: "Join active working groups across technical programming, open-source PDA, or regional outreach.",
+    href: "/join?type=committee",
+    label: "Apply to Committee",
+  },
+] as const
 
 export default function HomePage() {
-  const dictionary = getDictionary("en")
-  const events = getUpcomingEvents(3)
-  const news = getLatestNews(3)
-  const nodes = Object.values(dictionary.home.community.nodes)
+  const dispatches = getLatestDispatches(3)
+  const domains = getAllDomains()
+  const featuredProjects = getAllProjects().slice(0, 3)
 
   return (
     <>
-      <HeroSection locale="en" dictionary={dictionary} />
+      <HeroSection />
 
-      {/* ── Learn / Exchange / Build strip ───────────────────────── */}
-      <ScrollReveal animation="fade-up" delay={40}>
-        <ImpactMetrics />
-      </ScrollReveal>
+      {/* Three concise audience entry points */}
+      <section className="section-space bg-[var(--surface)]">
+        <div className="container-page">
+          <div className="grid gap-6 md:grid-cols-3">
+            {AUDIENCE_PATHS.map((item) => (
+              <article
+                key={item.index}
+                className="site-card p-6 flex flex-col justify-between gap-6"
+              >
+                <div>
+                  <span className="font-mono text-xs font-bold text-[var(--gold)]">
+                    {item.index}
+                  </span>
+                  <h2 className="mt-3 text-lg font-semibold text-[var(--ink)]">
+                    {item.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
+                    {item.summary}
+                  </p>
+                </div>
+                <Link
+                  href={item.href}
+                  className="text-link inline-flex min-h-[48px] items-center gap-1.5 self-start"
+                >
+                  <span>{item.label}</span>
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* ── Community: pentagon network diagram ────────────────── */}
-      <ScrollReveal animation="fade-up" delay={60}>
-        <section className="section-space relative overflow-hidden bg-[var(--surface)]">
-          <div className="scientific-grid absolute inset-0 opacity-50" aria-hidden="true" />
-          <div className="container-page relative">
-            <div className="grid gap-10 border-b border-[var(--line)] pb-9 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
-              <div>
-                <p className="eyebrow">{dictionary.home.community.eyebrow}</p>
-                <h2 className="section-title mt-3 max-w-xl">{dictionary.home.community.title}</h2>
-              </div>
-              <p className="lede max-w-lg lg:justify-self-end">{dictionary.home.community.intro}</p>
+      <DispatchesSection dispatches={dispatches} />
+
+      {/* Highlighted Initiatives */}
+      <section className="section-space bg-[var(--canvas)]">
+        <div className="container-page">
+          <div className="section-split-heading">
+            <div>
+              <p className="eyebrow">Working Groups and Roadmaps</p>
+              <h2 className="section-title">Active Initiatives and Open Calls</h2>
             </div>
-
-            <div className="mt-10 grid gap-9 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-              {/* Node cards */}
-              <div className="order-2 grid gap-x-7 gap-y-6 sm:grid-cols-2 lg:order-1">
-                {nodes.map((node, index) => (
-                  <article className="border-t border-[var(--line)] pt-4" key={node.title}>
-                    <p className="font-mono text-[0.68rem] font-bold text-[var(--gold)]">0{index + 1}</p>
-                    <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{node.title}</h3>
-                    <p className="mt-1 text-sm text-[var(--ink-soft)]">{node.detail}</p>
-                  </article>
-                ))}
-              </div>
-              {/* Interactive Moving Bubbles Diagram */}
-              <div className="order-1 relative py-2 sm:py-4 lg:order-2">
-                <CommunityBubbles diagramLabel={dictionary.home.community.diagramLabel} />
-              </div>
-            </div>
-
-            <Link href={localizedHref("en", "/community")} className="text-link mt-10">
-              {dictionary.home.community.action} <ArrowUpRight size={14} aria-hidden="true" />
+            <Link
+              href="/projects"
+              className="text-link inline-flex min-h-[48px] items-center gap-1.5 justify-self-start sm:justify-self-end"
+            >
+              <span>All projects</span>
+              <ArrowUpRight size={14} aria-hidden="true" />
             </Link>
           </div>
-        </section>
-      </ScrollReveal>
 
-
-      {/* ── Events ──────────────────────────────────────────────── */}
-      <ScrollReveal animation="fade-up" delay={50}>
-        <section className="section-space bg-[var(--surface)]">
-          <div className="container-page">
-            <div className="section-split-heading">
-              <div>
-                <p className="eyebrow">{dictionary.home.events.eyebrow}</p>
-                <h2 className="section-title">{dictionary.home.events.title}</h2>
-              </div>
-              <Link
-                href={localizedHref("en", "/events")}
-                className="text-link justify-self-start sm:justify-self-end"
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <article
+                key={project.id}
+                className="site-card p-6 flex flex-col justify-between gap-5"
               >
-                {dictionary.home.events.action} <ArrowUpRight size={14} aria-hidden="true" />
-              </Link>
-            </div>
-            {events.length === 0 ? (
-              <div className="border-b border-[var(--line-subtle)] py-10">
-                <h3 className="text-xl font-semibold text-[var(--ink)]">{dictionary.home.events.emptyTitle}</h3>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">{dictionary.home.events.emptyBody}</p>
-              </div>
-            ) : (
-              <div>{events.map((event) => <EventCard event={event} locale="en" dictionary={dictionary} key={event.id} />)}</div>
-            )}
+                <div>
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
+                      {LIFECYCLE_LABELS[project.lifecycle]}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--ink-faint)]">
+                      {FUNDING_LABELS[project.funding]}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-lg font-semibold text-[var(--ink)]">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
+                    {project.summary}
+                  </p>
+                </div>
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="text-link inline-flex min-h-[48px] items-center gap-1 self-start"
+                >
+                  <span>Inspect spec</span>
+                  <ArrowUpRight size={13} aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
           </div>
-        </section>
-      </ScrollReveal>
+        </div>
+      </section>
 
-      <ScrollReveal animation="fade-up" delay={50}>
-        <ResearchExplorer locale="en" dictionary={dictionary} />
-      </ScrollReveal>
+      <ResearchExplorer domains={domains} />
 
-      <ScrollReveal animation="fade-up" delay={50}>
-        <NewsSection news={news} locale="en" dictionary={dictionary} />
-      </ScrollReveal>
-
-      {/* ── Global affiliation ───────────────────────────────────── */}
-      <ScrollReveal animation="fade-up" delay={50}>
-        <OpticaHeritage locale="en" />
-      </ScrollReveal>
+      <OpticaHeritage />
     </>
   )
 }

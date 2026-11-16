@@ -18,7 +18,7 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="font-latin antialiased bg-[#090c0d] text-[#f7f2e8]">
+      <body className="font-latin antialiased bg-[var(--canvas,#090c0d)] text-[var(--ink,#f7f2e8)]">
         <section className="scientific-grid relative min-h-screen flex items-center justify-center py-20 px-5 sm:px-8">
           <div className="container-page max-w-2xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--danger)]/30 bg-[var(--danger)]/10 px-3.5 py-1 text-xs font-mono font-bold tracking-wider text-[var(--danger)] uppercase">
@@ -36,7 +36,7 @@ export default function GlobalError({
 
             {error.digest && (
               <p className="mt-4 font-mono text-xs text-[var(--gold)]">
-                Reference code: <span className="text-white/80">{error.digest}</span>
+                Reference code: <span className="text-[var(--ink)]">{error.digest}</span>
               </p>
             )}
 
@@ -47,7 +47,7 @@ export default function GlobalError({
               >
                 <RefreshCcw size={15} /> Re-align system (Try again)
               </button>
-              <Link href="/en" className="btn-secondary inline-flex items-center gap-2">
+              <Link href="/" className="btn-secondary inline-flex items-center gap-2">
                 <Home size={15} /> Return to homepage <ArrowUpRight size={14} />
               </Link>
             </div>
