@@ -23,23 +23,23 @@ export default function LeadershipPage() {
       />
 
       <section className="section-space">
-        <div className="container-page space-y-12">
+        <div className="container-page space-y-14">
           <ScrollReveal>
             <LeadershipRosterSection />
           </ScrollReveal>
 
-          <ScrollReveal delay={80}>
-            <div className="site-card p-6 sm:p-8 flex flex-wrap items-center justify-between gap-4">
-              <div>
+          <ScrollReveal delay={60}>
+            <div className="border-t border-[var(--line)] pt-10 flex flex-wrap items-end justify-between gap-6">
+              <div className="max-w-2xl">
                 <p className="eyebrow">Working Committees</p>
-                <h2 className="mt-1 text-lg font-semibold text-[var(--ink)]">
+                <h2 className="mt-1 text-xl font-semibold text-[var(--ink)]">
                   Contribute to Optica Egypt Operations
                 </h2>
-                <p className="mt-1 text-sm text-[var(--ink-soft)]">
-                  Researchers and students can apply to serve on technical program, open-source photonics, outreach, or mentorship committees.
+                <p className="mt-2 text-sm text-[var(--ink-soft)]">
+                  Researchers and students can review standing committees across programming, open-source photonics, outreach, and chapter mentorship.
                 </p>
               </div>
-              <Link href="/volunteer" className="btn-primary min-h-[48px]">
+              <Link href="/volunteer" className="btn-primary min-h-[48px] shrink-0">
                 <span>Explore Volunteer Committees</span>
                 <ArrowUpRight size={14} aria-hidden="true" />
               </Link>

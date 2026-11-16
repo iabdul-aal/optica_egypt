@@ -71,29 +71,26 @@ export default async function ProjectDetailPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
       />
-      <div className="container-page space-y-10">
+      <div className="container-page space-y-12">
         <Link href="/projects" className="text-link inline-flex min-h-[48px] items-center gap-2">
           <ArrowLeft size={14} aria-hidden="true" />
           <span>Back to projects</span>
         </Link>
 
-        <div className="site-card p-6 sm:p-10 space-y-4">
-          <div className="flex flex-wrap gap-2">
-            <span className="rounded-sm border border-[var(--gold)]/35 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase text-[var(--gold)]">
-              {TRACK_LABELS[project.track]}
-            </span>
-            <span className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1 font-mono text-xs uppercase text-[var(--ink-soft)]">
-              {LIFECYCLE_LABELS[project.lifecycle]}
-            </span>
-            <span className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1 font-mono text-xs uppercase text-[var(--ink-faint)]">
-              {FUNDING_LABELS[project.funding]}
-            </span>
+        {/* Integrated Project Header Band */}
+        <div className="border-b border-[var(--line)] pb-10 space-y-5">
+          <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-wider">
+            <span className="font-bold text-[var(--gold)]">{TRACK_LABELS[project.track]}</span>
+            <span className="text-[var(--ink-faint)]">/</span>
+            <span className="text-[var(--ink-soft)]">{LIFECYCLE_LABELS[project.lifecycle]}</span>
+            <span className="text-[var(--ink-faint)]">/</span>
+            <span className="text-[var(--ink-faint)]">{FUNDING_LABELS[project.funding]}</span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-[var(--ink)]">
+          <h1 className="section-title max-w-4xl">
             {project.title}
           </h1>
-          <p className="max-w-3xl text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
+          <p className="max-w-3xl text-base leading-relaxed text-[var(--ink-soft)]">
             {project.description}
           </p>
 
@@ -108,9 +105,10 @@ export default async function ProjectDetailPage({
           </div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr]">
-          <div className="space-y-8">
-            <section className="site-card p-6 sm:p-8">
+        {/* Integrated Flowing Two-Column Specification Layout */}
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-start">
+          <div className="divide-y divide-[var(--line)] border-b border-[var(--line)]">
+            <section className="pb-8">
               <h2 className="text-lg font-semibold text-[var(--ink)]">Milestones</h2>
               <div className="mt-4 divide-y divide-[var(--line-subtle)]">
                 {project.milestones.map((m) => (
@@ -122,12 +120,12 @@ export default async function ProjectDetailPage({
               </div>
             </section>
 
-            <section className="site-card p-6 sm:p-8">
+            <section className="py-8">
               <h2 className="text-lg font-semibold text-[var(--ink)]">Current Requirements</h2>
-              <ul className="mt-4 space-y-2 text-sm text-[var(--ink-soft)]">
+              <ul className="mt-4 space-y-2.5 text-sm text-[var(--ink-soft)]">
                 {project.requirements.map((req) => (
                   <li key={req} className="flex items-start gap-2.5">
-                    <span className="text-[var(--gold)] font-bold">•</span>
+                    <span className="text-[var(--gold)] font-bold">·</span>
                     <span>{req}</span>
                   </li>
                 ))}
@@ -135,7 +133,7 @@ export default async function ProjectDetailPage({
             </section>
 
             {resources.length > 0 && (
-              <section className="site-card p-6 sm:p-8">
+              <section className="py-8">
                 <div className="flex items-center justify-between gap-2">
                   <h2 className="text-lg font-semibold text-[var(--ink)]">Connected Tools and Grants</h2>
                   <Link href="/resources" className="text-link inline-flex min-h-[48px] items-center text-xs">
@@ -149,7 +147,7 @@ export default async function ProjectDetailPage({
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex min-h-[48px] items-center justify-between gap-4 py-3 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
+                      className="event-row flex min-h-[48px] items-center justify-between gap-4 py-3 px-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
                     >
                       <span>{resource.title}</span>
                       <ExternalLink size={14} className="text-[var(--gold)] shrink-0" aria-hidden="true" />
@@ -160,9 +158,9 @@ export default async function ProjectDetailPage({
             )}
           </div>
 
-          <aside className="space-y-6">
+          <aside className="divide-y divide-[var(--line)] border-t border-[var(--line)] lg:border-t-0">
             {leads.length > 0 && (
-              <div className="site-card p-6">
+              <div className="pb-6 pt-6 lg:pt-0">
                 <p className="eyebrow">Section Leads</p>
                 <div className="mt-3 divide-y divide-[var(--line-subtle)]">
                   {leads.map((member) => (
@@ -182,13 +180,13 @@ export default async function ProjectDetailPage({
             )}
 
             {domains.length > 0 && (
-              <div className="site-card p-6">
+              <div className="py-6">
                 <p className="eyebrow">Technical Domains</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {domains.map((d) => (
                     <span
                       key={d.id}
-                      className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-2.5 py-1 font-mono text-xs text-[var(--gold)]"
+                      className="rounded-sm border border-[var(--line)] px-2.5 py-1 font-mono text-xs text-[var(--gold)]"
                     >
                       {d.label}
                     </span>
@@ -198,9 +196,9 @@ export default async function ProjectDetailPage({
             )}
 
             {chapters.length > 0 && (
-              <div className="site-card p-6">
+              <div className="py-6">
                 <p className="eyebrow">Campus Nodes</p>
-                <div className="mt-3 space-y-2">
+                <div className="mt-3 divide-y divide-[var(--line-subtle)]">
                   {chapters.map((chapter) => (
                     <Link
                       key={chapter.id}
@@ -216,9 +214,9 @@ export default async function ProjectDetailPage({
             )}
 
             {dispatches.length > 0 && (
-              <div className="site-card p-6">
+              <div className="py-6">
                 <p className="eyebrow">Related Dispatches</p>
-                <div className="mt-3 space-y-2">
+                <div className="mt-3 divide-y divide-[var(--line-subtle)]">
                   {dispatches.map((d) => (
                     <Link
                       key={d.id}

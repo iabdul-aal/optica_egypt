@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowUpRight, ExternalLink, Handshake } from "lucide-react"
+import { ArrowUpRight, ExternalLink } from "lucide-react"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { ScrollReveal } from "@/components/ui/ScrollReveal"
 import { getConfirmedPartners, getPartnershipModels } from "@/lib/governance"
@@ -26,21 +26,24 @@ export default function PartnersPage() {
       />
 
       <section className="section-space">
-        <div className="container-page space-y-12">
+        <div className="container-page space-y-14">
           <ScrollReveal>
-            <div>
-              <p className="eyebrow">Collaboration Frameworks</p>
-              <h2 className="section-title mt-2">Active Partnership Models</h2>
-              <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {models.map((model) => (
-                  <article key={model.id} className="site-card p-6 flex flex-col justify-between gap-4">
-                    <div>
-                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 text-[var(--gold)]">
-                        <Handshake size={15} aria-hidden="true" />
-                      </span>
-                      <h3 className="mt-4 text-base font-semibold text-[var(--ink)]">{model.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{model.scope}</p>
-                    </div>
+            <div className="space-y-6">
+              <div>
+                <p className="eyebrow">Collaboration Frameworks</p>
+                <h2 className="section-title mt-2">Active Partnership Models</h2>
+              </div>
+              <div className="grid border-y border-[var(--line)] divide-y md:divide-y-0 md:grid-cols-2 lg:grid-cols-4 lg:divide-x divide-[var(--line-subtle)]">
+                {models.map((model, idx) => (
+                  <article
+                    key={model.id}
+                    className="py-7 md:px-6 first:md:pl-0 last:lg:pr-0"
+                  >
+                    <span className="font-mono text-xs font-bold text-[var(--gold)]">
+                      0{idx + 1}
+                    </span>
+                    <h3 className="mt-3 text-base font-semibold text-[var(--ink)]">{model.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{model.scope}</p>
                   </article>
                 ))}
               </div>
@@ -48,8 +51,8 @@ export default function PartnersPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={60}>
-            <div className="site-card p-6 sm:p-8 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="border-t border-[var(--line)] pt-10 space-y-6">
+              <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <p className="eyebrow">Public Registry</p>
                   <h2 className="section-title mt-1">
@@ -62,18 +65,20 @@ export default function PartnersPage() {
                 </Link>
               </div>
               {partners.length === 0 ? (
-                <p className="text-sm text-[var(--ink-soft)] max-w-2xl">
+                <p className="text-sm leading-relaxed text-[var(--ink-soft)] max-w-2xl">
                   Formal institutional agreements and memoranda of understanding are executed and published here once the charter enters active operation. Proposals submitted through the unified participation desk are routed directly to the Executive Committee.
                 </p>
               ) : (
-                <div className="grid gap-5 md:grid-cols-2">
+                <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
                   {partners.map((partner) => (
-                    <div key={partner.id} className="border border-[var(--line-subtle)] p-5 rounded-sm space-y-2">
-                      <span className="font-mono text-[10px] font-bold uppercase text-[var(--gold)]">
-                        {partner.category}
-                      </span>
-                      <h3 className="text-base font-semibold text-[var(--ink)]">{partner.name}</h3>
-                      <p className="text-sm text-[var(--ink-soft)]">{partner.scope}</p>
+                    <div key={partner.id} className="py-5 flex flex-wrap items-center justify-between gap-4">
+                      <div>
+                        <span className="font-mono text-[10px] font-bold uppercase text-[var(--gold)]">
+                          {partner.category}
+                        </span>
+                        <h3 className="mt-1 text-base font-semibold text-[var(--ink)]">{partner.name}</h3>
+                        <p className="mt-1 text-sm text-[var(--ink-soft)] max-w-2xl">{partner.scope}</p>
+                      </div>
                       {partner.url && (
                         <a
                           href={partner.url}

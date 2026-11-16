@@ -21,7 +21,7 @@ export function DispatchCategorySection({
 
   if (items.length === 0) {
     return (
-      <div className="site-card p-8 sm:p-10 space-y-4">
+      <div className="border-y border-[var(--line)] border-l-2 border-l-[var(--gold)] bg-[var(--surface)]/65 p-8 sm:p-10 space-y-4">
         <p className="eyebrow">{DISPATCH_KIND_LABELS[kind]} Archive</p>
         <p className="text-base text-[var(--ink-soft)] max-w-2xl">{emptyMessage}</p>
         <div className="pt-2 flex flex-wrap gap-3">
@@ -38,28 +38,33 @@ export function DispatchCategorySection({
   }
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
       {items.map((item) => (
-        <article key={item.id} className="site-card p-6 flex flex-col justify-between gap-5">
+        <article
+          key={item.id}
+          className="event-row py-7 px-3 grid gap-4 md:grid-cols-[11rem_1fr_auto] md:items-start"
+        >
+          <div className="space-y-1">
+            <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
+              {DISPATCH_KIND_LABELS[item.kind]}
+            </span>
+            <time
+              dateTime={item.dateISO}
+              className="inline-flex items-center gap-1 font-mono text-xs text-[var(--ink-faint)]"
+            >
+              <Calendar size={12} aria-hidden="true" />
+              {formatDateISO(item.dateISO)}
+            </time>
+          </div>
           <div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                {DISPATCH_KIND_LABELS[item.kind]}
-              </span>
-              <time
-                dateTime={item.dateISO}
-                className="inline-flex items-center gap-1 font-mono text-xs text-[var(--ink-faint)]"
-              >
-                <Calendar size={12} aria-hidden="true" />
-                {formatDateISO(item.dateISO)}
-              </time>
-            </div>
-            <h2 className="mt-3 text-lg font-semibold text-[var(--ink)]">{item.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{item.summary}</p>
+            <h2 className="text-xl font-semibold text-[var(--ink)]">{item.title}</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--ink-soft)]">
+              {item.summary}
+            </p>
           </div>
           <Link
             href={`/updates/${item.slug}`}
-            className="text-link inline-flex min-h-[48px] items-center gap-1 self-start"
+            className="text-link inline-flex min-h-[48px] items-center gap-1 justify-self-start md:justify-self-end"
           >
             <span>Read dispatch</span>
             <ArrowUpRight size={13} aria-hidden="true" />

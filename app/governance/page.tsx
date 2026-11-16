@@ -23,10 +23,10 @@ export default function GovernancePage() {
       />
 
       <section className="section-space">
-        <div className="container-page space-y-10">
-          <div className="site-card p-5 sm:p-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="container-page space-y-12">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line-subtle)] pb-6">
             <p className="text-sm text-[var(--ink-soft)]">
-              Charter approval credentials and institutional records are published in the section charter overview.
+              Charter approval credentials and institutional records live in the charter overview.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/about" className="btn-secondary min-h-[48px]">

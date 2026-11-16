@@ -46,16 +46,26 @@ export default function FellowshipsPage() {
       />
 
       <section className="section-space">
-        <div className="container-page space-y-12">
+        <div className="container-page space-y-14">
           <ScrollReveal>
-            <div className="grid gap-6 md:grid-cols-3">
-              {FELLOWSHIP_TRACKS.map((track) => (
-                <article key={track.index} className="site-card p-6">
-                  <span className="font-mono text-xs font-bold text-[var(--gold)]">{track.index}</span>
-                  <h2 className="mt-3 text-lg font-semibold text-[var(--ink)]">{track.title}</h2>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{track.body}</p>
-                </article>
-              ))}
+            <div className="grid gap-12 lg:grid-cols-[.82fr_1.18fr] lg:items-start">
+              <div className="lg:sticky lg:top-28 space-y-4">
+                <p className="eyebrow">Mobility Framework</p>
+                <h2 className="section-title">Three pathways connecting researchers to funding.</h2>
+                <p className="text-sm leading-relaxed text-[var(--ink-soft)]">
+                  Optica Egypt curates society travel fellowships alongside Egyptian graduation and postgraduate grant calendars without duplicating external funding portals.
+                </p>
+              </div>
+
+              <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
+                {FELLOWSHIP_TRACKS.map((track) => (
+                  <article key={track.index} className="py-6">
+                    <span className="font-mono text-xs font-bold text-[var(--gold)]">{track.index}</span>
+                    <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{track.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{track.body}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
 

@@ -62,7 +62,7 @@ export function ProjectsDirectory({
                 onClick={() => setSelectedTrack(track.id)}
                 className={`inline-flex min-h-[48px] items-center gap-2 rounded-sm px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer ${
                   active
-                    ? "bg-[var(--gold)] text-[#09131F]"
+                    ? "bg-[var(--gold)] text-[#15110a]"
                     : "border border-[var(--line)] bg-[var(--surface-raised)] text-[var(--ink-soft)] hover:border-[var(--gold)] hover:text-[var(--ink)]"
                 }`}
               >
@@ -77,41 +77,50 @@ export function ProjectsDirectory({
         </span>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((project) => (
+      {/* Unified Architectural Ledger (Zero Stacked Small Boxes) */}
+      <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
+        {filtered.map((project, index) => (
           <article
             key={project.id}
-            className="site-card p-6 flex flex-col justify-between gap-6 hover:border-[var(--gold)]/60 transition-colors"
+            className="event-row grid gap-4 py-7 px-3 md:grid-cols-[3rem_12rem_1fr_auto] md:items-start md:gap-6"
           >
-            <div>
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="rounded-sm border border-[var(--gold)]/35 bg-[var(--gold)]/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                  {LIFECYCLE_LABELS[project.lifecycle]}
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--ink-faint)]">
-                  {FUNDING_LABELS[project.funding]}
-                </span>
-              </div>
-              <h2 className="mt-4 text-lg font-semibold text-[var(--ink)]">
-                {project.title}
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-                {project.summary}
-              </p>
+            <span className="font-mono text-sm font-bold text-[var(--gold)]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
+            <div className="space-y-1.5">
+              <span className="block font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
+                {TRACK_LABELS[project.track]}
+              </span>
+              <span className="block font-mono text-[10px] uppercase tracking-wider text-[var(--ink-soft)]">
+                {LIFECYCLE_LABELS[project.lifecycle]}
+              </span>
+              <span className="block font-mono text-[10px] text-[var(--ink-faint)]">
+                {FUNDING_LABELS[project.funding]}
+              </span>
             </div>
 
-            <div className="flex items-center justify-between gap-3 border-t border-[var(--line-subtle)] pt-4">
-              <span className="font-mono text-[11px] text-[var(--ink-faint)]">
+            <div>
+              <h2 className="text-xl font-semibold text-[var(--ink)]">
+                <Link href={`/projects/${project.slug}`} className="hover:text-[var(--gold)] transition-colors">
+                  {project.title}
+                </Link>
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--ink-soft)]">
+                {project.summary}
+              </p>
+              <span className="mt-3 inline-block font-mono text-[11px] text-[var(--ink-faint)]">
                 {project.resourceIds.length} linked tool{project.resourceIds.length === 1 ? "" : "s"}
               </span>
-              <Link
-                href={`/projects/${project.slug}`}
-                className="text-link inline-flex min-h-[48px] items-center gap-1"
-              >
-                <span>Inspect Spec</span>
-                <ArrowUpRight size={13} aria-hidden="true" />
-              </Link>
             </div>
+
+            <Link
+              href={`/projects/${project.slug}`}
+              className="text-link inline-flex min-h-[48px] items-center gap-1 justify-self-start md:justify-self-end"
+            >
+              <span>Inspect Spec</span>
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </Link>
           </article>
         ))}
       </div>

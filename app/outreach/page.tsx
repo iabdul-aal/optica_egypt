@@ -46,11 +46,11 @@ export default function OutreachPage() {
       />
 
       <section className="section-space">
-        <div className="container-page space-y-12">
+        <div className="container-page space-y-14">
           <ScrollReveal>
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid border-y border-[var(--line)] divide-y md:divide-y-0 md:grid-cols-3 md:divide-x divide-[var(--line-subtle)]">
               {OUTREACH_FORMATS.map((item) => (
-                <article key={item.index} className="site-card p-6">
+                <article key={item.index} className="py-7 md:px-7 first:md:pl-0 last:md:pr-0">
                   <span className="font-mono text-xs font-bold text-[var(--gold)]">{item.index}</span>
                   <h2 className="mt-3 text-lg font-semibold text-[var(--ink)]">{item.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">{item.body}</p>

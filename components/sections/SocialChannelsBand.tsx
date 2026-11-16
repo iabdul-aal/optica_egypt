@@ -8,35 +8,22 @@ export function SocialChannelsBand() {
   const activeChannels = channels.filter((channel) => channel.isActive)
   const plannedChannels = channels.filter((channel) => !channel.isActive)
   const officialUrl = `${siteConfig.officialUrl}/`
-  const activeGridClass =
-    activeChannels.length <= 2
-      ? "grid gap-6 md:grid-cols-2 items-stretch"
-      : activeChannels.length === 4
-        ? "grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch"
-        : "grid gap-6 md:grid-cols-3 items-stretch"
-  const plannedGridClass =
-    plannedChannels.length % 3 === 0
-      ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch"
-      : plannedChannels.length === 4
-        ? "grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch"
-        : "grid gap-4 sm:grid-cols-2 lg:grid-cols-5 items-stretch"
 
   return (
     <section
       id="social-channels"
       className="section-space scroll-mt-24 border-t border-[var(--line)] bg-[var(--surface)]"
     >
-      <div className="container-page space-y-10">
-        {/* Top Contact and Official Domain Strip */}
-        <div className="site-card p-6 sm:p-8 border-l-4 border-l-[var(--gold)] flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl">
+      <div className="container-page space-y-12">
+        {/* Direct Contact and Official Domain Strip */}
+        <div className="border-y border-[var(--line)] py-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-2xl border-l-2 border-[var(--gold)] pl-5">
             <p className="eyebrow">Direct Contact and Digital Channels</p>
             <h2 className="section-title mt-1">
               Official Contact Desk and Egypt Community Channels
             </h2>
             <p className="text-xs sm:text-sm leading-relaxed text-[var(--ink-soft)]">
-              General inquiries, university liaison requests, and community updates are coordinated
-              through the official domain email and verified section channels.
+              General inquiries, university liaison requests, and community updates are coordinated through the official domain email and verified section channels.
             </p>
           </div>
 
@@ -60,8 +47,8 @@ export function SocialChannelsBand() {
 
         {/* Active Social Platforms */}
         {activeChannels.length > 0 && (
-          <div className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line)] pb-4">
+          <div className="space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="eyebrow">Active Platforms</p>
                 <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[var(--ink)] mt-1">
@@ -73,55 +60,53 @@ export function SocialChannelsBand() {
               </span>
             </div>
 
-            <div className={activeGridClass}>
-            {activeChannels.map((channel) => (
-              <article
-                key={channel.id}
-                className="site-card p-6 flex flex-col justify-between h-full hover:border-[var(--gold)]/60 transition-colors"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-[var(--gold)]/30 bg-[var(--gold)]/10 text-[var(--gold)]">
-                      <SocialIcon platform={channel.id} size={18} />
+            <div className="grid border-y border-[var(--line)] divide-y md:divide-y-0 md:grid-cols-2 md:divide-x divide-[var(--line-subtle)]">
+              {activeChannels.map((channel) => (
+                <article
+                  key={channel.id}
+                  className="py-7 md:px-7 first:md:pl-0 last:md:pr-0 flex flex-col justify-between gap-5"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="inline-flex h-10 w-10 items-center justify-center text-[var(--gold)]">
+                        <SocialIcon platform={channel.id} size={20} />
+                      </div>
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--ink-faint)]">
+                        {channel.category}
+                      </span>
                     </div>
-                    <span className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--ink-faint)]">
-                      {channel.category}
-                    </span>
+
+                    <h4 className="mt-3 text-lg font-bold tracking-tight text-[var(--ink)]">
+                      {channel.label}
+                    </h4>
+                    <p className="mt-1 font-mono text-xs text-[var(--gold)]">
+                      {channel.handleLabel}
+                    </p>
+                    <p className="mt-3 text-xs sm:text-sm leading-relaxed text-[var(--ink-soft)]">
+                      {channel.audienceNote}
+                    </p>
                   </div>
 
-                  <h4 className="mt-4 text-lg font-bold tracking-tight text-[var(--ink)]">
-                    {channel.label}
-                  </h4>
-                  <p className="mt-1 font-mono text-xs text-[var(--gold)]">
-                    {channel.handleLabel}
-                  </p>
-                  <p className="mt-3 text-xs sm:text-sm leading-relaxed text-[var(--ink-soft)]">
-                    {channel.audienceNote}
-                  </p>
-                </div>
-
-                {channel.url && (
-                  <div className="mt-6 pt-4 border-t border-[var(--line-subtle)]">
+                  {channel.url && (
                     <a
                       href={channel.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-secondary min-h-[48px] w-full justify-between"
+                      className="text-link inline-flex min-h-[48px] items-center gap-1.5 self-start"
                     >
                       <span>Follow on {channel.label}</span>
                       <ArrowUpRight size={14} aria-hidden="true" />
                     </a>
-                  </div>
-                )}
-              </article>
-            ))}
+                  )}
+                </article>
+              ))}
             </div>
           </div>
         )}
 
         {/* Rollout Channels Prepared for Egypt Outreach */}
         {plannedChannels.length > 0 && (
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line)] pb-4">
               <div>
                 <p className="eyebrow">Egypt Audience Rollout</p>
@@ -134,31 +119,27 @@ export function SocialChannelsBand() {
               </span>
             </div>
 
-            <div className={plannedGridClass}>
+            <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
               {plannedChannels.map((channel) => (
                 <article
                   key={channel.id}
-                  className="rounded-sm border border-dashed border-[var(--line)] bg-[var(--surface-raised)] p-5 flex flex-col justify-between h-full"
+                  className="border-t border-[var(--line-subtle)] pt-4 space-y-2"
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-[var(--line)] bg-[var(--surface)] text-[var(--gold)]">
-                        <SocialIcon platform={channel.id} size={16} />
-                      </span>
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--ink-faint)]">
-                        Preparing
-                      </span>
-                    </div>
-                    <h4 className="mt-3 text-sm font-bold text-[var(--ink)]">
-                      {channel.label}
-                    </h4>
-                    <p className="mt-1 font-mono text-[11px] text-[var(--gold)] break-all">
-                      {channel.suggestedHandle}
-                    </p>
-                    <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">
-                      {channel.audienceNote}
-                    </p>
+                  <div className="flex items-center justify-between gap-2 text-[var(--gold)]">
+                    <SocialIcon platform={channel.id} size={16} />
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--ink-faint)]">
+                      Preparing
+                    </span>
                   </div>
+                  <h4 className="text-sm font-bold text-[var(--ink)]">
+                    {channel.label}
+                  </h4>
+                  <p className="font-mono text-[11px] text-[var(--gold)] break-all">
+                    {channel.suggestedHandle}
+                  </p>
+                  <p className="text-xs leading-relaxed text-[var(--ink-soft)]">
+                    {channel.audienceNote}
+                  </p>
                 </article>
               ))}
             </div>

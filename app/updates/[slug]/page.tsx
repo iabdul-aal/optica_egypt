@@ -89,7 +89,7 @@ export default async function UpdateDetailPage({
           <span>Back to updates</span>
         </Link>
 
-        <article className="site-card p-6 sm:p-10 space-y-6">
+        <article className="border-t border-[var(--line)] pt-8 space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line-subtle)] pb-4">
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
               {DISPATCH_KIND_LABELS[item.kind]}
@@ -100,13 +100,13 @@ export default async function UpdateDetailPage({
             </time>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight text-[var(--ink)]">
+          <h1 className="section-title max-w-4xl">
             {item.title}
           </h1>
-          <p className="text-base leading-relaxed text-[var(--ink-soft)]">{item.summary}</p>
+          <p className="max-w-3xl text-base leading-relaxed text-[var(--ink-soft)]">{item.summary}</p>
 
           {item.bodyMarkdown && (
-            <div className="space-y-4 border-t border-[var(--line-subtle)] pt-6">
+            <div className="space-y-4 border-t border-[var(--line-subtle)] pt-6 max-w-3xl">
               {item.bodyMarkdown.split("\n\n").map((paragraph, idx) => (
                 <p key={idx} className="text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
                   {paragraph}
@@ -116,7 +116,7 @@ export default async function UpdateDetailPage({
           )}
 
           {item.kind === "event" && item.eventMeta && (
-            <div className="site-card bg-[var(--surface-raised)] p-5 space-y-4">
+            <div className="border-y border-[var(--line)] border-l-2 border-l-[var(--gold)] bg-[var(--surface-raised)] p-5 sm:p-6 space-y-4">
               <div className="flex flex-wrap gap-6 text-sm">
                 <div>
                   <span className="block font-mono text-[10px] uppercase text-[var(--ink-faint)]">Format</span>
@@ -152,11 +152,11 @@ export default async function UpdateDetailPage({
           )}
         </article>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="border-t border-[var(--line)] pt-8 grid gap-10 md:grid-cols-3">
           {authors.length > 0 && (
-            <div className="site-card p-6">
+            <div className="border-t border-[var(--line-subtle)] pt-4 md:border-t-0 md:pt-0">
               <p className="eyebrow">Section Contacts</p>
-              <div className="mt-3 space-y-2">
+              <div className="mt-3 divide-y divide-[var(--line-subtle)]">
                 {authors.map((a) => (
                   <Link
                     key={a.id}
@@ -172,7 +172,7 @@ export default async function UpdateDetailPage({
           )}
 
           {linkedProject && (
-            <div className="site-card p-6">
+            <div className="border-t border-[var(--line-subtle)] pt-4 md:border-t-0 md:pt-0">
               <p className="eyebrow">Related Project</p>
               <Link
                 href={`/projects/${linkedProject.slug}`}
@@ -185,9 +185,9 @@ export default async function UpdateDetailPage({
           )}
 
           {linkedResources.length > 0 && (
-            <div className="site-card p-6">
+            <div className="border-t border-[var(--line-subtle)] pt-4 md:border-t-0 md:pt-0">
               <p className="eyebrow">Connected Resources</p>
-              <div className="mt-3 space-y-2">
+              <div className="mt-3 divide-y divide-[var(--line-subtle)]">
                 {linkedResources.map((r) => (
                   <a
                     key={r.id}

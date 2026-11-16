@@ -61,8 +61,8 @@ export default function AboutPage() {
 
       {/* Institutional Identity and Verified Charter Ledger */}
       <section id="overview" className="section-space scroll-mt-24">
-        <div className="container-page grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
-          <div className="space-y-4">
+        <div className="container-page grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
+          <div className="space-y-5">
             <p className="eyebrow">Institutional Identity</p>
             <h2 className="section-title">Local volunteer coordination under Optica bylaws.</h2>
             <p className="text-sm leading-relaxed text-[var(--ink-soft)]">
@@ -85,7 +85,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <dl className="site-card divide-y divide-[var(--line-subtle)] p-6">
+          <dl className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
             {[
               ["Charter Approval", charter.approvalDate],
               ["Current Standing", charter.currentStanding],
@@ -93,7 +93,7 @@ export default function AboutPage() {
               ["Section Desk Email", charter.contactEmail],
               ["Official Domain", siteConfig.officialDomain],
             ].map(([term, val]) => (
-              <div key={term} className="flex flex-wrap items-center justify-between gap-2 py-3 first:pt-0 last:pb-0">
+              <div key={term} className="flex flex-wrap items-center justify-between gap-2 py-4">
                 <dt className="font-mono text-xs text-[var(--ink-faint)]">{term}</dt>
                 <dd className="text-sm font-semibold text-[var(--ink)] break-all">{val}</dd>
               </div>
@@ -102,33 +102,31 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Section Directory Summary Cards (Zero Redundancy) */}
+      {/* Integrated Editorial Index Row Layout (Zero Redundant Boxes) */}
       <section className="section-space border-t border-[var(--line)] bg-[var(--surface)]">
         <div className="container-page space-y-8">
-          <div className="border-b border-[var(--line)] pb-6">
-            <p className="eyebrow">Section Records</p>
-            <h2 className="section-title mt-2">Dedicated Section Subpages</h2>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="eyebrow">Section Records</p>
+              <h2 className="section-title mt-2">Dedicated Section Subpages</h2>
+            </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
             {sectionDirectory.map((item, idx) => (
-              <ScrollReveal key={item.href} delay={idx * 60}>
-                <article className="site-card p-6 flex flex-col h-full justify-between gap-5">
-                  <div>
-                    <span className="font-mono text-xs font-bold text-[var(--gold)]">{item.index}</span>
-                    <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-                      {item.summary}
-                    </p>
-                  </div>
-                  <Link
-                    href={item.href}
-                    className="text-link inline-flex min-h-[48px] items-center gap-1 self-start"
-                  >
+              <ScrollReveal key={item.href} delay={idx * 45}>
+                <Link
+                  href={item.href}
+                  className="event-row grid gap-3 py-6 px-3 md:grid-cols-[4rem_16rem_1fr_auto] md:items-center min-h-[48px]"
+                >
+                  <span className="font-mono text-xs font-bold text-[var(--gold)]">{item.index}</span>
+                  <h3 className="text-lg font-semibold text-[var(--ink)]">{item.title}</h3>
+                  <p className="text-sm text-[var(--ink-soft)] leading-relaxed">{item.summary}</p>
+                  <span className="text-link inline-flex items-center gap-1 justify-self-start md:justify-self-end">
                     <span>{item.cta}</span>
                     <ArrowUpRight size={13} aria-hidden="true" />
-                  </Link>
-                </article>
+                  </span>
+                </Link>
               </ScrollReveal>
             ))}
           </div>

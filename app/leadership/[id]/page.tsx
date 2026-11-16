@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, ArrowUpRight, Globe, Linkedin, Mail, ShieldCheck, Sparkles } from "lucide-react"
+import { ArrowLeft, ArrowUpRight, Globe, Linkedin, Mail, ShieldCheck } from "lucide-react"
 import {
   getDispatchesForMember,
   getDomainsByIds,
@@ -97,9 +97,10 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
           <span>Back to leadership roster</span>
         </Link>
 
-        <div className="grid gap-12 lg:grid-cols-[.78fr_1.22fr] lg:items-start">
-          <div className="group site-card p-6 sm:p-8 flex flex-col items-center text-center sm:items-start sm:text-left">
-            <div className="relative aspect-[2/3] w-full max-w-[320px] overflow-hidden rounded-sm bg-[var(--surface-raised)] border border-[var(--line)]">
+        <div className="grid gap-12 lg:grid-cols-[.76fr_1.24fr] lg:items-start">
+          {/* Left Sticky Editorial Portrait Column (Monochrome at Rest -> Color on Hover) */}
+          <aside className="group lg:sticky lg:top-28 border-t border-[var(--line)] pt-6 flex flex-col items-center text-center sm:items-start sm:text-left">
+            <div className="relative aspect-[2/3] w-full max-w-[320px] overflow-hidden bg-[var(--surface)]">
               {member.photo ? (
                 <Image
                   src={getAssetPath(member.photo)}
@@ -118,15 +119,14 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
             </div>
 
             <div className="mt-6 w-full space-y-3">
-              <div className="flex flex-wrap gap-2 items-center">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
+              <div className="flex flex-wrap items-center gap-2 justify-center sm:justify-start">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
                   <ShieldCheck size={13} aria-hidden="true" />
                   {tierLabels[member.tier]}
                 </span>
                 {member.isFounder && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--line)] bg-[var(--surface-raised)] px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-[var(--ink-soft)]">
-                    <Sparkles size={12} aria-hidden="true" />
-                    {member.foundingRole || "Co-Founder"}
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--ink-faint)]">
+                    · {member.foundingRole || "Co-Founder"}
                   </span>
                 )}
               </div>
@@ -142,7 +142,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
               <p className="text-sm text-[var(--ink-soft)]">{member.institution}</p>
 
               {member.opticaId && (
-                <div className="pt-2 border-t border-[var(--line-subtle)] text-xs font-mono text-[var(--ink-faint)]">
+                <div className="pt-3 border-t border-[var(--line-subtle)] text-xs font-mono text-[var(--ink-faint)]">
                   Optica Member ID: <strong className="text-[var(--gold)]">{member.opticaId}</strong>
                 </div>
               )}
@@ -151,7 +151,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
                 {member.email && (
                   <a
                     href={`mailto:${member.email}`}
-                    className="inline-flex min-h-[48px] items-center gap-1.5 px-3.5 py-2 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    className="btn-secondary min-h-[48px]"
                   >
                     <Mail size={13} aria-hidden="true" />
                     <span>Email</span>
@@ -162,7 +162,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
                     href={`https://linkedin.com/in/${member.linkedin}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[48px] items-center gap-1.5 px-3.5 py-2 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    className="btn-secondary min-h-[48px]"
                   >
                     <Linkedin size={13} aria-hidden="true" />
                     <span>LinkedIn</span>
@@ -174,7 +174,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
                     href={member.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-[48px] items-center gap-1.5 px-3.5 py-2 rounded-sm border border-[var(--line)] bg-[var(--surface)] text-xs font-medium text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                    className="btn-secondary min-h-[48px]"
                   >
                     <Globe size={13} aria-hidden="true" />
                     <span>Website</span>
@@ -183,18 +183,19 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
                 )}
               </div>
             </div>
-          </div>
+          </aside>
 
-          <div className="space-y-6">
-            <div className="site-card p-6 sm:p-8">
+          {/* Right Flowing Editorial Dossier */}
+          <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
+            <div className="py-7 first:pt-0">
               <p className="eyebrow">Biography</p>
               <p className="mt-3 text-base leading-relaxed text-[var(--ink)]">{member.bio}</p>
               {domains.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-2 border-t border-[var(--line-subtle)] pt-4">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {domains.map((domain) => (
                     <span
                       key={domain.id}
-                      className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-2.5 py-1 font-mono text-[11px] text-[var(--gold)]"
+                      className="rounded-sm border border-[var(--line)] px-2.5 py-1 font-mono text-[11px] text-[var(--gold)]"
                     >
                       {domain.label}
                     </span>
@@ -204,9 +205,9 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
             </div>
 
             {(member.academicBackground || member.professionalFocus) && (
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="py-7 grid gap-8 sm:grid-cols-2">
                 {member.academicBackground && (
-                  <div className="site-card p-6">
+                  <div>
                     <p className="eyebrow">Academic Background</p>
                     <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
                       {member.academicBackground}
@@ -214,7 +215,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
                   </div>
                 )}
                 {member.professionalFocus && (
-                  <div className="site-card p-6">
+                  <div>
                     <p className="eyebrow">Professional Focus</p>
                     <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
                       {member.professionalFocus}
@@ -225,7 +226,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
             )}
 
             {member.achievements && (
-              <div className="site-card p-6">
+              <div className="py-7">
                 <p className="eyebrow">Key Distinctions</p>
                 <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
                   {member.achievements}
@@ -234,14 +235,14 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
             )}
 
             {projectsLed.length > 0 && (
-              <div className="site-card p-6">
+              <div className="py-7">
                 <p className="eyebrow">Section Projects Coordinated</p>
                 <div className="mt-3 divide-y divide-[var(--line-subtle)]">
                   {projectsLed.map((project) => (
                     <Link
                       key={project.id}
                       href={`/projects/${project.slug}`}
-                      className="flex min-h-[48px] items-center justify-between gap-4 py-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
+                      className="event-row flex min-h-[48px] items-center justify-between gap-4 py-2 px-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
                     >
                       <span>{project.title}</span>
                       <span className="font-mono text-xs text-[var(--gold)]">
@@ -254,14 +255,14 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
             )}
 
             {dispatchesAuthored.length > 0 && (
-              <div className="site-card p-6">
+              <div className="py-7">
                 <p className="eyebrow">Linked Dispatches</p>
                 <div className="mt-3 divide-y divide-[var(--line-subtle)]">
                   {dispatchesAuthored.map((item) => (
                     <Link
                       key={item.id}
                       href={`/updates/${item.slug}`}
-                      className="flex min-h-[48px] items-center justify-between gap-4 py-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
+                      className="event-row flex min-h-[48px] items-center justify-between gap-4 py-2 px-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
                     >
                       <span>{item.title}</span>
                       <ArrowUpRight size={14} aria-hidden="true" />

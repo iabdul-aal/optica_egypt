@@ -146,30 +146,34 @@ export function ResourcesDirectory({
       </div>
 
       {selectedCategory === "membership" ? (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {membershipTiers.map((tier) => (
-            <article key={tier.id} className="site-card p-6 flex flex-col justify-between gap-5">
+        <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
+          {membershipTiers.map((tier, idx) => (
+            <article key={tier.id} className="py-7 grid gap-6 md:grid-cols-[3rem_1fr_auto] md:items-start">
+              <span className="font-mono text-sm font-bold text-[var(--gold)]">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
               <div>
                 <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                  {tier.tag}
+                  {tier.tag} · {tier.pricingNote}
                 </p>
-                <h3 className="mt-2 text-lg font-semibold text-[var(--ink)]">{tier.name}</h3>
-                <p className="mt-2 text-sm text-[var(--ink-soft)]">{tier.valueProposition}</p>
-                <p className="mt-3 font-mono text-xs text-[var(--ink-faint)]">{tier.pricingNote}</p>
+                <h3 className="mt-1.5 text-xl font-semibold text-[var(--ink)]">{tier.name}</h3>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--ink-soft)]">
+                  {tier.valueProposition}
+                </p>
               </div>
-              <div className="flex flex-col gap-2 border-t border-[var(--line-subtle)] pt-4">
+              <div className="flex flex-wrap gap-3 md:justify-end">
                 <a
                   href={tier.opticaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary min-h-[48px] justify-between"
+                  className="btn-primary min-h-[48px]"
                 >
                   <span>{tier.ctaLabel}</span>
                   <ArrowUpRight size={14} aria-hidden="true" />
                 </a>
                 <Link
-                  href={`/join?type=committee`}
-                  className="btn-secondary min-h-[48px] justify-between"
+                  href="/join?type=committee"
+                  className="btn-secondary min-h-[48px]"
                 >
                   <span>Local Committee Intake</span>
                   <ArrowUpRight size={14} aria-hidden="true" />

@@ -39,15 +39,16 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
 
   return (
     <section className="section-space scientific-grid min-h-[75vh]">
-      <div className="container-page">
-        <Link href="/chapters" className="text-link inline-flex min-h-[48px] items-center gap-2 mb-8">
+      <div className="container-page space-y-12">
+        <Link href="/chapters" className="text-link inline-flex min-h-[48px] items-center gap-2">
           <ArrowLeft size={14} aria-hidden="true" />
           <span>Back to chapters</span>
         </Link>
 
-        <div className="site-card p-6 sm:p-10 mb-10">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line-subtle)] pb-4">
-            <span className="rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3 py-1 font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
+        {/* Integrated Chapter Masthead */}
+        <div className="border-b border-[var(--line)] pb-10 space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
               {chapter.status}
             </span>
             <span className="text-xs font-mono text-[var(--ink-faint)]">
@@ -55,12 +56,12 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
             </span>
           </div>
 
-          <div className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
             <div>
               <p className="font-mono text-xs uppercase tracking-wider text-[var(--gold)]">
                 {chapter.university}
               </p>
-              <h1 className="mt-2 text-2xl font-bold tracking-tight text-[var(--ink)] sm:text-4xl">
+              <h1 className="section-title mt-2">
                 {chapter.name}
               </h1>
               <p className="mt-3 text-sm text-[var(--ink-soft)] max-w-2xl">
@@ -100,9 +101,10 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
           </div>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_.8fr]">
-          <div className="space-y-8">
-            <div className="site-card p-6 sm:p-8">
+        {/* Continuous Split Specification Body */}
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-start">
+          <div className="divide-y divide-[var(--line)] border-b border-[var(--line)]">
+            <div className="pb-8">
               <h2 className="text-xl font-bold text-[var(--ink)]">About the Chapter</h2>
               <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--ink-soft)]">
                 {chapter.description}
@@ -110,31 +112,31 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
             </div>
 
             {chapter.focusAreas && (
-              <div className="site-card p-6 sm:p-8">
+              <div className="py-8">
                 <h2 className="text-lg font-bold text-[var(--ink)]">Technical Focus</h2>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                   {chapter.focusAreas.map((area) => (
-                    <div
+                    <li
                       key={area}
-                      className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] p-4 flex items-center gap-3 text-xs font-medium text-[var(--ink)]"
+                      className="flex items-center gap-3 py-1 text-sm text-[var(--ink-soft)]"
                     >
-                      <span className="h-2 w-2 rounded-full bg-[var(--gold)] shrink-0" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)] shrink-0" aria-hidden="true" />
                       <span>{area}</span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
 
             {linkedProjects.length > 0 && (
-              <div className="site-card p-6 sm:p-8">
+              <div className="py-8">
                 <h2 className="text-lg font-bold text-[var(--ink)]">Connected Section Initiatives</h2>
                 <div className="mt-4 divide-y divide-[var(--line-subtle)]">
                   {linkedProjects.map((project) => (
                     <Link
                       key={project.id}
                       href={`/projects/${project.slug}`}
-                      className="flex min-h-[48px] items-center justify-between gap-4 py-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
+                      className="event-row flex min-h-[48px] items-center justify-between gap-4 py-2 px-2 text-sm font-medium text-[var(--ink)] hover:text-[var(--gold)]"
                     >
                       <span>{project.title}</span>
                       <span className="font-mono text-xs text-[var(--gold)]">
@@ -147,10 +149,10 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
             )}
           </div>
 
-          <aside className="space-y-6">
-            <div className="site-card p-6">
+          <aside className="divide-y divide-[var(--line)] border-t border-[var(--line)] lg:border-t-0">
+            <div className="py-6 lg:pt-0">
               <p className="eyebrow">Faculty Oversight</p>
-              <div className="mt-4 flex items-start gap-3">
+              <div className="mt-3 flex items-start gap-3">
                 <UserCheck size={18} className="mt-0.5 text-[var(--gold)] shrink-0" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-sm text-[var(--ink)]">
@@ -163,9 +165,9 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </div>
             </div>
 
-            <div className="site-card p-6">
+            <div className="py-6">
               <p className="eyebrow">Campus Location</p>
-              <div className="mt-4 flex items-start gap-3">
+              <div className="mt-3 flex items-start gap-3">
                 <MapPin size={18} className="mt-0.5 text-[var(--gold)] shrink-0" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-sm text-[var(--ink)]">{chapter.city}, Egypt</p>
@@ -174,14 +176,14 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </div>
             </div>
 
-            <div className="site-card p-6 border-l-2 border-l-[var(--gold)]">
+            <div className="py-6 border-l-2 border-l-[var(--gold)] pl-5">
               <h3 className="font-bold text-sm text-[var(--ink)]">Connect with Chapter Desk</h3>
               <p className="mt-2 text-xs text-[var(--ink-soft)]">
                 Join reactivation efforts or coordinate an inter-university workshop.
               </p>
               <Link
                 href={`/join?type=chapter&ref=${chapter.id}`}
-                className="btn-primary mt-4 min-h-[48px] w-full justify-center"
+                className="btn-primary mt-4 min-h-[48px]"
               >
                 <span>Submit Chapter Request</span>
                 <ArrowUpRight size={13} aria-hidden="true" />

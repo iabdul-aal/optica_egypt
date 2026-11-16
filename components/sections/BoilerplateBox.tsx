@@ -27,7 +27,7 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
   }
 
   return (
-    <div className="site-card p-6 sm:p-8 border-l-4 border-l-[var(--gold)]">
+    <div className="border-y border-[var(--line)] border-l-2 border-l-[var(--gold)] bg-[var(--surface)]/65 p-6 sm:p-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--line-subtle)]">
         <div className="flex items-center gap-2">
           <FileText size={16} className="text-[var(--gold)] shrink-0" aria-hidden="true" />
@@ -39,7 +39,7 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
           <button
             type="button"
             onClick={() => handleCopy(body, false)}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px]"
+            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px] cursor-pointer"
           >
             {copiedFull ? <Check size={13} className="text-[var(--gold)]" /> : <Copy size={13} />}
             <span>{copiedFull ? "Copied" : "Copy Boilerplate"}</span>
@@ -47,7 +47,7 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
           <button
             type="button"
             onClick={() => handleCopy(short, true)}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px]"
+            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px] cursor-pointer"
           >
             {copiedShort ? <Check size={13} className="text-[var(--gold)]" /> : <Copy size={13} />}
             <span>{copiedShort ? "Copied Short" : "Copy Short Version"}</span>
@@ -55,15 +55,15 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
         </div>
       </div>
 
-      <div className="mt-4 space-y-3">
-        <p className="text-xs sm:text-sm leading-relaxed text-[var(--ink-soft)]">
+      <div className="mt-5 space-y-4">
+        <p className="text-sm leading-relaxed text-[var(--ink-soft)]">
           {body}
         </p>
-        <div className="pt-3 border-t border-[var(--line-subtle)]">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--ink-faint)] block mb-1">
+        <div className="pt-4 border-t border-[var(--line-subtle)]">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--ink-faint)] block mb-1.5">
             Short Paragraph Format:
           </span>
-          <p className="text-xs italic text-[var(--ink-soft)]">
+          <p className="text-xs italic leading-relaxed text-[var(--ink-soft)]">
             &ldquo;{short}&rdquo;
           </p>
         </div>

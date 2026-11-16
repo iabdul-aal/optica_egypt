@@ -1,7 +1,7 @@
 export function OpticalWaveguideDiagram() {
   return (
     <div
-      className="relative flex w-full items-center justify-center rounded-sm border border-[var(--line)] bg-[var(--surface)] p-5 sm:p-8 shadow-sm"
+      className="relative flex w-full items-center justify-center border-y border-[var(--line)] bg-[var(--surface)]/45 p-5 sm:p-8"
       role="img"
       aria-label="Architectural diagram of a silicon photonic add-drop microring resonator"
     >

@@ -36,20 +36,20 @@ export default function NotFound() {
           </Link>
         </div>
 
-        <div className="mt-12 border-t border-[var(--line)] pt-8 text-left grid gap-4 sm:grid-cols-3">
-          <Link href="/projects" className="site-card p-4 hover:border-[var(--gold)] transition-colors min-h-[48px]">
+        <div className="mt-14 border-t border-[var(--line)] pt-8 text-left grid gap-8 sm:grid-cols-3">
+          <Link href="/projects" className="group border-t border-[var(--line-subtle)] pt-4 min-h-[48px] block hover:border-[var(--gold)] transition-colors">
             <Compass size={16} className="text-[var(--gold)]" aria-hidden="true" />
-            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)]">Projects</h2>
+            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)] group-hover:text-[var(--gold)]">Projects</h2>
             <p className="mt-1 text-xs text-[var(--ink-soft)]">Working groups, Open-Source PDA, and outreach tracks.</p>
           </Link>
-          <Link href="/about#leadership" className="site-card p-4 hover:border-[var(--gold)] transition-colors min-h-[48px]">
+          <Link href="/leadership" className="group border-t border-[var(--line-subtle)] pt-4 min-h-[48px] block hover:border-[var(--gold)] transition-colors">
             <Users size={16} className="text-[var(--gold)]" aria-hidden="true" />
-            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)]">Leadership</h2>
+            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)] group-hover:text-[var(--gold)]">Leadership</h2>
             <p className="mt-1 text-xs text-[var(--ink-soft)]">Executive officers, operational leads, and faculty advisors.</p>
           </Link>
-          <Link href="/resources" className="site-card p-4 hover:border-[var(--gold)] transition-colors min-h-[48px]">
+          <Link href="/resources" className="group border-t border-[var(--line-subtle)] pt-4 min-h-[48px] block hover:border-[var(--gold)] transition-colors">
             <Calendar size={16} className="text-[var(--gold)]" aria-hidden="true" />
-            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)]">Resources</h2>
+            <h2 className="mt-2 font-semibold text-sm text-[var(--ink)] group-hover:text-[var(--gold)]">Resources</h2>
             <p className="mt-1 text-xs text-[var(--ink-soft)]">Free simulation software and Egyptian research grants.</p>
           </Link>
         </div>
