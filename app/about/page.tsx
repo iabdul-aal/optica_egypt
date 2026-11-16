@@ -13,7 +13,7 @@ import {
 } from "@/lib/governance"
 import { getPressBoilerplate, getMediaKit } from "@/lib/press"
 import { buildPageMetadata } from "@/lib/seo"
-import { getSiteUrlSafe } from "@/lib/site-helpers"
+import { siteConfig } from "@/lib/site-config"
 import { getAssetPath } from "@/lib/utils"
 
 export const metadata: Metadata = buildPageMetadata({
@@ -30,7 +30,6 @@ export default function AboutPage() {
 
   const boilerplate = getPressBoilerplate()
   const mediaKit = getMediaKit()
-  const siteUrl = getSiteUrlSafe()
 
   return (
     <>
@@ -96,7 +95,7 @@ export default function AboutPage() {
               ["Current Standing", charter.currentStanding],
               ["Parent Organization", charter.parentOrganization],
               ["Section Desk Email", charter.contactEmail],
-              ["Official Domain", `${siteUrl}/`],
+              ["Official Domain", siteConfig.officialDomain],
             ].map(([term, val]) => (
               <div key={term} className="flex flex-wrap items-center justify-between gap-2 py-3 first:pt-0 last:pb-0">
                 <dt className="font-mono text-xs text-[var(--ink-faint)]">{term}</dt>

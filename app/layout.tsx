@@ -105,7 +105,7 @@ const jsonLd = {
       "@id": `${siteUrl}/#organization`,
       name: "Optica Egypt Local Section",
       alternateName: ["Optica Egypt", "Egypt Photonics Section"],
-      url: `${siteUrl}/`,
+      url: `${siteConfig.officialUrl}/`,
       logo: {
         "@type": "ImageObject",
         url: `${siteUrl}/branding/FullOnBlack.png`,

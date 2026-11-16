@@ -7,7 +7,7 @@ export function SocialChannelsBand() {
   const channels = getAllSocialChannels()
   const activeChannels = channels.filter((channel) => channel.isActive)
   const plannedChannels = channels.filter((channel) => !channel.isActive)
-  const canonicalUrl = `${siteConfig.seo.siteUrl.replace(/\/$/, "")}/`
+  const officialUrl = `${siteConfig.officialUrl}/`
   const activeGridClass =
     activeChannels.length <= 2
       ? "grid gap-6 md:grid-cols-2 items-stretch"
@@ -49,11 +49,11 @@ export function SocialChannelsBand() {
               <span>{siteConfig.email}</span>
             </a>
             <a
-              href={canonicalUrl}
+              href={officialUrl}
               className="btn-secondary min-h-[48px] justify-center"
             >
               <Globe size={15} aria-hidden="true" />
-              <span>{canonicalUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
+              <span>{siteConfig.officialDomain}</span>
             </a>
           </div>
         </div>

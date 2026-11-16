@@ -107,11 +107,12 @@ test("homepage photonic hero, theme toggle, and announcement link work", async (
   expect(consoleErrors).toEqual([])
 })
 
-test("/about verifies charter date, bylaws, executive alignment, and recognitions state", async ({ page }) => {
+test("/about verifies charter date, official domain, bylaws, executive alignment, and recognitions state", async ({ page }) => {
   const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
   await page.goto("/about", { waitUntil: "domcontentloaded" })
 
   await expect(page.getByText("10 September 2026").first()).toBeVisible()
+  await expect(page.getByText("optica-egypt.com").first()).toBeVisible()
   await expect(page.getByRole("heading", { name: "Optica Local Section Governance Standards" })).toBeVisible()
   await expect(page.getByText(/30% of section membership/i)).toBeVisible()
   await expect(page.getByRole("link", { name: /Abdulaziz Albadawi/i }).first()).toBeVisible()
