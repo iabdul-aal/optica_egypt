@@ -145,7 +145,8 @@ test("/resources filters Grants tab and searches ITIDA cleanly", async ({ page }
   expect(consoleErrors).toEqual([])
 })
 
-test("/leadership renders 16 clean monochrome-at-rest portrait cards without photo overlay taglines", async ({ page }) => {
+test("/leadership renders 16 clean monochrome-at-rest portrait cards and loads reliably on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 })
   const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
   await page.goto("/leadership", { waitUntil: "domcontentloaded" })
 
@@ -155,6 +156,19 @@ test("/leadership renders 16 clean monochrome-at-rest portrait cards without pho
     const text = (await frames.nth(i).textContent())?.trim() ?? ""
     expect(text).not.toMatch(/Section Initiator|First President|Co-Founder/i)
   }
+
+  // Verify mobile viewport reveals cards without ScrollReveal trapping content invisible
+  const firstCard = page.locator("main article").first()
+  await expect(firstCard).toBeVisible()
+  const cardOpacity = await firstCard.evaluate((el) => Number(getComputedStyle(el).opacity))
+  expect(cardOpacity).toBe(1)
+
+  // Verify no divider border above the card Profile action link
+  const profileRowBorderTop = await firstCard
+    .locator("a", { hasText: "Profile" })
+    .locator("..")
+    .evaluate((el) => getComputedStyle(el).borderTopWidth)
+  expect(profileRowBorderTop).toBe("0px")
 
   const firstPortraitFilter = await page
     .locator("article .aspect-\\[2\\/3\\] img")
@@ -166,22 +180,34 @@ test("/leadership renders 16 clean monochrome-at-rest portrait cards without pho
   expect(consoleErrors).toEqual([])
 })
 
-test("homepage ecosystem constellation, pathways, research tabs, desktop click dropdowns, and hub subnav work cleanly", async ({
+test("homepage hero color 3D stage, research topic-specific 3D shapes, dropdowns, no HubSubnav, and chapters map work cleanly", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 })
   const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
   await page.goto("/", { waitUntil: "domcontentloaded" })
 
+  // Hero 3D container is non-B&W and Section HubSubnav is absent
+  await expect(page.locator(".hero-model-wrap .figure-bw")).toHaveCount(0)
+  await expect(page.getByLabel("Section Hub sub-navigation")).toHaveCount(0)
+  const heroModelBg = await page
+    .locator(".hero-model-wrap")
+    .evaluate((el) => getComputedStyle(el).backgroundColor)
+  expect(heroModelBg).toBe("rgba(0, 0, 0, 0)")
+
   // ImpactMetrics strip + Pentagon CommunityBubbles SVG
   await expect(page.getByRole("link", { name: /01\s*Learn/i })).toBeVisible()
   await expect(page.getByRole("img", { name: /Interactive network linking five pillars/i })).toBeVisible()
 
-  // ResearchExplorer tab interaction
+  // ResearchExplorer renders topic-specific 3D shapes per domain tab
   const tabs = page.locator("#research-explorer [role='tab']")
-  expect(await tabs.count()).toBeGreaterThan(1)
+  expect(await tabs.count()).toBe(5)
+  await expect(page.locator("#research-explorer .research-shape--pic")).toBeVisible()
   await tabs.nth(1).click()
   await expect(tabs.nth(1)).toHaveAttribute("aria-selected", "true")
+  await expect(page.locator("#research-explorer .research-shape--com")).toBeVisible()
+  await tabs.nth(4).click()
+  await expect(page.locator("#research-explorer .research-shape--qnt")).toBeVisible()
 
   // Desktop click-to-open dropdown toggles aria-expanded cleanly
   const sectionBtn = page.locator(".desktop-navigation button", { hasText: "Section" })
@@ -190,11 +216,14 @@ test("homepage ecosystem constellation, pathways, research tabs, desktop click d
   await page.locator(".nav-dropdown a[href='/governance']").click()
   await page.waitForURL("**/governance")
 
-  // Sibling HubSubnav bar navigates directly across section pages
-  const partnersSubnav = page.getByLabel("Section Hub sub-navigation").getByRole("link", { name: "Partners" })
-  await expect(partnersSubnav).toBeVisible()
-  await partnersSubnav.click()
-  await page.waitForURL("**/partners")
+  // Chapters map Focus AUC and Reset controls work cleanly
+  await page.goto("/chapters", { waitUntil: "domcontentloaded" })
+  await expect(page.getByText("100%")).toBeVisible()
+  await page.getByRole("button", { name: /Focus on AUC Chapter/i }).click()
+  await expect(page.getByText("220%")).toBeVisible()
+  await expect(page.getByText(/30°01' N/)).toBeVisible()
+  await page.getByRole("button", { name: /Reset map/i }).click()
+  await expect(page.getByText("100%")).toBeVisible()
 
   expect(pageErrors).toEqual([])
   expect(consoleErrors).toEqual([])

@@ -16,7 +16,7 @@ export default function GalleryPage() {
     <>
       <PageHeader
         eyebrow="Visual Archive"
-        title="Section Media Gallery."
+        title="Section Media Gallery"
         intro="Documented photography and visual records from Optica Egypt community events, laboratory demonstrations, and technical sessions."
       />
 

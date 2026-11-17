@@ -5,19 +5,19 @@ const PATHWAYS = [
   {
     index: "01",
     title: "Learn",
-    description: "Open-source photonic design automation workshops and practical starting points.",
+    description: "Open-source photonic design automation workshops and reproducible simulation workflows.",
     href: "/open-source",
   },
   {
     index: "02",
     title: "Exchange",
-    description: "Technical dialogue across Egyptian university laboratories, chapters, and faculty.",
+    description: "Technical seminars, Visiting Lecturer sessions, and faculty dialogue across Egyptian labs.",
     href: "/events",
   },
   {
     index: "03",
     title: "Build",
-    description: "Collaborative working groups connecting student teams toward real projects.",
+    description: "Collaborative working groups guiding student teams from photonic layout to verification.",
     href: "/projects",
   },
 ] as const

@@ -55,7 +55,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="Section Record"
-        title="About Optica Egypt."
+        title="About Optica Egypt"
         intro="Verified charter record, institutional identity, and gateway to governance, founding officers, academic partnerships, and media resources."
       />
 

@@ -138,8 +138,7 @@ a { color: inherit; }
 .group\/card:hover .figure-bw,
 .group\/card:focus-within .figure-bw,
 .group:hover .figure-bw,
-.group:focus-within .figure-bw,
-.hero-shell:hover .figure-bw {
+.group:focus-within .figure-bw {
   filter: grayscale(0) contrast(1);
 }
 
@@ -441,16 +440,8 @@ a { color: inherit; }
 
 /* 3D Hero Stage */
 .hero-shell { background: var(--canvas); border-bottom: 1px solid var(--line); display: grid; min-height: min(46rem, calc(100svh - 4.85rem)); overflow: hidden; position: relative; }
-.hero-shell::before {
-  background: radial-gradient(circle at 75% 45%, rgba(215, 174, 91, 0.11), transparent 56%);
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-}
 .hero-copy-wrap { align-items: center; display: flex; grid-area: 1 / 1; pointer-events: none; position: relative; z-index: 2; }
-.hero-copy { max-width: 41rem; padding-block: clamp(2rem, 4vh, 3.5rem); pointer-events: auto; }
+.hero-copy { max-width: 34.5rem; padding-block: clamp(2rem, 4vh, 3.5rem); pointer-events: auto; }
 .hero-eyebrow {
   color: var(--gold);
   display: inline-block;
@@ -462,7 +453,7 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 .hero-copy .display-title {
-  font-size: clamp(2.15rem, 3.65vw, 3.55rem);
+  font-size: clamp(2rem, 3.15vw, 3.2rem);
   line-height: 1.14;
   letter-spacing: -0.03em;
   margin: 0.65rem 0 0;
@@ -471,11 +462,10 @@ a { color: inherit; }
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.62;
   margin: 1.1rem 0 0;
-  max-width: 33rem;
+  max-width: 32rem;
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
-.hero-model-wrap { bottom: 0; position: absolute; right: 0; top: 0; width: 55%; z-index: 0; }
-.hero-model-wrap::after { background: linear-gradient(to right, var(--canvas) 0%, color-mix(in srgb, var(--canvas) 45%, transparent) 38%, transparent 70%); bottom: 0; content: ""; left: -5%; pointer-events: none; position: absolute; right: 0; top: 0; z-index: 1; }
+.hero-model-wrap { background: transparent; bottom: 0; position: absolute; right: 0; top: 0; width: 52%; z-index: 0; }
 .photonics-viewer { background: transparent; display: flex; flex-direction: column; height: 100%; min-height: 26rem; overflow: hidden; position: relative; }
 .viewer-stage { flex: 1; min-height: 0; height: 100%; }
 .viewer-canvas { height: 100% !important; touch-action: pan-y; width: 100% !important; }
@@ -504,23 +494,61 @@ a { color: inherit; }
 .research-topic-progress--paused { animation-play-state: paused; }
 @keyframes research-timer { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .research-stage { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-md); min-height: 23rem; overflow: hidden; padding: clamp(1.5rem, 3vw, 2.5rem); position: relative; }
-.research-depth-card { height: 8.5rem; perspective: 480px; pointer-events: none; position: absolute; right: 7%; top: 15%; width: 8.5rem; opacity: 0.65; }
-.research-cube { animation: cube-orbit 15s linear infinite; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateX(22deg) rotateY(-38deg); width: 100%; }
-.cube-face { border: 1px solid rgb(215 174 91 / 0.5); display: block; height: 100%; position: absolute; width: 100%; }
-.cube-face--front  { transform: translateZ(4.25rem); }
-.cube-face--back   { transform: rotateY(180deg) translateZ(4.25rem); }
-.cube-face--right  { transform: rotateY( 90deg) translateZ(4.25rem); }
-.cube-face--left   { transform: rotateY(-90deg) translateZ(4.25rem); }
-.cube-face--top    { transform: rotateX( 90deg) translateZ(4.25rem); }
-.cube-face--bottom { transform: rotateX(-90deg) translateZ(4.25rem); }
-@keyframes cube-orbit { from { transform: rotateX(22deg) rotateY(-38deg); } to { transform: rotateX(22deg) rotateY(322deg); } }
+.research-depth-card { height: 9.5rem; perspective: 560px; pointer-events: none; position: absolute; right: 5%; top: 15%; width: 9.5rem; opacity: 0.8; }
+.research-shape { animation: shape-orbit 16s linear infinite; height: 100%; position: relative; transform-style: preserve-3d; width: 100%; }
+.shape-plane, .shape-ring {
+  border: 1px solid color-mix(in srgb, var(--gold) 56%, transparent);
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+  display: block;
+  inset: 0;
+  margin: auto;
+  position: absolute;
+}
+.shape-ring { border-radius: 50%; }
+
+/* 01: Integrated Photonics (Layered chip die + hovering microrings + waveguide bus) */
+.shape-pic-substrate { width: 8.5rem; height: 8.5rem; transform: rotateX(72deg) rotateZ(24deg) translateZ(-1.4rem); }
+.shape-pic-bus-top { width: 8.5rem; height: 0.75rem; transform: rotateX(72deg) rotateZ(24deg) translateY(-2.2rem) translateZ(-0.2rem); border-color: color-mix(in srgb, var(--gold) 78%, transparent); }
+.shape-pic-bus-bottom { width: 8.5rem; height: 0.75rem; transform: rotateX(72deg) rotateZ(24deg) translateY(2.2rem) translateZ(-0.2rem); }
+.shape-pic-ring-outer { width: 4.5rem; height: 4.5rem; border-width: 1.5px; border-color: var(--gold); transform: rotateX(72deg) translateZ(0.35rem); }
+.shape-pic-ring-inner { width: 2.5rem; height: 2.5rem; transform: rotateX(72deg) translateZ(1.1rem); }
+
+/* 02: Optical Communications (Coaxial fiber core tunnel + dispersion meridians) */
+.shape-com-slice-1 { width: 7.2rem; height: 7.2rem; transform: translateZ(-3.2rem); }
+.shape-com-slice-2 { width: 5.8rem; height: 5.8rem; transform: translateZ(-1.1rem); border-color: color-mix(in srgb, var(--gold) 75%, transparent); }
+.shape-com-slice-3 { width: 5.8rem; height: 5.8rem; transform: translateZ(1.1rem); border-color: color-mix(in srgb, var(--gold) 75%, transparent); }
+.shape-com-slice-4 { width: 7.2rem; height: 7.2rem; transform: translateZ(3.2rem); }
+.shape-com-meridian-a { width: 7.2rem; height: 7.2rem; transform: rotateY(90deg); background: transparent; }
+.shape-com-meridian-b { width: 7.2rem; height: 7.2rem; transform: rotateX(90deg); background: transparent; }
+
+/* 03: Lasers and Nonlinear Optics (Fabry-Perot optical cavity + standing crystal) */
+.shape-lsr-mirror-left { width: 5.6rem; height: 6.4rem; transform: rotateY(90deg) translateZ(-3.6rem); border-width: 1.5px; border-color: var(--gold); }
+.shape-lsr-mirror-right { width: 5.6rem; height: 6.4rem; transform: rotateY(90deg) translateZ(3.6rem); border-width: 1.5px; border-color: var(--gold); }
+.shape-lsr-crystal-a { width: 3.4rem; height: 3.4rem; transform: rotateX(45deg) rotateY(45deg); }
+.shape-lsr-crystal-b { width: 3.4rem; height: 3.4rem; transform: rotateX(-45deg) rotateZ(45deg); }
+.shape-lsr-beam { width: 7.2rem; height: 0.45rem; border-color: var(--gold); transform: rotateX(0deg); }
+
+/* 04: Optical MEMS and Sensing (Electrostatic stator + gimbal ring + tilted mirror) */
+.shape-mems-stator { width: 8.2rem; height: 8.2rem; transform: rotateX(68deg) translateZ(-1.4rem); }
+.shape-mems-gimbal { width: 6.4rem; height: 6.4rem; transform: rotateX(55deg) rotateY(16deg) translateZ(0.2rem); border-width: 1.5px; }
+.shape-mems-mirror { width: 4rem; height: 4rem; border-width: 1.5px; border-color: var(--gold); transform: rotateX(34deg) rotateY(-24deg) translateZ(1.4rem); }
+.shape-mems-base { width: 5.5rem; height: 5.5rem; border-style: dashed; transform: rotateX(68deg) translateZ(-2.5rem); }
+
+/* 05: Quantum and Nanophotonics (Bloch sphere gyroscope + state dipole) */
+.shape-qnt-eq { width: 8rem; height: 8rem; transform: rotateX(78deg); border-width: 1.5px; border-color: var(--gold); }
+.shape-qnt-meridian-a { width: 8rem; height: 8rem; transform: rotateY(0deg); background: transparent; }
+.shape-qnt-meridian-b { width: 8rem; height: 8rem; transform: rotateY(60deg); background: transparent; }
+.shape-qnt-meridian-c { width: 8rem; height: 8rem; transform: rotateY(-60deg); background: transparent; }
+.shape-qnt-core { width: 2.2rem; height: 2.2rem; border-color: var(--gold); background: color-mix(in srgb, var(--gold) 24%, transparent); transform: rotateX(45deg); }
+
+@keyframes shape-orbit { from { transform: rotateX(18deg) rotateY(-32deg); } to { transform: rotateX(18deg) rotateY(328deg); } }
 .topic-transition { animation: topic-enter 0.34s cubic-bezier(.22, .61, .36, 1) both; }
 @keyframes topic-enter { from { opacity: 0; transform: translateY(0.65rem); } to { opacity: 1; transform: translateY(0); } }
-.research-stage-copy { max-width: 31rem; position: relative; z-index: 1; }
+.research-stage-copy { max-width: min(29rem, 62%); position: relative; z-index: 1; }
 .research-stage-copy h3 { color: var(--ink); font-family: var(--font-display); font-size: clamp(1.85rem, 3.2vw, 2.75rem); letter-spacing: -0.03em; line-height: 1.18; margin: 1rem 0 1.1rem; }
 .research-stage-copy > p:last-of-type { color: var(--ink-soft); font-size: 1rem; line-height: 1.65; margin: 0; }
-.research-stage-copy ul { display: flex; flex-wrap: wrap; gap: 0.45rem; list-style: none; margin: 1.5rem 0 0; padding: 0; }
-.research-stage-copy li { border: 1px solid var(--line); color: var(--gold-pale); font-size: 0.72rem; font-weight: 750; padding: 0.45rem 0.6rem; border-radius: var(--radius-sm); }
+.research-stage-copy ul { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; margin: 1.75rem 0 0; padding: 1rem 0 0; border-top: 1px solid var(--line-subtle); }
+.research-stage-copy li { color: var(--gold-pale); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
 
 /* Centered SVG Chapter Node Pulse */
 @keyframes chapter-ring-pulse {
@@ -583,6 +611,7 @@ a { color: inherit; }
     padding-block: 3rem 1.25rem;
   }
   .hero-model-wrap {
+    background: transparent;
     bottom: auto;
     height: clamp(270px, 42vh, 360px);
     left: auto;
@@ -591,14 +620,6 @@ a { color: inherit; }
     top: auto;
     width: 100%;
     z-index: 1;
-  }
-  .hero-model-wrap::after {
-    background: linear-gradient(to bottom, var(--canvas) 0%, transparent 25%, var(--canvas) 95%);
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
   }
   .photonics-viewer { min-height: 0; }
   .section-split-heading, .research-layout { grid-template-columns: 1fr; }
@@ -627,10 +648,11 @@ a { color: inherit; }
     min-height: 3.1rem;
     width: 100%;
   }
-  .hero-model-wrap { height: 270px; }
+  .hero-model-wrap { height: 290px; }
   .research-topic { grid-template-columns: 3.8rem 1fr; }
   .research-stage { min-height: 24rem; }
-  .research-depth-card { opacity: 0.35; right: 2%; top: 10%; }
+  .research-depth-card { opacity: 0.34; right: 2%; top: 8%; transform: scale(0.76); transform-origin: top right; }
+  .research-stage-copy { max-width: 100%; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-introduction { grid-column: auto; }
 }
@@ -641,9 +663,6 @@ a { color: inherit; }
 /* Light Mode Adaptations */
 [data-theme="light"] .site-header {
   background: color-mix(in srgb, var(--canvas) 92%, transparent);
-}
-[data-theme="light"] .hero-shell::before {
-  background: radial-gradient(circle at 75% 45%, rgba(166, 124, 30, 0.08), transparent 56%);
 }
 [data-theme="light"] .research-stage {
   background: var(--surface);
@@ -672,9 +691,6 @@ a { color: inherit; }
 }
 [data-theme="light"] .mobile-navigation {
   background: var(--surface);
-}
-[data-theme="light"] .research-depth-card .cube-face {
-  border-color: rgba(166, 124, 30, 0.45);
 }
 [data-theme="light"] .site-card:hover {
   border-color: var(--gold);

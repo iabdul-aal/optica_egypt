@@ -9,10 +9,10 @@ export function OpticaHeritage() {
           <div>
             <p className="eyebrow">Global Affiliation</p>
             <h2 className="section-title mt-3 max-w-2xl">
-              Local work, connected to the global optics and photonics community.
+              Local work connected to the global optics and photonics network.
             </h2>
             <p className="lede mt-5 max-w-2xl">
-              Optica advances the generation, application, and archiving of knowledge in optics and photonics. As a chartered Local Section in Egypt, Optica Egypt connects researchers and student chapters to technical groups, travel grants, and Optica Publishing Group journals.
+              Optica advances the generation, application, and archiving of optical science worldwide. Operating under Optica Local Section bylaws, Optica Egypt links regional university laboratories and student chapters to international technical groups, travel grants, and Optica Publishing Group journals.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a

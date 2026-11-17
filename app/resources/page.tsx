@@ -29,7 +29,7 @@ export default function ResourcesPage() {
     <>
       <PageHeader
         eyebrow="Toolkit and Grants"
-        title="Tools, Funding, and Journals."
+        title="Tools, Funding, and Journals"
         intro="Free computational software, national Egyptian graduation and research funding portals, and Optica membership cohorts."
       />
 

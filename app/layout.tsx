@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { Inter, Montserrat } from "next/font/google"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
-import { HubSubnav } from "@/components/sections/HubSubnav"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { ScrollProgress } from "@/components/ui/ScrollProgress"
 import "@/app/globals.css"
@@ -165,7 +164,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <a href="#main-content" className="skip-link">Skip to content</a>
           <Header />
           <main id="main-content" tabIndex={-1} className="main-content focus:outline-none">
-            <HubSubnav />
             {children}
           </main>
           <Footer />

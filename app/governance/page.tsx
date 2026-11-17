@@ -18,7 +18,7 @@ export default function GovernancePage() {
     <>
       <PageHeader
         eyebrow="Constitutional Framework"
-        title="Governance and Bylaws."
+        title="Governance and Bylaws"
         intro="Optica Egypt operates under Optica Local Section bylaws with verifiable executive stewardship, member threshold governance, and annual reporting accountability."
       />
 

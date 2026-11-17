@@ -23,7 +23,7 @@ export default function PressPage() {
     <>
       <PageHeader
         eyebrow="Media and Communications"
-        title="Press Kit and Brand Assets."
+        title="Press Kit and Brand Assets"
         intro="Verified institutional descriptions, downloadable brand emblems, color specifications, and media coordination for publications covering Optica Egypt."
       />
 

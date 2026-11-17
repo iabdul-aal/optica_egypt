@@ -5,6 +5,62 @@ import type { Domain } from "@/types/domain"
 
 const AUTO_CYCLE_MS = 6200
 
+function TopicDepthGeometry({ domainId }: { domainId: string }) {
+  switch (domainId) {
+    case "photonic-ic":
+      return (
+        <div className="research-shape research-shape--pic">
+          <span className="shape-plane shape-pic-substrate" />
+          <span className="shape-plane shape-pic-bus-top" />
+          <span className="shape-plane shape-pic-bus-bottom" />
+          <span className="shape-ring shape-pic-ring-outer" />
+          <span className="shape-ring shape-pic-ring-inner" />
+        </div>
+      )
+    case "optical-comm":
+      return (
+        <div className="research-shape research-shape--com">
+          <span className="shape-ring shape-com-slice-1" />
+          <span className="shape-ring shape-com-slice-2" />
+          <span className="shape-ring shape-com-slice-3" />
+          <span className="shape-ring shape-com-slice-4" />
+          <span className="shape-ring shape-com-meridian-a" />
+          <span className="shape-ring shape-com-meridian-b" />
+        </div>
+      )
+    case "lasers-nonlinear":
+      return (
+        <div className="research-shape research-shape--lsr">
+          <span className="shape-plane shape-lsr-mirror-left" />
+          <span className="shape-plane shape-lsr-mirror-right" />
+          <span className="shape-plane shape-lsr-crystal-a" />
+          <span className="shape-plane shape-lsr-crystal-b" />
+          <span className="shape-plane shape-lsr-beam" />
+        </div>
+      )
+    case "mems-sensing":
+      return (
+        <div className="research-shape research-shape--mems">
+          <span className="shape-plane shape-mems-stator" />
+          <span className="shape-ring shape-mems-gimbal" />
+          <span className="shape-plane shape-mems-mirror" />
+          <span className="shape-plane shape-mems-base" />
+        </div>
+      )
+    case "quantum-nano":
+    default:
+      return (
+        <div className="research-shape research-shape--qnt">
+          <span className="shape-ring shape-qnt-eq" />
+          <span className="shape-ring shape-qnt-meridian-a" />
+          <span className="shape-ring shape-qnt-meridian-b" />
+          <span className="shape-ring shape-qnt-meridian-c" />
+          <span className="shape-ring shape-qnt-core" />
+        </div>
+      )
+  }
+}
+
 export function ResearchExplorer({ domains }: { domains: Domain[] }) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [timerKey, setTimerKey] = useState(0)
@@ -106,14 +162,7 @@ export function ResearchExplorer({ domains }: { domains: Domain[] }) {
             aria-live="polite"
           >
             <div className="research-depth-card" aria-hidden="true">
-              <div className="research-cube">
-                <span className="cube-face cube-face--front" />
-                <span className="cube-face cube-face--back" />
-                <span className="cube-face cube-face--right" />
-                <span className="cube-face cube-face--left" />
-                <span className="cube-face cube-face--top" />
-                <span className="cube-face cube-face--bottom" />
-              </div>
+              <TopicDepthGeometry domainId={current.id} />
             </div>
 
             <div className="research-stage-copy">

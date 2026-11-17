@@ -18,7 +18,7 @@ export default function JoinPage() {
     <>
       <PageHeader
         eyebrow="Participate"
-        title="Join Optica Egypt."
+        title="Join Optica Egypt"
         intro="Apply directly to a working committee or route chapter, university hosting, partnership, and press inquiries to the section desk."
       />
 

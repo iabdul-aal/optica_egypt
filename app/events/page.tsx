@@ -16,7 +16,7 @@ export default function EventsPage() {
     <>
       <PageHeader
         eyebrow="Program Calendar"
-        title="Events and Seminars."
+        title="Events and Seminars"
         intro="Upcoming workshops, regional technical meetings, and Visiting Lecturer sessions coordinated by Optica Egypt."
       />
 

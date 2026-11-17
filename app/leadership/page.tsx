@@ -18,15 +18,13 @@ export default function LeadershipPage() {
     <>
       <PageHeader
         eyebrow="Founding Roster"
-        title="Section Leadership."
+        title="Section Leadership"
         intro="Elected executive officers, operational committee leads, and senior faculty advisors guiding Optica Egypt through its inaugural charter term."
       />
 
       <section className="section-space">
         <div className="container-page space-y-14">
-          <ScrollReveal>
-            <LeadershipRosterSection />
-          </ScrollReveal>
+          <LeadershipRosterSection />
 
           <ScrollReveal delay={60}>
             <div className="border-t border-[var(--line)] pt-10 flex flex-wrap items-end justify-between gap-6">

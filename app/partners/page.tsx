@@ -21,7 +21,7 @@ export default function PartnersPage() {
     <>
       <PageHeader
         eyebrow="Institutional Collaboration"
-        title="Partnerships and Alliances."
+        title="Partnerships and Alliances"
         intro="Optica Egypt builds structured academic, open-source photonic foundry, and training collaborations across Egypt and international partner networks."
       />
 

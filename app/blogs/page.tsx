@@ -16,7 +16,7 @@ export default function BlogsPage() {
     <>
       <PageHeader
         eyebrow="Technical Writing"
-        title="Articles and Technical Notes."
+        title="Articles and Technical Notes"
         intro="Deep-dive write-ups on silicon photonics, open-source electromagnetic solvers, and optical systems engineering from researchers in Egypt."
       />
 

@@ -16,7 +16,7 @@ export default function NewsPage() {
     <>
       <PageHeader
         eyebrow="Section Record"
-        title="News and Announcements."
+        title="News and Announcements"
         intro="Official milestones, governance notices, and section announcements published by the Optica Egypt Executive Committee."
       />
 

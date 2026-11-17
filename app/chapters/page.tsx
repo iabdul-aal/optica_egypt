@@ -24,7 +24,7 @@ export default function ChaptersPage() {
     <>
       <PageHeader
         eyebrow="University Network"
-        title="Student Chapters in Egypt."
+        title="Student Chapters in Egypt"
         intro="Optica Egypt supports reactivation of the chartered AUC chapter and guides university teams nationwide starting new branches."
       />
 

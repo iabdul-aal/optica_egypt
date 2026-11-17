@@ -28,6 +28,12 @@ export function ScrollReveal({
     const element = ref.current
     if (!element) return
 
+    const rect = element.getBoundingClientRect()
+    if (rect.top < window.innerHeight + 80 && rect.bottom > -80) {
+      setVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,7 +41,7 @@ export function ScrollReveal({
           observer.disconnect()
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -24px 0px" }
+      { threshold: 0, rootMargin: "80px 0px 80px 0px" }
     )
 
     observer.observe(element)

@@ -30,18 +30,12 @@ const OUTREACH_FORMATS = [
   },
 ] as const
 
-const OUTREACH_LINKS = [
-  { label: "Egyptian School and Campus Optics Roadshow", meta: "Initiative Spec", href: "/projects/stem-campus-outreach" },
-  { label: "Student Chapters and National Charter Map", meta: "Community Network", href: "/chapters" },
-  { label: "Request Campus Speaker or Outreach Session", meta: "Participation Desk", href: "/join?type=speaker" },
-] as const
-
 export default function OutreachPage() {
   return (
     <>
       <PageHeader
         eyebrow="Public Engagement"
-        title="Science Outreach."
+        title="Science Outreach"
         intro="Structured demonstration kits and regional campus visits introducing students across Egypt to optics and photonics."
       />
 
@@ -60,27 +54,37 @@ export default function OutreachPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={60}>
-            <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
-              {OUTREACH_LINKS.map((item) => (
+            <div className="bg-[var(--surface-raised)] border-y border-[var(--line)] p-7 sm:p-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+              <div className="space-y-4">
+                <p className="eyebrow">Host a Campus Demonstration</p>
+                <h2 className="section-title">Bring Optics Demonstrations to Your Faculty or School</h2>
+                <p className="text-sm leading-relaxed text-[var(--ink-soft)] max-w-xl">
+                  Departments, STEM schools, and student clubs can coordinate experimental kits, Visiting Lecturer sessions, or May International Day of Light visits through the outreach desk.
+                </p>
+                <div className="pt-2">
+                  <Link href="/join?type=speaker" className="btn-primary min-h-[48px]">
+                    <span>Request Campus Outreach Session</span>
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="lg:border-l lg:border-[var(--line)] lg:pl-8 divide-y divide-[var(--line-subtle)] border-y border-[var(--line-subtle)] lg:border-y-0">
                 <Link
-                  key={item.href}
-                  href={item.href}
-                  className="event-row flex flex-wrap items-center justify-between gap-4 py-5 px-3 min-h-[48px]"
+                  href="/projects/stem-campus-outreach"
+                  className="flex min-h-[48px] items-center justify-between gap-4 py-4 text-sm font-semibold text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
                 >
-                  <div>
-                    <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                      {item.meta}
-                    </span>
-                    <span className="mt-1 block text-base font-semibold text-[var(--ink)]">
-                      {item.label}
-                    </span>
-                  </div>
-                  <span className="text-link inline-flex items-center gap-1">
-                    <span>Open</span>
-                    <ArrowUpRight size={13} aria-hidden="true" />
-                  </span>
+                  <span>Egyptian School and Campus Optics Roadshow Spec</span>
+                  <ArrowUpRight size={14} className="shrink-0" aria-hidden="true" />
                 </Link>
-              ))}
+                <Link
+                  href="/chapters"
+                  className="flex min-h-[48px] items-center justify-between gap-4 py-4 text-sm font-semibold text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+                >
+                  <span>Student Chapters and National Charter Map</span>
+                  <ArrowUpRight size={14} className="shrink-0" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </ScrollReveal>
         </div>

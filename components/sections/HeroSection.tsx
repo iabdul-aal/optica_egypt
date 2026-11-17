@@ -11,7 +11,7 @@ const PhotonicsChipScene = dynamic(
     ssr: false,
     loading: () => (
       <div className="h-full flex items-center justify-center p-4 sm:p-6">
-        <OpticalWaveguideDiagram />
+        <OpticalWaveguideDiagram monochromeHover={false} transparent />
       </div>
     ),
   }
@@ -27,14 +27,14 @@ export function HeroSection() {
             A shared field of view for Egypt&apos;s optics and photonics community.
           </h1>
           <p className="lede">
-            Chartered 10 September 2026 under Optica bylaws. Meet researchers, explore open-source photonics workflows, and connect chapters across Egypt.
+            Chartered 10 September 2026 under Optica bylaws. Connecting university laboratories, student chapters, and open-source photonics engineering across Egypt.
           </p>
           <div className="hero-actions">
             <Link href="/projects" className="btn-primary min-h-[48px]">
-              Explore Projects <ArrowUpRight size={15} aria-hidden="true" />
+              Explore Initiatives <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
             <Link href="/chapters" className="btn-secondary min-h-[48px]">
-              Meet the Community
+              Student Chapters
             </Link>
           </div>
         </div>

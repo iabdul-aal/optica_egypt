@@ -21,7 +21,7 @@ export default function UpdatesPage() {
     <>
       <PageHeader
         eyebrow="Section Record"
-        title="Updates and Events."
+        title="Updates and Events"
         intro="Verified announcements, scheduled technical workshops, and published dispatches from the Optica Egypt Local Section."
       />
 

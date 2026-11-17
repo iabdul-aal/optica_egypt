@@ -90,23 +90,23 @@ function RingResonator({
 
 function PhotonicChip({ running }: { running: boolean }) {
   return (
-    <group scale={[1.25, 1.25, 1.25]}>
+    <group scale={[0.96, 0.96, 0.96]}>
       {/* Silicon Substrate */}
       <mesh position={[0, -0.18, 0]}>
         <boxGeometry args={[7.6, 0.44, 4.6]} />
-        <meshStandardMaterial color="#0e1316" metalness={0.72} roughness={0.28} />
+        <meshStandardMaterial color="#141b1f" metalness={0.7} roughness={0.28} />
       </mesh>
 
       {/* Cladding Oxide Interlayer */}
       <mesh position={[0, 0.07, 0]}>
         <boxGeometry args={[7.25, 0.12, 4.25]} />
-        <meshStandardMaterial color="#1d2327" metalness={0.5} roughness={0.4} />
+        <meshStandardMaterial color="#222a2f" metalness={0.48} roughness={0.38} />
       </mesh>
 
       {/* Active Waveguide Core Plane */}
       <mesh position={[0, 0.14, 0]}>
         <boxGeometry args={[6.95, 0.04, 3.95]} />
-        <meshStandardMaterial color="#262d31" metalness={0.45} roughness={0.42} />
+        <meshStandardMaterial color="#2b3439" metalness={0.44} roughness={0.4} />
       </mesh>
 
       {/* Gold Perimeter Ground Bars */}
@@ -219,8 +219,8 @@ function HoverController({
     const targetRotX = baseRotX - mouseRef.current.y * 0.15 + idleRotX
     const targetRotY = baseRotY + mouseRef.current.x * 0.22 + idleRotY
     const targetRotZ = baseRotZ - mouseRef.current.x * 0.05
-    const targetPosX = 0.2 + mouseRef.current.x * 0.18
-    const targetPosY = 0.25 + mouseRef.current.y * 0.14 + idleFloatY
+    const targetPosX = 0 + mouseRef.current.x * 0.16
+    const targetPosY = 0.08 + mouseRef.current.y * 0.12 + idleFloatY
 
     const lerpSpeed = Math.min(delta * 3.4, 0.14)
     groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetRotX, lerpSpeed)
@@ -261,21 +261,21 @@ export function PhotonicsChipScene() {
   if (!interactive) {
     return (
       <div className="h-full flex items-center justify-center p-4 sm:p-6">
-        <OpticalWaveguideDiagram />
+        <OpticalWaveguideDiagram monochromeHover={false} transparent />
       </div>
     )
   }
 
   return (
     <div
-      className="photonics-viewer figure-bw"
+      className="photonics-viewer"
       role="img"
       aria-label="Interactive 3D Silicon Photonic Chip showing waveguides, microring resonators, and grating couplers"
     >
       <div className="viewer-stage">
         <Canvas
           className="viewer-canvas"
-          camera={{ position: [0, 0, 11], fov: 42 }}
+          camera={{ position: [0, 0.15, 12.2], fov: 40 }}
           dpr={[1, 1.5]}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
           onCreated={({ gl }) => {

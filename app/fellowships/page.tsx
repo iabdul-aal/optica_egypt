@@ -31,9 +31,24 @@ const FELLOWSHIP_TRACKS = [
 ] as const
 
 const FELLOWSHIP_LINKS = [
-  { label: "Optica Global Fellowship and Elevation Guidance", meta: "Active Advisory", href: "/projects/senior-fellow-nominations" },
-  { label: "National Thesis Recognition and Support Concept", meta: "Planning Track", href: "/projects/thesis-recognition-concept" },
-  { label: "Browse Egyptian and Global Funding Index", meta: "Resources Directory", href: "/resources?category=grants" },
+  {
+    label: "Optica Global Fellowship and Elevation Guidance",
+    meta: "Active Advisory",
+    detail: "Checklist and endorsement guidance for Optica Senior Member and Fellow nominations.",
+    href: "/projects/senior-fellow-nominations",
+  },
+  {
+    label: "National Thesis Recognition and Support Concept",
+    meta: "Planning Track",
+    detail: "Framework supporting graduation and postgraduate optical thesis prototypes in Egypt.",
+    href: "/projects/thesis-recognition-concept",
+  },
+  {
+    label: "Egyptian and Global Funding Index",
+    meta: "Resources Directory",
+    detail: "Filter domestic STDF and ASRT calls alongside Optica Foundation award deadlines.",
+    href: "/resources?category=grants",
+  },
 ] as const
 
 export default function FellowshipsPage() {
@@ -41,7 +56,7 @@ export default function FellowshipsPage() {
     <>
       <PageHeader
         eyebrow="Awards and Mobility"
-        title="Fellowships and Grants."
+        title="Fellowships and Grants"
         intro="Advisory pathways linking Egyptian students, doctoral fellows, and optical faculty to competitive grants and member elevations."
       />
 
@@ -70,26 +85,27 @@ export default function FellowshipsPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={60}>
-            <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
+            <div className="border-t border-[var(--line)] pt-10 grid gap-8 md:grid-cols-3 md:divide-x divide-[var(--line-subtle)]">
               {FELLOWSHIP_LINKS.map((item) => (
-                <Link
+                <article
                   key={item.href}
-                  href={item.href}
-                  className="event-row flex flex-wrap items-center justify-between gap-4 py-5 px-3 min-h-[48px]"
+                  className="md:px-6 first:md:pl-0 last:md:pr-0 flex flex-col justify-between gap-4"
                 >
                   <div>
-                    <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
                       {item.meta}
                     </span>
-                    <span className="mt-1 block text-base font-semibold text-[var(--ink)]">
-                      {item.label}
-                    </span>
+                    <h3 className="mt-2 text-base font-semibold text-[var(--ink)]">{item.label}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-[var(--ink-soft)]">{item.detail}</p>
                   </div>
-                  <span className="text-link inline-flex items-center gap-1">
-                    <span>Open</span>
+                  <Link
+                    href={item.href}
+                    className="text-link inline-flex min-h-[48px] items-center gap-1 self-start"
+                  >
+                    <span>Inspect pathway</span>
                     <ArrowUpRight size={13} aria-hidden="true" />
-                  </span>
-                </Link>
+                  </Link>
+                </article>
               ))}
             </div>
           </ScrollReveal>

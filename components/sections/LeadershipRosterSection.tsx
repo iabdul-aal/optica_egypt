@@ -25,8 +25,8 @@ export function LeadershipRosterSection() {
         <div>
           <h3 className="eyebrow mb-6">Executive Committee ({executive.length})</h3>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
-            {executive.map((m) => (
-              <MemberCard key={m.id} member={m} />
+            {executive.map((m, idx) => (
+              <MemberCard key={m.id} member={m} priority={idx < 2} />
             ))}
           </div>
         </div>

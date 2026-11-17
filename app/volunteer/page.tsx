@@ -27,7 +27,7 @@ export default function VolunteerPage() {
     <>
       <PageHeader
         eyebrow="Standing Committees"
-        title="Volunteer Committees."
+        title="Volunteer Committees"
         intro="Optica Egypt relies on six working committees coordinating programs, open hardware tooling, student mentorship, and outreach across Egypt."
       />
 

@@ -1,13 +1,23 @@
-export function OpticalWaveguideDiagram() {
+type OpticalWaveguideDiagramProps = {
+  monochromeHover?: boolean
+  transparent?: boolean
+}
+
+export function OpticalWaveguideDiagram({
+  monochromeHover = true,
+  transparent = false,
+}: OpticalWaveguideDiagramProps = {}) {
   return (
     <div
-      className="relative flex w-full items-center justify-center border-y border-[var(--line)] bg-[var(--surface)]/45 p-5 sm:p-8"
+      className={`relative flex w-full items-center justify-center p-5 sm:p-8 ${
+        transparent ? "bg-transparent" : "border-y border-[var(--line)] bg-[var(--surface)]/45"
+      }`}
       role="img"
       aria-label="Architectural diagram of a silicon photonic add-drop microring resonator"
     >
       <svg
         viewBox="0 0 560 360"
-        className="figure-bw w-full max-w-[520px] h-auto"
+        className={`${monochromeHover ? "figure-bw " : ""}w-full max-w-[520px] h-auto`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -17,8 +27,8 @@ export function OpticalWaveguideDiagram() {
           </pattern>
         </defs>
 
-        <rect width="560" height="360" fill="url(#chip-grid)" />
-        <rect x="24" y="24" width="512" height="312" rx="4" stroke="var(--line)" strokeWidth="1.2" />
+        {!transparent && <rect width="560" height="360" fill="url(#chip-grid)" />}
+        {!transparent && <rect x="24" y="24" width="512" height="312" rx="4" stroke="var(--line)" strokeWidth="1.2" />}
 
         {/* Grating couplers */}
         {[86, 274].map((y) => (

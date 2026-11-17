@@ -18,7 +18,7 @@ export default function ProjectsPage() {
     <>
       <PageHeader
         eyebrow="Initiatives Index"
-        title="Projects, Working Groups, and Open Calls."
+        title="Projects, Working Groups, and Open Calls"
         intro="Every technical initiative, training roadmap, and fellowship pathway tracked with its funding status, section lead, and linked tools."
       />
 

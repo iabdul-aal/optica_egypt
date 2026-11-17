@@ -34,18 +34,12 @@ const PIPELINE_STAGES = [
   },
 ] as const
 
-const RELATED_PATHS = [
-  { label: "Open-Source Photonics Working Group", meta: "Working Group", href: "/projects/open-photonics-pda" },
-  { label: "Egypt Open Photonic Chipathon Concept", meta: "Design Challenge", href: "/projects/photonic-chipathon" },
-  { label: "Browse Free Photonics Software Index", meta: "Resources Directory", href: "/resources?category=software" },
-] as const
-
 export default function OpenSourcePage() {
   return (
     <>
       <PageHeader
         eyebrow="Open Hardware and PDA"
-        title="Open-Source Photonics."
+        title="Open-Source Photonics"
         intro="Browser-accessible silicon photonics design workflows built for Egyptian undergraduate capstones, research theses, and hardware working groups."
       />
 
@@ -75,27 +69,50 @@ export default function OpenSourcePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={60}>
-            <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
-              {RELATED_PATHS.map((item) => (
+            <div className="border-t border-[var(--line)] pt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div className="border-l-2 border-[var(--gold)] pl-5 space-y-4">
+                <p className="eyebrow">Working Group Action</p>
+                <h2 className="section-title">Contribute Layouts or Simulation Benchmarks</h2>
+                <p className="text-sm leading-relaxed text-[var(--ink-soft)] max-w-xl">
+                  The Open-Source Photonics Working Group maintains reproducible Python layout templates, waveguide sweeps, and foundry preparation checklists open to Egyptian students and research groups.
+                </p>
+                <div className="pt-1 flex flex-wrap gap-3">
+                  <Link href="/projects/open-photonics-pda" className="btn-primary min-h-[48px]">
+                    <span>View Working Group Spec</span>
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </Link>
+                  <Link href="/join?type=committee" className="btn-secondary min-h-[48px]">
+                    <span>Apply to Working Committee</span>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="divide-y divide-[var(--line-subtle)] border-y border-[var(--line-subtle)]">
                 <Link
-                  key={item.href}
-                  href={item.href}
-                  className="event-row flex flex-wrap items-center justify-between gap-4 py-5 px-3 min-h-[48px]"
+                  href="/projects/photonic-chipathon"
+                  className="flex min-h-[48px] items-center justify-between gap-4 py-4 text-sm font-semibold text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
                 >
                   <div>
-                    <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                      {item.meta}
+                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[var(--gold)]">
+                      Design Challenge
                     </span>
-                    <span className="mt-1 block text-base font-semibold text-[var(--ink)]">
-                      {item.label}
-                    </span>
+                    <span className="mt-0.5 block">Egypt Open Photonic Chipathon Concept</span>
                   </div>
-                  <span className="text-link inline-flex items-center gap-1">
-                    <span>Open</span>
-                    <ArrowUpRight size={13} aria-hidden="true" />
-                  </span>
+                  <ArrowUpRight size={14} className="shrink-0" aria-hidden="true" />
                 </Link>
-              ))}
+                <Link
+                  href="/resources?category=software"
+                  className="flex min-h-[48px] items-center justify-between gap-4 py-4 text-sm font-semibold text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+                >
+                  <div>
+                    <span className="block font-mono text-[10px] uppercase tracking-wider text-[var(--gold)]">
+                      Resources Directory
+                    </span>
+                    <span className="mt-0.5 block">Free Photonics Software Index (gdsfactory, Meep, KLayout)</span>
+                  </div>
+                  <ArrowUpRight size={14} className="shrink-0" aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </ScrollReveal>
         </div>
