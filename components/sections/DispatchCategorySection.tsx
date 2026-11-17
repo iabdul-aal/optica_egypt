@@ -21,7 +21,7 @@ export function DispatchCategorySection({
 
   if (items.length === 0) {
     return (
-      <div className="border-y border-[var(--line)] border-l-2 border-l-[var(--gold)] bg-[var(--surface)]/65 p-8 sm:p-10 space-y-4">
+      <div className="border-y border-[var(--line)] py-10 sm:py-12 space-y-5">
         <p className="eyebrow">{DISPATCH_KIND_LABELS[kind]} Archive</p>
         <p className="text-base text-[var(--ink-soft)] max-w-2xl">{emptyMessage}</p>
         <div className="pt-2 flex flex-wrap gap-3">

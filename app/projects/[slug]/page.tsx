@@ -182,16 +182,9 @@ export default async function ProjectDetailPage({
             {domains.length > 0 && (
               <div className="py-6">
                 <p className="eyebrow">Technical Domains</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {domains.map((d) => (
-                    <span
-                      key={d.id}
-                      className="rounded-sm border border-[var(--line)] px-2.5 py-1 font-mono text-xs text-[var(--gold)]"
-                    >
-                      {d.label}
-                    </span>
-                  ))}
-                </div>
+                <p className="mt-3 font-mono text-xs leading-relaxed text-[var(--gold)]">
+                  {domains.map((d) => d.label).join(" · ")}
+                </p>
               </div>
             )}
 

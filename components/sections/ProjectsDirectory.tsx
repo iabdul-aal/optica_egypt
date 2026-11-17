@@ -49,8 +49,8 @@ export function ProjectsDirectory({
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line)] pb-6">
-        <div className="flex flex-wrap items-center gap-2" role="tablist" aria-label="Filter projects by track">
+      <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)]">
+        <div className="flex flex-wrap items-center gap-6" role="tablist" aria-label="Filter projects by track">
           {tracks.map((track) => {
             const active = selectedTrack === track.id
             return (
@@ -60,19 +60,19 @@ export function ProjectsDirectory({
                 role="tab"
                 aria-selected={active}
                 onClick={() => setSelectedTrack(track.id)}
-                className={`inline-flex min-h-[48px] items-center gap-2 rounded-sm px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                className={`inline-flex min-h-[48px] items-center gap-2 px-1 py-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer ${
                   active
-                    ? "bg-[var(--gold)] text-[#15110a]"
-                    : "border border-[var(--line)] bg-[var(--surface-raised)] text-[var(--ink-soft)] hover:border-[var(--gold)] hover:text-[var(--ink)]"
+                    ? "border-[var(--gold)] text-[var(--ink)]"
+                    : "border-transparent text-[var(--ink-soft)] hover:text-[var(--ink)]"
                 }`}
               >
                 <span>{track.label}</span>
-                <span className="opacity-75">{track.count}</span>
+                <span className={active ? "text-[var(--gold)]" : "opacity-70"}>{track.count}</span>
               </button>
             )
           })}
         </div>
-        <span className="font-mono text-xs text-[var(--gold)] font-bold">
+        <span className="pb-3 font-mono text-xs text-[var(--gold)] font-bold">
           {filtered.length} of {projects.length} Initiatives
         </span>
       </div>

@@ -19,7 +19,7 @@ export function RecruitmentForm() {
   useEffect(() => setReady(true), [])
   const submissionId = useRef<string | null>(null)
   const field =
-    "min-h-12 w-full rounded-sm border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-base text-[var(--ink)] outline-none focus:border-[var(--gold)]"
+    "min-h-12 w-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-base text-[var(--ink)] outline-none focus:border-[var(--gold)]"
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -58,20 +58,19 @@ export function RecruitmentForm() {
 
   if (code)
     return (
-      <div role="status" className="site-card space-y-6 p-7 sm:p-10">
+      <div role="status" className="border-y border-[var(--line)] py-8 space-y-6">
         <CheckCircle2
-          size={40}
+          size={36}
           className="text-[var(--gold)]"
           aria-hidden="true"
         />
         <p className="eyebrow">Application received</p>
-        <h2 className="section-title">Your next chapter starts here.</h2>
+        <h2 className="section-title">Committee application saved.</h2>
         <p className="text-[var(--ink-soft)]">
-          Your application is saved with the recruitment team. Keep this receipt
-          for any follow-up. The team will contact you using your application
-          email.
+          Your submission has been recorded with the coordination desk. Keep this reference
+          code for any follow-up. Officers will respond using the email provided.
         </p>
-        <div className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] p-5">
+        <div className="border border-[var(--line)] bg-[var(--surface-raised)] p-6">
           <p className="text-xs uppercase tracking-widest text-[var(--ink-faint)]">
             Application reference
           </p>
@@ -101,7 +100,7 @@ export function RecruitmentForm() {
     )
 
   return (
-    <form onSubmit={submit} className="site-card space-y-8 p-6 sm:p-9">
+    <form onSubmit={submit} className="border-y border-[var(--line)] py-8 space-y-8">
       <div>
         <p className="eyebrow">Membership application</p>
         <h2 className="mt-2 text-2xl font-semibold text-[var(--ink)]">
@@ -114,7 +113,7 @@ export function RecruitmentForm() {
       {error && (
         <p
           role="alert"
-          className="rounded-sm border border-[var(--danger)] p-4 text-sm text-[var(--danger)]"
+          className="border border-[var(--danger)] p-4 text-sm text-[var(--danger)]"
         >
           {error}
         </p>

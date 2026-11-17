@@ -83,7 +83,7 @@ test("unknown route renders custom 404 recovery cleanly", async ({ page }) => {
   const { pageErrors, consoleErrors } = attachRuntimeMonitors(page)
   const response = await page.goto("/non-existent-route", { waitUntil: "domcontentloaded" })
   expect(response?.status()).toBe(404)
-  await expect(page.getByRole("heading", { name: /This optical path does not exist/i })).toBeVisible()
+  await expect(page.getByRole("heading", { name: /Page not found/i })).toBeVisible()
   expect(pageErrors).toEqual([])
   expect(consoleErrors.filter((t) => !t.includes("404"))).toEqual([])
 })
@@ -216,14 +216,19 @@ test("homepage hero color 3D stage, research topic-specific 3D shapes, dropdowns
   await page.locator(".nav-dropdown a[href='/governance']").click()
   await page.waitForURL("**/governance")
 
-  // Chapters map Focus AUC and Reset controls work cleanly
+  // Chapters map Focus AUC, Zewail City selector, and Reset controls work cleanly
   await page.goto("/chapters", { waitUntil: "domcontentloaded" })
   await expect(page.getByText("100%")).toBeVisible()
-  await page.getByRole("button", { name: /Focus on AUC Chapter/i }).click()
+  await page.getByRole("button", { name: /Focus on AUC/i }).click()
   await expect(page.getByText("220%")).toBeVisible()
   await expect(page.getByText(/30°01' N/)).toBeVisible()
   await page.getByRole("button", { name: /Reset map/i }).click()
   await expect(page.getByText("100%")).toBeVisible()
+
+  await page.getByRole("tab", { name: /Zewail City/i }).click()
+  await expect(page.getByRole("heading", { name: "Zewail City Optica Student Chapter" }).first()).toBeVisible()
+  await page.goto("/chapters/zewail-city", { waitUntil: "domcontentloaded" })
+  await expect(page.getByRole("heading", { name: "Zewail City Optica Student Chapter" })).toBeVisible()
 
   expect(pageErrors).toEqual([])
   expect(consoleErrors).toEqual([])

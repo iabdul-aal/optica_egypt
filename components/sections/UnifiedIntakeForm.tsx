@@ -60,7 +60,7 @@ export function UnifiedIntakeForm({
   }, [])
 
   const field =
-    "min-h-12 w-full rounded-sm border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-base text-[var(--ink)] outline-none focus:border-[var(--gold)]"
+    "min-h-12 w-full border border-[var(--line)] bg-[var(--surface)] px-4 py-3 text-base text-[var(--ink)] outline-none focus:border-[var(--gold)]"
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -110,14 +110,14 @@ export function UnifiedIntakeForm({
 
   if (code) {
     return (
-      <div role="status" className="site-card space-y-6 p-7 sm:p-10 border-t-4 border-t-[var(--gold)]">
-        <CheckCircle2 size={38} className="text-[var(--gold)]" aria-hidden="true" />
+      <div role="status" className="border-y border-[var(--line)] py-8 space-y-6">
+        <CheckCircle2 size={36} className="text-[var(--gold)]" aria-hidden="true" />
         <p className="eyebrow">Submission confirmed</p>
         <h2 className="section-title">Request logged with the coordination desk.</h2>
         <p className="text-sm text-[var(--ink-soft)]">
           Reference code for {submissionIntentLabels[intent]}:
         </p>
-        <div className="rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] p-5">
+        <div className="border border-[var(--line)] bg-[var(--surface-raised)] p-6">
           <p className="font-mono text-lg text-[var(--gold)] break-all">{code}</p>
           <button
             type="button"
@@ -149,11 +149,11 @@ export function UnifiedIntakeForm({
   }
 
   return (
-    <form onSubmit={submit} className="site-card space-y-6 p-6 sm:p-9 border-t-4 border-t-[var(--gold)]">
+    <form onSubmit={submit} className="border-y border-[var(--line)] py-8 space-y-6">
       <div>
         <p className="eyebrow">Direct Section Desk</p>
         <h2 className="mt-2 text-2xl font-semibold text-[var(--ink)]">
-          Submit a Verified Section Request
+          Submit a Section Inquiry
         </h2>
       </div>
 
@@ -296,7 +296,7 @@ export function UnifiedIntakeForm({
       </label>
 
       {error && (
-        <p role="alert" className="rounded-sm border border-[var(--danger)]/40 bg-[var(--danger)]/10 p-4 text-sm text-[var(--danger)]">
+        <p role="alert" className="border border-[var(--danger)]/40 bg-[var(--danger)]/10 p-4 text-sm text-[var(--danger)]">
           {error}
         </p>
       )}

@@ -90,9 +90,9 @@ export function ResourcesDirectory({
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[var(--line)]">
         <div
-          className="flex flex-wrap items-center gap-2"
+          className="flex flex-wrap items-center gap-6"
           role="tablist"
           aria-label="Filter resources by category"
         >
@@ -105,20 +105,14 @@ export function ResourcesDirectory({
                 role="tab"
                 aria-selected={active}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`inline-flex min-h-[48px] items-center gap-2 rounded-sm px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+                className={`inline-flex min-h-[48px] items-center gap-2 px-1 py-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer ${
                   active
-                    ? "bg-[var(--gold)] text-[#09131F]"
-                    : "border border-[var(--line)] bg-[var(--surface-raised)] text-[var(--ink-soft)] hover:border-[var(--gold)] hover:text-[var(--ink)]"
+                    ? "border-[var(--gold)] text-[var(--ink)]"
+                    : "border-transparent text-[var(--ink-soft)] hover:text-[var(--ink)]"
                 }`}
               >
                 <span>{cat.label}</span>
-                <span
-                  className={`rounded-sm px-1.5 py-0.5 text-[10px] ${
-                    active
-                      ? "bg-[#09131F]/15 text-[#09131F]"
-                      : "bg-[var(--surface)] text-[var(--ink-faint)]"
-                  }`}
-                >
+                <span className={`text-[11px] ${active ? "text-[var(--gold)]" : "text-[var(--ink-faint)]"}`}>
                   {cat.count}
                 </span>
               </button>
@@ -127,11 +121,11 @@ export function ResourcesDirectory({
         </div>
 
         {selectedCategory !== "membership" && (
-          <div className="relative w-full lg:w-72">
+          <div className="relative w-full lg:w-72 pb-2">
             <Search
               size={15}
               aria-hidden="true"
-              className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--ink-faint)]"
+              className="pointer-events-none absolute left-3 top-[42%] -translate-y-1/2 text-[var(--ink-faint)]"
             />
             <input
               type="search"
@@ -139,7 +133,7 @@ export function ResourcesDirectory({
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search tools, grants..."
               aria-label="Search resources"
-              className="min-h-[48px] w-full rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] pl-10 pr-4 py-2.5 text-base text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--gold)] focus:outline-none"
+              className="min-h-[48px] w-full border border-[var(--line)] bg-[var(--surface-raised)] pl-10 pr-4 py-2.5 text-base text-[var(--ink)] placeholder:text-[var(--ink-faint)] focus:border-[var(--gold)] focus:outline-none"
             />
           </div>
         )}
@@ -183,7 +177,7 @@ export function ResourcesDirectory({
           ))}
         </div>
       ) : filteredResources.length === 0 ? (
-        <div className="rounded-sm border border-[var(--line)] bg-[var(--surface)] p-8 text-center">
+        <div className="border-y border-[var(--line)] py-12 text-center">
           <p className="text-base font-semibold text-[var(--ink)]">
             No resources match the current filter.
           </p>

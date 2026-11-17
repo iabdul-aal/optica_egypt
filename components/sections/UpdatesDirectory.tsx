@@ -37,16 +37,16 @@ export function UpdatesDirectory({
   return (
     <div className="space-y-8">
       {availableKinds.length > 1 && (
-        <div className="flex flex-wrap items-center gap-2 border-b border-[var(--line)] pb-6" role="tablist" aria-label="Filter updates">
+        <div className="flex flex-wrap items-center gap-6 border-b border-[var(--line)]" role="tablist" aria-label="Filter updates">
           <button
             type="button"
             role="tab"
             aria-selected={selectedKind === "all"}
             onClick={() => setSelectedKind("all")}
-            className={`min-h-[48px] rounded-sm px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider cursor-pointer ${
+            className={`min-h-[48px] px-1 py-3 font-mono text-xs font-bold uppercase tracking-wider border-b-2 -mb-px cursor-pointer ${
               selectedKind === "all"
-                ? "bg-[var(--gold)] text-[#09131F]"
-                : "border border-[var(--line)] bg-[var(--surface-raised)] text-[var(--ink-soft)]"
+                ? "border-[var(--gold)] text-[var(--ink)]"
+                : "border-transparent text-[var(--ink-soft)] hover:text-[var(--ink)]"
             }`}
           >
             All ({dispatches.length})
@@ -61,10 +61,10 @@ export function UpdatesDirectory({
                 role="tab"
                 aria-selected={active}
                 onClick={() => setSelectedKind(kind)}
-                className={`min-h-[48px] rounded-sm px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider cursor-pointer ${
+                className={`min-h-[48px] px-1 py-3 font-mono text-xs font-bold uppercase tracking-wider border-b-2 -mb-px cursor-pointer ${
                   active
-                    ? "bg-[var(--gold)] text-[#09131F]"
-                    : "border border-[var(--line)] bg-[var(--surface-raised)] text-[var(--ink-soft)]"
+                    ? "border-[var(--gold)] text-[var(--ink)]"
+                    : "border-transparent text-[var(--ink-soft)] hover:text-[var(--ink)]"
                 }`}
               >
                 {DISPATCH_KIND_LABELS[kind]} ({count})
@@ -75,7 +75,7 @@ export function UpdatesDirectory({
       )}
 
       {filtered.length === 0 ? (
-        <div className="site-card p-8">
+        <div className="border-y border-[var(--line)] py-10">
           <p className="text-base font-semibold text-[var(--ink)]">
             No confirmed updates match this view yet.
           </p>

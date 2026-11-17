@@ -191,16 +191,9 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
               <p className="eyebrow">Biography</p>
               <p className="mt-3 text-base leading-relaxed text-[var(--ink)]">{member.bio}</p>
               {domains.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {domains.map((domain) => (
-                    <span
-                      key={domain.id}
-                      className="rounded-sm border border-[var(--line)] px-2.5 py-1 font-mono text-[11px] text-[var(--gold)]"
-                    >
-                      {domain.label}
-                    </span>
-                  ))}
-                </div>
+                <p className="mt-5 font-mono text-xs text-[var(--gold)]">
+                  {domains.map((domain) => domain.label).join(" · ")}
+                </p>
               )}
             </div>
 

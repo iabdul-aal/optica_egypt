@@ -40,11 +40,11 @@ export function JoinHubPanel() {
   }, [])
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div
         role="tablist"
         aria-label="Optica Egypt intake mode"
-        className="grid grid-cols-1 sm:grid-cols-2 gap-2 rounded-sm border border-[var(--line)] bg-[var(--surface)] p-1.5"
+        className="flex flex-wrap gap-6 border-b border-[var(--line)]"
       >
         <button
           id="tab-recruitment"
@@ -53,10 +53,10 @@ export function JoinHubPanel() {
           aria-selected={mode === "recruitment"}
           aria-controls="panel-recruitment"
           onClick={() => setMode("recruitment")}
-          className={`min-h-[48px] rounded-sm px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+          className={`min-h-[48px] px-1 py-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer ${
             mode === "recruitment"
-              ? "bg-[var(--gold)] text-[#15110a]"
-              : "text-[var(--ink-soft)] hover:text-[var(--ink)]"
+              ? "border-[var(--gold)] text-[var(--ink)]"
+              : "border-transparent text-[var(--ink-soft)] hover:text-[var(--ink)]"
           }`}
         >
           Committee Application
@@ -68,10 +68,10 @@ export function JoinHubPanel() {
           aria-selected={mode === "desk"}
           aria-controls="panel-desk"
           onClick={() => setMode("desk")}
-          className={`min-h-[48px] rounded-sm px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
+          className={`min-h-[48px] px-1 py-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer ${
             mode === "desk"
-              ? "bg-[var(--gold)] text-[#15110a]"
-              : "text-[var(--ink-soft)] hover:text-[var(--ink)]"
+              ? "border-[var(--gold)] text-[var(--ink)]"
+              : "border-transparent text-[var(--ink-soft)] hover:text-[var(--ink)]"
           }`}
         >
           Chapter, Partner, or Press Desk

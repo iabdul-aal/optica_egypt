@@ -193,7 +193,10 @@ function validateDataSchemas() {
   if (!chaptersEntry || !Array.isArray(chaptersEntry.data?.charteredChapters)) {
     errors.push("data/chapters.json: Missing charteredChapters array");
   } else {
-    chaptersEntry.data.charteredChapters.forEach((ch, idx) => {
+    const pipelineList = Array.isArray(chaptersEntry.data?.pipelineChapters)
+      ? chaptersEntry.data.pipelineChapters
+      : [];
+    [...chaptersEntry.data.charteredChapters, ...pipelineList].forEach((ch, idx) => {
       const tag = `data/chapters.json[${idx}] (${ch?.id || "unknown"})`;
       if (!isNonEmptyString(ch?.id)) errors.push(`${tag}: Missing "id"`);
       else chapterIds.add(ch.id);

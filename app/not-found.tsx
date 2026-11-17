@@ -9,22 +9,20 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="scientific-grid relative min-h-[80vh] flex items-center justify-center py-20 px-5 sm:px-8">
+    <section className="scientific-grid relative min-h-[80vh] flex items-center justify-center py-20 px-6 sm:px-8">
       <div className="container-page max-w-3xl text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/30 bg-[var(--gold)]/10 px-3.5 py-1 text-xs font-mono font-bold tracking-wider text-[var(--gold)] uppercase">
-          Optical Path Interrupted / 404
-        </div>
+        <p className="eyebrow">Error 404</p>
 
-        <p className="mt-8 font-mono text-7xl sm:text-9xl font-extrabold tracking-tight text-[var(--gold)] select-none">
+        <p className="mt-6 font-mono text-7xl sm:text-9xl font-extrabold tracking-tight text-[var(--gold)] select-none">
           404
         </p>
 
         <h1 className="mt-6 text-2xl sm:text-4xl font-bold tracking-tight text-[var(--ink)]">
-          This optical path does not exist.
+          Page not found.
         </h1>
 
         <p className="mt-4 max-w-xl mx-auto text-base text-[var(--ink-soft)] leading-relaxed">
-          The requested page has moved or does not exist. Select one of the canonical destinations below.
+          The requested address has moved or does not exist. Choose one of the section destinations below.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

@@ -27,19 +27,19 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
   }
 
   return (
-    <div className="border-y border-[var(--line)] border-l-2 border-l-[var(--gold)] bg-[var(--surface)]/65 p-6 sm:p-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--line-subtle)]">
-        <div className="flex items-center gap-2">
+    <div className="border-y border-[var(--line)] py-8 sm:py-10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[var(--line-subtle)]">
+        <div className="flex items-center gap-2.5">
           <FileText size={16} className="text-[var(--gold)] shrink-0" aria-hidden="true" />
           <h3 className="text-base sm:text-lg font-bold text-[var(--ink)]">
             {title}
           </h3>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-3">
           <button
             type="button"
             onClick={() => handleCopy(body, false)}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px] cursor-pointer"
+            className="btn-secondary min-h-[48px]"
           >
             {copiedFull ? <Check size={13} className="text-[var(--gold)]" /> : <Copy size={13} />}
             <span>{copiedFull ? "Copied" : "Copy Boilerplate"}</span>
@@ -47,7 +47,7 @@ export function BoilerplateBox({ title, body, short }: BoilerplateBoxProps) {
           <button
             type="button"
             onClick={() => handleCopy(short, true)}
-            className="inline-flex items-center gap-1.5 rounded-sm border border-[var(--line)] bg-[var(--surface-raised)] px-3.5 py-2 text-xs font-semibold text-[var(--ink)] hover:border-[var(--gold)] transition-colors min-h-[48px] cursor-pointer"
+            className="btn-secondary min-h-[48px]"
           >
             {copiedShort ? <Check size={13} className="text-[var(--gold)]" /> : <Copy size={13} />}
             <span>{copiedShort ? "Copied Short" : "Copy Short Version"}</span>

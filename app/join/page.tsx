@@ -25,7 +25,7 @@ export default function JoinPage() {
       <section className="section-space">
         <div className="container-page grid gap-12 lg:grid-cols-[.82fr_1.18fr] lg:items-start">
           <div className="space-y-10 lg:sticky lg:top-24">
-            <div className="border-l-2 border-[var(--gold)] pl-5 space-y-5">
+            <div className="border-t border-[var(--line)] pt-6 space-y-5">
               <p className="eyebrow">Two-Step Structure</p>
               <div>
                 <p className="text-sm font-semibold text-[var(--ink)]">

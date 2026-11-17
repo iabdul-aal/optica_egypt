@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useState } from "react"
 
 export interface ConstellationNode {
   id: string
@@ -12,11 +11,6 @@ export interface ConstellationNode {
   textOffsetX: number
   textOffsetY: number
   textAnchor: "start" | "middle" | "end"
-  speedX: number
-  speedY: number
-  ampX: number
-  ampY: number
-  phase: number
 }
 
 export const CONSTELLATION_NODES: readonly ConstellationNode[] = [
@@ -25,87 +19,58 @@ export const CONSTELLATION_NODES: readonly ConstellationNode[] = [
     label: "STUDENTS",
     baseX: 118,
     baseY: 84,
-    radius: 22,
+    radius: 21,
     textOffsetX: 0,
-    textOffsetY: -36,
+    textOffsetY: -34,
     textAnchor: "middle",
-    speedX: 0.0018,
-    speedY: 0.0022,
-    ampX: 9,
-    ampY: 8,
-    phase: 0,
   },
   {
     id: "researchers",
     label: "RESEARCHERS",
     baseX: 468,
     baseY: 82,
-    radius: 22,
+    radius: 21,
     textOffsetX: 0,
-    textOffsetY: -36,
+    textOffsetY: -34,
     textAnchor: "middle",
-    speedX: 0.0021,
-    speedY: 0.0017,
-    ampX: 10,
-    ampY: 7,
-    phase: 1.8,
   },
   {
     id: "academia",
     label: "ACADEMIA",
     baseX: 492,
     baseY: 185,
-    radius: 22,
+    radius: 21,
     textOffsetX: 34,
     textOffsetY: 0,
     textAnchor: "start",
-    speedX: 0.0019,
-    speedY: 0.0024,
-    ampX: 8,
-    ampY: 10,
-    phase: 3.2,
   },
   {
     id: "industry",
     label: "INDUSTRY",
     baseX: 438,
     baseY: 292,
-    radius: 22,
+    radius: 21,
     textOffsetX: 0,
-    textOffsetY: 42,
+    textOffsetY: 40,
     textAnchor: "middle",
-    speedX: 0.0022,
-    speedY: 0.002,
-    ampX: 9,
-    ampY: 9,
-    phase: 4.5,
   },
   {
     id: "chapters",
     label: "CHAPTERS",
     baseX: 144,
     baseY: 292,
-    radius: 22,
+    radius: 21,
     textOffsetX: 0,
-    textOffsetY: 42,
+    textOffsetY: 40,
     textAnchor: "middle",
-    speedX: 0.0017,
-    speedY: 0.0023,
-    ampX: 10,
-    ampY: 8,
-    phase: 5.7,
   },
 ]
 
 const CENTER = {
   baseX: 310,
   baseY: 184,
-  radius: 66,
-  innerRadius: 46,
-  speedX: 0.0012,
-  speedY: 0.0015,
-  ampX: 5,
-  ampY: 5,
+  radius: 62,
+  innerRadius: 44,
 }
 
 interface CommunityBubblesProps {
@@ -117,138 +82,51 @@ interface CommunityBubblesProps {
 export function CommunityBubbles({
   activeNodeId,
   onNodeSelect,
-  diagramLabel = "Interactive network linking five pillars of the Optica Egypt optics and photonics ecosystem.",
+  diagramLabel = "Interactive network linking five pillars of the Optica Egypt optics and photonics community.",
 }: CommunityBubblesProps) {
   const [internalHovered, setInternalHovered] = useState<string | null>(null)
   const [isCenterHovered, setIsCenterHovered] = useState(false)
-  const mousePosRef = useRef<{ x: number; y: number } | null>(null)
 
   const highlightedNode = activeNodeId ?? internalHovered
 
-  const [nodePositions, setNodePositions] = useState(
-    CONSTELLATION_NODES.map((n) => ({ x: n.baseX, y: n.baseY }))
-  )
-  const [centerPos, setCenterPos] = useState({ x: CENTER.baseX, y: CENTER.baseY })
-  const [dashOffset, setDashOffset] = useState(0)
-
-  useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return
-    }
-
-    let animationFrameId: number
-    const startTime = performance.now()
-
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const cX = CENTER.baseX + Math.sin(elapsed * CENTER.speedX) * CENTER.ampX
-      const cY = CENTER.baseY + Math.cos(elapsed * CENTER.speedY) * CENTER.ampY
-      setCenterPos({ x: cX, y: cY })
-
-      const mouse = mousePosRef.current
-      const newPos = CONSTELLATION_NODES.map((node) => {
-        let x = node.baseX + Math.sin(elapsed * node.speedX + node.phase) * node.ampX
-        let y = node.baseY + Math.cos(elapsed * node.speedY + node.phase) * node.ampY
-
-        if (mouse) {
-          const dx = mouse.x - x
-          const dy = mouse.y - y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 120 && dist > 0) {
-            const force = (1 - dist / 120) * 10
-            x -= (dx / dist) * force
-            y -= (dy / dist) * force
-          }
-        }
-        return { x, y }
-      })
-
-      setNodePositions(newPos)
-      setDashOffset((prev) => (prev - 0.35) % 26)
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    animationFrameId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationFrameId)
-  }, [])
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<SVGSVGElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    if (!rect.width || !rect.height) return
-    mousePosRef.current = {
-      x: ((e.clientX - rect.left) * 640) / rect.width,
-      y: ((e.clientY - rect.top) * 360) / rect.height,
-    }
-  }, [])
-
   const handleMouseLeave = useCallback(() => {
-    mousePosRef.current = null
     setInternalHovered(null)
     setIsCenterHovered(false)
     onNodeSelect?.(null)
   }, [onNodeSelect])
 
   const outerPolygonPath =
-    nodePositions.reduce(
-      (acc, pos, i) => `${acc}${i === 0 ? "M" : "L"} ${pos.x.toFixed(1)} ${pos.y.toFixed(1)} `,
+    CONSTELLATION_NODES.reduce(
+      (acc, n, i) => `${acc}${i === 0 ? "M" : "L"} ${n.baseX} ${n.baseY} `,
       ""
     ) + "Z"
 
   return (
-    <div className="group relative w-full py-2 sm:py-4 select-none overflow-hidden">
+    <div className="relative w-full py-3 sm:py-5 select-none">
       <svg
         viewBox="0 0 640 360"
-        className="figure-bw relative h-auto w-full"
+        className="relative h-auto w-full"
         fill="none"
         role="img"
         aria-label={diagramLabel}
-        onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
-        <defs>
-          <radialGradient id="constellationGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#d7ae5b" stopOpacity="0.22" />
-            <stop offset="70%" stopColor="#d7ae5b" stopOpacity="0.05" />
-            <stop offset="100%" stopColor="#d7ae5b" stopOpacity="0" />
-          </radialGradient>
-        </defs>
+        <path d={outerPolygonPath} stroke="var(--line)" strokeWidth="1" />
 
-        <path
-          d={outerPolygonPath}
-          stroke="var(--line)"
-          strokeWidth="1.2"
-          opacity="0.7"
-        />
-
-        {nodePositions.map((pos, i) => {
-          const node = CONSTELLATION_NODES[i]
+        {CONSTELLATION_NODES.map((node) => {
           const isNodeActive = highlightedNode === node.id || isCenterHovered
-          const packetT = (((dashOffset * -1 + i * 5) % 26) + 26) % 26 / 26
-
           return (
-            <g key={node.id}>
-              <line
-                x1={centerPos.x}
-                y1={centerPos.y}
-                x2={pos.x}
-                y2={pos.y}
-                stroke={isNodeActive ? "var(--gold-pale)" : "var(--gold)"}
-                strokeWidth={isNodeActive ? 2.4 : 1.5}
-                strokeDasharray="6 8"
-                strokeDashoffset={dashOffset}
-                opacity={isNodeActive ? 1 : 0.65}
-              />
-              <circle
-                cx={centerPos.x + (pos.x - centerPos.x) * packetT}
-                cy={centerPos.y + (pos.y - centerPos.y) * packetT}
-                r={isNodeActive ? 3 : 2}
-                fill="var(--gold-pale)"
-                opacity="0.9"
-              />
-            </g>
+            <line
+              key={node.id}
+              x1={CENTER.baseX}
+              y1={CENTER.baseY}
+              x2={node.baseX}
+              y2={node.baseY}
+              stroke={isNodeActive ? "var(--gold)" : "var(--line)"}
+              strokeWidth={isNodeActive ? 2 : 1.2}
+              strokeDasharray="5 6"
+              style={{ transition: "stroke 180ms ease, stroke-width 180ms ease" }}
+            />
           )
         })}
 
@@ -257,28 +135,25 @@ export function CommunityBubbles({
           onMouseEnter={() => setIsCenterHovered(true)}
           onMouseLeave={() => setIsCenterHovered(false)}
         >
-          <circle cx={centerPos.x} cy={centerPos.y} r={CENTER.radius + 26} fill="url(#constellationGlow)" />
           <circle
-            cx={centerPos.x}
-            cy={centerPos.y}
+            cx={CENTER.baseX}
+            cy={CENTER.baseY}
             r={CENTER.radius}
             fill="var(--canvas)"
-            stroke={isCenterHovered ? "var(--gold-pale)" : "var(--gold)"}
-            strokeWidth={isCenterHovered ? 2.5 : 2}
+            stroke="var(--gold)"
+            strokeWidth={isCenterHovered ? 2.2 : 1.8}
           />
           <circle
-            cx={centerPos.x}
-            cy={centerPos.y}
+            cx={CENTER.baseX}
+            cy={CENTER.baseY}
             r={CENTER.innerRadius}
-            stroke="var(--ink)"
-            strokeWidth="1.2"
+            stroke="var(--line)"
+            strokeWidth="1"
             strokeDasharray="4 6"
-            strokeDashoffset={dashOffset * -1}
-            opacity={isCenterHovered ? 0.7 : 0.35}
           />
           <text
-            x={centerPos.x}
-            y={centerPos.y - 5}
+            x={CENTER.baseX}
+            y={CENTER.baseY - 5}
             fill="var(--ink)"
             textAnchor="middle"
             fontSize="14"
@@ -289,8 +164,8 @@ export function CommunityBubbles({
             OPTICA
           </text>
           <text
-            x={centerPos.x}
-            y={centerPos.y + 15}
+            x={CENTER.baseX}
+            y={CENTER.baseY + 15}
             fill="var(--gold)"
             textAnchor="middle"
             fontSize="12"
@@ -302,8 +177,7 @@ export function CommunityBubbles({
           </text>
         </g>
 
-        {CONSTELLATION_NODES.map((node, i) => {
-          const pos = nodePositions[i]
+        {CONSTELLATION_NODES.map((node) => {
           const isHovered = highlightedNode === node.id
 
           return (
@@ -324,44 +198,23 @@ export function CommunityBubbles({
                 onNodeSelect?.(next)
               }}
             >
-              {isHovered && (
-                <circle
-                  cx={pos.x}
-                  cy={pos.y}
-                  r={node.radius + 7}
-                  fill="none"
-                  stroke="var(--gold)"
-                  strokeWidth="1"
-                  opacity="0.45"
-                />
-              )}
               <circle
-                cx={pos.x}
-                cy={pos.y}
+                cx={node.baseX}
+                cy={node.baseY}
                 r={isHovered ? node.radius + 2 : node.radius}
-                fill="var(--surface)"
-                stroke={isHovered ? "var(--gold-pale)" : "var(--gold)"}
-                strokeWidth={isHovered ? 2.2 : 1.6}
+                fill="var(--canvas)"
+                stroke={isHovered ? "var(--gold)" : "var(--line)"}
+                strokeWidth={isHovered ? 2 : 1.4}
               />
               <circle
-                cx={pos.x}
-                cy={pos.y}
-                r={node.radius * 0.48}
-                stroke={isHovered ? "var(--gold-pale)" : "var(--gold)"}
-                strokeWidth="1"
-                strokeDasharray="2 3"
-                opacity={isHovered ? 0.7 : 0.35}
-              />
-              <circle
-                cx={pos.x}
-                cy={pos.y}
-                r={2}
-                fill={isHovered ? "var(--gold-pale)" : "var(--gold)"}
-                opacity={isHovered ? 1 : 0.55}
+                cx={node.baseX}
+                cy={node.baseY}
+                r={2.5}
+                fill={isHovered ? "var(--gold)" : "var(--ink-soft)"}
               />
               <text
-                x={pos.x + node.textOffsetX}
-                y={pos.y + node.textOffsetY}
+                x={node.baseX + node.textOffsetX}
+                y={node.baseY + node.textOffsetY}
                 fill={isHovered ? "var(--gold)" : "var(--ink-soft)"}
                 textAnchor={node.textAnchor}
                 dominantBaseline={node.id === "academia" ? "central" : undefined}

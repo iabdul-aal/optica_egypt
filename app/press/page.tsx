@@ -80,7 +80,7 @@ export default function PressPage() {
                     {mediaKit.brandColors.map((color) => (
                       <div key={color.hex} className="flex items-center gap-4 py-3.5">
                         <span
-                          className="h-9 w-9 shrink-0 rounded-sm border border-[var(--line)]"
+                          className="h-9 w-9 shrink-0 border border-[var(--line)]"
                           style={{ backgroundColor: color.hex }}
                           aria-hidden="true"
                         />

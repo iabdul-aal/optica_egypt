@@ -116,7 +116,7 @@ export default async function UpdateDetailPage({
           )}
 
           {item.kind === "event" && item.eventMeta && (
-            <div className="border-y border-[var(--line)] border-l-2 border-l-[var(--gold)] bg-[var(--surface-raised)] p-5 sm:p-6 space-y-4">
+            <div className="border-y border-[var(--line)] py-6 space-y-5">
               <div className="flex flex-wrap gap-6 text-sm">
                 <div>
                   <span className="block font-mono text-[10px] uppercase text-[var(--ink-faint)]">Format</span>

@@ -6,14 +6,14 @@
       "detail": "The American University in Cairo (AUC)"
     },
     {
-      "label": "Active Status",
-      "value": "Inactive",
-      "detail": "Reactivation and officer onboarding in progress"
+      "label": "Formation Track",
+      "value": "1",
+      "detail": "Zewail City of Science and Technology"
     },
     {
       "label": "National Reach",
-      "value": "1 Campus",
-      "detail": "New Cairo Campus, School of Sciences and Engineering"
+      "value": "2 Campuses",
+      "detail": "New Cairo (Cairo) and 6th of October City (Giza)"
     },
     {
       "label": "Charter Opportunity",
@@ -27,7 +27,7 @@
       "name": "The American University in Cairo (AUC) Optica Student Chapter",
       "shortName": "AUC Student Chapter",
       "university": "The American University in Cairo",
-      "status": "Chartered · Currently Inactive",
+      "status": "Chartered · Reactivation in Progress",
       "charteredYear": 2024,
       "campus": "New Cairo Campus, AUC Avenue",
       "city": "New Cairo",
@@ -38,7 +38,7 @@
       },
       "facultyAdvisor": "Prof. Yehea Ismail",
       "advisorDepartment": "School of Sciences and Engineering / Physics and Nanotechnology",
-      "description": "The first and only formally chartered Optica Student Chapter in Egypt. Hosted within the School of Sciences and Engineering at AUC New Cairo, the chapter connects physics, optical engineering, and nanotechnology students with international researchers. The chapter is currently inactive while undergoing executive committee reactivation and student leadership onboarding.",
+      "description": "The first formally chartered Optica Student Chapter in Egypt. Hosted within the School of Sciences and Engineering at AUC New Cairo, the branch brings physics, optical engineering, and nanotechnology students together with visiting researchers and is undergoing executive reactivation.",
       "focusAreas": [
         "Nanophotonics and Plasmonics",
         "Optical Materials Characterization",
@@ -54,8 +54,8 @@
       },
       "highlights": [
         "First formally chartered Optica student chapter in Egypt, established in 2024.",
-        "Undergoing formal section-supported reactivation to reconstitute student leadership and activities.",
-        "Hosted international Optica Traveling Lecturer on advanced metamaterials and silicon photonics."
+        "Undergoing section-supported reactivation to reconstitute student leadership and activities.",
+        "Hosted Optica Traveling Lecturer seminars on metamaterials and silicon photonics."
       ],
       "domainIds": [
         "quantum-nano",
@@ -64,7 +64,39 @@
       ]
     }
   ],
-  "pipelineChapters": [],
+  "pipelineChapters": [
+    {
+      "id": "zewail-city",
+      "name": "Zewail City Optica Student Chapter",
+      "shortName": "Zewail City Student Chapter",
+      "university": "Zewail City of Science and Technology",
+      "status": "Chartering in Progress",
+      "campus": "October Gardens Campus, 6th of October City",
+      "city": "6th of October City",
+      "governorate": "Giza Governorate",
+      "coordinates": {
+        "x": 51.8,
+        "y": 29.8
+      },
+      "description": "Second Optica Student Chapter initiative in Egypt, currently undergoing student organizer onboarding, faculty endorsement alignment, and founding charter preparation at Zewail City of Science and Technology in Giza.",
+      "focusAreas": [
+        "Quantum Optics and Photonics",
+        "Integrated Silicon Photonics",
+        "Nanophotonics and Metamaterials",
+        "Laser Physics",
+        "Open-Source Photonic Design"
+      ],
+      "highlights": [
+        "Second Optica student chapter in formation within Egypt alongside the established AUC branch.",
+        "Student chartering team completing founding member registration and governance requirements."
+      ],
+      "domainIds": [
+        "quantum-nano",
+        "photonic-ic",
+        "lasers-nonlinear"
+      ]
+    }
+  ],
   "charterRoadmap": [
     {
       "step": "01",

@@ -52,7 +52,7 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               {chapter.status}
             </span>
             <span className="text-xs font-mono text-[var(--ink-faint)]">
-              Chartered {chapter.charteredYear || "In Progress"}
+              {chapter.charteredYear ? `Chartered ${chapter.charteredYear}` : "Chartering in Progress"}
             </span>
           </div>
 
@@ -156,10 +156,10 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
                 <UserCheck size={18} className="mt-0.5 text-[var(--gold)] shrink-0" aria-hidden="true" />
                 <div>
                   <p className="font-semibold text-sm text-[var(--ink)]">
-                    {chapter.facultyAdvisor || "Faculty Coordinator"}
+                    {chapter.facultyAdvisor || "Faculty Endorsement in Coordination"}
                   </p>
                   <p className="text-xs text-[var(--ink-soft)] mt-1">
-                    {chapter.advisorDepartment || chapter.faculty}
+                    {chapter.advisorDepartment || chapter.campus || chapter.university}
                   </p>
                 </div>
               </div>
@@ -176,16 +176,18 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
               </div>
             </div>
 
-            <div className="py-6 border-l-2 border-l-[var(--gold)] pl-5">
-              <h3 className="font-bold text-sm text-[var(--ink)]">Connect with Chapter Desk</h3>
+            <div className="py-6">
+              <h3 className="font-bold text-sm text-[var(--ink)]">Chapter Coordination</h3>
               <p className="mt-2 text-xs text-[var(--ink-soft)]">
-                Join reactivation efforts or coordinate an inter-university workshop.
+                {chapter.charteredYear
+                  ? "Join chapter reactivation or coordinate an inter-university workshop."
+                  : "Join student chapter formation or connect founding team inquiries with the section desk."}
               </p>
               <Link
                 href={`/join?type=chapter&ref=${chapter.id}`}
                 className="btn-primary mt-4 min-h-[48px]"
               >
-                <span>Submit Chapter Request</span>
+                <span>Submit Chapter Inquiry</span>
                 <ArrowUpRight size={13} aria-hidden="true" />
               </Link>
             </div>

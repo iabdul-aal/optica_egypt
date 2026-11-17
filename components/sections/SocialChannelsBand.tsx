@@ -16,8 +16,8 @@ export function SocialChannelsBand() {
     >
       <div className="container-page space-y-12">
         {/* Direct Contact and Official Domain Strip */}
-        <div className="border-y border-[var(--line)] py-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl border-l-2 border-[var(--gold)] pl-5">
+        <div className="border-y border-[var(--line)] py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="space-y-3 max-w-2xl">
             <p className="eyebrow">Direct Contact and Digital Channels</p>
             <h2 className="section-title mt-1">
               Official Contact Desk and Egypt Community Channels

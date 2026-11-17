@@ -9,10 +9,10 @@ export function OpticaHeritage() {
           <div>
             <p className="eyebrow">Global Affiliation</p>
             <h2 className="section-title mt-3 max-w-2xl">
-              Local work connected to the global optics and photonics network.
+              Local work connected to the global optics society.
             </h2>
             <p className="lede mt-5 max-w-2xl">
-              Optica advances the generation, application, and archiving of optical science worldwide. Operating under Optica Local Section bylaws, Optica Egypt links regional university laboratories and student chapters to international technical groups, travel grants, and Optica Publishing Group journals.
+              Optica advances the generation, application, and archiving of optical science worldwide. Individual membership dues, society publications, and international travel awards remain administered directly on optica.org alongside local programming in Egypt.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
@@ -36,9 +36,9 @@ export function OpticaHeritage() {
                 <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--ink-faint)]">
                   Affiliation
                 </p>
-                <p className="mt-1 font-semibold text-[var(--ink)]">Official Local Section</p>
+                <p className="mt-1 font-semibold text-[var(--ink)]">Dedicated Section Bylaws</p>
                 <p className="mt-1 text-sm leading-6 text-[var(--ink-soft)]">
-                  Charter approved by Optica on 10 September 2026 under Local Section bylaws.
+                  Volunteer-governed programming and reporting under Optica Local Section governance.
                 </p>
               </div>
             </div>

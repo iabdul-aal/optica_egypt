@@ -70,7 +70,7 @@ export default function OpenSourcePage() {
 
           <ScrollReveal delay={60}>
             <div className="border-t border-[var(--line)] pt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              <div className="border-l-2 border-[var(--gold)] pl-5 space-y-4">
+              <div className="space-y-4">
                 <p className="eyebrow">Working Group Action</p>
                 <h2 className="section-title">Contribute Layouts or Simulation Benchmarks</h2>
                 <p className="text-sm leading-relaxed text-[var(--ink-soft)] max-w-xl">
