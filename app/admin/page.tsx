@@ -44,6 +44,7 @@ export default async function AdminPage({
   const queue = raw("queue") === "submissions" ? "submissions" : "recruitment"
   const q = raw("q")
     .replace(/[^\p{L}\p{N}@ .-]/gu, "")
+    .trim()
     .slice(0, 80)
   const page = Math.max(1, Math.min(10000, Number.parseInt(raw("page")) || 1))
   const field =
@@ -82,7 +83,7 @@ export default async function AdminPage({
       `/admin?${new URLSearchParams({ queue: "submissions", q, intent, status, page: String(n) })}`
 
     return (
-      <Workspace role={staff.role} email={staff.user.email}>
+      <Workspace role={staff.role} email={staff.user.email} activeSection="submissions">
         <header className="mb-8 flex flex-wrap items-start justify-between gap-5">
           <div>
             <p className="eyebrow">Operations / Section Desk</p>
@@ -97,7 +98,7 @@ export default async function AdminPage({
 
         {result.error ? (
           <p role="alert" className="site-card p-6 text-[var(--danger)]">
-            Unable to load section submissions. Apply database migration 202611160001_submissions.sql if this is a fresh environment.
+            Unable to load section submissions. Refresh the page or contact a section administrator.
           </p>
         ) : (
           <div className="site-card overflow-hidden">
@@ -262,16 +263,15 @@ export default async function AdminPage({
     `/admin?${new URLSearchParams({ q, status, committee, page: String(n) })}`
 
   return (
-    <Workspace role={staff.role} email={staff.user.email}>
+    <Workspace role={staff.role} email={staff.user.email} activeSection="applications">
       <header className="mb-8 flex flex-wrap items-start justify-between gap-5">
         <div>
-          <p className="eyebrow">Chapter membership / Overview</p>
+          <p className="eyebrow">Committee recruitment / Overview</p>
           <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
             A new cohort starts here.
           </h1>
           <p className="mt-3 text-sm text-[var(--ink-soft)]">
-            Follow applications, coordinate reviews, and welcome your next
-            chapter members.
+            Follow applications, coordinate reviews, and welcome incoming committee contributors.
           </p>
         </div>
         <Link href="/join?type=committee" className="btn-secondary min-h-12">
@@ -280,7 +280,7 @@ export default async function AdminPage({
       </header>
       {failed ? (
         <p role="alert" className="site-card p-6 text-[var(--danger)]">
-          We could not load recruitment data. Refresh the page to try again.
+          Unable to load recruitment data. Refresh the page to try again.
         </p>
       ) : (
         <>

@@ -11,19 +11,21 @@ import type { Member } from "@/types/member"
 import type { Project } from "@/types/project"
 import type { Resource } from "@/types/resource"
 
+const domainsById = new Map<DomainId, Domain>(getAllDomains().map((d) => [d.id, d]))
+const membersById = new Map<string, Member>(getActiveMembers().map((m) => [m.id, m]))
+const chaptersById = new Map<string, Chapter>(getAllChapters().map((c) => [c.id, c]))
+const resourcesById = new Map<string, Resource>(getAllResources().map((r) => [r.id, r]))
+
 export function getDomainsByIds(ids: DomainId[]): Domain[] {
-  const byId = new Map(getAllDomains().map((d) => [d.id, d]))
-  return ids.map((id) => byId.get(id)).filter((d): d is Domain => Boolean(d))
+  return ids.map((id) => domainsById.get(id)).filter((d): d is Domain => Boolean(d))
 }
 
 export function getMembersByIds(ids: string[]): Member[] {
-  const byId = new Map(getActiveMembers().map((m) => [m.id, m]))
-  return ids.map((id) => byId.get(id)).filter((m): m is Member => Boolean(m))
+  return ids.map((id) => membersById.get(id)).filter((m): m is Member => Boolean(m))
 }
 
 export function getChaptersByIds(ids: string[]): Chapter[] {
-  const byId = new Map(getAllChapters().map((c) => [c.id, c]))
-  return ids.map((id) => byId.get(id)).filter((c): c is Chapter => Boolean(c))
+  return ids.map((id) => chaptersById.get(id)).filter((c): c is Chapter => Boolean(c))
 }
 
 export function getProjectsForMember(memberId: string): Project[] {
@@ -43,8 +45,7 @@ export function getDispatchesForProject(projectId: string): Dispatch[] {
 }
 
 export function getResourcesForProject(project: Project): Resource[] {
-  const byId = new Map(getAllResources().map((r) => [r.id, r]))
   return project.resourceIds
-    .map((id) => byId.get(id))
+    .map((id) => resourcesById.get(id))
     .filter((r): r is Resource => Boolean(r))
 }

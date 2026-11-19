@@ -20,10 +20,10 @@ export default async function StaffPage() {
     .order("created_at")
   if (error) throw new Error("Unable to load staff")
   return (
-    <Workspace role={staff.role} email={staff.user.email}>
+    <Workspace role={staff.role} email={staff.user.email} activeSection="staff">
       <p className="eyebrow">Administration</p>
       <h1 className="mt-2 text-3xl font-semibold">
-        The team behind the chapter.
+        Operations Team Access
       </h1>
       <p className="mt-3 text-sm text-[var(--ink-soft)]">
         Admin: team access and reviews. Recruiter: reviews. Viewer: read-only

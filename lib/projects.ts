@@ -33,6 +33,10 @@ export function getAllProjects(): Project[] {
   return projects
 }
 
+export function getProjectById(id: string): Project | undefined {
+  return projects.find((p) => p.id === id)
+}
+
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug || p.id === slug)
 }

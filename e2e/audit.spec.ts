@@ -200,6 +200,19 @@ test("press media kit assets, brand icons, llms docs, manifest, robots.txt, and 
     expect((await res.body()).byteLength).toBeGreaterThan(50)
   }
 
+  const healthRes = await page.request.get("/api/health")
+  expect(healthRes.status()).toBe(200)
+  expect(healthRes.headers()["cache-control"]).toContain("no-store")
+  const healthJson = await healthRes.json()
+  expect(healthJson.status).toBe("ok")
+  expect(healthJson.service).toBe("optica-egypt")
+
+  const homeHeaders = (await page.request.get("/")).headers()
+  expect(homeHeaders["content-security-policy"]).toContain("default-src 'self'")
+  expect(homeHeaders["x-content-type-options"]).toBe("nosniff")
+  expect(homeHeaders["x-frame-options"]).toBe("DENY")
+  expect(homeHeaders["referrer-policy"]).toBe("strict-origin-when-cross-origin")
+
   const sitemapText = await (await page.request.get("/sitemap.xml")).text()
   expect(sitemapText).toContain("https://optica-egypt.com/")
   expect(sitemapText).toContain("https://optica-egypt.com/about</loc>")
@@ -424,12 +437,17 @@ test("admin unavailable boundaries and API/auth CSRF + malformed resilience", as
 
   // CSRF & validation checks across all API/auth routes
   const crossHeaders = { origin: "https://untrusted.example" }
+  const crossFetchHeaders = { "sec-fetch-site": "cross-site" }
   expect((await page.request.post("/api/recruitment", { headers: crossHeaders, data: {} })).status()).toBe(403)
+  expect((await page.request.post("/api/recruitment", { headers: crossFetchHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.post("/api/submissions", { headers: crossHeaders, data: {} })).status()).toBe(403)
+  expect((await page.request.post("/api/submissions", { headers: crossFetchHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.patch("/api/admin/applications/11111111-1111-1111-1111-111111111111", { headers: crossHeaders, data: {} })).status()).toBe(403)
+  expect((await page.request.patch("/api/admin/applications/11111111-1111-1111-1111-111111111111", { headers: crossFetchHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.patch("/api/admin/submissions/11111111-1111-1111-1111-111111111111", { headers: crossHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.post("/api/admin/staff", { headers: crossHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.post("/auth/login", { headers: crossHeaders, data: {} })).status()).toBe(403)
+  expect((await page.request.post("/auth/login", { headers: crossFetchHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.post("/auth/change-password", { headers: crossHeaders, data: {} })).status()).toBe(403)
   expect((await page.request.post("/auth/logout", { headers: crossHeaders })).status()).toBe(403)
 

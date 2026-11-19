@@ -53,3 +53,19 @@ test("mobile flat navigation drawer opens at full height, navigates cleanly, and
   expect(pageErrors).toEqual([])
   expect(consoleErrors).toEqual([])
 })
+
+test("tablet 820px viewport opens navigation drawer without dead zone between 768px and 900px", async ({ page }) => {
+  await page.setViewportSize({ width: 820, height: 1180 })
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const menuButton = page.locator(".menu-toggle")
+  await expect(menuButton).toBeVisible()
+  await menuButton.click()
+
+  const drawer = page.locator("#mobile-navigation")
+  await expect(drawer).toBeVisible()
+  await page.locator("#mobile-navigation button", { hasText: "Community" }).click()
+  await page.locator("#mobile-navigation a[href='/chapters']").click()
+  await page.waitForURL("**/chapters")
+  await assertNoHorizontalOverflow(page)
+})

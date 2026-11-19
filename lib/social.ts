@@ -112,7 +112,7 @@ const SOCIAL_SPECS: SocialChannelSpec[] = [
     id: "twitter",
     label: "X",
     category: "Global Scientific Dialogue",
-    audienceNote: "International optics dispatches, conference tags, and global Optica coordination (15-char max handle).",
+    audienceNote: "International optics dispatches, conference coverage, and Optica society coordination.",
     suggestedHandle: "@optica_egypt_ls",
     buildUrl: (raw) =>
       isAbsoluteHttpUrl(raw) ? raw.trim() : `https://x.com/${normalizeHandle(raw)}`,

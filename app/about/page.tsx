@@ -26,7 +26,7 @@ export default function AboutPage() {
       title: "Governance and Bylaws",
       summary: "Optica Local Section compliance metrics, constitutional seats, and December reporting scope.",
       href: "/governance",
-      cta: "Inspect governance",
+      cta: "Review governance",
     },
     {
       index: "02",
@@ -59,7 +59,6 @@ export default function AboutPage() {
         intro="Verified charter record, institutional identity, and gateway to governance, founding officers, academic partnerships, and media resources."
       />
 
-      {/* Institutional Identity and Verified Charter Ledger */}
       <section id="overview" className="section-space scroll-mt-24">
         <div className="container-page grid gap-12 lg:grid-cols-[1.05fr_.95fr] lg:items-start">
           <div className="space-y-5">
@@ -102,13 +101,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Integrated Editorial Index Row Layout (Zero Redundant Boxes) */}
       <section className="section-space border-t border-[var(--line)] bg-[var(--surface)]">
         <div className="container-page space-y-8">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="eyebrow">Section Records</p>
-              <h2 className="section-title mt-2">Dedicated Section Subpages</h2>
+              <h2 className="section-title mt-2">Section Directory</h2>
             </div>
           </div>
 

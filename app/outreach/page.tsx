@@ -59,7 +59,7 @@ export default function OutreachPage() {
                 <p className="eyebrow">Host a Campus Demonstration</p>
                 <h2 className="section-title">Bring Optics Demonstrations to Your Faculty or School</h2>
                 <p className="text-sm leading-relaxed text-[var(--ink-soft)] max-w-xl">
-                  Departments, STEM schools, and student clubs can coordinate experimental kits, Visiting Lecturer sessions, or May International Day of Light visits through the outreach desk.
+                  Departments, STEM schools, and student clubs can coordinate experimental kits, Optica Traveling Lecturer sessions, or May International Day of Light visits through the outreach desk.
                 </p>
                 <div className="pt-2">
                   <Link href="/join?type=speaker" className="btn-primary min-h-[48px]">
@@ -74,7 +74,7 @@ export default function OutreachPage() {
                   href="/projects/stem-campus-outreach"
                   className="flex min-h-[48px] items-center justify-between gap-4 py-4 text-sm font-semibold text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
                 >
-                  <span>Egyptian School and Campus Optics Roadshow Spec</span>
+                  <span>Egyptian School and Campus Optics Roadshow</span>
                   <ArrowUpRight size={14} className="shrink-0" aria-hidden="true" />
                 </Link>
                 <Link

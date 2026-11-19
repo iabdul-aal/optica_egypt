@@ -70,7 +70,7 @@
     "brandColors": [
       { "name": "Obsidian Dark Canvas", "hex": "#090C0D", "usage": "Primary dark canvas and editorial depth" },
       { "name": "Optica Egypt Gold", "hex": "#D7AE5B", "usage": "Pyramid crest, laser markers, and dark-mode accents" },
-      { "name": "Light Mode Accent Gold", "hex": "#A67C1E", "usage": "High-contrast gold tokens on light surfaces" },
+      { "name": "Light Mode Accent Gold", "hex": "#8F6714", "usage": "WCAG AA high-contrast burnished gold tokens on light surfaces" },
       { "name": "Light Mode Canvas", "hex": "#F8F9FA", "usage": "High-contrast light mode background" },
       { "name": "Warm Bone Ink", "hex": "#F7F2E8", "usage": "Primary display typography in dark mode" }
     ],

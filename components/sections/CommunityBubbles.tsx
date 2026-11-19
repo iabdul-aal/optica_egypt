@@ -179,11 +179,20 @@ export function CommunityBubbles({
 
         {CONSTELLATION_NODES.map((node) => {
           const isHovered = highlightedNode === node.id
+          const toggleNode = () => {
+            const next = highlightedNode === node.id ? null : node.id
+            setInternalHovered(next)
+            onNodeSelect?.(next)
+          }
 
           return (
             <g
               key={node.id}
-              className="cursor-pointer"
+              role="button"
+              tabIndex={0}
+              aria-label={`Highlight ${node.label.toLowerCase()} pathway`}
+              aria-pressed={isHovered}
+              className="cursor-pointer focus:outline-none"
               onMouseEnter={() => {
                 setInternalHovered(node.id)
                 onNodeSelect?.(node.id)
@@ -192,10 +201,20 @@ export function CommunityBubbles({
                 setInternalHovered(null)
                 onNodeSelect?.(null)
               }}
-              onClick={() => {
-                const next = highlightedNode === node.id ? null : node.id
-                setInternalHovered(next)
-                onNodeSelect?.(next)
+              onFocus={() => {
+                setInternalHovered(node.id)
+                onNodeSelect?.(node.id)
+              }}
+              onBlur={() => {
+                setInternalHovered(null)
+                onNodeSelect?.(null)
+              }}
+              onClick={toggleNode}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault()
+                  toggleNode()
+                }
               }}
             >
               <circle

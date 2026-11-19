@@ -9,6 +9,7 @@ Optica approved the charter of the Optica Egypt Local Section on 10 September 20
 - Parent Organization: Optica (Washington, D.C., USA)
 - Charter Approval Date: 10 September 2026
 - Chartered Student Chapters in Egypt: 1 (The American University in Cairo Optica Student Chapter, currently undergoing reactivation)
+- Student Chapters in Formation: 1 (Zewail City Optica Student Chapter at Zewail City of Science and Technology, chartering in progress)
 - Official Website: https://optica-egypt.com/
 - Contact: info@optica-egypt.com
 - LinkedIn: https://www.linkedin.com/company/optica-egypt-section
@@ -44,12 +45,12 @@ Optica approved the charter of the Optica Egypt Local Section on 10 September 20
 - [Governance](https://optica-egypt.com/governance): Optica Local Section bylaws, constitutional executive seats, charter verification, and annual reporting scope.
 - [Leadership](https://optica-egypt.com/leadership): Full 16-member Founding Executive Committee, Operational Committee, and Faculty Advisors roster (`/leadership/[id]`).
 - [Partners](https://optica-egypt.com/partners): Collaboration frameworks, confirmed institutional partnerships, and partner proposal intake.
-- [Chapters](https://optica-egypt.com/chapters): Interactive Egypt map, reactivating AUC chapter (`/chapters/auc`), and national charter checklist.
+- [Chapters](https://optica-egypt.com/chapters): Interactive Egypt map, reactivating AUC chapter (`/chapters/auc`), prospective Zewail City chapter (`/chapters/zewail-city`), and national charter checklist.
 - [Fellowships](https://optica-egypt.com/fellowships): Fellowship advisories, conference travel grants, and funding directories.
 - [Outreach](https://optica-egypt.com/outreach): Public science outreach demonstrations and campus optics engagement tracks.
 - [Volunteer](https://optica-egypt.com/volunteer): Standing working committees and Postgres-backed committee volunteer application.
 - [Projects](https://optica-egypt.com/projects): Open-source photonics PDA working group, training roadmaps, thesis concepts, and campus outreach (`/projects/[slug]`).
-- [Events](https://optica-egypt.com/events): Scheduled seminars, workshops, and Visiting Lecturer sessions.
+- [Events](https://optica-egypt.com/events): Scheduled seminars, workshops, and Optica Traveling Lecturer sessions.
 - [Open-Source Photonics](https://optica-egypt.com/open-source): Open-source PDA working group tracks and license-free photonic software index.
 - [Resources](https://optica-egypt.com/resources): Free Python photonics software, domestic Egyptian research grants (ITIDA, ASRT, STDF), journals, and Optica membership cohorts.
 - [Updates](https://optica-egypt.com/updates): Verified announcements, confirmed events, technical articles, and media records (`/updates/[slug]`).

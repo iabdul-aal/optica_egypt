@@ -9,8 +9,8 @@
     "tier": "executive",
     "term": "2024-2026",
     "institution": "The American University in Cairo (AUC)",
-    "academicBackground": "B.Sc. in Electronics and Communications Engineering, Ain Shams University; M.Sc. candidate of Physics, The American University in Cairo (AUC)",
-    "professionalFocus": "RA and TA at Nanophotonics Research Lab, American University in Cairo (AUC)",
+    "academicBackground": "B.Sc. in Electronics and Communications Engineering, Ain Shams University; M.Sc. Candidate in Physics, The American University in Cairo (AUC)",
+    "professionalFocus": "Research Assistant and Teaching Assistant, Nanophotonics Research Lab, The American University in Cairo (AUC)",
     "specializedSector": "Laser Science and Optical Sensors",
     "domainIds": [
       "lasers-nonlinear",
@@ -34,7 +34,7 @@
     "term": "2024-2026",
     "institution": "Ain Shams University",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, Ain Shams University",
-    "professionalFocus": "Jr. RA at LLOC lab at Ain Shams University, Optical Technologies Trainee at AUC, Research Intern at Nile University",
+    "professionalFocus": "Junior Research Assistant, LLOC Lab, Ain Shams University; Optical Technologies Trainee, AUC; Research Intern, Nile University",
     "specializedSector": "Silicon Photonics",
     "domainIds": [
       "photonic-ic"
@@ -80,7 +80,7 @@
     "term": "2024-2026",
     "institution": "Ain Shams University",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, Ain Shams University",
-    "professionalFocus": "MEMS Intern at Si-Ware Systems, Jr. RA intern at Zewail City",
+    "professionalFocus": "MEMS Intern, Si-Ware Systems; Junior Research Intern, Zewail City",
     "specializedSector": "Quantum Optics",
     "domainIds": [
       "quantum-nano",
@@ -104,8 +104,8 @@
     "tier": "executive",
     "term": "2024-2026",
     "institution": "FAU Erlangen-Nürnberg",
-    "academicBackground": "B.Sc. Electronics and Communications Engineering, Alexandria University",
-    "professionalFocus": "Intern, Nanophoto Lab, A* Star; PhD candidate, Max Planck School of Photonics (MPSP)",
+    "academicBackground": "B.Sc. in Electronics and Communications Engineering, Alexandria University",
+    "professionalFocus": "Former Research Intern, Nanophotonics Lab, A*STAR; Ph.D. Candidate, Max Planck School of Photonics (MPSP)",
     "specializedSector": "Integrated Nanophotonics, Nonlinear Quantum Photonics",
     "domainIds": [
       "photonic-ic",
@@ -116,7 +116,7 @@
     "email": "contact@iabdul-aal.me",
     "website": "https://iabdul-aal.me/",
     "photo": "/people/leadership/islam-abduaal.webp",
-    "bio": "Conceived and initiated the establishment of the Optica Egypt Local Section, spearheading the charter petition to Optica Global, assembling the founding leadership cohort, and architecting the section's digital platforms. Ph.D. candidate at the Max Planck School of Photonics (MPSP) and former research intern at A* Star Nanophotonics Lab, working on integrated nanophotonics and nonlinear quantum optics.",
+    "bio": "Conceived and initiated the establishment of the Optica Egypt Local Section, leading the charter petition to Optica, assembling the founding leadership cohort, and architecting the section's digital platform. Ph.D. candidate at the Max Planck School of Photonics (MPSP) and former research intern at the A*STAR Nanophotonics Lab, working on integrated nanophotonics and nonlinear quantum optics.",
     "order": 5,
     "active": true
   },
@@ -130,7 +130,7 @@
     "term": "2024-2026",
     "institution": "German University in Cairo (GUC)",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, German University in Cairo (GUC)",
-    "professionalFocus": "Jr. RA, GUC Micro Optics Lab",
+    "professionalFocus": "Junior Research Assistant, GUC Micro Optics Lab",
     "specializedSector": "Silicon Photonics",
     "domainIds": [
       "photonic-ic"
@@ -153,8 +153,8 @@
     "term": "2024-2026",
     "institution": "Ain Shams University",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, Ain Shams University",
-    "professionalFocus": "Jr. RA at LLOC lab in Ain Shams University, Optical Technologies Trainee at AUC",
-    "specializedSector": "MEMS and Non-Linear Optics",
+    "professionalFocus": "Junior Research Assistant, LLOC Lab, Ain Shams University; Optical Technologies Trainee, AUC",
+    "specializedSector": "MEMS and Nonlinear Optics",
     "domainIds": [
       "mems-sensing",
       "lasers-nonlinear"
@@ -176,7 +176,7 @@
     "term": "2024-2026",
     "institution": "Ain Shams University",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, Ain Shams University",
-    "professionalFocus": "Research intern at Nile University, Optical Technologies Trainee at AUC",
+    "professionalFocus": "Research Intern, Nile University; Optical Technologies Trainee, AUC",
     "specializedSector": "Silicon Photonics",
     "domainIds": [
       "photonic-ic"
@@ -184,7 +184,7 @@
     "linkedin": "jannah-abdelmawla",
     "email": "jannahahmedsaber18@gmail.com",
     "photo": "/people/leadership/jannah-ahmed.webp",
-    "bio": "Branding Officer and Co-Founder managing section brand identity, visual design, and communication campaigns. Research intern at Nile University and optical technologies trainee at AUC with focus on silicon photonics.",
+    "bio": "Branding Officer and Co-Founder managing section brand identity, visual design, and communication campaigns. Research intern at Nile University and optical technologies trainee at AUC with a focus on silicon photonics.",
     "order": 8,
     "active": true
   },
@@ -198,7 +198,7 @@
     "term": "2024-2026",
     "institution": "Ain Shams University",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, Ain Shams University",
-    "professionalFocus": "Optical Systems Intern at Si-Ware, Jr. RA at Ain Shams University",
+    "professionalFocus": "Optical Systems Intern, Si-Ware Systems; Junior Research Assistant, Ain Shams University",
     "specializedSector": "Silicon Photonics",
     "domainIds": [
       "photonic-ic",
@@ -244,7 +244,7 @@
     "term": "2024-2026",
     "institution": "Ain Shams University",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, Ain Shams University",
-    "professionalFocus": "Optical Systems Intern at Si-Ware, Jr. RA at AUC",
+    "professionalFocus": "Optical Systems Intern, Si-Ware Systems; Junior Research Assistant, AUC",
     "specializedSector": "Gas Spectroscopy",
     "domainIds": [
       "mems-sensing"
@@ -267,7 +267,7 @@
     "term": "2024-2026",
     "institution": "Sphinx University",
     "academicBackground": "Undergraduate, Electronics and Communications Engineering, Sphinx University",
-    "professionalFocus": "Optical Technologies Trainee at the American University in Cairo (AUC)",
+    "professionalFocus": "Optical Technologies Trainee, The American University in Cairo (AUC)",
     "specializedSector": "Silicon Photonics",
     "domainIds": [
       "photonic-ic"

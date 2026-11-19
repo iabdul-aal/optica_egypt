@@ -42,29 +42,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const chapters = getAllChapters()
   const projects = getAllProjects()
   const dispatches = getAllDispatches()
+  const revisionDate = new Date("2026-11-19")
 
   return [
     ...STATIC_ROUTES.map((route) => ({
       url: toUrl(route.path),
-      lastModified: new Date("2026-11-16"),
+      lastModified: revisionDate,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),
     ...members.map((m) => ({
       url: toUrl(`/leadership/${m.id}`),
-      lastModified: new Date("2026-11-16"),
+      lastModified: revisionDate,
       changeFrequency: "monthly" as const,
       priority: 0.75,
     })),
     ...chapters.map((c) => ({
       url: toUrl(`/chapters/${c.id}`),
-      lastModified: new Date("2026-11-16"),
+      lastModified: revisionDate,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     ...projects.map((p) => ({
       url: toUrl(`/projects/${p.slug}`),
-      lastModified: new Date("2026-11-16"),
+      lastModified: revisionDate,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

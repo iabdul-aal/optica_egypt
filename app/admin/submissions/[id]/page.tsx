@@ -53,12 +53,12 @@ export default async function SubmissionDetailPage({
   const history = (reviews.data || []) as SubmissionReviewEvent[]
 
   return (
-    <Workspace role={staff.role} email={staff.user.email}>
+    <Workspace role={staff.role} email={staff.user.email} activeSection="submissions">
       <Link
         href="/admin?queue=submissions"
         className="inline-flex min-h-12 items-center text-sm text-[var(--ink-soft)]"
       >
-        All section submissions
+        ← All section submissions
       </Link>
 
       <header className="mb-8 mt-4 border-b border-[var(--line)] pb-7">
@@ -125,20 +125,29 @@ export default async function SubmissionDetailPage({
           <section className="site-card p-6">
             <h2 className="text-lg font-semibold">Review history</h2>
             {history.length ? (
-              <ul className="mt-4 divide-y divide-[var(--line)]">
+              <ol className="mt-5 space-y-5">
                 {history.map((item) => (
-                  <li key={item.id} className="py-4 text-sm">
-                    <p className="font-mono text-xs text-[var(--gold)]">
+                  <li key={item.id} className="border-l border-[var(--gold)] pl-4">
+                    <p className="text-sm">
+                      {item.old_status
+                        ? `${submissionStageLabels[item.old_status]} → `
+                        : ""}
                       {submissionStageLabels[item.new_status]}
                     </p>
+                    <p className="mt-1 font-mono text-[10px] leading-5 text-[var(--ink-faint)]">
+                      {new Date(item.created_at).toLocaleString("en-GB", {
+                        timeZone: "Africa/Cairo",
+                      })}{" "}
+                      · Staff {item.actor_id.slice(0, 8)}
+                    </p>
                     {item.note && (
-                      <p className="mt-2 whitespace-pre-wrap text-[var(--ink-soft)]">
+                      <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-[var(--ink-soft)]">
                         {item.note}
                       </p>
                     )}
                   </li>
                 ))}
-              </ul>
+              </ol>
             ) : (
               <p className="mt-4 text-sm text-[var(--ink-faint)]">No review notes yet.</p>
             )}

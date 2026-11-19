@@ -24,21 +24,21 @@ const ECOSYSTEM_PILLARS = [
     id: "academia",
     index: "03",
     title: "Academia",
-    detail: "Faculty advisory alignment, technical seminars, and Visiting Lecturer hosting.",
+    detail: "Faculty advisory alignment, technical seminars, and Optica Traveling Lecturer hosting.",
     href: "/partners",
   },
   {
     id: "chapters",
     index: "04",
     title: "Student Chapters",
-    detail: "Support for AUC chapter reactivation and new branch charter checklists nationwide.",
+    detail: "AUC chapter reactivation, Zewail City charter formation, and university checklists nationwide.",
     href: "/chapters",
   },
   {
     id: "industry",
     index: "05",
     title: "Industry and Committees",
-    detail: "Standing volunteer committees and photonics hardware collaboration frameworks.",
+    detail: "Standing volunteer committees and photonics hardware collaboration frameworks across Egypt.",
     href: "/volunteer",
   },
 ] as const
@@ -64,8 +64,9 @@ export function EcosystemConstellationSection() {
 
         <div className="mt-10 grid gap-9 lg:grid-cols-[1fr_1.08fr] lg:items-center">
           <div className="order-2 grid gap-x-7 gap-y-5 sm:grid-cols-2 lg:order-1">
-            {ECOSYSTEM_PILLARS.map((node) => {
+            {ECOSYSTEM_PILLARS.map((node, idx) => {
               const highlighted = activeId === node.id
+              const spanFull = idx === ECOSYSTEM_PILLARS.length - 1
               return (
                 <Link
                   key={node.id}
@@ -75,6 +76,8 @@ export function EcosystemConstellationSection() {
                   onFocus={() => setActiveId(node.id)}
                   onBlur={() => setActiveId(null)}
                   className={`group border-t pt-4 pb-2 transition-colors min-h-[48px] block ${
+                    spanFull ? "sm:col-span-2" : ""
+                  } ${
                     highlighted ? "border-[var(--gold)]" : "border-[var(--line)] hover:border-[var(--gold)]"
                   }`}
                 >

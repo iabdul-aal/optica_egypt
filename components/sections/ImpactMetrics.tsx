@@ -11,7 +11,7 @@ const PATHWAYS = [
   {
     index: "02",
     title: "Exchange",
-    description: "Technical seminars, Visiting Lecturer sessions, and faculty dialogue across Egyptian labs.",
+    description: "Technical seminars, Optica Traveling Lecturer sessions, and faculty dialogue across Egyptian labs.",
     href: "/events",
   },
   {

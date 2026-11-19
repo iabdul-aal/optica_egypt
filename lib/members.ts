@@ -1,30 +1,31 @@
 import rawMembers from "@/data/members.json"
 import type { Member } from "@/types/member"
-import { getAssetPath } from "@/lib/utils"
 
-const members: Member[] = (rawMembers as Member[])
+const activeMembers: Member[] = (rawMembers as Member[])
   .filter((m) => m.active)
-  .map((m) => ({
-    ...m,
-    photo: m.photo ? getAssetPath(m.photo) : "",
-  }))
+  .sort((a, b) => a.order - b.order)
+
+const membersById = new Map<string, Member>(activeMembers.map((m) => [m.id, m]))
+const executiveMembers = activeMembers.filter((m) => m.tier === "executive")
+const operationalMembers = activeMembers.filter((m) => m.tier === "operational")
+const advisoryMembers = activeMembers.filter((m) => m.tier === "advisory")
 
 export function getActiveMembers(): Member[] {
-  return [...members].sort((a, b) => a.order - b.order)
+  return activeMembers
 }
 
 export function getExecutiveMembers(): Member[] {
-  return members.filter((m) => m.tier === "executive").sort((a, b) => a.order - b.order)
+  return executiveMembers
 }
 
 export function getOperationalMembers(): Member[] {
-  return members.filter((m) => m.tier === "operational").sort((a, b) => a.order - b.order)
+  return operationalMembers
 }
 
 export function getAdvisoryMembers(): Member[] {
-  return members.filter((m) => m.tier === "advisory").sort((a, b) => a.order - b.order)
+  return advisoryMembers
 }
 
 export function getMemberById(id: string): Member | undefined {
-  return members.find((m) => m.id === id)
+  return membersById.get(id)
 }

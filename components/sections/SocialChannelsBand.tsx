@@ -15,7 +15,6 @@ export function SocialChannelsBand() {
       className="section-space scroll-mt-24 border-t border-[var(--line)] bg-[var(--surface)]"
     >
       <div className="container-page space-y-12">
-        {/* Direct Contact and Official Domain Strip */}
         <div className="border-y border-[var(--line)] py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
           <div className="space-y-3 max-w-2xl">
             <p className="eyebrow">Direct Contact and Digital Channels</p>
@@ -45,7 +44,6 @@ export function SocialChannelsBand() {
           </div>
         </div>
 
-        {/* Active Social Platforms */}
         {activeChannels.length > 0 && (
           <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -104,7 +102,6 @@ export function SocialChannelsBand() {
           </div>
         )}
 
-        {/* Rollout Channels Prepared for Egypt Outreach */}
         {plannedChannels.length > 0 && (
           <div className="space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line)] pb-4">
@@ -119,7 +116,7 @@ export function SocialChannelsBand() {
               </span>
             </div>
 
-            <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
               {plannedChannels.map((channel) => (
                 <article
                   key={channel.id}

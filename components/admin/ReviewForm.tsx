@@ -1,24 +1,44 @@
 "use client"
+
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import {
   stageLabels,
   stages,
   type Application,
-  type Stage
+  type Stage,
 } from "@/lib/recruitment"
 import { formatSubmitError, readJsonResponse } from "@/lib/utils"
-export function ReviewForm({
-  application
-}: {
-  application: Pick<Application, "id" | "status" | "version">
-}) {
+
+interface StageReviewFormProps<TStage extends string> {
+  heading: string
+  endpoint: string
+  currentStatus: TStage
+  version: number
+  stageOptions: readonly TStage[]
+  labels: Record<TStage, string>
+  notePlaceholder: string
+  footerHint?: string
+}
+
+export function StageReviewForm<TStage extends string>({
+  heading,
+  endpoint,
+  currentStatus,
+  version,
+  stageOptions,
+  labels,
+  notePlaceholder,
+  footerHint,
+}: StageReviewFormProps<TStage>) {
   const router = useRouter()
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState("")
   const [isError, setIsError] = useState(false)
   const [ready, setReady] = useState(false)
+
   useEffect(() => setReady(true), [])
+
   return (
     <form
       className="site-card space-y-5 p-6"
@@ -26,23 +46,20 @@ export function ReviewForm({
         event.preventDefault()
         const form = event.currentTarget
         const values = new FormData(form)
-        const selectedStatus = values.get("status") as Stage
+        const selectedStatus = values.get("status") as TStage
         setBusy(true)
         setMessage("")
         setIsError(false)
         try {
-          const response = await fetch(
-            `/api/admin/applications/${application.id}`,
-            {
-              method: "PATCH",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                status: selectedStatus,
-                note: values.get("note"),
-                version: application.version
-              })
-            }
-          )
+          const response = await fetch(endpoint, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              status: selectedStatus,
+              note: values.get("note"),
+              version,
+            }),
+          })
           await readJsonResponse<{ error?: string }>(response, "Unable to save.")
           setMessage("Review saved.")
           form.reset()
@@ -52,7 +69,7 @@ export function ReviewForm({
           setMessage(
             formatSubmitError(err, {
               timeoutMessage: "Save timed out. Please try again.",
-              unavailableMessage: "Unable to save."
+              unavailableMessage: "Unable to save.",
             })
           )
         } finally {
@@ -60,11 +77,11 @@ export function ReviewForm({
         }
       }}
     >
-      <h2 className="text-lg font-semibold">Review application</h2>
-      <fieldset key={application.version} disabled={!ready || busy}>
+      <h2 className="text-lg font-semibold">{heading}</h2>
+      <fieldset key={version} disabled={!ready || busy}>
         <legend className="mb-3 text-sm">Stage</legend>
         <div className="grid gap-2">
-          {stages.map((s) => (
+          {stageOptions.map((s) => (
             <label
               key={s}
               className="flex min-h-12 cursor-pointer items-center gap-3 rounded-sm border border-[var(--line)] bg-[var(--surface)] px-3 text-sm has-[:checked]:border-[var(--gold)] has-[:checked]:text-[var(--gold)]"
@@ -73,11 +90,11 @@ export function ReviewForm({
                 type="radio"
                 name="status"
                 value={s}
-                defaultChecked={application.status === s}
+                defaultChecked={currentStatus === s}
                 required
                 className="h-4 w-4 accent-[var(--gold)]"
               />
-              {stageLabels[s]}
+              {labels[s]}
             </label>
           ))}
         </div>
@@ -90,7 +107,7 @@ export function ReviewForm({
           maxLength={3000}
           disabled={!ready || busy}
           className="rounded-sm border border-[var(--line)] bg-[var(--surface)] p-3 text-base"
-          placeholder="Add review context for the team. Notes are visible to staff only."
+          placeholder={notePlaceholder}
         />
       </label>
       {message && (
@@ -101,13 +118,31 @@ export function ReviewForm({
           {message}
         </p>
       )}
-      <button className="btn-primary min-h-12 w-full" disabled={!ready || busy}>
+      <button type="submit" className="btn-primary min-h-12 w-full" disabled={!ready || busy}>
         {busy ? "Saving…" : "Save review"}
       </button>
-      <p className="text-xs leading-5 text-[var(--ink-faint)]">
-        Saving records your identity and time in the review history. Applicants
-        are not automatically emailed.
-      </p>
+      {footerHint && (
+        <p className="text-xs leading-5 text-[var(--ink-faint)]">{footerHint}</p>
+      )}
     </form>
+  )
+}
+
+export function ReviewForm({
+  application,
+}: {
+  application: Pick<Application, "id" | "status" | "version">
+}) {
+  return (
+    <StageReviewForm<Stage>
+      heading="Review application"
+      endpoint={`/api/admin/applications/${application.id}`}
+      currentStatus={application.status}
+      version={application.version}
+      stageOptions={stages}
+      labels={stageLabels}
+      notePlaceholder="Add review context for the team. Notes are visible to staff only."
+      footerHint="Saving records your identity and time in the review history. Applicants are not automatically emailed."
+    />
   )
 }

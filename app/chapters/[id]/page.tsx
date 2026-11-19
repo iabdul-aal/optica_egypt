@@ -45,7 +45,6 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
           <span>Back to chapters</span>
         </Link>
 
-        {/* Integrated Chapter Masthead */}
         <div className="border-b border-[var(--line)] pb-10 space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--gold)]">
@@ -101,7 +100,6 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
           </div>
         </div>
 
-        {/* Continuous Split Specification Body */}
         <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-start">
           <div className="divide-y divide-[var(--line)] border-b border-[var(--line)]">
             <div className="pb-8">

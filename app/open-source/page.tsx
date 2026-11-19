@@ -78,7 +78,7 @@ export default function OpenSourcePage() {
                 </p>
                 <div className="pt-1 flex flex-wrap gap-3">
                   <Link href="/projects/open-photonics-pda" className="btn-primary min-h-[48px]">
-                    <span>View Working Group Spec</span>
+                    <span>View Working Group Brief</span>
                     <ArrowUpRight size={14} aria-hidden="true" />
                   </Link>
                   <Link href="/join?type=committee" className="btn-secondary min-h-[48px]">

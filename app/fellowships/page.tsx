@@ -102,7 +102,7 @@ export default function FellowshipsPage() {
                     href={item.href}
                     className="text-link inline-flex min-h-[48px] items-center gap-1 self-start"
                   >
-                    <span>Inspect pathway</span>
+                    <span>View pathway</span>
                     <ArrowUpRight size={13} aria-hidden="true" />
                   </Link>
                 </article>

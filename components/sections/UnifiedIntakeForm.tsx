@@ -155,9 +155,13 @@ export function UnifiedIntakeForm({
         <h2 className="mt-2 text-2xl font-semibold text-[var(--ink)]">
           Submit a Section Inquiry
         </h2>
+        {targetRef && (
+          <p className="mt-2 font-mono text-xs text-[var(--gold)]">
+            Context reference: {targetRef}
+          </p>
+        )}
       </div>
 
-      {/* Honeypot */}
       <input
         type="text"
         name="website"

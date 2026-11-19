@@ -33,11 +33,11 @@ export default function PartnersPage() {
                 <p className="eyebrow">Collaboration Frameworks</p>
                 <h2 className="section-title mt-2">Active Partnership Models</h2>
               </div>
-              <div className="grid border-y border-[var(--line)] divide-y md:divide-y-0 md:grid-cols-2 lg:grid-cols-4 lg:divide-x divide-[var(--line-subtle)]">
+              <div className="grid border-y border-[var(--line)] divide-y md:divide-y-0 md:grid-cols-3 md:divide-x divide-[var(--line-subtle)]">
                 {models.map((model, idx) => (
                   <article
                     key={model.id}
-                    className="py-7 md:px-6 first:md:pl-0 last:lg:pr-0"
+                    className="py-7 md:px-6 first:md:pl-0 last:md:pr-0"
                   >
                     <span className="font-mono text-xs font-bold text-[var(--gold)]">
                       0{idx + 1}

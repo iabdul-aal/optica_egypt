@@ -70,7 +70,7 @@ const CHAPTER_MARKERS: Record<
 const REFERENCE_CITIES = [
   { name: "Alexandria", x: 759, y: 282, align: "end" as const, dx: -18, dy: -14 },
   { name: "Port Said", x: 1215, y: 194, align: "start" as const, dx: 18, dy: -8 },
-  { name: "Cairo", x: 1095, y: 505, align: "end" as const, dx: -16, dy: -16 },
+  { name: "Cairo", x: 1095, y: 505, align: "end" as const, dx: -20, dy: -22 },
   { name: "Asyut", x: 1125, y: 900, align: "end" as const, dx: -20, dy: 6 },
   { name: "Aswan", x: 1178, y: 1510, align: "start" as const, dx: 20, dy: 8 },
 ] as const
@@ -434,7 +434,7 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
                     }
                   }}
                   className="cursor-pointer focus:outline-none"
-                  aria-label={`${chapter.name}. Status: ${chapter.status}. Click to inspect or zoom.`}
+                  aria-label={`${chapter.name}. Status: ${chapter.status}. Click to focus or zoom.`}
                 >
                   {isSelected && (
                     <circle
@@ -607,8 +607,8 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
           >
             <span>
               {selectedChapter?.id === "zewail-city"
-                ? "Inspect Zewail City Profile"
-                : "Inspect AUC Chapter Profile"}
+                ? "View Zewail City Profile"
+                : "View AUC Chapter Profile"}
             </span>
             <ArrowUpRight size={14} aria-hidden="true" />
           </Link>

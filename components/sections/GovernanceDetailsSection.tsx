@@ -23,7 +23,6 @@ export function GovernanceDetailsSection() {
         <p className="mt-2 max-w-2xl text-sm text-[var(--ink-soft)]">{governance.intro}</p>
       </div>
 
-      {/* Integrated Architectural Grid (No Stacked Card Boxes) */}
       <div className="grid border-y border-[var(--line)] divide-y md:divide-y-0 md:grid-cols-2 md:divide-x divide-[var(--line-subtle)]">
         {bylaws.map((item, idx) => (
           <article
@@ -40,7 +39,6 @@ export function GovernanceDetailsSection() {
         ))}
       </div>
 
-      {/* Split Constitutional Ledger */}
       <div className="grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-[var(--ink)] border-b border-[var(--line)] pb-4">

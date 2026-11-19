@@ -1,5 +1,7 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
+import { buildGoogleCalendarUrl } from "../lib/calendar.ts"
+import { formatDateISO } from "../lib/formatting.ts"
 import { applicationSchema, reviewSchema } from "../lib/recruitment-validation.ts"
 import { submissionReviewSchema, submissionSchema } from "../lib/submissions-validation.ts"
 import { formatSubmitError, readJsonResponse } from "../lib/utils.ts"
@@ -128,4 +130,20 @@ test("readJsonResponse handles HTML error pages without SyntaxError and preserve
     formatSubmitError(new TypeError("Failed to fetch"), { timeoutMessage: "Timed out.", unavailableMessage: "Offline." }),
     "Offline."
   )
+})
+
+test("formatDateISO and buildGoogleCalendarUrl produce deterministic UTC and Cairo dates", () => {
+  assert.equal(formatDateISO("2026-09-10"), "10 September 2026")
+  assert.equal(formatDateISO("2026-09-10", { month: "short" }), "10 Sept 2026")
+
+  const gcalUrl = buildGoogleCalendarUrl({
+    id: "charter-seminar",
+    title: "Optica Egypt Inaugural Seminar",
+    date: "2026-10-15",
+    startTime: "18:00",
+    location: "New Cairo",
+    description: "Inaugural session",
+  })
+  assert.ok(gcalUrl.startsWith("https://calendar.google.com/calendar/render?"))
+  assert.ok(gcalUrl.includes("dates=20261015T160000Z%2F20261015T180000Z"))
 })

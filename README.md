@@ -51,7 +51,7 @@ Structured content lives in `data/`:
 | `data/governance.json` | Charter approval (`10 September 2026`), bylaws, constitutional officer seats, and honest empty partner/recognition states |
 | `data/members.json` | 16 active founding officers and faculty advisors with WebP portraits (`public/people/leadership/*.webp`) |
 | `data/domains.json` | Active Egyptian photonics research domains |
-| `data/chapters.json` | Chartered AUC student chapter record and national chapter checklist |
+| `data/chapters.json` | Chartered AUC student chapter, Zewail City formation track, and national chapter checklist |
 | `data/projects.json` | Open-source PDA, training, fellowships, and campus outreach tracks with milestone and foreign-key links |
 | `data/dispatches.json` | Published announcements, events, articles, and media dispatches |
 | `data/resources.json` | Verified license-free photonics tools (`gdsfactory`, `Meep`, `SiEPIC-Tools`, `Femwell`), domestic grants, and journals |

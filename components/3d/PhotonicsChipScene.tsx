@@ -1,27 +1,45 @@
 "use client"
 
 import { Canvas, useFrame } from "@react-three/fiber"
+import { useTheme } from "next-themes"
 import { useEffect, useMemo, useRef, useState } from "react"
 import * as THREE from "three"
 import { OpticalWaveguideDiagram } from "@/components/sections/OpticalWaveguideDiagram"
 
-const GOLD = "#d7ae5b"
-const IVORY = "#f7f2e8"
+const GOLD_DARK = "#d7ae5b"
+const GOLD_LIGHT = "#c99835"
+const PHOTON_DARK = "#f7f2e8"
+const PHOTON_LIGHT = "#fff4d6"
 
 type LightPathProps = {
   points: [number, number, number][]
   offset: number
   speed?: number
   running: boolean
+  goldColor: string
+  photonColor: string
 }
 
-function LightPath({ points, offset, speed = 0.13, running }: LightPathProps) {
+function LightPath({
+  points,
+  offset,
+  speed = 0.13,
+  running,
+  goldColor,
+  photonColor,
+}: LightPathProps) {
   const curve = useMemo(
     () => new THREE.CatmullRomCurve3(points.map(([x, y, z]) => new THREE.Vector3(x, y, z))),
     [points]
   )
   const geometry = useMemo(() => new THREE.TubeGeometry(curve, 64, 0.048, 8, false), [curve])
   const photon = useRef<THREE.Mesh>(null)
+
+  useEffect(() => {
+    return () => {
+      geometry.dispose()
+    }
+  }, [geometry])
 
   useFrame((state) => {
     if (!photon.current) return
@@ -33,28 +51,34 @@ function LightPath({ points, offset, speed = 0.13, running }: LightPathProps) {
     <group>
       <mesh geometry={geometry}>
         <meshStandardMaterial
-          color={GOLD}
-          emissive={GOLD}
-          emissiveIntensity={0.22}
-          metalness={0.35}
-          roughness={0.36}
+          color={goldColor}
+          emissive={goldColor}
+          emissiveIntensity={0.24}
+          metalness={0.38}
+          roughness={0.34}
         />
       </mesh>
       <mesh ref={photon}>
         <sphereGeometry args={[0.11, 12, 12]} />
-        <meshBasicMaterial color={IVORY} />
+        <meshBasicMaterial color={photonColor} />
       </mesh>
     </group>
   )
 }
 
-function GratingCoupler({ position }: { position: [number, number, number] }) {
+function GratingCoupler({
+  position,
+  color,
+}: {
+  position: [number, number, number]
+  color: string
+}) {
   return (
     <group position={position}>
       {Array.from({ length: 7 }, (_, index) => (
         <mesh key={index} position={[(index - 3) * 0.09, 0, 0]}>
           <boxGeometry args={[0.028, 0.06, 0.54]} />
-          <meshStandardMaterial color="#e6cf98" metalness={0.65} roughness={0.32} />
+          <meshStandardMaterial color={color} metalness={0.65} roughness={0.32} />
         </mesh>
       ))}
     </group>
@@ -64,70 +88,81 @@ function GratingCoupler({ position }: { position: [number, number, number] }) {
 function RingResonator({
   position,
   mirrored = false,
+  goldColor,
 }: {
   position: [number, number, number]
   mirrored?: boolean
+  goldColor: string
 }) {
   return (
     <group position={position} rotation={[Math.PI / 2, 0, mirrored ? Math.PI : 0]}>
       <mesh>
         <torusGeometry args={[0.54, 0.055, 14, 56]} />
         <meshStandardMaterial
-          color="#c99d43"
+          color={goldColor}
           emissive="#8a6928"
           emissiveIntensity={0.2}
-          metalness={0.35}
-          roughness={0.38}
+          metalness={0.38}
+          roughness={0.36}
         />
       </mesh>
       <mesh rotation={[0, 0, Math.PI / 2]} position={[0.68, 0, 0]}>
         <boxGeometry args={[0.58, 0.055, 0.055]} />
-        <meshStandardMaterial color={GOLD} metalness={0.38} roughness={0.36} />
+        <meshStandardMaterial color={goldColor} metalness={0.38} roughness={0.36} />
       </mesh>
     </group>
   )
 }
 
-function PhotonicChip({ running }: { running: boolean }) {
+function PhotonicChip({ running, isLight }: { running: boolean; isLight: boolean }) {
+  const goldColor = isLight ? GOLD_LIGHT : GOLD_DARK
+  const photonColor = isLight ? PHOTON_LIGHT : PHOTON_DARK
+  const substrateColor = isLight ? "#1e272c" : "#141b1f"
+  const claddingColor = isLight ? "#2a353b" : "#222a2f"
+  const corePlaneColor = isLight ? "#344148" : "#2b3439"
+  const couplerColor = isLight ? "#dfc07c" : "#e6cf98"
+
   return (
     <group scale={[0.96, 0.96, 0.96]}>
       {/* Silicon Substrate */}
       <mesh position={[0, -0.18, 0]}>
         <boxGeometry args={[7.6, 0.44, 4.6]} />
-        <meshStandardMaterial color="#141b1f" metalness={0.7} roughness={0.28} />
+        <meshStandardMaterial color={substrateColor} metalness={0.68} roughness={0.28} />
       </mesh>
 
       {/* Cladding Oxide Interlayer */}
       <mesh position={[0, 0.07, 0]}>
         <boxGeometry args={[7.25, 0.12, 4.25]} />
-        <meshStandardMaterial color="#222a2f" metalness={0.48} roughness={0.38} />
+        <meshStandardMaterial color={claddingColor} metalness={0.48} roughness={0.36} />
       </mesh>
 
       {/* Active Waveguide Core Plane */}
       <mesh position={[0, 0.14, 0]}>
         <boxGeometry args={[6.95, 0.04, 3.95]} />
-        <meshStandardMaterial color="#2b3439" metalness={0.44} roughness={0.4} />
+        <meshStandardMaterial color={corePlaneColor} metalness={0.44} roughness={0.38} />
       </mesh>
 
       {/* Gold Perimeter Ground Bars */}
       <mesh position={[0, 0.165, -1.9]}>
         <boxGeometry args={[6.8, 0.015, 0.06]} />
-        <meshStandardMaterial color={GOLD} metalness={0.65} roughness={0.3} />
+        <meshStandardMaterial color={goldColor} metalness={0.65} roughness={0.3} />
       </mesh>
       <mesh position={[0, 0.165, 1.9]}>
         <boxGeometry args={[6.8, 0.015, 0.06]} />
-        <meshStandardMaterial color={GOLD} metalness={0.65} roughness={0.3} />
+        <meshStandardMaterial color={goldColor} metalness={0.65} roughness={0.3} />
       </mesh>
 
       {/* Grating Couplers */}
-      <GratingCoupler position={[-2.85, 0.22, -1.1]} />
-      <GratingCoupler position={[2.85, 0.22, 1.1]} />
-      <GratingCoupler position={[-2.85, 0.22, 1.1]} />
+      <GratingCoupler position={[-2.85, 0.22, -1.1]} color={couplerColor} />
+      <GratingCoupler position={[2.85, 0.22, 1.1]} color={couplerColor} />
+      <GratingCoupler position={[-2.85, 0.22, 1.1]} color={couplerColor} />
 
       {/* Optical Waveguides with Gliding Photons */}
       <LightPath
         running={running}
         offset={0.02}
+        goldColor={goldColor}
+        photonColor={photonColor}
         points={[
           [-2.85, 0.23, -1.1],
           [-1.5, 0.23, -1.1],
@@ -141,6 +176,8 @@ function PhotonicChip({ running }: { running: boolean }) {
         running={running}
         offset={0.42}
         speed={0.105}
+        goldColor={goldColor}
+        photonColor={photonColor}
         points={[
           [-2.85, 0.23, 1.1],
           [-1.55, 0.23, 1.1],
@@ -154,6 +191,8 @@ function PhotonicChip({ running }: { running: boolean }) {
         running={running}
         offset={0.72}
         speed={0.095}
+        goldColor={goldColor}
+        photonColor={photonColor}
         points={[
           [-1.7, 0.23, -0.35],
           [-1.25, 0.23, -0.35],
@@ -164,8 +203,8 @@ function PhotonicChip({ running }: { running: boolean }) {
       />
 
       {/* Microring Resonators */}
-      <RingResonator position={[0.25, 0.27, -0.38]} />
-      <RingResonator position={[1.62, 0.27, -0.17]} mirrored />
+      <RingResonator position={[0.25, 0.27, -0.38]} goldColor={goldColor} />
+      <RingResonator position={[1.62, 0.27, -0.17]} mirrored goldColor={goldColor} />
 
       {/* Surface Bond Pads */}
       {[-2.5, -1.95, -1.4, 1.4, 1.95, 2.5].map((x) => (
@@ -236,6 +275,8 @@ function HoverController({
 export function PhotonicsChipScene() {
   const [interactive, setInteractive] = useState(false)
   const [running, setRunning] = useState(true)
+  const { resolvedTheme } = useTheme()
+  const isLight = resolvedTheme === "light"
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -284,14 +325,16 @@ export function PhotonicsChipScene() {
             })
           }}
         >
-          <ambientLight intensity={0.78} />
-          <hemisphereLight args={["#f5ead0", "#090b0c", 0.75]} />
-          <directionalLight position={[4, 7, 5]} intensity={1.65} color="#f5e4c3" />
+          <ambientLight intensity={isLight ? 1.15 : 0.78} />
+          <hemisphereLight
+            args={[isLight ? "#ffffff" : "#f5ead0", isLight ? "#cbd3d9" : "#090b0c", isLight ? 1.05 : 0.75]}
+          />
+          <directionalLight position={[4, 7, 5]} intensity={isLight ? 1.85 : 1.65} color="#f5e4c3" />
           <pointLight position={[-4, 3, 4]} intensity={1.4} color="#d4af37" distance={10} />
-          <pointLight position={[3, -2, 3]} intensity={0.6} color="#f4f0e6" distance={8} />
+          <pointLight position={[3, -2, 3]} intensity={isLight ? 0.9 : 0.6} color="#f4f0e6" distance={8} />
 
           <HoverController running={running}>
-            <PhotonicChip running={running} />
+            <PhotonicChip running={running} isLight={isLight} />
           </HoverController>
         </Canvas>
       </div>

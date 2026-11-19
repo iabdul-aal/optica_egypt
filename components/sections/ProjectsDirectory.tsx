@@ -77,7 +77,6 @@ export function ProjectsDirectory({
         </span>
       </div>
 
-      {/* Unified Architectural Ledger (Zero Stacked Small Boxes) */}
       <div className="border-y border-[var(--line)] divide-y divide-[var(--line-subtle)]">
         {filtered.map((project, index) => (
           <article
@@ -118,7 +117,7 @@ export function ProjectsDirectory({
               href={`/projects/${project.slug}`}
               className="text-link inline-flex min-h-[48px] items-center gap-1 justify-self-start md:justify-self-end"
             >
-              <span>Inspect Spec</span>
+              <span>View Brief</span>
               <ArrowUpRight size={14} aria-hidden="true" />
             </Link>
           </article>

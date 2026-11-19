@@ -61,7 +61,7 @@ function buildEventIcs(input: CalendarEventInput): string {
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    `UID:${input.id}@optica-egypt.org`,
+    `UID:${input.id}@optica-egypt.com`,
     `DTSTAMP:${nowStamp}`,
     `DTSTART:${start}`,
     `DTEND:${end}`,

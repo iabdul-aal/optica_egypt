@@ -16,65 +16,73 @@ export function ScrollReveal({
   delay = 0,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement | null>(null)
-  const [visible, setVisible] = useState(false)
+  // Render visible by default during SSR and initial paint so crawlers,
+  // full-page views, print layouts, and hash jumps never see blank gaps.
+  const [stage, setStage] = useState<"visible" | "staged">("visible")
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    if (prefersReduced) {
-      setVisible(true)
-      return
-    }
+    if (prefersReduced) return
 
     const element = ref.current
     if (!element) return
 
     const rect = element.getBoundingClientRect()
-    if (rect.top < window.innerHeight + 80 && rect.bottom > -80) {
-      setVisible(true)
-      return
-    }
+    // Only stage elements that begin well below the initial viewport fold.
+    if (rect.top <= window.innerHeight + 40) return
 
+    setStage("staged")
+
+    const reveal = () => setStage("visible")
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true)
+          reveal()
           observer.disconnect()
         }
       },
-      { threshold: 0, rootMargin: "80px 0px 80px 0px" }
+      { threshold: 0, rootMargin: "140px 0px 140px 0px" }
     )
 
     observer.observe(element)
-    return () => observer.disconnect()
+    // Failsafe reveal so long-page captures or programmatic jumps never stay hidden.
+    const safetyTimer = window.setTimeout(reveal, 450)
+
+    return () => {
+      observer.disconnect()
+      window.clearTimeout(safetyTimer)
+    }
   }, [])
+
+  const isVisible = stage === "visible"
 
   const motionClass =
     animation === "fade-in"
-      ? visible
+      ? isVisible
         ? "opacity-100"
         : "opacity-0"
       : animation === "slide-left"
-        ? visible
+        ? isVisible
           ? "opacity-100 translate-x-0"
-          : "opacity-0 -translate-x-5"
+          : "opacity-0 -translate-x-4"
         : animation === "slide-right"
-          ? visible
+          ? isVisible
             ? "opacity-100 translate-x-0"
-            : "opacity-0 translate-x-5"
-          : visible
+            : "opacity-0 translate-x-4"
+          : isVisible
             ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-5"
+            : "opacity-0 translate-y-4"
 
   return (
     <div
       ref={ref}
       style={{
         transitionProperty: "opacity, transform",
-        transitionDuration: "460ms",
+        transitionDuration: "420ms",
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
         transitionDelay: `${delay}ms`,
       }}
-      className={`${motionClass} ${className}`}
+      className={`${motionClass} ${className}`.trim()}
     >
       {children}
     </div>

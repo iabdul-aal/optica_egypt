@@ -101,7 +101,7 @@ test("homepage photonic hero, theme toggle, and announcement link work", async (
 
   const newsLink = page.locator("article h3 a", { hasText: "Optica Egypt Local Section Officially Approved" })
   await expect(newsLink).toBeVisible()
-  await expect(newsLink).toHaveAttribute("href", "/about")
+  await expect(newsLink).toHaveAttribute("href", "/updates/optica-egypt-charter-approval")
 
   expect(pageErrors).toEqual([])
   expect(consoleErrors).toEqual([])
@@ -113,7 +113,7 @@ test("/about and /governance keep clean non-redundant scopes and verified record
 
   await expect(page.getByText("10 September 2026").first()).toBeVisible()
   await expect(page.getByText("optica-egypt.com").first()).toBeVisible()
-  await expect(page.getByRole("link", { name: /Inspect governance/i })).toBeVisible()
+  await expect(page.getByRole("link", { name: /Review governance/i })).toBeVisible()
   await expect(page.getByRole("link", { name: /View leadership roster/i })).toBeVisible()
   await expect(page.getByRole("heading", { name: "Optica Local Section Governance Standards" })).toHaveCount(0)
 

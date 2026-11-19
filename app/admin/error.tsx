@@ -8,7 +8,7 @@ export default function AdminError({ reset }: { reset: () => void }) {
             The workspace is temporarily unavailable.
           </h1>
           <p className="mt-4 text-[var(--ink-soft)]">
-            We could not load recruitment data. Please try again.
+            Unable to load operations data. Please try again.
           </p>
           <button onClick={reset} className="btn-primary mt-6 min-h-12">
             Try again

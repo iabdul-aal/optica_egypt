@@ -6,6 +6,7 @@ export function formatDateISO(
     day: "numeric",
     month: "long",
     year: "numeric",
+    timeZone: "UTC",
     ...options,
-  }).format(new Date(`${dateISO}T12:00:00`))
+  }).format(new Date(`${dateISO}T12:00:00Z`))
 }

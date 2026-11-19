@@ -98,7 +98,6 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
         </Link>
 
         <div className="grid gap-12 lg:grid-cols-[.76fr_1.24fr] lg:items-start">
-          {/* Left Sticky Editorial Portrait Column (Monochrome at Rest -> Color on Hover) */}
           <aside className="group lg:sticky lg:top-28 border-t border-[var(--line)] pt-6 flex flex-col items-center text-center sm:items-start sm:text-left">
             <div className="relative aspect-[2/3] w-full max-w-[320px] overflow-hidden bg-[var(--surface)]">
               {member.photo ? (
@@ -185,7 +184,6 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
             </div>
           </aside>
 
-          {/* Right Flowing Editorial Dossier */}
           <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
             <div className="py-7 first:pt-0">
               <p className="eyebrow">Biography</p>

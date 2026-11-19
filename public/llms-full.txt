@@ -14,7 +14,7 @@ The Optica Egypt Local Section is a chartered volunteer section of Optica in the
 
 ## 2. Core Priorities
 1. Open-Source Photonic Design Automation (PDA) using gdsfactory, SiEPIC-Tools, KLayout, Femwell, and Meep FDTD.
-2. Reactivation of the chartered Optica Student Chapter at The American University in Cairo (AUC) and charter guidance across Egyptian universities.
+2. Reactivation of the chartered Optica Student Chapter at The American University in Cairo (AUC), charter formation at Zewail City of Science and Technology, and charter guidance across Egyptian universities.
 3. Connecting Egyptian researchers and graduation teams to ITIDA, ASRT, STDF, Optica Foundation fellowships, and Senior Member or Fellow nominations.
 
 ## 3. Governance Compliance
@@ -48,7 +48,8 @@ The Optica Egypt Local Section is a chartered volunteer section of Optica in the
 16. Assoc. Prof. Salem Hegazy, Senior Faculty Advisor (`Founding Senior Faculty Advisor`, Email: shegazy@zewailcity.edu.eg) | Cairo University / Zewail City
 
 ## 5. Student Chapters Status
-- The American University in Cairo (AUC) Optica Student Chapter (chartered 2024, Faculty Advisor: Prof. Yehea Ismail): sole chartered student chapter in Egypt, currently undergoing section-supported reactivation.
+- The American University in Cairo (AUC) Optica Student Chapter (chartered 2024, Faculty Advisor: Prof. Yehea Ismail): sole formally chartered Optica student chapter in Egypt, currently undergoing section-supported reactivation (`/chapters/auc`).
+- Zewail City Optica Student Chapter (Zewail City of Science and Technology, 6th of October City, Giza): second student chapter initiative in Egypt, currently undergoing student organizer onboarding and founding charter preparation (`/chapters/zewail-city`).
 
 ## 6. Canonical Architecture
 - Public Hubs and Subpages: `/`, `/about`, `/governance`, `/leadership`, `/partners`, `/chapters`, `/fellowships`, `/outreach`, `/volunteer`, `/projects`, `/events`, `/open-source`, `/resources`, `/updates`, `/news`, `/blogs`, `/press`, `/gallery`, `/join`

@@ -44,7 +44,6 @@ export default function HomePage() {
         <DispatchesSection dispatches={dispatches} />
       </ScrollReveal>
 
-      {/* Highlighted Initiatives Summary Index (Full descriptions on /projects) */}
       <section className="section-space bg-[var(--canvas)]">
         <div className="container-page">
           <div className="section-split-heading">
@@ -75,7 +74,7 @@ export default function HomePage() {
                   <h3 className="mt-1 text-lg font-semibold text-[var(--ink)]">{project.title}</h3>
                 </div>
                 <span className="text-link inline-flex items-center gap-1 shrink-0">
-                  <span>Inspect spec</span>
+                  <span>View brief</span>
                   <ArrowUpRight size={13} aria-hidden="true" />
                 </span>
               </Link>

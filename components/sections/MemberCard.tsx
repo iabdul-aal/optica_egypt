@@ -20,7 +20,7 @@ export function MemberCard({
   const hasPhoto = Boolean(member.photo)
 
   return (
-    <article className="group/card border-t border-[var(--line)] pt-5 transition-transform duration-300 ease-out hover:-translate-y-1 flex flex-col h-full min-w-0 justify-between">
+    <article className="group/card border-t border-[var(--line)] hover:border-[var(--gold)] pt-5 transition-[transform,border-color] duration-300 ease-out hover:-translate-y-1 flex flex-col h-full min-w-0 justify-between">
       <div className="flex flex-col flex-grow min-w-0">
         <div className="relative aspect-[2/3] overflow-hidden bg-[var(--surface)] transition-shadow duration-300 group-hover/card:shadow-[0_12px_32px_rgba(0,0,0,0.45)] shrink-0">
           {hasPhoto ? (
@@ -73,7 +73,7 @@ export function MemberCard({
             <a
               href={`mailto:${member.email}`}
               aria-label={`Email ${member.name}`}
-              className="group/icon inline-flex min-h-[48px] min-w-[44px] items-center justify-center"
+              className="group/icon inline-flex min-h-[48px] min-w-[48px] items-center justify-center"
             >
               <span className="w-8 h-8 inline-flex items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink-soft)] group-hover/icon:text-[var(--gold)] group-hover/icon:border-[var(--gold)] transition-colors">
                 <Mail size={14} aria-hidden="true" />
@@ -86,7 +86,7 @@ export function MemberCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${member.name} website`}
-              className="group/icon inline-flex min-h-[48px] min-w-[44px] items-center justify-center"
+              className="group/icon inline-flex min-h-[48px] min-w-[48px] items-center justify-center"
             >
               <span className="w-8 h-8 inline-flex items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink-soft)] group-hover/icon:text-[var(--gold)] group-hover/icon:border-[var(--gold)] transition-colors">
                 <Globe size={14} aria-hidden="true" />
@@ -99,7 +99,7 @@ export function MemberCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${member.name} on LinkedIn`}
-              className="group/icon inline-flex min-h-[48px] min-w-[44px] items-center justify-center"
+              className="group/icon inline-flex min-h-[48px] min-w-[48px] items-center justify-center"
             >
               <span className="w-8 h-8 inline-flex items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink-soft)] group-hover/icon:text-[var(--gold)] group-hover/icon:border-[var(--gold)] transition-colors">
                 <Linkedin size={14} aria-hidden="true" />

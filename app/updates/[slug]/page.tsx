@@ -6,7 +6,7 @@ import { AddToCalendarButton } from "@/components/sections/AddToCalendarButton"
 import { DISPATCH_KIND_LABELS, getAllDispatches, getDispatchBySlug } from "@/lib/dispatches"
 import { formatDateISO } from "@/lib/formatting"
 import { getMembersByIds } from "@/lib/graph"
-import { getProjectBySlug } from "@/lib/projects"
+import { getProjectById } from "@/lib/projects"
 import { getResourcesByIds } from "@/lib/resources"
 import { buildPageMetadata } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
@@ -42,7 +42,7 @@ export default async function UpdateDetailPage({
   if (!item) notFound()
 
   const authors = getMembersByIds(item.authorIds)
-  const linkedProject = item.projectId ? getProjectBySlug(item.projectId) : undefined
+  const linkedProject = item.projectId ? getProjectById(item.projectId) : undefined
   const linkedResources = getResourcesByIds(item.resourceIds)
   const siteUrl = siteConfig.seo.siteUrl.replace(/\/$/, "")
   const dispatchJsonLd =

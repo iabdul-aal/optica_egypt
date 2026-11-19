@@ -11,7 +11,7 @@ export function LeadershipRosterSection() {
     <div className="space-y-12">
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--line)] pb-6">
         <div>
-          <p className="eyebrow">Founding Roster</p>
+          <p className="eyebrow">Charter Composition</p>
           <h2 className="section-title mt-2">
             {totalMembers} Active Officers and Faculty Advisors
           </h2>
@@ -21,12 +21,12 @@ export function LeadershipRosterSection() {
         </span>
       </div>
 
-      <div className="space-y-12">
+      <div className="space-y-14">
         <div>
           <h3 className="eyebrow mb-6">Executive Committee ({executive.length})</h3>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-stretch">
             {executive.map((m, idx) => (
-              <MemberCard key={m.id} member={m} priority={idx < 2} />
+              <MemberCard key={m.id} member={m} priority={idx < 5} />
             ))}
           </div>
         </div>

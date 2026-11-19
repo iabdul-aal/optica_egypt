@@ -110,4 +110,4 @@ Whenever a new channel is officially created:
 3. Update `public/llms.txt` and `public/llms-full.txt` to list the newly live profile URLs.
 4. Run `npm run check && npm run test:unit && npm run build` before deploying to `https://optica-egypt.com/`.
 
-Footer icons, `/join#social-channels`, `/community#social-channels`, and Schema.org `sameAs` metadata automatically switch from `Preparing` to live clickable badges with zero code changes.
+Footer icons, `/join#social-channels`, and Schema.org `sameAs` metadata automatically switch from `Preparing` to live clickable badges with zero code changes.

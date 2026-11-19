@@ -77,7 +77,6 @@ export default async function ProjectDetailPage({
           <span>Back to projects</span>
         </Link>
 
-        {/* Integrated Project Header Band */}
         <div className="border-b border-[var(--line)] pb-10 space-y-5">
           <div className="flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-wider">
             <span className="font-bold text-[var(--gold)]">{TRACK_LABELS[project.track]}</span>
@@ -105,7 +104,6 @@ export default async function ProjectDetailPage({
           </div>
         </div>
 
-        {/* Integrated Flowing Two-Column Specification Layout */}
         <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-start">
           <div className="divide-y divide-[var(--line)] border-b border-[var(--line)]">
             <section className="pb-8">

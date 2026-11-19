@@ -1,6 +1,10 @@
-import { NextRequest } from "next/server"
+import type { NextRequest } from "next/server"
 
 const DEFAULT_ALLOWED_PUBLIC_ORIGINS = ["https://iabdul-aal.me"]
+
+export const NO_STORE_HEADERS = {
+  "Cache-Control": "private, no-store",
+} as const
 
 function getAllowedPublicOrigins(): Set<string> {
   const configured = (process.env.ALLOWED_PUBLIC_ORIGINS || "")
@@ -10,15 +14,29 @@ function getAllowedPublicOrigins(): Set<string> {
   return new Set([...DEFAULT_ALLOWED_PUBLIC_ORIGINS, ...configured])
 }
 
-export function sameOrigin(request: NextRequest) {
+export function sameOrigin(request: NextRequest): boolean {
   const origin = request.headers.get("origin")
-  return !origin || origin === request.nextUrl.origin
+  if (origin) {
+    return origin === request.nextUrl.origin
+  }
+  const fetchSite = request.headers.get("sec-fetch-site")
+  if (fetchSite && fetchSite !== "same-origin" && fetchSite !== "none") {
+    return false
+  }
+  return true
 }
 
 export function isAllowedPublicOrigin(request: NextRequest): boolean {
   const origin = request.headers.get("origin")
-  if (!origin || origin === request.nextUrl.origin) return true
-  return getAllowedPublicOrigins().has(origin)
+  if (origin) {
+    if (origin === request.nextUrl.origin) return true
+    return getAllowedPublicOrigins().has(origin)
+  }
+  const fetchSite = request.headers.get("sec-fetch-site")
+  if (fetchSite && fetchSite !== "same-origin" && fetchSite !== "none") {
+    return false
+  }
+  return true
 }
 
 export function publicCorsHeaders(request: NextRequest): Record<string, string> {

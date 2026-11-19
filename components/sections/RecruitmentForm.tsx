@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { ArrowUpRight, Check, CheckCircle2, Copy, Loader2 } from "lucide-react"
+import { copyTextSafely } from "@/lib/clipboard"
 import { committees } from "@/lib/recruitment"
 import { formatSubmitError, getApiUrl, readJsonResponse } from "@/lib/utils"
 
@@ -35,9 +36,9 @@ export function RecruitmentForm() {
         body: JSON.stringify({
           ...Object.fromEntries(data),
           consent: data.get("consent") === "on",
-          submissionId: submissionId.current
+          submissionId: submissionId.current,
         }),
-        signal: AbortSignal.timeout(20000)
+        signal: AbortSignal.timeout(20000),
       })
       const result = await readJsonResponse<{ code: string; error?: string }>(
         response,
@@ -48,7 +49,7 @@ export function RecruitmentForm() {
       setError(
         formatSubmitError(err, {
           timeoutMessage: TIMEOUT_MESSAGE,
-          unavailableMessage: UNAVAILABLE_MESSAGE
+          unavailableMessage: UNAVAILABLE_MESSAGE,
         })
       )
     } finally {
@@ -81,11 +82,10 @@ export function RecruitmentForm() {
             type="button"
             className="btn-secondary mt-4 min-h-12"
             onClick={async () => {
-              try {
-                await navigator.clipboard.writeText(code)
+              const ok = await copyTextSafely(code)
+              if (ok) {
                 setCopied(true)
-              } catch {
-                setCopied(false)
+                setTimeout(() => setCopied(false), 2000)
               }
             }}
           >
@@ -93,18 +93,30 @@ export function RecruitmentForm() {
             {copied ? "Copied" : "Copy reference"}
           </button>
         </div>
-        <p className="text-sm text-[var(--ink-faint)]">
-          Status: Submitted · Next: Committee review
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p className="text-sm text-[var(--ink-faint)]">
+            Status: Submitted · Next: Committee review
+          </p>
+          <button
+            type="button"
+            className="text-link min-h-[48px] inline-flex items-center"
+            onClick={() => {
+              submissionId.current = null
+              setCode("")
+            }}
+          >
+            Submit another application
+          </button>
+        </div>
       </div>
     )
 
   return (
     <form onSubmit={submit} className="border-y border-[var(--line)] py-8 space-y-8">
       <div>
-        <p className="eyebrow">Membership application</p>
+        <p className="eyebrow">Committee Intake</p>
         <h2 className="mt-2 text-2xl font-semibold text-[var(--ink)]">
-          Tell us about yourself.
+          Apply to a Working Committee
         </h2>
         <p className="mt-2 text-sm text-[var(--ink-soft)]">
           All fields are required unless marked optional.
@@ -123,7 +135,7 @@ export function RecruitmentForm() {
         className="space-y-5 disabled:opacity-70"
       >
         <legend className="mb-5 font-mono text-xs uppercase tracking-widest text-[var(--gold)]">
-          01 / Your details
+          01 / Applicant Details
         </legend>
         <div className="grid gap-5 sm:grid-cols-2">
           <label className="grid gap-2 text-sm">
@@ -184,7 +196,7 @@ export function RecruitmentForm() {
         className="space-y-5 border-t border-[var(--line)] pt-7 disabled:opacity-70"
       >
         <legend className="mb-2 pr-3 font-mono text-xs uppercase tracking-widest text-[var(--gold)]">
-          02 / Your contribution
+          02 / Committee Contribution
         </legend>
         <label className="grid gap-2 text-sm">
           Preferred committee
@@ -204,7 +216,7 @@ export function RecruitmentForm() {
             rows={3}
             maxLength={2000}
             className={field}
-            placeholder="Technical, creative, organizational, or anything you would like to learn."
+            placeholder="Technical, computational, editorial, or organizational background."
           />
         </label>
         <label className="grid gap-2 text-sm">
@@ -216,7 +228,7 @@ export function RecruitmentForm() {
             maxLength={3000}
             rows={4}
             className={field}
-            placeholder="Tell us what interests you and how you hope to contribute. At least 30 characters."
+            placeholder="Describe your technical or organizational interests and intended contribution (at least 30 characters)."
           />
         </label>
         <label className="grid gap-2 text-sm">
@@ -245,24 +257,29 @@ export function RecruitmentForm() {
           disabled={!ready || busy}
           className="mt-1 h-5 w-5 shrink-0 accent-[var(--gold)]"
         />
-        I agree that the Optica Egypt recruitment team may store and review
-        these details and contact me about chapter membership. My application is
-        visible only to authorized staff.
+        I agree that the Optica Egypt coordination desk may store and review
+        these details and contact me regarding committee participation. My application is
+        visible only to authorized section officers.
       </label>
       <button
         type="submit"
         disabled={!ready || busy}
-        className="btn-primary min-h-12 w-full disabled:opacity-60"
+        className="btn-primary min-h-12 w-full sm:w-auto disabled:opacity-60"
       >
         {busy ? (
-          <Loader2 size={16} className="animate-spin" />
+          <>
+            <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+            <span>Saving application…</span>
+          </>
         ) : (
-          <ArrowUpRight size={16} />
-        )}{" "}
-        {busy ? "Saving application…" : "Submit application"}
+          <>
+            <span>Submit application</span>
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </>
+        )}
       </button>
-      <p className="text-center text-xs leading-5 text-[var(--ink-faint)]">
-        You will receive a reference after your application has been saved.
+      <p className="text-xs leading-5 text-[var(--ink-faint)]">
+        A persistent reference code is issued once your application is recorded.
       </p>
     </form>
   )

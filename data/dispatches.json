@@ -11,7 +11,6 @@
     "authorIds": ["abdulaziz-albadawi", "islam-abduaal"],
     "projectId": "open-photonics-pda",
     "domainIds": ["photonic-ic", "mems-sensing"],
-    "resourceIds": ["gdsfactory-colab-notebooks", "itida-itac-grants"],
-    "externalUrl": "/about"
+    "resourceIds": ["gdsfactory-colab-notebooks", "itida-itac-grants"]
   }
 ]

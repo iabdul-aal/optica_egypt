@@ -5,12 +5,21 @@ import type { StaffRole } from "@/lib/recruitment"
 export function Workspace({
   role,
   email,
-  children
+  activeSection = "applications",
+  children,
 }: {
   role: StaffRole
   email?: string
+  activeSection?: "applications" | "submissions" | "staff"
   children: React.ReactNode
 }) {
+  const navItemClass = (section: "applications" | "submissions" | "staff") =>
+    `flex min-h-12 items-center gap-3 rounded-sm border px-4 text-sm transition-colors ${
+      activeSection === section
+        ? "border-[var(--gold)] bg-[var(--surface)] text-[var(--gold)] font-semibold"
+        : "border-transparent text-[var(--ink-soft)] hover:border-[var(--line)] hover:text-[var(--ink)]"
+    }`
+
   return (
     <section className="min-h-screen border-t border-[var(--line)] bg-[var(--canvas)]">
       <div className="container-layout grid gap-8 py-8 lg:grid-cols-[220px_1fr] lg:gap-12">
@@ -22,24 +31,26 @@ export function Workspace({
             <div>
               <p className="font-semibold">Optica Egypt</p>
               <p className="font-mono text-xs text-[var(--ink-faint)]">
-                RECRUITMENT
+                OPERATIONS
               </p>
             </div>
           </div>
           <nav
             aria-label="Recruitment workspace"
-            className="flex gap-2 lg:flex-col"
+            className="flex flex-wrap gap-2 lg:flex-col"
           >
             <Link
               href="/admin"
-              className="flex min-h-12 items-center gap-3 rounded-sm border border-[var(--line)] bg-[var(--surface)] px-4 text-sm"
+              aria-current={activeSection === "applications" ? "page" : undefined}
+              className={navItemClass("applications")}
             >
               <LayoutDashboard size={17} />
               Applications
             </Link>
             <Link
               href="/admin?queue=submissions"
-              className="flex min-h-12 items-center gap-3 px-4 text-sm"
+              aria-current={activeSection === "submissions" ? "page" : undefined}
+              className={navItemClass("submissions")}
             >
               <Users size={17} />
               Desk inquiries
@@ -47,7 +58,8 @@ export function Workspace({
             {role === "admin" && (
               <Link
                 href="/admin/staff"
-                className="flex min-h-12 items-center gap-3 px-4 text-sm"
+                aria-current={activeSection === "staff" ? "page" : undefined}
+                className={navItemClass("staff")}
               >
                 <Users size={17} />
                 Team access
@@ -66,15 +78,18 @@ export function Workspace({
           <div className="flex flex-wrap items-center gap-4 lg:flex-col lg:items-start">
             <Link
               href="/join"
-              className="inline-flex min-h-12 items-center gap-2 text-sm text-[var(--ink-soft)]"
+              className="inline-flex min-h-12 items-center gap-2 text-sm text-[var(--ink-soft)] hover:text-[var(--gold)]"
             >
               View join hub <ArrowUpRight size={14} />
             </Link>
-            <Link href="/admin/change-password" className="inline-flex min-h-12 items-center text-sm text-[var(--ink-soft)]">
+            <Link
+              href="/admin/change-password"
+              className="inline-flex min-h-12 items-center text-sm text-[var(--ink-soft)] hover:text-[var(--gold)]"
+            >
               Change password
             </Link>
             <form action="/auth/logout" method="post">
-              <button className="min-h-12 text-sm text-[var(--ink-faint)]">
+              <button className="min-h-12 text-sm text-[var(--ink-faint)] hover:text-[var(--ink)] cursor-pointer">
                 Sign out
               </button>
             </form>
