@@ -216,9 +216,16 @@ test("homepage hero color 3D stage, research topic-specific 3D shapes, dropdowns
   await page.locator(".nav-dropdown a[href='/governance']").click()
   await page.waitForURL("**/governance")
 
-  // Chapters map Focus AUC, Zewail City selector, and Reset controls work cleanly
+  // Chapters map 1.2x base zoom, Focus AUC, Zewail City selector, expandable directory, and single Request Support CTA
   await page.goto("/chapters", { waitUntil: "domcontentloaded" })
   await expect(page.getByText("100%")).toBeVisible()
+  const mapSvg = page.locator("svg[role='img'][aria-label*='Geographic Map of Egypt']")
+  const vb = await mapSvg.getAttribute("viewBox")
+  const vbParts = (vb || "").split(/\s+/).map(Number)
+  expect(vbParts[2]).toBeCloseTo(2120 / 1.2, 1)
+  expect(vbParts[3]).toBeCloseTo(2040 / 1.2, 1)
+  await expect(page.getByRole("link", { name: /Request Support/i })).toHaveCount(1)
+
   await page.getByRole("button", { name: /Focus on AUC/i }).click()
   await expect(page.getByText("220%")).toBeVisible()
   await expect(page.getByText(/30°01' N/)).toBeVisible()
@@ -227,6 +234,13 @@ test("homepage hero color 3D stage, research topic-specific 3D shapes, dropdowns
 
   await page.getByRole("tab", { name: /Zewail City/i }).click()
   await expect(page.getByRole("heading", { name: "Zewail City Optica Student Chapter" }).first()).toBeVisible()
+
+  await page.getByRole("button", { name: "In Formation (1)" }).click()
+  await page.locator("button[aria-controls='chapter-panel-zewail-city']").click()
+  await expect(page.locator("#chapter-panel-zewail-city")).toBeVisible()
+  await page.getByRole("button", { name: "All (2)" }).click()
+  await expect(page.locator("button[aria-controls='chapter-panel-auc']")).toBeVisible()
+
   await page.goto("/chapters/zewail-city", { waitUntil: "domcontentloaded" })
   await expect(page.getByRole("heading", { name: "Zewail City Optica Student Chapter" })).toBeVisible()
 

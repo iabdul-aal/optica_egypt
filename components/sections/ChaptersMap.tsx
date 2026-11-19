@@ -22,23 +22,23 @@ const ORIGIN_X = -60
 const ORIGIN_Y = -90
 const FRAME_W = 2120
 const FRAME_H = 2040
+const BASE_ZOOM_SCALE = 1.2
 
-const CHAPTER_MARKERS: Record<
-  string,
-  {
-    x: number
-    y: number
-    coordsLabel: string
-    tagTitle: string
-    tagSubtitle: string
-    focusCenterOffset: { x: number; y: number }
-    leaderPoints: string
-    textX: number
-    titleY: number
-    subY: number
-    textAnchor: "start" | "end"
-  }
-> = {
+interface ChapterMarkerSpec {
+  x: number
+  y: number
+  coordsLabel: string
+  tagTitle: string
+  tagSubtitle: string
+  focusCenterOffset: { x: number; y: number }
+  leaderPoints: string
+  textX: number
+  titleY: number
+  subY: number
+  textAnchor: "start" | "end"
+}
+
+const CHAPTER_MARKERS: Record<string, ChapterMarkerSpec> = {
   auc: {
     x: 1135,
     y: 485,
@@ -67,6 +67,30 @@ const CHAPTER_MARKERS: Record<
   },
 }
 
+function resolveChapterMarker(chapter: Chapter, index: number): ChapterMarkerSpec {
+  const preset = CHAPTER_MARKERS[chapter.id]
+  if (preset) return preset
+  const x = Math.round((chapter.coordinates.x / 100) * 1800 + 100)
+  const y = Math.round((chapter.coordinates.y / 100) * 1650 + 140)
+  const isRight = index % 2 === 0
+  const dx = isRight ? 90 : -90
+  const dy = isRight ? -65 : 65
+  const endX = isRight ? x + 420 : x - 420
+  return {
+    x,
+    y,
+    coordsLabel: `${chapter.city} · ${chapter.governorate || "Egypt"}`,
+    tagTitle: chapter.shortName.replace(/ Student Chapter$/i, "").toUpperCase(),
+    tagSubtitle: chapter.charteredYear ? "CHARTERED" : "IN FORMATION",
+    focusCenterOffset: { x: isRight ? 95 : -95, y: 20 },
+    leaderPoints: `${x},${y} ${x + dx},${y + dy} ${endX},${y + dy}`,
+    textX: isRight ? x + dx + 12 : x + dx - 12,
+    titleY: y + dy - 18,
+    subY: y + dy + 34,
+    textAnchor: isRight ? "start" : "end",
+  }
+}
+
 const REFERENCE_CITIES = [
   { name: "Alexandria", x: 759, y: 282, align: "end" as const, dx: -18, dy: -14 },
   { name: "Port Said", x: 1215, y: 194, align: "start" as const, dx: 18, dy: -8 },
@@ -90,13 +114,18 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
   const dragOriginRef = useRef({ clientX: 0, clientY: 0, panX: 0, panY: 0 })
   const svgRef = useRef<SVGSVGElement | null>(null)
 
-  const activeMarker = CHAPTER_MARKERS[selectedId] || CHAPTER_MARKERS.auc
-  const viewW = FRAME_W / zoom
-  const viewH = FRAME_H / zoom
+  const markerMap = Object.fromEntries(
+    chapters.map((ch, idx) => [ch.id, resolveChapterMarker(ch, idx)])
+  ) as Record<string, ChapterMarkerSpec>
+
+  const activeMarker = markerMap[selectedId] || CHAPTER_MARKERS.auc
+  const effectiveZoom = zoom * BASE_ZOOM_SCALE
+  const viewW = FRAME_W / effectiveZoom
+  const viewH = FRAME_H / effectiveZoom
 
   const baseCenterX = ORIGIN_X + FRAME_W / 2
-  const baseCenterY = ORIGIN_Y + FRAME_H / 2
-  const focusMarker = focusedChapterId ? CHAPTER_MARKERS[focusedChapterId] : null
+  const baseCenterY = ORIGIN_Y + FRAME_H / 2 - 40
+  const focusMarker = focusedChapterId ? markerMap[focusedChapterId] : null
   const targetCenterX = focusMarker
     ? focusMarker.x + focusMarker.focusCenterOffset.x
     : baseCenterX
@@ -191,7 +220,12 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
     }
   }
 
-  const focusShortLabel = selectedId === "zewail-city" ? "Focus Zewail" : "Focus AUC"
+  const focusShortLabel =
+    selectedId === "zewail-city"
+      ? "Focus Zewail"
+      : selectedId === "auc"
+        ? "Focus AUC"
+        : `Focus ${selectedChapter?.shortName.replace(/ Student Chapter$/i, "") || "Chapter"}`
 
   return (
     <div className="border-y border-[var(--line)] grid lg:grid-cols-[1.32fr_0.68fr] divide-y lg:divide-y-0 lg:divide-x divide-[var(--line)]">
@@ -204,7 +238,7 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
             </p>
             <p className="mt-1 font-mono text-xs text-[var(--ink-faint)]">
               {focusedChapterId
-                ? (CHAPTER_MARKERS[focusedChapterId] || activeMarker).coordsLabel
+                ? (markerMap[focusedChapterId] || activeMarker).coordsLabel
                 : "22° to 32° N · 25° to 36° E · National Overview"}
             </p>
           </div>
@@ -414,9 +448,9 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
               </g>
             ))}
 
-            {/* Chapter Nodes: Chartered AUC + In-Formation Zewail City */}
+            {/* Chapter Nodes */}
             {chapters.map((chapter) => {
-              const marker = CHAPTER_MARKERS[chapter.id]
+              const marker = markerMap[chapter.id]
               if (!marker) return null
               const isSelected = selectedId === chapter.id
               const isChartered = Boolean(chapter.charteredYear)
@@ -525,12 +559,22 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
           {/* Chapter Selector Tabs */}
           {chapters.length > 1 && (
             <div
-              className="flex border-b border-[var(--line)] mb-6"
+              className={`border-b border-[var(--line)] mb-6 ${
+                chapters.length > 3
+                  ? "flex flex-wrap gap-x-4 max-h-[168px] overflow-y-auto"
+                  : "flex"
+              }`}
               role="tablist"
               aria-label="Select student chapter on map"
             >
               {chapters.map((chapter) => {
                 const active = chapter.id === selectedId
+                const tabLabel =
+                  chapter.id === "zewail-city"
+                    ? "Zewail City"
+                    : chapter.id === "auc"
+                      ? "AUC New Cairo"
+                      : chapter.shortName.replace(/ Student Chapter$/i, "")
                 return (
                   <button
                     key={chapter.id}
@@ -538,13 +582,15 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setSelectedId(chapter.id)}
-                    className={`min-h-[48px] flex-1 px-2 text-left font-mono text-xs uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer ${
+                    className={`min-h-[48px] ${
+                      chapters.length > 3 ? "shrink-0" : "flex-1"
+                    } px-2 text-left font-mono text-xs uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer ${
                       active
                         ? "border-[var(--gold)] text-[var(--ink)] font-bold"
                         : "border-transparent text-[var(--ink-faint)] hover:text-[var(--ink)]"
                     }`}
                   >
-                    {chapter.id === "zewail-city" ? "Zewail City" : "AUC New Cairo"}
+                    {tabLabel}
                   </button>
                 )
               })}
@@ -600,7 +646,7 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
           </dl>
         </div>
 
-        <div className="mt-8 space-y-4">
+        <div className="mt-8">
           <Link
             href={`/chapters/${selectedChapter?.id || "auc"}`}
             className="btn-primary w-full justify-center min-h-[48px]"
@@ -608,23 +654,12 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
             <span>
               {selectedChapter?.id === "zewail-city"
                 ? "View Zewail City Profile"
-                : "View AUC Chapter Profile"}
+                : selectedChapter?.id === "auc"
+                  ? "View AUC Chapter Profile"
+                  : `View ${selectedChapter?.shortName || "Chapter"} Profile`}
             </span>
             <ArrowUpRight size={14} aria-hidden="true" />
           </Link>
-
-          <div className="border-t border-[var(--line-subtle)] pt-4 flex items-center justify-between gap-3">
-            <p className="text-xs text-[var(--ink-soft)]">
-              Starting a branch at another campus?
-            </p>
-            <Link
-              href="/join?type=chapter"
-              className="text-link inline-flex min-h-[48px] shrink-0 items-center gap-1"
-            >
-              <span>Request support</span>
-              <ArrowUpRight size={12} aria-hidden="true" />
-            </Link>
-          </div>
         </div>
       </aside>
     </div>

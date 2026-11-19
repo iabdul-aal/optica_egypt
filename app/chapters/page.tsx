@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { ChaptersDirectory } from "@/components/sections/ChaptersDirectory"
 import { ChaptersMap } from "@/components/sections/ChaptersMap"
 import { PageHeader } from "@/components/sections/PageHeader"
 import { getAllChapters, getCharterRoadmap } from "@/lib/chapters"
@@ -30,40 +31,7 @@ export default function ChaptersPage() {
           <ChaptersMap chapters={allChapters} />
 
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            <div className="space-y-5">
-              <div className="border-b border-[var(--line)] pb-4">
-                <p className="eyebrow">Campus Registry</p>
-                <h2 className="mt-1 text-xl font-semibold text-[var(--ink)]">
-                  Active and Prospective Branches ({allChapters.length})
-                </h2>
-              </div>
-
-              <div className="divide-y divide-[var(--line-subtle)] border-b border-[var(--line)]">
-                {allChapters.map((ch) => (
-                  <article key={ch.id} className="py-5 flex flex-wrap items-center justify-between gap-4">
-                    <div className="space-y-1">
-                      <span className="block font-mono text-[11px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                        {ch.status}
-                      </span>
-                      <h3 className="text-lg font-semibold text-[var(--ink)]">{ch.name}</h3>
-                      <p className="font-mono text-xs text-[var(--ink-faint)]">
-                        {ch.university} · {ch.city}
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap gap-3 shrink-0">
-                      <Link href={`/chapters/${ch.id}`} className="text-link inline-flex min-h-[48px] items-center gap-1">
-                        <span>
-                          {ch.id === "auc"
-                            ? "View Full AUC Profile"
-                            : `View ${ch.shortName.replace(" Student Chapter", "")} Profile`}
-                        </span>
-                        <ArrowUpRight size={13} aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
+            <ChaptersDirectory chapters={allChapters} />
 
             <div className="space-y-5 lg:border-l lg:border-[var(--line-subtle)] lg:pl-10">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line)] pb-4">
