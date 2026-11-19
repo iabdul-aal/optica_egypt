@@ -216,9 +216,10 @@ test("homepage hero color 3D stage, research topic-specific 3D shapes, dropdowns
   await page.locator(".nav-dropdown a[href='/governance']").click()
   await page.waitForURL("**/governance")
 
-  // Chapters map 1.2x base zoom, Focus AUC, Zewail City selector, expandable directory, and single Request Support CTA
+  // Chapters map 1.2x base zoom, downward location pin click info card, Focus AUC, Zewail City pin, expandable directory, and single Request Support CTA
   await page.goto("/chapters", { waitUntil: "domcontentloaded" })
   await expect(page.getByText("100%")).toBeVisible()
+  await expect(page.locator("#chapter-map-card")).toHaveCount(0)
   const mapSvg = page.locator("svg[role='img'][aria-label*='Geographic Map of Egypt']")
   const vb = await mapSvg.getAttribute("viewBox")
   const vbParts = (vb || "").split(/\s+/).map(Number)
@@ -226,14 +227,25 @@ test("homepage hero color 3D stage, research topic-specific 3D shapes, dropdowns
   expect(vbParts[3]).toBeCloseTo(2040 / 1.2, 1)
   await expect(page.getByRole("link", { name: /Request Support/i })).toHaveCount(1)
 
+  // Click downward location pin directly on SVG to reveal floating chapter info card
+  await page.locator("g[role='button'][aria-label*='AUC']").click()
+  await expect(page.locator("#chapter-map-card")).toBeVisible()
+  await expect(page.locator("#chapter-map-card").getByRole("heading", { name: /The American University in Cairo/i })).toBeVisible()
+  await page.getByRole("button", { name: "Close pin details" }).click()
+  await expect(page.locator("#chapter-map-card")).toHaveCount(0)
+
   await page.getByRole("button", { name: /Focus on AUC/i }).click()
   await expect(page.getByText("220%")).toBeVisible()
-  await expect(page.getByText(/30°01' N/)).toBeVisible()
+  await expect(page.locator("#chapter-map-card")).toBeVisible()
+  await expect(page.getByText(/30°01' N/).first()).toBeVisible()
   await page.getByRole("button", { name: /Reset map/i }).click()
   await expect(page.getByText("100%")).toBeVisible()
+  await expect(page.locator("#chapter-map-card")).toHaveCount(0)
 
+  await page.locator("g[role='button'][aria-label*='Zewail City']").click()
+  await expect(page.locator("#chapter-map-card").getByRole("heading", { name: "Zewail City Optica Student Chapter" })).toBeVisible()
   await page.getByRole("tab", { name: /Zewail City/i }).click()
-  await expect(page.getByRole("heading", { name: "Zewail City Optica Student Chapter" }).first()).toBeVisible()
+  await expect(page.locator("#chapter-map-card").getByRole("heading", { name: "Zewail City Optica Student Chapter" })).toBeVisible()
 
   await page.getByRole("button", { name: "In Formation (1)" }).click()
   await page.locator("button[aria-controls='chapter-panel-zewail-city']").click()

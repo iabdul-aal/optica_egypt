@@ -112,7 +112,7 @@ export function ChaptersDirectory({ chapters }: ChaptersDirectoryProps) {
                         {ch.name}
                       </h3>
                       <p className="font-mono text-xs text-[var(--ink-faint)]">
-                        {ch.university} · {ch.city}
+                        {ch.university}, {ch.city}
                       </p>
                     </div>
                   </div>
@@ -151,7 +151,7 @@ export function ChaptersDirectory({ chapters }: ChaptersDirectoryProps) {
 
                   {ch.focusAreas && ch.focusAreas.length > 0 && (
                     <p className="font-mono text-[11px] text-[var(--gold)]">
-                      {ch.focusAreas.slice(0, 4).join(" · ")}
+                      {ch.focusAreas.slice(0, 4).join(", ")}
                     </p>
                   )}
                 </div>

@@ -2,7 +2,16 @@
 
 import { useCallback, useRef, useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, Crosshair, RotateCcw, ZoomIn, ZoomOut } from "lucide-react"
+import {
+  ArrowUpRight,
+  Crosshair,
+  MapPin,
+  RotateCcw,
+  UserCheck,
+  X,
+  ZoomIn,
+  ZoomOut,
+} from "lucide-react"
 import type { Chapter } from "@/lib/chapters"
 
 const EGYPT_BOUNDARY_PATH =
@@ -18,6 +27,10 @@ const ROSETTA_BRANCH_PATH = "M 1095,520 Q 1040,430 1010,340 T 965,170"
 const DAMIETTA_BRANCH_PATH = "M 1095,520 Q 1130,420 1150,330 T 1176,168"
 const SUEZ_CANAL_PATH = "M 1215,194 L 1240,320 L 1260,390 L 1283,447"
 
+/** Classic Google Maps teardrop pin whose sharp downward apex rests at (0, 0). */
+const LOCATION_PIN_PATH =
+  "M 0 0 C -4.5 -11, -16.25 -28.14, -24.25 -42 A 28 28 0 1 1 24.25 -42 C 16.25 -28.14, 4.5 -11, 0 0 Z"
+
 const ORIGIN_X = -60
 const ORIGIN_Y = -90
 const FRAME_W = 2120
@@ -30,40 +43,28 @@ interface ChapterMarkerSpec {
   coordsLabel: string
   tagTitle: string
   tagSubtitle: string
+  side: 1 | -1
   focusCenterOffset: { x: number; y: number }
-  leaderPoints: string
-  textX: number
-  titleY: number
-  subY: number
-  textAnchor: "start" | "end"
 }
 
 const CHAPTER_MARKERS: Record<string, ChapterMarkerSpec> = {
   auc: {
     x: 1135,
     y: 485,
-    coordsLabel: "30°01' N · 31°30' E · New Cairo Sector",
+    coordsLabel: "30°01' N, 31°30' E - New Cairo Sector",
     tagTitle: "AUC NEW CAIRO",
-    tagSubtitle: "CHARTERED · REACTIVATING",
-    focusCenterOffset: { x: 110, y: 20 },
-    leaderPoints: "1152,472 1228,402 1625,402",
-    textX: 1240,
-    titleY: 382,
-    subY: 438,
-    textAnchor: "start",
+    tagSubtitle: "CHARTERED",
+    side: 1,
+    focusCenterOffset: { x: 95, y: 15 },
   },
   "zewail-city": {
     x: 1035,
     y: 528,
-    coordsLabel: "29°56' N · 31°04' E · 6th of October Sector",
+    coordsLabel: "29°56' N, 31°04' E - 6th of October Sector",
     tagTitle: "ZEWAIL CITY",
-    tagSubtitle: "CHARTERING IN PROGRESS",
-    focusCenterOffset: { x: -110, y: 25 },
-    leaderPoints: "1018,542 938,615 545,615",
-    textX: 926,
-    titleY: 595,
-    subY: 650,
-    textAnchor: "end",
+    tagSubtitle: "IN FORMATION",
+    side: -1,
+    focusCenterOffset: { x: 85, y: 10 },
   },
 }
 
@@ -72,29 +73,22 @@ function resolveChapterMarker(chapter: Chapter, index: number): ChapterMarkerSpe
   if (preset) return preset
   const x = Math.round((chapter.coordinates.x / 100) * 1800 + 100)
   const y = Math.round((chapter.coordinates.y / 100) * 1650 + 140)
-  const isRight = index % 2 === 0
-  const dx = isRight ? 90 : -90
-  const dy = isRight ? -65 : 65
-  const endX = isRight ? x + 420 : x - 420
+  const side: 1 | -1 = index % 2 === 0 ? 1 : -1
   return {
     x,
     y,
-    coordsLabel: `${chapter.city} · ${chapter.governorate || "Egypt"}`,
+    coordsLabel: `${chapter.city}, ${chapter.governorate || "Egypt"}`,
     tagTitle: chapter.shortName.replace(/ Student Chapter$/i, "").toUpperCase(),
     tagSubtitle: chapter.charteredYear ? "CHARTERED" : "IN FORMATION",
-    focusCenterOffset: { x: isRight ? 95 : -95, y: 20 },
-    leaderPoints: `${x},${y} ${x + dx},${y + dy} ${endX},${y + dy}`,
-    textX: isRight ? x + dx + 12 : x + dx - 12,
-    titleY: y + dy - 18,
-    subY: y + dy + 34,
-    textAnchor: isRight ? "start" : "end",
+    side,
+    focusCenterOffset: { x: side > 0 ? 95 : 85, y: 10 },
   }
 }
 
 const REFERENCE_CITIES = [
   { name: "Alexandria", x: 759, y: 282, align: "end" as const, dx: -18, dy: -14 },
   { name: "Port Said", x: 1215, y: 194, align: "start" as const, dx: 18, dy: -8 },
-  { name: "Cairo", x: 1095, y: 505, align: "end" as const, dx: -20, dy: -22 },
+  { name: "Cairo", x: 1095, y: 505, align: "middle" as const, dx: 6, dy: 58 },
   { name: "Asyut", x: 1125, y: 900, align: "end" as const, dx: -20, dy: 6 },
   { name: "Aswan", x: 1178, y: 1510, align: "start" as const, dx: 20, dy: 8 },
 ] as const
@@ -105,20 +99,28 @@ interface ChaptersMapProps {
 
 export function ChaptersMap({ chapters }: ChaptersMapProps) {
   const [selectedId, setSelectedId] = useState<string>(chapters[0]?.id || "auc")
-  const selectedChapter = chapters.find((c) => c.id === selectedId) || chapters[0]
+  const [openCardId, setOpenCardId] = useState<string | null>(null)
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   const [zoom, setZoom] = useState(1.0)
   const [pan, setPan] = useState({ x: 0, y: 0 })
   const [focusedChapterId, setFocusedChapterId] = useState<string | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const dragOriginRef = useRef({ clientX: 0, clientY: 0, panX: 0, panY: 0 })
+  const dragMovedRef = useRef(false)
   const svgRef = useRef<SVGSVGElement | null>(null)
 
   const markerMap = Object.fromEntries(
     chapters.map((ch, idx) => [ch.id, resolveChapterMarker(ch, idx)])
   ) as Record<string, ChapterMarkerSpec>
 
-  const activeMarker = markerMap[selectedId] || CHAPTER_MARKERS.auc
+  const selectedChapter = chapters.find((c) => c.id === selectedId) || chapters[0]
+  const activeCardChapter = openCardId
+    ? chapters.find((c) => c.id === openCardId) || null
+    : null
+  const telemetryChapterId = hoveredId || openCardId || focusedChapterId
+  const activeMarker = markerMap[telemetryChapterId || selectedId] || CHAPTER_MARKERS.auc
+
   const effectiveZoom = zoom * BASE_ZOOM_SCALE
   const viewW = FRAME_W / effectiveZoom
   const viewH = FRAME_H / effectiveZoom
@@ -136,9 +138,17 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
   const rawViewX = targetCenterX - viewW / 2 + pan.x
   const rawViewY = targetCenterY - viewH / 2 + pan.y
 
-  const clampedViewX = Math.max(ORIGIN_X - 180, Math.min(ORIGIN_X + FRAME_W + 180 - viewW, rawViewX))
-  const clampedViewY = Math.max(ORIGIN_Y - 120, Math.min(ORIGIN_Y + FRAME_H + 120 - viewH, rawViewY))
+  const clampedViewX = Math.max(
+    ORIGIN_X - 180,
+    Math.min(ORIGIN_X + FRAME_W + 180 - viewW, rawViewX)
+  )
+  const clampedViewY = Math.max(
+    ORIGIN_Y - 120,
+    Math.min(ORIGIN_Y + FRAME_H + 120 - viewH, rawViewY)
+  )
   const activeViewBox = `${clampedViewX} ${clampedViewY} ${viewW} ${viewH}`
+
+  const pinScale = 1.24 / Math.pow(zoom, 0.72)
 
   const handleZoomIn = useCallback(() => {
     setZoom((prev) => Math.min(2.6, Number((prev + 0.4).toFixed(2))))
@@ -157,30 +167,59 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
 
   const handleFocusChapter = useCallback((chapterId: string) => {
     setSelectedId(chapterId)
+    setOpenCardId(chapterId)
     setFocusedChapterId(chapterId)
     setZoom(2.2)
     setPan({ x: 0, y: 0 })
+  }, [])
+
+  const handleResetViewKeepCard = useCallback(() => {
+    setZoom(1.0)
+    setPan({ x: 0, y: 0 })
+    setFocusedChapterId(null)
   }, [])
 
   const handleReset = useCallback(() => {
     setZoom(1.0)
     setPan({ x: 0, y: 0 })
     setFocusedChapterId(null)
+    setOpenCardId(null)
   }, [])
 
-  const handleTogglePin = useCallback(
+  const handlePinClick = useCallback(
     (chapterId: string) => {
       setSelectedId(chapterId)
-      if (focusedChapterId === chapterId && zoom > 1.2) {
-        handleReset()
-      } else {
+      if (openCardId !== chapterId) {
+        setOpenCardId(chapterId)
+        if (zoom > 1.0) {
+          setFocusedChapterId(chapterId)
+          setPan({ x: 0, y: 0 })
+        }
+        return
+      }
+      if (zoom <= 1.2) {
         handleFocusChapter(chapterId)
+      } else {
+        handleResetViewKeepCard()
       }
     },
-    [focusedChapterId, handleFocusChapter, handleReset, zoom]
+    [openCardId, zoom, handleFocusChapter, handleResetViewKeepCard]
+  )
+
+  const handleSelectTab = useCallback(
+    (chapterId: string) => {
+      setSelectedId(chapterId)
+      setOpenCardId(chapterId)
+      if (zoom > 1.0) {
+        setFocusedChapterId(chapterId)
+        setPan({ x: 0, y: 0 })
+      }
+    },
+    [zoom]
   )
 
   const handlePointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
+    dragMovedRef.current = false
     if (zoom <= 1.0 || e.button !== 0) return
     setIsDragging(true)
     dragOriginRef.current = {
@@ -200,6 +239,9 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
     if (!isDragging || !svgRef.current) return
     const dx = e.clientX - dragOriginRef.current.clientX
     const dy = e.clientY - dragOriginRef.current.clientY
+    if (Math.hypot(dx, dy) > 4) {
+      dragMovedRef.current = true
+    }
     const rect = svgRef.current.getBoundingClientRect()
     const scaleX = viewW / rect.width
     const scaleY = viewH / rect.height
@@ -227,24 +269,84 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
         ? "Focus AUC"
         : `Focus ${selectedChapter?.shortName.replace(/ Student Chapter$/i, "") || "Chapter"}`
 
+  // Paint inactive pins first and hovered/selected pin last so active callouts stay unobstructed
+  const orderedChapters = [...chapters].sort((a, b) => {
+    const score = (id: string) =>
+      id === openCardId ? 3 : id === hoveredId ? 2 : id === selectedId ? 1 : 0
+    return score(a.id) - score(b.id)
+  })
+
+  const activeCardMarker = activeCardChapter ? markerMap[activeCardChapter.id] : null
+  const isCardFocused =
+    Boolean(activeCardChapter) && focusedChapterId === activeCardChapter?.id && zoom > 1.0
+
   return (
-    <div className="border-y border-[var(--line)] grid lg:grid-cols-[1.32fr_0.68fr] divide-y lg:divide-y-0 lg:divide-x divide-[var(--line)]">
-      {/* Cartographic Stage */}
-      <div className="bg-[var(--canvas)] flex flex-col justify-between p-5 sm:p-8">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line-subtle)] pb-5">
-          <div>
-            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--gold)]">
-              Egypt Campus Map
-            </p>
-            <p className="mt-1 font-mono text-xs text-[var(--ink-faint)]">
-              {focusedChapterId
-                ? (markerMap[focusedChapterId] || activeMarker).coordsLabel
-                : "22° to 32° N · 25° to 36° E · National Overview"}
-            </p>
-          </div>
+    <div
+      className="border border-[var(--line)] bg-[var(--canvas)]"
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && openCardId) {
+          setOpenCardId(null)
+        }
+      }}
+    >
+      {/* Top Telemetry and Map Control Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line-subtle)] bg-[var(--surface)] px-5 py-4 sm:px-8">
+        <div>
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--gold)]">
+            Egypt Campus Map
+          </p>
+          <p className="mt-1 font-mono text-xs text-[var(--ink-faint)]">
+            {telemetryChapterId
+              ? activeMarker.coordsLabel
+              : "22° to 32° N, 25° to 36° E - Click any pin for details"}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          {chapters.length > 0 && (
+            <div
+              className="flex flex-wrap items-center border border-[var(--line)] bg-[var(--canvas)] p-0.5 max-w-full"
+              role="tablist"
+              aria-label="Select student chapter on map"
+            >
+              {chapters.map((chapter) => {
+                const active = chapter.id === openCardId
+                const tabLabel =
+                  chapter.id === "zewail-city"
+                    ? "Zewail City"
+                    : chapter.id === "auc"
+                      ? "AUC New Cairo"
+                      : chapter.shortName.replace(/ Student Chapter$/i, "")
+                return (
+                  <button
+                    key={chapter.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => handleSelectTab(chapter.id)}
+                    className={`min-h-[48px] px-3.5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider transition-colors cursor-pointer ${
+                      active
+                        ? "bg-[var(--surface-raised)] text-[var(--ink)] font-bold border border-[var(--gold)]"
+                        : "border border-transparent text-[var(--ink-faint)] hover:text-[var(--ink)]"
+                    }`}
+                  >
+                    <span
+                      className={`h-2 w-2 rounded-full ${
+                        chapter.charteredYear
+                          ? "bg-[var(--gold)]"
+                          : "border border-[var(--ink-soft)]"
+                      }`}
+                      aria-hidden="true"
+                    />
+                    <span>{tabLabel}</span>
+                  </button>
+                )
+              })}
+            </div>
+          )}
 
           <div
-            className="inline-flex items-center border border-[var(--line)] divide-x divide-[var(--line)]"
+            className="inline-flex items-center border border-[var(--line)] bg-[var(--canvas)] divide-x divide-[var(--line)]"
             role="group"
             aria-label="Map zoom and focus controls"
           >
@@ -253,12 +355,12 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
               onClick={handleZoomOut}
               disabled={zoom <= 1.0}
               aria-label="Zoom out map"
-              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
             >
               <ZoomOut size={15} aria-hidden="true" />
             </button>
 
-            <span className="px-2.5 font-mono text-xs font-semibold text-[var(--ink)] select-none min-w-[3rem] text-center">
+            <span className="px-2.5 font-mono text-xs font-semibold text-[var(--ink)] select-none min-w-[3.25rem] text-center">
               {Math.round(zoom * 100)}%
             </span>
 
@@ -267,7 +369,7 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
               onClick={handleZoomIn}
               disabled={zoom >= 2.6}
               aria-label="Zoom in map"
-              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
             >
               <ZoomIn size={15} aria-hidden="true" />
             </button>
@@ -277,7 +379,7 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
               onClick={() => handleFocusChapter(selectedId)}
               aria-label={`Focus on ${selectedChapter?.shortName || "AUC Chapter"}`}
               aria-pressed={focusedChapterId === selectedId && zoom > 1.0}
-              className={`min-h-[48px] px-3 whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 font-mono text-xs transition-colors ${
+              className={`min-h-[48px] px-3 whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 font-mono text-xs transition-colors cursor-pointer ${
                 focusedChapterId === selectedId && zoom > 1.0
                   ? "bg-[var(--gold)]/15 text-[var(--gold)] font-bold"
                   : "text-[var(--ink-soft)] hover:text-[var(--gold)] hover:bg-[var(--surface)]"
@@ -290,17 +392,19 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
             <button
               type="button"
               onClick={handleReset}
-              disabled={zoom === 1.0 && pan.x === 0 && pan.y === 0}
+              disabled={zoom === 1.0 && pan.x === 0 && pan.y === 0 && openCardId === null}
               aria-label="Reset map to full country view"
-              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              className="min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-[var(--ink-soft)] hover:text-[var(--ink)] hover:bg-[var(--surface)] disabled:opacity-30 disabled:pointer-events-none transition-colors cursor-pointer"
             >
               <RotateCcw size={14} aria-hidden="true" />
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Interactive SVG Canvas */}
-        <div className="relative my-6 w-full flex items-center justify-center overflow-hidden select-none">
+      {/* Main Cartographic Stage + On-Click Location Card */}
+      <div className="relative bg-[var(--canvas)] overflow-hidden">
+        <div className="w-full flex items-center justify-center select-none">
           <svg
             ref={svgRef}
             viewBox={activeViewBox}
@@ -308,8 +412,7 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
-            onDoubleClick={() => handleTogglePin(selectedId)}
-            className={`w-full h-auto max-h-[540px] ${
+            className={`w-full h-[380px] sm:h-[490px] lg:h-[600px] ${
               zoom > 1.0 ? (isDragging ? "cursor-grabbing" : "cursor-grab") : "cursor-default"
             }`}
             style={{ touchAction: zoom > 1.0 ? "none" : "pan-y" }}
@@ -330,42 +433,42 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
             </defs>
 
             <rect
-              x={ORIGIN_X - 240}
-              y={ORIGIN_Y - 160}
-              width={FRAME_W + 480}
-              height={FRAME_H + 320}
+              x={-2400}
+              y={-1200}
+              width={7200}
+              height={5000}
               fill="url(#egypt-survey-grid)"
             />
 
             <line
-              x1={ORIGIN_X}
-              y1="65"
-              x2={ORIGIN_X + FRAME_W}
-              y2="65"
+              x1={-2400}
+              y1="72"
+              x2={4800}
+              y2="72"
               stroke="var(--line-subtle)"
               strokeWidth="1.5"
               strokeDasharray="16 14"
             />
             <text
               x="40"
-              y="42"
+              y="102"
               fontFamily="monospace"
-              fontSize="24"
+              fontSize="22"
               fill="var(--ink-faint)"
               opacity="0.7"
             >
-              31° N · MEDITERRANEAN BASIN
+              31° N - MEDITERRANEAN BASIN
             </text>
 
             <text
               x="660"
-              y="-15"
+              y="112"
               fontFamily="monospace"
-              fontSize="48"
+              fontSize="44"
               fontWeight="700"
               letterSpacing="0.28em"
               fill="var(--ink-faint)"
-              opacity="0.4"
+              opacity="0.35"
             >
               MEDITERRANEAN SEA
             </text>
@@ -382,7 +485,7 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
               <text x="1690" y="1140" fontSize="36" letterSpacing="0.18em">
                 RED SEA
               </text>
-              <text x="1395" y="555" fontSize="26" letterSpacing="0.15em">
+              <text x="1395" y="590" fontSize="26" letterSpacing="0.15em">
                 SINAI
               </text>
               <text x="330" y="1080" fontSize="30" letterSpacing="0.18em">
@@ -448,220 +551,315 @@ export function ChaptersMap({ chapters }: ChaptersMapProps) {
               </g>
             ))}
 
-            {/* Chapter Nodes */}
-            {chapters.map((chapter) => {
+            {/* Decorative Ground Pulse Beacons (kept outside interactive pin group for pointer stability) */}
+            <g aria-hidden="true">
+              {orderedChapters.map((chapter) => {
+                const marker = markerMap[chapter.id]
+                if (!marker) return null
+                const isOpen = openCardId === chapter.id
+                const isChartered = Boolean(chapter.charteredYear)
+                if (!(isOpen || (!openCardId && isChartered))) return null
+                return (
+                  <g
+                    key={`beacon-${chapter.id}`}
+                    transform={`translate(${marker.x}, ${marker.y}) scale(${pinScale})`}
+                  >
+                    <circle
+                      cx="0"
+                      cy="0"
+                      r={isOpen ? "30" : "22"}
+                      stroke="var(--gold)"
+                      strokeWidth={isOpen ? "2.4" : "1.8"}
+                      fill="var(--gold)"
+                      fillOpacity={isOpen ? "0.18" : "0.1"}
+                      className="chapter-pulse"
+                    />
+                  </g>
+                )
+              })}
+            </g>
+
+            {/* Google-Maps-Style Downward Location Pins */}
+            {orderedChapters.map((chapter) => {
               const marker = markerMap[chapter.id]
               if (!marker) return null
-              const isSelected = selectedId === chapter.id
+              const isOpen = openCardId === chapter.id
+              const isHovered = hoveredId === chapter.id
+              const isHighlighted = isOpen || isHovered
               const isChartered = Boolean(chapter.charteredYear)
+              const side = marker.side
+              const tagWidth = Math.max(
+                marker.tagTitle.length * 10.2,
+                marker.tagSubtitle.length * 8.2
+              ) + 28
+              const boxX = side > 0 ? 42 : -42 - tagWidth
+              const textX = side > 0 ? 55 : -55
 
               return (
                 <g
                   key={chapter.id}
+                  transform={`translate(${marker.x}, ${marker.y}) scale(${pinScale})`}
                   role="button"
                   tabIndex={0}
-                  onClick={() => handleTogglePin(chapter.id)}
+                  aria-pressed={isOpen}
+                  onMouseEnter={() => setHoveredId(chapter.id)}
+                  onMouseLeave={() => setHoveredId((prev) => (prev === chapter.id ? null : prev))}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    if (dragMovedRef.current) return
+                    handlePinClick(chapter.id)
+                  }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault()
-                      handleTogglePin(chapter.id)
+                      handlePinClick(chapter.id)
                     }
                   }}
                   className="cursor-pointer focus:outline-none"
-                  aria-label={`${chapter.name}. Status: ${chapter.status}. Click to focus or zoom.`}
+                  aria-label={`${chapter.name}. Status: ${chapter.status}. Click location pin for details.`}
                 >
-                  {isSelected && (
-                    <circle
-                      cx={marker.x}
-                      cy={marker.y}
-                      r="44"
-                      stroke="var(--gold)"
-                      strokeWidth="2.5"
-                      fill="var(--gold)"
-                      fillOpacity="0.16"
-                      className="chapter-pulse"
+                  {/* Ground anchor and shadow right beneath pin tip (0,0) */}
+                  <ellipse cx="0" cy="2" rx="13" ry="4.5" fill="var(--ink)" fillOpacity="0.24" />
+                  <circle
+                    cx="0"
+                    cy="0"
+                    r={isHighlighted ? "4.5" : "3.5"}
+                    fill={isChartered || isHighlighted ? "var(--gold)" : "var(--ink-soft)"}
+                  />
+
+                  {/* Elevated Downward Teardrop Pin + Architectural Label Pill */}
+                  <g
+                    style={{
+                      transform: isHighlighted ? "translateY(-7px)" : "translateY(0px)",
+                      transition: "transform 180ms cubic-bezier(0.22, 1, 0.36, 1)",
+                    }}
+                  >
+                    {/* Generous tap hit area */}
+                    <rect
+                      x="-44"
+                      y="-98"
+                      width="88"
+                      height="106"
+                      rx="14"
+                      fill="transparent"
+                      pointerEvents="all"
                     />
-                  )}
 
-                  <circle
-                    cx={marker.x}
-                    cy={marker.y}
-                    r={isSelected ? "16" : "13"}
-                    fill="var(--canvas)"
-                    stroke={isSelected ? "var(--gold)" : "var(--ink)"}
-                    strokeWidth={isSelected ? "4.5" : "3"}
-                    strokeDasharray={isChartered ? undefined : "6 4"}
-                  />
-                  <circle
-                    cx={marker.x}
-                    cy={marker.y}
-                    r={isSelected ? "7" : "5"}
-                    fill={isChartered ? "var(--gold)" : "var(--ink-soft)"}
-                  />
+                    {/* Outer halo on hover or selection */}
+                    {isHighlighted && (
+                      <path
+                        d={LOCATION_PIN_PATH}
+                        fill="none"
+                        stroke="var(--gold)"
+                        strokeWidth="8"
+                        strokeOpacity="0.28"
+                      />
+                    )}
 
-                  <polyline
-                    points={marker.leaderPoints}
-                    fill="none"
-                    stroke={isSelected ? "var(--gold)" : "var(--line)"}
-                    strokeWidth={isSelected ? "3.5" : "2.5"}
-                  />
-                  <text
-                    x={marker.textX}
-                    y={marker.titleY}
-                    textAnchor={marker.textAnchor}
-                    fontFamily="monospace"
-                    fontSize="26"
-                    fontWeight="700"
-                    fill={isSelected ? "var(--ink)" : "var(--ink-soft)"}
-                  >
-                    {marker.tagTitle}
-                  </text>
-                  <text
-                    x={marker.textX}
-                    y={marker.subY}
-                    textAnchor={marker.textAnchor}
-                    fontFamily="monospace"
-                    fontSize="20"
-                    fontWeight="600"
-                    fill={isSelected ? "var(--gold)" : "var(--ink-faint)"}
-                  >
-                    {marker.tagSubtitle}
-                  </text>
+                    {/* Downward Location Pin Teardrop */}
+                    <path
+                      d={LOCATION_PIN_PATH}
+                      fill={
+                        isChartered
+                          ? "var(--gold)"
+                          : isHighlighted
+                            ? "var(--gold)"
+                            : "var(--surface-raised)"
+                      }
+                      stroke={
+                        isChartered || isHighlighted ? "var(--canvas)" : "var(--ink-soft)"
+                      }
+                      strokeWidth={isHighlighted ? "3.2" : "2.6"}
+                      strokeLinejoin="round"
+                    />
+
+                    {/* Pin Head Precision Aperture */}
+                    <circle
+                      cx="0"
+                      cy="-56"
+                      r="11.5"
+                      fill="var(--canvas)"
+                      stroke={isChartered || isHighlighted ? "none" : "var(--gold)"}
+                      strokeWidth="1.8"
+                    />
+                    <circle
+                      cx="0"
+                      cy="-56"
+                      r="4.5"
+                      fill={isChartered || isHighlighted ? "var(--gold)" : "var(--ink-soft)"}
+                    />
+
+                    {/* Compact Attached Pin Badge */}
+                    <line
+                      x1={side * 28}
+                      y1="-56"
+                      x2={side * 42}
+                      y2="-56"
+                      stroke={isHighlighted ? "var(--gold)" : "var(--line)"}
+                      strokeWidth="2.2"
+                    />
+                    <rect
+                      x={boxX}
+                      y="-80"
+                      width={tagWidth}
+                      height="48"
+                      rx="3"
+                      fill="var(--surface-raised)"
+                      fillOpacity="0.95"
+                      stroke={isHighlighted ? "var(--gold)" : "var(--line)"}
+                      strokeWidth={isHighlighted ? "2" : "1.4"}
+                    />
+                    <text
+                      x={textX}
+                      y="-60"
+                      textAnchor={side > 0 ? "start" : "end"}
+                      fontFamily="monospace"
+                      fontSize="16"
+                      fontWeight="700"
+                      fill="var(--ink)"
+                    >
+                      {marker.tagTitle}
+                    </text>
+                    <text
+                      x={textX}
+                      y="-41"
+                      textAnchor={side > 0 ? "start" : "end"}
+                      fontFamily="monospace"
+                      fontSize="12"
+                      fontWeight="600"
+                      fill={isChartered || isHighlighted ? "var(--gold)" : "var(--ink-faint)"}
+                    >
+                      {marker.tagSubtitle}
+                    </text>
+                  </g>
                 </g>
               )
             })}
           </svg>
         </div>
 
-        {/* Map Legend Footer */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line-subtle)] pt-4 font-mono text-xs">
-          <div className="flex flex-wrap items-center gap-5 text-[var(--ink)]">
-            <span className="inline-flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[var(--gold)] inline-block" aria-hidden="true" />
-              <span>AUC (Chartered · Reactivating)</span>
-            </span>
-            <span className="inline-flex items-center gap-2 text-[var(--ink-soft)]">
-              <span className="h-2.5 w-2.5 rounded-full border border-[var(--ink-soft)] inline-block" aria-hidden="true" />
-              <span>Zewail City (Chartering in Progress)</span>
-            </span>
+        {/* Floating Interactive Pin Location Card (Desktop overlay / Mobile docked panel) */}
+        {activeCardChapter && activeCardMarker && (
+          <div
+            key={activeCardChapter.id}
+            id="chapter-map-card"
+            role="region"
+            aria-label={`${activeCardChapter.name} details`}
+            className="topic-transition border-t border-[var(--line)] bg-[var(--surface-raised)] p-5 lg:absolute lg:top-5 lg:right-5 lg:w-[376px] lg:max-h-[calc(100%-2.5rem)] lg:overflow-y-auto lg:border lg:border-[var(--gold)]/60 lg:shadow-[0_22px_54px_-12px_rgba(0,0,0,0.45)] z-10"
+          >
+            <div className="flex items-start justify-between gap-3 border-b border-[var(--line-subtle)] pb-3">
+              <div className="space-y-1">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[var(--gold)]">
+                  <MapPin size={12} aria-hidden="true" />
+                  <span>{activeCardChapter.status}</span>
+                </span>
+                <p className="font-mono text-[11px] text-[var(--ink-faint)]">
+                  {activeCardMarker.coordsLabel}
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setOpenCardId(null)}
+                aria-label="Close pin details"
+                className="-mr-2 -mt-2 min-h-[48px] min-w-[48px] inline-flex items-center justify-center text-[var(--ink-faint)] hover:text-[var(--ink)] hover:bg-[var(--surface)] transition-colors cursor-pointer"
+              >
+                <X size={16} aria-hidden="true" />
+              </button>
+            </div>
+
+            <h3 className="mt-3 text-lg sm:text-xl font-semibold tracking-tight text-[var(--ink)] leading-snug">
+              {activeCardChapter.name}
+            </h3>
+
+            <p className="mt-1 font-mono text-xs text-[var(--ink-soft)]">
+              {activeCardChapter.campus}, {activeCardChapter.city}
+            </p>
+
+            <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-[var(--ink-soft)] line-clamp-3">
+              {activeCardChapter.description}
+            </p>
+
+            <div className="mt-3 space-y-2 border-y border-[var(--line-subtle)] py-3 text-xs">
+              {activeCardChapter.facultyAdvisor && (
+                <div className="flex items-start gap-2 text-[var(--ink-soft)]">
+                  <UserCheck size={14} className="mt-0.5 text-[var(--gold)] shrink-0" aria-hidden="true" />
+                  <div>
+                    <span className="font-semibold text-[var(--ink)]">
+                      {activeCardChapter.facultyAdvisor}
+                    </span>
+                    {activeCardChapter.advisorDepartment && (
+                      <span className="block text-[11px] text-[var(--ink-faint)]">
+                        {activeCardChapter.advisorDepartment}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {activeCardChapter.focusAreas && activeCardChapter.focusAreas.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 pt-0.5">
+                  {activeCardChapter.focusAreas.slice(0, 2).map((area) => (
+                    <span
+                      key={area}
+                      className="border border-[var(--line-subtle)] bg-[var(--canvas)] px-2 py-1 font-mono text-[10px] text-[var(--ink-soft)]"
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="mt-3.5 grid gap-2.5 sm:grid-cols-2">
+              <button
+                type="button"
+                onClick={() =>
+                  isCardFocused
+                    ? handleResetViewKeepCard()
+                    : handleFocusChapter(activeCardChapter.id)
+                }
+                className="btn-secondary w-full justify-center min-h-[48px] px-3 text-xs"
+              >
+                <Crosshair size={13} aria-hidden="true" />
+                <span>{isCardFocused ? "Overview (100%)" : "Zoom to Campus"}</span>
+              </button>
+
+              <Link
+                href={`/chapters/${activeCardChapter.id}`}
+                className="btn-primary w-full justify-center min-h-[48px] px-3 text-xs"
+              >
+                <span>Open Profile</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
-          <span className="text-[var(--ink-faint)]">
-            {zoom > 1.0
-              ? "Drag map to pan · Click pin to reset"
-              : "Click either chapter node to focus"}
-          </span>
-        </div>
+        )}
       </div>
 
-      {/* Chapter Dossier Panel */}
-      <aside className="bg-[var(--surface-raised)] p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          {/* Chapter Selector Tabs */}
-          {chapters.length > 1 && (
-            <div
-              className={`border-b border-[var(--line)] mb-6 ${
-                chapters.length > 3
-                  ? "flex flex-wrap gap-x-4 max-h-[168px] overflow-y-auto"
-                  : "flex"
-              }`}
-              role="tablist"
-              aria-label="Select student chapter on map"
-            >
-              {chapters.map((chapter) => {
-                const active = chapter.id === selectedId
-                const tabLabel =
-                  chapter.id === "zewail-city"
-                    ? "Zewail City"
-                    : chapter.id === "auc"
-                      ? "AUC New Cairo"
-                      : chapter.shortName.replace(/ Student Chapter$/i, "")
-                return (
-                  <button
-                    key={chapter.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={active}
-                    onClick={() => setSelectedId(chapter.id)}
-                    className={`min-h-[48px] ${
-                      chapters.length > 3 ? "shrink-0" : "flex-1"
-                    } px-2 text-left font-mono text-xs uppercase tracking-wider border-b-2 -mb-px transition-colors cursor-pointer ${
-                      active
-                        ? "border-[var(--gold)] text-[var(--ink)] font-bold"
-                        : "border-transparent text-[var(--ink-faint)] hover:text-[var(--ink)]"
-                    }`}
-                  >
-                    {tabLabel}
-                  </button>
-                )
-              })}
-            </div>
-          )}
-
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line-subtle)] pb-4">
-            <span className="eyebrow m-0">{selectedChapter?.status}</span>
-            <span className="font-mono text-xs text-[var(--ink-faint)]">
-              {selectedChapter?.city}
-            </span>
-          </div>
-
-          <h3 className="mt-5 text-2xl font-semibold tracking-tight text-[var(--ink)] leading-snug">
-            {selectedChapter?.name}
-          </h3>
-
-          <p className="mt-2 font-mono text-xs text-[var(--gold)]">
-            {selectedChapter?.campus}
-          </p>
-
-          <p className="mt-5 text-sm leading-relaxed text-[var(--ink-soft)]">
-            {selectedChapter?.description}
-          </p>
-
-          <dl className="mt-6 border-y border-[var(--line-subtle)] divide-y divide-[var(--line-subtle)] text-sm">
-            {selectedChapter?.facultyAdvisor && (
-              <div className="py-3.5">
-                <dt className="font-mono text-[11px] uppercase tracking-wider text-[var(--ink-faint)]">
-                  Faculty Advisor
-                </dt>
-                <dd className="mt-1 font-semibold text-[var(--ink)]">
-                  {selectedChapter.facultyAdvisor}
-                </dd>
-                {selectedChapter.advisorDepartment && (
-                  <dd className="mt-0.5 text-xs text-[var(--ink-soft)]">
-                    {selectedChapter.advisorDepartment}
-                  </dd>
-                )}
-              </div>
-            )}
-
-            {selectedChapter?.focusAreas && (
-              <div className="py-3.5">
-                <dt className="font-mono text-[11px] uppercase tracking-wider text-[var(--ink-faint)]">
-                  Technical Focus
-                </dt>
-                <dd className="mt-1.5 text-xs leading-relaxed text-[var(--ink-soft)]">
-                  {selectedChapter.focusAreas.slice(0, 4).join(" · ")}
-                </dd>
-              </div>
-            )}
-          </dl>
+      {/* Bottom Legend Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line-subtle)] bg-[var(--surface)] px-5 py-3.5 sm:px-8 font-mono text-xs">
+        <div className="flex flex-wrap items-center gap-5 text-[var(--ink)]">
+          <span className="inline-flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-[var(--gold)] inline-block" aria-hidden="true" />
+            <span>AUC (Chartered - Reactivating)</span>
+          </span>
+          <span className="inline-flex items-center gap-2 text-[var(--ink-soft)]">
+            <span
+              className="h-2.5 w-2.5 rounded-full border border-[var(--ink-soft)] bg-[var(--surface-raised)] inline-block"
+              aria-hidden="true"
+            />
+            <span>Zewail City (Chartering in Progress)</span>
+          </span>
         </div>
-
-        <div className="mt-8">
-          <Link
-            href={`/chapters/${selectedChapter?.id || "auc"}`}
-            className="btn-primary w-full justify-center min-h-[48px]"
-          >
-            <span>
-              {selectedChapter?.id === "zewail-city"
-                ? "View Zewail City Profile"
-                : selectedChapter?.id === "auc"
-                  ? "View AUC Chapter Profile"
-                  : `View ${selectedChapter?.shortName || "Chapter"} Profile`}
-            </span>
-            <ArrowUpRight size={14} aria-hidden="true" />
-          </Link>
-        </div>
-      </aside>
+        <span className="text-[var(--ink-faint)]">
+          {openCardId
+            ? zoom > 1.0
+              ? "Drag map to pan, or press Escape or X to close card"
+              : "Click zoom or pin again to inspect campus detail"
+            : "Click any downward location pin to view chapter details"}
+        </span>
+      </div>
     </div>
   )
 }

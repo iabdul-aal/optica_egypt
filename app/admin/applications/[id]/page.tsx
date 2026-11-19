@@ -60,7 +60,7 @@ export default async function ApplicationPage({
           {a.applicant_name}
         </h1>
         <p className="mt-2 break-all text-sm text-[var(--ink-soft)]">
-          {a.applicant_email} · {a.university}
+          {a.applicant_email}, {a.university}
         </p>
         <p className="mt-4 font-mono text-xs text-[var(--gold)]">
           {stageLabels[a.status]}
@@ -118,7 +118,7 @@ export default async function ApplicationPage({
                       {new Date(h.created_at).toLocaleString("en-GB", {
                         timeZone: "Africa/Cairo"
                       })}{" "}
-                      · Staff {h.actor_id.slice(0, 8)}
+                      - Staff {h.actor_id.slice(0, 8)}
                     </p>
                     {h.note && (
                       <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-[var(--ink-soft)]">

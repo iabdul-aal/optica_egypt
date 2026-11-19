@@ -95,7 +95,7 @@ export function RecruitmentForm() {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-4">
           <p className="text-sm text-[var(--ink-faint)]">
-            Status: Submitted · Next: Committee review
+            Status: Submitted - Next step: Committee review
           </p>
           <button
             type="button"
@@ -210,13 +210,13 @@ export function RecruitmentForm() {
           </select>
         </label>
         <label className="grid gap-2 text-sm">
-          Skills and experience (optional)
+          Relevant tools and skills (optional)
           <textarea
             name="skills"
             rows={3}
             maxLength={2000}
             className={field}
-            placeholder="Technical, computational, editorial, or organizational background."
+            placeholder="Concrete software, lab methods, editorial, or design tools (for example, Python, Meep FDTD, Figma)."
           />
         </label>
         <label className="grid gap-2 text-sm">
@@ -228,7 +228,7 @@ export function RecruitmentForm() {
             maxLength={3000}
             rows={4}
             className={field}
-            placeholder="Describe your technical or organizational interests and intended contribution (at least 30 characters)."
+            placeholder="Share why you want to join this committee and one initiative you plan to work on (at least 30 characters)."
           />
         </label>
         <label className="grid gap-2 text-sm">
@@ -239,7 +239,7 @@ export function RecruitmentForm() {
             minLength={2}
             maxLength={160}
             className={field}
-            placeholder="For example, 3 hours per week, mainly weekends"
+            placeholder="Weekly hours you can commit (for example, 4 hours per week)"
           />
         </label>
       </fieldset>

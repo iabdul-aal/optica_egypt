@@ -76,6 +76,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const optionalPayload = Object.fromEntries(
+      Object.entries({
+        foundingMemberCount: parsed.data.foundingMemberCount,
+        facultyAdvisorName: parsed.data.facultyAdvisorName,
+        partnershipScope: parsed.data.partnershipScope,
+        targetTimeline: parsed.data.targetTimeline,
+        sessionTitle: parsed.data.sessionTitle,
+        sessionFormat: parsed.data.sessionFormat,
+        preferredDate: parsed.data.preferredDate,
+        eventName: parsed.data.eventName,
+        attendanceMode: parsed.data.attendanceMode,
+        coverageSubject: parsed.data.coverageSubject,
+        publicationDeadline: parsed.data.publicationDeadline,
+        inquirySubject: parsed.data.inquirySubject,
+        topicOrTrack: parsed.data.topicOrTrack,
+        deadlineOrDate: parsed.data.deadlineOrDate,
+        opticaId: parsed.data.opticaId,
+      }).filter(([, value]) => Boolean(value))
+    )
+
     const db = serviceClient()
     const { data: code, error } = await db.rpc("submit_intake", {
       p_data: {
@@ -87,9 +107,7 @@ export async function POST(request: NextRequest) {
         targetRef: parsed.data.targetRef,
         payload: {
           details: parsed.data.details,
-          topicOrTrack: parsed.data.topicOrTrack || "",
-          deadlineOrDate: parsed.data.deadlineOrDate || "",
-          opticaId: parsed.data.opticaId || "",
+          ...optionalPayload,
         },
       },
     })

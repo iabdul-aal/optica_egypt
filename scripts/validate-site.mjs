@@ -404,6 +404,9 @@ function validateEditorialStyle() {
       if (line.includes("\u2014") || /&mdash;|&#8212;|&#x2014;/i.test(line)) {
         errors.push(`${rel}:${lineNum}: Forbidden Unicode em-dash (U+2014)`);
       }
+      if (line.includes("\u00B7") || line.includes("\u2022")) {
+        errors.push(`${rel}:${lineNum}: Forbidden middle-dot divider (use comma or hyphen)`);
+      }
       if (/[\u0600-\u06FF]/.test(line)) {
         errors.push(`${rel}:${lineNum}: Non-English Arabic script found under strict English-only policy`);
       }
@@ -431,6 +434,9 @@ function validateEditorialStyle() {
       }
       if (line.includes("\u2014") || /&mdash;|&#8212;|&#x2014;/i.test(line)) {
         errors.push(`${rel}:${lineNum}: Forbidden em-dash in JSX/source`);
+      }
+      if (line.includes("\u00B7") || line.includes("\u2022")) {
+        errors.push(`${rel}:${lineNum}: Forbidden middle-dot divider in JSX/source (use comma or hyphen)`);
       }
     });
   }

@@ -22,6 +22,24 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic"
 
+const PAYLOAD_FIELD_LABELS: Record<string, string> = {
+  foundingMemberCount: "Prospective founding members",
+  facultyAdvisorName: "Proposed faculty advisor",
+  partnershipScope: "Collaboration track",
+  targetTimeline: "Target semester",
+  sessionFormat: "Session format",
+  sessionTitle: "Proposed talk title",
+  preferredDate: "Preferred month",
+  eventName: "Event name",
+  attendanceMode: "Attendance mode",
+  coverageSubject: "Story subject",
+  publicationDeadline: "Editorial deadline",
+  inquirySubject: "Subject",
+  opticaId: "Optica ID",
+  topicOrTrack: "Topic or track",
+  deadlineOrDate: "Timeline or deadline",
+}
+
 export default async function SubmissionDetailPage({
   params,
 }: {
@@ -69,10 +87,10 @@ export default async function SubmissionDetailPage({
           {record.applicant_name}
         </h1>
         <p className="mt-2 break-all text-sm text-[var(--ink-soft)]">
-          {record.applicant_email} · {record.affiliation}
+          {record.applicant_email}, {record.affiliation}
         </p>
         <p className="mt-4 font-mono text-xs text-[var(--gold)]">
-          {submissionIntentLabels[record.intent]} · {submissionStageLabels[record.status]}
+          {submissionIntentLabels[record.intent]} - {submissionStageLabels[record.status]}
         </p>
       </header>
 
@@ -87,24 +105,18 @@ export default async function SubmissionDetailPage({
                   <dd className="mt-2 font-mono text-sm">{record.target_ref}</dd>
                 </div>
               )}
-              {record.payload.topicOrTrack && (
-                <div>
-                  <dt className="text-xs text-[var(--ink-faint)]">Topic or track</dt>
-                  <dd className="mt-2 text-sm">{record.payload.topicOrTrack}</dd>
-                </div>
-              )}
-              {record.payload.deadlineOrDate && (
-                <div>
-                  <dt className="text-xs text-[var(--ink-faint)]">Timeline or deadline</dt>
-                  <dd className="mt-2 text-sm">{record.payload.deadlineOrDate}</dd>
-                </div>
-              )}
-              {record.payload.opticaId && (
-                <div>
-                  <dt className="text-xs text-[var(--ink-faint)]">Optica ID</dt>
-                  <dd className="mt-2 font-mono text-sm">{record.payload.opticaId}</dd>
-                </div>
-              )}
+              {Object.entries(PAYLOAD_FIELD_LABELS).map(([key, label]) => {
+                const value = record.payload[key]?.trim()
+                if (!value) return null
+                return (
+                  <div key={key}>
+                    <dt className="text-xs text-[var(--ink-faint)]">{label}</dt>
+                    <dd className={`mt-2 text-sm ${key === "opticaId" ? "font-mono" : ""}`}>
+                      {value}
+                    </dd>
+                  </div>
+                )
+              })}
               <div>
                 <dt className="text-xs text-[var(--ink-faint)]">Submitted</dt>
                 <dd className="mt-2 text-sm">
@@ -138,7 +150,7 @@ export default async function SubmissionDetailPage({
                       {new Date(item.created_at).toLocaleString("en-GB", {
                         timeZone: "Africa/Cairo",
                       })}{" "}
-                      · Staff {item.actor_id.slice(0, 8)}
+                      - Staff {item.actor_id.slice(0, 8)}
                     </p>
                     {item.note && (
                       <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-[var(--ink-soft)]">

@@ -18,19 +18,19 @@ const PIPELINE_STAGES = [
     step: "01",
     title: "Schematic and GDSII Layout",
     body: "Parametric silicon waveguides, directional couplers, and DRC checks written reproducibly in Python without commercial seat licenses.",
-    tools: "gdsfactory · KLayout · SiEPIC-Tools",
+    tools: "gdsfactory, KLayout, SiEPIC-Tools",
   },
   {
     step: "02",
     title: "Mode and FDTD Verification",
     body: "Finite-difference eigenmode and FDTD electromagnetic simulation across 1550 nm C-band and 1310 nm O-band silicon-on-insulator stacks.",
-    tools: "Meep FDTD · Femwell",
+    tools: "Meep FDTD, Femwell",
   },
   {
     step: "03",
     title: "Open-PDK MPW Preparation",
     body: "Team circuit verification, foundry design-rule compliance, and fabrication-ready GDSII submissions contingent on sponsor shuttles.",
-    tools: "Open PDKs · Colab Notebooks",
+    tools: "Open PDKs, Colab Notebooks",
   },
 ] as const
 

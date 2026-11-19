@@ -53,8 +53,8 @@ test("submissionSchema accepts multi-intent desk requests and rejects unknown in
     affiliation: "Alexandria Photonics Lab",
     targetRef: "seasonal-photonics-school",
     details: "Proposing an optics seasonal school session hosted in Alexandria.",
-    topicOrTrack: "Campus Hosting",
-    deadlineOrDate: "Autumn 2026",
+    partnershipScope: "Campus Venue Hosting",
+    targetTimeline: "Autumn 2026",
     opticaId: "",
     consent: true,
     website: "",
@@ -64,6 +64,24 @@ test("submissionSchema accepts multi-intent desk requests and rejects unknown in
   if (ok.success) {
     assert.equal(ok.data.email, "omar@university.edu.eg")
     assert.equal(ok.data.intent, "partner_proposal")
+    assert.equal(ok.data.partnershipScope, "Campus Venue Hosting")
+  }
+
+  const chapterOk = submissionSchema.safeParse({
+    intent: "chapter_charter",
+    name: "Salma Adel",
+    email: "salma@cu.edu.eg",
+    affiliation: "Cairo University",
+    foundingMemberCount: "14",
+    facultyAdvisorName: "Prof. Kareem Nabil",
+    details: "Founding student chapter committee ready for bylaw review.",
+    consent: true,
+    submissionId: validUuid,
+  })
+  assert.equal(chapterOk.success, true)
+  if (chapterOk.success) {
+    assert.equal(chapterOk.data.foundingMemberCount, "14")
+    assert.equal(chapterOk.data.facultyAdvisorName, "Prof. Kareem Nabil")
   }
 
   const badIntent = submissionSchema.safeParse({

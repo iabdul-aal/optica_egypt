@@ -125,7 +125,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
                 </span>
                 {member.isFounder && (
                   <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--ink-faint)]">
-                    · {member.foundingRole || "Co-Founder"}
+                    - {member.foundingRole || "Co-Founder"}
                   </span>
                 )}
               </div>
@@ -190,7 +190,7 @@ export default async function MemberProfilePage({ params }: MemberPageProps) {
               <p className="mt-3 text-base leading-relaxed text-[var(--ink)]">{member.bio}</p>
               {domains.length > 0 && (
                 <p className="mt-5 font-mono text-xs text-[var(--gold)]">
-                  {domains.map((domain) => domain.label).join(" · ")}
+                  {domains.map((domain) => domain.label).join(", ")}
                 </p>
               )}
             </div>

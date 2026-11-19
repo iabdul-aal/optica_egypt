@@ -148,7 +148,7 @@ export function ResourcesDirectory({
               </span>
               <div>
                 <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
-                  {tier.tag} · {tier.pricingNote}
+                  {tier.tag} - {tier.pricingNote}
                 </p>
                 <h3 className="mt-1.5 text-xl font-semibold text-[var(--ink)]">{tier.name}</h3>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--ink-soft)]">

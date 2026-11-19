@@ -123,7 +123,7 @@ export default async function ProjectDetailPage({
               <ul className="mt-4 space-y-2.5 text-sm text-[var(--ink-soft)]">
                 {project.requirements.map((req) => (
                   <li key={req} className="flex items-start gap-2.5">
-                    <span className="text-[var(--gold)] font-bold">·</span>
+                    <span className="text-[var(--gold)] font-bold" aria-hidden="true">-</span>
                     <span>{req}</span>
                   </li>
                 ))}
@@ -181,7 +181,7 @@ export default async function ProjectDetailPage({
               <div className="py-6">
                 <p className="eyebrow">Technical Domains</p>
                 <p className="mt-3 font-mono text-xs leading-relaxed text-[var(--gold)]">
-                  {domains.map((d) => d.label).join(" · ")}
+                  {domains.map((d) => d.label).join(", ")}
                 </p>
               </div>
             )}

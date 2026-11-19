@@ -94,7 +94,7 @@ test.describe("live chapter recruitment", () => {
     await page.getByLabel("Study level").selectOption("Undergraduate")
     await page.getByLabel("Preferred committee").selectOption("Outreach")
     await page
-      .getByLabel("Skills and experience (optional)")
+      .getByLabel("Relevant tools and skills (optional)")
       .fill("Workshop facilitation")
     await page
       .getByLabel("Why would you like to join?")
